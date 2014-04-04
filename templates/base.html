@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+    {% block meta %}
+    <meta charset="utf-8">
+    <!--
+    HOW TO USE THIS DOCUMENT
+    ========================
+
+     -> Replace the ten numbered and commented out areas with your site's data.
+     -> Extend the established blocks in app.html and other templates.
+    -->
+    <title>{% block title%}<!-- (1) APP TITLE GOES HERE-->{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block metaDescription %}<!-- (2) APP DESCRIPTION GOES HERE -->{% endblock %}">
+    <meta name="author" content="Dan R Schlosser">
+    <meta name="robots" content="index, follow">
+
+    <!-- Google Authorship and Publisher Markup -->
+    <link rel="publisher" href="https://plus.google.com/u/0/+{% block metaGooglePlusName %}<!-- (3) GOOGLE PLUS NAME GOES HERE -->{% endblock %}"/>
+    <!-- You can find (3) by going to your Google Plus profile and copying everything in the url after the plus sign and before the next slash -->
+    <link rel="author" href="https://plus.google.com/u/0/+{{ self.metaGooglePlusName }}/posts"/>
+    <meta itemprop="name" content="{{ self.title() }}">
+    <meta itemprop="description" content="{{ self.metaDescription() }}">
+    <meta itemprop="image" content="<!-- (4) URL OF YOUR GRAVATAR / PROFILE PICTURE GOES HERE -->">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{% block metaTwitterHandle %}<!-- (5) TWITTER HANDLE GOES HERE -->{% endblock %}">
+    <meta name="twitter:title" content="{{ self.title() }}">
+    <meta name="twitter:description" content="{{ self.metaDescription() }}">
+    <meta name="twitter:creator" content="{{ self.metaTwitterHandle }}">
+    <meta name="twitter:image:src" content="<!-- (6) URL OF YOUR GRAVATAR / PROFILE PICTURE GOES HERE, SAME AS (4) -->">
+    <meta name="twitter:domain" content="<!-- (7) YOUR DOMAIN GOES HERE (ie. mysite.com ) -->">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="{{ self.title() }}">
+    <meta property="og:type" content="{% block metaType %}website{% endblock %}">
+    <meta property="og:url" content="<!-- (8) WEBSITE URL GOES HERE (ie. http://mysite.com) -->">
+    <meta property="og:image" content="<!-- (9) URL OF YOUR GRAVATAR / PROFILE PICTURE GOES HERE, SAME AS (4) -->">
+    <meta property="og:description" content="{{ self.metaDescription() }}">
+    {% endblock meta%}
+
+    {% block css%}
+    <!-- Stylesheet reset -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+    {% endblock css%}
+
+    {% block js %}
+    <!-- JavaScript imports -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% endblock js %}
+
+    {% block favicon %}
+    <!-- Favicon.ico -->
+    <link rel="shortcut icon"
+        href=" {{url_for('static', filename='img/favicon.ico') }}"
+        type="image/x-icon">
+    <link rel="icon"
+        href="{{ url_for('static', filename='img/favicon.ico') }}"
+        type="image/x-icon">
+    {% endblock favicon %}
+
+    {% block fonts %}
+    <!-- Web Fonts -->
+    {% endblock fonts %}
+
+    {% block analytics %}
+	<!--Google Analytics-->
+    <!-- (10) GOOGLE ANALYTICS JAVASCRIPT GOES HERE -->
+    {% endblock analytics %}
+
+{% endblock head %}
+</head>
+<body>
+
+{% block body %}
+{% endblock body %}
+
+{% block bodyJs %}
+<!-- jQuery -->
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% endblock bodyJs %}
+</body>
+</html>
