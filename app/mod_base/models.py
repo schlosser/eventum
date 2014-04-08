@@ -1,47 +1,60 @@
+from app import db
+from app.mod_auth.models import User
 from datetime import datetime
 now = datetime.now
-class DBItem():
 
-    def __init__(self, person=None):
-        self._id = None
-        self.date_created = now()
+class Post(db.Document):
+    date_created = db.DateTimeField(
+        default=now, required=True,verbose_name="Date Created",
+        help_text="DateTime when the document was created, localized to the server")
+    date_modified = db.DateTimeField(
+        default=now, required=True, verbose_name="Date Modified",
+        help_text="DateTime when the document was last modified, localized to the server")
+    title = db.StringField(
+        max_length=255, required=True, verbose_name="Title",
+        help_text="Title of the post (255 characters max)")
+    author = db.ReferenceField(
+        User, required=True, verbose_name="Author",
+        help_text="Reference to the User that authored the post")
+    content = db.StringField(
+        required=True, verbose_name="Content Body",
+        help_text="The HTML content of the post")
+    slug = db.StringField(
+        required=True, verbose_name="Post Slug", regex='([a-z]|[1-9]|-)*',
+        help_text="Name of post for use in the url (i.e. my-cool-post)")
+    categories = db.ListField(
+        db.StringField(
+            db_field='category', max_length=255, verbose_name="Category",
+            help_text="A category for the post (255 characters max)"),
+        verbose_name="Categories", default=list, help_text="A list of categories")
+    tags = db.ListField(
+        db.StringField(
+            db_field='tag', max_length=255, verbose_name="Tag",
+            help_text="A tag for the post (255 characters max)"),
+        verbose_name="Tags", default=list, help_text="A list of tags for the post")
+    published = db.BooleanField(
+        required=True, default=False, verbose_name="Published",
+        help_text="Whether or not the post is published")
+    date_published = db.DateTimeField(
+        verbose_name="Date Published",
+        help_text="The date when the post is published, localized to the server")
+    posted_by = db.ReferenceField(
+        User, required=True, default=author,
+        verbose_name="Posted By",
+        help_text="The User that posted the post, if different from author (i.e. guest author)")
+
+    def clean(self):
+        """Update date_modified"""
         self.date_modified = now()
 
-    def __repr__(self):
-        return 'DBItem(_id=%r, date_created=%r, date_modified=%r)' % \
-            (self._id, self.date_created, self.date_modified)
+    def __unicode__(self):
+        return self.title
 
-
-class Post(DBItem):
-
-    def __init__(
-        self, title, author, content, url_name, categories=[], tags=[],
-            published=False, date_published=None, posted_by=None):
-        """Create a new Post instance
-
-        Arguments:
-        title -- display title for the post
-        author -- the Person that authored the post
-        content -- the HTML body of the post
-        url_name -- for use in the url (ie. my-cool-post)
-
-        Keyword Arguments:
-        tags -- list of tags (default: [])
-        categories -- list of categories (default: [])
-        published -- is the post published? (default: False)
-        date_published -- date the post is published (default: None)
-        posted_by -- Person who posted, if different from author (default: None)
-        """
-        super(Post, self).__init__()
-
-        self.title = title
-        self.author = author
-        self.content = content
-        self.categories = categories
-        self.tags = tags
-        self.published = published
-        self.date_published = date_published
-        self.posted_by = posted_by if posted_by else author
+    meta = {
+        'allow_inheritance': True,
+        'indexes': ['title', 'date_created'],
+        'ordering': ['-date_created']
+    }
 
     def __repr__(self):
         rep = '%r(title=%r, author=%r, categories=%r, tags=%r, published=%r' %\

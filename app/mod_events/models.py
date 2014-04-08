@@ -1,19 +1,61 @@
-from app.mod_base.models import DBItem
+from mongoengine import ValidationError
+from app.mod_auth.models import User
+from app import db
+from datetime import datetime
+now = datetime.now
 
-class Event(DBItem):
+class Event(db.Document):
 
-    def __init__(self, title, location, start_date, end_date,
-                 published=False, short_description="", long_description="",
-                 date_published=None, posted_by=None):
-        self.title = title
-        self.location = location
-        self.start_date = start_date
-        self.end_date = end_date
-        self.short_description = short_description
-        self.long_description = long_description
-        self.published = published
-        self.date_published = date_published
-        self.posted_by = posted_by if posted_by else self.author
+    date_created = db.DateTimeField(
+        default=now, required=True,verbose_name="Date Created",
+        help_text="DateTime when the document was created, localized to the server")
+    date_modified = db.DateTimeField(
+        default=now, required=True, verbose_name="Date Modified",
+        help_text="DateTime when the document was last modified, localized to the server")
+    title = db.StringField(
+        max_length=255, required=True, verbose_name="Title",
+        help_text="Title of the event (255 characters max)")
+    location = db.StringField(
+        verbose_name="Location", help_text="The location of the event")
+    owner = db.ReferenceField(
+        User, required=True, verbose_name="Owner",
+        help_text="Reference to the User that is in charge of the event")
+    start_date = db.DateTimeField(
+        required=True, verbose_name="Start Date",
+        help_text="Start date of the event, localized to the server")
+    end_date = db.DateTimeField(
+        required=True, verbose_name="End Date",
+        help_text="End date of the event, localized to the server")
+    descriptions = db.DictField(
+        required=True, verbose_name="Descriptions", default={
+            "short": None,
+            "long": None
+        }, help_text="A dictionary of descriptons with their types as keys")
+    published = db.BooleanField(
+        required=True, default=False, verbose_name="Published",
+        help_text="Whether or not the post is published")
+    date_published = db.DateTimeField(
+        verbose_name="Date Published",
+        help_text="The date when the post is published, localized to the server")
+
+    def clean(self) :
+        """Update date_modified, and ensure that end_date is after start_date.
+
+        If end_date is before start_date, throw ValueError
+        """
+        self.date_modified = now()
+        if self.start_date > self.end_date:
+            raise ValidationError("Start date should always come before end date",
+                                  self.start_date, self.end_date)
+
+    meta = {
+        'allow_inheritance': True,
+        'indexes': ['start_date', 'owner'],
+        'ordering': ['-start_date']
+    }
+
+    def __unicode__(self):
+        return self.title
 
     def __repr__(self):
         rep = 'Event(title=%r, location=%r, start_date=%r, end_date=%r, \

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block body %}
+  <h2>Sign in</h2>
+  <form action="/login" method=post>
+    {% if error %}<p class=error><strong>Error:</strong> {{ error }}</p>{% endif %}
+    <input type=submit value="Sign in">
+    <input type=hidden name=next value="{{ next }}">
+  </form>
+{% endblock %}
