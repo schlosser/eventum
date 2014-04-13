@@ -20,7 +20,7 @@
     <!-- Google Authorship and Publisher Markup -->
     <link rel="publisher" href="https://plus.google.com/u/0/+{% block metaGooglePlusName %}<!-- (3) GOOGLE PLUS NAME GOES HERE -->{% endblock %}"/>
     <!-- You can find (3) by going to your Google Plus profile and copying everything in the url after the plus sign and before the next slash -->
-    <link rel="author" href="https://plus.google.com/u/0/+{{ self.metaGooglePlusName }}/posts"/>
+    <link rel="author" href="https://plus.google.com/u/0/+{{ self.metaGooglePlusName() }}/posts"/>
     <meta itemprop="name" content="{{ self.title() }}">
     <meta itemprop="description" content="{{ self.metaDescription() }}">
     <meta itemprop="image" content="<!-- (4) URL OF YOUR GRAVATAR / PROFILE PICTURE GOES HERE -->">
@@ -42,6 +42,10 @@
     <meta property="og:description" content="{{ self.metaDescription() }}">
     {% endblock meta%}
 
+    {% block fonts %}
+    <!-- Web Fonts -->
+    {% endblock fonts %}
+
     {% block css%}
     <!-- Stylesheet reset -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.min.css') }}">
@@ -50,6 +54,9 @@
 
     {% block js %}
     <!-- JavaScript imports -->
+    <!-- jQuery -->
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
     {% endblock js %}
 
@@ -62,10 +69,6 @@
         href="{{ url_for('static', filename='img/favicon.ico') }}"
         type="image/x-icon">
     {% endblock favicon %}
-
-    {% block fonts %}
-    <!-- Web Fonts -->
-    {% endblock fonts %}
 
     {% block analytics %}
 	<!--Google Analytics-->
@@ -80,9 +83,7 @@
 {% endblock body %}
 
 {% block bodyJs %}
-<!-- jQuery -->
-    <script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 {% endblock bodyJs %}
 </body>
 </html>

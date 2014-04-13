@@ -37,12 +37,15 @@
     {% endfor %}
     </div>
     {% endif %}
+    {% if image_url %}
+    <img src="{{ image_url }}">
+    {% endif %}
     <form method="POST" action="" accept-charset="UTF-8" role="form">
       {{ form.csrf_token }}
       {{ render_field(form.name, placehodler="Your Name", autofocus="")}}
       {{ render_field(form.email, placeholder="Your Email Address") }}
       <input type="submit" name="submit" value="Create Profile">
-      <input type=hidden name=next value="{{ next }}">
+      {{ render_field(form.next) }}
     </form>
   </div>
   <p>

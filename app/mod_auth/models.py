@@ -10,14 +10,14 @@ class User(db.Document):
     date_modified = db.DateTimeField(
         default=now, required=True, verbose_name="Date Modified",
         help_text="DateTime when the user was last modified, localized to the server")
-    openid = db.StringField(
-        required=True, verbose_name="Open ID",
-        help_text="The Open ID of the user.")
+    gplus_id = db.StringField(
+        required=True, verbose_name="Google Plus ID", unique=True,
+        help_text="The Google Plus ID of the user")
     name = db.StringField(
         max_length=510, verbose_name="Full Name", required=True,
         help_text="Full name of the user (510 characters max)")
     email = db.EmailField(
-        required=True, verbose_name="Email Address",
+        required=True, verbose_name="Email Address", unique=True,
         help_text="Email address of the user")
     roles = db.ListField(
         db.StringField(
@@ -47,8 +47,8 @@ class User(db.Document):
     }
 
     def __repr__(self):
-        return 'User(name=%r, email=%r, roles=%r, privelages=%r)' % \
-            (self.name, self.email, self.roles, self.privelages)
+        return 'User(name=%r, email=%r, roles=%r, privelages=%r, gplus_id=%r, date_created=%r)' % \
+            (self.name, self.email, self.roles, self.privelages, self.gplus_id, self.date_created)
 
     def __unicode__(self):
         if self.can('admin'):

@@ -1,7 +1,7 @@
 from app.mod_auth.models import User
 from flask.ext.wtf import Form
-from wtforms import TextField, RadioField
-from wtforms.validators import Required, Email, ValidationError
+from wtforms import TextField, RadioField, HiddenField
+from wtforms.validators import Required, Email, URL, ValidationError
 from mongoengine.queryset import DoesNotExist, MultipleObjectsReturned
 
 EMAIL_ERROR = 'Please provide a valid email address.'
@@ -11,6 +11,7 @@ class CreateProfileForm(Form):
     name = TextField('Full Name')
     email = TextField('Email Address', [Email(message=EMAIL_ERROR),
                                         Required(message=EMAIL_ERROR)])
+    next = HiddenField('hidden', [URL(require_tld=False)])
 
 
 class Unique(object):
