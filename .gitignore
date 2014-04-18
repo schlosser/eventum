@@ -1,6 +1,8 @@
 lib
 bin
 include
+tmp
+man
 *.pyc
 config.py
 client_secrets.json

@@ -42,7 +42,7 @@ var helper = (function() {
             console.log(this.authResult.code);
             $.ajax({
                 type: 'POST',
-                url: '/g-plus/store-token?state=' + STATE + '&next=' + NEXT,
+                url: '/store-token?state=' + STATE + '&next=' + NEXT,
                 contentType: 'application/octet-stream; charset=utf-8',
                 success: function(result) {
                     console.log(result);

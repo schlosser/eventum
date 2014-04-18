@@ -1,17 +1,16 @@
 from app import app
-import string
-import random
-import httplib2
 from app.mod_networking.responses import response_from_json
 from app.mod_auth.models import User
 from app.mod_auth.forms import CreateProfileForm, AddUserForm
 from mongoengine.queryset import DoesNotExist
-# from pymongo.errors import DuplicateKeyError
-from flask import Blueprint, render_template, request, flash, session, g, \
-    redirect, url_for
+from flask import Blueprint, render_template, request, \
+    flash, session, g, redirect, url_for
 from oauth2client.client import FlowExchangeError, flow_from_clientsecrets, \
     AccessTokenRefreshError, AccessTokenCredentials
 from apiclient.discovery import build
+import string
+import random
+import httplib2
 
 mod_auth = Blueprint('auth', __name__)
 
@@ -29,16 +28,17 @@ def lookup_current_user():
     if 'gplus_id' in session:
         gplus_id = session['gplus_id']
         try:
-            g.user = User.objects.get(gplus_id=gplus_id)
+            g.user = User.objects().get(gplus_id=gplus_id)
         except DoesNotExist:
             pass  # Fail gracefully if the user is not in the database yet
+
 
 # We have to import the login_required decorator below
 # lookup_current_user() to avoid circular dependency
 from app.mod_auth.decorators import login_required, development_only
 
 
-@mod_auth.route('/login', methods=['GET', 'POST'])
+@mod_auth.route('/login', methods=['GET'])
 def login():
     """If the user is not logged in, display an option to log in.  On click,
     make a request to Google to authenticate.
@@ -47,7 +47,7 @@ def login():
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('index'), code=303)
+        return redirect(url_for('base.index'), code=303)
     load_csrf_token_into_session()
     return render_template('auth/login.html',
                            client_id=app.config["CLIENT_ID"],
@@ -56,8 +56,18 @@ def login():
                            next=request.args.get('next'))
 
 
-@mod_auth.route('/g-plus/store-token', methods=['GET', 'POST'])
+@mod_auth.route('/store-token', methods=['POST'])
 def store_token():
+    """Do the oauth flow for Google plus sign in, storing the access token
+    in the session, and redircting to create an account if appropriate.
+
+    Because this method will be called from a $.ajax() request in JavaScript,
+    we can't return redirect(), so instead this method returns the URL that
+    the user should be redirected to, and the redirect happens in JavaScript:
+        success: function(response) {
+            window.location.href = response;
+        }
+    """
     if request.args.get('state', '') != session['state']:
         return response_from_json('Invalid state parameter.', 401)
 
@@ -79,7 +89,8 @@ def store_token():
     session['credentials'] = credentials.access_token
     session['gplus_id'] = gplus_id
 
-    if not User.objects(gplus_id__exists=gplus_id):
+    if User.objects(gplus_id=gplus_id).count() == 0:
+        # A new user model must be made
 
         # Get the user's name and email to populate the form
         http = httplib2.Http()
@@ -95,7 +106,15 @@ def store_token():
                 'emails'][0]['value'],
             image_url=people_document['image']['url']), 200)
 
-    return response_from_json(request.args.get('next'), 200)
+    user = User.objects().get(gplus_id=gplus_id)
+    user.register_login()
+    user.save()
+
+    # The user already exists.  Redirect to the next url or
+    # the root of the application ('/')
+    if request.args.get('next'):
+        return response_from_json(request.args.get('next'), 200)
+    return response_from_json(request.url_root, 200)
 
 
 @mod_auth.route('/create-profile', methods=['GET', 'POST'])
@@ -103,28 +122,38 @@ def create_profile():
     """Create a profile (filling in the form with openid data), and
     register it in the database.
     """
+    if g.user is not None and 'gplus_id' in session:
+        # use code=303 to avoid POSTing to the next page.
+        return redirect(url_for('base.index'), code=303)
     form = CreateProfileForm(request.form,
                              name=request.args['name'],
                              email=request.args['email'],
                              next=request.args['next'])
     if form.validate_on_submit():
-        if User.objects(email__exists=form.email.data):
+        if User.objects(email=form.email.data).count() != 0:
             # A user with this email already exists.  Override it.
             user = User.objects.get(email=form.email.data)
             user.openid = session['openid']
             user.name = form.name.data
             flash('Account with this email already exists.  Overridden.')
+            user.register_login()
+            user.save()
         else:
             # Create a brand new user
             user = User(email=form.email.data,
                         name=form.name.data,
                         gplus_id=session['gplus_id'])
             flash('Account created successfully.')
+            user.register_login()
+            user.save()
 
-        user.save()
 
+        # redirect to the next url or the root of the application ('/')
+        if form.next.data:
+            # use code=303 to avoid POSTing to the next page.
+            return redirect(form.next.data, code=303)
         # use code=303 to avoid POSTing to the next page.
-        return redirect(form.next.data, code=303)
+        return redirect('/', code=303)
 
     return render_template('auth/create_profile.html',
                            image_url=request.args.get('image_url'), form=form)
@@ -196,7 +225,7 @@ def disconnect():
         del session['credentials']
 
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('index'), code=303)
+        return redirect(url_for('base.index'), code=303)
     else:
         # For whatever reason, the given token was invalid.
         return response_from_json('Failed to revoke token for given user.',
@@ -246,7 +275,7 @@ def become(level=0):
     }
     db_dict = dict((("set__privelages__%s" % k, v)
                    for k, v in admin_privelages.iteritems()))
-    User.objects(openid=session['openid']).update(**db_dict)
+    User.objects(gplus_id=session['gplus_id']).update(**db_dict)
     return redirect(url_for('.view_users'))
 
 
@@ -265,14 +294,16 @@ def view_users():
     return str(User.objects)
 
 
-@mod_auth.route('/wipe')
+@mod_auth.route('/wipe', methods=['GET', 'POST'])
 @development_only
 def wipe():
     """Wipe all users from the database"""
     if request.method == "POST":
-        User.objects.drop_collection()
-        return redirect(url_for('.view_users'))
-    return '''<form action="/login" method=post>
+        for u in User.objects():
+            u.delete()
+        # use code=303 to avoid POSTing to the next page.
+        return redirect(url_for('.view_users'), code=303)
+    return '''<form action="/wipe" method=post>
         <input type=submit value="Wipe the Database">
         </form>'''
 
