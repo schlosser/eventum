@@ -1,16 +1,16 @@
+import string
+import random
+import httplib2
 from app import app
 from app.mod_networking.responses import response_from_json
 from app.mod_auth.models import User
 from app.mod_auth.forms import CreateProfileForm, AddUserForm
+from apiclient.discovery import build
 from mongoengine.queryset import DoesNotExist
 from flask import Blueprint, render_template, request, \
     flash, session, g, redirect, url_for
 from oauth2client.client import FlowExchangeError, flow_from_clientsecrets, \
     AccessTokenRefreshError, AccessTokenCredentials
-from apiclient.discovery import build
-import string
-import random
-import httplib2
 
 mod_auth = Blueprint('auth', __name__)
 
@@ -20,7 +20,7 @@ gplus_service = build('plus', 'v1')
 @mod_auth.before_request
 def lookup_current_user():
     """Set the g.user variable to the User in the database that shares
-    openid with the session, if one exists
+    openid with the session, if one exists.
 
     Note that it gets called before all requests, but not before decorators.
     """
@@ -76,7 +76,7 @@ def store_token():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets('config/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -176,7 +176,7 @@ def remove(user_email):
 
 @mod_auth.route('/logout')
 def logout():
-    """Logs the user out"""
+    """Log the user out."""
     session.pop('gplus_id', None)
     g.user = None
     flash(u'You were signed out')
@@ -254,6 +254,31 @@ def people():
         return response_from_json('Failed to refresh access token.', 500)
 
 
+@mod_auth.route('/whitelist', methods=['GET'])
+def whitelist():
+    """View and manage the members of the whitelist
+
+    Whitelisted users are the only ones allowed to make user accounts.
+    """
+    with open('config/whitelist.txt', 'r') as f:
+        whitelist = f.read().split()
+    return render_template('auth/whitelist.html', whitelist=whitelist)
+
+@mod_auth.route('/whitelist/remove/<email>', methods=['POST'])
+def whitelist_remove(email):
+    """Delete `email` from the whitelist."""
+    with open('config/whitelist.txt', 'r+') as f:
+        whitelist = f.read().split()
+        if email in whitelist:
+            whitelist.remove(email)
+            f.seek(0)
+            f.write('\n'.join(whitelist))
+            f.truncate()
+            return response_from_json('Email address removed successfully.', 200)
+    return response_from_json('Email address not found', 500)
+
+
+
 #============================================================
 # Development Only (quick and dirty ways to play with Users)
 #============================================================
@@ -311,4 +336,4 @@ def wipe():
 @mod_auth.route('/session')
 @development_only
 def view_session():
-    return str(session)
+    return "<p>"+str(dict(session))+"</p>"

@@ -1,0 +1,90 @@
+@import '../colors';
+
+.whitelist {
+    margin: 3rem auto;
+    max-width: 40rem;
+    box-shadow: 0 0 1rem #aaa;
+    overflow: hidden;
+    padding: 1rem 0 0 ;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .whitelist-item {
+        clear:both;
+        height: 3rem;
+        line-height: 3rem;
+        border-top: 1px #eee solid;
+
+        .whitelist-email {
+            float: left;
+            margin-left: 1rem;
+        }
+
+        .whitelist-buttons {
+            float:right;
+
+            .whitelist-remove {
+                display: inline-block;
+                float:left;
+                margin-right: 1rem;
+            }
+
+            .whitelist-cancel {
+                background-color: #aaa;
+                color: white;
+
+                &:hover {
+                    background-color: #ccc;
+                }
+            }
+
+            .whitelist-delete {
+                background-color: $red;
+                color: white;
+
+                &:hover {
+                    background-color: $darkred;
+                }
+            }
+
+            .whitelist-confirm-wrapper {
+                overflow: hidden;
+                width: 8rem;
+                height: 3rem;
+                display: inline-block;
+                float:left;
+                -webkit-transition: .3s ease all;
+                transition: .3s ease all;
+            }
+            .whitelist-confirm {
+                float:right;
+                width: 8rem;
+                display: inline-block;
+                font-size:0;
+
+
+                input {
+                    cursor: pointer;
+                    border: 0;
+                    margin: 0;
+                    padding: 0.25rem;
+                    text-align: center;
+                    font-size: 0.8rem;
+                    height: 3rem;
+                    width: 4rem;
+                }
+            }
+        }
+    }
+}
+
+.whitelist-hidden {
+    width: 0 !important;
+}
+
+.clearfix {
+    clear: both;
+}

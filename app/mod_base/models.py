@@ -3,9 +3,10 @@ from app.mod_auth.models import User
 from datetime import datetime
 now = datetime.now
 
+
 class Post(db.Document):
     date_created = db.DateTimeField(
-        default=now, required=True,verbose_name="Date Created",
+        default=now, required=True, verbose_name="Date Created",
         help_text="DateTime when the document was created, localized to the server")
     date_modified = db.DateTimeField(
         default=now, required=True, verbose_name="Date Modified",

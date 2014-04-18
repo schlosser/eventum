@@ -1,9 +1,12 @@
 from app import app
-from flask import url_for, redirect, session, request, g, abort
 from app.mod_auth.controllers import lookup_current_user
+from flask import url_for, redirect, session, request, g, abort
 from functools import wraps
 
 def login_required(f):
+    """If there is no Google Plus ID in the session or user in the database,
+    then redirect to login.  Else, run the decorated function.
+    """
     @wraps(f)
     def decorated_function(*args, **kwargs):
         lookup_current_user()
@@ -17,14 +20,14 @@ def login_required(f):
     return decorated_function
 
 
-class requires_privelage(object):
+class requires_privilege(object):
 
-    def __init__(self, privelage):
+    def __init__(self, privilege):
         """
         If there are decorator arguments, the function
         to be decorated is not passed to the constructor!
         """
-        self.privelage = privelage
+        self.privilege = privilege
 
     def __call__(self, f):
         @login_required
@@ -32,7 +35,7 @@ class requires_privelage(object):
         def decorated_function(*args, **kwargs):
             lookup_current_user()
             try:
-                if not g.user.can(self.privelage):
+                if not g.user.can(self.privilege):
                     return abort(401)
             except AttributeError:
                 return abort(401)
@@ -45,7 +48,6 @@ def development_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if not app.config['DEBUG']:
-            print "aborting"
             abort(401)
         return f(*args, **kwargs)
     return decorated_function

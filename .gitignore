@@ -6,3 +6,4 @@ man
 *.pyc
 config.py
 client_secrets.json
+.webassets-cache

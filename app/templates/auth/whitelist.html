@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_auth_whitelist" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}Manage your Whitelist{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/auth/whitelist.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<ul class="whitelist">
+<h1>Whitelist</h1>
+{% for email in whitelist %}
+<li class="whitelist-item" data-email="{{ email }}">
+    <p class="whitelist-email">{{ email }}</p>
+    <div class="whitelist-buttons">
+        <a href="#" class="whitelist-remove">Remove</a>
+        <div class="whitelist-confirm-wrapper whitelist-hidden">
+            <form class="whitelist-confirm" data-email="{{ email }}">
+                <input class="whitelist-cancel" value="Cancel" type="button" />
+                <input class="whitelist-delete" value="Delete" type="submit" />
+            </form>
+        </div>
+    </div>
+    <span class="clearfix"></span>
+</li>
+
+{% endfor%}
+</ul>
+{% endblock %}
