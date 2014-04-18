@@ -1,18 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Create Profile{% endblock %}
 
-{% macro render_field(field, placeholder=None) %}
-{% if field.errors %}
-<div>
-{% elif field.flags.error %}
-<div>
-{% else %}
-<div>
-{% endif %}
-    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
-    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
-</div>
-{% endmacro %}
+{% import 'macros.html' as macros %}
 
 {% block body %}
 <div>
@@ -42,10 +31,10 @@
     {% endif %}
     <form method="POST" action="" accept-charset="UTF-8" role="form">
       {{ form.csrf_token }}
-      {{ render_field(form.name, placehodler="Your Name", autofocus="")}}
-      {{ render_field(form.email, placeholder="Your Email Address") }}
+      {{ macros.render_field(form.name, placehodler="Your Name", autofocus="")}}
+      {{ macros.render_field(form.email, placeholder="Your Email Address") }}
       <input type="submit" name="submit" value="Create Profile">
-      {{ render_field(form.next) }}
+      {{ macros.render_field(form.next) }}
     </form>
   </div>
   <p>

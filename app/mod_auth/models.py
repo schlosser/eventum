@@ -1,9 +1,13 @@
 from app import db
 from datetime import datetime
-from mongoengine import ValidationError
 now = datetime.now
 
 USER_TYPES = {
+    "user": {
+        "edit": False,
+        "publish": False,
+        "admin": False
+    },
     "editor": {
         "edit": True,
         "publish": False,
@@ -44,14 +48,15 @@ class User(db.Document):
             help_text="A role that the user hase"),
         verbose_name="Roles", default=list, help_text="A List of roles")
     privileges = db.DictField(
-        required=True, verbose_name="Privileges", default={
-            "edit": False,
-            "publish": False,
-            "admin": False
-        }, help_text="A dictionary of privileges and whether the user has \
+        required=True, verbose_name="Privileges", default={},
+        help_text="A dictionary of privileges and whether the user has \
         them.  To use one of the predefined sets of privileges, set this \
         value to either 'editor', 'publisher', or 'admin'.  This will be \
         converted to the appropriate dictionary on save.")
+    user_type = db.StringField(
+        verbose_name="User Type", default='user',
+        regex="(user|editor|publisher|admin)",
+        help_text="A shortcut for the privileges DictField")
     last_logon = db.DateTimeField(
         verbose_name="Last Logon",
         help_text="Time of this user's last logon")
@@ -68,14 +73,9 @@ class User(db.Document):
         """Update date_modified and apply privileges shorthand notation."""
         self.date_modified = now()
 
-        # If self.privileges is one of the USER_TYPES keys, set that dictionary
-        # to self.privileges
-        if type(self.privileges) == str:
-            if self.privileges in USER_TYPES:
-                self.privileges = USER_TYPES[self.privileges]
-            else:
-                raise ValidationError("privelages should be a dictionary or \
-                                      'editor' or 'publisher' or 'admin'.")
+        # If undefined, update self.privileges with one of the USER_TYPES dictionaries
+        if self.privileges == {}:
+            self.privileges.update(USER_TYPES[self.user_type])
 
     meta = {
         'allow_inheritance': True,
@@ -95,3 +95,31 @@ class User(db.Document):
             return '%r <%r> (Editor)' % (self.name, self.email)
         else:
             return '%r <%r>' % (self.name, self.email)
+
+
+class Whitelist(db.Document):
+    date_created = db.DateTimeField(
+        default=now, required=True, verbose_name="Date Created",
+        help_text="DateTime when user was created, localized to the server")
+    date_modified = db.DateTimeField(
+        default=now, required=True, verbose_name="Date Modified",
+        help_text="DateTime of last modification, localized to the server")
+    email = db.EmailField(
+        required=True, verbose_name="Email Address", unique=True,
+        help_text="Email address of the whitelisted user.")
+    user_type = db.StringField(
+        verbose_name="User Type", help_text="The type of user that will be created.")
+
+    def clean(self):
+        """Update date_modified and apply privileges shorthand notation."""
+        self.date_modified = now()
+
+    meta = {
+        'indexes': ['email']
+    }
+
+    def __repr__(self):
+        return 'Whitelist(email=%r, user_type=%r)' % (self.email, self.user_type)
+
+    def __unicode__(self):
+        return 'Whitelist<%r>' % self.email

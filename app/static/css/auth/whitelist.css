@@ -1,5 +1,5 @@
 /* line 3 */
-.whitelist {
+.whitelist-wrapper {
   margin: 3rem auto;
   max-width: 40rem;
   box-shadow: 0 0 1rem #aaa;
@@ -7,52 +7,60 @@
   padding: 1rem 0 0;
 }
 /* line 10 */
-.whitelist h1 {
+.whitelist-wrapper h1 {
   text-align: center;
   margin-bottom: 1rem;
 }
 /* line 15 */
-.whitelist .whitelist-item {
+.whitelist-wrapper .whitelist-add-form {
+  padding: 1rem;
+}
+/* line 17 */
+.whitelist-wrapper .whitelist-add-form div {
+  display: inline-block;
+}
+/* line 22 */
+.whitelist-wrapper .whitelist-item {
   clear: both;
   height: 3rem;
   line-height: 3rem;
   border-top: 1px #eee solid;
 }
-/* line 21 */
-.whitelist .whitelist-item .whitelist-email {
+/* line 28 */
+.whitelist-wrapper .whitelist-item .whitelist-email {
   float: left;
   margin-left: 1rem;
 }
-/* line 26 */
-.whitelist .whitelist-item .whitelist-buttons {
+/* line 33 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons {
   float: right;
 }
-/* line 29 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-remove {
+/* line 36 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-remove {
   display: inline-block;
   float: left;
   margin-right: 1rem;
 }
-/* line 35 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-cancel {
+/* line 42 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-cancel {
   background-color: #aaa;
   color: white;
 }
-/* line 39 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-cancel:hover {
+/* line 46 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-cancel:hover {
   background-color: #ccc;
 }
-/* line 44 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-delete {
+/* line 51 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-delete {
   background-color: #d9534f;
   color: white;
 }
-/* line 48 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-delete:hover {
+/* line 55 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-delete:hover {
   background-color: #d43f3a;
 }
-/* line 53 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-confirm-wrapper {
+/* line 60 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm-wrapper {
   overflow: hidden;
   width: 8rem;
   height: 3rem;
@@ -61,15 +69,15 @@
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
 }
-/* line 62 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-confirm {
+/* line 69 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm {
   float: right;
   width: 8rem;
   display: inline-block;
   font-size: 0;
 }
-/* line 69 */
-.whitelist .whitelist-item .whitelist-buttons .whitelist-confirm input {
+/* line 76 */
+.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm input {
   cursor: pointer;
   border: 0;
   margin: 0;
@@ -80,12 +88,12 @@
   width: 4rem;
 }
 
-/* line 84 */
+/* line 91 */
 .whitelist-hidden {
   width: 0 !important;
 }
 
-/* line 88 */
+/* line 95 */
 .clearfix {
   clear: both;
 }

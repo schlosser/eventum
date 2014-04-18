@@ -27,6 +27,8 @@ def create_app(**config_overrides):
     # Setup the database.
     db.init_app(app)
 
+    register_blueprints()
+
 
 def register_blueprints():
     """Registers all the Blueprints (modules) in a function, to avoid

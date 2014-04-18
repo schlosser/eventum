@@ -4,7 +4,7 @@ from mongoengine import ValidationError, NotUniqueError
 from sys import path
 path.append('../')
 
-from app.mod_auth.models import User
+from app.mod_auth.models import User, Whitelist
 
 USER_PRIVILEGES = {
     "user": {
@@ -38,6 +38,13 @@ CREATE_PROFILE_QUERY_DATA = {
 
 
 class TestAuth(base.TestingTemplate):
+
+    def setUp(self):
+        super(TestAuth, self)
+        for u in User.objects():
+            u.delete()
+        for u in Whitelist.objects():
+            u.delete()
 
     def test_login_route(self):
         """Test the `/login` route, logged in and logged out."""
@@ -73,12 +80,23 @@ class TestAuth(base.TestingTemplate):
         self.assertEqual(resp.status_code, 302)
 
         # Logged out
-        resp = self.request_with_role('logout', role='none')
+        resp = self.request_with_role('/logout', role='none')
         self.assertEqual(resp.status_code, 302)
+
+    def test_whitelist_route(self):
+        """Test the `/whitelist` route, logged in and logged out."""
+
+        # Logged in
+        resp = self.request_with_role('/whitelist', role='user')
+        self.assertEqual(resp.status_code, 200)
+
+        # Logged out
+        resp = self.request_with_role('/whitelist', role='none')
+        self.assertEqual(resp.status_code, 200)
+
 
     def test_user_declaration_with_missing_parameters(self):
         """Tests creation of a User model with missing parameters"""
-        User.drop_collection()
 
         with self.assertRaises(ValidationError):
             u = User(email="test@te.st", gplus_id='test123')
@@ -92,7 +110,6 @@ class TestAuth(base.TestingTemplate):
 
     def test_user_declaration_with_invalid_parameters(self):
         """Tests creation of a User model with invalid parameters"""
-        User.drop_collection()
 
         # Invalid email address
         with self.assertRaises(ValidationError):
@@ -108,8 +125,6 @@ class TestAuth(base.TestingTemplate):
 
     def test_user_declaration_with_non_unique_parameters(self):
         """Tests creation of a User model with missing parameters"""
-        User.drop_collection()
-
         # Non-unique email address
         with self.assertRaises(NotUniqueError):
             a = User(name="Test User", email="test@te.st", gplus_id='test123')
@@ -128,8 +143,6 @@ class TestAuth(base.TestingTemplate):
 
     def test_can(self):
         """Tests the User.can() method for privileges access"""
-        User.drop_collection()
-
         user = User(name='Test Editor',
                  email='editor@te.st',
                  privileges={
@@ -143,10 +156,10 @@ class TestAuth(base.TestingTemplate):
         for k, v in user.privileges.iteritems():
             self.assertEqual(user.can(k), v)
 
-    def test_user_privilege_aliases(self):
-        """ Tests the User model privilege aliases and the can() method"""
-        User.drop_collection()
-
+    def test_user_type_aliases(self):
+        """ Test the User model user_type field, which is an alias
+        for privileges.
+        """
         # No alias
         self.assertEqual(User.objects().count(), 0)
         u = User(name='Test User',
@@ -158,7 +171,7 @@ class TestAuth(base.TestingTemplate):
         # The `editor` alias
         e = User(name='Test Editor',
                  email='editor@te.st',
-                 privileges='editor',
+                 user_type='editor',
                  gplus_id='editor1234')
         e.save()
         self.assertDictContainsSubset(e.privileges, USER_PRIVILEGES['editor'])
@@ -166,7 +179,7 @@ class TestAuth(base.TestingTemplate):
         # The `publisher` alias
         p = User(name='Test Publisher',
                  email='publisher@te.st',
-                 privileges='publisher',
+                 user_type='publisher',
                  gplus_id='publisher1234')
         p.save()
         self.assertDictContainsSubset(p.privileges,
@@ -175,10 +188,159 @@ class TestAuth(base.TestingTemplate):
         # The `admin` alias
         a = User(name='Test Admin',
                  email='admin@te.st',
-                 privileges='admin',
+                 user_type='admin',
                  gplus_id='admin1234')
         a.save()
         self.assertDictContainsSubset(a.privileges, USER_PRIVILEGES['admin'])
+
+    def test_whitelist_add_invalid_email(self):
+        """Test that when an invalid email is provided, no user is added to the
+        whitelist.
+        """
+        query_string_data = {
+            "email": "notanemail",
+            "user_type": "user"
+        }
+        resp = self.request_with_role('/whitelist/add',
+            method= 'POST',
+            query_string=query_string_data,
+            follow_redirects=True)
+        # No error pages
+        self.assertEqual(resp.status_code, 200)
+        # No whitelist items created
+        self.assertEqual(Whitelist.objects().count(), 0)
+
+    def test_whitelist_add_no_user_type(self):
+        """Test that when no user type is provided, then no user is added to
+        the whitelist.
+        """
+        query_string_data = {
+            "email": "email@address.com",
+            "user_type": None
+        }
+        resp = self.request_with_role('/whitelist/add',
+            method= 'POST',
+            query_string=query_string_data,
+            follow_redirects=True)
+        # No error pages
+        self.assertEqual(resp.status_code, 200)
+        # No whitelist items created
+        self.assertEqual(Whitelist.objects().count(), 0)
+
+    def test_whitelist_add_valid_input(self):
+        """Test that when valid input is provided, a user is added to the
+        whitelist.
+        """
+        query_string_data = {
+            "email": "email@address.com",
+            "user_type": "user"
+        }
+        resp = self.request_with_role('/whitelist/add',
+            method= 'POST',
+            data=query_string_data,
+            follow_redirects=True)
+        # No error pages
+        self.assertEqual(resp.status_code, 200)
+        # One whitelist item created
+        self.assertEqual(Whitelist.objects().count(), 1)
+        # Correct whitelist item created
+        user = Whitelist.objects().get(email="email@address.com")
+        self.assertEqual(user.user_type, "user")
+
+    def test_whitelist_add_duplicate_email(self):
+        """Test that when a duplicate email is added to the whitelist it is
+        rejected.
+        """
+        query_string_data_1 = {
+            "email": "email@address.com",
+            "user_type": "user"
+        }
+        query_string_data_2 = {
+            "email": "email@address.com",
+            "user_type": "editor"
+        }
+        self.request_with_role('/whitelist/add',
+            method='POST',
+            data=query_string_data_1,
+            follow_redirects=True)
+
+        resp = self.request_with_role('/whitelist/add',
+            method='POST',
+            data=query_string_data_2,
+            follow_redirects=True)
+
+        # No error pages
+        self.assertEqual(resp.status_code, 200)
+        # One whitelist item created
+        self.assertEqual(Whitelist.objects().count(), 1)
+        # Correct whitelist item created
+        wl = Whitelist.objects().get(email="email@address.com")
+        self.assertEqual(wl.user_type, "user")
+
+    def test_whitelist_add_email_of_existing_user(self):
+        """Test that when a email is added to the whitelist that belongs to
+        an existing user, it should be rejected.
+        """
+        # Add a user to the database
+        user = User(name="Test User", email="email@address.com",
+            gplus_id="test123", user_type="admin")
+        user.save()
+        self.assertEqual(User.objects(email="email@address.com").count(), 1)
+
+        # Post a new whitelist entry
+        query_string_data = {
+            "email": "email@address.com",
+            "user_type": "user"
+        }
+        resp = self.request_with_role('/whitelist/add',
+            method='POST',
+            data=query_string_data,
+            follow_redirects=True)
+
+        # No error pages
+        self.assertEqual(resp.status_code, 200)
+        # No whitelist items created
+        self.assertEqual(Whitelist.objects().count(), 0)
+
+    def test_whitelist_remove(self):
+        """Test removing an email from the waitlist.
+
+        Adds num_trials emails to the whitelist, removes some of them,
+        and checks to make sure the right ones were removed."""
+        num_trials = 20
+        # Post a new whitelist entry
+        for i in range(num_trials):
+            query_string_data = {
+                "email": "email%r@address.com" % i,
+                "user_type": "user"
+            }
+            resp = self.request_with_role('/whitelist/add',
+                method='POST',
+                data=query_string_data,
+                follow_redirects=True)
+
+            # No error pages
+            self.assertEqual(resp.status_code, 200)
+
+        # 5 whitelist items added.
+        self.assertEqual(Whitelist.objects().count(), num_trials)
+
+        remove = [i for i in range(num_trials) if i%3 == 0]
+        for i in range(num_trials):
+            if i in remove:
+                resp = self.request_with_role(
+                    '/whitelist/remove/email%r@address.com' % i,
+                    method='POST')
+                # No error pages
+                self.assertEqual(resp.status_code, 200)
+
+        for i in range(num_trials):
+            in_list = Whitelist.objects(email="email%r@address.com"%i).count() == 1
+            if i in remove:
+                self.assertFalse(in_list)
+            else:
+                self.assertTrue(in_list)
+
 
 
 if __name__ == '__main__':

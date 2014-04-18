@@ -1,7 +1,8 @@
 $(function() {
 
     /* Show the confirm dialog on click of the "Remove" button*/
-    $(".whitelist-remove").click(function() {
+    $(".whitelist-remove").click(function(e) {
+        e.preventDefault();
         $('.whitelist-confirm-wrapper').addClass('whitelist-hidden');
         $(this).siblings().removeClass('whitelist-hidden');
     });
@@ -13,7 +14,7 @@ $(function() {
         $.post('/whitelist/remove/'+$(this).data('email'))
         .done(function(resp) {
             console.log(resp);
-            $(".whitelist-item[data-email='" + email + "']").slideUp(function() {
+            $(".whitelist-item[data-email='" + email + "']").slideUp(100, function() {
                 $(this).remove();
             });
         })

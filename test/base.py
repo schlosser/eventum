@@ -4,10 +4,9 @@ import mongoengine
 from coverage import coverage
 from sys import path
 path.append('../')
-from app import register_blueprints
-from app import create_app as create_app_base
+from app import create_app
 from app.mod_auth.models import User
-from config import basedir
+from config.flask_config import basedir
 
 GPLUS_IDS = {
     'user': 'user123',
@@ -34,22 +33,21 @@ USERS = {
 }
 
 
-def create_test_app():
-    """Creates the app using testing configs"""
-    return create_app_base(
-        MONGODB_SETTINGS={'DB': 'testing'},
-        TESTING=True,
-        CSRF_ENABLED=False,
-    )
-
-
 class TestingTemplate(unittest.TestCase):
+
+    def setUp(self):
+        for k,v in USERS.iteritems():
+            v.save()
 
     @classmethod
     def setUpClass(self):
         """ Sets up a test database before each set of tests """
-        create_test_app()
-        register_blueprints()
+        create_app(
+            MONGODB_SETTINGS={'DB': 'testing'},
+            TESTING=True,
+            CSRF_ENABLED=False,
+            WTF_CSRF_ENABLED=False
+        )
         from app import app
         self.app = app
 
@@ -64,23 +62,17 @@ class TestingTemplate(unittest.TestCase):
         """
         with self.app.test_client() as c:
             with c.session_transaction() as sess:
-                User.drop_collection()
-
-                self.assertEqual(User.objects().count(), 0)
-
                 if role in USERS:
                     # if it isn't, the request is without a role
-                    USERS[role].save()
                     sess['gplus_id'] = GPLUS_IDS[role]
                 kwargs['method'] = method
                 kwargs['path'] = path
             return c.open(*args, **kwargs)
 
     def test_create_test_app(self):
-        create_test_app()
-        from app import app
-        assert app.config['TESTING']
-        assert mongoengine.connection.get_db().name == 'testing'
+        self.assertTrue(self.app.config['TESTING'])
+        self.assertFalse(self.app.config['CSRF_ENABLED'])
+        self.assertEqual(mongoengine.connection.get_db().name, 'testing')
 
     @classmethod
     def main(self):

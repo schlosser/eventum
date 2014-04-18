@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block css %}
 {{ super() }}
@@ -16,17 +17,31 @@
 
 {% block body %}
 
-<ul class="whitelist">
+<div class="whitelist-wrapper">
 <h1>Whitelist</h1>
-{% for email in whitelist %}
-<li class="whitelist-item" data-email="{{ email }}">
-    <p class="whitelist-email">{{ email }}</p>
+
+<form class="whitelist-add-form" method="POST" action="/whitelist/add">
+    {{ form.csrf_token }}
+    {{ macros.render_field(form.email, required="", placeholder="Email Address", autofocus="")}}
+    {% for subfield in form.user_type %}
+    <tr>
+        <td>{{ subfield }}</td>
+        <td>{{ subfield.label }}</td>
+    </tr>
+    {% endfor %}
+    <input class="whitelist-add" type="submit" value="Add">
+</form>
+
+<ul class="whitelist">
+{% for user in whitelist %}
+<li class="whitelist-item" data-email="{{ user.email }}">
+    <p class="whitelist-email">{{ user.email }}</p>
     <div class="whitelist-buttons">
-        <a href="#" class="whitelist-remove">Remove</a>
+        <a href="#" class="whitelist-remove">Revoke</a>
         <div class="whitelist-confirm-wrapper whitelist-hidden">
-            <form class="whitelist-confirm" data-email="{{ email }}">
+            <form class="whitelist-confirm" data-email="{{ user.email }}">
                 <input class="whitelist-cancel" value="Cancel" type="button" />
-                <input class="whitelist-delete" value="Delete" type="submit" />
+                <input class="whitelist-delete" value="Confirm" type="submit" />
             </form>
         </div>
     </div>
@@ -35,4 +50,5 @@
 
 {% endfor%}
 </ul>
+</div>
 {% endblock %}

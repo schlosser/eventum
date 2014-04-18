@@ -3,8 +3,8 @@ import random
 import httplib2
 from app import app
 from app.mod_networking.responses import response_from_json
-from app.mod_auth.models import User
-from app.mod_auth.forms import CreateProfileForm, AddUserForm
+from app.mod_auth.models import User, Whitelist
+from app.mod_auth.forms import CreateProfileForm, AddToWhitelistForm
 from apiclient.discovery import build
 from mongoengine.queryset import DoesNotExist
 from flask import Blueprint, render_template, request, \
@@ -49,11 +49,13 @@ def login():
         # use code=303 to avoid POSTing to the next page.
         return redirect(url_for('base.index'), code=303)
     load_csrf_token_into_session()
+    args_next = request.args.get('next')
+    next = args_next if args_next else request.url_root
     return render_template('auth/login.html',
                            client_id=app.config["CLIENT_ID"],
                            state=session['state'],
                            # reauthorize=True,
-                           next=request.args.get('next'))
+                           next=next)
 
 
 @mod_auth.route('/store-token', methods=['POST'])
@@ -76,7 +78,8 @@ def store_token():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('config/client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets(
+            'config/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -98,12 +101,16 @@ def store_token():
         people_document = gplus_service.people().get(
             userId='me').execute(http=http)
 
+        # The user must be whitelisted in order to create an account.
+        email = people_document['emails'][0]['value']
+        if Whitelist.objects(email=email).count() != 1:
+            return response_from_json('User has not been whitelisted.', 401)
+
         return response_from_json(url_for(
             '.create_profile',
             next=request.args.get('next'),
             name=people_document['displayName'],
-            email=people_document[
-                'emails'][0]['value'],
+            email=email,
             image_url=people_document['image']['url']), 200)
 
     user = User.objects().get(gplus_id=gplus_id)
@@ -139,14 +146,19 @@ def create_profile():
             user.register_login()
             user.save()
         else:
+            # Retreive their user type from the whitelist then remove them.
+            wl = Whitelist.objects().get(email=form.email.data)
+            user_type = wl.user_type
+            wl.delete()
+
             # Create a brand new user
             user = User(email=form.email.data,
                         name=form.name.data,
-                        gplus_id=session['gplus_id'])
+                        gplus_id=session['gplus_id'],
+                        user_type=user_type)
             flash('Account created successfully.')
             user.register_login()
             user.save()
-
 
         # redirect to the next url or the root of the application ('/')
         if form.next.data:
@@ -181,18 +193,6 @@ def logout():
     g.user = None
     flash(u'You were signed out')
     return redirect('http://adicu.com')
-
-
-@mod_auth.route('/adduser', methods=['GET', 'POST'])
-@login_required
-def add_user():
-    # TODO: use the next variable if user was redirected to login
-    form = AddUserForm(request.form)
-    if form.validate_on_submit():
-        # Register a new user in the database
-        new_user = User(name="CHANGE ME", email=form.email.data)
-        new_user.save()
-    return render_template('auth/add_user.html')
 
 
 def load_csrf_token_into_session():
@@ -260,46 +260,51 @@ def whitelist():
 
     Whitelisted users are the only ones allowed to make user accounts.
     """
-    with open('config/whitelist.txt', 'r') as f:
-        whitelist = f.read().split()
-    return render_template('auth/whitelist.html', whitelist=whitelist)
+    form = AddToWhitelistForm(request.form)
+    return render_template('auth/whitelist.html',
+                           form=form,
+                           whitelist=Whitelist.objects())
+
 
 @mod_auth.route('/whitelist/remove/<email>', methods=['POST'])
 def whitelist_remove(email):
     """Delete `email` from the whitelist."""
-    with open('config/whitelist.txt', 'r+') as f:
-        whitelist = f.read().split()
-        if email in whitelist:
-            whitelist.remove(email)
-            f.seek(0)
-            f.write('\n'.join(whitelist))
-            f.truncate()
-            return response_from_json('Email address removed successfully.', 200)
-    return response_from_json('Email address not found', 500)
+    if Whitelist.objects(email=email).count() > 0:
+        Whitelist.objects.get(email=email).delete()
+        return response_from_json('Whitelist item removed successfully.', 200)
+    return response_from_json('No such user on the whitelist', 500)
 
+
+@mod_auth.route('/whitelist/add', methods=['POST'])
+def whitelist_add():
+    """Add `email` to the whitelist."""
+    form = AddToWhitelistForm(request.form)
+    user_exists = User.objects(email=form.email.data).count() != 0
+    if form.validate_on_submit() and not user_exists:
+        wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
+        wl.save()
+    return redirect(url_for('.whitelist'))
 
 
 #============================================================
 # Development Only (quick and dirty ways to play with Users)
 #============================================================
-
-
 @mod_auth.route('/become/<level>')
 @development_only
 @login_required
 def become(level=0):
-    """Change the privelages of the logged in user.
+    """Change the privileges of the logged in user.
 
     level -- 1: Editor, 2: Publisher, 3: Admin
     """
     level = int(level)
-    admin_privelages = {
+    admin_privileges = {
         "edit": level > 0,
         "publish": level > 1,
         "admin": level > 2
     }
-    db_dict = dict((("set__privelages__%s" % k, v)
-                   for k, v in admin_privelages.iteritems()))
+    db_dict = dict((("set__privileges__%s" % k, v)
+                   for k, v in admin_privileges.iteritems()))
     User.objects(gplus_id=session['gplus_id']).update(**db_dict)
     return redirect(url_for('.view_users'))
 
@@ -319,6 +324,13 @@ def view_users():
     return str(User.objects)
 
 
+@mod_auth.route('/view-whitelist')
+@development_only
+def view_whitelist():
+    """Print out all the users"""
+    return str(Whitelist.objects)
+
+
 @mod_auth.route('/wipe', methods=['GET', 'POST'])
 @development_only
 def wipe():
@@ -336,4 +348,4 @@ def wipe():
 @mod_auth.route('/session')
 @development_only
 def view_session():
-    return "<p>"+str(dict(session))+"</p>"
+    return "<p>" + str(dict(session)) + "</p>"
