@@ -18,12 +18,12 @@
 {% block body %}
 
 <div class="whitelist-wrapper">
-<h1>Whitelist</h1>
+<h1>Users</h1>
 
 <form class="whitelist-add-form" method="POST" action="/whitelist/add">
-    {{ form.csrf_token }}
-    {{ macros.render_field(form.email, required="", placeholder="Email Address", autofocus="")}}
-    {% for subfield in form.user_type %}
+    {{ whitelist_form.csrf_token }}
+    {{ macros.render_field(whitelist_form.email, required="", placeholder="Email Address", autofocus="")}}
+    {% for subfield in whitelist_form.user_type %}
     <tr>
         <td>{{ subfield }}</td>
         <td>{{ subfield.label }}</td>
@@ -34,24 +34,43 @@
 
 <ul class="whitelist">
 {% for user in whitelist %}
+{% if not user.redeemed %}
 <li class="whitelist-item" data-email="{{ user.email }}">
     <p class="whitelist-email">{{ user.email }}</p>
     <div class="whitelist-buttons">
-        {% if user.redeemed %}
-        <p class="whitelist-status">User exists</p>
-        {% else %}
-        <a href="#" class="whitelist-status whitelist-remove">Revoke Invitation</a>
         <div class="whitelist-confirm-wrapper whitelist-hidden">
             <form class="whitelist-confirm" data-email="{{ user.email }}">
                 <input class="whitelist-cancel" value="Cancel" type="button" />
                 <input class="whitelist-delete" value="Confirm" type="submit" />
             </form>
         </div>
-        {% endif %}
+        <p class="whitelist-status">Login Pending</p>
+        <a href="#" class="whitelist-status whitelist-remove">Revoke</a>
     </div>
     <span class="clearfix"></span>
 </li>
+{% endif %}
 {% endfor%}
+
+{% for user in users %}
+<li class="whitelist-item" data-email="{{ user.email }}">
+    <span class="whitelist-image-wrapper">
+        <img src="{{ user.image_url }}">
+    </span>
+    <span class="whitelist-text-wrapper">
+        <p class="whitelist-email">{{ user.email }}</p>
+        <div class="whitelist-buttons">
+            <form class="delete-user" action="/users/delete" method="POST">
+                {{ delete_user_form.csrf_token }}
+                {{ macros.render_field(delete_user_form.email, value=user.email, label=False) }}
+                {{ macros.render_field(delete_user_form.revoke) }}
+                <input type="submit" value="Delete user">
+            </form>
+        </div>
+    </span>
+    <span class="clearfix"></span>
+</li>
+{% endfor %}
 </ul>
 </div>
 {% endblock %}

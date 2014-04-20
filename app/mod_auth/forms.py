@@ -1,16 +1,9 @@
-from app.mod_auth.models import Whitelist
+from app.mod_auth.models import Whitelist, User
 from flask.ext.wtf import Form
-from wtforms import TextField, RadioField, HiddenField
+from wtforms import TextField, RadioField, HiddenField, BooleanField
 from wtforms.validators import Required, Email, URL, ValidationError
 
 EMAIL_ERROR = 'Please provide a valid email address.'
-
-
-class CreateProfileForm(Form):
-    name = TextField('Full Name')
-    email = TextField('Email Address', [Email(message=EMAIL_ERROR),
-                                        Required(message=EMAIL_ERROR)])
-    next = HiddenField('hidden', [URL(require_tld=False)])
 
 
 class Unique(object):
@@ -25,11 +18,36 @@ class Unique(object):
             raise ValidationError(self.message)
 
 
+class AssociatedWithUser(object):
+
+    def __init__(self, message=None):
+        if not message:
+            message = u'No such user exists'
+        self.message = message
+
+    def __call__(self, form, field):
+        if User.objects(email=field.data).count() == 0:
+            raise ValidationError(self.message)
+
+
+class CreateProfileForm(Form):
+    name = TextField('Full Name')
+    email = TextField('Email Address',
+                      [Email(message=EMAIL_ERROR), Required(message=EMAIL_ERROR)])
+    next = HiddenField('hidden', [URL(require_tld=False)])
+
+
 class AddToWhitelistForm(Form):
-    email = TextField('Email Address', [
-        Email(message=EMAIL_ERROR), Required(message=EMAIL_ERROR),
-        Unique()])
-    user_type = RadioField(
-        'User Type', [Required(message="Please select a user type.")],
-        choices=[("user", "User"), ('editor', "Editor"),
-                 ('publisher', "Publisher"), ('admin', "Admin")])
+    email = TextField('Email Address',
+                      [Email(
+                          message=EMAIL_ERROR), Required(message=EMAIL_ERROR),
+                       Unique()])
+    user_type = RadioField('User Type',
+                           [Required(message="Please select a user type.")],
+                           choices=[("user", "User"), ('editor', "Editor"),
+                                    ('publisher', "Publisher"), ('admin', "Admin")])
+
+
+class DeleteUserForm(Form):
+    revoke = BooleanField('Revoke Whitelist')
+    email = HiddenField('email-hidden', [Email(), AssociatedWithUser()])

@@ -53,6 +53,9 @@ class User(db.Document):
         them.  To use one of the predefined sets of privileges, set this \
         value to either 'editor', 'publisher', or 'admin'.  This will be \
         converted to the appropriate dictionary on save.")
+    image_url = db.URLField(
+        verbose_name="Profile Image Url",
+        help_text="URL to the user's profile picture.")
     user_type = db.StringField(
         verbose_name="User Type", default='user',
         regex="(user|editor|publisher|admin)",
@@ -108,7 +111,12 @@ class Whitelist(db.Document):
         required=True, verbose_name="Email Address", unique=True,
         help_text="Email address of the whitelisted user.")
     user_type = db.StringField(
-        verbose_name="User Type", help_text="The type of user that will be created.")
+        verbose_name="User Type",
+        help_text="The type of user that will be created.")
+    redeemed = db.BooleanField(
+        default=False, required=True, verbose_name="Redeemed",
+        help_text="Whether or not the whitelisted email has been redeemed, \
+        and is associated with a user account or not.")
 
     def clean(self):
         """Update date_modified and apply privileges shorthand notation."""
@@ -119,7 +127,7 @@ class Whitelist(db.Document):
     }
 
     def __repr__(self):
-        return 'Whitelist(email=%r, user_type=%r)' % (self.email, self.user_type)
+        return 'Whitelist(email=%r, user_type=%r, redeemed=%r)' % (self.email, self.user_type, self.redeemed)
 
     def __unicode__(self):
         return 'Whitelist<%r>' % self.email

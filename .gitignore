@@ -4,6 +4,6 @@ include
 tmp
 man
 *.pyc
-config.py
+flask_config.py
 client_secrets.json
 .webassets-cache

@@ -1,4 +1,4 @@
-{% macro render_field(field, placeholder=None) %}
+{% macro render_field(field, label=True, placeholder=None) %}
 {% if field.errors %}
 <div>
     {% for error in errors %}
@@ -7,9 +7,10 @@
 {% elif field.flags.error %}
 <div>
 {% else %}
-<div>
+<div class="form-component">
 {% endif %}
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {% if label %}{{ field.label }}{% endif %}
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
 </div>
 {% endmacro %}

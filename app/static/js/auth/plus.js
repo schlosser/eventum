@@ -48,6 +48,10 @@ var helper = (function() {
                     console.log(result);
                     window.location.href = result;
                 },
+                error: function(result) {
+                    console.log("hi");
+                    console.log(result);
+                },
                 processData: false,
                 data: this.authResult.code
             });

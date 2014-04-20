@@ -83,15 +83,15 @@ class TestAuth(base.TestingTemplate):
         resp = self.request_with_role('/logout', role='none')
         self.assertEqual(resp.status_code, 302)
 
-    def test_whitelist_route(self):
-        """Test the `/whitelist` route, logged in and logged out."""
+    def test_users_route(self):
+        """Test the `/users` route, logged in and logged out."""
 
         # Logged in
-        resp = self.request_with_role('/whitelist', role='user')
+        resp = self.request_with_role('/users', role='user')
         self.assertEqual(resp.status_code, 200)
 
         # Logged out
-        resp = self.request_with_role('/whitelist', role='none')
+        resp = self.request_with_role('/users', role='none')
         self.assertEqual(resp.status_code, 200)
 
 
@@ -302,11 +302,11 @@ class TestAuth(base.TestingTemplate):
         # No whitelist items created
         self.assertEqual(Whitelist.objects().count(), 0)
 
-    def test_whitelist_remove(self):
+    def test_whitelist_revoke(self):
         """Test removing an email from the waitlist.
 
-        Adds num_trials emails to the whitelist, removes some of them,
-        and checks to make sure the right ones were removed."""
+        Adds num_trials emails to the whitelist, deletes some of them,
+        and checks to make sure the right ones were deleted."""
         num_trials = 20
         # Post a new whitelist entry
         for i in range(num_trials):
@@ -322,25 +322,36 @@ class TestAuth(base.TestingTemplate):
             # No error pages
             self.assertEqual(resp.status_code, 200)
 
-        # 5 whitelist items added.
+        # num_trials whitelist items added.
         self.assertEqual(Whitelist.objects().count(), num_trials)
 
-        remove = [i for i in range(num_trials) if i%3 == 0]
+        delete = [i for i in range(num_trials) if i%3 == 0]
         for i in range(num_trials):
-            if i in remove:
+            if i in delete:
                 resp = self.request_with_role(
-                    '/whitelist/remove/email%r@address.com' % i,
+                    '/whitelist/delete/email%r@address.com' % i,
                     method='POST')
                 # No error pages
                 self.assertEqual(resp.status_code, 200)
 
         for i in range(num_trials):
             in_list = Whitelist.objects(email="email%r@address.com"%i).count() == 1
-            if i in remove:
+            if i in delete:
                 self.assertFalse(in_list)
             else:
                 self.assertTrue(in_list)
 
+    def test_users_delete(self):
+        """"""
+        query_string_data = {
+            "email": "email@address.com"
+        }
+        resp = self.request_with_role('/users/delete',
+            method='POST',
+            data=query_string_data)
+
+        # No error pages
+        self.assertEqual(resp.status_code, 303)
 
 
 if __name__ == '__main__':

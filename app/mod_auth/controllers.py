@@ -4,7 +4,7 @@ import httplib2
 from app import app
 from app.mod_networking.responses import response_from_json
 from app.mod_auth.models import User, Whitelist
-from app.mod_auth.forms import CreateProfileForm, AddToWhitelistForm
+from app.mod_auth.forms import CreateProfileForm, AddToWhitelistForm, DeleteUserForm
 from apiclient.discovery import build
 from mongoengine.queryset import DoesNotExist
 from flask import Blueprint, render_template, request, \
@@ -149,13 +149,14 @@ def create_profile():
             # Retreive their user type from the whitelist then remove them.
             wl = Whitelist.objects().get(email=form.email.data)
             user_type = wl.user_type
-            wl.delete()
-
+            wl.redeemed = True
+            wl.save()
             # Create a brand new user
             user = User(email=form.email.data,
                         name=form.name.data,
                         gplus_id=session['gplus_id'],
-                        user_type=user_type)
+                        user_type=user_type,
+                        image_url=request.args.get('image_url'))
             flash('Account created successfully.')
             user.register_login()
             user.save()
@@ -254,25 +255,54 @@ def people():
         return response_from_json('Failed to refresh access token.', 500)
 
 
-@mod_auth.route('/whitelist', methods=['GET'])
-def whitelist():
-    """View and manage the members of the whitelist
+@mod_auth.route('/users', methods=['GET'])
+def users():
+    """View and manage users
 
     Whitelisted users are the only ones allowed to make user accounts.
     """
-    form = AddToWhitelistForm(request.form)
-    return render_template('auth/whitelist.html',
-                           form=form,
-                           whitelist=Whitelist.objects())
+    whitelist_form = AddToWhitelistForm()
+    delete_user_form = DeleteUserForm()
+    return render_template('auth/users.html',
+                           whitelist_form=whitelist_form,
+                           delete_user_form=delete_user_form,
+                           whitelist=Whitelist.objects(),
+                           users=User.objects())
 
 
-@mod_auth.route('/whitelist/remove/<email>', methods=['POST'])
-def whitelist_remove(email):
+@mod_auth.route('/users/delete', methods=['POST'])
+def users_delete():
+    """"""
+    form = DeleteUserForm(request.form)
+    if form.validate_on_submit():
+        user = User.objects().get(email=form.email.data)
+
+        # Either update whitelist or delete it
+        wl = Whitelist.objects().get(email=form.email.data)
+        if not form.revoke.data:
+            wl.redeemed = False
+            wl.save()
+        else:
+            wl.delete()
+        user.delete()
+
+        # Log out if a user is attempting to delete themselves
+        if 'gplus_id' in session and user.gplus_id == session['gplus_id']:
+            flash('You deleted yourself successfully. Logging out.')
+            return redirect(url_for('.logout'), 303)
+
+        flash('User deleted successfully.')
+    else:
+        print form.errors
+    return redirect(url_for('.users'), code=303)
+
+@mod_auth.route('/whitelist/delete/<email>', methods=['POST'])
+def whitelist_delete(email):
     """Delete `email` from the whitelist."""
     if Whitelist.objects(email=email).count() > 0:
         Whitelist.objects.get(email=email).delete()
         return response_from_json('Whitelist item removed successfully.', 200)
-    return response_from_json('No such user on the whitelist', 500)
+    return response_from_json('No such user on the whitelist.', 500)
 
 
 @mod_auth.route('/whitelist/add', methods=['POST'])
@@ -283,7 +313,9 @@ def whitelist_add():
     if form.validate_on_submit() and not user_exists:
         wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
         wl.save()
-    return redirect(url_for('.whitelist'))
+    else:
+        print form.errors
+    return redirect(url_for('.users'))
 
 
 #============================================================
