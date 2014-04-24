@@ -172,7 +172,7 @@ def create_profile():
                            image_url=request.args.get('image_url'), form=form)
 
 
-@mod_auth.route('/remove/<user_email>')
+@mod_auth.route('/remove/<user_email>', methods=['GET'])
 @login_required
 def remove(user_email):
     """Remove the user with the specified email from the database.  If
@@ -187,7 +187,7 @@ def remove(user_email):
     return redirect(url_for('.view_users'))
 
 
-@mod_auth.route('/logout')
+@mod_auth.route('/logout', methods=['GET'])
 def logout():
     """Log the user out."""
     session.pop('gplus_id', None)
@@ -256,6 +256,7 @@ def people():
 
 
 @mod_auth.route('/users', methods=['GET'])
+@login_required
 def users():
     """View and manage users
 
@@ -271,8 +272,14 @@ def users():
 
 
 @mod_auth.route('/users/delete', methods=['POST'])
+@login_required
 def users_delete():
-    """"""
+    """Delete the user passed in the form.
+
+    If the `revoke` property is set to true,
+    then the user will be removed from the whitelist, and not be
+    allowed to make an account again.
+    """
     form = DeleteUserForm(request.form)
     if form.validate_on_submit():
         user = User.objects().get(email=form.email.data)
@@ -293,10 +300,12 @@ def users_delete():
 
         flash('User deleted successfully.')
     else:
-        print form.errors
+        # print form.errors
+        pass
     return redirect(url_for('.users'), code=303)
 
 @mod_auth.route('/whitelist/delete/<email>', methods=['POST'])
+@login_required
 def whitelist_delete(email):
     """Delete `email` from the whitelist."""
     if Whitelist.objects(email=email).count() > 0:
@@ -306,6 +315,7 @@ def whitelist_delete(email):
 
 
 @mod_auth.route('/whitelist/add', methods=['POST'])
+@login_required
 def whitelist_add():
     """Add `email` to the whitelist."""
     form = AddToWhitelistForm(request.form)
@@ -314,7 +324,8 @@ def whitelist_add():
         wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
         wl.save()
     else:
-        print form.errors
+        # print form.errors
+        pass
     return redirect(url_for('.users'))
 
 

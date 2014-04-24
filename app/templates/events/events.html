@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_events_events" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}View Events{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/events/events.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<h1>Events</h1>
+<a href="/events/create">Create an event</a>
+<ul>
+{% for event in the_events %}
+<li>
+    <h4>{{event.title}} ({% if event.published %}Published{% else %}Not Published{% endif %})</h4>
+    <h6>{{event.location}}</h6>
+    <p>Created by {{event.creator.name}}</p>
+    <p>From {{event.start_datetime}} to {{event.end_datetime}}</p>
+    <p>{{ event.descriptions.short }}</p>
+    <p>{{ event.descriptions.long }}</p>
+    <form class="delete-event" method="POST" action="/events/delete/{{ event.id }}">
+        <input type="submit" value="Delete Event">
+    </form>
+    <form class="publish-event"
+        {% if event.published %}
+        action="/events/unpublish/{{ event.id }}"
+        {% else %}
+        action="/events/publish/{{ event.id }}"
+        {% endif %}
+        method="POST">
+        <input
+            {% if event.published %}
+            value="Unpublish Event"
+            {% else %}
+            value="Publish Event"
+            {% endif %}
+            type="submit">
+    </form>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

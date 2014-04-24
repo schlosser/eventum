@@ -30,7 +30,7 @@ class User(db.Document):
     date_created = db.DateTimeField(
         default=now, required=True, verbose_name="Date Created",
         help_text="DateTime when user was created, localized to the server")
-    date_modified = db.DateTimeField(
+    date_modified2 = db.DateTimeField(
         default=now, required=True, verbose_name="Date Modified",
         help_text="DateTime of last modification, localized to the server")
     gplus_id = db.StringField(

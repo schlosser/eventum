@@ -17,14 +17,14 @@ class Event(db.Document):
         help_text="Title of the event (255 characters max)")
     location = db.StringField(
         verbose_name="Location", help_text="The location of the event")
-    owner = db.ReferenceField(
+    creator = db.ReferenceField(
         User, required=True, verbose_name="Owner",
         help_text="Reference to the User that is in charge of the event")
-    start_date = db.DateTimeField(
-        required=True, verbose_name="Start Date",
+    start_datetime = db.DateTimeField(
+        verbose_name="Start Date and Time",
         help_text="Start date of the event, localized to the server")
-    end_date = db.DateTimeField(
-        required=True, verbose_name="End Date",
+    end_datetime = db.DateTimeField(
+        verbose_name="End Date and Time",
         help_text="End date of the event, localized to the server")
     descriptions = db.DictField(
         required=True, verbose_name="Descriptions", default={
@@ -44,28 +44,27 @@ class Event(db.Document):
         If end_date is before start_date, throw ValueError
         """
         self.date_modified = now()
-        if self.start_date > self.end_date:
-            raise ValidationError("Start date should always come before end date",
-                                  self.start_date, self.end_date)
+        if self.start_datetime > self.end_datetime:
+            raise ValidationError("Start date should always come before end date.  "
+                "Got (%r, %r)" % (self.start_datetime, self.end_datetime))
 
     meta = {
         'allow_inheritance': True,
-        'indexes': ['start_date', 'owner'],
-        'ordering': ['-start_date']
+        'indexes': ['start_datetime', 'creator'],
+        'ordering': ['-start_datetime']
     }
 
     def __unicode__(self):
         return self.title
 
     def __repr__(self):
-        rep = 'Event(title=%r, location=%r, start_date=%r, end_date=%r, \
-            published=%r' % (self.title, self.location, self.start_date,
-                             self.end_date, self.published)
+        rep = 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, \
+            published=%r' % (self.title, self.location, self.creator, self.start_datetime,
+                             self.end_datetime, self.published)
         rep += ', short_description=%r' % \
-            self.short_description if self.short_description else ""
+            self.descriptions['short'] if self.descriptions['short'] else ""
         rep += ', long_description=%r' % \
-            self.long_description if self.long_description else ""
+            self.descriptions['long'] if self.descriptions['long'] else ""
         rep += ', date_published=%r' % (self.date_published) if self.date_published else ""
-        rep += ', posted_by=%r' % (self.posted_by) if self.posted_by else ""
         return rep
 

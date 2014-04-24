@@ -5,7 +5,8 @@ from coverage import coverage
 from sys import path
 path.append('../')
 from app import create_app
-from app.mod_auth.models import User
+from app.mod_auth.models import User, Whitelist
+from app.mod_events.models import Event
 from config.flask_config import basedir
 
 GPLUS_IDS = {
@@ -14,30 +15,32 @@ GPLUS_IDS = {
     'publisher': 'publisher123',
     'admin': 'admin123'
 }
-USERS = {
-    'user': User(name='Test User',
-                 email='user@te.st',
-                 gplus_id=GPLUS_IDS['user']),
-    'editor': User(name='Test Editor',
-                   email='editor@te.st',
-                   privelages='editor',
-                   gplus_id=GPLUS_IDS['editor']),
-    'publisher': User(name='Test Publisher',
-                      email='publisher@te.st',
-                      privelages='publisher',
-                      gplus_id=GPLUS_IDS['publisher']),
-    'admin': User(name='Test Admin',
-                  email='admin@te.st',
-                  privelages='admin',
-                  gplus_id=GPLUS_IDS['admin'])
-}
 
 
 class TestingTemplate(unittest.TestCase):
 
     def setUp(self):
-        for k,v in USERS.iteritems():
-            v.save()
+        for u in User.objects():
+            u.delete()
+        user= User(name='Test User',
+                   email='user@te.st',
+                     gplus_id=GPLUS_IDS['user'])
+        editor= User(name='Test Editor',
+                     email='editor@te.st',
+                     privelages='editor',
+                     gplus_id=GPLUS_IDS['editor'])
+        publisher= User(name='Test Publisher',
+                        email='publisher@te.st',
+                        privelages='publisher',
+                        gplus_id=GPLUS_IDS['publisher'])
+        admin= User(name='Test Admin',
+                    email='admin@te.st',
+                    privelages='admin',
+                    gplus_id=GPLUS_IDS['admin'])
+        user.save()
+        editor.save()
+        publisher.save()
+        admin.save()
 
     @classmethod
     def setUpClass(self):
@@ -62,7 +65,7 @@ class TestingTemplate(unittest.TestCase):
         """
         with self.app.test_client() as c:
             with c.session_transaction() as sess:
-                if role in USERS:
+                if role in GPLUS_IDS:
                     # if it isn't, the request is without a role
                     sess['gplus_id'] = GPLUS_IDS[role]
                 kwargs['method'] = method

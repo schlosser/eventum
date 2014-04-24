@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_events_create" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}View Events{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/events/create.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<h1>Create Event</h1>
+
+<form class="create-event-form" method="POST" action="/events/create">
+    {{ form.csrf_token }}
+    {{ macros.render_field(form.title, placeholder="Title", autofocus="") }}
+    {{ macros.render_field(form.location, placeholder="Location") }}
+    {{ macros.render_field(form.start_date, type="date") }}
+    {{ macros.render_field(form.start_time, type="time") }}
+    {{ macros.render_field(form.end_date, type="date") }}
+    {{ macros.render_field(form.end_time, type="time") }}
+    {{ macros.render_field(form.short_description, placeholder="Short Description") }}
+    {{ macros.render_field(form.long_description, placeholder="Long Description") }}
+
+    <input class="create-event-submit" type="submit" value="Add">
+</form>
+{% endblock %}

@@ -40,11 +40,9 @@ CREATE_PROFILE_QUERY_DATA = {
 class TestAuth(base.TestingTemplate):
 
     def setUp(self):
-        super(TestAuth, self)
-        for u in User.objects():
-            u.delete()
-        for u in Whitelist.objects():
-            u.delete()
+        for w in Whitelist.objects():
+            w.delete()
+        super(TestAuth, self).setUp()
 
     def test_login_route(self):
         """Test the `/login` route, logged in and logged out."""
@@ -92,7 +90,7 @@ class TestAuth(base.TestingTemplate):
 
         # Logged out
         resp = self.request_with_role('/users', role='none')
-        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.status_code, 302)
 
 
     def test_user_declaration_with_missing_parameters(self):
@@ -144,7 +142,7 @@ class TestAuth(base.TestingTemplate):
     def test_can(self):
         """Tests the User.can() method for privileges access"""
         user = User(name='Test Editor',
-                 email='editor@te.st',
+                 email='some_editor@te.st',
                  privileges={
                      "edit": True,
                      "publish": True,
@@ -161,6 +159,7 @@ class TestAuth(base.TestingTemplate):
         for privileges.
         """
         # No alias
+        User.objects().delete()
         self.assertEqual(User.objects().count(), 0)
         u = User(name='Test User',
                  email='user@te.st',
