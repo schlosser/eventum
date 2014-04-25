@@ -74,24 +74,11 @@ class CreateEventForm(Form):
         end_date = form.end_date.data
         end_time = form.end_time.data
 
-        # Don't define one of the four date / time fields and not the others.
-        datetime_fields = [start_date, start_time, end_date, end_time]
-        if not all(datetime_fields) and any(datetime_fields):
-            raise ValidationError("If any of the start or end dates or times "
-                                  "are defined, they should all be defined.")
-
         # Start datetime should come before end datetime
         start_datetime = datetime.datetime.combine(start_date, start_time)
         end_datetime = datetime.datetime.combine(end_date, end_time)
         if start_datetime > end_datetime:
             raise ValidationError("Start date should come before end date")
-
-    def has_date_fields(form):
-        """"""
-        return all([form.start_date.data,
-                   form.start_time.data,
-                   form.end_date.data,
-                   form.end_time.data])
 
 
 

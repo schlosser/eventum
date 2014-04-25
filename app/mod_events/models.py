@@ -1,13 +1,63 @@
 from mongoengine import ValidationError
+from mongoengine.base import BaseField
+from mongoengine.fields import DateTimeField
 from app.mod_auth.models import User
 from app import db
-from datetime import datetime
+from datetime import datetime, time
 now = datetime.now
+
+
+class TimeField(BaseField):
+
+    """A datetime.time field.
+
+    Looks to the outside world like a datatime.time, but stores in the
+    database as an int/float number of seconds since midnight.
+    """
+
+    def validate(self, value):
+        """Only accepts a datetime.time, or a int/float number of seconds
+        since midnight.
+        """
+        if not isinstance(value, (time, int, float)):
+            self.error(u'cannot parse time "%r"' % value)
+
+    def to_mongo(self, value):
+        """Wrapper on top of prepare_query_value"""
+        return self.prepare_query_value(None, value)
+
+    def to_python(self, value):
+        """Convert the int/float number of seconds since midnight to a
+        time"""
+        return time(seconds=value)
+
+    def prepare_query_value(self, op, value):
+        """Convert from datetime.time to int/float number of seconds."""
+        if value is None:
+            return value
+        if isinstance(value, time):
+            return value.total_seconds()
+        if isinstance(value, (int, float)):
+            return value
+
+
+class DateField(DateTimeField):
+
+    """A datetime.date field.
+
+    Looks to the outside world like a datatime.date, but functions
+    as a datetime.datetime object in the database.s
+    """
+
+    def to_python(self, value):
+        """Convert from datetime.datetime to datetime.date."""
+        return value.date()
+
 
 class Event(db.Document):
 
     date_created = db.DateTimeField(
-        default=now, required=True,verbose_name="Date Created",
+        default=now, required=True, verbose_name="Date Created",
         help_text="DateTime when the document was created, localized to the server")
     date_modified = db.DateTimeField(
         default=now, required=True, verbose_name="Date Modified",
@@ -20,12 +70,18 @@ class Event(db.Document):
     creator = db.ReferenceField(
         User, required=True, verbose_name="Owner",
         help_text="Reference to the User that is in charge of the event")
-    start_datetime = db.DateTimeField(
-        verbose_name="Start Date and Time",
-        help_text="Start date of the event, localized to the server")
-    end_datetime = db.DateTimeField(
-        verbose_name="End Date and Time",
-        help_text="End date of the event, localized to the server")
+    start_date = DateField(
+        verbose_name="Start Date",
+        help_text="The date that the event starts")
+    end_time = TimeField(
+        verbose_name="End Time",
+        help_text="The time of day that the event ends")
+    end_date = DateField(
+        verbose_name="End Date",
+        help_text="The date that the event ends")
+    start_time = TimeField(
+        verbose_name="Start Time",
+        help_text="The time of day that the event starts")
     descriptions = db.DictField(
         required=True, verbose_name="Descriptions", default={
             "short": None,
@@ -38,15 +94,40 @@ class Event(db.Document):
         verbose_name="Date Published",
         help_text="The date when the post is published, localized to the server")
 
-    def clean(self) :
-        """Update date_modified, and ensure that end_date is after start_date.
-
-        If end_date is before start_date, throw ValueError
-        """
+    def clean(self):
+        """Update date_modified, and ensure that end_datetime() is after
+        start_datetime()."""
         self.date_modified = now()
-        if self.start_datetime > self.end_datetime:
-            raise ValidationError("Start date should always come before end date.  "
-                "Got (%r, %r)" % (self.start_datetime, self.end_datetime))
+        if self.start_datetime() is not None and \
+                self.end_datetime() is not None and \
+                self.start_datetime() > self.end_datetime():
+            raise ValidationError("Start date should always come before end "
+                                  "date. Got (%r,%r)" % (self.start_datetime(),
+                                                         self.end_datetime()))
+
+    def start_datetime(self):
+        """A convenience method to combine start_date and start_time"""
+        if self.start_date is None or self.start_time is None:
+            return None
+        return datetime.combine(self.start_date, self.start_time)
+
+    def end_datetime(self):
+        """A convenience method to combine end_date and end_time"""
+        if self.end_date is None or self.end_time is None:
+            return None
+        return datetime.combine(self.end_date, self.end_time)
+
+    def ready_for_publishing(self):
+        return all([
+            self.title,
+            self.creator,
+            self.location,
+            self.start_datetime(),
+            self.end_datetime(),
+            self.descriptions.short,
+            self.descriptions.long
+            ])
+
 
     meta = {
         'allow_inheritance': True,
@@ -59,12 +140,11 @@ class Event(db.Document):
 
     def __repr__(self):
         rep = 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, \
-            published=%r' % (self.title, self.location, self.creator, self.start_datetime,
-                             self.end_datetime, self.published)
+            published=%r' % (self.title, self.location, self.creator, self.start_datetime(),
+                             self.end_datetime(), self.published)
         rep += ', short_description=%r' % \
             self.descriptions['short'] if self.descriptions['short'] else ""
         rep += ', long_description=%r' % \
             self.descriptions['long'] if self.descriptions['long'] else ""
         rep += ', date_published=%r' % (self.date_published) if self.date_published else ""
         return rep
-

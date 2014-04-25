@@ -96,12 +96,17 @@ class TestAuth(base.TestingTemplate):
     def test_user_declaration_with_missing_parameters(self):
         """Tests creation of a User model with missing parameters"""
 
+        # Missing name
         with self.assertRaises(ValidationError):
             u = User(email="test@te.st", gplus_id='test123')
             u.save()
+
+        # Missing email
         with self.assertRaises(ValidationError):
             u = User(name="Test User", gplus_id='test123')
             u.save()
+
+        # Missing gplus_id
         with self.assertRaises(ValidationError):
             u = User(name="Test User", email='test@te.st')
             u.save()
@@ -123,6 +128,7 @@ class TestAuth(base.TestingTemplate):
 
     def test_user_declaration_with_non_unique_parameters(self):
         """Tests creation of a User model with missing parameters"""
+
         # Non-unique email address
         with self.assertRaises(NotUniqueError):
             a = User(name="Test User", email="test@te.st", gplus_id='test123')

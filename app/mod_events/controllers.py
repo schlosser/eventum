@@ -4,7 +4,6 @@ from app.mod_events.models import Event
 from app.mod_auth.models import User
 from mongoengine.queryset import DoesNotExist
 from app.mod_events.forms import CreateEventForm
-from datetime import datetime
 from bson.objectid import ObjectId
 from app.mod_auth.decorators import login_required, requires_privilege
 
@@ -41,18 +40,16 @@ def create_event():
     if form.validate_on_submit():
         event = Event(title=form.title.data,
                       creator=g.user,
-                      published=False)
-        if form.has_date_fields():
-            event.start_datetime = datetime.combine(form.start_date.data,
-                                                    form.start_time.data)
-            event.end_datetime = datetime.combine(form.end_date.data,
-                                                  form.end_time.data)
-        if form.location.data:
-            event.location = form.location.data
-        if form.short_description.data:
-            event.descriptions["short"] = form.short_description.data
-        if form.long_description.data:
-            event.descriptions["long"] = form.long_description.data
+                      location=form.location.data,
+                      start_date=form.start_date.data,
+                      start_time=form.start_time.data,
+                      end_date=form.end_date.data,
+                      end_time=form.end_time.data,
+                      published=False,
+                      descriptions={
+                        "short": form.short_description.data,
+                        "long": form.long_description.data
+                      })
         event.save()
         return redirect(url_for('.events'))
     if form.errors:

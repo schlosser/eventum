@@ -27,20 +27,22 @@ class TestingTemplate(unittest.TestCase):
                      gplus_id=GPLUS_IDS['user'])
         editor= User(name='Test Editor',
                      email='editor@te.st',
-                     privelages='editor',
+                     user_type='editor',
                      gplus_id=GPLUS_IDS['editor'])
         publisher= User(name='Test Publisher',
                         email='publisher@te.st',
-                        privelages='publisher',
+                        user_type='publisher',
                         gplus_id=GPLUS_IDS['publisher'])
         admin= User(name='Test Admin',
                     email='admin@te.st',
-                    privelages='admin',
+                    user_type='admin',
                     gplus_id=GPLUS_IDS['admin'])
         user.save()
         editor.save()
         publisher.save()
         admin.save()
+        e = User.objects().get(gplus_id=GPLUS_IDS['editor'])
+        print e.privileges
 
     @classmethod
     def setUpClass(self):
