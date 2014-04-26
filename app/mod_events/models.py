@@ -3,7 +3,7 @@ from mongoengine.base import BaseField
 from mongoengine.fields import DateTimeField
 from app.mod_auth.models import User
 from app import db
-from datetime import datetime, time
+from datetime import datetime, time, date
 now = datetime.now
 
 
@@ -29,14 +29,21 @@ class TimeField(BaseField):
     def to_python(self, value):
         """Convert the int/float number of seconds since midnight to a
         time"""
-        return time(seconds=value)
+        if isinstance(value, (int, float)):
+            value = int(value)
+            return time(hour=value/3600, minute=value%3600/60, second=value%60)
+        return value
 
     def prepare_query_value(self, op, value):
         """Convert from datetime.time to int/float number of seconds."""
+        print "prepare_query_value %r" % value
         if value is None:
             return value
         if isinstance(value, time):
-            return value.total_seconds()
+            return value.hour * 3600 + \
+                   value.minute * 60 + \
+                   value.second + \
+                   value.microsecond / 1000000
         if isinstance(value, (int, float)):
             return value
 
@@ -51,7 +58,11 @@ class DateField(DateTimeField):
 
     def to_python(self, value):
         """Convert from datetime.datetime to datetime.date."""
-        return value.date()
+        if isinstance(value, datetime):
+            return value.date()
+        if isinstance(value, date):
+            return value
+        raise ValueError("Unkown type '%r' of variable %r",type(value), value)
 
 
 class Event(db.Document):
@@ -95,15 +106,21 @@ class Event(db.Document):
         help_text="The date when the post is published, localized to the server")
 
     def clean(self):
-        """Update date_modified, and ensure that end_datetime() is after
-        start_datetime()."""
+        """Update date_modified, and validate datetimes to ensure the event ends after
+        it starts.
+        """
         self.date_modified = now()
-        if self.start_datetime() is not None and \
-                self.end_datetime() is not None and \
-                self.start_datetime() > self.end_datetime():
+
+        if self.start_date and self.end_date and \
+                self.start_date > self.end_date:
             raise ValidationError("Start date should always come before end "
-                                  "date. Got (%r,%r)" % (self.start_datetime(),
-                                                         self.end_datetime()))
+                                  "date. Got (%r,%r)" % (self.start_date,
+                                                         self.end_date))
+        if self.start_time and self.end_time and \
+                self.start_time > self.end_time:
+            raise ValidationError("Start time should always come before end "
+                                  "time. Got (%r,%r)" % (self.start_time,
+                                                         self.end_time))
 
     def start_datetime(self):
         """A convenience method to combine start_date and start_time"""
@@ -131,8 +148,8 @@ class Event(db.Document):
 
     meta = {
         'allow_inheritance': True,
-        'indexes': ['start_datetime', 'creator'],
-        'ordering': ['-start_datetime']
+        'indexes': ['start_date', 'creator'],
+        'ordering': ['-start_date']
     }
 
     def __unicode__(self):

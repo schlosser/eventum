@@ -11,7 +11,7 @@ $(function() {
     $(".whitelist-confirm").submit(function(e) {
         e.preventDefault();
         var email = $(this).data('email');
-        $.post('/whitelist/delete/'+$(this).data('email'))
+        $.post('/whitelist/delete/'+email)
         .done(function(resp) {
             console.log(resp);
             $(".whitelist-item[data-email='" + email + "']").slideUp(100, function() {

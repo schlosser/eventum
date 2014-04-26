@@ -15,44 +15,44 @@ class TestEvents(base.TestingTemplate):
             e.delete()
         super(TestEvents, self).setUp()
 
-    def test_events_route(self):
-        """Test the `/events` route, logged in and logged out."""
-
-        # Logged in
+    def test_events_route_logged_in(self):
+        """Test the `/events` route, logged in."""
         resp = self.request_with_role('/events', role='user')
         self.assertEqual(resp.status_code, 200)
 
-        # Logged out
+    def test_events_route_logged_out(self):
+        """Test the `/events` route, logged out."""
         resp = self.request_with_role('/events', role='none')
         self.assertEqual(resp.status_code, 302)
 
-    def test_create_event_route(self):
-        """Test the `/events/create` route, logged in and logged out,
-        with correct and incorrect privileges.
+    def test_create_event_route_with_correct_privileges(self):
+        """Test the `/events/create` route, logged in with correct
+        privileges.
         """
-
-        # Logged in with correct privileges
         resp = self.request_with_role('/events/create', role='editor')
         self.assertEqual(resp.status_code, 200)
 
-        # Logged in, no edit privileges
+    def test_create_event_route_with_incorrect_privileges(self):
+        """Test the `/events/create` route, logged in with
+        incorrect privileges.
+        """
         resp = self.request_with_role('/events/create', role='user')
         self.assertEqual(resp.status_code, 401)
 
-        # Logged out
+    def test_create_event_route_logged_out(self):
+        """Test the `/events/create` route, logged out."""
         resp = self.request_with_role('/events/create', role='none')
         self.assertEqual(resp.status_code, 302)
 
-    def test_create_event_model_missing_parameters(self):
-        """Test creating an event without all the required parameters."""
-
-        # Missing title
+    def test_create_event_model_missing_title(self):
+        """Test that creating an Event without a title fails."""
         someuser = User.objects().first()
         with self.assertRaises(ValidationError):
             e = Event(creator=someuser)
             e.save()
 
-        # Missing creator
+    def test_create_event_model_missing_creator(self):
+        """Test that creating an Event without a creator fails."""
         with self.assertRaises(ValidationError):
             e = Event(title="Some Title")
             e.save()
@@ -62,13 +62,51 @@ class TestEvents(base.TestingTemplate):
         end_datetime.
         """
         someuser = User.objects().first()
+        # Good dates, bad times
         with self.assertRaises(ValidationError):
             e = Event(title="Some Title", creator=someuser,
-                      end_date=datetime.now().date(),
                       start_date=datetime.now().date(),
-                      end_time=datetime.now().time(),
-                      start_time=datetime.now().time() + timedelta(minutes=1))
+                      end_date=datetime.now().date(),
+                      start_time=(datetime.now() + timedelta(minutes=1)).time(),
+                      end_time=datetime.now().time())
             e.save()
+
+        # Bad dates, good times
+        with self.assertRaises(ValidationError):
+            e = Event(title="Some Title", creator=someuser,
+                      start_date=datetime.now().date() + timedelta(days=1),
+                      end_date=datetime.now().date(),
+                      start_time=datetime.now().time(),
+                      end_time=(datetime.now() + timedelta(minutes=1)).time())
+            e.save()
+
+    def test_event_start_datetimes_none_with_incomplete_data(self):
+        """Test that when events are created without both of start_date and
+        start_time, start_datetime() returns None.
+        """
+        someuser = User.objects().first()
+
+        e = Event(title="Some Title", creator=someuser,
+                  start_date=datetime.now().date())
+        self.assertIsNone(e.start_datetime())
+
+        f = Event(title="Some Title", creator=someuser,
+                  start_time=datetime.now().time())
+        self.assertIsNone(f.start_datetime())
+
+    def test_event_end_datetimes_none_with_incomplete_data(self):
+        """Test that when events are created without both of end_date and
+        end_time, end_datetime() returns None.
+        """
+        someuser = User.objects().first()
+
+        e = Event(title="Some Title", creator=someuser,
+                  end_date=datetime.now().date())
+        self.assertIsNone(e.end_datetime())
+
+        f = Event(title="Some Title", creator=someuser,
+                  end_time=datetime.now().time())
+        self.assertIsNone(f.end_datetime())
 
     def test_create_event_model(self):
         """Test creating an event with the proper data"""
@@ -127,10 +165,20 @@ class TestEvents(base.TestingTemplate):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(location="45 Some Location").count(), 0)
 
-    def test_create_event_model_with_missing_dates_and_times(self):
-        """Test that POSTing data with at least one date and/or time field missing
-        results in no event data whatsoever."""
+    def test_delete_event(self):
+        raise NotImplementedError
 
+    def test_publish_as_publisher(self):
+        raise NotImplementedError
+
+    def test_publish_as_editor(self):
+        raise NotImplementedError
+
+    def test_unpublish_as_publisher(self):
+        raise NotImplementedError
+
+    def test_unpublish_as_editor(self):
+        raise NotImplementedError
 
 
 if __name__ == '__main__':
