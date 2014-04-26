@@ -36,7 +36,6 @@ class TimeField(BaseField):
 
     def prepare_query_value(self, op, value):
         """Convert from datetime.time to int/float number of seconds."""
-        print "prepare_query_value %r" % value
         if value is None:
             return value
         if isinstance(value, time):

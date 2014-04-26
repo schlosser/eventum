@@ -5,8 +5,7 @@ from coverage import coverage
 from sys import path
 path.append('../')
 from app import create_app
-from app.mod_auth.models import User, Whitelist
-from app.mod_events.models import Event
+from app.mod_auth.models import User
 from config.flask_config import basedir
 
 GPLUS_IDS = {
@@ -73,6 +72,17 @@ class TestingTemplate(unittest.TestCase):
                 kwargs['method'] = method
                 kwargs['path'] = path
             return c.open(*args, **kwargs)
+
+    # def assert_flashes(self, expected_message, expected_category='message'):
+    #     with self.app.test_client().session_transaction() as session:
+    #         try:
+    #             print session
+    #             category, message = session['_flashes'][0]
+    #         except KeyError:
+    #             raise AssertionError('nothing flashed')
+    #         self.assertIn(expected_message, message)
+    #         self.assertEqual(expected_category, category)
+
 
     def test_create_test_app(self):
         self.assertTrue(self.app.config['TESTING'])

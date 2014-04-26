@@ -1,7 +1,7 @@
 import base
 from mongoengine import ValidationError
 from datetime import datetime, timedelta
-
+from bson.objectid import ObjectId
 from sys import path
 path.append('../')
 
@@ -9,6 +9,20 @@ from app.mod_events.models import Event
 from app.mod_auth.models import User
 
 class TestEvents(base.TestingTemplate):
+
+    USER = User.objects().first()
+    START = datetime.now()
+    END = datetime.now() + timedelta(minutes=1)
+    TITLE = "Some Title"
+    LOCATION = "Some Location"
+    def make_event(self):
+        return Event(title=self.TITLE,
+                     creator=self.USER,
+                     location=self.LOCATION,
+                     start_date=self.START.date(),
+                     start_time=self.START.time(),
+                     end_date=self.END.date(),
+                     end_time=self.END.time())
 
     def setUp(self):
         for e in Event.objects():
@@ -46,78 +60,89 @@ class TestEvents(base.TestingTemplate):
 
     def test_create_event_model_missing_title(self):
         """Test that creating an Event without a title fails."""
-        someuser = User.objects().first()
         with self.assertRaises(ValidationError):
-            e = Event(creator=someuser)
+            e = Event(creator=self.USER)
             e.save()
 
     def test_create_event_model_missing_creator(self):
         """Test that creating an Event without a creator fails."""
         with self.assertRaises(ValidationError):
-            e = Event(title="Some Title")
+            e = Event(title=self.TITLE)
             e.save()
 
     def test_create_event_model_with_backwards_dates(self):
         """Test creating an event with the start_datetime after the
         end_datetime.
         """
-        someuser = User.objects().first()
         # Good dates, bad times
         with self.assertRaises(ValidationError):
-            e = Event(title="Some Title", creator=someuser,
-                      start_date=datetime.now().date(),
-                      end_date=datetime.now().date(),
-                      start_time=(datetime.now() + timedelta(minutes=1)).time(),
-                      end_time=datetime.now().time())
+            e = Event(title=self.TITLE, creator=self.USER,
+                      start_date=self.START.date(),
+                      start_time=self.END.time(),
+                      end_date=self.END.date(),
+                      end_time=self.START.time())
             e.save()
 
         # Bad dates, good times
         with self.assertRaises(ValidationError):
-            e = Event(title="Some Title", creator=someuser,
-                      start_date=datetime.now().date() + timedelta(days=1),
-                      end_date=datetime.now().date(),
-                      start_time=datetime.now().time(),
-                      end_time=(datetime.now() + timedelta(minutes=1)).time())
+            e = Event(title=self.TITLE, creator=self.USER,
+                      start_date=self.END.date() + timedelta(days=1),
+                      start_time=self.START.time(),
+                      end_date=self.END.date(),
+                      end_time=self.END.time())
             e.save()
+
+    def test_event_start_datetimes(self):
+        """Test that when events are created with both start_date and
+        start_time, start_datetime() is their value combined.
+        """
+        e = Event(title=self.TITLE, creator=self.USER,
+                  start_date=self.START.date(),
+                  start_time=self.START.time())
+        self.assertEqual(e.start_datetime(), self.START)
+
+
+    def test_event_end_datetimes(self):
+        """Test that when events are created with both end_date and
+        end_time, end_datetime() is their value combined.
+        """
+        e = Event(title=self.TITLE, creator=self.USER,
+                  end_date=self.END.date(),
+                  end_time=self.END.time())
+        self.assertEqual(e.end_datetime(), self.END)
+
 
     def test_event_start_datetimes_none_with_incomplete_data(self):
         """Test that when events are created without both of start_date and
         start_time, start_datetime() returns None.
         """
-        someuser = User.objects().first()
-
-        e = Event(title="Some Title", creator=someuser,
-                  start_date=datetime.now().date())
+        e = Event(title=self.TITLE, creator=self.USER,
+                  start_date=self.START.date())
         self.assertIsNone(e.start_datetime())
 
-        f = Event(title="Some Title", creator=someuser,
-                  start_time=datetime.now().time())
+        f = Event(title=self.TITLE, creator=self.USER,
+                  start_time=self.START.time())
         self.assertIsNone(f.start_datetime())
 
     def test_event_end_datetimes_none_with_incomplete_data(self):
         """Test that when events are created without both of end_date and
         end_time, end_datetime() returns None.
         """
-        someuser = User.objects().first()
-
-        e = Event(title="Some Title", creator=someuser,
-                  end_date=datetime.now().date())
+        e = Event(title=self.TITLE, creator=self.USER,
+                  end_date=self.END.date())
         self.assertIsNone(e.end_datetime())
 
-        f = Event(title="Some Title", creator=someuser,
-                  end_time=datetime.now().time())
+        f = Event(title=self.TITLE, creator=self.USER,
+                  end_time=self.END.time())
         self.assertIsNone(f.end_datetime())
 
     def test_create_event_model(self):
         """Test creating an event with the proper data"""
-        someuser = User.objects().first()
-        self.assertEqual(Event.objects(creator=someuser).count(), 0)
-        e = Event(title="Some Title", creator=someuser,
-                  end_datetime=datetime.now() + timedelta(minutes=1),
-                  start_datetime=datetime.now())
+        self.assertEqual(Event.objects(creator=self.USER).count(), 0)
+        e = self.make_event()
         e.save()
-        self.assertEqual(Event.objects(creator=someuser).count(), 1)
-        self.assertEqual(Event.objects().get(creator=someuser), e)
+        self.assertEqual(Event.objects(creator=self.USER).count(), 1)
+        self.assertEqual(Event.objects().get(creator=self.USER), e)
 
     def test_create_event_model_using_form(self):
         """Test creating an event by POSTing data to the `/events/create`
@@ -165,21 +190,110 @@ class TestEvents(base.TestingTemplate):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(location="45 Some Location").count(), 0)
 
-    def test_delete_event(self):
-        raise NotImplementedError
+    def test_delete_event_when_event_exists(self):
+        """Test that when an event with id `_id` exists in the database and the
+        `/events/delete/_id` route is POSTed to, it is deleted.
+        """
+        e = self.make_event()
+        e.save()
+        print str(Event.objects())
+        self.assertEqual(Event.objects(creator=e.creator).count(), 1)
+        _id = e.id
+        resp = self.request_with_role('/events/delete/%s' % _id, method="POST",
+                               follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(creator=e.creator).count(), 0)
+
+
+    def test_delete_event_when_event_does_not_exist(self):
+        """Test that when an event with id `_id` exists in the database and the
+        `/events/delete/someotherid` route is POSTed to, it is deleted.
+        """
+        e = self.make_event()
+        e.save()
+        other_id = ObjectId()
+        resp = self.request_with_role('/events/delete/%s' % other_id, method="POST",
+                               follow_redirects=True)
+        self.assertIn('Invalid event id', resp.data)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(creator=e.creator).count(), 1)
 
     def test_publish_as_publisher(self):
-        raise NotImplementedError
+        """Test that when the `/events/publish/<event_id>` routeis POSTed
+        to by a publisher the event with that id is published.
+        """
+        e = self.make_event()
+        e.save()
+        event_id = e.id
+        resp = self.request_with_role('/events/publish/%s' % event_id, role='publisher',
+                               method='POST', follow_redirects=True)
+        self.assertIn('Event published', resp.data)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(published=True).count(), 1)
+
+    def test_publish_event_as_publisher_when_event_does_not_exist(self):
+        """Test that when the `/events/publish/<event_id>` route is POSTed
+        to with no such event_id in the database, no events are published.
+        """
+        e = self.make_event()
+        e.save()
+        other_id = ObjectId()
+        resp = self.request_with_role('/events/publish/%s' % other_id, role='publisher',
+                               method='POST', follow_redirects=True)
+        self.assertIn('Invalid event id', resp.data)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(published=True).count(), 0)
 
     def test_publish_as_editor(self):
-        raise NotImplementedError
+        """Test that when the `/events/publish/<event_id>` routeis POSTed
+        to by a non-publisher an error is thrown.
+        """
+        e = self.make_event()
+        e.save()
+        event_id = e.id
+        resp = self.request_with_role('/events/publish/%s' % event_id, role='editor',
+                               method='POST')
+        self.assertEqual(resp.status_code, 401)
+        self.assertEqual(Event.objects(published=True).count(), 0)
 
     def test_unpublish_as_publisher(self):
-        raise NotImplementedError
+        """Test that when the `/events/unpublish/<event_id>` routeis POSTed
+        to by a publisher the event with that id is unpublished.
+        """
+        e = self.make_event()
+        e.published=True
+        e.save()
+        resp = self.request_with_role('/events/unpublish/%s' % e.id, role='publisher',
+                               method='POST', follow_redirects=True)
+        self.assertIn('Event unpublished', resp.data)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(published=False).count(), 1)
+
+    def test_unpublish_event_as_publisher_when_event_does_not_exist(self):
+        """Test that when the `/events/unpublish/<event_id>` route is POSTed
+        to with no such event_id in the database, no events are unpublished.
+        """
+        e = self.make_event()
+        e.published=True
+        e.save()
+        other_id = ObjectId()
+        resp = self.request_with_role('/events/unpublish/%s' % other_id, role='publisher',
+                               method='POST', follow_redirects=True)
+        self.assertIn('Invalid event id', resp.data)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(Event.objects(published=False).count(), 0)
 
     def test_unpublish_as_editor(self):
-        raise NotImplementedError
-
+        """Test that when the `/events/unpublish/<event_id>` route is POSTed
+        to by a non-unpublisher an error is thrown.
+        """
+        e = self.make_event()
+        e.published=True
+        e.save()
+        resp = self.request_with_role('/events/unpublish/%s' % e.id, role='editor',
+                               method='POST')
+        self.assertEqual(resp.status_code, 401)
+        self.assertEqual(Event.objects(published=False).count(), 0)
 
 if __name__ == '__main__':
     base.TestingTemplate.main()

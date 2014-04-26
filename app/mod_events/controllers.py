@@ -58,10 +58,10 @@ def create_event():
     return render_template('events/create_event.html', form=form)
 
 
-@mod_events.route('/events/delete/<_id>', methods=['POST'])
+@mod_events.route('/events/delete/<event_id>', methods=['POST'])
 @requires_privilege('edit')
-def delete_event(_id):
-    object_id = ObjectId(_id)
+def delete_event(event_id):
+    object_id = ObjectId(event_id)
     if Event.objects(id=object_id).count() == 1:
         event = Event.objects().with_id(object_id)
         event.delete()
@@ -78,13 +78,20 @@ def set_published_status(event_id, status):
         event = Event.objects().with_id(object_id)
         if status != event.published:
             event.published = status
-            flash('Event published')
-            # TODO Actually unpublish the event here
+            # TODO Actually publish/unpublish the event here
+            if event.published:
+                print u"event published"
+                flash(u'Event published')
+            else:
+                print u"event unpublished"
+                flash(u'Event unpublished')
             event.save()
         else:
-            flash("The event had not been published.  No changes made.")
+            print u"No changes made"
+            flash(u"The event had not been published.  No changes made.")
     else:
-        flash('Invalid event id')
+        print u"Invalid eventid"
+        flash(u'Invalid event id')
         # print "Invalid event id"
         pass
     return redirect(url_for('.events'))
