@@ -18,8 +18,10 @@ class TestDocumentation(unittest.TestCase):
         """
 
         for root, dirs, filenames in os.walk(self.APP_ROOT):
+            # Ignore all subdirectories of directories that match the EXCLUDES
             dirs[:] = [d for d in dirs if not
                        any(fnmatch(d, pattern) for pattern in self.EXCLUDES)]
+
             for d in dirs:
                 readme = os.path.join(root, d, self.README)
                 relpath = os.path.relpath(os.path.join(root, d), self.APP_ROOT)
