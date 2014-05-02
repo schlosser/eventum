@@ -80,18 +80,18 @@ def set_published_status(event_id, status):
             event.published = status
             # TODO Actually publish/unpublish the event here
             if event.published:
-                print u"event published"
-                flash(u'Event published')
+                print "event published"
+                flash('Event published')
             else:
-                print u"event unpublished"
-                flash(u'Event unpublished')
+                print "event unpublished"
+                flash('Event unpublished')
             event.save()
         else:
-            print u"No changes made"
-            flash(u"The event had not been published.  No changes made.")
+            print "No changes made"
+            flash("The event had not been published.  No changes made.")
     else:
-        print u"Invalid eventid"
-        flash(u'Invalid event id')
+        print "Invalid eventid"
+        flash('Invalid event id')
         # print "Invalid event id"
         pass
     return redirect(url_for('.events'))
