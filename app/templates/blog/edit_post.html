@@ -1,0 +1,33 @@
+{% extends "app.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_blog_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+{% endblock %}
+
+{% block title %}Write a Blog Post{% endblock %}
+{% block pagetitle %}Edit Post{% endblock %}
+{% set active_page="Blog" %}
+
+{% block js %}
+{{ super() }}
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static',
+    filename='js/epiceditor.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',
+    filename='js/marked.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blog/edit_post.js') }}"></script>
+{% endblock %}
+
+{% block barleft %}
+<a href="/blog/posts"><i class="fa fa-chevron-left fa-2x"></i></a>
+{% endblock %}
+
+{% block content %}
+<div id="epiceditor">
+</div>
+{% endblock %}

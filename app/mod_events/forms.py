@@ -1,59 +1,40 @@
 import datetime, time
 from flask.ext.wtf import Form
-from wtforms import TextField, DateField, TextAreaField, Field, widgets
-from wtforms.validators import Required, ValidationError
-
+from wtforms import TextField, DateField, TextAreaField, Field
+from wtforms.validators import Required, ValidationError, Optional
+from wtforms.widgets.html5 import TimeInput
 
 class TimeField(Field):
-    """A text field which stores a `datetime.time` object.
+    """
+    A text field which stores a `datetime.time` matching a format.
 
-    Accepts time string in multiple formats: 20:10, 20:10:00, 10:00 am,
-    9:30pm, etc. Taken from
+    Taken from
     http://flask-admin.readthedocs.org/en/v1.0.7/_modules/flask/ext/admin
         /form/fields/#TimeField
     """
-    widget = widgets.TextInput()
+    widget = TimeInput()
+    error_msg = 'Not a valid time.'
 
-    def __init__(self, label, validators=None, formats=None, **kwargs):
-        """Constructor
-
-        :param label:
-            Label
-        :param validators:
-            Field validators
-        :param formats:
-            Supported time formats, as a enumerable.
-        :param kwargs:
-            Any additional parameters
-        """
+    def __init__(self, label=None, validators=None, format='%H:%M', **kwargs):
         super(TimeField, self).__init__(label, validators, **kwargs)
-        print "hello?"
-        self.formats = formats or ('%H:%M:%S', '%H:%M',
-                                  '%I:%M:%S%p', '%I:%M%p',
-                                  '%I:%M:%S %p', '%I:%M %p')
+        self.format = format
 
     def _value(self):
         if self.raw_data:
-            return u' '.join(self.raw_data)
+            return ' '.join(self.raw_data)
         else:
-            return self.data and self.data.strftime(self.format) or u''
+            return self.data and self.data.strftime(self.format) or ''
 
     def process_formdata(self, valuelist):
         if valuelist:
-            print valuelist
-            date_str = u' '.join(valuelist)
-
-            for format in self.formats:
-                try:
-                    timetuple = time.strptime(date_str, format)
-                    self.data = datetime.time(timetuple.tm_hour,
-                                              timetuple.tm_min,
-                                              timetuple.tm_sec)
-                    return
-                except ValueError:
-                    pass
-
-            raise ValueError('Invalid time format')
+            time_str = ' '.join(valuelist)
+            try:
+                self.data = datetime.time(
+                    *time.strptime(time_str, self.format)[3:5]
+                )
+            except ValueError:
+                self.data = None
+                raise ValueError(self.gettext(self.error_msg))
 
 
 class CreateEventForm(Form):
@@ -61,10 +42,10 @@ class CreateEventForm(Form):
     title = TextField('Title', [
         Required(message="Please provide an event title.")])
     location = TextField('Location')
-    start_date = DateField('Start date')
-    start_time = TimeField('Start time')
-    end_date = DateField('End date')
-    end_time = TimeField('End time')
+    start_date = DateField('Start date', [Optional()])
+    start_time = TimeField('Start time', [Optional()])
+    end_date = DateField('End date', [Optional()])
+    end_time = TimeField('End time', [Optional()])
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "app.html" %}
 {% import "macros.html" as macros %}
 
 {% block css %}
@@ -8,24 +8,33 @@
 {% endassets %}
 {% endblock %}
 
-{% block title %}View Events{% endblock %}
+
+{% block title %}Create a New Event{% endblock %}
+{% block pagetitle %}New Event{% endblock %}
+{% set active_page = "Events" %}
+{% block barleft %}
+<a href="/events"><i class="fa fa-chevron-left fa-2x"></i></a>
+{% endblock %}
 
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/events/create.js') }}"></script>
 {% endblock %}
 
-{% block body %}
-<h1>Create Event</h1>
+{% block content %}
 
-<form class="create-event-form" method="POST" action="/events/create">
+<form class="create-event-form"
+    {% block action %}
+    action="/events/create"
+    {% endblock %}
+    method="POST">
     {{ form.csrf_token }}
     {{ macros.render_field(form.title, placeholder="Title", autofocus="") }}
     {{ macros.render_field(form.location, placeholder="Location") }}
     {{ macros.render_field(form.start_date, type="date") }}
-    {{ macros.render_field(form.start_time, type="time") }}
+    {{ macros.render_field(form.start_time) }}
     {{ macros.render_field(form.end_date, type="date") }}
-    {{ macros.render_field(form.end_time, type="time") }}
+    {{ macros.render_field(form.end_time) }}
     {{ macros.render_field(form.short_description, placeholder="Short Description") }}
     {{ macros.render_field(form.long_description, placeholder="Long Description") }}
 

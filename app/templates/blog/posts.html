@@ -1,0 +1,36 @@
+{% extends "app.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_blog_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}Blog{% endblock %}
+{% block pagetitle %}Blog{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/blog/posts.js') }}"></script>
+{% endblock %}
+
+{% block barright %}
+<a href="/blog/posts/edit"><i class="fa fa-plus fa-2x"></i></a>
+{% endblock %}
+{% set active_page="Blog" %}
+
+{% block content %}
+{% if posts %}
+<ul>
+{% for post in posts %}
+<li>
+    <h4>{{post.title}} ({% if post.published %}Published{% else %}Not Published{% endif %})</h4>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p style="text-align: center;">No posts!</p>
+{% endif %}
+{% endblock %}

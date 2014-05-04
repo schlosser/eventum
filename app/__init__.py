@@ -61,11 +61,23 @@ def register_scss():
         'depends':'scss/_colors.scss'
     }
 
-    scss_auth_whitelist = Bundle('scss/auth/whitelist.scss',
-                                 output='css/auth/whitelist.css',
+    scss_base = Bundle('scss/base.scss',
+                       output='css/base.css',
+                       **defaults)
+    scss_app = Bundle('scss/app.scss',
+                      output='css/app.css',
+                      **defaults)
+    scss_auth_users = Bundle('scss/auth/users.scss',
+                                 output='css/auth/users.css',
+                                 **defaults)
+    scss_events_events = Bundle('scss/events/events.scss',
+                                 output='css/events/events.css',
                                  **defaults)
 
-    assets.register('scss_auth_whitelist', scss_auth_whitelist)
+    assets.register('scss_app', scss_app)
+    assets.register('scss_base', scss_base)
+    assets.register('scss_auth_users', scss_auth_users)
+    assets.register('scss_events_events', scss_events_events)
 
 def run():
 

@@ -1,0 +1,56 @@
+/* line 5 */
+.events-wrapper {
+  padding: 2rem 0;
+  overflow-x: scroll;
+}
+/* line 9 */
+.events-wrapper .events {
+  padding: 1rem 0;
+  background-color: #efefef;
+  min-width: 100%;
+}
+/* line 14 */
+.events-wrapper .events:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+/* line 22 */
+.events-wrapper .events .event {
+  float: left;
+  display: inline-block;
+  width: 15rem;
+  background-color: white;
+}
+/* line 27 */
+.events-wrapper .events .event:not(:first-child) {
+  margin-left: 1rem;
+}
+/* line 31 */
+.events-wrapper .events .event .text-content {
+  padding: 0.5rem;
+}
+/* line 35 */
+.events-wrapper .events .event .creator {
+  background-color: #e0e0e0;
+}
+/* line 38 */
+.events-wrapper .events .event .creator .image {
+  width: 3rem;
+  height: 3rem;
+  float: left;
+}
+/* line 43 */
+.events-wrapper .events .event .creator .image img {
+  width: 3rem;
+  height: 3rem;
+}
+/* line 48 */
+.events-wrapper .events .event .creator .name {
+  line-height: 3rem;
+  display: inline-block;
+  margin-left: 1rem;
+}

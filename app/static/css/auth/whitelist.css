@@ -1,119 +1,99 @@
-/* line 3 */
-.whitelist-wrapper {
-  margin: 3rem auto;
-  max-width: 40rem;
-  box-shadow: 0 0 1rem #aaa;
+/* line 7 */
+nav {
+  width: 4rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #333333;
+  color: #cccccc;
+}
+/* line 16 */
+nav a, nav a:hover {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+/* line 21 */
+.main {
+  margin-left: 4rem;
+}
+
+/* line 25 */
+.nav-item {
   overflow: hidden;
-  padding: 1rem 0 0;
-}
-/* line 10 */
-.whitelist-wrapper h1 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-/* line 15 */
-.whitelist-wrapper .whitelist-add-form {
-  padding: 1rem;
-}
-/* line 17 */
-.whitelist-wrapper .whitelist-add-form div {
-  display: inline-block;
-}
-/* line 22 */
-.whitelist-wrapper .whitelist-item {
-  border-top: 1px #eee solid;
-  height: 48px;
-}
-/* line 26 */
-.whitelist-wrapper .whitelist-item .form-component {
-  display: inline;
-}
-/* line 30 */
-.whitelist-wrapper .whitelist-item .whitelist-image-wrapper {
-  width: 3rem;
-  height: 3rem;
-  float: left;
-}
-/* line 35 */
-.whitelist-wrapper .whitelist-item .whitelist-image-wrapper img {
-  width: 3rem;
-  height: 3rem;
-}
-/* line 41 */
-.whitelist-wrapper .whitelist-item .whitelist-text-wrapper {
-  display: inline;
-  height: 3rem;
-}
-/* line 46 */
-.whitelist-wrapper .whitelist-item .whitelist-email {
-  line-height: 3rem;
-  display: inline-block;
-  margin-left: 1rem;
-}
-/* line 52 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons {
-  float: right;
-  line-height: 3rem;
-}
-/* line 56 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-status {
-  line-height: 3rem;
-  display: inline-block;
-  margin-right: 1rem;
-}
-/* line 62 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-cancel {
-  background-color: #aaa;
-  color: white;
-}
-/* line 66 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-cancel:hover {
-  background-color: #ccc;
-}
-/* line 71 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-delete {
-  background-color: #d9534f;
-  color: white;
-}
-/* line 75 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-delete:hover {
-  background-color: #d43f3a;
-}
-/* line 80 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm-wrapper {
-  overflow: hidden;
-  width: 8rem;
-  float: right;
-  height: 3rem;
-  display: inline-block;
+  width: 4rem;
+  background-color: #333333;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: block;
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
+  position: relative;
 }
-/* line 89 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm {
-  float: right;
-  width: 8rem;
-  display: inline-block;
-  font-size: 0;
+/* line 36 */
+.nav-item.selected {
+  background-color: #3878cc;
 }
-/* line 96 */
-.whitelist-wrapper .whitelist-item .whitelist-buttons .whitelist-confirm input {
-  cursor: pointer;
-  border: 0;
-  margin: 0;
-  padding: 0.25rem;
+/* line 40 */
+.nav-item .nav-icon {
   text-align: center;
-  font-size: 0.8rem;
-  height: 3rem;
   width: 4rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: inline-block;
+  float: left;
+}
+/* line 48 */
+.nav-item .nav-label {
+  position: absolute;
+  margin-left: 1rem;
+  left: 4rem;
+  right: 0;
+  display: inline-block;
+  float: right;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
 }
 
-/* line 111 */
-.whitelist-hidden {
-  width: 0 !important;
+/* line 67 */
+.w-5:hover {
+  width: 9.5rem;
+}
+/* line 68 */
+.w-5 .nav-label {
+  width: 5.5rem;
 }
 
-/* line 115 */
-.clearfix {
-  clear: both;
+/* line 70 */
+.w-6:hover {
+  width: 10rem;
+}
+/* line 71 */
+.w-6 .nav-label {
+  width: 6rem;
+}
+
+/* line 73 */
+.w-6-5:hover {
+  width: 10.5rem;
+}
+/* line 74 */
+.w-6-5 .nav-label {
+  width: 6.5rem;
+}
+
+/* line 76 */
+.w-8:hover {
+  width: 12.5rem;
+}
+/* line 77 */
+.w-8 .nav-label {
+  width: 8.5rem;
+}
+
+/* line 79 */
+.fa-2-5x {
+  font-size: 2.5em;
 }

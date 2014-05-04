@@ -134,6 +134,7 @@ class Event(db.Document):
         return datetime.combine(self.end_date, self.end_time)
 
     def ready_for_publishing(self):
+        """"""
         return all([
             self.title,
             self.creator,
@@ -144,6 +145,40 @@ class Event(db.Document):
             self.descriptions.long
             ])
 
+    def human_readable_datetime(self):
+        """Format the start and end date date in one of the following three
+        formats:
+            1. Sun, 3/31 11:00 PM - Mon, 4/1 3:00 AM
+            2. Sun, 3/31 11:00 AM - 2:00 PM
+            3. Sun, 3/31 3:00 - 7:30 PM
+        Depending on whether or not the start / end times / dates are the same.
+        All unkown values will be replaced by question marks.
+        """
+        output = ""
+        if self.start_date:
+            output += self.start_date.strftime("%a, %m/%d ") \
+                .replace(" 0", " ").replace("/0", "/")
+        else:
+            output += "???, ??/?? "
+        if self.start_time:
+            start_format = "%I:%M - " if self.end_time and \
+                self.start_time.strftime("%p")==self.end_time.strftime("%p") \
+                else "%I:%M %p - "
+            output += self.start_time.strftime(start_format) \
+                .lstrip("0").replace(":0", ":")
+        else:
+            output += "??:?? - "
+        if self.end_date:
+            output += self.end_date.strftime("%a, %m/%d") \
+                .replace(" 0", " ").replace("/0", "/")
+        else:
+            output += "???, ??/?? "
+        if self.end_time:
+            output += self.start_time.strftime("%I:%M %p") \
+                .lstrip("0").replace(":0", ":")
+        else:
+            output += "??:??"
+        return output
 
     meta = {
         'allow_inheritance': True,

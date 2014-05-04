@@ -1,25 +1,25 @@
-{% extends "base.html" %}
+{% extends "app.html" %}
 {% import "macros.html" as macros %}
 
 {% block css %}
 {{ super() }}
-{% assets "scss_auth_whitelist" %}
+{% assets "scss_auth_users" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 {% endblock %}
 
 {% block title %}Manage your Whitelist{% endblock %}
+{% block pagetitle %}Users{% endblock %}
 
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/auth/whitelist.js') }}"></script>
 {% endblock %}
 
-{% block body %}
 
-<div class="whitelist-wrapper">
-<h1>Users</h1>
+{% set active_page='Users' %}
 
+{% block content %}
 <form class="whitelist-add-form" method="POST" action="/whitelist/add">
     {{ whitelist_form.csrf_token }}
     {{ macros.render_field(whitelist_form.email, required="", placeholder="Email Address", autofocus="")}}
@@ -72,5 +72,4 @@
 </li>
 {% endfor %}
 </ul>
-</div>
 {% endblock %}

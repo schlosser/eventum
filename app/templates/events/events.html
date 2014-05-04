@@ -1,5 +1,7 @@
-{% extends "base.html" %}
+{% extends "app.html" %}
 {% import "macros.html" as macros %}
+
+{% set active_page='Events' %}
 
 {% block css %}
 {{ super() }}
@@ -9,56 +11,78 @@
 {% endblock %}
 
 {% block title %}View Events{% endblock %}
+{% block pagetitle %}Events{% endblock %}
 
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/events/events.js') }}"></script>
 {% endblock %}
 
-{% block body %}
-<h1>Events</h1>
-
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class="flashes">
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-
-<a href="/events/create">Create an event</a>
-<ul>
-{% for event in the_events %}
-<li>
-    <h4>{{event.title}} ({% if event.published %}Published{% else %}Not Published{% endif %})</h4>
-    <h6>{{event.location}}</h6>
-    <p>Created by {{event.creator.name}}</p>
-    <p>From {{event.start_datetime}} to {{event.end_datetime}}</p>
-    <p>{{ event.descriptions.short }}</p>
-    <p>{{ event.descriptions.long }}</p>
-    <form class="delete-event" method="POST" action="/events/delete/{{ event.id }}">
-        <input type="submit" value="Delete Event">
-    </form>
-    <form class="publish-event"
+{% macro render_event(event) %}
+<li class="event">
+    <span
         {% if event.published %}
-        action="/events/unpublish/{{ event.id }}"
+        class="published"
         {% else %}
-        action="/events/publish/{{ event.id }}"
+        class="not-published"
         {% endif %}
-        method="POST">
-        <input
+    ></span>
+    <div class="text-content">
+        <h3>{{event.title}}</h3>
+        <p>{{event.location}}</p>
+        <p>{{ event.human_readable_datetime() }}</p>
+        <a href="/events/edit/{{ event.id }}">Edit event</a>
+        <form class="delete-event" method="POST" action="/events/delete/{{ event.id }}">
+            <input type="submit" value="Delete Event">
+        </form>
+        <form class="publish-event"
             {% if event.published %}
-            value="Unpublish Event"
+            action="/events/unpublish/{{ event.id }}"
             {% else %}
-            value="Publish Event"
+            action="/events/publish/{{ event.id }}"
             {% endif %}
-            type="submit">
-    </form>
+            method="POST">
+            <input
+                {% if event.published %}
+                value="Unpublish Event"
+                {% else %}
+                value="Publish Event"
+                {% endif %}
+                type="submit">
+        </form>
+    </div>
+    <div class="creator">
+        <span class="image">
+            <img src="{{ event.creator.image_url }}">
+        </span>
+        <p class="name">{{ event.creator.name }}</p>
+    </div>
 </li>
-{% endfor %}
-</ul>
+{% endmacro %}
+
+{% block barright %}
+<a href="/events/create"><i class="fa fa-plus fa-2x"></i></a>
+{% endblock %}
+
+{% block content %}
+<div class="this-week">
+    <div class="events-wrapper">
+        <ul class="events"
+            style="width:{{ 16*(events|count) - 1 }}rem;">
+        {% for event in events.this_week %}
+        {{ render_event(event) }}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="next-week">
+    <div class="events-wrapper">
+        <ul class="events"
+            style="width:{{ 16*(events|count) - 1 }}rem;">
+        {% for event in events.next_week %}
+        {{ render_event(event) }}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

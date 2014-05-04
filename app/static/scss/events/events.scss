@@ -1,0 +1,56 @@
+@import '../colors';
+
+$event-width: 15rem;
+$creator-size: 3rem;
+.events-wrapper {
+    padding: 2rem 0;
+    overflow-x: scroll;
+
+    .events {
+        padding: 1rem 0;
+        background-color: $offwhite;
+        min-width: 100%;
+
+        &:after {
+           content: " "; /* Older browser do not support empty content */
+           visibility: hidden;
+           display: block;
+           height: 0;
+           clear: both;
+        }
+
+        .event {
+            float: left;
+            display: inline-block;
+            width: $event-width;
+            background-color: $white;
+            &:not(:first-child) {
+                margin-left: 1rem;
+            }
+
+            .text-content {
+                padding: 0.5rem;
+            }
+
+            .creator {
+                background-color: $lightgray;
+
+                .image {
+                    width: $creator-size;
+                    height: $creator-size;
+                    float: left;
+
+                    img {
+                        width: $creator-size;
+                        height: $creator-size;
+                    }
+                }
+                .name {
+                    line-height: $creator-size;
+                    display: inline-block;
+                    margin-left: $creator-size/3;
+                }
+            }
+        }
+    }
+}

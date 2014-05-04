@@ -1,12 +1,13 @@
 from flask import Blueprint, request, render_template, g, redirect, \
-    url_for, session, flash
+    url_for, session, flash, abort
 from app.mod_events.models import Event
 from app.mod_auth.models import User
 from mongoengine.queryset import DoesNotExist
 from app.mod_events.forms import CreateEventForm
 from bson.objectid import ObjectId
 from app.mod_auth.decorators import login_required, requires_privilege
-
+from app.mod_events import utils
+from datetime import datetime
 mod_events = Blueprint('events', __name__)
 
 
@@ -29,8 +30,24 @@ def lookup_current_user():
 @mod_events.route('/events')
 @login_required
 def events():
-    events = Event.objects()
-    return render_template('events/events.html', the_events=events)
+    """"""
+    today_year, today_week, _ = datetime.now().isocalendar()
+    today_index = today_year*52 + today_week
+    events = {
+        "this_week": [],
+        "next_week": []
+    }
+    for event in [e for e in Event.objects() if e.start_date]:
+        year, week, _ = event.start_date.isocalendar()
+        index = year*52 + week
+        print today_index,
+        if index == today_index:
+            events["this_week"].append(event)
+        elif index == today_index + 1:
+            events["next_week"].append(event)
+
+    print events
+    return render_template('events/events.html', events=events)
 
 
 @mod_events.route('/events/create', methods=['GET', 'POST'])
@@ -38,24 +55,31 @@ def events():
 def create_event():
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
-        event = Event(title=form.title.data,
-                      creator=g.user,
-                      location=form.location.data,
-                      start_date=form.start_date.data,
-                      start_time=form.start_time.data,
-                      end_date=form.end_date.data,
-                      end_time=form.end_time.data,
-                      published=False,
-                      descriptions={
-                        "short": form.short_description.data,
-                        "long": form.long_description.data
-                      })
+        event = utils.create_event(form, creator=g.user)
         event.save()
         return redirect(url_for('.events'))
     if form.errors:
         # print form.errors
         pass
-    return render_template('events/create_event.html', form=form)
+    return render_template('events/create.html', form=form)
+
+@mod_events.route('/events/edit/<event_id>', methods=['GET', 'POST'])
+@requires_privilege('edit')
+def edit_event(event_id):
+    if Event.objects(id=event_id).count() != 1:
+        abort(500) # Either invalid event ID or duplicate IDs.
+
+    event = Event.objects().get(id=event_id)
+    if request.method == 'POST':
+        form = CreateEventForm(request.form)
+        if form.validate_on_submit():
+            event = utils.create_event(form, event=event)
+            event.save()
+            return redirect(url_for('.events'))
+        flash("There was a validation error." + str(form.errors))
+        return render_template('events/edit.html', form=form, event=event)
+    form = utils.create_form(event, request)
+    return render_template('events/edit.html', form=form, event=event)
 
 
 @mod_events.route('/events/delete/<event_id>', methods=['POST'])
@@ -80,17 +104,13 @@ def set_published_status(event_id, status):
             event.published = status
             # TODO Actually publish/unpublish the event here
             if event.published:
-                print "event published"
                 flash('Event published')
             else:
-                print "event unpublished"
                 flash('Event unpublished')
             event.save()
         else:
-            print "No changes made"
             flash("The event had not been published.  No changes made.")
     else:
-        print "Invalid eventid"
         flash('Invalid event id')
         # print "Invalid event id"
         pass

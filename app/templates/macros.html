@@ -6,6 +6,7 @@
     {% endfor %}
 {% elif field.flags.error %}
 <div>
+    {{ field.flags.error }}
 {% else %}
 <div class="form-component">
 {% endif %}

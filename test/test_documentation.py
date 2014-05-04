@@ -16,6 +16,7 @@ class TestDocumentation(unittest.TestCase):
         """All directories not in the gitignore should have `README.md` files
         in them.
         """
+        readmeless_dirs = []
 
         for root, dirs, filenames in os.walk(self.APP_ROOT):
             # Ignore all subdirectories of directories that match the EXCLUDES
@@ -25,9 +26,12 @@ class TestDocumentation(unittest.TestCase):
             for d in dirs:
                 readme = os.path.join(root, d, self.README)
                 relpath = os.path.relpath(os.path.join(root, d), self.APP_ROOT)
-                self.assertTrue(
-                    os.path.isfile(readme),
-                    msg=self.README + " must be created in " + relpath)
+                if not os.path.isfile(readme):
+                    readmeless_dirs.append(relpath)
+                    continue
+
+        self.assertEqual(readmeless_dirs, [],
+            msg=self.README + " must be created in: \n\t- " + '\n\t- '.join(readmeless_dirs))
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,139 @@
+@import 'colors';
+
+$topbar-height: 3.5rem;
+$nav-item-width: 4rem;
+$nav-item-height: 3.5rem;
+$nav-label-width: 8rem;
+nav {
+    z-index:1;
+    width: $nav-item-width;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $darkgray;
+    color: $white;
+
+    a, a:hover {
+        color: $white;
+        text-decoration: none;
+    }
+}
+.main {
+    min-height: 100%;
+    margin-left: $nav-item-width;
+    background-color: $offwhite;
+}
+
+.topbar {
+    background-color: $blue;
+    color: $white;
+    position: relative;
+    width: 90%;
+    max-width: 60rem;
+    margin: 0 auto;
+    height: $topbar-height;
+    line-height: $topbar-height;
+
+    .left {
+        float:left;
+        margin-left: 1rem;
+    }
+    .middle {
+        display: inline;
+        position: absolute;
+        left: 50%;
+        width: 60%;
+        margin-left: -30%;
+        text-align: center;
+
+        .page-title {
+            display: inline;
+            width: auto;
+            line-height: $topbar-height;
+        }
+    }
+    .right {
+        float:right;
+        margin-right: 1rem;
+    }
+
+    i {
+        line-height: $topbar-height;
+    }
+
+    a {
+        color: $white;
+
+        &:hover {
+            color: $offwhite;
+        }
+    }
+}
+
+.content {
+    background-color: $white;
+    width: 90%;
+    max-width: 60rem;
+    margin: 0 auto;
+    min-height: 100%;
+    padding: 2rem 0;
+}
+
+.nav-item {
+    overflow: hidden;
+    width: $nav-item-width;
+    background-color: $darkgray;
+    height: $nav-item-height;
+    line-height: $nav-item-height;
+    display: block;
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
+    position: relative;
+
+    &.selected {
+        background-color: $blue;
+    }
+
+    .nav-icon {
+        text-align: center;
+        width: $nav-item-width;
+        height: $nav-item-height;
+        line-height: $nav-item-height;
+        display: inline-block;
+        float:left;
+    }
+    .nav-label {
+        position: absolute;
+        margin-left: 1rem;
+        left: $nav-item-width;
+        right: 0;
+        display: inline-block;
+        float:right;
+        font-size: 1.5rem;
+        height: $nav-item-height;
+        line-height: $nav-item-height;
+
+    }
+}
+
+$w-5: 5.5rem;
+$w-6: 6rem;
+$w-6-5: 6.5rem;
+$w-8: 8.5rem;
+.w-5 {
+    &:hover { width: $nav-item-width + $w-5; }
+    .nav-label { width: $w-5; } }
+.w-6 {
+    &:hover { width: $nav-item-width + $w-6; }
+    .nav-label { width: $w-6; } }
+.w-6-5 {
+    &:hover { width: $nav-item-width + $w-6-5; }
+    .nav-label { width: $w-6-5; } }
+.w-8 {
+    &:hover { width: $nav-item-width + $w-8; }
+    .nav-label { width: $w-8; } }
+
+.fa-2-5x {
+    font-size: 2.5em;
+}

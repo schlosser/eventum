@@ -1,22 +1,12 @@
-{% extends "base.html" %}
+{% extends "app.html" %}
 {% block title %}Create Profile{% endblock %}
 
 {% import 'macros.html' as macros %}
 
-{% block body %}
+{% block content %}
 <div>
   <div>
     <legend>Sign in</legend>
-    {% with errors = get_flashed_messages(category_filter=["error"]) %}
-    {% if errors %}
-    <div>
-    {% for error in errors %}
-    {{ error }}<br>
-    {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
-
     {% if form.errors %}
     <div>
     {% for field, error in form.errors.items() %}
