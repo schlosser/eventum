@@ -1,4 +1,4 @@
-/* line 7 */
+/* line 9 */
 nav {
   z-index: 1;
   width: 4rem;
@@ -9,36 +9,36 @@ nav {
   background-color: #333333;
   color: white;
 }
-/* line 17 */
+/* line 19 */
 nav a, nav a:hover {
   color: white;
   text-decoration: none;
 }
 
-/* line 22 */
+/* line 24 */
 .main {
   min-height: 100%;
   margin-left: 4rem;
   background-color: #efefef;
 }
 
-/* line 28 */
+/* line 30 */
 .topbar {
   background-color: #3878cc;
   color: white;
   position: relative;
   width: 90%;
-  max-width: 60rem;
+  max-width: 100rem;
   margin: 0 auto;
   height: 3.5rem;
   line-height: 3.5rem;
 }
-/* line 38 */
+/* line 40 */
 .topbar .left {
   float: left;
   margin-left: 1rem;
 }
-/* line 42 */
+/* line 44 */
 .topbar .middle {
   display: inline;
   position: absolute;
@@ -47,41 +47,41 @@ nav a, nav a:hover {
   margin-left: -30%;
   text-align: center;
 }
-/* line 50 */
+/* line 52 */
 .topbar .middle .page-title {
   display: inline;
   width: auto;
   line-height: 3.5rem;
 }
-/* line 56 */
+/* line 58 */
 .topbar .right {
   float: right;
   margin-right: 1rem;
 }
-/* line 61 */
+/* line 63 */
 .topbar i {
   line-height: 3.5rem;
 }
-/* line 65 */
+/* line 67 */
 .topbar a {
   color: white;
 }
-/* line 68 */
+/* line 70 */
 .topbar a:hover {
   color: #efefef;
 }
 
-/* line 74 */
+/* line 76 */
 .content {
   background-color: white;
   width: 90%;
-  max-width: 60rem;
+  max-width: 100rem;
   margin: 0 auto;
   min-height: 100%;
   padding: 2rem 0;
 }
 
-/* line 83 */
+/* line 85 */
 .nav-item {
   overflow: hidden;
   width: 4rem;
@@ -93,11 +93,11 @@ nav a, nav a:hover {
   transition: .3s ease all;
   position: relative;
 }
-/* line 94 */
+/* line 96 */
 .nav-item.selected {
   background-color: #3878cc;
 }
-/* line 98 */
+/* line 100 */
 .nav-item .nav-icon {
   text-align: center;
   width: 4rem;
@@ -106,10 +106,11 @@ nav a, nav a:hover {
   display: inline-block;
   float: left;
 }
-/* line 106 */
+/* line 108 */
 .nav-item .nav-label {
   position: absolute;
   padding-left: 1rem;
+  font-weight: 300;
   left: 4rem;
   right: 0;
   display: inline-block;
@@ -119,45 +120,87 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 125 */
+/* line 128 */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 126 */
+/* line 129 */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 128 */
+/* line 131 */
 .w-6:hover {
   width: 10rem;
 }
-/* line 129 */
+/* line 132 */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 131 */
+/* line 134 */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 132 */
+/* line 135 */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 134 */
+/* line 137 */
 .w-9:hover {
   width: 13rem;
 }
-/* line 135 */
+/* line 138 */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 137 */
+/* line 140 */
 .fa-2-5x {
   font-size: 2.5em;
+}
+
+@media screen and (max-width: 40rem) {
+  /* line 148 */
+  .topbar, .content {
+    width: 100%% !important;
+  }
+}
+@media screen and (min-width: 90.063rem) {
+  /* line 154 */
+  nav {
+    width: 12rem;
+  }
+
+  /* line 156 */
+  .topbar {
+    width: 100%% !important;
+  }
+
+  /* line 158 */
+  .main {
+    margin-left: 12rem;
+  }
+
+  /* line 160 */
+  .nav-item {
+    -webkit-transition: none;
+    transition: none;
+    width: 12rem !important;
+  }
+  /* line 165 */
+  .nav-item .nav-label {
+    padding-left: 0;
+  }
+  /* line 169 */
+  .nav-item:not(.selected):hover {
+    background-color: #404040;
+  }
+  /* line 170 */
+  .nav-item.selected:hover {
+    background-color: #306cbb;
+  }
 }
 
 /* line 3 */

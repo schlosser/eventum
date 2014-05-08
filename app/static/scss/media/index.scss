@@ -1,12 +1,49 @@
+@import '../media_queries';
+
 .images {
+
     width: 100%;
     .image {
+        width: 16.666%;
+        padding-bottom:16.666%;
+        /* height: same_as_width; <--- set in javascript */
         display: inline-block;
-        width: 33%;
         float:left;
+        position: relative;
 
-        img {
-            width: 100%;
+        i {
+            position: absolute;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            left: 0.25rem;
+            right: 0.25rem;
+            display: block;
+            background-position: center center;
+            background-size: cover;
         }
     }
+}
+
+@media only screen and (max-width: $xl-desktop-max) {
+    .image {
+        width: 20% !important;
+        padding-bottom: 20% !important; }
+}
+
+@media only screen and (max-width: $desktop-max) {
+    .image {
+        width: 25% !important;
+        padding-bottom: 25% !important; }
+}
+
+@media only screen and (max-width: $tablet-max) {
+    .image {
+        width: 33% !important;
+        padding-bottom: 33% !important; }
+}
+
+@media only screen and (max-width: $phone-max) {
+    .image {
+        width: 50% !important;
+        padding-bottom: 50% !important; }
 }

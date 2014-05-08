@@ -1,14 +1,53 @@
-/* line 1 */
+/* line 3 */
 .images {
   width: 100%;
 }
-/* line 3 */
+/* line 6 */
 .images .image {
+  width: 16.666%;
+  padding-bottom: 16.666%;
+  /* height: same_as_width; <--- set in javascript */
   display: inline-block;
-  width: 33%;
   float: left;
+  position: relative;
 }
-/* line 8 */
-.images .image img {
-  width: 100%;
+/* line 14 */
+.images .image i {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  display: block;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 120rem) {
+  /* line 28 */
+  .image {
+    width: 20% !important;
+    padding-bottom: 20% !important;
+  }
+}
+@media only screen and (max-width: 90rem) {
+  /* line 34 */
+  .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+}
+@media only screen and (max-width: 64rem) {
+  /* line 40 */
+  .image {
+    width: 33% !important;
+    padding-bottom: 33% !important;
+  }
+}
+@media only screen and (max-width: 40rem) {
+  /* line 46 */
+  .image {
+    width: 50% !important;
+    padding-bottom: 50% !important;
+  }
 }

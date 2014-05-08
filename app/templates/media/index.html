@@ -25,11 +25,11 @@
 {% if images %}
 <ul class="images clearfix">
 {% for image in images %}
-    <div class="image">
-        <a href="/media/uploads/{{ image.filename }}">
-            <img src="{{ image.url }}">
-        </a>
-    </div>
+<li class="image">
+    <a href="/media/uploads/{{ image.filename }}">
+        <i style="background-image:url({{ image.url }});"></i>
+    </a>
+</li>
 {% endfor %}
 </ul>
 {% else %}

@@ -1,9 +1,11 @@
 @import 'colors';
+@import 'media_queries';
 
 $topbar-height: 3.5rem;
 $nav-item-width: 4rem;
 $nav-item-height: 3.5rem;
 $nav-label-width: 8rem;
+$nav-wide: 12rem;
 nav {
     z-index:1;
     width: $nav-item-width;
@@ -30,7 +32,7 @@ nav {
     color: $white;
     position: relative;
     width: 90%;
-    max-width: 60rem;
+    max-width: 100rem;
     margin: 0 auto;
     height: $topbar-height;
     line-height: $topbar-height;
@@ -74,7 +76,7 @@ nav {
 .content {
     background-color: $white;
     width: 90%;
-    max-width: 60rem;
+    max-width: 100rem;
     margin: 0 auto;
     min-height: 100%;
     padding: 2rem 0;
@@ -106,6 +108,7 @@ nav {
     .nav-label {
         position: absolute;
         padding-left: 1rem;
+        font-weight: 300;
         left: $nav-item-width;
         right: 0;
         display: inline-block;
@@ -136,4 +139,34 @@ $w-9: 9rem;
 
 .fa-2-5x {
     font-size: 2.5em;
+}
+
+@media screen and (min-width: $xl-desktop-min) {
+
+}
+@media screen and (max-width: $phone-max) {
+    .topbar, .content {
+        width: 100%% !important;
+    }
+}
+
+@media screen and (min-width: $xl-desktop-min) {
+    nav { width: $nav-wide; }
+
+    .topbar { width: 100%% !important; }
+
+    .main { margin-left: $nav-wide; }
+
+    .nav-item {
+        -webkit-transition: none;
+        transition: none;
+        width: $nav-wide !important;
+
+        .nav-label {
+            padding-left: 0;
+        }
+
+        &:not(.selected):hover { background-color: $gray; }
+        &.selected:hover { background-color: $fadedblue; }
+    }
 }
