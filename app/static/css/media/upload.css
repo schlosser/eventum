@@ -1,0 +1,40 @@
+/* Hide the file input, but without `display:none`, which is often seen as a
+ * security threat by many browsers.
+ */
+/* line 6 */
+.hidden-but-not-forgotten {
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 11 */
+.form-component {
+  display: inline-block;
+  height: 2.5rem;
+}
+
+/* Remove inline-block spacing*/
+/* line 17 */
+.upload-form {
+  font-size: 0;
+}
+
+/* line 18 */
+.upload-form * {
+  font-size: 1rem;
+}
+
+/* line 20 */
+input[type="text"] {
+  margin: 0;
+  padding: 0;
+  line-height: 1rem;
+  min-width: 5rem;
+  padding: 0.57rem 0.2rem;
+}
+
+/* line 28 */
+input[type="submit"] {
+  display: block;
+  margin-top: 1rem;
+}

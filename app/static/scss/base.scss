@@ -5,7 +5,9 @@ body, html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-weight: 300;
+
+    tt, code { font-size: inherit; }
 }
 
 h1 { font-size: 2em; }
@@ -13,3 +15,44 @@ h2 { font-size: 1.5em; }
 h3 { font-size: 1.17em; }
 h5 { font-size: .83em; }
 h6 { font-size: .75em; }
+
+pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent; }
+
+code, tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    font-family: Monospace;
+}
+
+pre {
+    font-family: Monospace;
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+
+    code, tt {
+        background-color: transparent;
+        border: none;
+    }
+}
+
+strong { font-weight: 700; }
+em {
+    font-style: italic;
+}
+p {
+   line-height: 1.3rem;
+}

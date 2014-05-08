@@ -1,0 +1,35 @@
+{% extends 'app.html' %}
+{% import 'macros.html' as macros %}
+
+{% set active_page='Media'%}
+{% block title %}Upload an Image{% endblock %}
+{% block pagetitle %}Upload an Image{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_media_upload" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block barleft %}
+<a href="/media"><i class="fa fa-chevron-left fa-2x"></i></a>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/media/upload.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <form class="upload-form" action="" method="post" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div class="hidden-but-not-forgotten">
+            {{ macros.render_field(form.image) }}
+        </div>
+        <div class="btn btn-upload">Choose File</div>
+        {{ macros.render_field(form.filename, label=False, placeholder="No File Chosen", required="")}}
+        <span class="extension"></span>
+        <input type="submit" value="Upload">
+    </form>
+{% endblock %}

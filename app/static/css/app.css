@@ -109,7 +109,7 @@ nav a, nav a:hover {
 /* line 106 */
 .nav-item .nav-label {
   position: absolute;
-  margin-left: 1rem;
+  padding-left: 1rem;
   left: 4rem;
   right: 0;
   display: inline-block;
@@ -147,15 +147,56 @@ nav a, nav a:hover {
 }
 
 /* line 134 */
-.w-8:hover {
-  width: 12.5rem;
+.w-9:hover {
+  width: 13rem;
 }
 /* line 135 */
-.w-8 .nav-label {
-  width: 8.5rem;
+.w-9 .nav-label {
+  width: 9rem;
 }
 
 /* line 137 */
 .fa-2-5x {
   font-size: 2.5em;
+}
+
+/* line 3 */
+input[type="submit"], button, .btn {
+  display: inline-block;
+  padding: 0.75rem 0.5rem;
+  background-color: #3878cc;
+  color: white;
+  border: none;
+  border: none;
+  margin: 0;
+}
+/* line 12 */
+input[type="submit"]:hover, button:hover, .btn:hover {
+  cursor: pointer;
+  color: #e0e0e0;
+}
+
+/* line 18 */
+input[type="submit"] {
+  padding: 0.7rem 0.5rem;
+}
+
+/* line 1 */
+.text-width-calculation {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* line 10 */
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }

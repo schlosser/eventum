@@ -42,6 +42,7 @@ def register_blueprints():
     from app.mod_learn.controllers import mod_learn as learn_module
     from app.mod_events.controllers import mod_events as events_module
     from app.mod_blog.controllers import mod_blog as blog_module
+    from app.mod_media.controllers import mod_media as media_module
     from app.mod_networking.controllers import mod_networking as \
         networking_module
 
@@ -50,6 +51,7 @@ def register_blueprints():
     app.register_blueprint(learn_module)
     app.register_blueprint(events_module)
     app.register_blueprint(blog_module)
+    app.register_blueprint(media_module)
     app.register_blueprint(networking_module)
 
 
@@ -64,7 +66,7 @@ def register_scss():
     scss_base = Bundle('scss/base.scss',
                        output='css/base.css',
                        **defaults)
-    scss_app = Bundle('scss/app.scss',
+    scss_app = Bundle('scss/app.scss', 'scss/buttons.scss', 'scss/utils.scss',
                       output='css/app.css',
                       **defaults)
     scss_auth_users = Bundle('scss/auth/users.scss',
@@ -73,11 +75,28 @@ def register_scss():
     scss_events_events = Bundle('scss/events/events.scss',
                                  output='css/events/events.css',
                                  **defaults)
+    scss_blog_edit_post = Bundle('scss/blog/edit_post.scss',
+                                 output='css/blog/edit_post.css',
+                                 **defaults)
+    scss_blog_posts = Bundle('scss/blog/posts.scss',
+                             output='css/blog/posts.css',
+                             **defaults)
+    scss_media = Bundle('scss/media/index.scss',
+                        output='css/media/index.css',
+                        **defaults)
+    scss_media_upload = Bundle('scss/media/upload.scss',
+                        output='css/media/upload.css',
+                        **defaults)
 
     assets.register('scss_app', scss_app)
     assets.register('scss_base', scss_base)
     assets.register('scss_auth_users', scss_auth_users)
     assets.register('scss_events_events', scss_events_events)
+    assets.register('scss_blog_edit_post', scss_blog_edit_post)
+    assets.register('scss_blog_posts', scss_blog_posts)
+    assets.register('scss_media', scss_media)
+    assets.register('scss_media_upload', scss_media_upload)
+
 
 def run():
 

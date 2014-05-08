@@ -67,7 +67,7 @@
 {% block content %}
 <div class="this-week">
     <div class="events-wrapper">
-        <ul class="events"
+        <ul class="events clearfix"
             style="width:{{ 16*(events|count) - 1 }}rem;">
         {% for event in events.this_week %}
         {{ render_event(event) }}

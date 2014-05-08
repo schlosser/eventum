@@ -1,0 +1,39 @@
+{% extends "app.html" %}
+{% import "macros.html" as macros %}
+
+{% set active_page='Media' %}
+{% block title %}Manage Photos and other Media{% endblock %}
+{% block pagetitle %}Media{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/media/index.js') }}"></script>
+{% endblock %}
+
+{% block barright %}
+<a href="/media/upload"><i class="fa fa-plus fa-2x"></i></a>
+{% endblock %}
+
+{% block content %}
+{% if images %}
+<ul class="images clearfix">
+{% for image in images %}
+    <div class="image">
+        <a href="/media/uploads/{{ image.filename }}">
+            <img src="{{ image.url }}">
+        </a>
+    </div>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no images.</p>
+{% endif %}
+
+{% endblock %}

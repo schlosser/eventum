@@ -10,45 +10,36 @@
   min-width: 100%;
 }
 /* line 14 */
-.events-wrapper .events:after {
-  content: " ";
-  /* Older browser do not support empty content */
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
-}
-/* line 22 */
 .events-wrapper .events .event {
   float: left;
   display: inline-block;
   width: 15rem;
   background-color: white;
 }
-/* line 27 */
+/* line 19 */
 .events-wrapper .events .event:not(:first-child) {
   margin-left: 1rem;
 }
-/* line 31 */
+/* line 23 */
 .events-wrapper .events .event .text-content {
   padding: 0.5rem;
 }
-/* line 35 */
+/* line 27 */
 .events-wrapper .events .event .creator {
   background-color: #e0e0e0;
 }
-/* line 38 */
+/* line 30 */
 .events-wrapper .events .event .creator .image {
   width: 3rem;
   height: 3rem;
   float: left;
 }
-/* line 43 */
+/* line 35 */
 .events-wrapper .events .event .creator .image img {
   width: 3rem;
   height: 3rem;
 }
-/* line 48 */
+/* line 40 */
 .events-wrapper .events .event .creator .name {
   line-height: 3rem;
   display: inline-block;

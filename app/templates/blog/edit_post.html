@@ -3,7 +3,7 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_blog_blog" %}
+{% assets "scss_blog_edit_post" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
@@ -28,6 +28,14 @@
 {% endblock %}
 
 {% block content %}
-<div id="epiceditor">
-</div>
+<form class="edit-post-form" method="POST" action="">
+    {{ form.csrf_token }}
+    {{ macros.render_field(form.title, required="", placeholder="Title", autofocus="")}}
+    {{ macros.render_field(form.slug, required="", placeholder="Slug")}}
+    {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
+    <div id="epiceditor">
+    </div>
+    <input type="submit" value="Save">
+</form>
+
 {% endblock %}

@@ -11,14 +11,6 @@ $creator-size: 3rem;
         background-color: $offwhite;
         min-width: 100%;
 
-        &:after {
-           content: " "; /* Older browser do not support empty content */
-           visibility: hidden;
-           display: block;
-           height: 0;
-           clear: both;
-        }
-
         .event {
             float: left;
             display: inline-block;

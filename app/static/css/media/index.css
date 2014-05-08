@@ -1,0 +1,14 @@
+/* line 1 */
+.images {
+  width: 100%;
+}
+/* line 3 */
+.images .image {
+  display: inline-block;
+  width: 33%;
+  float: left;
+}
+/* line 8 */
+.images .image img {
+  width: 100%;
+}

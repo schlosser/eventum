@@ -18,6 +18,7 @@ $(function() {
     var opts = {
         container: 'epiceditor',
         parser: marked_custom,
+        textarea: 'body',
         autogrow: {
             minHeight: 160,
             maxHeight: maxHeight

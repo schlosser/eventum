@@ -1,6 +1,7 @@
 from app import db
 from app.mod_auth.models import User
 from datetime import datetime
+import markdown
 now = datetime.now
 
 
@@ -17,8 +18,11 @@ class Post(db.Document):
     author = db.ReferenceField(
         User, required=True, verbose_name="Author",
         help_text="Reference to the User that authored the post")
-    content = db.StringField(
-        required=True, verbose_name="Content Body",
+    html_content = db.StringField(
+        verbose_name="HTML Content",
+        help_text="The HTML content of the post")
+    markdown_content = db.StringField(
+        required=True, verbose_name="Markdown Content",
         help_text="The HTML content of the post")
     slug = db.StringField(
         required=True, verbose_name="Post Slug", regex='([a-z]|[1-9]|-)*',
@@ -40,13 +44,18 @@ class Post(db.Document):
         verbose_name="Date Published",
         help_text="The date when the post is published, localized to the server")
     posted_by = db.ReferenceField(
-        User, required=True, default=author,
+        User, required=True,
         verbose_name="Posted By",
         help_text="The User that posted the post, if different from author (i.e. guest author)")
 
     def clean(self):
-        """Update date_modified"""
+        """Update date_modified, and fill in posted_by and html_content if invalid"""
         self.date_modified = now()
+        self.html_content = markdown.markdown(self.markdown_content, ['extra', 'smarty'])
+        if not self.posted_by:
+            self.posted_by = self.author
+        if self.published and not self.date_published:
+            self.date_published = now()
 
     def __unicode__(self):
         return self.title

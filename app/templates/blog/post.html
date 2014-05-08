@@ -1,0 +1,12 @@
+{% extends 'blog/index.html' %}
+
+{% block title %}{{ post.title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<li class="post">
+    <h2 class="title">{{post.title}}</h2>
+    <p class="date-published">Posted on {{post.date_published}} </p>
+    <p class="author">By {{post.author.name}}</p>
+    {{ post.snippet() | safe }}
+</li>
+{% endblock %}

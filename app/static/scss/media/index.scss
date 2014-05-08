@@ -1,0 +1,12 @@
+.images {
+    width: 100%;
+    .image {
+        display: inline-block;
+        width: 33%;
+        float:left;
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -7,30 +7,86 @@ body, html {
 
 /* line 7 */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-weight: 300;
+}
+/* line 10 */
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
 }
 
-/* line 11 */
+/* line 13 */
 h1 {
   font-size: 2em;
 }
 
-/* line 12 */
+/* line 14 */
 h2 {
   font-size: 1.5em;
 }
 
-/* line 13 */
+/* line 15 */
 h3 {
   font-size: 1.17em;
 }
 
-/* line 14 */
+/* line 16 */
 h5 {
   font-size: .83em;
 }
 
-/* line 15 */
+/* line 17 */
 h6 {
   font-size: .75em;
+}
+
+/* line 19 */
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+/* line 26 */
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  font-family: Monospace;
+}
+
+/* line 36 */
+pre {
+  font-family: Monospace;
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+/* line 46 */
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+/* line 52 */
+strong {
+  font-weight: 700;
+}
+
+/* line 53 */
+em {
+  font-style: italic;
+}
+
+/* line 56 */
+p {
+  line-height: 1.3rem;
 }

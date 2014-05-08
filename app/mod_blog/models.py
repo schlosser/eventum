@@ -5,10 +5,10 @@ from flask import url_for
 class BlogPost(Post):
 
 	def snippet(self, length=100, truncate_text="..."):
-		return truncate_html(self.content, length, truncate_text)
+		return truncate_html(self.html_content, length, truncate_text)
 
 	def get_absolute_url(self):
-		return url_for('post', kwargs={"slug": self.slug})
+		return url_for('blog.post', slug=self.slug)
 
 
 

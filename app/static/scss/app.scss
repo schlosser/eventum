@@ -105,7 +105,7 @@ nav {
     }
     .nav-label {
         position: absolute;
-        margin-left: 1rem;
+        padding-left: 1rem;
         left: $nav-item-width;
         right: 0;
         display: inline-block;
@@ -120,7 +120,7 @@ nav {
 $w-5: 5.5rem;
 $w-6: 6rem;
 $w-6-5: 6.5rem;
-$w-8: 8.5rem;
+$w-9: 9rem;
 .w-5 {
     &:hover { width: $nav-item-width + $w-5; }
     .nav-label { width: $w-5; } }
@@ -130,9 +130,9 @@ $w-8: 8.5rem;
 .w-6-5 {
     &:hover { width: $nav-item-width + $w-6-5; }
     .nav-label { width: $w-6-5; } }
-.w-8 {
-    &:hover { width: $nav-item-width + $w-8; }
-    .nav-label { width: $w-8; } }
+.w-9 {
+    &:hover { width: $nav-item-width + $w-9; }
+    .nav-label { width: $w-9; } }
 
 .fa-2-5x {
     font-size: 2.5em;

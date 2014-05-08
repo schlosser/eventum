@@ -1,0 +1,20 @@
+@import 'colors';
+
+input[type="submit"], button, .btn {
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    background-color: $blue;
+    color:white;
+    border: none;
+    border: none;
+    margin: 0;
+
+    &:hover {
+        cursor: pointer;
+        color: $lightgray;
+    }
+}
+
+input[type="submit"] {
+    padding: 0.7rem 0.5rem;
+}

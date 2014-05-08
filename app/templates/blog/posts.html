@@ -3,30 +3,56 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_blog_blog" %}
+{% assets "scss_blog_posts" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/epiceditor/preview/github-highlighted.css')}}">
 {% endblock %}
 
-{% block title %}Blog{% endblock %}
-{% block pagetitle %}Blog{% endblock %}
+{% block title %}Blog Posts{% endblock %}
+{% block pagetitle %}Blog Posts{% endblock %}
 
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/blog/posts.js') }}"></script>
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
 {% block barright %}
-<a href="/blog/posts/edit"><i class="fa fa-plus fa-2x"></i></a>
+<a href="/blog/posts/new"><i class="fa fa-plus fa-2x"></i></a>
 {% endblock %}
 {% set active_page="Blog" %}
 
 {% block content %}
 {% if posts %}
-<ul>
+<ul class="posts">
 {% for post in posts %}
-<li>
-    <h4>{{post.title}} ({% if post.published %}Published{% else %}Not Published{% endif %})</h4>
+<li class="post">
+    <h3>{{post.title}} ({% if post.published %}Published{% else %}Not Published{% endif %})</h3>
+    <p class="url">URL: <a href="{{ post.get_absolute_url() }}">
+        <code>{{ post.get_absolute_url() }}</code>
+    </a></p>
+    {{ post.snippet() | safe }}
+    <a href="/blog/posts/edit/{{ post.id }}">Edit</a>
+    <form class="delete-post" method="POST" action="/blog/posts/delete/{{ post.id }}">
+        <input type="submit" value="Delete Blog Post">
+    </form>
+    <form class="publish-post"
+        {% if post.published %}
+        action="/blog/posts/unpublish/{{ post.id }}"
+        {% else %}
+        action="/blog/posts/publish/{{ post.id }}"
+        {% endif %}
+        method="POST">
+        <input
+            {% if post.published %}
+            value="Unpublish Post"
+            {% else %}
+            value="Publish Post"
+            {% endif %}
+            type="submit">
+    </form>
 </li>
 {% endfor %}
 </ul>

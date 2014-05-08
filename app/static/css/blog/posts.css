@@ -1,0 +1,4 @@
+/* line 1 */
+.posts .post:not(:first-child) {
+  margin-top: 2rem;
+}
