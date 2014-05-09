@@ -61,6 +61,32 @@
             word-wrap: break-word;
         }
 
+        .delete {
+            position: absolute;
+            top:0;
+            right: 0;
+            background-color: $blue;
+            color: $white;
+            width: 0;
+            height: 2rem;
+            text-align: center;
+            transition: .3s ease all;
+            -webkit-transition: .3s ease all;
+
+            .delete-inner {
+                width: 2rem;
+                height: 2rem;
+                display: block;
+                i {
+                    width: 2rem;
+                    margin: 0 !important;
+                }
+            }
+        }
+        &:hover .delete {
+            width: 2rem;
+        }
+
         &:not(:first-child) i {
             margin-left: 0.5rem;
             top: 0;

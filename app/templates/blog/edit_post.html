@@ -62,9 +62,16 @@
     </li>
     {% if post and post.images %}
     {% for image in post.images %}
-    <li class="image">
+    <li class="image post-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
         <i style="background-image:url({{ image.url() }});"></i>
         <p class="filename">{{ image.filename }}</p>
+        <span class="delete">
+            <span class="delete-inner">
+                <a href="#remove-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
+                    <i class="fa fa-trash-o fa-2x"></i>
+                </a>
+            </span>
+        </span>
     </li>
     {% endfor %}
     {% endif %}

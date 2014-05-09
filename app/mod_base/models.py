@@ -51,7 +51,13 @@ class Post(db.Document):
     def clean(self):
         """Update date_modified, and fill in posted_by and html_content if invalid"""
         self.date_modified = now()
+
         self.html_content = markdown.markdown(self.markdown_content, ['extra', 'smarty'])
+        if self.images:
+            for image in self.images:
+                self.html_content = self.html_content.replace(
+                    'src="' + image.filename + '"',
+                    'src="' + image.url() + '"')
         if not self.posted_by:
             self.posted_by = self.author
         if self.published and not self.date_published:

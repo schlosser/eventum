@@ -1,9 +1,9 @@
-/* line 4, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+/* line 10, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
 .image-grid {
   padding: 0 0.25rem;
   width: 100%;
 }
-/* line 8, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+/* line 14, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
 .image-grid .image {
   width: 16.666%;
   padding-bottom: 16.666%;
@@ -11,7 +11,7 @@
   float: left;
   position: relative;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+/* line 21, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
 .image-grid .image i {
   position: absolute;
   top: 0.25rem;
@@ -23,32 +23,56 @@
   background-size: cover;
 }
 
+/* line 34, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+.image-grid.small .image {
+  width: 4rem;
+  border-bottom: 4rem;
+}
+
 @media only screen and (max-width: 120rem) {
-  /* line 29, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  /* line 40, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
   .image {
     width: 20% !important;
     padding-bottom: 20% !important;
   }
 }
 @media only screen and (max-width: 90rem) {
-  /* line 35, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image {
+  /* line 46, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+
+  /* line 49, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid.small .image {
+    width: 16.666% !important;
+    padding-bottom: 16.666% !important;
+  }
+}
+@media only screen and (max-width: 64rem) {
+  /* line 55, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
+  }
+
+  /* line 58, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid.small .image {
     width: 25% !important;
     padding-bottom: 25% !important;
   }
 }
-@media only screen and (max-width: 64rem) {
-  /* line 41, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image {
-    width: 33% !important;
-    padding-bottom: 33% !important;
-  }
-}
 @media only screen and (max-width: 40rem) {
-  /* line 47, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image {
+  /* line 64, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid .image {
     width: 50% !important;
     padding-bottom: 50% !important;
+  }
+
+  /* line 67, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
+  .image-grid.small .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
   }
 }
 /* line 3 */

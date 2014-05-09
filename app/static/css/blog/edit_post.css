@@ -136,6 +136,34 @@
   word-wrap: break-word;
 }
 /* line 64 */
+.selected-images .image .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #3878cc;
+  color: white;
+  width: 0;
+  height: 2rem;
+  text-align: center;
+  transition: .3s ease all;
+  -webkit-transition: .3s ease all;
+}
+/* line 76 */
+.selected-images .image .delete .delete-inner {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+}
+/* line 80 */
+.selected-images .image .delete .delete-inner i {
+  width: 2rem;
+  margin: 0 !important;
+}
+/* line 86 */
+.selected-images .image:hover .delete {
+  width: 2rem;
+}
+/* line 90 */
 .selected-images .image:not(:first-child) i {
   margin-left: 0.5rem;
   top: 0;
@@ -144,7 +172,7 @@
   right: 0;
 }
 
-/* line 74 */
+/* line 100 */
 .fa-6x {
   font-size: 6rem;
 }
