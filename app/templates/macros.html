@@ -17,3 +17,18 @@
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
 </div>
 {% endmacro %}
+
+{% macro modal() %}
+<div class="opaque hidden">
+    <div class="modal-wrapper">
+        <span class="close-modal">
+            <a href="#close-modal">
+                <i class="fa fa-times fa-2x"></i>
+            </a>
+        </span>
+        <div class="modal">
+            {{ caller() }}
+        </div>
+    </div>
+</div>
+{% endmacro %}

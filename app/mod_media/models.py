@@ -1,3 +1,4 @@
+from flask import url_for
 from mongoengine import ValidationError
 from app.mod_auth.models import User
 from app import app, db
@@ -33,6 +34,9 @@ class Image(db.Document):
     versions = db.DictField(
         required=True, verbose_name="File Versions",
         help_text="A dictionary of sizes to file paths.")
+
+    def url(self):
+        return url_for('media.uploaded_file', filename=self.filename)
 
     def clean(self):
         """Update date_modified and populate the versions dict."""

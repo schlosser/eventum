@@ -2,6 +2,7 @@ from app import app
 from flask import Blueprint, render_template, request, send_from_directory, \
     abort, redirect, url_for, g, flash
 from app.mod_blog.models import BlogPost
+from app.mod_media.models import Image
 from app.mod_blog.forms import CreateBlogPostForm
 from app.mod_auth.decorators import login_required, requires_privilege
 from bson.objectid import ObjectId
@@ -32,13 +33,17 @@ def post(slug):
 def new_post():
     form = CreateBlogPostForm(request.form)
     if form.validate_on_submit():
+        print request.form
+        print form.images.data
         post = BlogPost(title=form.title.data,
                         slug=form.slug.data,
+                        images=[Image.objects().get(filename=fn) for fn in form.images.data],
                         markdown_content=form.body.data,
                         author=g.user)
         post.save()
         return redirect(url_for('.posts'))
-    return render_template('blog/edit_post.html', form=form)
+    images = Image.objects()
+    return render_template('blog/edit_post.html', form=form, images=images)
 
 @mod_blog.route('/blog/posts/edit/<post_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -54,13 +59,16 @@ def edit_post(post_id):
             post.title=form.title.data
             post.slug=form.slug.data
             post.markdown_content = form.body.data
+            post.images = [Image.objects().get(filename=fn) for fn in form.images.data]
             post.save()
             return redirect(url_for('.posts'))
     form = CreateBlogPostForm(request.form,
                               title=post.title,
                               slug=post.slug,
-                              body=post.markdown_content)
-    return render_template('blog/edit_post.html', form=form, post=post)
+                              body=post.markdown_content,
+                              images=[image.filename for image in post.images])
+    images = [image for image in Image.objects() if image not in post.images]
+    return render_template('blog/edit_post.html', form=form, post=post, images=images)
 
 @mod_blog.route('/blog/posts/delete/<post_id>', methods=['POST'])
 def delete(post_id):

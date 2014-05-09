@@ -1,6 +1,12 @@
+from app.mod_media.models import Image
+from wtforms import TextField, FieldList, StringField, TextAreaField
 from flask.ext.wtf import Form
-from wtforms import TextAreaField, TextField
-from wtforms.validators import Required, Regexp
+from wtforms.validators import Regexp, Required, ValidationError
+
+def image_with_same_name(form,field):
+    if Image.objects(filename=field.data).count() != 1:
+        return ValidationError(
+            message="Can't find image `%s` in the database" % field.data)
 
 class CreateBlogPostForm(Form):
 
@@ -12,3 +18,4 @@ class CreateBlogPostForm(Form):
     body = TextAreaField('Post Body', [
         Required(message="Please provide a post body.")],
         default="Type your post here.\n\nRendered in **Markdown**!")
+    images = FieldList(StringField('Image', [image_with_same_name]), [Required("add images!")])

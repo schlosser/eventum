@@ -90,3 +90,8 @@ em {
 p {
   line-height: 1.3rem;
 }
+
+/* line 60 */
+a, a:hover {
+  color: inherit;
+}

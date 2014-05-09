@@ -75,7 +75,7 @@ def register_scss():
     scss_events_events = Bundle('scss/events/events.scss',
                                  output='css/events/events.css',
                                  **defaults)
-    scss_blog_edit_post = Bundle('scss/blog/edit_post.scss',
+    scss_blog_edit_post = Bundle('scss/blog/edit_post.scss', 'scss/modal.scss',
                                  output='css/blog/edit_post.css',
                                  **defaults)
     scss_blog_posts = Bundle('scss/blog/posts.scss',

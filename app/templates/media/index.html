@@ -23,17 +23,26 @@
 
 {% block content %}
 {% if images %}
-<ul class="images clearfix">
+<ul class="image-grid clearfix">
 {% for image in images %}
 <li class="image">
-    <a href="/media/uploads/{{ image.filename }}">
-        <i style="background-image:url({{ image.url }});"></i>
-    </a>
+    <i style="background-image:url({{ image.url() }});"></i>
+    <ul class="actions">
+        <li class="action">
+            <a class="delete-image" href="#">
+                <i class="fa fa-trash-o fa-2x"></i>
+            </a>
+        </li>
+        <li class="action">
+            <a href="/media/uploads/{{ image.filename }}">
+                <i class="fa fa-link fa-2x"></i>
+            </a>
+        </li>
+    </ul>
 </li>
 {% endfor %}
 </ul>
 {% else %}
 <p>There are no images.</p>
 {% endif %}
-
 {% endblock %}

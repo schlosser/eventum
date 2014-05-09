@@ -1,49 +1,29 @@
-@import '../media_queries';
+@import 'image_grid';
 
-.images {
+.image-grid .image .actions {
+    position: absolute;
+    bottom: $image-padding;
+    right: $image-padding;
+    left: $image-padding;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    height: 0;
+    transition: 0.3s ease all;
+    -webkit-transition: 0.3s ease all;
 
-    width: 100%;
-    .image {
-        width: 16.666%;
-        padding-bottom:16.666%;
-        /* height: same_as_width; <--- set in javascript */
+    .action {
+        height: 2.5rem;
+        width: 2.5rem;
+        line-height: 2.5rem;
         display: inline-block;
-        float:left;
         position: relative;
 
-        i {
-            position: absolute;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            left: 0.25rem;
-            right: 0.25rem;
-            display: block;
-            background-position: center center;
-            background-size: cover;
+        a, a:hover {
+            color: white;
         }
     }
 }
 
-@media only screen and (max-width: $xl-desktop-max) {
-    .image {
-        width: 20% !important;
-        padding-bottom: 20% !important; }
-}
-
-@media only screen and (max-width: $desktop-max) {
-    .image {
-        width: 25% !important;
-        padding-bottom: 25% !important; }
-}
-
-@media only screen and (max-width: $tablet-max) {
-    .image {
-        width: 33% !important;
-        padding-bottom: 33% !important; }
-}
-
-@media only screen and (max-width: $phone-max) {
-    .image {
-        width: 50% !important;
-        padding-bottom: 50% !important; }
+.image-grid .image:hover .actions {
+    height: 2.5rem;
 }

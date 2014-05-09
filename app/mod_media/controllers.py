@@ -13,17 +13,11 @@ mod_media = Blueprint('media', __name__)
 @mod_media.route('/media')
 @login_required
 def media():
-    images = [{
-        "url": url_for('.uploaded_file', filename=photo.filename),
-        "filename":photo.filename
-        } for photo in Image.objects()]
-    print images
+    images =Image.objects()
     return render_template('media/index.html', images=images)
 
 
 def allowed_file(filename):
-    print os.path.splitext(filename)[1]
-    print app.config['ALLOWED_EXTENSIONS']
     return '.' in filename and \
             os.path.splitext(filename)[1] in app.config['ALLOWED_EXTENSIONS']
 
@@ -34,7 +28,6 @@ def create_filename(f, slug):
 @mod_media.route('/media/upload', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def upload_file():
-    print request.form
     form = UploadImageForm(request.form)
     if form.validate_on_submit():
         f = request.files['image']

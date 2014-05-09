@@ -27,15 +27,51 @@
 <a href="/blog/posts"><i class="fa fa-chevron-left fa-2x"></i></a>
 {% endblock %}
 
+{% block main %}
+{% call macros.modal() %}
+<h3>Add an Image</h3>
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image" data-filename="{{ image.filename }}">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#add-image">
+        <i style="background-image:url({{ image.url() }});"></i>
+        <div class="select"><i class="fa fa-plus fa-6x"></i></div>
+    </a>
+</li>
+{% endfor %}
+</ul>
+{% endcall %}
+{{ super() }}
+{% endblock %}
+
 {% block content %}
 <form class="edit-post-form" method="POST" action="">
     {{ form.csrf_token }}
     {{ macros.render_field(form.title, required="", placeholder="Title", autofocus="")}}
     {{ macros.render_field(form.slug, required="", placeholder="Slug")}}
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
-    <div id="epiceditor">
-    </div>
+    {{ macros.render_field(form.images, hidden="hidden")}}
+    <div id="epiceditor"></div>
     <input type="submit" value="Save">
 </form>
-
+<ul class="image-grid small selected-images clearfix">
+    <li class="image add-image">
+        <a href="#show-modal">
+            <i class="fa fa-plus fa-6x"></i>
+        </a>
+    </li>
+    {% if post and post.images %}
+    {% for image in post.images %}
+    <li class="image">
+        <i style="background-image:url({{ image.url() }});"></i>
+        <p class="filename">{{ image.filename }}</p>
+    </li>
+    {% endfor %}
+    {% endif %}
+</ul>
 {% endblock %}
+
+
+
+
+

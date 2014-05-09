@@ -243,3 +243,8 @@ input[type="submit"] {
   height: 0;
   clear: both;
 }
+
+/* line 18 */
+.hidden {
+  display: none;
+}

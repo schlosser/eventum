@@ -32,6 +32,8 @@
     </ul>
 </nav>
 <div class="main">
+    {% block main %}
+
     {% block topbar %}
     <div class="topbar">
         <span class="left">
@@ -64,5 +66,7 @@
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
+    {% endblock main %}
 </div>
 {% endblock %}
