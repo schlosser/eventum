@@ -27,6 +27,10 @@
 <a href="/blog/posts"><i class="fa fa-chevron-left fa-2x"></i></a>
 {% endblock %}
 
+{% block barright %}
+<a class="save" href="#save">Save</a>
+{% endblock %}
+
 {% block main %}
 {% call macros.modal() %}
 <h3>Add an Image</h3>
@@ -44,38 +48,68 @@
 {{ super() }}
 {% endblock %}
 
+{% block toolbar %}
+
+{% if user.can("publish") %}
+{% if post and post.published %}
+{{ macros.toggle("Published", "Not Published")}}
+{% else %}
+{{ macros.toggle("Published", "Not Published", start_on=False)}}
+{% endif %}
+{% endif %}
+
+{% if post %}
+<div class="right">
+    {{ macros.confirm("Delete Post", "/blog/posts/delete/" + post.id_str()) }}
+</div>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <form class="edit-post-form" method="POST" action="">
     {{ form.csrf_token }}
-    {{ macros.render_field(form.title, required="", placeholder="Title", autofocus="")}}
-    {{ macros.render_field(form.slug, required="", placeholder="Slug")}}
+    <div class="title-wrapper">
+        {{ macros.render_field(form.title, required="", label=False,  placeholder="Title", autofocus="")}}
+    </div>
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Permalink:</h6>
+        <p class="permalink-base">{{ url_for('blog.post', slug="", _external=True) }}</p>
+        {{ macros.render_field(form.slug, required="", label=False, placeholder="my-cool-post   ")}}
+    </div>
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
     {{ macros.render_field(form.images, hidden="hidden")}}
     <div id="epiceditor"></div>
-    <input type="submit" value="Save">
-</form>
-<ul class="image-grid small selected-images clearfix">
-    <li class="image add-image">
+    <div class="image-help-text">
+        <h3>Add Images</h3>
+        <p class="small">Images can be reference by name in markdown once they have been added here.</p>
+    </div>
+    <ul class="image-grid small selected-images clearfix">
         <a href="#show-modal">
-            <i class="fa fa-plus fa-6x"></i>
+            <li class="image add-image">
+                <i class="fa fa-plus fa-6x"></i>
+            </li>
         </a>
-    </li>
-    {% if post and post.images %}
-    {% for image in post.images %}
-    <li class="image post-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
-        <i style="background-image:url({{ image.url() }});"></i>
-        <p class="filename">{{ image.filename }}</p>
-        <span class="delete">
-            <span class="delete-inner">
-                <a href="#remove-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
-                    <i class="fa fa-trash-o fa-2x"></i>
-                </a>
+        {% if post and post.images %}
+        {% for image in post.images %}
+        <li class="image post-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
+            <i style="background-image:url({{ image.url() }});"></i>
+            <p class="filename">{{ image.filename }}</p>
+            <span class="delete">
+                <span class="delete-inner">
+                    <a href="#remove-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
+                        <i class="fa fa-trash-o fa-2x"></i>
+                    </a>
+                </span>
             </span>
-        </span>
-    </li>
-    {% endfor %}
-    {% endif %}
-</ul>
+        </li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    <div class="hidden">
+        {{ macros.render_field(form.published) }}
+        <input id="save-post" type="submit" value="Save">
+    </div>
+</form>
 {% endblock %}
 
 

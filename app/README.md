@@ -1,19 +1,19 @@
 # `/app/`
 
-### __init__.py
+### __init__.py
 
-### mod_auth
+### auth
 
-### mod_base
+### base
 
-### mod_blog
+### blog
 
-### mod_events
+### events
 
-### mod_learn
+### learn
 
-### mod_networking
+### networking
 
-### static
+### static
 
-### templates
+### templates

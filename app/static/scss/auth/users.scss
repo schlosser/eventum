@@ -5,49 +5,63 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.whitelist {
+    border-bottom: 1px #eee solid;
+}
+
 .whitelist-add-form {
-    padding: 1rem;
+    padding: 0 1rem 1rem ;
+    ul {
+        display: inline-block;
+        margin-right: 0.5rem;
+        li {
+            display: inline-block;
+        }
+
+    }
     div {
+        margin-right: 0.5rem;
         display: inline-block;
     }
 }
 
+$row-height: 2.5rem;
 .whitelist-item {
     border-top: 1px #eee solid;
-    height: 48px;
+    height: $row-height;
 
     .form-component {
         display: inline;
     }
 
     .whitelist-image-wrapper {
-        width: 3rem;
-        height: 3rem;
+        width: $row-height;
+        height: $row-height;
         float:left;
 
         img {
-            width: 3rem;
-            height: 3rem;
+            width: $row-height;
+            height: $row-height;
         }
     }
 
     .whitelist-text-wrapper {
         display: inline;
-        height: 3rem;
+        height: $row-height;
     }
 
     .whitelist-email {
-        line-height: 3rem;
+        line-height: $row-height;
         display: inline-block;
         margin-left: 1rem;
     }
 
     .whitelist-buttons {
         float:right;
-        line-height: 3rem;
+        line-height: $row-height;
 
         .whitelist-status {
-            line-height: 3rem;
+            line-height: $row-height;
             display: inline-block;
             margin-right: 1rem;
         }
@@ -74,7 +88,7 @@ h1 {
             overflow: hidden;
             width: 8rem;
             float:right;
-            height: 3rem;
+            height: $row-height;
             display: inline-block;
             -webkit-transition: .3s ease all;
             transition: .3s ease all;
@@ -93,7 +107,7 @@ h1 {
                 padding: 0.25rem;
                 text-align: center;
                 font-size: 0.8rem;
-                height: 3rem;
+                height: $row-height;
                 width: 4rem;
             }
         }

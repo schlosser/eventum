@@ -26,36 +26,47 @@
 
 {% block content %}
 {% if posts %}
-<ul class="posts">
+<table class="posts" >
+    <thead>
+        <tr>
+            <th class="post-title">Title</th>
+            <th class="post-snippet-t">Snippet</th>
+            <th class="post-author">Author</th>
+            <th class="post-date">Date</th>
+        </tr>
+    </thead>
+    <tbody>
 {% for post in posts %}
-<li class="post">
-    <h3>{{post.title}} ({% if post.published %}Published{% else %}Not Published{% endif %})</h3>
-    <p class="url">URL: <a href="{{ post.get_absolute_url() }}">
-        <code>{{ post.get_absolute_url() }}</code>
-    </a></p>
-    {{ post.snippet() | safe }}
-    <a href="/blog/posts/edit/{{ post.id }}">Edit</a>
-    <form class="delete-post" method="POST" action="/blog/posts/delete/{{ post.id }}">
-        <input type="submit" value="Delete Blog Post">
-    </form>
-    <form class="publish-post"
-        {% if post.published %}
-        action="/blog/posts/unpublish/{{ post.id }}"
-        {% else %}
-        action="/blog/posts/publish/{{ post.id }}"
-        {% endif %}
-        method="POST">
-        <input
-            {% if post.published %}
-            value="Unpublish Post"
-            {% else %}
-            value="Publish Post"
-            {% endif %}
-            type="submit">
-    </form>
-</li>
+<tr class="post clearfix ">
+        <td class="post-title">
+            <a href="/blog/posts/edit/{{ post.id }}">
+                <p>{{post.title}}</p>
+            </a>
+        </td>
+        <td class="post-snippet small" height="100%">
+            <a href="/blog/posts/edit/{{ post.id }}">
+                <div class="post-snippet-inner">
+                    {{post.snippet(length=40, newlines=False, tags=False) | safe}}
+                </div>
+            </a>
+        </td>
+        <td class="post-author">
+            <a href="/blog/posts/edit/{{ post.id }}">
+                <img class="post-author-image" src="{{ post.author.image_url }}">
+                <div class="post-author-name">
+                    <p>{{ post.author.name }}</p>
+                </div>
+            </a>
+        </td>
+        <td class="post-date">
+            <a href="/blog/posts/edit/{{ post.id }}">
+                <p class="small">{{ post.pretty_date()}}</p>
+            </a>
+        </td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
 {% else %}
 <p style="text-align: center;">No posts!</p>
 {% endif %}

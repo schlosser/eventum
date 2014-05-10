@@ -37,13 +37,13 @@ def register_blueprints():
     Be careful rearranging the order of the app.register_blueprint()
     calls, as it can also result in circular dependancies.
     """
-    from app.mod_auth.controllers import mod_auth as auth_module
-    from app.mod_base.controllers import mod_base as base_module
-    from app.mod_learn.controllers import mod_learn as learn_module
-    from app.mod_events.controllers import mod_events as events_module
-    from app.mod_blog.controllers import mod_blog as blog_module
-    from app.mod_media.controllers import mod_media as media_module
-    from app.mod_networking.controllers import mod_networking as \
+    from app.auth.controllers import auth as auth_module
+    from app.base.controllers import base as base_module
+    from app.learn.controllers import learn as learn_module
+    from app.events.controllers import events as events_module
+    from app.blog.controllers import blog as blog_module
+    from app.media.controllers import media as media_module
+    from app.networking.controllers import networking as \
         networking_module
 
     app.register_blueprint(auth_module)
@@ -66,7 +66,10 @@ def register_scss():
     scss_base = Bundle('scss/base.scss',
                        output='css/base.css',
                        **defaults)
-    scss_app = Bundle('scss/app.scss', 'scss/buttons.scss', 'scss/utils.scss',
+    scss_app = Bundle('scss/app.scss',
+                      'scss/buttons.scss',
+                      'scss/utils.scss',
+                      'scss/forms.scss',
                       output='css/app.css',
                       **defaults)
     scss_auth_users = Bundle('scss/auth/users.scss',

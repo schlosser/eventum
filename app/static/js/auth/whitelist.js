@@ -27,4 +27,14 @@ $(function() {
     $(".whitelist-cancel").click(function() {
         $(this).parent().parent().addClass('whitelist-hidden');
     });
+
+    $(document).on('click', 'a[href="#open-confirm"]', function(e) {
+        e.preventDefault();
+        $(this).siblings('.confirm').removeClass('confirm-hidden');
+    });
+
+    $(document).on('click', '.confirm-cancel', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().addClass('confirm-hidden');
+    });
 });

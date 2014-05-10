@@ -1,6 +1,9 @@
 @import '../colors';
 @import '../media/image_grid';
 
+#epiceditor {
+    margin-bottom: 1rem;
+}
 .modal .image-grid {
     padding: 0;
     margin: 0 -0.25rem;
@@ -33,7 +36,7 @@
     }
 }
 .selected-images {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 
     .add-image {
         background-color: $lightgray;
@@ -49,6 +52,7 @@
     }
 
     .image {
+        margin-bottom: 0.5rem;
         .filename {
             position: absolute;
             bottom: 0;
@@ -72,6 +76,7 @@
             text-align: center;
             transition: .3s ease all;
             -webkit-transition: .3s ease all;
+            overflow: hidden;
 
             .delete-inner {
                 width: 2rem;
@@ -97,6 +102,59 @@
     }
 }
 
-.fa-6x {
-    font-size: 6rem;
+.title-wrapper {
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    input[type="text"] {
+        width: 80%;
+        font-size: 1.7rem;
+        line-height: 2rem;
+        padding: 0.15rem;
+        vertical-align: middle;
+
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &:-ms-input-placeholder {
+            line-height: 1.7rem;
+        }
+    }
+}
+.image-help-text {
+    margin-left: 0.5rem;
+
+    h3 {
+        margin-top: 0.5rem;
+    }
+}
+
+.permalink-wrapper {
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+
+    .permalink-title {
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+    p, div {
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+
+    input[type="text"] {
+        padding: 0.15rem 0;
+        font-size: 0.8rem;
+    }
+}
+
+.edit-post-form input[type="submit"] {
+    float: right;
+    margin: 0 0.5rem;
+}
+.save {
+    font-size: 1.2rem;
+    text-decoration: none !important;
+}
+.confirm-wrapper {
+    display: inline-block;
 }

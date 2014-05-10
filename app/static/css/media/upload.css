@@ -13,27 +13,7 @@
   height: 2.5rem;
 }
 
-/* Remove inline-block spacing */
-/* line 17 */
-.upload-form {
-  font-size: 0;
-}
-
-/* line 18 */
-.upload-form * {
-  font-size: 1rem;
-}
-
-/* line 20 */
-input[type="text"] {
-  margin: 0;
-  padding: 0;
-  line-height: 1rem;
-  min-width: 5rem;
-  padding: 0.57rem 0.2rem;
-}
-
-/* line 28 */
+/* line 16 */
 input[type="submit"] {
   display: block;
   margin-top: 1rem;

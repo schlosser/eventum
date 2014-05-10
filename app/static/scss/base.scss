@@ -10,11 +10,17 @@ h1, h2, h3, h4, h5, h6 {
     tt, code { font-size: inherit; }
 }
 
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.17em; }
-h5 { font-size: .83em; }
-h6 { font-size: .75em; }
+$h1: 2rem;
+$h2: 1.5rem;
+$h3: 1.17rem;
+$h4: 1rem;
+$h5: .83rem;
+$h6: 0.75rem;
+h1 { font-size: $h1; }
+h2 { font-size: $h2; }
+h3 { font-size: $h3; }
+h5 { font-size: $h5; }
+h6 { font-size: $h6; }
 
 pre code {
     margin: 0;
@@ -58,5 +64,6 @@ p {
 }
 
 a, a:hover {
+    text-decoration: none;
     color: inherit;
 }

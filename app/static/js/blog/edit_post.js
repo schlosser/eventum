@@ -165,6 +165,34 @@ $(function() {
         // Append the image to the list below the editor
         $('.selected-images').append(selectedImage(filename, url));
     });
+
+    /* Submit the form */
+    $(document).on('click', 'a[href="#save"]', function(e) {
+        e.preventDefault();
+        $('#save-post').click();
+    });
+
+    $(document).on('click', '.active a[href="#toggle"]', function(e) {
+        e.preventDefault();
+        $(this).parent().removeClass("active");
+        $('#published').prop('checked', false);
+    });
+
+    $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
+        e.preventDefault();
+        $(this).parent().addClass("active");
+        $('#published').prop('checked', true);
+    });
+
+    $(document).on('click', 'a[href="#open-confirm"]', function(e) {
+        e.preventDefault();
+        $(this).siblings('.confirm').removeClass('confirm-hidden');
+    });
+
+    $(document).on('click', '.confirm-cancel', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().addClass('confirm-hidden');
+    });
 });
 
 
