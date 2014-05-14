@@ -1,0 +1,56 @@
+{
+  "scss_base": {
+    "output": "css/base.css",
+    "inputs": [
+      "scss/base.scss"
+    ]
+  },
+  "scss_app": {
+    "output": "css/app.css",
+    "inputs": [
+      "scss/app.scss",
+      "scss/buttons.scss",
+      "scss/utils.scss",
+      "scss/forms.scss"
+    ]
+  },
+  "scss_auth_users": {
+    "output": "css/auth/users.css",
+    "inputs": [
+      "scss/auth/users.scss",
+      "scss/tables.scss"
+    ]
+  },
+  "scss_events_events": {
+    "output": "css/events/events.css",
+    "inputs": [
+      "scss/events/events.scss"
+    ]
+  },
+  "scss_blog_edit_post": {
+    "output": "css/blog/edit_post.css",
+    "inputs": [
+      "scss/blog/edit_post.scss",
+      "scss/modal.scss"
+    ]
+  },
+  "scss_blog_posts": {
+    "output": "css/blog/posts.css",
+    "inputs": [
+      "scss/blog/posts.scss",
+      "scss/tables.scss"
+    ]
+  },
+  "scss_media": {
+    "output": "css/media/index.css",
+    "inputs": [
+      "scss/media/index.scss"
+    ]
+  },
+  "scss_media_upload": {
+    "output": "css/media/upload.css",
+    "inputs": [
+      "scss/media/upload.scss"
+    ]
+  }
+}

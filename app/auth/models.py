@@ -84,6 +84,15 @@ class User(db.Document):
     def id_str(self):
         return str(self.id)
 
+    def role(self):
+        if self.can('admin'):
+            return "Admin"
+        if self.can('publish'):
+            return "Publisher"
+        if self.can('edit'):
+            return "Editor"
+        return "User"
+
     meta = {
         'allow_inheritance': True,
         'indexes': ['email']

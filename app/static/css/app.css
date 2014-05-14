@@ -72,16 +72,40 @@ nav a, nav a:hover {
 }
 
 /* line 76 */
+.flashes {
+  width: 90%;
+  margin: 0 auto;
+  color: white;
+  max-width: 100rem;
+  text-align: center;
+}
+/* line 83 */
+.flashes li {
+  padding: 0.5rem 0;
+  background-color: #43ac6a;
+  position: relative;
+}
+/* line 88 */
+.flashes li i {
+  position: absolute;
+  height: 1rem;
+  right: 0.5rem;
+  top: 50%;
+  margin-top: -0.5rem;
+}
+
+/* line 100 */
 .content {
   background-color: white;
   width: 90%;
+  position: relative;
   max-width: 100rem;
   margin: 0 auto;
   min-height: 100%;
   padding: 2rem 0 1rem;
 }
 
-/* line 85 */
+/* line 110 */
 .nav-item {
   overflow: hidden;
   width: 4rem;
@@ -93,11 +117,11 @@ nav a, nav a:hover {
   transition: .3s ease all;
   position: relative;
 }
-/* line 96 */
+/* line 121 */
 .nav-item.selected {
   background-color: #3878cc;
 }
-/* line 100 */
+/* line 125 */
 .nav-item .nav-icon {
   text-align: center;
   width: 4rem;
@@ -106,7 +130,7 @@ nav a, nav a:hover {
   display: inline-block;
   float: left;
 }
-/* line 108 */
+/* line 133 */
 .nav-item .nav-label {
   position: absolute;
   padding-left: 1rem;
@@ -120,7 +144,7 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 123 */
+/* line 148 */
 .toolbar {
   background-color: #3878cc;
   width: 90%;
@@ -128,7 +152,7 @@ nav a, nav a:hover {
   margin: 0 auto;
   color: white;
 }
-/* line 130 */
+/* line 155 */
 .toolbar .middle {
   display: inline;
   position: absolute;
@@ -137,89 +161,89 @@ nav a, nav a:hover {
   margin-left: -30%;
   text-align: center;
 }
-/* line 139 */
+/* line 164 */
 .toolbar .right {
   float: right;
 }
 
-/* line 149 */
+/* line 174 */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 150 */
+/* line 175 */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 152 */
+/* line 177 */
 .w-6:hover {
   width: 10rem;
 }
-/* line 153 */
+/* line 178 */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 155 */
+/* line 180 */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 156 */
+/* line 181 */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 158 */
+/* line 183 */
 .w-9:hover {
   width: 13rem;
 }
-/* line 159 */
+/* line 184 */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 161 */
+/* line 186 */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 166 */
-  .topbar, .content, .toolbar {
+  /* line 191 */
+  .topbar, .content, .toolbar, .flashes {
     width: 100%% !important;
   }
 }
 @media screen and (min-width: 90.063rem) {
-  /* line 172 */
+  /* line 197 */
   nav {
     width: 12rem;
   }
 
-  /* line 174 */
-  .topbar {
-    width: 100%% !important;
+  /* line 199 */
+  .topbar, .flashes {
+    width: 100% !important;
   }
 
-  /* line 176 */
+  /* line 201 */
   .main {
     margin-left: 12rem;
   }
 
-  /* line 178 */
+  /* line 203 */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 183 */
+  /* line 208 */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 187 */
+  /* line 212 */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 188 */
+  /* line 213 */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -261,7 +285,7 @@ input[type="submit"] {
   white-space: nowrap;
 }
 
-/* line 10 */
+/* line 17 */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -271,63 +295,64 @@ input[type="submit"] {
   clear: both;
 }
 
-/* line 18 */
+/* line 21 */
 .hidden {
   display: none;
 }
 
-/* line 22 */
+/* line 25 */
 .fa-6x {
   font-size: 6rem;
 }
 
-/* line 26 */
+/* line 29 */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 10, /Users/dan/working/eventum/app/static/scss/base.scss */
 body, html {
   width: 100%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
-/* line 7, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 17, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 10, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 20, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 19, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
 }
 
-/* line 20, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
   font-size: 1.17rem;
 }
 
-/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -336,7 +361,7 @@ pre code {
   background: transparent;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 35, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -347,7 +372,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 42, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 45, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -358,28 +383,33 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 52, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 55, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 58, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
+small {
+  font-size: 0.8rem;
+}
+
+/* line 61, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 59, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 62, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 62, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 66, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 69, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -395,7 +425,7 @@ a, a:hover {
   white-space: nowrap;
 }
 
-/* line 10, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 17, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -405,17 +435,17 @@ a, a:hover {
   clear: both;
 }
 
-/* line 18, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .hidden {
   display: none;
 }
 
-/* line 22, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .fa-6x {
   font-size: 6rem;
 }
 
-/* line 26, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
@@ -560,9 +590,9 @@ input[type="text"] {
 /* line 108 */
 .confirm {
   overflow: hidden;
-  width: 8.5rem;
+  width: 8rem;
   float: right;
-  height: 3rem;
+  height: 2.5rem;
   line-height: 2.5rem;
   display: inline-block;
   -webkit-transition: 0.3s ease all;

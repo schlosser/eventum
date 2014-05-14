@@ -1,45 +1,64 @@
-/* line 1, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 1 */
+.posts {
+  margin-top: -1rem;
+}
+/* line 3 */
+.posts .post-title {
+  width: 20%;
+}
+/* line 6 */
+.posts .post-author {
+  width: 27%;
+}
+/* line 9 */
+.posts .post-date {
+  text-align: center;
+  width: 18%;
+}
+
+/* line 10, /Users/dan/working/eventum/app/static/scss/base.scss */
 body, html {
   width: 100%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
-/* line 7, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 17, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 10, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 20, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 19, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
 }
 
-/* line 20, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
   font-size: 1.17rem;
 }
 
-/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -48,7 +67,7 @@ pre code {
   background: transparent;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 35, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -59,7 +78,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 42, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 45, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -70,149 +89,176 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 52, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 55, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 58, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
+small {
+  font-size: 0.8rem;
+}
+
+/* line 61, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 59, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 62, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 62, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 66, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 69, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;
 }
 
-/* line 3 */
-.posts .post {
-  border-top: 1px solid #e0e0e0;
-}
-/* line 6 */
-.posts .post:last-child {
-  border-bottom: 1px solid #e0e0e0;
-}
-
-/* line 11 */
-.confirm-wrapper, .toggle-wrapper {
-  display: inline-block;
-  float: right;
-}
-
-/* line 16 */
-.post {
-  padding-left: 0.5rem;
-  font-size: 0;
-  height: 2.5rem;
-  width: 100%;
-}
-/* line 22 */
-.post h3 {
-  font-size: 1.17rem;
-}
-/* line 25 */
-.post .confirm-prompt {
+/* line 1, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.text-width-calculation {
+  position: absolute;
   visibility: hidden;
-}
-/* line 28 */
-.post:hover {
-  background-color: #efefef;
-}
-/* line 30 */
-.post:hover .confirm-prompt {
-  visibility: visible;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
 }
 
-/* line 36 */
-.posts {
-  margin-top: -1rem;
+/* line 17, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+/* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.hidden {
+  display: none;
+}
+
+/* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.fa-6x {
+  font-size: 6rem;
+}
+
+/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.small {
+  font-size: 0.8rem !important;
+}
+
+/* line 7 */
+table {
   width: 100%;
   height: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
-/* line 38 */
-.posts th {
-  padding-bottom: 0.5rem;
+/* line 12 */
+table th {
+  font-weight: bold;
+  padding: 0.5rem 0;
 }
-/* line 44 */
-.posts .post-desc {
-  width: 55%;
+/* line 16 */
+table:not(.no-hover) tbody tr:hover {
+  background-color: #efefef;
+  cursor: pointer;
 }
-/* line 47 */
-.posts .post-title {
-  padding-left: 0.5rem;
+/* line 20 */
+table tbody tr {
+  border-top: 1px solid #e0e0e0;
+  font-size: 0;
+  /* Removes spacing between table cells */
+  height: 2.5rem;
+  width: 100%;
+  /* Restore font size from tr being set to 0 */
+}
+/* line 26 */
+table tbody tr:last-child {
+  border-bottom: 1px solid #e0e0e0;
+}
+/* line 28 */
+table tbody tr td {
   overflow: hidden;
-  width: 20%;
+  font-size: 16px;
+  position: relative;
   vertical-align: middle;
 }
-/* line 53 */
-.posts .post-snippet {
-  position: relative;
-  line-height: 1.25rem;
-  vertical-align: middle;
+/* line 33 */
+table tbody tr td:first-child {
+  padding-left: 0.5rem;
+}
+/* line 36 */
+table tbody tr td.right * {
+  float: right;
+}
+/* line 41 */
+table tbody tr td.overflowing-text {
   display: inline-block;
   width: 100%;
   height: 100%;
   min-height: 2.5rem;
   overflow: hidden;
 }
-/* line 62 */
-.posts .post-snippet .post-snippet-inner {
+/* line 48 */
+table tbody tr td.overflowing-text .text {
   position: absolute;
   top: 0;
   left: 0.5rem;
   right: 0.5rem;
 }
-/* line 69 */
-.posts .post-author {
-  width: 27%;
-  position: relative;
-}
-/* line 72 */
-.posts .post-author .post-author-name {
+/* line 57 */
+table tbody tr td.with-image p {
   margin-left: 3rem;
-  text-align: left;
-}
-/* line 75 */
-.posts .post-author .post-author-name p {
   display: inline-block;
 }
-/* line 79 */
-.posts .post-author .post-author-image {
+/* line 61 */
+table tbody tr td.with-image img {
   position: absolute;
   top: 50%;
   margin-top: -1.25rem;
   width: 2.5rem;
-  left: 0;
   height: 2.5rem;
-  background-size: 100% 100%;
-  background-position: center center;
+  left: 0;
 }
-/* line 90 */
-.posts .post-date {
-  text-align: center;
-  width: 18%;
+/* line 73 */
+table tbody tr h1 {
+  font-size: 2rem;
 }
-
-/* line 95 */
-.post > * {
-  font-size: 1rem;
-  vertical-align: middle;
+/* line 74 */
+table tbody tr h2 {
+  font-size: 1.5rem;
 }
-
-/* line 99 */
-.prompt {
-  padding: 0 0.5rem;
+/* line 75 */
+table tbody tr h3 {
+  font-size: 1.17rem;
+}
+/* line 76 */
+table tbody tr h5 {
+  font-size: 0.83rem;
+}
+/* line 77 */
+table tbody tr h6 {
+  font-size: 0.75rem;
+}
+/* line 78 */
+table tbody tr small {
+  font-size: 0.8rem;
+  line-height: 1.25rem;
+}
+/* line 84 */
+table + hr.inter-table {
+  margin: -1px 0 0 0;
+  height: 1rem;
+  border: none;
+  background-color: #efefef;
 }

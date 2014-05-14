@@ -1,6 +1,7 @@
 from flask import Flask
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
+import json
 
 db = MongoEngine()
 app = None
@@ -56,51 +57,21 @@ def register_blueprints():
 
 
 def register_scss():
+    """"""
     assets.url = app.static_url_path
-
     defaults = {
         'filters':'scss',
         'depends':'scss/_colors.scss'
     }
 
-    scss_base = Bundle('scss/base.scss',
-                       output='css/base.css',
-                       **defaults)
-    scss_app = Bundle('scss/app.scss',
-                      'scss/buttons.scss',
-                      'scss/utils.scss',
-                      'scss/forms.scss',
-                      output='css/app.css',
-                      **defaults)
-    scss_auth_users = Bundle('scss/auth/users.scss',
-                                 output='css/auth/users.css',
-                                 **defaults)
-    scss_events_events = Bundle('scss/events/events.scss',
-                                 output='css/events/events.css',
-                                 **defaults)
-    scss_blog_edit_post = Bundle('scss/blog/edit_post.scss', 'scss/modal.scss',
-                                 output='css/blog/edit_post.css',
-                                 **defaults)
-    scss_blog_posts = Bundle('scss/blog/posts.scss',
-                             output='css/blog/posts.css',
-                             **defaults)
-    scss_media = Bundle('scss/media/index.scss',
-                        output='css/media/index.css',
-                        **defaults)
-    scss_media_upload = Bundle('scss/media/upload.scss',
-                        output='css/media/upload.css',
-                        **defaults)
-
-    assets.register('scss_app', scss_app)
-    assets.register('scss_base', scss_base)
-    assets.register('scss_auth_users', scss_auth_users)
-    assets.register('scss_events_events', scss_events_events)
-    assets.register('scss_blog_edit_post', scss_blog_edit_post)
-    assets.register('scss_blog_posts', scss_blog_posts)
-    assets.register('scss_media', scss_media)
-    assets.register('scss_media_upload', scss_media_upload)
+    with open('config/scss.json') as f:
+        bundle_instructions = json.loads(f.read())
+        for bundle_name, instructions in bundle_instructions.iteritems():
+            bundle = Bundle(*instructions["inputs"],
+                            output=instructions["output"],
+                            **defaults)
+            assets.register(bundle_name, bundle)
 
 
 def run():
-
 	app.run(host='0.0.0.0', port=5000)

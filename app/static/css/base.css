@@ -1,45 +1,46 @@
-/* line 1 */
+/* line 10 */
 body, html {
   width: 100%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
-/* line 7 */
+/* line 17 */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 10 */
+/* line 20 */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 19 */
+/* line 22 */
 h1 {
   font-size: 2rem;
 }
 
-/* line 20 */
+/* line 23 */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 21 */
+/* line 24 */
 h3 {
   font-size: 1.17rem;
 }
 
-/* line 22 */
+/* line 25 */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 23 */
+/* line 26 */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 25 */
+/* line 28 */
 pre code {
   margin: 0;
   padding: 0;
@@ -48,7 +49,7 @@ pre code {
   background: transparent;
 }
 
-/* line 32 */
+/* line 35 */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -59,7 +60,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 42 */
+/* line 45 */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -70,28 +71,33 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 52 */
+/* line 55 */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 58 */
+/* line 60 */
+small {
+  font-size: 0.8rem;
+}
+
+/* line 61 */
 strong {
   font-weight: 700;
 }
 
-/* line 59 */
+/* line 62 */
 em {
   font-style: italic;
 }
 
-/* line 62 */
+/* line 65 */
 p {
   line-height: 1.3rem;
 }
 
-/* line 66 */
+/* line 69 */
 a, a:hover {
   text-decoration: none;
   color: inherit;

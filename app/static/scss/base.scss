@@ -1,7 +1,17 @@
+$rem: 16px;
+$h1: 2rem;
+$h2: 1.5rem;
+$h3: 1.17rem;
+$h4: 1rem;
+$h5: .83rem;
+$h6: 0.75rem;
+$small: 0.8rem;
+
 body, html {
     width: 100%;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
+    font-size: $rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -9,13 +19,6 @@ h1, h2, h3, h4, h5, h6 {
 
     tt, code { font-size: inherit; }
 }
-
-$h1: 2rem;
-$h2: 1.5rem;
-$h3: 1.17rem;
-$h4: 1rem;
-$h5: .83rem;
-$h6: 0.75rem;
 h1 { font-size: $h1; }
 h2 { font-size: $h2; }
 h3 { font-size: $h3; }
@@ -54,7 +57,7 @@ pre {
         border: none;
     }
 }
-
+small { font-size: $small; }
 strong { font-weight: 700; }
 em {
     font-style: italic;

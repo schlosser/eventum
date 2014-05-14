@@ -1,124 +1,46 @@
 @import '../colors';
-
-h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.whitelist {
-    border-bottom: 1px #eee solid;
-}
+@import '../tables';
 
 .whitelist-add-form {
     padding: 0 1rem 1rem ;
     ul {
         display: inline-block;
         margin-right: 0.5rem;
-        li {
-            display: inline-block;
-        }
-
+        li { display: inline-block; }
     }
     div {
-        margin-right: 0.5rem;
+        padding-right: 0.5rem;
         display: inline-block;
     }
 }
-
-$row-height: 2.5rem;
-.whitelist-item {
-    border-top: 1px #eee solid;
-    height: $row-height;
-
-    .form-component {
-        display: inline;
-    }
-
-    .whitelist-image-wrapper {
-        width: $row-height;
-        height: $row-height;
-        float:left;
-
-        img {
-            width: $row-height;
-            height: $row-height;
-        }
-    }
-
-    .whitelist-text-wrapper {
-        display: inline;
-        height: $row-height;
-    }
-
-    .whitelist-email {
-        line-height: $row-height;
-        display: inline-block;
-        margin-left: 1rem;
-    }
-
-    .whitelist-buttons {
-        float:right;
-        line-height: $row-height;
-
-        .whitelist-status {
-            line-height: $row-height;
-            display: inline-block;
-            margin-right: 1rem;
-        }
-
-        .whitelist-cancel {
-            background-color: #aaa;
-            color: white;
-
-            &:hover {
-                background-color: #ccc;
-            }
-        }
-
-        .whitelist-delete {
-            background-color: $red;
-            color: white;
-
-            &:hover {
-                background-color: $darkred;
-            }
-        }
-
-        .whitelist-confirm-wrapper {
-            overflow: hidden;
-            width: 8rem;
-            float:right;
-            height: $row-height;
-            display: inline-block;
-            -webkit-transition: .3s ease all;
-            transition: .3s ease all;
-        }
-        .whitelist-confirm {
-            float:right;
-            width: 8rem;
-            display: inline-block;
-            font-size:0;
-
-
-            input {
-                cursor: pointer;
-                border: 0;
-                margin: 0;
-                padding: 0.25rem;
-                text-align: center;
-                font-size: 0.8rem;
-                height: $row-height;
-                width: 4rem;
-            }
-        }
-    }
+.form-component {
+    display: inline;
 }
 
-
-.whitelist-hidden {
-    width: 0 !important;
+.whitelist {
+    margin-bottom: 1rem;
 }
 
-.clearfix {
-    clear: both;
+.actions {
+    // max-width: 16rem;
+    // width: 30%;
+}
+.role, .name {
+    width: 35%;
+    text-transform: capitalize;
+}
+
+td:first-child {
+    padding-left: 0 !important;
+}
+th {
+    text-align: left;
+}
+.with-image {
+    padding-left: ($table-padding + $row-height);
+}
+
+h2 {
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
 }

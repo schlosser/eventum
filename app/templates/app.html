@@ -57,7 +57,12 @@
         {% if messages %}
         <ul class="flashes">
         {% for message in messages %}
-            <li>{{ message }}</li>
+            <li>
+                <p>{{ message }}</p>
+                <a href="#dismiss-flash">
+                    <i class="fa fa-times"></i>
+                </a>
+            </li>
         {% endfor %}
         </ul>
         {% endif %}

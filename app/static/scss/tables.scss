@@ -1,0 +1,91 @@
+@import 'base';
+@import 'colors';
+@import 'utils';
+
+$table-padding: 0.5rem;
+$row-height: 2.5rem;
+table {
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    th {
+        font-weight: bold;
+        padding: $table-padding 0;
+    }
+    &:not(.no-hover) tbody tr:hover {
+        background-color: $offwhite;
+        cursor: pointer;
+    }
+    tbody tr {
+        border-top: 1px solid $lightgray;
+        font-size: 0; /* Removes spacing between table cells */
+        height: $row-height;
+        width: 100%;
+
+        &:last-child { border-bottom: 1px solid $lightgray; }
+
+        td {
+            overflow: hidden;
+            font-size: $rem;
+            position: relative;
+            vertical-align: middle;
+            &:first-child { padding-left: $table-padding; }
+
+            &.right {
+                * {
+                    float:right;
+                }
+
+            }
+            &.overflowing-text {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                min-height: $row-height;
+                overflow: hidden;
+
+                .text {
+                    position: absolute;
+                    top: 0;
+                    left: $table-padding;
+                    right: $table-padding;
+                }
+            }
+
+            &.with-image {
+                p {
+                    margin-left: ($row-height + $table-padding);
+                    display: inline-block;
+                }
+                img {
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -($row-height/2);
+                    width: $row-height;
+                    height: $row-height;
+                    left: 0;
+                }
+            }
+        }
+
+        /* Restore font size from tr being set to 0 */
+        h1 { font-size: $h1; }
+        h2 { font-size: $h2; }
+        h3 { font-size: $h3; }
+        h5 { font-size: $h5; }
+        h6 { font-size: $h6; }
+        small {
+            font-size: $small;
+            line-height: ($row-height/2);
+        }
+    }
+
+    & + hr.inter-table {
+        margin: -1px 0 0 0;
+        height: (2*$table-padding);
+        border: none;
+        background-color: $offwhite;
+    }
+}
+

@@ -7,12 +7,15 @@
     white-space: nowrap;
 }
 
-.clearfix:after {
+@mixin clearfix() {
     content: " "; /* Older browser do not support empty content */
     visibility: hidden;
     display: block;
     height: 0;
     clear: both;
+}
+.clearfix:after {
+    @include clearfix();
 }
 
 .hidden {

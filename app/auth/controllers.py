@@ -267,7 +267,8 @@ def users():
     return render_template('auth/users.html',
                            whitelist_form=whitelist_form,
                            whitelist=Whitelist.objects(),
-                           users=User.objects())
+                           users=User.objects(),
+                           current_user=g.user)
 
 
 @auth.route('/users/delete/<user_id>', methods=['POST'])
@@ -304,8 +305,10 @@ def whitelist_delete(email):
     """Delete `email` from the whitelist."""
     if Whitelist.objects(email=email).count() > 0:
         Whitelist.objects.get(email=email).delete()
-        return response_from_json('Whitelist item removed successfully.', 200)
-    return response_from_json('No such user on the whitelist.', 500)
+        flash("Whitelist entry revoked successfully.")
+        return redirect(url_for('.users'))
+    flash('No such user in the database.')
+    return redirect(url_for('.users'))
 
 
 @auth.route('/whitelist/add', methods=['POST'])

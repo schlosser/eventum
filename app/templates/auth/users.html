@@ -20,6 +20,8 @@
 {% set active_page='Users' %}
 
 {% block content %}
+{% if current_user.can("admin") %}
+<h2>Whitelist</h2>
 <form class="whitelist-add-form" method="POST" action="/whitelist/add">
     {{ whitelist_form.csrf_token }}
     {{ macros.render_field(whitelist_form.email, required="", placeholder="Email Address", autofocus="", label=False)}}
@@ -31,40 +33,53 @@
     {% endfor %}
     <input class="big" type="submit" value="Add">
 </form>
-
-<ul class="whitelist">
-{% for user in whitelist %}
-{% if not user.redeemed %}
-<li class="whitelist-item" data-email="{{ user.email }}">
-    <p class="whitelist-email">{{ user.email }}</p>
-    <div class="whitelist-buttons">
-        <div class="whitelist-confirm-wrapper whitelist-hidden">
-            <form class="whitelist-confirm" data-email="{{ user.email }}">
-                <input class="whitelist-cancel" value="Cancel" type="button" />
-                <input class="whitelist-delete" value="Confirm" type="submit" />
-            </form>
-        </div>
-        <p class="whitelist-status">Login Pending</p>
-        <a href="#" class="whitelist-status whitelist-remove">Revoke</a>
-    </div>
-    <span class="clearfix"></span>
-</li>
+<table class="whitelist no-hover">
+    <thead>
+        <th class="with-image">User Type</th>
+        <th>Email</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for user in whitelist %}
+        {% if not user.redeemed %}
+        <tr class="whitelist-item" data-email="{{ user.email }}">
+            <td class="role with-image">
+                <p>{{ user.user_type }}</p>
+            </td>
+            <td>
+                {{ user.email }}
+            </td>
+            <td class="actions right">
+                {{ macros.confirm("Revoke", "/whitelist/delete/" + user.email) }}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor%}
+    </tbody>
+</table>
+<h2>Users</h2>
 {% endif %}
-{% endfor%}
-
-{% for user in users %}
-<li class="whitelist-item" data-email="{{ user.email }}">
-    <span class="whitelist-image-wrapper">
-        <img src="{{ user.image_url }}">
-    </span>
-    <span class="whitelist-text-wrapper">
-        <p class="whitelist-email">{{ user.email }}</p>
-        <div class="whitelist-buttons">
-            {{ macros.confirm("Delete User", "/users/delete/" + user.id_str()) }}
-        </div>
-    </span>
-    <span class="clearfix"></span>
-</li>
-{% endfor %}
-</ul>
+<table class="users">
+    <thead>
+        <th class="with-image">Name</th>
+        <th>Email</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr class="user" data-email="{{ user.email }}">
+            <td class="name with-image">
+                <img src="{{ user.image_url }}">
+                <p>{{user.name}}</p>
+            </td>
+            <td>
+                <p class="whitelist-email">{{ user.email }}</p>
+            </td>
+            <td class="actions right">
+                {{ macros.confirm("Delete User", "/users/delete/" + user.id_str()) }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

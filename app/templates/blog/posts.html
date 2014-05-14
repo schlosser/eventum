@@ -29,40 +29,38 @@
 <table class="posts" >
     <thead>
         <tr>
-            <th class="post-title">Title</th>
-            <th class="post-snippet-t">Snippet</th>
-            <th class="post-author">Author</th>
-            <th class="post-date">Date</th>
+            <th>Title</th>
+            <th>Snippet</th>
+            <th>Author</th>
+            <th>Date</th>
         </tr>
     </thead>
     <tbody>
 {% for post in posts %}
-<tr class="post clearfix ">
-        <td class="post-title">
-            <a href="/blog/posts/edit/{{ post.id }}">
-                <p>{{post.title}}</p>
-            </a>
-        </td>
-        <td class="post-snippet small" height="100%">
-            <a href="/blog/posts/edit/{{ post.id }}">
-                <div class="post-snippet-inner">
-                    {{post.snippet(length=40, newlines=False, tags=False) | safe}}
-                </div>
-            </a>
-        </td>
-        <td class="post-author">
-            <a href="/blog/posts/edit/{{ post.id }}">
-                <img class="post-author-image" src="{{ post.author.image_url }}">
-                <div class="post-author-name">
-                    <p>{{ post.author.name }}</p>
-                </div>
-            </a>
-        </td>
-        <td class="post-date">
-            <a href="/blog/posts/edit/{{ post.id }}">
-                <p class="small">{{ post.pretty_date()}}</p>
-            </a>
-        </td>
+<tr class="post">
+    <td class="post-title">
+        <a href="/blog/posts/edit/{{ post.id }}">
+            <p>{{post.title}}</p>
+        </a>
+    </td>
+    <td class="post-snippet overflowing-text">
+        <a href="/blog/posts/edit/{{ post.id }}">
+            <small class="text">
+                {{post.snippet(length=40, newlines=False, tags=False) | safe}}
+            </small>
+        </a>
+    </td>
+    <td class="post-author with-image">
+        <a href="/blog/posts/edit/{{ post.id }}">
+            <img class="post-author-image" src="{{ post.author.image_url }}">
+                <p class="post-author-name">{{ post.author.name }}</p>
+        </a>
+    </td>
+    <td class="post-date">
+        <a href="/blog/posts/edit/{{ post.id }}">
+            <small>{{ post.pretty_date()}}</small>
+        </a>
+    </td>
 </tr>
 {% endfor %}
 </tbody>

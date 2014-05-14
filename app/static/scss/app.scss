@@ -73,9 +73,34 @@ nav {
     }
 }
 
+.flashes {
+    width: 90%;
+    margin: 0 auto;
+    color: $white;
+    max-width: 100rem;
+    text-align: center;
+
+    li {
+        padding: 0.5rem 0;
+        background-color: $green;
+        position: relative;
+
+        i {
+            position: absolute;
+            height: 1rem;
+            right: 0.5rem;
+            top: 50%;
+            margin-top: -0.5rem;
+        }
+    }
+
+
+}
+
 .content {
     background-color: $white;
     width: 90%;
+    position: relative;
     max-width: 100rem;
     margin: 0 auto;
     min-height: 100%;
@@ -163,7 +188,7 @@ $w-9: 9rem;
 }
 
 @media screen and (max-width: $phone-max) {
-    .topbar, .content, .toolbar {
+    .topbar, .content, .toolbar, .flashes {
         width: 100%% !important;
     }
 }
@@ -171,7 +196,7 @@ $w-9: 9rem;
 @media screen and (min-width: $xl-desktop-min) {
     nav { width: $nav-wide; }
 
-    .topbar { width: 100%% !important; }
+    .topbar, .flashes { width: 100% !important; }
 
     .main { margin-left: $nav-wide; }
 
