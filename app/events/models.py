@@ -164,18 +164,16 @@ class Event(db.Document):
             start_format = "%I:%M - " if self.end_time and \
                 self.start_time.strftime("%p")==self.end_time.strftime("%p") \
                 else "%I:%M %p - "
-            output += self.start_time.strftime(start_format) \
-                .lstrip("0").replace(":0", ":")
+            output += self.start_time.strftime(start_format).lstrip("0")
         else:
             output += "??:?? - "
         if self.end_date:
-            output += self.end_date.strftime("%a, %m/%d") \
+            output += self.end_date.strftime("%a, %m/%d ") \
                 .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
         if self.end_time:
-            output += self.start_time.strftime("%I:%M %p") \
-                .lstrip("0").replace(":0", ":")
+            output += self.start_time.strftime("%I:%M %p").lstrip("0")
         else:
             output += "??:??"
         return output

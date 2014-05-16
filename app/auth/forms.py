@@ -26,10 +26,23 @@ class CreateProfileForm(Form):
 
 class AddToWhitelistForm(Form):
     email = TextField('Email Address',
-                      [Email(
-                          message=EMAIL_ERROR), Required(message=EMAIL_ERROR),
+                      [Email(message=EMAIL_ERROR),
+                       Required(message=EMAIL_ERROR),
                        Unique()])
     user_type = RadioField('User Type',
                            [Required(message="Please select a user type.")],
                            choices=[("user", "User"), ('editor', "Editor"),
                                     ('publisher', "Publisher"), ('admin', "Admin")])
+
+class EditUserForm(Form):
+    """"""
+    name = TextField('Full Name', [Required("Please type a name")])
+    email = TextField('Email Address',
+                      [Email(message=EMAIL_ERROR),
+                       Required(message=EMAIL_ERROR)])
+    image_url = TextField('Image URL')
+    user_type = RadioField('User Type',
+                           [Required(message="Please select a user type.")],
+                           choices=[("user", "User"), ('editor', "Editor"),
+                                    ('publisher', "Publisher"), ('admin', "Admin")])
+

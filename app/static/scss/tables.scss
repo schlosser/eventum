@@ -1,6 +1,7 @@
 @import 'base';
 @import 'colors';
 @import 'utils';
+@import 'media_queries';
 
 $table-padding: 0.5rem;
 $row-height: 2.5rem;
@@ -13,7 +14,7 @@ table {
         font-weight: bold;
         padding: $table-padding 0;
     }
-    &:not(.no-hover) tbody tr:hover {
+    &.click tbody tr:hover {
         background-color: $offwhite;
         cursor: pointer;
     }
@@ -80,12 +81,22 @@ table {
             line-height: ($row-height/2);
         }
     }
-
-    & + hr.inter-table {
-        margin: -1px 0 0 0;
-        height: (2*$table-padding);
-        border: none;
-        background-color: $offwhite;
-    }
 }
 
+@media screen and (max-width: $phone-max) {
+    table thead {
+        display: none;
+    }
+    table tr td {
+        display: inline-block;
+        width: 100% !important;
+        padding-left: 0.5rem;
+        text-align: left;
+        height: 2.5rem;
+        line-height: 2.5rem;
+
+        p {
+            display: inline-block !important;
+        }
+    }
+}

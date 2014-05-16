@@ -13,6 +13,21 @@
 {% block title %}View Events{% endblock %}
 {% block pagetitle %}Events{% endblock %}
 
+{% if request.args.get('week') %}
+{% set week = request.args.get('week')|int %}
+{% else %}
+{% set week = 0 %}
+{% endif %}
+
+{% block barleft %}
+<a href="/events?week={{ week - 1 }}">
+    <i class="fa fa-chevron-left fa-2x"></i>
+</a>
+<a href="/events?week={{ week + 1 }}">
+    <i class="fa fa-chevron-right fa-2x"></i>
+</a>
+{% endblock %}
+
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/events/events.js') }}"></script>
@@ -31,7 +46,7 @@
         <h3>{{event.title}}</h3>
         <p>{{event.location}}</p>
         <p>{{ event.human_readable_datetime() }}</p>
-        <a href="/events/edit/{{ event.id }}">Edit event</a>
+        <p><a href="/events/edit/{{ event.id }}">Edit event</a></p>
         <form class="delete-event" method="POST" action="/events/delete/{{ event.id }}">
             <input type="submit" value="Delete Event">
         </form>
@@ -44,16 +59,16 @@
             method="POST">
             <input
                 {% if event.published %}
-                value="Unpublish Event"
+                value="Unpublish"
                 {% else %}
-                value="Publish Event"
+                value="Publish"
                 {% endif %}
                 type="submit">
         </form>
     </div>
     <div class="creator">
         <span class="image">
-            <img src="{{ event.creator.image_url }}">
+            <img src="{{ event.creator.get_profile_picture() }}">
         </span>
         <p class="name">{{ event.creator.name }}</p>
     </div>
@@ -68,7 +83,7 @@
 <div class="this-week">
     <div class="events-wrapper">
         <ul class="events clearfix"
-            style="width:{{ 16*(events|count) - 1 }}rem;">
+            style="width:{{ 16*(events.this_week|count) - 1 }}rem;">
         {% for event in events.this_week %}
         {{ render_event(event) }}
         {% endfor %}
@@ -77,8 +92,8 @@
 </div>
 <div class="next-week">
     <div class="events-wrapper">
-        <ul class="events"
-            style="width:{{ 16*(events|count) - 1 }}rem;">
+        <ul class="events clearfix"
+            style="width:{{ 16*(events.next_week|count) - 1 }}rem;">
         {% for event in events.next_week %}
         {{ render_event(event) }}
         {% endfor %}

@@ -4,6 +4,12 @@
 #epiceditor {
     margin-bottom: 1rem;
 }
+
+.title-wrapper {
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+
 .modal .image-grid {
     padding: 0;
     margin: 0 -0.25rem;
@@ -102,23 +108,6 @@
     }
 }
 
-.title-wrapper {
-    margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
-    input[type="text"] {
-        width: 80%;
-        font-size: 1.7rem;
-        line-height: 2rem;
-        padding: 0.15rem;
-        vertical-align: middle;
-
-        &::-webkit-input-placeholder,
-        &:-moz-placeholder,
-        &:-ms-input-placeholder {
-            line-height: 1.7rem;
-        }
-    }
-}
 .image-help-text {
     margin-left: 0.5rem;
 
@@ -150,10 +139,6 @@
 .edit-post-form input[type="submit"] {
     float: right;
     margin: 0 0.5rem;
-}
-.save {
-    font-size: 1.2rem;
-    text-decoration: none !important;
 }
 .confirm-wrapper {
     display: inline-block;

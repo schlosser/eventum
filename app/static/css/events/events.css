@@ -1,47 +1,54 @@
 /* line 5 */
 .events-wrapper {
-  padding: 2rem 0;
+  margin: 2rem 0;
   overflow-x: scroll;
 }
 /* line 9 */
 .events-wrapper .events {
-  padding: 1rem 0;
   background-color: #efefef;
   min-width: 100%;
+  margin: 0;
+  padding: 0;
 }
-/* line 14 */
+/* line 15 */
 .events-wrapper .events .event {
+  margin: 1rem 0;
   float: left;
   display: inline-block;
   width: 15rem;
   background-color: white;
 }
-/* line 19 */
+/* line 21 */
 .events-wrapper .events .event:not(:first-child) {
   margin-left: 1rem;
 }
-/* line 23 */
+/* line 25 */
 .events-wrapper .events .event .text-content {
   padding: 0.5rem;
 }
-/* line 27 */
+/* line 29 */
 .events-wrapper .events .event .creator {
   background-color: #e0e0e0;
 }
-/* line 30 */
+/* line 32 */
 .events-wrapper .events .event .creator .image {
   width: 3rem;
   height: 3rem;
   float: left;
 }
-/* line 35 */
+/* line 37 */
 .events-wrapper .events .event .creator .image img {
   width: 3rem;
   height: 3rem;
 }
-/* line 40 */
+/* line 42 */
 .events-wrapper .events .event .creator .name {
   line-height: 3rem;
   display: inline-block;
   margin-left: 1rem;
+}
+
+/* line 52 */
+form {
+  display: inline-block;
 }

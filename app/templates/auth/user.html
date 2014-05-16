@@ -1,0 +1,55 @@
+{% extends "app.html" %}
+{% import "macros.html" as macros %}
+
+{% set active_page = "Users" %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_auth_user" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}{{user.name}} | View User Data{% endblock %}
+{% block pagetitle %}{{user.name}}{% endblock %}
+
+{% block barleft %}
+<a href="/users">
+    <i class="fa fa-arrow-left fa-2x"></i>
+</a>
+{% endblock %}
+
+{% block barright %}
+    <a class="text-button" href="#save">Save</a>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/auth/user.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<form class="edit-user-form" action="" method="POST">
+    <div class="profile-picture">
+        <img src="{{ user.get_profile_picture(size=300) }}">
+    </div>
+    <div class="info">
+        <div class="title-wrapper">
+            {{ macros.render_field(form.name, required="", label=False,  placeholder="Name", autofocus="") }}
+        </div>
+        {{ macros.render_field(form.email, required="", label=False, placeholder="Email Address") }}
+        {% for subfield in form.user_type %}
+        <ul class="form-component">
+            <li>{{ subfield }}</li>
+            <li>{{ subfield.label }}</li>
+        </ul>
+        {% endfor %}
+        <div class="hidden">
+            {{ macros.render_field(form.csrf_token)}}
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+

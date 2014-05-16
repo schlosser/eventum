@@ -31,8 +31,9 @@ def lookup_current_user():
 @login_required
 def index():
     """"""
+    offset = int(request.args.get('week')) if request.args.get('week') else 0
     today_year, today_week, _ = datetime.now().isocalendar()
-    today_index = today_year*52 + today_week
+    today_index = today_year*52 + today_week + 2*offset
     events = {
         "this_week": [],
         "next_week": []
@@ -57,7 +58,7 @@ def create_event():
     if form.validate_on_submit():
         event = utils.create_event(form, creator=g.user)
         event.save()
-        return redirect(url_for('.events'))
+        return redirect(url_for('.index'))
     if form.errors:
         # print form.errors
         pass
@@ -75,7 +76,7 @@ def edit_event(event_id):
         if form.validate_on_submit():
             event = utils.create_event(form, event=event)
             event.save()
-            return redirect(url_for('.events'))
+            return redirect(url_for('.index'))
         flash("There was a validation error." + str(form.errors))
         return render_template('events/edit.html', form=form, event=event)
     form = utils.create_form(event, request)
@@ -93,7 +94,7 @@ def delete_event(event_id):
         flash('Invalid event id')
         # print "Invalid event id"
         pass
-    return redirect(url_for('.events'))
+    return redirect(url_for('.index'))
 
 
 def set_published_status(event_id, status):
@@ -114,7 +115,7 @@ def set_published_status(event_id, status):
         flash('Invalid event id')
         # print "Invalid event id"
         pass
-    return redirect(url_for('.events'))
+    return redirect(url_for('.index'))
 
 
 @events.route('/events/publish/<event_id>', methods=['POST'])

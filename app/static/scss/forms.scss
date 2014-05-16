@@ -10,12 +10,30 @@ form h2 { font-size: $h2; }
 form h3 { font-size: $h3; }
 form h5 { font-size: $h5; }
 form h6 { font-size: $h6; }
+form li { display: inline-block; }
+
 input[type="text"] {
     margin: 0;
     padding: 0;
     line-height: 1rem;
     min-width: 5rem;
     padding: 0.57rem 0.2rem;
+}
+
+.title-wrapper {
+    input[type="text"] {
+        width: 80%;
+        font-size: 1.7rem;
+        line-height: 2rem;
+        padding: 0.15rem;
+        vertical-align: middle;
+
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &:-ms-input-placeholder {
+            line-height: 1.7rem;
+        }
+    }
 }
 
 

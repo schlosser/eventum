@@ -1,3 +1,4 @@
+import re
 from app import db
 from datetime import datetime
 now = datetime.now
@@ -39,6 +40,10 @@ class User(db.Document):
     name = db.StringField(
         max_length=510, verbose_name="Full Name", required=True,
         help_text="Full name of the user (510 characters max)")
+    slug = db.StringField(
+        max_length=510, verbose_name="User ID slug", required=True,
+        help_text="A unique slug that can be used in urls in reference to"
+        "the user", regex='([a-z]|[A-Z]|[1-9]|-)*', unique=True)
     email = db.EmailField(
         required=True, verbose_name="Email Address", unique=True,
         help_text="Email address of the user")
@@ -69,6 +74,11 @@ class User(db.Document):
         print "user can %s: %s" % (privilege, self.privileges.get(privilege))
         return self.privileges.get(privilege)
 
+    def get_profile_picture(self, size=50):
+        if "googleusercontent.com" in self.image_url:
+            return self.image_url + str(size)
+        return self.image_url
+
     def register_login(self):
         """Update the model as having logged in"""
         self.last_logon = now()
@@ -80,6 +90,20 @@ class User(db.Document):
         # If undefined, update self.privileges with one of the USER_TYPES dictionaries
         if self.privileges == {}:
             self.privileges.update(USER_TYPES[self.user_type])
+
+        # Update the slug for the user (used in URLs)
+        new_slug = self.name.lower().replace(' ', '-')
+        new_slug = re.sub(r"\'|\.|\_|", "", new_slug)
+        if User.objects(slug=new_slug).count() > 0:
+            i = 2
+            new_slug = new_slug + "-%s" % i
+            while User.objects(slug=new_slug).count() > 0:
+                i += 1
+                new_slug = re.sub(r"-([0-9])*$", "-%s" % i, new_slug)
+        self.slug = new_slug
+
+        if "googleusercontent.com" in self.image_url:
+            self.image_url = re.sub(r"sz=([0-9]*)$", "sz=", self.image_url)
 
     def id_str(self):
         return str(self.id)

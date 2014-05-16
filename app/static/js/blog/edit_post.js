@@ -59,7 +59,7 @@ $(function() {
         }
         out += this.options.xhtml ? '/>' : '>';
         return out;
-    }
+    };
 
     // Marked options
     marked_custom.setOptions({
@@ -99,25 +99,7 @@ $(function() {
      * Note the use of `$(document).on()` to bind the click events.  This
      * ensures that even dynamically created elements will activate the
      * click handlers properly.
-     * =====================================================================*/
-
-    /* Open the modal */
-    $(document).on('click', 'a[href="#show-modal"]', function(e) {
-        e.preventDefault();
-        $('.opaque').removeClass("hidden");
-        $('body').addClass('modal-open');
-    });
-
-    /* Close the modal */
-    $(document).on('click', 'a[href="#close-modal"], .opaque', function(e) {
-        e.preventDefault();
-        $('.opaque').addClass("hidden");
-        $('body').removeClass('modal-open');
-    });
-
-    /* Make sure that clicking the modal itself doesn't propgate and trigger
-     * a click on the `.opaque` background */
-    $(document).on('click', '.modal', function(e) { e.stopPropagation(); });
+     * ==================================================================== */
 
     /* Remove an image from the associated images */
     $(document).on('click', 'a[href="#remove-image"]', function(e) {
@@ -153,7 +135,7 @@ $(function() {
         // Close the modal
         $('a[href="#close-modal"]').click();
 
-        // Add to record of filenames to replace on mardkown rendering
+        // Add to record of filenames to replace on markdown rendering
         images[filename] = url;
 
         // Remove the image from the list in the modal
@@ -172,27 +154,13 @@ $(function() {
         $('#save-post').click();
     });
 
+
+    /* Tie the published toggle to the form element */
     $(document).on('click', '.active a[href="#toggle"]', function(e) {
-        e.preventDefault();
-        $(this).parent().removeClass("active");
-        $('#published').prop('checked', false);
-    });
-
+        $('#published').prop('checked', false); });
     $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
-        e.preventDefault();
-        $(this).parent().addClass("active");
-        $('#published').prop('checked', true);
-    });
+        $('#published').prop('checked', true); });
 
-    $(document).on('click', 'a[href="#open-confirm"]', function(e) {
-        e.preventDefault();
-        $(this).siblings('.confirm').removeClass('confirm-hidden');
-    });
-
-    $(document).on('click', '.confirm-cancel', function(e) {
-        e.preventDefault();
-        $(this).parent().parent().addClass('confirm-hidden');
-    });
 });
 
 

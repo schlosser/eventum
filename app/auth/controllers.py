@@ -4,7 +4,7 @@ import httplib2
 from app import app
 from app.networking.responses import response_from_json
 from app.auth.models import User, Whitelist
-from app.auth.forms import CreateProfileForm, AddToWhitelistForm
+from app.auth.forms import CreateProfileForm, AddToWhitelistForm, EditUserForm
 from apiclient.discovery import build
 from mongoengine.queryset import DoesNotExist
 from flask import Blueprint, render_template, request, \
@@ -271,6 +271,33 @@ def users():
                            current_user=g.user)
 
 
+@auth.route('/user/<slug>', methods=['GET', 'POST'])
+@login_required
+def user(slug):
+    """"""
+    if User.objects(slug=slug).count() != 1:
+        flash("Invalid user slug '%s'" % slug)
+        abort(500)
+    user = User.objects().get(slug=slug)
+    form = EditUserForm(request.form,
+                        name=user.name,
+                        email=user.email,
+                        # image_url=user.get_profile_picture(),
+                        user_type=user.user_type)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user.name = form.name.data
+            user.email = form.email.data
+            user.user_type = form.user_type.data
+            # user.image_url = form.image_url.data
+            user.save()
+            return redirect(url_for('.users'))
+        else:
+            flash("Your Form had errors: %s" % (form.errors))
+
+    return render_template('auth/user.html', user=user, form=form)
+
+
 @auth.route('/users/delete/<user_id>', methods=['POST'])
 @login_required
 def users_delete(user_id):
@@ -389,3 +416,9 @@ def wipe():
 @development_only
 def view_session():
     return "<p>" + str(dict(session)) + "</p>"
+
+@auth.route('/users/save')
+def save_users():
+    for user in User.objects():
+        user.save()
+    return "hi"

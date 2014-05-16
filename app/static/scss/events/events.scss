@@ -3,15 +3,17 @@
 $event-width: 15rem;
 $creator-size: 3rem;
 .events-wrapper {
-    padding: 2rem 0;
+    margin: 2rem 0;
     overflow-x: scroll;
 
     .events {
-        padding: 1rem 0;
         background-color: $offwhite;
         min-width: 100%;
+        margin: 0;
+        padding: 0;
 
         .event {
+            margin: 1rem 0;
             float: left;
             display: inline-block;
             width: $event-width;
@@ -45,4 +47,8 @@ $creator-size: 3rem;
             }
         }
     }
+}
+
+form {
+    display: inline-block;
 }

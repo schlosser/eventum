@@ -169,7 +169,7 @@ table th {
   padding: 0.5rem 0;
 }
 /* line 16 */
-table:not(.no-hover) tbody tr:hover {
+table.click tbody tr:hover {
   background-color: #efefef;
   cursor: pointer;
 }
@@ -254,11 +254,4 @@ table tbody tr h6 {
 table tbody tr small {
   font-size: 0.8rem;
   line-height: 1.25rem;
-}
-/* line 84 */
-table + hr.inter-table {
-  margin: -1px 0 0 0;
-  height: 1rem;
-  border: none;
-  background-color: #efefef;
 }

@@ -52,7 +52,7 @@
     </td>
     <td class="post-author with-image">
         <a href="/blog/posts/edit/{{ post.id }}">
-            <img class="post-author-image" src="{{ post.author.image_url }}">
+            <img class="post-author-image" src="{{ post.author.get_profile_picture() }}">
                 <p class="post-author-name">{{ post.author.name }}</p>
         </a>
     </td>

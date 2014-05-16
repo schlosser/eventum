@@ -39,7 +39,10 @@ nav {
 
     .left {
         float:left;
-        margin-left: 1rem;
+        i {
+            margin-left: 1rem;
+
+        }
     }
     .middle {
         display: inline;
@@ -70,6 +73,11 @@ nav {
         &:hover {
             color: $offwhite;
         }
+    }
+
+    .text-button {
+        font-size: 1.2rem;
+        text-decoration: none !important;
     }
 }
 

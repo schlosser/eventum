@@ -1,0 +1,62 @@
+/* line 4 */
+.profile-picture {
+  display: inline-block;
+  width: 33%;
+  max-width: 300px;
+}
+/* line 8 */
+.profile-picture img {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+/* line 15 */
+.edit-user-form {
+  padding: 0 0.5rem;
+}
+
+/* line 19 */
+.info {
+  display: inline-block;
+  width: 66%;
+  vertical-align: top;
+}
+/* line 24 */
+.info .form-component {
+  margin: 0 0.5rem;
+}
+/* line 28 */
+.info input[type="text"] {
+  margin: 0 0 0.5rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* line 34 */
+.info .title-wrapper input {
+  width: 100%;
+}
+/* line 37 */
+.info #email {
+  width: 75%;
+  height: 2rem;
+}
+
+@media screen and (max-width: 40rem) {
+  /* line 44 */
+  .info, .profile-picture {
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* line 51 */
+  .profile-picture {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+}

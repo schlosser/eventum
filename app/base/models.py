@@ -25,7 +25,7 @@ class Post(db.Document):
         required=True, verbose_name="Markdown Content",
         help_text="The HTML content of the post")
     slug = db.StringField(
-        required=True, verbose_name="Post Slug", regex='([a-z]|[1-9]|-)*',
+        required=True, verbose_name="Post Slug", regex='([a-z]|[A-Z]|[1-9]|-)*',
         help_text="Name of post for use in the url (i.e. my-cool-post)")
     categories = db.ListField(
         db.StringField(

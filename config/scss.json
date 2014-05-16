@@ -18,7 +18,8 @@
     "output": "css/auth/users.css",
     "inputs": [
       "scss/auth/users.scss",
-      "scss/tables.scss"
+      "scss/tables.scss",
+      "scss/modal.scss"
     ]
   },
   "scss_events_events": {
@@ -52,5 +53,12 @@
     "inputs": [
       "scss/media/upload.scss"
     ]
+  },
+  "scss_auth_user": {
+    "output": "css/auth/user.css",
+    "inputs": [
+      "scss/auth/user.scss"
+    ]
   }
+
 }
