@@ -295,7 +295,8 @@ def user(slug):
         else:
             flash("Your Form had errors: %s" % (form.errors))
 
-    return render_template('auth/user.html', user=user, form=form)
+    return render_template('auth/user.html', user=user, form=form,
+                           current_user=g.user)
 
 
 @auth.route('/users/delete/<user_id>', methods=['POST'])

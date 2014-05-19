@@ -27,24 +27,28 @@
   margin: 0 0.5rem;
 }
 /* line 28 */
+.info p, .info h2 {
+  margin: 0 0.5rem 0.5rem;
+}
+/* line 32 */
 .info input[type="text"] {
   margin: 0 0 0.5rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-/* line 34 */
+/* line 38 */
 .info .title-wrapper input {
   width: 100%;
 }
-/* line 37 */
+/* line 41 */
 .info #email {
   width: 75%;
   height: 2rem;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 44 */
+  /* line 48 */
   .info, .profile-picture {
     display: block;
     box-sizing: border-box;
@@ -53,7 +57,7 @@
     width: 100%;
   }
 
-  /* line 51 */
+  /* line 55 */
   .profile-picture {
     margin: 0 auto;
     text-align: center;

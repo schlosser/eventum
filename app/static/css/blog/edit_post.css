@@ -80,12 +80,18 @@
   margin-bottom: 1rem;
 }
 
-/* line 7 */
+/* line 8 */
+.title-wrapper {
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+/* line 13 */
 .modal .image-grid {
   padding: 0;
   margin: 0 -0.25rem;
 }
-/* line 11 */
+/* line 17 */
 .modal .image-grid .select {
   position: absolute;
   top: 0.25rem;
@@ -95,7 +101,7 @@
   display: none;
   text-align: center;
 }
-/* line 20 */
+/* line 26 */
 .modal .image-grid .select i {
   height: 6rem;
   position: absolute;
@@ -105,22 +111,22 @@
   color: white;
   width: 100%;
 }
-/* line 32 */
+/* line 38 */
 .modal .image-grid .image:hover .select {
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 38 */
+/* line 44 */
 .selected-images {
   padding: 0.5rem 0;
 }
-/* line 41 */
+/* line 47 */
 .selected-images .add-image {
   background-color: #e0e0e0;
   position: relative;
 }
-/* line 44 */
+/* line 50 */
 .selected-images .add-image i {
   height: 6rem;
   margin-top: -3rem;
@@ -128,11 +134,11 @@
   top: 50%;
   text-align: center;
 }
-/* line 54 */
+/* line 60 */
 .selected-images .image {
   margin-bottom: 0.5rem;
 }
-/* line 56 */
+/* line 62 */
 .selected-images .image .filename {
   position: absolute;
   bottom: 0;
@@ -144,7 +150,7 @@
   text-align: center;
   word-wrap: break-word;
 }
-/* line 68 */
+/* line 74 */
 .selected-images .image .delete {
   position: absolute;
   top: 0;
@@ -158,22 +164,22 @@
   -webkit-transition: .3s ease all;
   overflow: hidden;
 }
-/* line 81 */
+/* line 87 */
 .selected-images .image .delete .delete-inner {
   width: 2rem;
   height: 2rem;
   display: block;
 }
-/* line 85 */
+/* line 91 */
 .selected-images .image .delete .delete-inner i {
   width: 2rem;
   margin: 0 !important;
 }
-/* line 91 */
+/* line 97 */
 .selected-images .image:hover .delete {
   width: 2rem;
 }
-/* line 95 */
+/* line 101 */
 .selected-images .image:not(:first-child) i {
   margin-left: 0.5rem;
   top: 0;
@@ -182,50 +188,44 @@
   right: 0;
 }
 
-/* line 105 */
+/* line 111 */
 .image-help-text {
   margin-left: 0.5rem;
 }
-/* line 108 */
+/* line 114 */
 .image-help-text h3 {
   margin-top: 0.5rem;
 }
 
-/* line 113 */
+/* line 119 */
 .permalink-wrapper {
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
 }
-/* line 117 */
+/* line 123 */
 .permalink-wrapper .permalink-title {
   font-weight: 700;
   font-size: 0.8rem;
   display: inline-block;
 }
-/* line 122 */
+/* line 128 */
 .permalink-wrapper p, .permalink-wrapper div {
   font-size: 0.8rem;
   display: inline-block;
 }
-/* line 127 */
+/* line 133 */
 .permalink-wrapper input[type="text"] {
   padding: 0.15rem 0;
   font-size: 0.8rem;
 }
 
-/* line 133 */
+/* line 139 */
 .edit-post-form input[type="submit"] {
   float: right;
   margin: 0 0.5rem;
 }
 
-/* line 137 */
-.save {
-  font-size: 1.2rem;
-  text-decoration: none !important;
-}
-
-/* line 141 */
+/* line 143 */
 .confirm-wrapper {
   display: inline-block;
 }
@@ -305,8 +305,13 @@ nav a, nav a:hover {
 .topbar a:hover {
   color: #efefef;
 }
+/* line 78, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .text-button {
+  font-size: 1.2rem;
+  text-decoration: none !important;
+}
 
-/* line 79, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 84, /Users/dan/working/eventum/app/static/scss/app.scss */
 .flashes {
   width: 90%;
   margin: 0 auto;
@@ -314,13 +319,13 @@ nav a, nav a:hover {
   max-width: 100rem;
   text-align: center;
 }
-/* line 86, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 91, /Users/dan/working/eventum/app/static/scss/app.scss */
 .flashes li {
   padding: 0.5rem 0;
   background-color: #43ac6a;
   position: relative;
 }
-/* line 91, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 96, /Users/dan/working/eventum/app/static/scss/app.scss */
 .flashes li i {
   position: absolute;
   height: 1rem;
@@ -329,7 +334,7 @@ nav a, nav a:hover {
   margin-top: -0.5rem;
 }
 
-/* line 103, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 108, /Users/dan/working/eventum/app/static/scss/app.scss */
 .content {
   background-color: white;
   width: 90%;
@@ -340,7 +345,7 @@ nav a, nav a:hover {
   padding: 2rem 0 1rem;
 }
 
-/* line 113, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 118, /Users/dan/working/eventum/app/static/scss/app.scss */
 .nav-item {
   overflow: hidden;
   width: 4rem;
@@ -352,11 +357,11 @@ nav a, nav a:hover {
   transition: .3s ease all;
   position: relative;
 }
-/* line 124, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 129, /Users/dan/working/eventum/app/static/scss/app.scss */
 .nav-item.selected {
   background-color: #3878cc;
 }
-/* line 128, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 133, /Users/dan/working/eventum/app/static/scss/app.scss */
 .nav-item .nav-icon {
   text-align: center;
   width: 4rem;
@@ -365,7 +370,7 @@ nav a, nav a:hover {
   display: inline-block;
   float: left;
 }
-/* line 136, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 141, /Users/dan/working/eventum/app/static/scss/app.scss */
 .nav-item .nav-label {
   position: absolute;
   padding-left: 1rem;
@@ -379,7 +384,7 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 151, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 156, /Users/dan/working/eventum/app/static/scss/app.scss */
 .toolbar {
   background-color: #3878cc;
   width: 90%;
@@ -387,7 +392,7 @@ nav a, nav a:hover {
   margin: 0 auto;
   color: white;
 }
-/* line 158, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 163, /Users/dan/working/eventum/app/static/scss/app.scss */
 .toolbar .middle {
   display: inline;
   position: absolute;
@@ -396,89 +401,89 @@ nav a, nav a:hover {
   margin-left: -30%;
   text-align: center;
 }
-/* line 167, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 172, /Users/dan/working/eventum/app/static/scss/app.scss */
 .toolbar .right {
   float: right;
 }
 
-/* line 177, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 182, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 178, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 183, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 180, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 185, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 181, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 186, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 183, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 188, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 184, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 189, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 186, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 191, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 187, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 192, /Users/dan/working/eventum/app/static/scss/app.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 189, /Users/dan/working/eventum/app/static/scss/app.scss */
+/* line 194, /Users/dan/working/eventum/app/static/scss/app.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 194, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 199, /Users/dan/working/eventum/app/static/scss/app.scss */
   .topbar, .content, .toolbar, .flashes {
     width: 100%% !important;
   }
 }
 @media screen and (min-width: 90.063rem) {
-  /* line 200, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 205, /Users/dan/working/eventum/app/static/scss/app.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 202, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 207, /Users/dan/working/eventum/app/static/scss/app.scss */
   .topbar, .flashes {
     width: 100% !important;
   }
 
-  /* line 204, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 209, /Users/dan/working/eventum/app/static/scss/app.scss */
   .main {
     margin-left: 12rem;
   }
 
-  /* line 206, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 211, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 211, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 216, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 215, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 220, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 216, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 221, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }

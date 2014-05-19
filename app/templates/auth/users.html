@@ -14,9 +14,11 @@
 {% set active_page='Users' %}
 
 {% block barright %}
+{% if current_user.can('admin') %}
 <a title="Add to the Whitelist" href="#show-modal">
     <i class="fa fa-plus fa-2x"></i>
 </a>
+{% endif %}
 {% endblock %}
 
 {% block main %}
@@ -73,7 +75,7 @@
     <thead>
         <th class="with-image">Name</th>
         <th>Email</th>
-        <th></th>
+        <th>User Type</th>
     </thead>
     <tbody>
         {% for user in users %}
@@ -86,9 +88,7 @@
             <td>
                 <p class="whitelist-email">{{ user.email }}</p>
             </td>
-            <td class="actions right">
-                {{ macros.confirm("Delete User", "/users/delete/" + user.id_str()) }}
-            </td>
+            <td>{{user.user_type}}</td>
         </tr>
         {% endfor %}
     </tbody>

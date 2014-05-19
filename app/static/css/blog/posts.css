@@ -40,12 +40,12 @@ h1 {
 
 /* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 /* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
-  font-size: 1.17rem;
+  font-size: 1.3rem;
 }
 
 /* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
@@ -156,24 +156,24 @@ a, a:hover {
   font-size: 0.8rem !important;
 }
 
-/* line 7 */
+/* line 8 */
 table {
   width: 100%;
   height: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
-/* line 12 */
+/* line 13 */
 table th {
   font-weight: bold;
   padding: 0.5rem 0;
 }
-/* line 16 */
+/* line 17 */
 table.click tbody tr:hover {
   background-color: #efefef;
   cursor: pointer;
 }
-/* line 20 */
+/* line 21 */
 table tbody tr {
   border-top: 1px solid #e0e0e0;
   font-size: 0;
@@ -182,26 +182,26 @@ table tbody tr {
   width: 100%;
   /* Restore font size from tr being set to 0 */
 }
-/* line 26 */
+/* line 27 */
 table tbody tr:last-child {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 28 */
+/* line 29 */
 table tbody tr td {
   overflow: hidden;
   font-size: 16px;
   position: relative;
   vertical-align: middle;
 }
-/* line 33 */
+/* line 34 */
 table tbody tr td:first-child {
   padding-left: 0.5rem;
 }
-/* line 36 */
+/* line 37 */
 table tbody tr td.right * {
   float: right;
 }
-/* line 41 */
+/* line 42 */
 table tbody tr td.overflowing-text {
   display: inline-block;
   width: 100%;
@@ -209,19 +209,19 @@ table tbody tr td.overflowing-text {
   min-height: 2.5rem;
   overflow: hidden;
 }
-/* line 48 */
+/* line 49 */
 table tbody tr td.overflowing-text .text {
   position: absolute;
   top: 0;
   left: 0.5rem;
   right: 0.5rem;
 }
-/* line 57 */
+/* line 58 */
 table tbody tr td.with-image p {
   margin-left: 3rem;
   display: inline-block;
 }
-/* line 61 */
+/* line 62 */
 table tbody tr td.with-image img {
   position: absolute;
   top: 50%;
@@ -230,28 +230,49 @@ table tbody tr td.with-image img {
   height: 2.5rem;
   left: 0;
 }
-/* line 73 */
+/* line 74 */
 table tbody tr h1 {
   font-size: 2rem;
 }
-/* line 74 */
-table tbody tr h2 {
-  font-size: 1.5rem;
-}
 /* line 75 */
-table tbody tr h3 {
-  font-size: 1.17rem;
+table tbody tr h2 {
+  font-size: 1.7rem;
 }
 /* line 76 */
+table tbody tr h3 {
+  font-size: 1.3rem;
+}
+/* line 77 */
 table tbody tr h5 {
   font-size: 0.83rem;
 }
-/* line 77 */
+/* line 78 */
 table tbody tr h6 {
   font-size: 0.75rem;
 }
-/* line 78 */
+/* line 79 */
 table tbody tr small {
   font-size: 0.8rem;
   line-height: 1.25rem;
+}
+
+@media screen and (max-width: 40rem) {
+  /* line 87 */
+  table thead {
+    display: none;
+  }
+
+  /* line 90 */
+  table tr td {
+    display: inline-block;
+    width: 100% !important;
+    padding-left: 0.5rem;
+    text-align: left;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+  /* line 98 */
+  table tr td p {
+    display: inline-block !important;
+  }
 }
