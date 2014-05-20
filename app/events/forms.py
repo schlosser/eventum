@@ -15,7 +15,7 @@ class TimeField(Field):
     widget = TimeInput()
     error_msg = 'Not a valid time.'
 
-    def __init__(self, label=None, validators=None, format='%H:%M', **kwargs):
+    def __init__(self, label=None, validators=None, format='%I:%M%p', **kwargs):
         super(TimeField, self).__init__(label, validators, **kwargs)
         self.format = format
 
@@ -30,7 +30,7 @@ class TimeField(Field):
             time_str = ' '.join(valuelist)
             try:
                 self.data = datetime.time(
-                    *time.strptime(time_str, self.format)[3:5]
+                    *time.strptime(time_str.lower(), self.format)[3:5]
                 )
             except ValueError:
                 self.data = None
@@ -42,9 +42,9 @@ class CreateEventForm(Form):
     title = TextField('Title', [
         Required(message="Please provide an event title.")])
     location = TextField('Location')
-    start_date = DateField('Start date', [Optional()])
+    start_date = DateField('Start date', [Optional()], format='%m/%d/%Y')
     start_time = TimeField('Start time', [Optional()])
-    end_date = DateField('End date', [Optional()])
+    end_date = DateField('End date', [Optional()], format='%m/%d/%Y')
     end_time = TimeField('End time', [Optional()])
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')

@@ -1,5 +1,6 @@
 @import '../colors';
 @import '../media/image_grid';
+@import '../app';
 
 #epiceditor {
     margin-bottom: 1rem;
@@ -7,7 +8,10 @@
 
 .title-wrapper {
     margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
+}
+
+.content {
+    padding-bottom: ($content-padding - $image-padding) !important;
 }
 
 .modal .image-grid {
@@ -42,7 +46,7 @@
     }
 }
 .selected-images {
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0;
 
     .add-image {
         background-color: $lightgray;
@@ -109,8 +113,6 @@
 }
 
 .image-help-text {
-    margin-left: 0.5rem;
-
     h3 {
         margin-top: 0.5rem;
     }
@@ -118,7 +120,6 @@
 
 .permalink-wrapper {
     margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
 
     .permalink-title {
         font-weight: 700;

@@ -1,7 +1,7 @@
 /* line 10, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
 .image-grid {
-  padding: 0 0.25rem;
   width: 100%;
+  overflow: hidden;
 }
 /* line 14, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
 .image-grid .image {
@@ -24,7 +24,7 @@
 }
 
 /* line 34, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-.image-grid.small .image {
+.image-grid.small-grid .image {
   width: 4rem;
   border-bottom: 4rem;
 }
@@ -44,7 +44,7 @@
   }
 
   /* line 49, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image-grid.small .image {
+  .image-grid.small-grid .image {
     width: 16.666% !important;
     padding-bottom: 16.666% !important;
   }
@@ -57,7 +57,7 @@
   }
 
   /* line 58, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image-grid.small .image {
+  .image-grid.small-grid .image {
     width: 25% !important;
     padding-bottom: 25% !important;
   }
@@ -70,7 +70,7 @@
   }
 
   /* line 67, /Users/dan/working/eventum/app/static/scss/media/image_grid.scss */
-  .image-grid.small .image {
+  .image-grid.small-grid .image {
     width: 33.333% !important;
     padding-bottom: 33.333% !important;
   }

@@ -8,47 +8,41 @@
 .profile-picture img {
   width: 100%;
   max-width: 300px;
-  margin-bottom: 1rem;
 }
 
-/* line 15 */
-.edit-user-form {
-  padding: 0 0.5rem;
-}
-
-/* line 19 */
+/* line 14 */
 .info {
   display: inline-block;
   width: 66%;
   vertical-align: top;
 }
-/* line 24 */
-.info .form-component {
-  margin: 0 0.5rem;
+/* line 18 */
+.info > .inner {
+  padding-left: 0.75rem;
 }
-/* line 28 */
+/* line 22 */
 .info p, .info h2 {
   margin: 0 0.5rem 0.5rem;
 }
-/* line 32 */
+/* line 26 */
 .info input[type="text"] {
   margin: 0 0 0.5rem;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-/* line 38 */
+/* line 32 */
 .info .title-wrapper input {
   width: 100%;
 }
-/* line 41 */
+/* line 35 */
 .info #email {
   width: 75%;
   height: 2rem;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 48 */
+  /* line 42 */
   .info, .profile-picture {
     display: block;
     box-sizing: border-box;
@@ -56,11 +50,19 @@
     -moz-box-sizing: border-box;
     width: 100%;
   }
+  /* line 49 */
+  .info > .inner, .profile-picture > .inner {
+    padding-left: 0;
+  }
 
-  /* line 55 */
+  /* line 53 */
   .profile-picture {
     margin: 0 auto;
     text-align: center;
     padding: 0 0.5rem;
+  }
+  /* line 58 */
+  .profile-picture img {
+    margin-bottom: 1rem;
   }
 }

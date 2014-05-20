@@ -8,9 +8,9 @@ $wide-6: 16.666%;
 
 $image-padding: 0.25rem;
 .image-grid {
-    padding: 0 $image-padding;
-
     width: 100%;
+    overflow: hidden;
+
     .image {
         width: $wide-6;
         padding-bottom: $wide-6;
@@ -31,7 +31,7 @@ $image-padding: 0.25rem;
     }
 }
 
-.image-grid.small .image {
+.image-grid.small-grid .image {
     width: 4rem;
     border-bottom: 4rem;
 }
@@ -46,7 +46,7 @@ $image-padding: 0.25rem;
     .image-grid .image {
         width: $wide-4 !important;
         padding-bottom: $wide-4 !important; }
-    .image-grid.small .image {
+    .image-grid.small-grid .image {
         width: $wide-6 !important;
         padding-bottom: $wide-6 !important; }
 }
@@ -55,7 +55,7 @@ $image-padding: 0.25rem;
     .image-grid .image {
         width: $wide-3 !important;
         padding-bottom: $wide-3 !important; }
-    .image-grid.small .image {
+    .image-grid.small-grid .image {
         width: $wide-4 !important;
         padding-bottom: $wide-4 !important; }
 }
@@ -64,7 +64,7 @@ $image-padding: 0.25rem;
     .image-grid .image {
         width: $wide-2 !important;
         padding-bottom: $wide-2 !important; }
-    .image-grid.small .image {
+    .image-grid.small-grid .image {
         width: $wide-3 !important;
         padding-bottom: $wide-3 !important; }
 }

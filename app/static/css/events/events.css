@@ -3,14 +3,32 @@
   margin: 2rem 0;
   overflow-x: scroll;
 }
-/* line 9 */
+/* line 10 */
 .events-wrapper .events {
   background-color: #efefef;
   min-width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 15 */
+/* line 16 */
+.events-wrapper .events .no-events {
+  margin: 1rem 0;
+  float: left;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  height: 7rem;
+  position: relative;
+}
+/* line 24 */
+.events-wrapper .events .no-events p {
+  position: absolute;
+  height: 2rem;
+  top: 50%;
+  width: 100%;
+  margin-top: -1rem;
+}
+/* line 33 */
 .events-wrapper .events .event {
   margin: 1rem 0;
   float: left;
@@ -18,37 +36,37 @@
   width: 15rem;
   background-color: white;
 }
-/* line 21 */
+/* line 39 */
 .events-wrapper .events .event:not(:first-child) {
   margin-left: 1rem;
 }
-/* line 25 */
+/* line 43 */
 .events-wrapper .events .event .text-content {
   padding: 0.5rem;
 }
-/* line 29 */
+/* line 47 */
 .events-wrapper .events .event .creator {
   background-color: #e0e0e0;
 }
-/* line 32 */
+/* line 50 */
 .events-wrapper .events .event .creator .image {
   width: 3rem;
   height: 3rem;
   float: left;
 }
-/* line 37 */
+/* line 55 */
 .events-wrapper .events .event .creator .image img {
   width: 3rem;
   height: 3rem;
 }
-/* line 42 */
+/* line 60 */
 .events-wrapper .events .event .creator .name {
   line-height: 3rem;
   display: inline-block;
   margin-left: 1rem;
 }
 
-/* line 52 */
+/* line 70 */
 form {
   display: inline-block;
 }

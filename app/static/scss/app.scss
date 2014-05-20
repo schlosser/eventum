@@ -6,6 +6,9 @@ $nav-item-width: 4rem;
 $nav-item-height: 3.5rem;
 $nav-label-width: 8rem;
 $nav-wide: 12rem;
+$content-padding: 1rem;
+$content-padding-small: 0.5rem;
+
 nav {
     z-index:1;
     width: $nav-item-width;
@@ -25,15 +28,18 @@ nav {
     min-height: 100%;
     margin-left: $nav-item-width;
     background-color: $offwhite;
+
+    & > .inner {
+        width: 90%;
+        max-width: 100rem;
+        margin: 0 auto;
+    }
 }
 
 .topbar {
     background-color: $blue;
     color: $white;
     position: relative;
-    width: 90%;
-    max-width: 100rem;
-    margin: 0 auto;
     height: $topbar-height;
     line-height: $topbar-height;
 
@@ -82,10 +88,7 @@ nav {
 }
 
 .flashes {
-    width: 90%;
-    margin: 0 auto;
     color: $white;
-    max-width: 100rem;
     text-align: center;
 
     li {
@@ -101,18 +104,18 @@ nav {
             margin-top: -0.5rem;
         }
     }
-
-
 }
 
 .content {
     background-color: $white;
-    width: 90%;
     position: relative;
-    max-width: 100rem;
-    margin: 0 auto;
     min-height: 100%;
-    padding: 2rem 0 1rem;
+    padding: $content-padding;
+
+        .full-width {
+        margin: 0 (-1 * $content-padding);
+        width: auto;
+    }
 }
 
 .nav-item {
@@ -155,9 +158,6 @@ nav {
 
 .toolbar {
     background-color: $blue;
-    width: 90%;
-    max-width: 100rem;
-    margin: 0 auto;
     color: $white;
 
     .middle {
@@ -196,15 +196,15 @@ $w-9: 9rem;
 }
 
 @media screen and (max-width: $phone-max) {
-    .topbar, .content, .toolbar, .flashes {
-        width: 100%% !important;
+    .main > .inner {
+        width: 100% !important;
     }
 }
 
 @media screen and (min-width: $xl-desktop-min) {
     nav { width: $nav-wide; }
 
-    .topbar, .flashes { width: 100% !important; }
+    .main > .inner { width: 100% !important; }
 
     .main { margin-left: $nav-wide; }
 

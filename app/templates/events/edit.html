@@ -1,6 +1,7 @@
 {% extends "events/create.html" %}
 
 {% block title %}Edit {{ event.title }}{% endblock %}
+{% block pagetitle %}Edit {{ event.title }}{% endblock %}
 
 {% block action %}
 action="/events/edit/{{event.id}}"

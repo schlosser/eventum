@@ -36,6 +36,20 @@ input[type="text"] {
     }
 }
 
+.with-icon {
+    & > i {
+        position: absolute;
+        width: 2rem;
+        height: 2.5rem;
+        text-align: center;
+        line-height: 2.5rem;
+
+    }
+
+    & > div {
+        margin-left: 2.5rem;
+    }
+}
 
 $toggle-speed: 0.3s;
 

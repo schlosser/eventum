@@ -6,11 +6,29 @@ $creator-size: 3rem;
     margin: 2rem 0;
     overflow-x: scroll;
 
+
     .events {
         background-color: $offwhite;
         min-width: 100%;
         margin: 0;
         padding: 0;
+
+        .no-events {
+            margin: 1rem 0;
+            float: left;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            height: 7rem;
+            position: relative;
+            p {
+                position: absolute;
+                height: 2rem;
+                top: 50%;
+                width: 100%;
+                margin-top: -1rem;
+            }
+        }
 
         .event {
             margin: 1rem 0;

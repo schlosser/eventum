@@ -44,53 +44,57 @@
 {% if current_user.can("admin") %}
 <h2>Whitelist</h2>
 <small>Only emails on this whitelist can be used to make an account.</small>
-<table class="whitelist">
-    <thead>
-        <th class="with-image">User Type</th>
-        <th>Email</th>
-        <th></th>
-    </thead>
-    <tbody>
-        {% for user in whitelist %}
-        {% if not user.redeemed %}
-        <tr class="whitelist-item" data-email="{{ user.email }}">
-            <td class="role with-image">
-                <p>{{ user.user_type }}</p>
-            </td>
-            <td>
-                {{ user.email }}
-            </td>
-            <td class="actions right">
-                {{ macros.confirm("Revoke", "/whitelist/delete/" + user.email) }}
-            </td>
-        </tr>
-        {% endif %}
-        {% endfor%}
-    </tbody>
-</table>
+<div class="full-width">
+    <table class="whitelist">
+        <thead>
+            <th class="user-type with-image">User Type</th>
+            <th class="email" >Email</th>
+            <th class="actions"></th>
+        </thead>
+        <tbody>
+            {% for user in whitelist %}
+            {% if not user.redeemed %}
+            <tr class="whitelist-item" data-email="{{ user.email }}">
+                <td class="role with-image">
+                    <p>{{ user.user_type }}</p>
+                </td>
+                <td class="email">
+                    <p>{{ user.email }}</p>
+                </td>
+                <td class="actions right">
+                    {{ macros.confirm("Revoke", "/whitelist/delete/" + user.email) }}
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
 <h2>Users</h2>
 <small>Currently registered users</small>
 {% endif %}
-<table class="users click">
-    <thead>
-        <th class="with-image">Name</th>
-        <th>Email</th>
-        <th>User Type</th>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr class="user" data-email="{{ user.email }}">
-            <td class="name with-image">
-                <a class="tr-link" href="/user/{{ user.slug }}"></a>
-                <img src="{{ user.get_profile_picture() }}">
-                <p>{{user.name}}</p>
-            </td>
-            <td>
-                <p class="whitelist-email">{{ user.email }}</p>
-            </td>
-            <td>{{user.user_type}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="full-width">
+    <table class="users click">
+        <thead>
+            <th class="with-image">Name</th>
+            <th>Email</th>
+            <th>User Type</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr class="user" data-email="{{ user.email }}">
+                <td class="name with-image">
+                    <a class="tr-link" href="/user/{{ user.slug }}"></a>
+                    <img src="{{ user.get_profile_picture() }}">
+                    <p>{{user.name}}</p>
+                </td>
+                <td class="email">
+                    <p class="whitelist-email">{{ user.email }}</p>
+                </td>
+                <td class="user-type">{{user.user_type}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

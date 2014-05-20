@@ -80,23 +80,35 @@
 {% endblock %}
 
 {% block content %}
-<div class="this-week">
+<div class="this-week full-width">
     <div class="events-wrapper">
         <ul class="events clearfix"
             style="width:{{ 16*(events.this_week|count) - 1 }}rem;">
-        {% for event in events.this_week %}
-        {{ render_event(event) }}
-        {% endfor %}
+        {% if events.this_week %}
+            {% for event in events.this_week %}
+            {{ render_event(event) }}
+            {% endfor %}
+        {% else %}
+            <li class="no-events">
+                <p>No events this week</p>
+            </li>
+        {% endif %}
         </ul>
     </div>
 </div>
-<div class="next-week">
+<div class="next-week full-width">
     <div class="events-wrapper">
         <ul class="events clearfix"
             style="width:{{ 16*(events.next_week|count) - 1 }}rem;">
-        {% for event in events.next_week %}
-        {{ render_event(event) }}
-        {% endfor %}
+        {% if events.next_week %}
+            {% for event in events.next_week %}
+            {{ render_event(event) }}
+            {% endfor %}
+        {% else %}
+            <li class="no-events">
+                <p>No events for this week.</p>
+            </li>
+        {% endif %}
         </ul>
     </div>
 </div>

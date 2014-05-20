@@ -28,6 +28,12 @@
       "scss/events/events.scss"
     ]
   },
+  "scss_events_create": {
+    "output": "css/events/create.css",
+    "inputs": [
+      "scss/events/create.scss"
+    ]
+  },
   "scss_blog_edit_post": {
     "output": "css/blog/edit_post.css",
     "inputs": [
@@ -59,6 +65,12 @@
     "inputs": [
       "scss/auth/user.scss"
     ]
+  },
+  "scss_datetime_datetime": {
+    "output": "css/datetime/datetime.css",
+    "inputs": [
+      "scss/datetime/bootstrap-datepicker.scss",
+      "scss/datetime/jquery.timepicker.scss"
+    ]
   }
-
 }

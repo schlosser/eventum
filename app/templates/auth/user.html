@@ -43,28 +43,30 @@
     <img src="{{ user.get_profile_picture(size=300) }}">
 </div>
 <div class="info">
-    {% if current_user.can('admin') %}
-    <form class="edit-user-form" action="" method="POST">
-        <div class="title-wrapper">
-            {{ macros.render_field(form.name, required="", label=False,  placeholder="Name", autofocus="") }}
-        </div>
-        {{ macros.render_field(form.email, required="", label=False, placeholder="Email Address") }}
-        {% for subfield in form.user_type %}
-        <ul class="form-component">
-            <li>{{ subfield }}</li>
-            <li>{{ subfield.label }}</li>
-        </ul>
-        {% endfor %}
-        <div class="hidden">
-            {{ macros.render_field(form.csrf_token)}}
-            <input type="submit" value="Submit">
-        </div>
-    </form>
-    {% else %}
-        <h2>{{ user.name }}</h2>
-        <p>{{user.email}}</p>
-        <p>{{user.user_type}} </p>
-    {% endif %}
+    <div class="inner">
+        {% if current_user.can('admin') %}
+        <form class="edit-user-form" action="" method="POST">
+            <div class="title-wrapper">
+                {{ macros.render_field(form.name, required="", label=False,  placeholder="Name", autofocus="") }}
+            </div>
+            {{ macros.render_field(form.email, required="", label=False, placeholder="Email Address") }}
+            {% for subfield in form.user_type %}
+            <ul class="form-component">
+                <li>{{ subfield }}</li>
+                <li>{{ subfield.label }}</li>
+            </ul>
+            {% endfor %}
+            <div class="hidden">
+                {{ macros.render_field(form.csrf_token)}}
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        {% else %}
+            <h2>{{ user.name }}</h2>
+            <p>{{user.email}}</p>
+            <p>{{user.user_type}} </p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 

@@ -1,16 +1,16 @@
-{% macro render_field(field, label=True, placeholder=None, hidden=None) %}
+{% macro render_field(field, label=False, placeholder=None, hidden=None) %}
 {% if field.errors %}
-<div class="form-component error">
+<div class="form-component {{ wrapper_class }} error">
     {% for error in field.errors %}
     <p>{{ error }}</p>
     {% endfor %}
 {% elif field.flags.error %}
-<div class="form-component flag">
+<div class="form-component {{ wrapper_class }} flag">
     {{ field.flags.error }}
 {% elif hidden %}
-<div class="form-component hidden">
+<div class="form-component {{ wrapper_class }} hidden">
 {% else%}
-<div class="form-component">
+<div class="form-component {{ wrapper_class }}">
 {% endif %}
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
     {% if label %}{{ field.label }}{% endif %}

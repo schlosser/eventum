@@ -1,0 +1,38 @@
+/* line 1 */
+form > div {
+  margin-bottom: .5rem;
+}
+
+/* line 5 */
+.location {
+  width: 60%;
+}
+
+/* line 10 */
+.datetime input[type="text"] {
+  text-align: left;
+}
+/* line 13 */
+.datetime input[type="text"].time {
+  width: 5rem;
+}
+/* line 16 */
+.datetime input[type="text"].date {
+  width: 8rem;
+}
+/* line 20 */
+.datetime div {
+  display: inline-block;
+}
+
+/* line 25 */
+.descriptions textarea {
+  width: 100%;
+  min-height: 5rem;
+  box-sizing: border-box;
+}
+
+/* line 31 */
+.ui-timepicker-wrapper {
+  width: 5.5rem;
+}

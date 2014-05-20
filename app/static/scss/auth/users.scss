@@ -2,7 +2,6 @@
 @import '../tables';
 
 .whitelist-add-form {
-    padding: 0.5rem ;
     ul {
         display: inline-block;
         margin-right: 0.5rem;
@@ -29,6 +28,12 @@
     width: 35%;
     text-transform: capitalize;
 }
+.email {
+    width: 40%;
+}
+.user-type, .actions {
+    width: 25%;
+}
 
 td:first-child {
     padding-left: 0 !important;
@@ -41,9 +46,6 @@ th {
 }
 
 small {
-    margin-left: 0.5rem;
+    display: block;
     margin-bottom: 0.5rem;
-}
-h2 {
-    margin-left: 0.5rem;
 }

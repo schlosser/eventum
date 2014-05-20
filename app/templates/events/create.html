@@ -3,6 +3,9 @@
 
 {% block css %}
 {{ super() }}
+{% assets "scss_datetime_datetime" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
 {% assets "scss_events_create" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
@@ -19,24 +22,63 @@
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/events/create.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/datetime/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/datetime/jquery.timepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/datetime/jquery.datepair.min.js') }}"></script>
+{% endblock %}
+
+{% block bodyJs %}
+<script>
+    // initialize input widgets first
+    $('.datetime .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('.datetime .date').datepicker({
+        'format': 'm/d/yyyy',
+        'todayHighlight': true,
+        'autoclose': true
+    });
+    $('.datetime .date').datepicker('setDates', new Date());
+
+    // initialize datepair
+    $('.datetime').datepair();
+</script>
 {% endblock %}
 
 {% block content %}
-
 <form class="create-event-form"
     {% block action %}
     action="/events/create"
     {% endblock %}
     method="POST">
     {{ form.csrf_token }}
-    {{ macros.render_field(form.title, placeholder="Title", autofocus="") }}
-    {{ macros.render_field(form.location, placeholder="Location") }}
-    {{ macros.render_field(form.start_date, type="date") }}
-    {{ macros.render_field(form.start_time) }}
-    {{ macros.render_field(form.end_date, type="date") }}
-    {{ macros.render_field(form.end_time) }}
-    {{ macros.render_field(form.short_description, placeholder="Short Description") }}
-    {{ macros.render_field(form.long_description, placeholder="Long Description") }}
+    <div class="title-wrapper">
+        {{ macros.render_field(form.title, placeholder="Event Title", autofocus="") }}
+    </div>
+    <div class="with-icon">
+        <i class="fa fa-map-marker fa-2x"></i>
+        {{ macros.render_field(form.location, placeholder="Location", class="location") }}
+    </div>
+    <div class="with-icon">
+        <i class="fa fa-calendar fa-2x"></i>
+        <div class="datetime input-daterange">
+            <div class="start-wrapper">
+                {{ macros.render_field(form.start_date, class="start date") }}
+                {{ macros.render_field(form.start_time, type="text", class="start time") }}
+            </div>
+            <span>to</span>
+            <div class="end-wrapper">
+                {{ macros.render_field(form.end_date, class="end date") }}
+                {{ macros.render_field(form.end_time, type="text", class="end time") }}
+            </div>
+        </div>
+    </div>
+    <div class="descriptions">
+        {{ macros.render_field(form.short_description, placeholder="Short Description") }}
+        {{ macros.render_field(form.long_description, placeholder="Long Description") }}
+    </div>
 
     <input class="create-event-submit" type="submit" value="Add">
 </form>

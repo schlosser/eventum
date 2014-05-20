@@ -1,4 +1,4 @@
-/* line 9 */
+/* line 12 */
 nav {
   z-index: 1;
   width: 4rem;
@@ -9,39 +9,42 @@ nav {
   background-color: #333333;
   color: white;
 }
-/* line 19 */
+/* line 22 */
 nav a, nav a:hover {
   color: white;
   text-decoration: none;
 }
 
-/* line 24 */
+/* line 27 */
 .main {
   min-height: 100%;
   margin-left: 4rem;
   background-color: #efefef;
 }
+/* line 32 */
+.main > .inner {
+  width: 90%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
 
-/* line 30 */
+/* line 39 */
 .topbar {
   background-color: #3878cc;
   color: white;
   position: relative;
-  width: 90%;
-  max-width: 100rem;
-  margin: 0 auto;
   height: 3.5rem;
   line-height: 3.5rem;
 }
-/* line 40 */
+/* line 46 */
 .topbar .left {
   float: left;
 }
-/* line 42 */
+/* line 48 */
 .topbar .left i {
   margin-left: 1rem;
 }
-/* line 47 */
+/* line 53 */
 .topbar .middle {
   display: inline;
   position: absolute;
@@ -50,50 +53,47 @@ nav a, nav a:hover {
   margin-left: -30%;
   text-align: center;
 }
-/* line 55 */
+/* line 61 */
 .topbar .middle .page-title {
   display: inline;
   width: auto;
   line-height: 3.5rem;
 }
-/* line 61 */
+/* line 67 */
 .topbar .right {
   float: right;
   margin-right: 1rem;
 }
-/* line 66 */
+/* line 72 */
 .topbar i {
   line-height: 3.5rem;
 }
-/* line 70 */
+/* line 76 */
 .topbar a {
   color: white;
 }
-/* line 73 */
+/* line 79 */
 .topbar a:hover {
   color: #efefef;
 }
-/* line 78 */
+/* line 84 */
 .topbar .text-button {
   font-size: 1.2rem;
   text-decoration: none !important;
 }
 
-/* line 84 */
+/* line 90 */
 .flashes {
-  width: 90%;
-  margin: 0 auto;
   color: white;
-  max-width: 100rem;
   text-align: center;
 }
-/* line 91 */
+/* line 94 */
 .flashes li {
   padding: 0.5rem 0;
   background-color: #43ac6a;
   position: relative;
 }
-/* line 96 */
+/* line 99 */
 .flashes li i {
   position: absolute;
   height: 1rem;
@@ -102,18 +102,20 @@ nav a, nav a:hover {
   margin-top: -0.5rem;
 }
 
-/* line 108 */
+/* line 109 */
 .content {
   background-color: white;
-  width: 90%;
   position: relative;
-  max-width: 100rem;
-  margin: 0 auto;
   min-height: 100%;
-  padding: 2rem 0 1rem;
+  padding: 1rem;
+}
+/* line 115 */
+.content .full-width {
+  margin: 0 -1rem;
+  width: auto;
 }
 
-/* line 118 */
+/* line 121 */
 .nav-item {
   overflow: hidden;
   width: 4rem;
@@ -125,11 +127,11 @@ nav a, nav a:hover {
   transition: .3s ease all;
   position: relative;
 }
-/* line 129 */
+/* line 132 */
 .nav-item.selected {
   background-color: #3878cc;
 }
-/* line 133 */
+/* line 136 */
 .nav-item .nav-icon {
   text-align: center;
   width: 4rem;
@@ -138,7 +140,7 @@ nav a, nav a:hover {
   display: inline-block;
   float: left;
 }
-/* line 141 */
+/* line 144 */
 .nav-item .nav-label {
   position: absolute;
   padding-left: 1rem;
@@ -152,12 +154,9 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 156 */
+/* line 159 */
 .toolbar {
   background-color: #3878cc;
-  width: 90%;
-  max-width: 100rem;
-  margin: 0 auto;
   color: white;
 }
 /* line 163 */
@@ -217,8 +216,8 @@ nav a, nav a:hover {
 
 @media screen and (max-width: 40rem) {
   /* line 199 */
-  .topbar, .content, .toolbar, .flashes {
-    width: 100%% !important;
+  .main > .inner {
+    width: 100% !important;
   }
 }
 @media screen and (min-width: 90.063rem) {
@@ -228,7 +227,7 @@ nav a, nav a:hover {
   }
 
   /* line 207 */
-  .topbar, .flashes {
+  .main > .inner {
     width: 100% !important;
   }
 
@@ -338,29 +337,32 @@ h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, 
 /* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
-}
-
-/* line 23, /Users/dan/working/eventum/app/static/scss/base.scss */
-h2 {
-  font-size: 1.7rem;
+  line-height: 2.4rem;
 }
 
 /* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
-h3 {
-  font-size: 1.3rem;
+h2 {
+  font-size: 1.7rem;
+  line-height: 2.1rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
+h3 {
+  font-size: 1.3rem;
+  line-height: 1.7rem;
+}
+
+/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 29, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -369,7 +371,7 @@ pre code {
   background: transparent;
 }
 
-/* line 35, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 38, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -380,7 +382,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 48, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -391,33 +393,33 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 55, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 58, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 63, /Users/dan/working/eventum/app/static/scss/base.scss */
 small {
   font-size: 0.8rem;
 }
 
-/* line 61, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 62, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 68, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 72, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -521,7 +523,20 @@ input[type="text"] {
   line-height: 1.7rem;
 }
 
-/* line 42 */
+/* line 40 */
+.with-icon > i {
+  position: absolute;
+  width: 2rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+}
+/* line 49 */
+.with-icon > div {
+  margin-left: 2.5rem;
+}
+
+/* line 56 */
 .toggle-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -530,7 +545,7 @@ input[type="text"] {
   overflow: hidden;
   position: relative;
 }
-/* line 49 */
+/* line 63 */
 .toggle-wrapper .label {
   width: 2.5rem;
   position: absolute;
@@ -543,36 +558,36 @@ input[type="text"] {
   background-color: #333333;
   color: white;
 }
-/* line 61 */
+/* line 75 */
 .toggle-wrapper .label, .toggle-wrapper .label i {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 67 */
+/* line 81 */
 .toggle-wrapper .on {
   background-color: #43ac6a;
   left: 0;
   right: 8rem;
 }
-/* line 71 */
+/* line 85 */
 .toggle-wrapper .on .inner {
   position: absolute;
   width: 8rem;
   left: 0;
 }
-/* line 77 */
+/* line 91 */
 .toggle-wrapper .off {
   background-color: #d9534f;
   left: 2rem;
   right: 0;
 }
-/* line 82 */
+/* line 96 */
 .toggle-wrapper .off .inner {
   position: absolute;
   width: 8rem;
   right: 0;
 }
-/* line 88 */
+/* line 102 */
 .toggle-wrapper .on, .toggle-wrapper .off {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
@@ -584,12 +599,12 @@ input[type="text"] {
   text-align: center;
   display: inline-block;
 }
-/* line 100 */
+/* line 114 */
 .toggle-wrapper.active .label {
   top: 0;
   left: 8rem;
 }
-/* line 103 */
+/* line 117 */
 .toggle-wrapper.active .label i {
   -webkit-transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -597,23 +612,23 @@ input[type="text"] {
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-/* line 111 */
+/* line 125 */
 .toggle-wrapper.active .on {
   right: 2rem;
 }
-/* line 114 */
+/* line 128 */
 .toggle-wrapper.active .off {
   left: 8rem;
 }
 
-/* line 121 */
+/* line 135 */
 .confirm-wrapper {
   height: 2.5rem;
   line-height: 2.5rem;
   vertical-align: middle;
 }
 
-/* line 126 */
+/* line 140 */
 .confirm {
   overflow: hidden;
   width: 8rem;
@@ -625,19 +640,19 @@ input[type="text"] {
   transition: 0.3s ease all;
 }
 
-/* line 136 */
+/* line 150 */
 .confirm-hidden {
   width: 0 !important;
 }
 
-/* line 139 */
+/* line 153 */
 .confirm-prompt {
   line-height: 2.5rem;
   height: 2.5rem;
   padding: 0 0.5rem;
 }
 
-/* line 144 */
+/* line 158 */
 .confirm-form {
   line-height: 2.5rem;
   height: 2.5rem;
@@ -646,7 +661,7 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 153 */
+/* line 167 */
 .confirm-form input {
   cursor: pointer;
   border: 0;
@@ -657,7 +672,7 @@ input[type="text"] {
   height: 2.5rem;
   width: 4rem;
 }
-/* line 163 */
+/* line 177 */
 .confirm-form input.confirm-confirm {
   background-color: #d9534f;
 }

@@ -26,7 +26,8 @@
 
 {% block content %}
 {% if posts %}
-<table class="posts" >
+<div class="full-width">
+<table class="posts click">
     <thead>
         <tr>
             <th>Title</th>
@@ -39,32 +40,26 @@
 {% for post in posts %}
 <tr class="post">
     <td class="post-title">
-        <a href="/blog/posts/edit/{{ post.id }}">
+        <a class="tr-link" href="/blog/posts/edit/{{ post.id }}"></a>
             <p>{{post.title}}</p>
-        </a>
     </td>
     <td class="post-snippet overflowing-text">
-        <a href="/blog/posts/edit/{{ post.id }}">
-            <small class="text">
-                {{post.snippet(length=40, newlines=False, tags=False) | safe}}
-            </small>
-        </a>
+        <small class="text">
+            {{post.snippet(length=40, newlines=False, tags=False) | safe}}
+        </small>
     </td>
     <td class="post-author with-image">
-        <a href="/blog/posts/edit/{{ post.id }}">
-            <img class="post-author-image" src="{{ post.author.get_profile_picture() }}">
-                <p class="post-author-name">{{ post.author.name }}</p>
-        </a>
+        <img class="post-author-image" src="{{ post.author.get_profile_picture() }}">
+        <p class="post-author-name">{{ post.author.name }}</p>
     </td>
     <td class="post-date">
-        <a href="/blog/posts/edit/{{ post.id }}">
-            <small>{{ post.pretty_date()}}</small>
-        </a>
+        <small>{{ post.pretty_date()}}</small>
     </td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
+</div>
 {% else %}
 <p style="text-align: center;">No posts!</p>
 {% endif %}

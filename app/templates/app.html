@@ -33,48 +33,48 @@
 </nav>
 <div class="main">
     {% block main %}
+    <div class="inner">
+        {% block topbar %}
+        <div class="topbar">
+            <span class="left">
+                {% block barleft %}{% endblock %}
+            </span>
+            <span class="middle">
+                {% block barmiddle %}
+                <h1 class="page-title">
+                {% block pagetitle %}Title{% endblock %}
+                </h1>
+                {% endblock %}
+            </span>
+            <span class="right">
+                {% block barright %}{% endblock %}
+            </span>
+        </div>
+        {% endblock %}
 
-    {% block topbar %}
-    <div class="topbar">
-        <span class="left">
-            {% block barleft %}{% endblock %}
-        </span>
-        <span class="middle">
-            {% block barmiddle %}
-            <h1 class="page-title">
-            {% block pagetitle %}Title{% endblock %}
-            </h1>
-            {% endblock %}
-        </span>
-        <span class="right">
-            {% block barright %}{% endblock %}
-        </span>
+        {% block flashes %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+                <li>
+                    <p>{{ message }}</p>
+                    <a href="#dismiss-flash">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% endblock %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="toolbar clearfix">
+            {% block toolbar %}{% endblock %}
+        </div>
+        {% endblock main %}
     </div>
-    {% endblock %}
-
-    {% block flashes %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="flashes">
-        {% for message in messages %}
-            <li>
-                <p>{{ message }}</p>
-                <a href="#dismiss-flash">
-                    <i class="fa fa-times"></i>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-    {% endblock %}
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
-    <div class="toolbar clearfix">
-        {% block toolbar %}{% endblock %}
-    </div>
-
-    {% endblock main %}
 </div>
 {% endblock %}

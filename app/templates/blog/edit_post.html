@@ -78,12 +78,12 @@
     </div>
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
     {{ macros.render_field(form.images, hidden="hidden")}}
-    <div id="epiceditor"></div>
+    <div class="full-width" id="epiceditor"></div>
     <div class="image-help-text">
         <h3>Add Images</h3>
         <p class="small">Images can be reference by name in markdown once they have been added here.</p>
     </div>
-    <ul class="image-grid small selected-images clearfix">
+    <ul class="full-width image-grid small-grid selected-images clearfix">
         <a href="#show-modal">
             <li class="image add-image">
                 <i class="fa fa-plus fa-6x"></i>

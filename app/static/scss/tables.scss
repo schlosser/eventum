@@ -27,6 +27,7 @@ table {
         &:last-child { border-bottom: 1px solid $lightgray; }
 
         td {
+            width:33%;
             overflow: hidden;
             font-size: $rem;
             position: relative;

@@ -8,21 +8,15 @@
     img {
         width: 100%;
         max-width: 300px;
-        margin-bottom: 1rem;
     }
-}
-
-.edit-user-form {
-    padding: 0 0.5rem;
 }
 
 .info {
     display: inline-block;
     width: 66%;
     vertical-align: top;
-
-    .form-component {
-        margin: 0 0.5rem;
+    & > .inner {
+        padding-left: 0.75rem;
     }
 
     p, h2 {
@@ -51,10 +45,18 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         width: 100%;
+
+        & > .inner {
+            padding-left: 0;
+        }
     }
     .profile-picture {
         margin: 0 auto;
         text-align: center;
         padding: 0 0.5rem;
+
+        img {
+            margin-bottom: 1rem;
+        }
     }
 }
