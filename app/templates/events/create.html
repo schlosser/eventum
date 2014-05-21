@@ -15,8 +15,13 @@
 {% block title %}Create a New Event{% endblock %}
 {% block pagetitle %}New Event{% endblock %}
 {% set active_page = "Events" %}
+
 {% block barleft %}
 <a href="/events"><i class="fa fa-arrow-left fa-2x"></i></a>
+{% endblock %}
+
+{% block barright %}
+<a class="text-button" href="#save">Save</a>
 {% endblock %}
 
 {% block js %}
@@ -47,6 +52,23 @@
 </script>
 {% endblock %}
 
+{% block toolbar %}
+
+{% if user.can("publish") %}
+{% if event and event.published %}
+{{ macros.toggle("Published", "Not Published")}}
+{% else %}
+{{ macros.toggle("Published", "Not Published", start_on=False)}}
+{% endif %}
+{% endif %}
+
+{% if event %}
+<div class="right">
+    {{ macros.confirm("Delete Post", "/events/delete/" + event.id_str()) }}
+</div>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <form class="create-event-form"
     {% block action %}
@@ -66,20 +88,22 @@
         <div class="datetime input-daterange">
             <div class="start-wrapper">
                 {{ macros.render_field(form.start_date, class="start date") }}
-                {{ macros.render_field(form.start_time, type="text", class="start time") }}
+                {{ macros.render_field(form.start_time, type="text", class="start time", value='7:00pm') }}
             </div>
-            <span>to</span>
+            <span class="to">to</span>
             <div class="end-wrapper">
                 {{ macros.render_field(form.end_date, class="end date") }}
-                {{ macros.render_field(form.end_time, type="text", class="end time") }}
+                {{ macros.render_field(form.end_time, type="text", class="end time", value='8:00pm') }}
             </div>
         </div>
     </div>
     <div class="descriptions">
-        {{ macros.render_field(form.short_description, placeholder="Short Description") }}
-        {{ macros.render_field(form.long_description, placeholder="Long Description") }}
+        {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
+        {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
     </div>
-
-    <input class="create-event-submit" type="submit" value="Add">
+    <div class="hidden">
+        <input type="submit" id="save-event" value="Add">
+        {{ macros.render_field(form.published) }}
+    </div>
 </form>
 {% endblock %}

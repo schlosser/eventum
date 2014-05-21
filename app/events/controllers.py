@@ -62,7 +62,7 @@ def create_event():
     if form.errors:
         # print form.errors
         pass
-    return render_template('events/create.html', form=form)
+    return render_template('events/create.html', form=form, user=g.user)
 
 @events.route('/events/edit/<event_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -80,7 +80,7 @@ def edit_event(event_id):
         flash("There was a validation error." + str(form.errors))
         return render_template('events/edit.html', form=form, event=event)
     form = utils.create_form(event, request)
-    return render_template('events/edit.html', form=form, event=event)
+    return render_template('events/edit.html', form=form, event=event, user=g.user)
 
 
 @events.route('/events/delete/<event_id>', methods=['POST'])

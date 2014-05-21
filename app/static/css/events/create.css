@@ -5,34 +5,51 @@ form > div {
 
 /* line 5 */
 .location {
-  width: 60%;
+  width: 100%;
+  max-width: 30rem;
 }
 
-/* line 10 */
+/* line 11 */
 .datetime input[type="text"] {
   text-align: left;
 }
-/* line 13 */
+/* line 14 */
 .datetime input[type="text"].time {
   width: 5rem;
 }
-/* line 16 */
+/* line 15 */
 .datetime input[type="text"].date {
   width: 8rem;
 }
-/* line 20 */
+/* line 17 */
+.datetime .to {
+  width: 1.5rem;
+}
+/* line 18 */
 .datetime div {
   display: inline-block;
 }
 
-/* line 25 */
+/* line 21 */
+.descriptions {
+  margin: 1rem 0 0;
+}
+/* line 23 */
 .descriptions textarea {
   width: 100%;
-  min-height: 5rem;
   box-sizing: border-box;
+  margin-top: 0.5rem;
+}
+/* line 28 */
+.descriptions textarea.short {
+  min-height: 3rem;
+}
+/* line 29 */
+.descriptions textarea.long {
+  min-height: 5rem;
 }
 
-/* line 31 */
+/* line 33 */
 .ui-timepicker-wrapper {
   width: 5.5rem;
 }

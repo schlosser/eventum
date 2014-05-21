@@ -10,7 +10,7 @@ def create_event(form, event=None, **kwargs):
         "start_time":form.start_time.data,
         "end_date":form.end_date.data,
         "end_time":form.end_time.data,
-        "published":False,
+        "published":form.published.data,
         "descriptions": {
             "short": form.short_description.data,
             "long": form.long_description.data

@@ -3,29 +3,31 @@ form > div {
 }
 
 .location {
-    width: 60%;
+    width: 100%;
+    max-width: 30rem;
 }
 
 .datetime {
     input[type="text"] {
         text-align: left;
 
-        &.time {
-            width: 5rem;
-        }
-        &.date {
-            width: 8rem;
-        }
+        &.time { width: 5rem; }
+        &.date { width: 8rem; }
     }
-    div {
-        display: inline-block;
-    }
+    .to { width: 1.5rem; }
+    div { display: inline-block; }
 }
 
-.descriptions textarea {
-    width: 100%;
-    min-height: 5rem;
-    box-sizing: border-box;
+.descriptions {
+    margin: 1rem 0 0;
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0.5rem;
+
+        &.short { min-height: 3rem; }
+        &.long { min-height: 5rem; }
+    }
 }
 
 .ui-timepicker-wrapper {

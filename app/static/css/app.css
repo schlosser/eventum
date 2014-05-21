@@ -304,7 +304,7 @@ input[type="submit"] {
 
 /* line 21 */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* line 25 */
@@ -447,7 +447,7 @@ a, a:hover {
 
 /* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */
@@ -512,18 +512,19 @@ input[type="text"] {
 
 /* line 24 */
 .title-wrapper input[type="text"] {
-  width: 80%;
+  width: 100%;
+  max-width: 36rem;
   font-size: 1.7rem;
   line-height: 2rem;
   padding: 0.15rem;
   vertical-align: middle;
 }
-/* line 33 */
+/* line 34 */
 .title-wrapper input[type="text"]::-webkit-input-placeholder, .title-wrapper input[type="text"]:-moz-placeholder, .title-wrapper input[type="text"]:-ms-input-placeholder {
   line-height: 1.7rem;
 }
 
-/* line 40 */
+/* line 41 */
 .with-icon > i {
   position: absolute;
   width: 2rem;
@@ -531,12 +532,12 @@ input[type="text"] {
   text-align: center;
   line-height: 2.5rem;
 }
-/* line 49 */
+/* line 50 */
 .with-icon > div {
   margin-left: 2.5rem;
 }
 
-/* line 56 */
+/* line 57 */
 .toggle-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -545,7 +546,7 @@ input[type="text"] {
   overflow: hidden;
   position: relative;
 }
-/* line 63 */
+/* line 64 */
 .toggle-wrapper .label {
   width: 2.5rem;
   position: absolute;
@@ -558,36 +559,36 @@ input[type="text"] {
   background-color: #333333;
   color: white;
 }
-/* line 75 */
+/* line 76 */
 .toggle-wrapper .label, .toggle-wrapper .label i {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 81 */
+/* line 82 */
 .toggle-wrapper .on {
   background-color: #43ac6a;
   left: 0;
   right: 8rem;
 }
-/* line 85 */
+/* line 86 */
 .toggle-wrapper .on .inner {
   position: absolute;
   width: 8rem;
   left: 0;
 }
-/* line 91 */
+/* line 92 */
 .toggle-wrapper .off {
   background-color: #d9534f;
   left: 2rem;
   right: 0;
 }
-/* line 96 */
+/* line 97 */
 .toggle-wrapper .off .inner {
   position: absolute;
   width: 8rem;
   right: 0;
 }
-/* line 102 */
+/* line 103 */
 .toggle-wrapper .on, .toggle-wrapper .off {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
@@ -599,12 +600,12 @@ input[type="text"] {
   text-align: center;
   display: inline-block;
 }
-/* line 114 */
+/* line 115 */
 .toggle-wrapper.active .label {
   top: 0;
   left: 8rem;
 }
-/* line 117 */
+/* line 118 */
 .toggle-wrapper.active .label i {
   -webkit-transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -612,23 +613,23 @@ input[type="text"] {
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-/* line 125 */
+/* line 126 */
 .toggle-wrapper.active .on {
   right: 2rem;
 }
-/* line 128 */
+/* line 129 */
 .toggle-wrapper.active .off {
   left: 8rem;
 }
 
-/* line 135 */
+/* line 136 */
 .confirm-wrapper {
   height: 2.5rem;
   line-height: 2.5rem;
   vertical-align: middle;
 }
 
-/* line 140 */
+/* line 141 */
 .confirm {
   overflow: hidden;
   width: 8rem;
@@ -640,19 +641,19 @@ input[type="text"] {
   transition: 0.3s ease all;
 }
 
-/* line 150 */
+/* line 151 */
 .confirm-hidden {
   width: 0 !important;
 }
 
-/* line 153 */
+/* line 154 */
 .confirm-prompt {
   line-height: 2.5rem;
   height: 2.5rem;
   padding: 0 0.5rem;
 }
 
-/* line 158 */
+/* line 159 */
 .confirm-form {
   line-height: 2.5rem;
   height: 2.5rem;
@@ -661,7 +662,7 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 167 */
+/* line 168 */
 .confirm-form input {
   cursor: pointer;
   border: 0;
@@ -672,7 +673,7 @@ input[type="text"] {
   height: 2.5rem;
   width: 4rem;
 }
-/* line 177 */
+/* line 178 */
 .confirm-form input.confirm-confirm {
   background-color: #d9534f;
 }

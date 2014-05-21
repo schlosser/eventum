@@ -1,6 +1,6 @@
 import datetime, time
 from flask.ext.wtf import Form
-from wtforms import TextField, DateField, TextAreaField, Field
+from wtforms import TextField, DateField, TextAreaField, Field, BooleanField
 from wtforms.validators import Required, ValidationError, Optional
 from wtforms.widgets.html5 import TimeInput
 
@@ -48,6 +48,7 @@ class CreateEventForm(Form):
     end_time = TimeField('End time', [Optional()])
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')
+    published = BooleanField('Published')
 
     def post_validate(form, validation_stopped):
         """Make sure that the start datetime comes before the end datetime"""

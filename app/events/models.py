@@ -133,6 +133,9 @@ class Event(db.Document):
             return None
         return datetime.combine(self.end_date, self.end_time)
 
+    def id_str(self):
+        return str(self.id)
+
     def ready_for_publishing(self):
         """"""
         return all([
