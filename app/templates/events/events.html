@@ -34,7 +34,16 @@
 {% endblock %}
 
 {% macro render_event(event) %}
-<li class="event">
+<li
+    {% if not event.ready_for_publishing() %}
+    class="incomplete event"
+    {% elif event.published %}
+    class="published event"
+    {% else %}
+    class="unpublished event"
+    {% endif %}
+    >
+    <a href="/events/edit/{{ event.id }}">
     <span
         {% if event.published %}
         class="published"
@@ -46,25 +55,6 @@
         <h3>{{event.title}}</h3>
         <p>{{event.location}}</p>
         <p>{{ event.human_readable_datetime() }}</p>
-        <p><a href="/events/edit/{{ event.id }}">Edit event</a></p>
-        <form class="delete-event" method="POST" action="/events/delete/{{ event.id }}">
-            <input type="submit" value="Delete Event">
-        </form>
-        <form class="publish-event"
-            {% if event.published %}
-            action="/events/unpublish/{{ event.id }}"
-            {% else %}
-            action="/events/publish/{{ event.id }}"
-            {% endif %}
-            method="POST">
-            <input
-                {% if event.published %}
-                value="Unpublish"
-                {% else %}
-                value="Publish"
-                {% endif %}
-                type="submit">
-        </form>
     </div>
     <div class="creator">
         <span class="image">
@@ -72,6 +62,7 @@
         </span>
         <p class="name">{{ event.creator.name }}</p>
     </div>
+    </a>
 </li>
 {% endmacro %}
 
@@ -83,7 +74,7 @@
 <div class="this-week full-width">
     <div class="events-wrapper">
         <ul class="events clearfix"
-            style="width:{{ 16*(events.this_week|count) - 1 }}rem;">
+            style="width:{{ 16.5*(events.this_week|count) - 1 }}rem;">
         {% if events.this_week %}
             {% for event in events.this_week %}
             {{ render_event(event) }}
@@ -99,7 +90,7 @@
 <div class="next-week full-width">
     <div class="events-wrapper">
         <ul class="events clearfix"
-            style="width:{{ 16*(events.next_week|count) - 1 }}rem;">
+            style="width:{{ 16.5*(events.next_week|count) - 1 }}rem;">
         {% if events.next_week %}
             {% for event in events.next_week %}
             {{ render_event(event) }}

@@ -144,8 +144,8 @@ class Event(db.Document):
             self.location,
             self.start_datetime(),
             self.end_datetime(),
-            self.descriptions.short,
-            self.descriptions.long
+            self.descriptions.get('short'),
+            self.descriptions.get('long')
             ])
 
     def human_readable_datetime(self):
@@ -176,7 +176,7 @@ class Event(db.Document):
         else:
             output += "???, ??/?? "
         if self.end_time:
-            output += self.start_time.strftime("%I:%M %p").lstrip("0")
+            output += self.end_time.strftime("%I:%M %p").lstrip("0")
         else:
             output += "??:??"
         return output

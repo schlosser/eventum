@@ -31,7 +31,8 @@
   "scss_events_create": {
     "output": "css/events/create.css",
     "inputs": [
-      "scss/events/create.scss"
+      "scss/events/create.scss",
+      "scss/modal.scss"
     ]
   },
   "scss_blog_edit_post": {

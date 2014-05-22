@@ -1,3 +1,5 @@
+@import 'colors';
+
 $rem: 16px;
 $h1: 2rem;
 $h2: 1.7rem;
@@ -67,6 +69,12 @@ em {
 }
 p {
    line-height: 1.3rem;
+}
+hr {
+    border: 0;
+
+    height: 1px;
+    background-color: $lightgray;
 }
 
 a, a:hover {

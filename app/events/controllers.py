@@ -78,7 +78,7 @@ def edit_event(event_id):
             event.save()
             return redirect(url_for('.index'))
         flash("There was a validation error." + str(form.errors))
-        return render_template('events/edit.html', form=form, event=event)
+        return render_template('events/edit.html', form=form, event=event, user=g.user)
     form = utils.create_form(event, request)
     return render_template('events/edit.html', form=form, event=event, user=g.user)
 

@@ -317,7 +317,7 @@ input[type="submit"] {
   font-size: 0.8rem !important;
 }
 
-/* line 10, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 12, /Users/dan/working/eventum/app/static/scss/base.scss */
 body, html {
   width: 100%;
   height: 100%;
@@ -325,44 +325,44 @@ body, html {
   font-size: 16px;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 19, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
   line-height: 2.4rem;
 }
 
-/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
   font-size: 1.7rem;
   line-height: 2.1rem;
 }
 
-/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
   font-size: 1.3rem;
   line-height: 1.7rem;
 }
 
-/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 30, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 29, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 33, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -371,7 +371,7 @@ pre code {
   background: transparent;
 }
 
-/* line 38, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 40, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -382,7 +382,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 48, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 50, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -393,33 +393,40 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 58, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 63, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
 small {
   font-size: 0.8rem;
 }
 
-/* line 64, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 66, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 67, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 70, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 72, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 73, /Users/dan/working/eventum/app/static/scss/base.scss */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+/* line 80, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;

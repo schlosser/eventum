@@ -1,7 +1,9 @@
 import datetime, time
 from flask.ext.wtf import Form
-from wtforms import TextField, DateField, TextAreaField, Field, BooleanField
-from wtforms.validators import Required, ValidationError, Optional
+from wtforms import TextField, DateField, TextAreaField, Field, BooleanField, \
+    SelectField, IntegerField, RadioField
+from wtforms.validators import Required, ValidationError, Optional, \
+    NumberRange
 from wtforms.widgets.html5 import TimeInput
 
 class TimeField(Field):
@@ -46,6 +48,17 @@ class CreateEventForm(Form):
     start_time = TimeField('Start time', [Optional()])
     end_date = DateField('End date', [Optional()], format='%m/%d/%Y')
     end_time = TimeField('End time', [Optional()])
+    repeat = BooleanField('Repeat')
+    repeats = SelectField('Repeats', choices=[('weekly', 'Weekly')], default="Weekly")
+    every = IntegerField('Every', [NumberRange(min=1, max=30)], default=1)
+    ends = RadioField('Ends', choices=[
+        ("never", "Never"),
+        ("after", "After"),
+        ("on", "On")
+    ], default="never")
+    num_occurances = IntegerField('Every', [NumberRange(min=1)], default=1)
+    repeat_end_date = DateField('Repeat End Date', [Optional()], format='%m/%d/%Y')
+    summary = TextField('Summary')
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')
     published = BooleanField('Published')

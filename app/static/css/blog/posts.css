@@ -128,7 +128,7 @@ a, a:hover {
 
 /* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */
@@ -410,7 +410,7 @@ a, a:hover {
 
 /* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */

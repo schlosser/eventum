@@ -32,26 +32,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/datetime/jquery.datepair.min.js') }}"></script>
 {% endblock %}
 
-{% block bodyJs %}
-<script>
-    // initialize input widgets first
-    $('.datetime .time').timepicker({
-        'showDuration': true,
-        'timeFormat': 'g:ia'
-    });
-
-    $('.datetime .date').datepicker({
-        'format': 'm/d/yyyy',
-        'todayHighlight': true,
-        'autoclose': true
-    });
-    $('.datetime .date').datepicker('setDates', new Date());
-
-    // initialize datepair
-    $('.datetime').datepair();
-</script>
-{% endblock %}
-
 {% block toolbar %}
 
 {% if user.can("publish") %}
@@ -67,6 +47,59 @@
     {{ macros.confirm("Delete Post", "/events/delete/" + event.id_str()) }}
 </div>
 {% endif %}
+{% endblock %}
+
+{% block main %}
+{% call macros.modal() %}
+<h3>Set Repeat Frequency</h3>
+<form class="m-repeat-form">
+    <div class="form-control">
+        <label for="m-repeats">Repeats:</label>
+        <select name="m-repeats" id="m-repeats">
+            <option value="Weekly" data-enumerable="weeks">Weekly</option>
+        </select>
+    </div>
+    <div class="form-control">
+        <label for="m-every">Repeat every:</label>
+        <select name="m-every" id="m-every">
+            {% for i in range(1,31) %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+        <span class="enumerable">weeks</span>
+    </div>
+    <div class="form-control">
+        <label for="m-starts">Starts:</label>
+        <input type="text" name="m-starts" id="m-starts" value="" readonly>
+    </div>
+    <div class="form-control">
+        <label for="m-ends">Ends:</label>
+        <input type="radio" name="m-ends" id="m-ends-never" value="never">
+        <label for="m-ends-never">Never</label>
+    </div>
+    <div class="form-control">
+        <label></label>
+        <input type="radio" name="m-ends" id="m-ends-after" value="after">
+        <label for="m-num_occurances">After</label>
+        <input type="number" name="m-num_occurances" id="m-num_occurances" value="25">
+        <label for="m-num_occurances">occurances</label>
+    </div>
+    <div class="form-control">
+        <label></label>
+        <input type="radio" name="m-ends" id="m-ends-on" value="on">
+        <label for="m-repeat_end_date">On</label>
+        <input type="text" class="date" name="m-repeat_end_date" id="m-repeat_end_date">
+    </div>
+    <hr>
+    <div>
+        <label for="m-summary">Summary:</label>
+        <span class="summary"></span>
+
+    </div>
+    <input type="submit" value="Save">
+</form>
+{% endcall %}
+{{ super() }}
 {% endblock %}
 
 {% block content %}
@@ -88,13 +121,28 @@
         <div class="datetime input-daterange">
             <div class="start-wrapper">
                 {{ macros.render_field(form.start_date, class="start date") }}
-                {{ macros.render_field(form.start_time, type="text", class="start time", value='7:00pm') }}
+                {{ macros.render_field(form.start_time, type="text", class="start time") }}
             </div>
             <span class="to">to</span>
             <div class="end-wrapper">
                 {{ macros.render_field(form.end_date, class="end date") }}
-                {{ macros.render_field(form.end_time, type="text", class="end time", value='8:00pm') }}
+                {{ macros.render_field(form.end_time, type="text", class="end time") }}
             </div>
+        </div>
+    </div>
+    <div class="with-icon">
+        <i class="fa fa-repeat fa-2x"></i>
+        <div class="repeat">
+            {{ macros.render_field(form.repeat) }}
+            {% if event and event.repeat%}
+            <label>Repeat:</label>
+            <span class="summary"></span>
+            <a href="#show-modal">Edit</a>
+            {% else %}
+            <label>Repeat...</label>
+            <span class="summary hidden"></span>
+            <a href="#show-modal"></a>
+            {% endif %}
         </div>
     </div>
     <div class="descriptions">
@@ -102,8 +150,21 @@
         {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
     </div>
     <div class="hidden">
-        <input type="submit" id="save-event" value="Add">
         {{ macros.render_field(form.published) }}
+
+        {{ macros.render_field(form.repeats) }}
+        {{ macros.render_field(form.every) }}
+        {% for subfield in form.ends %}
+            <ul>
+                <li>{{ subfield }}</li>
+                <li>{{ subfield.label }}</li>
+            </ul>
+        {% endfor %}
+        {{ macros.render_field(form.num_occurances) }}
+        {{ macros.render_field(form.repeat_end_date) }}
+        {{ macros.render_field(form.summary)}}
+
+        <input type="submit" id="save-event" value="Add">
     </div>
 </form>
 {% endblock %}

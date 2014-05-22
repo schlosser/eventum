@@ -1,55 +1,441 @@
-/* line 1 */
+/* line 3 */
 form > div {
   margin-bottom: .5rem;
 }
 
-/* line 5 */
+/* line 7 */
 .location {
   width: 100%;
   max-width: 30rem;
 }
 
-/* line 11 */
+/* line 13 */
 .datetime input[type="text"] {
   text-align: left;
 }
-/* line 14 */
+/* line 16 */
 .datetime input[type="text"].time {
   width: 5rem;
 }
-/* line 15 */
+/* line 17 */
 .datetime input[type="text"].date {
   width: 8rem;
 }
-/* line 17 */
+/* line 19 */
 .datetime .to {
   width: 1.5rem;
 }
-/* line 18 */
+/* line 20 */
 .datetime div {
   display: inline-block;
 }
 
-/* line 21 */
+/* line 23 */
 .descriptions {
   margin: 1rem 0 0;
 }
-/* line 23 */
+/* line 25 */
 .descriptions textarea {
   width: 100%;
   box-sizing: border-box;
   margin-top: 0.5rem;
 }
-/* line 28 */
+/* line 30 */
 .descriptions textarea.short {
   min-height: 3rem;
 }
-/* line 29 */
+/* line 31 */
 .descriptions textarea.long {
   min-height: 5rem;
 }
 
-/* line 33 */
+/* line 35 */
 .ui-timepicker-wrapper {
   width: 5.5rem;
+}
+
+/* line 38 */
+.repeat {
+  line-height: 2rem;
+}
+/* line 40 */
+.repeat a {
+  text-decoration: underline;
+  color: #3878cc;
+}
+/* line 44 */
+.repeat .summary {
+  font-weight: bold;
+}
+/* line 47 */
+.repeat .form-component {
+  display: inline-block;
+}
+
+/* line 52 */
+.modal h3 {
+  margin-bottom: 1rem;
+}
+/* line 55 */
+.modal label:first-child {
+  min-width: 9rem;
+  display: inline-block;
+  text-align: right;
+  font-weight: bold;
+}
+/* line 61 */
+.modal input[name="m-num-occurances"] {
+  width: 3rem;
+}
+/* line 64 */
+.modal input[type="text"] {
+  padding: 1px;
+}
+/* line 67 */
+.modal .radio-options {
+  display: inline-block;
+}
+
+/* line 12, /Users/dan/working/eventum/app/static/scss/app.scss */
+nav {
+  z-index: 1;
+  width: 4rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #333333;
+  color: white;
+}
+/* line 22, /Users/dan/working/eventum/app/static/scss/app.scss */
+nav a, nav a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 27, /Users/dan/working/eventum/app/static/scss/app.scss */
+.main {
+  min-height: 100%;
+  margin-left: 4rem;
+  background-color: #efefef;
+}
+/* line 32, /Users/dan/working/eventum/app/static/scss/app.scss */
+.main > .inner {
+  width: 90%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+/* line 39, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar {
+  background-color: #3878cc;
+  color: white;
+  position: relative;
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+/* line 46, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .left {
+  float: left;
+}
+/* line 48, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .left i {
+  margin-left: 1rem;
+}
+/* line 53, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .middle {
+  display: inline;
+  position: absolute;
+  left: 50%;
+  width: 60%;
+  margin-left: -30%;
+  text-align: center;
+}
+/* line 61, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .middle .page-title {
+  display: inline;
+  width: auto;
+  line-height: 3.5rem;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .right {
+  float: right;
+  margin-right: 1rem;
+}
+/* line 72, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar i {
+  line-height: 3.5rem;
+}
+/* line 76, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar a {
+  color: white;
+}
+/* line 79, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar a:hover {
+  color: #efefef;
+}
+/* line 84, /Users/dan/working/eventum/app/static/scss/app.scss */
+.topbar .text-button {
+  font-size: 1.2rem;
+  text-decoration: none !important;
+}
+
+/* line 90, /Users/dan/working/eventum/app/static/scss/app.scss */
+.flashes {
+  color: white;
+  text-align: center;
+}
+/* line 94, /Users/dan/working/eventum/app/static/scss/app.scss */
+.flashes li {
+  padding: 0.5rem 0;
+  background-color: #43ac6a;
+  position: relative;
+}
+/* line 99, /Users/dan/working/eventum/app/static/scss/app.scss */
+.flashes li i {
+  position: absolute;
+  height: 1rem;
+  right: 0.5rem;
+  top: 50%;
+  margin-top: -0.5rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/app.scss */
+.content {
+  background-color: white;
+  position: relative;
+  min-height: 100%;
+  padding: 1rem;
+}
+/* line 115, /Users/dan/working/eventum/app/static/scss/app.scss */
+.content .full-width {
+  margin: 0 -1rem;
+  width: auto;
+}
+
+/* line 121, /Users/dan/working/eventum/app/static/scss/app.scss */
+.nav-item {
+  overflow: hidden;
+  width: 4rem;
+  background-color: #333333;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: block;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+  position: relative;
+}
+/* line 132, /Users/dan/working/eventum/app/static/scss/app.scss */
+.nav-item.selected {
+  background-color: #3878cc;
+}
+/* line 136, /Users/dan/working/eventum/app/static/scss/app.scss */
+.nav-item .nav-icon {
+  text-align: center;
+  width: 4rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: inline-block;
+  float: left;
+}
+/* line 144, /Users/dan/working/eventum/app/static/scss/app.scss */
+.nav-item .nav-label {
+  position: absolute;
+  padding-left: 1rem;
+  font-weight: 300;
+  left: 4rem;
+  right: 0;
+  display: inline-block;
+  float: right;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+
+/* line 159, /Users/dan/working/eventum/app/static/scss/app.scss */
+.toolbar {
+  background-color: #3878cc;
+  color: white;
+}
+/* line 163, /Users/dan/working/eventum/app/static/scss/app.scss */
+.toolbar .middle {
+  display: inline;
+  position: absolute;
+  left: 50%;
+  width: 60%;
+  margin-left: -30%;
+  text-align: center;
+}
+/* line 172, /Users/dan/working/eventum/app/static/scss/app.scss */
+.toolbar .right {
+  float: right;
+}
+
+/* line 182, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-5:hover {
+  width: 9.5rem;
+}
+/* line 183, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-5 .nav-label {
+  width: 5.5rem;
+}
+
+/* line 185, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-6:hover {
+  width: 10rem;
+}
+/* line 186, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-6 .nav-label {
+  width: 6rem;
+}
+
+/* line 188, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-6-5:hover {
+  width: 10.5rem;
+}
+/* line 189, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-6-5 .nav-label {
+  width: 6.5rem;
+}
+
+/* line 191, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-9:hover {
+  width: 13rem;
+}
+/* line 192, /Users/dan/working/eventum/app/static/scss/app.scss */
+.w-9 .nav-label {
+  width: 9rem;
+}
+
+/* line 194, /Users/dan/working/eventum/app/static/scss/app.scss */
+.fa-2-5x {
+  font-size: 2.5em;
+}
+
+@media screen and (max-width: 40rem) {
+  /* line 199, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .main > .inner {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 90.063rem) {
+  /* line 205, /Users/dan/working/eventum/app/static/scss/app.scss */
+  nav {
+    width: 12rem;
+  }
+
+  /* line 207, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .main > .inner {
+    width: 100% !important;
+  }
+
+  /* line 209, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .main {
+    margin-left: 12rem;
+  }
+
+  /* line 211, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .nav-item {
+    -webkit-transition: none;
+    transition: none;
+    width: 12rem !important;
+  }
+  /* line 216, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .nav-item .nav-label {
+    padding-left: 0;
+  }
+  /* line 220, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .nav-item:not(.selected):hover {
+    background-color: #919191;
+  }
+  /* line 221, /Users/dan/working/eventum/app/static/scss/app.scss */
+  .nav-item.selected:hover {
+    background-color: #306cbb;
+  }
+}
+/* line 1, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.text-width-calculation {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* line 17, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+/* line 21, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.hidden {
+  display: none !important;
+}
+
+/* line 25, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.fa-6x {
+  font-size: 6rem;
+}
+
+/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.small {
+  font-size: 0.8rem !important;
+}
+
+/* line 6 */
+.opaque {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  padding-left: 4rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: scroll;
+}
+/* line 17 */
+.opaque .modal-wrapper {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 50rem;
+  margin-top: 5rem;
+  position: relative;
+}
+/* line 24 */
+.opaque .modal-wrapper .modal {
+  background-color: white;
+  padding: 1rem;
+}
+/* line 29 */
+.opaque .modal-wrapper .close-modal {
+  position: absolute;
+  right: -2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: white;
+  background-color: #3878cc;
+  text-align: center;
+}
+/* line 38 */
+.opaque .modal-wrapper .close-modal i {
+  line-height: 2.5rem;
+}
+
+/* line 45 */
+body.modal-open {
+  overflow: hidden;
+}
+
+@media print and (min-width: 90.063rem) {
+  /* line 51 */
+  .opaque {
+    padding-left: 12rem;
+  }
 }

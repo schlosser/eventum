@@ -1,3 +1,5 @@
+@import '../colors';
+
 form > div {
     margin-bottom: .5rem;
 }
@@ -32,4 +34,37 @@ form > div {
 
 .ui-timepicker-wrapper {
     width: 5.5rem;
+}
+.repeat {
+    line-height: 2rem;
+    a {
+        text-decoration: underline;
+        color: $blue;
+    }
+    .summary {
+        font-weight: bold;
+    }
+    .form-component {
+        display: inline-block;
+    }
+}
+.modal {
+    h3 {
+        margin-bottom: 1rem;
+    }
+    label:first-child {
+        min-width: 9rem;
+        display: inline-block;
+        text-align: right;
+        font-weight: bold;
+    }
+    input[name="m-num-occurances"] {
+        width: 3rem;
+    }
+    input[type="text"] {
+        padding: 1px;
+    }
+    .radio-options {
+        display: inline-block;
+    }
 }
