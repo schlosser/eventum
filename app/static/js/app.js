@@ -19,7 +19,7 @@ $(function() {
     $(document).on('click', 'a[href="#open-confirm"]', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        $(this).siblings('.confirm').removeClass('confirm-hidden');
+        $(this).siblings('.confirm').toggleClass('confirm-hidden');
     });
 
     /* Dismiss confirm dialog*/
@@ -54,14 +54,16 @@ $(function() {
     /* Open the modal */
     $(document).on('click', 'a[href="#show-modal"]', function(e) {
         e.preventDefault();
-        $('.opaque').removeClass("hidden");
+        modal_id = $(this).data('modal') || "modal";
+        $('.opaque[data-modal=' + modal_id + ']').removeClass("hidden");
         $('body').addClass('modal-open');
     });
 
     /* Close the modal */
     $(document).on('click', 'a[href="#close-modal"], .opaque', function(e) {
         e.preventDefault();
-        $('.opaque').addClass("hidden");
+        modal_id = $(this).data('modal') || "modal";
+        $('.opaque[data-modal="' + modal_id + '"]').addClass("hidden");
         $('body').removeClass('modal-open');
     });
 

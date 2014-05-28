@@ -227,30 +227,25 @@ nav a, nav a:hover {
   }
 
   /* line 207 */
-  .main > .inner {
-    width: 100% !important;
-  }
-
-  /* line 209 */
   .main {
     margin-left: 12rem;
   }
 
-  /* line 211 */
+  /* line 209 */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 216 */
+  /* line 214 */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 220 */
+  /* line 218 */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 221 */
+  /* line 219 */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -669,18 +664,22 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 168 */
+/* line 166 */
 .confirm-form input {
+  padding: 0.25rem;
+}
+/* line 170 */
+.confirm-form input, .confirm-form div, .confirm-form a {
+  display: inline-block;
   cursor: pointer;
   border: 0;
   margin: 0;
-  padding: 0.25rem;
   text-align: center;
   font-size: 0.8rem;
   height: 2.5rem;
   width: 4rem;
 }
-/* line 178 */
-.confirm-form input.confirm-confirm {
+/* line 180 */
+.confirm-form input.confirm-confirm, .confirm-form div.confirm-confirm, .confirm-form a.confirm-confirm {
   background-color: #d9534f;
 }

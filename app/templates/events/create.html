@@ -21,7 +21,11 @@
 {% endblock %}
 
 {% block barright %}
-<a class="text-button" href="#save">Save</a>
+{% if event and event.repeat %}
+<a class="text-button " href="#show-modal" data-modal="save-options">Save</a>
+{% else %}
+<a class="text-button " href="#save">Save</a>
+{% endif %}
 {% endblock %}
 
 {% block js %}
@@ -44,18 +48,26 @@
 
 {% if event %}
 <div class="right">
-    {{ macros.confirm("Delete Post", "/events/delete/" + event.id_str()) }}
+    {{ macros.render_field(delete_form.csrf_token) }}
+    {% call macros.confirm("Delete Post", "/events/delete/" + event.id_str()) %}
+    <div class="hidden">
+        {{ macros.render_field(delete_form.delete_following) }}
+        {{ macros.render_field(delete_form.delete_all) }}
+        <input type="submit" value="submit"/>
+    </div>
+    <a href="#show-modal" data-modal="delete">Confirm</a>
+    {% endcall %}
 </div>
 {% endif %}
 {% endblock %}
 
 {% block main %}
-{% call macros.modal() %}
+{% call macros.modal(modal="repeat") %}
 <h3>Set Repeat Frequency</h3>
 <form class="m-repeat-form">
     <div class="form-control">
-        <label for="m-repeats">Repeats:</label>
-        <select name="m-repeats" id="m-repeats">
+        <label for="m-frequency">Repeats:</label>
+        <select name="m-frequency" id="m-frequency">
             <option value="Weekly" data-enumerable="weeks">Weekly</option>
         </select>
     </div>
@@ -73,13 +85,9 @@
         <input type="text" name="m-starts" id="m-starts" value="" readonly>
     </div>
     <div class="form-control">
-        <label for="m-ends">Ends:</label>
-        <input type="radio" name="m-ends" id="m-ends-never" value="never">
-        <label for="m-ends-never">Never</label>
-    </div>
-    <div class="form-control">
         <label></label>
-        <input type="radio" name="m-ends" id="m-ends-after" value="after">
+        <input type="radio" name="m-ends" id="m-ends-after" value="after"
+            required>
         <label for="m-num_occurances">After</label>
         <input type="number" name="m-num_occurances" id="m-num_occurances" value="25">
         <label for="m-num_occurances">occurances</label>
@@ -135,24 +143,24 @@
         <div class="repeat">
             {{ macros.render_field(form.repeat) }}
             {% if event and event.repeat%}
-            <label>Repeat:</label>
+            <label for="repeat">Repeat:</label>
             <span class="summary"></span>
-            <a href="#show-modal">Edit</a>
+            <a href="#show-modal" data-modal="repeat">Edit</a>
             {% else %}
-            <label>Repeat...</label>
+            <label for="repeat">Repeat...</label>
             <span class="summary hidden"></span>
-            <a href="#show-modal"></a>
+            <a href="#show-modal" data-modal="repeat"></a>
             {% endif %}
         </div>
     </div>
     <div class="descriptions">
-        {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
+        {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence destcription of the event.") }}
         {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
     </div>
     <div class="hidden">
         {{ macros.render_field(form.published) }}
 
-        {{ macros.render_field(form.repeats) }}
+        {{ macros.render_field(form.frequency) }}
         {{ macros.render_field(form.every) }}
         {% for subfield in form.ends %}
             <ul>

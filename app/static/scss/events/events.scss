@@ -32,7 +32,10 @@ $creator-size: 3rem;
 
         .event {
             margin: 1rem 0;
+            min-height: 7rem;
+            padding-bottom: $creator-size;
             float: left;
+            position: relative;
             display: inline-block;
             width: $event-width;
             background-color: $white;
@@ -48,6 +51,10 @@ $creator-size: 3rem;
             }
 
             .creator {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
                 background-color: $lightgray;
 
                 .image {

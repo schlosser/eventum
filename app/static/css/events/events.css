@@ -31,54 +31,61 @@
 /* line 33 */
 .events-wrapper .events .event {
   margin: 1rem 0;
+  min-height: 7rem;
+  padding-bottom: 3rem;
   float: left;
+  position: relative;
   display: inline-block;
   width: 15rem;
   background-color: white;
 }
-/* line 39 */
+/* line 42 */
 .events-wrapper .events .event:not(:first-child) {
   margin-left: 1rem;
 }
-/* line 42 */
+/* line 45 */
 .events-wrapper .events .event.incomplete {
   border: 0.25rem solid #d9534f;
 }
-/* line 43 */
+/* line 46 */
 .events-wrapper .events .event.published {
   border: 0.25rem solid #43ac6a;
 }
-/* line 44 */
+/* line 47 */
 .events-wrapper .events .event.unpublished {
   border: 0.25rem solid #ffe020;
 }
-/* line 46 */
+/* line 49 */
 .events-wrapper .events .event .text-content {
   padding: 0.5rem;
 }
-/* line 50 */
+/* line 53 */
 .events-wrapper .events .event .creator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #e0e0e0;
 }
-/* line 53 */
+/* line 60 */
 .events-wrapper .events .event .creator .image {
   width: 3rem;
   height: 3rem;
   float: left;
 }
-/* line 58 */
+/* line 65 */
 .events-wrapper .events .event .creator .image img {
   width: 3rem;
   height: 3rem;
 }
-/* line 63 */
+/* line 70 */
 .events-wrapper .events .event .creator .name {
   line-height: 3rem;
   display: inline-block;
   margin-left: 1rem;
 }
 
-/* line 73 */
+/* line 80 */
 form {
   display: inline-block;
 }

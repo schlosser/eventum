@@ -1,4 +1,5 @@
 @import '../colors';
+@import '../media_queries';
 
 form > div {
     margin-bottom: .5rem;
@@ -30,6 +31,10 @@ form > div {
         &.short { min-height: 3rem; }
         &.long { min-height: 5rem; }
     }
+}
+
+#m-num_occurances {
+    width: 2.5rem;
 }
 
 .ui-timepicker-wrapper {
@@ -66,5 +71,17 @@ form > div {
     }
     .radio-options {
         display: inline-block;
+    }
+    .btn {
+        margin-top: 0.25rem;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .modal {
+        label:first-child {
+            display: block;
+            text-align: left;
+        }
     }
 }

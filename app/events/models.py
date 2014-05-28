@@ -1,71 +1,18 @@
 from mongoengine import ValidationError
-from mongoengine.base import BaseField
-from mongoengine.fields import DateTimeField
 from app.auth.models import User
+from app.events.fields import DateField, TimeField
 from app import db
-from datetime import datetime, time, date
+from datetime import datetime
 now = datetime.now
 
 
-class TimeField(BaseField):
-
-    """A datetime.time field.
-
-    Looks to the outside world like a datatime.time, but stores in the
-    database as an int/float number of seconds since midnight.
-    """
-
-    def validate(self, value):
-        """Only accepts a datetime.time, or a int/float number of seconds
-        since midnight.
-        """
-        if not isinstance(value, (time, int, float)):
-            self.error(u'cannot parse time "%r"' % value)
-
-    def to_mongo(self, value):
-        """Wrapper on top of prepare_query_value"""
-        return self.prepare_query_value(None, value)
-
-    def to_python(self, value):
-        """Convert the int/float number of seconds since midnight to a
-        time"""
-        if isinstance(value, (int, float)):
-            value = int(value)
-            return time(hour=value/3600, minute=value%3600/60, second=value%60)
-        return value
-
-    def prepare_query_value(self, op, value):
-        """Convert from datetime.time to int/float number of seconds."""
-        if value is None:
-            return value
-        if isinstance(value, time):
-            return value.hour * 3600 + \
-                   value.minute * 60 + \
-                   value.second + \
-                   value.microsecond / 1000000
-        if isinstance(value, (int, float)):
-            return value
-
-
-class DateField(DateTimeField):
-
-    """A datetime.date field.
-
-    Looks to the outside world like a datatime.date, but functions
-    as a datetime.datetime object in the database.s
-    """
-
-    def to_python(self, value):
-        """Convert from datetime.datetime to datetime.date."""
-        if isinstance(value, datetime):
-            return value.date()
-        if isinstance(value, date):
-            return value
-        raise ValueError("Unkown type '%r' of variable %r",type(value), value)
+class EventSeries(db.Document):
+    """"""
+    pass
 
 
 class Event(db.Document):
-
+    """"""
     date_created = db.DateTimeField(
         default=now, required=True, verbose_name="Date Created",
         help_text="DateTime when the document was created, localized to the server")
@@ -103,10 +50,38 @@ class Event(db.Document):
     date_published = db.DateTimeField(
         verbose_name="Date Published",
         help_text="The date when the post is published, localized to the server")
+    event_series = db.ListField(
+        db.ReferenceField(
+            "Event", verbose_name="Event in Series",
+            help_text="Another event in the same series as this event."
+        ), verbose_name="Events Series",
+        help_text="A list of the other events in the series if this is a "
+        "recurring event.")
+    root_event = db.ReferenceField("Event", verbose_name="Parent Event",
+        help_text="The first event in this series of reocurring events.")
+    repeat = db.BooleanField(verbose_name="Repeat",
+        help_text="Whether this event is recurring or not.")
+    frequency = db.StringField(default="weekly",
+        verbose_name="Repeat Frequency",
+        help_text="The frequency with which the repeats")
+    every = db.IntField(verbose_name="Every", min_value=1, max_value=30,
+        help_text="Number of frequency units between events (i.e. 3 = every"
+            " three weeks")
+    ends = db.StringField(regex="(on|after)", verbose_name="Ends",
+        help_text="Whether or not the event ends on a certain date or after a "
+        "certain number of occurances.")
+    num_occurances = db.IntField(default=1, verbose_name="Number of Occurances",
+        help_text="Number of times that the event repeats (if ends='after')")
+    repeat_end_date = DateField(verbose_name="Repeat End Date",
+        help_text="The date after which the event will stop happening.")
+    summary = db.StringField(verbose_name="Repeat Configuration Summary",
+        help_text="A human-readable summary of how the event is configured to "
+        "repeat")
+
 
     def clean(self):
-        """Update date_modified, and validate datetimes to ensure the event ends after
-        it starts.
+        """Update date_modified, and validate datetimes to ensure the event ends
+        after it starts.
         """
         self.date_modified = now()
 
@@ -171,8 +146,9 @@ class Event(db.Document):
         else:
             output += "??:?? - "
         if self.end_date:
-            output += self.end_date.strftime("%a, %m/%d ") \
-                .replace(" 0", " ").replace("/0", "/")
+            if self.start_date and self.start_date != self.end_date:
+                output += self.end_date.strftime("%a, %m/%d ") \
+                    .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
         if self.end_time:
@@ -191,12 +167,7 @@ class Event(db.Document):
         return self.title
 
     def __repr__(self):
-        rep = 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, \
-            published=%r' % (self.title, self.location, self.creator, self.start_datetime(),
-                             self.end_datetime(), self.published)
-        rep += ', short_description=%r' % \
-            self.descriptions['short'] if self.descriptions['short'] else ""
-        rep += ', long_description=%r' % \
-            self.descriptions['long'] if self.descriptions['long'] else ""
-        rep += ', date_published=%r' % (self.date_published) if self.date_published else ""
-        return rep
+        return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
+            'published=%r' % (self.title, self.location, self.creator,
+                             self.start_datetime(), self.end_datetime(),
+                             self.published)

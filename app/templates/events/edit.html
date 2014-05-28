@@ -1,8 +1,40 @@
 {% extends "events/create.html" %}
 
+{% import "macros.html" as macros %}
 {% block title %}Edit {{ event.title }}{% endblock %}
 {% block pagetitle %}Edit {{ event.title }}{% endblock %}
 
 {% block action %}
 action="/events/edit/{{event.id}}"
+{% endblock %}
+
+{% block main %}
+{% call macros.modal(modal="delete") %}
+<h3>Delete Reoccuring Event</h3>
+<p>You may edit the current, upcoming, or all events in this series</p>
+
+<div class="btn-group">
+    <a href="#delete" class="btn">Delete only this event</a>
+    <a href="#delete-following" class="btn">Delete this and all upcoming events</a>
+    <a href="#delete-all" class="btn">Delete all events in this series</a>
+</div>
+{% endcall %}
+
+{% call macros.modal(modal="save-options") %}
+<h3>Edit Reoccuring Event</h3>
+<p>You may edit the current, upcoming, or all events in this series</p>
+
+<div class="btn-group">
+    <div class="btn">
+        <a href="#save">Change only this event</a>
+    </div>
+    <div class="btn">
+        <a href="#save-following">Change this and all upcoming events</a>
+    </div>
+    <div class="btn">
+        <a href="#save-all">Change all events in this series</a>
+    </div>
+</div>
+{% endcall %}
+{{ super() }}
 {% endblock %}

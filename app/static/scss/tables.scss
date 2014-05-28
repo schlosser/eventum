@@ -34,11 +34,8 @@ table {
             vertical-align: middle;
             &:first-child { padding-left: $table-padding; }
 
-            &.right {
-                * {
-                    float:right;
-                }
-
+            &.right > * {
+                float:right;
             }
             &.overflowing-text {
                 display: inline-block;

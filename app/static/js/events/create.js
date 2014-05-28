@@ -5,7 +5,7 @@ $(function() {
     }
 
     function modalToForm() {
-        $('#repeats').val($("#m-repeats").val());
+        $('#frequency').val($("#m-frequency").val());
         $('#every').val($("#m-every").val());
         $('input[name="ends"]').removeAttr('checked');
         var end_val = $('input[name="m-ends"]:checked').val();
@@ -17,7 +17,7 @@ $(function() {
     }
 
     function formToModal() {
-        $('#m-repeats').val($("#repeats").val());
+        $('#m-frequency').val($("#frequency").val());
         $('#m-every').val($("#every").val());
         $('input[name="m-ends"]').removeAttr('checked');
         var end_val = $('input[name="ends"]:checked').val();
@@ -30,17 +30,15 @@ $(function() {
     function getSummary() {
         var summary = "";
         if ($("#m-every").val() == 1) {
-            summary += $("#m-repeats option:selected").val();
+            summary += $("#m-frequency option:selected").val();
         } else {
             summary += "Every " +
                       $("#m-every").val() +
                       " " +
-                      $("#m-repeats option:selected").data("enumerable");
+                      $("#m-frequency option:selected").data("enumerable");
         }
         summary += " on " + dayAtIndex($('#m-starts').datepicker('getDate').getDay());
         switch ($('input[name="m-ends"]:checked').val()) {
-            case "never":
-                break;
             case "after":
                 summary += ", for " + $("#m-num_occurances").val() + " occurances";
                 break;
@@ -96,13 +94,13 @@ $(function() {
             $('.create-event-form .summary').removeClass('hidden');
             if (!$('.create-event-form .summary').text()) {
                 e.preventDefault();
-                $('a[href="#show-modal"]').click();
+                $('a[data-modal="repeat"]').click();
             } else {
                 $('.repeat > label').text("Repeat:");
-                $('a[href="#show-modal"]').text("Edit");
+                $('a[href="#show-modal"][data-modal="repeat"]').text("Edit");
             }
         } else {
-            $('a[href="#show-modal"]').text("");
+            $('a[href="#show-modal"][data-modal="repeat"]').text("");
             $('.repeat > label').text("Repeat...");
             $('.create-event-form .summary').addClass('hidden');
         }
@@ -136,6 +134,35 @@ $(function() {
         $('#repeat').prop('checked', true);
         $('.repeat > label').text("Repeat:");
         $('a[href="#close-modal"]').click();
-        $('a[href="#show-modal"]').text("Edit");
-    })
+        $('a[href="#show-modal"][data-modal="repeat"]').text("Edit");
+    });
+
+    $(document).on('click', 'a[href="#save-following"]', function(e) {
+        e.preventDefault();
+        $('#update_following').prop('checked', true);
+        $('a[href="#save"]').click();
+    });
+
+    $(document).on('click', 'a[href="#save-all"]', function(e) {
+        e.preventDefault();
+        $('#update_all').prop('checked', true);
+        $('a[href="#save"]').click();
+    });
+
+    $(document).on('click', 'a[href="#delete"]', function(e) {
+        e.preventDefault();
+        $('.toolbar .right form').submit();
+    });
+
+    $(document).on('click', 'a[href="#delete-following"]', function(e) {
+        e.preventDefault();
+        $('#delete_following').prop('checked', true);
+        $('a[href="#delete"]').click();
+    });
+
+    $(document).on('click', 'a[href="#delete-all"]', function(e) {
+        e.preventDefault();
+        $('#delete_all').prop('checked', true);
+        $('a[href="#delete"]').click();
+    });
 });

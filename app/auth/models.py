@@ -71,7 +71,6 @@ class User(db.Document):
 
     def can(self, privilege):
         """Returns whether or not the user has a privilege"""
-        print "user can %s: %s" % (privilege, self.privileges.get(privilege))
         return self.privileges.get(privilege)
 
     def get_profile_picture(self, size=50):
@@ -87,7 +86,8 @@ class User(db.Document):
         """Update date_modified and apply privileges shorthand notation."""
         self.date_modified = now()
 
-        # If undefined, update self.privileges with one of the USER_TYPES dictionaries
+        # If undefined, update self.privileges with one of the USER_TYPES
+        # dictionaries
         if self.privileges == {}:
             self.privileges.update(USER_TYPES[self.user_type])
 
@@ -124,7 +124,8 @@ class User(db.Document):
 
     def __repr__(self):
         return 'User(name=%r, email=%r, roles=%r, privileges=%r, gplus_id=%r, date_created=%r)' % \
-        (self.name, self.email, self.roles, self.privileges, self.gplus_id, self.date_created)
+            (self.name, self.email, self.roles,
+             self.privileges, self.gplus_id, self.date_created)
 
     def __unicode__(self):
         if self.can('admin'):

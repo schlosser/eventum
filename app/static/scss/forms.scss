@@ -163,13 +163,15 @@ $toggle-speed: 0.3s;
     width: 8rem;
     display: inline-block;
     font-size:0;
-
-
     input {
+        padding: 0.25rem;
+
+    }
+    input, div, a {
+        display: inline-block;
         cursor: pointer;
         border: 0;
         margin: 0;
-        padding: 0.25rem;
         text-align: center;
         font-size: 0.8rem;
         height: 2.5rem;

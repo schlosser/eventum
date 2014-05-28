@@ -1,99 +1,116 @@
-/* line 3 */
+/* line 4 */
 form > div {
   margin-bottom: .5rem;
 }
 
-/* line 7 */
+/* line 8 */
 .location {
   width: 100%;
   max-width: 30rem;
 }
 
-/* line 13 */
+/* line 14 */
 .datetime input[type="text"] {
   text-align: left;
 }
-/* line 16 */
+/* line 17 */
 .datetime input[type="text"].time {
   width: 5rem;
 }
-/* line 17 */
+/* line 18 */
 .datetime input[type="text"].date {
   width: 8rem;
 }
-/* line 19 */
+/* line 20 */
 .datetime .to {
   width: 1.5rem;
 }
-/* line 20 */
+/* line 21 */
 .datetime div {
   display: inline-block;
 }
 
-/* line 23 */
+/* line 24 */
 .descriptions {
   margin: 1rem 0 0;
 }
-/* line 25 */
+/* line 26 */
 .descriptions textarea {
   width: 100%;
   box-sizing: border-box;
   margin-top: 0.5rem;
 }
-/* line 30 */
+/* line 31 */
 .descriptions textarea.short {
   min-height: 3rem;
 }
-/* line 31 */
+/* line 32 */
 .descriptions textarea.long {
   min-height: 5rem;
 }
 
-/* line 35 */
+/* line 36 */
+#m-num_occurances {
+  width: 2.5rem;
+}
+
+/* line 40 */
 .ui-timepicker-wrapper {
   width: 5.5rem;
 }
 
-/* line 38 */
+/* line 43 */
 .repeat {
   line-height: 2rem;
 }
-/* line 40 */
+/* line 45 */
 .repeat a {
   text-decoration: underline;
   color: #3878cc;
 }
-/* line 44 */
+/* line 49 */
 .repeat .summary {
   font-weight: bold;
 }
-/* line 47 */
+/* line 52 */
 .repeat .form-component {
   display: inline-block;
 }
 
-/* line 52 */
+/* line 57 */
 .modal h3 {
   margin-bottom: 1rem;
 }
-/* line 55 */
+/* line 60 */
 .modal label:first-child {
   min-width: 9rem;
   display: inline-block;
   text-align: right;
   font-weight: bold;
 }
-/* line 61 */
+/* line 66 */
 .modal input[name="m-num-occurances"] {
   width: 3rem;
 }
-/* line 64 */
+/* line 69 */
 .modal input[type="text"] {
   padding: 1px;
 }
-/* line 67 */
+/* line 72 */
 .modal .radio-options {
   display: inline-block;
+}
+/* line 75 */
+.modal .btn {
+  margin-top: 0.25rem;
+}
+
+@media screen and (max-width: 40rem) {
+  /* line 82 */
+  .modal label:first-child {
+    display: block;
+    text-align: left;
+  }
 }
 
 /* line 12, /Users/dan/working/eventum/app/static/scss/app.scss */
@@ -325,30 +342,25 @@ nav a, nav a:hover {
   }
 
   /* line 207, /Users/dan/working/eventum/app/static/scss/app.scss */
-  .main > .inner {
-    width: 100% !important;
-  }
-
-  /* line 209, /Users/dan/working/eventum/app/static/scss/app.scss */
   .main {
     margin-left: 12rem;
   }
 
-  /* line 211, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 209, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 216, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 214, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 220, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 218, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 221, /Users/dan/working/eventum/app/static/scss/app.scss */
+  /* line 219, /Users/dan/working/eventum/app/static/scss/app.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -433,8 +445,19 @@ body.modal-open {
   overflow: hidden;
 }
 
-@media print and (min-width: 90.063rem) {
+@media screen and (max-width: 40rem) {
   /* line 51 */
+  .opaque {
+    padding: 0.5rem 3rem 0.5rem 0.5rem;
+  }
+  /* line 53 */
+  .opaque .modal-wrapper {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 90.063rem) {
+  /* line 61 */
   .opaque {
     padding-left: 12rem;
   }

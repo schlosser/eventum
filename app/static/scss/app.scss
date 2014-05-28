@@ -204,8 +204,6 @@ $w-9: 9rem;
 @media screen and (min-width: $xl-desktop-min) {
     nav { width: $nav-wide; }
 
-    .main > .inner { width: 100% !important; }
-
     .main { margin-left: $nav-wide; }
 
     .nav-item {

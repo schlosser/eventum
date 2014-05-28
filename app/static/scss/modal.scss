@@ -47,7 +47,17 @@ body.modal-open {
 }
 
 
-@media print and (min-width: $xl-desktop-min) {
+@media screen and (max-width: $phone-max) {
+    .opaque {
+        padding: 0.5rem 3rem 0.5rem 0.5rem;
+        .modal-wrapper {
+            width: 100%;
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (min-width: $xl-desktop-min) {
     .opaque {
         padding-left: $nav-wide;
     }

@@ -18,11 +18,11 @@
 </div>
 {% endmacro %}
 
-{% macro modal() %}
-<div class="opaque hidden">
+{% macro modal(modal="modal") %}
+<div class="opaque hidden" data-modal="{{ modal }}">
     <div class="modal-wrapper">
         <span class="close-modal">
-            <a href="#close-modal">
+            <a href="#close-modal" data-modal="{{ modal }}">
                 <i class="fa fa-times fa-2x"></i>
             </a>
         </span>
@@ -54,12 +54,16 @@
     <div class="confirm confirm-hidden">
         <form class="confirm-form" method="POST" action="{{ action }}">
             <input class="confirm-cancel" value="Cancel" type="button" />
+            {% if caller %}
+            <div class="confirm-confirm">
+                {{ caller() }}
+            </div>
+            {% else %}
             <input class="confirm-confirm" value="Confirm" type="submit" />
+            {% endif %}
         </form>
     </div>
     <a href="#open-confirm" class="confirm-prompt btn">{{ text }}</a>
 </div>
 {% endmacro %}
-
-
 
