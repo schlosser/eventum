@@ -1,19 +1,17 @@
 from app.base.models import Post
-from app.media.models import Image
 from app.blog.utils import truncate_html
 from flask import url_for
 from app import db
 import re
 
 class BlogPost(Post):
+    """"""
 
     images = db.ListField(
-        db.ReferenceField(Image, verbose_name="Image",
-            help_text="An image that is associated with the blog post."),
-        verbose_name="Associated Images",
-        help_text="A list of all of the images in this blog post")
+        db.ReferenceField("Image"))
 
-    def snippet(self, length=100, truncate_text="...", newlines=True, tags=True, images=False):
+    def snippet(self, length=100, truncate_text="...", newlines=True,
+                tags=True, images=False):
         html = truncate_html(self.html_content, length, truncate_text)
         if not newlines:
             html = html.replace('\n', ' ')

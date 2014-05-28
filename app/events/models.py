@@ -1,5 +1,4 @@
 from mongoengine import ValidationError
-from app.auth.models import User
 from app.events.fields import DateField, TimeField
 from app import db
 from datetime import datetime
@@ -8,75 +7,78 @@ now = datetime.now
 
 class EventSeries(db.Document):
     """"""
-    pass
+    date_created = db.DateTimeField(required=True, default=now)
+    date_modified = db.DateTimeField(required=True, default=now)
+    events = db.ListField(db.ReferenceField("Event"))
+    frequency = db.StringField(default="weekly")
+    every = db.IntField(min_value=1, max_value=30)
+    ends_after = db.BooleanField(default=True)
+    ends_on = db.BooleanField(default=False)
+    num_occurances = db.IntField(default=1)
+    recurrence_end_date = DateField()
+    recurrence_summary = db.StringField()
+
+    def delete_one(self, event):
+        """"""
+        self.events.remove(event)
+        event.delete()
+        self.save()
+
+    def delete_following(self, event):
+        """"""
+        for e in self.events:
+            if e.start_datetime() >= event.start_datetime():
+                self.events.remove(e)
+                e.delete()
+        self.save()
+
+    def delete_all_except(self, event):
+        """"""
+        for e in self.events:
+            if e != event:
+                print "deleting", e.title
+                e.delete()
+        event.parent_series = None
+        self.delete()
+
+    def delete_all(self):
+        """"""
+        for e in self.events:
+            print "before: ", e
+            e.delete()
+            print "after: ", e
+        self.events = []
+        self.delete()
+
+    def clean(self):
+        """Update date_modified, and ensure that exactly one of `ends_after`
+        and `ends_on` is True at a time.
+        """
+        self.date_modified = now()
+
+        if self.ends_after == self.ends_on:
+            raise ValidationError("ends_on and ends_after should not share a "
+                                  "value.")
 
 
 class Event(db.Document):
     """"""
-    date_created = db.DateTimeField(
-        default=now, required=True, verbose_name="Date Created",
-        help_text="DateTime when the document was created, localized to the server")
-    date_modified = db.DateTimeField(
-        default=now, required=True, verbose_name="Date Modified",
-        help_text="DateTime when the document was last modified, localized to the server")
-    title = db.StringField(
-        max_length=255, required=True, verbose_name="Title",
-        help_text="Title of the event (255 characters max)")
-    location = db.StringField(
-        verbose_name="Location", help_text="The location of the event")
-    creator = db.ReferenceField(
-        User, required=True, verbose_name="Owner",
-        help_text="Reference to the User that is in charge of the event")
-    start_date = DateField(
-        verbose_name="Start Date",
-        help_text="The date that the event starts")
-    end_time = TimeField(
-        verbose_name="End Time",
-        help_text="The time of day that the event ends")
-    end_date = DateField(
-        verbose_name="End Date",
-        help_text="The date that the event ends")
-    start_time = TimeField(
-        verbose_name="Start Time",
-        help_text="The time of day that the event starts")
-    descriptions = db.DictField(
-        required=True, verbose_name="Descriptions", default={
-            "short": None,
-            "long": None
-        }, help_text="A dictionary of descriptons with their types as keys")
-    published = db.BooleanField(
-        required=True, default=False, verbose_name="Published",
-        help_text="Whether or not the post is published")
-    date_published = db.DateTimeField(
-        verbose_name="Date Published",
-        help_text="The date when the post is published, localized to the server")
-    event_series = db.ListField(
-        db.ReferenceField(
-            "Event", verbose_name="Event in Series",
-            help_text="Another event in the same series as this event."
-        ), verbose_name="Events Series",
-        help_text="A list of the other events in the series if this is a "
-        "recurring event.")
-    root_event = db.ReferenceField("Event", verbose_name="Parent Event",
-        help_text="The first event in this series of reocurring events.")
-    repeat = db.BooleanField(verbose_name="Repeat",
-        help_text="Whether this event is recurring or not.")
-    frequency = db.StringField(default="weekly",
-        verbose_name="Repeat Frequency",
-        help_text="The frequency with which the repeats")
-    every = db.IntField(verbose_name="Every", min_value=1, max_value=30,
-        help_text="Number of frequency units between events (i.e. 3 = every"
-            " three weeks")
-    ends = db.StringField(regex="(on|after)", verbose_name="Ends",
-        help_text="Whether or not the event ends on a certain date or after a "
-        "certain number of occurances.")
-    num_occurances = db.IntField(default=1, verbose_name="Number of Occurances",
-        help_text="Number of times that the event repeats (if ends='after')")
-    repeat_end_date = DateField(verbose_name="Repeat End Date",
-        help_text="The date after which the event will stop happening.")
-    summary = db.StringField(verbose_name="Repeat Configuration Summary",
-        help_text="A human-readable summary of how the event is configured to "
-        "repeat")
+    date_created = db.DateTimeField(required=True, default=now)
+    date_modified = db.DateTimeField(required=True, default=now)
+    title = db.StringField(required=True, max_length=255)
+    creator = db.ReferenceField("User", required=True)
+    location = db.StringField()
+    start_date = DateField()
+    end_time = TimeField()
+    end_date = DateField()
+    start_time = TimeField()
+    short_description = db.StringField()
+    long_description = db.StringField()
+    is_published = db.BooleanField(required=True, default=False)
+    date_published = db.DateTimeField()
+    is_recurring = db.BooleanField(required=True, default=False)
+    parent_series = db.ReferenceField("EventSeries")
+
 
 
     def clean(self):
@@ -119,8 +121,8 @@ class Event(db.Document):
             self.location,
             self.start_datetime(),
             self.end_datetime(),
-            self.descriptions.get('short'),
-            self.descriptions.get('long')
+            self.short_description,
+            self.long_description
             ])
 
     def human_readable_datetime(self):
@@ -168,6 +170,6 @@ class Event(db.Document):
 
     def __repr__(self):
         return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
-            'published=%r' % (self.title, self.location, self.creator,
+            'is_published=%r' % (self.title, self.location, self.creator,
                              self.start_datetime(), self.end_datetime(),
-                             self.published)
+                             self.is_published)

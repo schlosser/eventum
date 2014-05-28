@@ -95,12 +95,12 @@
     <div class="form-control">
         <label></label>
         <input type="radio" name="m-ends" id="m-ends-on" value="on">
-        <label for="m-repeat_end_date">On</label>
-        <input type="text" class="date" name="m-repeat_end_date" id="m-repeat_end_date">
+        <label for="m-recurrence_end_date">On</label>
+        <input type="text" class="date" name="m-recurrence_end_date" id="m-recurrence_end_date">
     </div>
     <hr>
     <div>
-        <label for="m-summary">Summary:</label>
+        <label for="m-recurrence_summary">Summary:</label>
         <span class="summary"></span>
 
     </div>
@@ -141,13 +141,13 @@
     <div class="with-icon">
         <i class="fa fa-repeat fa-2x"></i>
         <div class="repeat">
-            {{ macros.render_field(form.repeat) }}
-            {% if event and event.repeat%}
-            <label for="repeat">Repeat:</label>
+            {{ macros.render_field(form.is_recurring) }}
+            {% if event and event.is_recurring%}
+            <label for="is_recurring">Repeat:</label>
             <span class="summary"></span>
             <a href="#show-modal" data-modal="repeat">Edit</a>
             {% else %}
-            <label for="repeat">Repeat...</label>
+            <label for="is_recurring">Repeat...</label>
             <span class="summary hidden"></span>
             <a href="#show-modal" data-modal="repeat"></a>
             {% endif %}
@@ -158,8 +158,7 @@
         {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
     </div>
     <div class="hidden">
-        {{ macros.render_field(form.published) }}
-
+        {{ macros.render_field(form.is_published) }}
         {{ macros.render_field(form.frequency) }}
         {{ macros.render_field(form.every) }}
         {% for subfield in form.ends %}
@@ -169,8 +168,8 @@
             </ul>
         {% endfor %}
         {{ macros.render_field(form.num_occurances) }}
-        {{ macros.render_field(form.repeat_end_date) }}
-        {{ macros.render_field(form.summary)}}
+        {{ macros.render_field(form.recurrence_end_date) }}
+        {{ macros.render_field(form.recurrence_summary) }}
 
         <input type="submit" id="save-event" value="Add">
     </div>

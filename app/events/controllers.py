@@ -59,7 +59,7 @@ def create_event():
         utils.create_event(form, creator=g.user)
         return redirect(url_for('.index'))
     if form.errors:
-        # print form.errors
+        flash("There was a validation error." + str(form.errors))
         pass
     return render_template('events/create.html', form=form, user=g.user,
                            delete_form=delete_form)
@@ -73,16 +73,17 @@ def edit_event(event_id):
 
     event = Event.objects().get(id=event_id)
     delete_form = DeleteEventForm()
-    if request.method == 'POST':
-        form = CreateEventForm(request.form)
-        if form.validate_on_submit():
-            utils.update_event(event, form, update_all=form.update_all.data,
-                update_following=form.update_following.data)
-            return redirect(url_for('.index'))
+
+    form = CreateEventForm(request.form) if request.method == 'POST' else \
+        utils.create_form(event, request)
+
+    if form.validate_on_submit():
+        utils.update_event(event, form, update_all=form.update_all.data,
+                           update_following=form.update_following.data)
+        return redirect(url_for('.index'))
+    if form.errors:
         flash("There was a validation error." + str(form.errors))
-        return render_template('events/edit.html', form=form, event=event,
-                               user=g.user, delete_form=delete_form)
-    form = utils.create_form(event, request)
+
     return render_template('events/edit.html', form=form, event=event,
                            user=g.user, delete_form=delete_form)
 
@@ -95,36 +96,21 @@ def delete_event(event_id):
     form = DeleteEventForm(request.form)
     if Event.objects(id=object_id).count() == 1:
         event = Event.objects().with_id(object_id)
-        if form.delete_following.data:
-            print "deleting following"
-            print "series:", event.event_series
-            for e in event.event_series:
-                print e.start_datetime()
-                print event.start_datetime()
-                if e.start_datetime() >= event.start_datetime():
-                    event.event_series.remove(e)
-                    e.delete()
-            for e in event.event_series:
-                e.event_series = event.event_series
-        elif form.delete_all.data:
-            print "delete all"
-            print "series:", event.event_series
-            for e in event.event_series:
-                e.delete()
-        elif event.repeat and event.root_event == event:
-            next_root = event.event_series[0]
-            next_root.event_series.remove(event)
-            for e in event.event_series[1:]:
-                e.root_event = next_root
-                e.event_series = next_root.event_series
-                e.event_series.remove(e)
-                e.event_series.insert(0, next_root)
-                e.save()
-        event.delete()
+        if event.is_recurring:
+            series = event.parent_series
+            # Delete the desired subset of events from the series
+            if form.delete_following.data:
+                series.delete_following(event)
+            elif form.delete_all.data:
+                print "here"
+                series.delete_all()
+            else:
+                series.delete_one(event)
+        else:
+            # The event is not recurring, so just delete it
+            event.delete()
     else:
         flash('Invalid event id')
-        # print "Invalid event id"
-        pass
     return redirect(url_for('.index'))
 
 
@@ -170,3 +156,9 @@ def unpublish_event(event_id):
 @requires_privilege('edit')
 def view_events():
     return str(Event.objects())
+
+@events.route('/mom')
+def mom():
+    for e in Event.objects():
+        e.delete()
+    return "hi"

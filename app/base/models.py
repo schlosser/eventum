@@ -6,56 +6,39 @@ now = datetime.now
 
 
 class Post(db.Document):
-    date_created = db.DateTimeField(
-        default=now, required=True, verbose_name="Date Created",
-        help_text="DateTime when the document was created, localized to the server")
-    date_modified = db.DateTimeField(
-        default=now, required=True, verbose_name="Date Modified",
-        help_text="DateTime when the document was last modified, localized to the server")
-    title = db.StringField(
-        max_length=255, required=True, verbose_name="Title",
-        help_text="Title of the post (255 characters max)")
-    author = db.ReferenceField(
-        User, required=True, verbose_name="Author",
-        help_text="Reference to the User that authored the post")
-    html_content = db.StringField(
-        verbose_name="HTML Content",
-        help_text="The HTML content of the post")
-    markdown_content = db.StringField(
-        required=True, verbose_name="Markdown Content",
-        help_text="The HTML content of the post")
-    slug = db.StringField(
-        required=True, verbose_name="Post Slug", regex='([a-z]|[A-Z]|[1-9]|-)*',
-        help_text="Name of post for use in the url (i.e. my-cool-post)")
-    categories = db.ListField(
-        db.StringField(
-            db_field='category', max_length=255, verbose_name="Category",
-            help_text="A category for the post (255 characters max)"),
-        verbose_name="Categories", default=list, help_text="A list of categories")
-    tags = db.ListField(
-        db.StringField(
-            db_field='tag', max_length=255, verbose_name="Tag",
-            help_text="A tag for the post (255 characters max)"),
-        verbose_name="Tags", default=list, help_text="A list of tags for the post")
-    published = db.BooleanField(
-        required=True, default=False, verbose_name="Published",
-        help_text="Whether or not the post is published")
-    date_published = db.DateTimeField(
-        verbose_name="Date Published",
-        help_text="The date when the post is published, localized to the server")
-    posted_by = db.ReferenceField(
-        User, required=True,
-        verbose_name="Posted By",
-        help_text="The User that posted the post, if different from author (i.e. guest author)")
+    """"""
+    date_created = db.DateTimeField(required=True, default=now)
+    date_modified = db.DateTimeField(required=True, default=now)
+    title = db.StringField(required=True, max_length=255)
+    author = db.ReferenceField(User, required=True)
+    html_content = db.StringField()
+    markdown_content = db.StringField(required=True)
+    slug = db.StringField(required=True, regex="([a-z]|[A-Z]|[1-9]|-)*")
+    categories = db.ListField(db.StringField(db_field='category',
+                                             max_length=255), default=list)
+    tags = db.ListField(db.StringField(db_field='tag', max_length=255),
+                        default=list)
+    published = db.BooleanField(required=True, default=False)
+    date_published = db.DateTimeField()
+    posted_by = db.ReferenceField(User, required=True)
+    meta = {
+        'allow_inheritance': True,
+        'indexes': ['title', 'date_created'],
+        'ordering': ['-date_created']
+    }
 
     def id_str(self):
         return str(self.id)
 
     def clean(self):
-        """Update date_modified, and fill in posted_by and html_content if invalid"""
+        """Update date_modified, and fill in posted_by and html_content
+        if invalid
+        """
+
         self.date_modified = now()
 
-        self.html_content = markdown.markdown(self.markdown_content, ['extra', 'smarty'])
+        self.html_content = markdown.markdown(self.markdown_content,
+                                              ['extra', 'smarty'])
         if self.images:
             for image in self.images:
                 self.html_content = self.html_content.replace(
@@ -68,12 +51,6 @@ class Post(db.Document):
 
     def __unicode__(self):
         return self.title
-
-    meta = {
-        'allow_inheritance': True,
-        'indexes': ['title', 'date_created'],
-        'ordering': ['-date_created']
-    }
 
     def __repr__(self):
         rep = '%r(title=%r, author=%r, categories=%r, tags=%r, published=%r' %\

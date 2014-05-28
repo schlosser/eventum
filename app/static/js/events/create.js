@@ -11,9 +11,9 @@ $(function() {
         var end_val = $('input[name="m-ends"]:checked').val();
         $('input[name="ends"][value=' + end_val + ']').prop('checked', true);
         $('#num_occurances').val($("#m-num_occurances").val());
-        $('#repeat_end_date').val($("#m-repeat_end_date").val());
+        $('#recurrence_end_date').val($("#m-recurrence_end_date").val());
         $('.create-event-form .summary').text($('.modal .summary').text());
-        $('#summary').val($('.modal .summary').text());
+        $('#recurrence_summary').val($('.modal .summary').text());
     }
 
     function formToModal() {
@@ -23,8 +23,8 @@ $(function() {
         var end_val = $('input[name="ends"]:checked').val();
         $('input[name="m-ends"][value=' + end_val + ']').prop('checked', true);
         $('#m-num_occurances').val($("#num_occurances").val());
-        $('#m-repeat_end_date').val($("#repeat_end_date").val());
-        $('.modal .summary').val($('#summary').text());
+        $('#m-recurrence_end_date').val($("#recurrence_end_date").val());
+        $('.modal .summary').val($('#recurrence_summary').text());
     }
 
     function getSummary() {
@@ -43,7 +43,7 @@ $(function() {
                 summary += ", for " + $("#m-num_occurances").val() + " occurances";
                 break;
             case "on":
-                summary += ", until " + $("#m-repeat_end_date").val();
+                summary += ", until " + $("#m-recurrence_end_date").val();
         }
         return summary;
     }
@@ -73,8 +73,8 @@ $(function() {
 
     $('.datetime').datepair();
 
-    $(".create-event-form .summary").text($("#summary").val());
-    $("#repeat_end_date").val($('.datetime .date').val());
+    $(".create-event-form .summary").text($("#recurrence_summary").val());
+    $("#recurrence_end_date").val($('.datetime .date').val());
 
     /* Submit the form */
     $(document).on('click', 'a[href="#save"]', function(e) {
@@ -84,12 +84,12 @@ $(function() {
 
     /* Tie the published toggle to the form element */
     $(document).on('click', '.active a[href="#toggle"]', function(e) {
-        $('#published').prop('checked', false); });
+        $('#is_published').prop('checked', false); });
     $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
-        $('#published').prop('checked', true); });
+        $('#is_published').prop('checked', true); });
 
 
-    $(document).on('click', '#repeat', function(e) {
+    $(document).on('click', '#is_recurring', function(e) {
         if($(this).is(':checked')) {
             $('.create-event-form .summary').removeClass('hidden');
             if (!$('.create-event-form .summary').text()) {
@@ -117,7 +117,7 @@ $(function() {
         formToModal();
         $('.modal .summary').text(getSummary());
     });
-    $(document).on('focus', '#m-repeat_end_date', function() {
+    $(document).on('focus', '#m-recurrence_end_date', function() {
         $('input[name="m-ends"]').removeAttr('checked');
         $(this).siblings('input[type="radio"]').prop("checked", true);
     });
@@ -131,7 +131,7 @@ $(function() {
     $(document).on('submit', '.m-repeat-form', function(e) {
         e.preventDefault();
         modalToForm();
-        $('#repeat').prop('checked', true);
+        $('#is_recurring').prop('checked', true);
         $('.repeat > label').text("Repeat:");
         $('a[href="#close-modal"]').click();
         $('a[href="#show-modal"][data-modal="repeat"]').text("Edit");

@@ -48,7 +48,7 @@ class CreateEventForm(Form):
     start_time = TimeField('Start time', [Optional()])
     end_date = DateField('End date', [Optional()], format='%m/%d/%Y')
     end_time = TimeField('End time', [Optional()])
-    repeat = BooleanField('Repeat')
+    is_recurring = BooleanField('Is Recurring')
     frequency = SelectField('Repeats', choices=[('weekly', 'Weekly')],
                             default="weekly")
     every = IntegerField('Every', [NumberRange(min=1, max=30)], default=1)
@@ -57,12 +57,12 @@ class CreateEventForm(Form):
         ("on", "On")
     ], default="after")
     num_occurances = IntegerField('Every', [NumberRange(min=1)], default=1)
-    repeat_end_date = DateField('Repeat End Date', [Optional()],
+    recurrence_end_date = DateField('Repeat End Date', [Optional()],
                                 format='%m/%d/%Y')
-    summary = TextField('Summary')
+    recurrence_summary = TextField('Summary')
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')
-    published = BooleanField('Published')
+    is_published = BooleanField('Is Published')
     update_all = BooleanField('Update all', default=False)
     update_following = BooleanField('Update Following', default=False)
 
