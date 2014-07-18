@@ -90,12 +90,25 @@ nav {
 .flashes {
     color: $white;
     text-align: center;
+    overflow: hidden;
+    width: 100%;
+    display: inline;
 
-    li {
-        padding: 0.5rem 0;
+
+    .flash-wrapper {
+        transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+
+        &.dismissed { height: 0 !important; }
+    }
+    .flash {
+        display: block;
         background-color: $green;
         position: relative;
+        width: 100%;
+        overflow: visible !important;
 
+        p { padding: 0.5rem 0; }
         i {
             position: absolute;
             height: 1rem;
@@ -112,7 +125,7 @@ nav {
     min-height: 100%;
     padding: $content-padding;
 
-        .full-width {
+    .full-width {
         margin: 0 (-1 * $content-padding);
         width: auto;
     }
@@ -204,7 +217,20 @@ $w-9: 9rem;
 @media screen and (min-width: $xl-desktop-min) {
     nav { width: $nav-wide; }
 
-    .main { margin-left: $nav-wide; }
+    .main > .inner {
+        width: 100%;
+
+        .content {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+
+    .main {
+        margin-left: $nav-wide;
+        background-color: $white;
+    }
 
     .nav-item {
         -webkit-transition: none;

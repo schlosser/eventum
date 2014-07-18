@@ -270,6 +270,10 @@ def users():
                            users=User.objects(),
                            current_user=g.user)
 
+@auth.route('/users/view', methods=['GET'])
+def view_all_users():
+    return str(User.objects())
+
 
 @auth.route('/user/<slug>', methods=['GET', 'POST'])
 @login_required

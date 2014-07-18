@@ -86,15 +86,33 @@ nav a, nav a:hover {
 .flashes {
   color: white;
   text-align: center;
+  overflow: hidden;
+  width: 100%;
+  display: inline;
 }
-/* line 94 */
-.flashes li {
-  padding: 0.5rem 0;
+/* line 98 */
+.flashes .flash-wrapper {
+  transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+/* line 102 */
+.flashes .flash-wrapper.dismissed {
+  height: 0 !important;
+}
+/* line 104 */
+.flashes .flash {
+  display: block;
   background-color: #43ac6a;
   position: relative;
+  width: 100%;
+  overflow: visible !important;
 }
-/* line 99 */
-.flashes li i {
+/* line 111 */
+.flashes .flash p {
+  padding: 0.5rem 0;
+}
+/* line 112 */
+.flashes .flash i {
   position: absolute;
   height: 1rem;
   right: 0.5rem;
@@ -102,20 +120,20 @@ nav a, nav a:hover {
   margin-top: -0.5rem;
 }
 
-/* line 109 */
+/* line 122 */
 .content {
   background-color: white;
   position: relative;
   min-height: 100%;
   padding: 1rem;
 }
-/* line 115 */
+/* line 128 */
 .content .full-width {
   margin: 0 -1rem;
   width: auto;
 }
 
-/* line 121 */
+/* line 134 */
 .nav-item {
   overflow: hidden;
   width: 4rem;
@@ -127,11 +145,11 @@ nav a, nav a:hover {
   transition: .3s ease all;
   position: relative;
 }
-/* line 132 */
+/* line 145 */
 .nav-item.selected {
   background-color: #3878cc;
 }
-/* line 136 */
+/* line 149 */
 .nav-item .nav-icon {
   text-align: center;
   width: 4rem;
@@ -140,7 +158,7 @@ nav a, nav a:hover {
   display: inline-block;
   float: left;
 }
-/* line 144 */
+/* line 157 */
 .nav-item .nav-label {
   position: absolute;
   padding-left: 1rem;
@@ -154,12 +172,12 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 159 */
+/* line 172 */
 .toolbar {
   background-color: #3878cc;
   color: white;
 }
-/* line 163 */
+/* line 176 */
 .toolbar .middle {
   display: inline;
   position: absolute;
@@ -168,84 +186,95 @@ nav a, nav a:hover {
   margin-left: -30%;
   text-align: center;
 }
-/* line 172 */
+/* line 185 */
 .toolbar .right {
   float: right;
 }
 
-/* line 182 */
+/* line 195 */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 183 */
+/* line 196 */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 185 */
+/* line 198 */
 .w-6:hover {
   width: 10rem;
 }
-/* line 186 */
+/* line 199 */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 188 */
+/* line 201 */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 189 */
+/* line 202 */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 191 */
+/* line 204 */
 .w-9:hover {
   width: 13rem;
 }
-/* line 192 */
+/* line 205 */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 194 */
+/* line 207 */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 199 */
+  /* line 212 */
   .main > .inner {
     width: 100% !important;
   }
 }
 @media screen and (min-width: 90.063rem) {
-  /* line 205 */
+  /* line 218 */
   nav {
     width: 12rem;
   }
 
-  /* line 207 */
-  .main {
-    margin-left: 12rem;
+  /* line 220 */
+  .main > .inner {
+    width: 100%;
+  }
+  /* line 223 */
+  .main > .inner .content {
+    width: 90%;
+    margin: 0 auto;
   }
 
-  /* line 209 */
+  /* line 230 */
+  .main {
+    margin-left: 12rem;
+    background-color: white;
+  }
+
+  /* line 235 */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 214 */
+  /* line 240 */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 218 */
+  /* line 244 */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 219 */
+  /* line 245 */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -307,7 +336,12 @@ input[type="submit"] {
   font-size: 6rem;
 }
 
-/* line 29 */
+/* line 28 */
+.fa-2x {
+  font-size: 1.5em !important;
+}
+
+/* line 32 */
 .small {
   font-size: 0.8rem !important;
 }
@@ -457,7 +491,12 @@ a, a:hover {
   font-size: 6rem;
 }
 
-/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.fa-2x {
+  font-size: 1.5em !important;
+}
+
+/* line 32, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }

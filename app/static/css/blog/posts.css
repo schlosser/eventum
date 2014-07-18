@@ -143,7 +143,12 @@ a, a:hover {
   font-size: 6rem;
 }
 
-/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.fa-2x {
+  font-size: 1.5em !important;
+}
+
+/* line 32, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
@@ -432,7 +437,12 @@ a, a:hover {
   font-size: 6rem;
 }
 
-/* line 29, /Users/dan/working/eventum/app/static/scss/utils.scss */
+/* line 28, /Users/dan/working/eventum/app/static/scss/utils.scss */
+.fa-2x {
+  font-size: 1.5em !important;
+}
+
+/* line 32, /Users/dan/working/eventum/app/static/scss/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }

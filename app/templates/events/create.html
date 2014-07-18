@@ -1,6 +1,10 @@
 {% extends "app.html" %}
 {% import "macros.html" as macros %}
 
+{% block title %}Create a New Event{% endblock %}
+{% block pagetitle %}New Event{% endblock %}
+{% set active_page = "Events" %}
+
 {% block css %}
 {{ super() }}
 {% assets "scss_datetime_datetime" %}
@@ -11,23 +15,6 @@
 {% endassets %}
 {% endblock %}
 
-
-{% block title %}Create a New Event{% endblock %}
-{% block pagetitle %}New Event{% endblock %}
-{% set active_page = "Events" %}
-
-{% block barleft %}
-<a href="/events"><i class="fa fa-arrow-left fa-2x"></i></a>
-{% endblock %}
-
-{% block barright %}
-{% if event and event.repeat %}
-<a class="text-button " href="#show-modal" data-modal="save-options">Save</a>
-{% else %}
-<a class="text-button " href="#save">Save</a>
-{% endif %}
-{% endblock %}
-
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/events/create.js') }}"></script>
@@ -36,29 +23,22 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/datetime/jquery.datepair.min.js') }}"></script>
 {% endblock %}
 
+{% block barleft %}
+<a href="/events"><i class="fa fa-arrow-left fa-2x"></i></a>
+{% endblock %}
+
+{% block barright %}
+<a class="text-button " href="#save">Save</a>
+{% endblock %}
+
 {% block toolbar %}
-
-{% if user.can("publish") %}
-{% if event and event.published %}
-{{ macros.toggle("Published", "Not Published")}}
-{% else %}
-{{ macros.toggle("Published", "Not Published", start_on=False)}}
-{% endif %}
-{% endif %}
-
-{% if event %}
-<div class="right">
-    {{ macros.render_field(delete_form.csrf_token) }}
-    {% call macros.confirm("Delete Post", "/events/delete/" + event.id_str()) %}
-    <div class="hidden">
-        {{ macros.render_field(delete_form.delete_following) }}
-        {{ macros.render_field(delete_form.delete_all) }}
-        <input type="submit" value="submit"/>
-    </div>
-    <a href="#show-modal" data-modal="delete">Confirm</a>
-    {% endcall %}
-</div>
-{% endif %}
+    {% if user.can("publish") %}
+        {% if event and event.published %}
+            {{ macros.toggle("Published", "Not Published")}}
+        {% else %}
+            {{ macros.toggle("Published", "Not Published", start_on=False)}}
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block main %}
@@ -142,7 +122,7 @@
         <i class="fa fa-repeat fa-2x"></i>
         <div class="repeat">
             {{ macros.render_field(form.is_recurring) }}
-            {% if event and event.is_recurring%}
+            {% if event and event.is_recurring %}
             <label for="is_recurring">Repeat:</label>
             <span class="summary"></span>
             <a href="#show-modal" data-modal="repeat">Edit</a>
@@ -170,6 +150,9 @@
         {{ macros.render_field(form.num_occurances) }}
         {{ macros.render_field(form.recurrence_end_date) }}
         {{ macros.render_field(form.recurrence_summary) }}
+
+        {{ macros.render_field(form.update_all) }}
+        {{ macros.render_field(form.update_following) }}
 
         <input type="submit" id="save-event" value="Add">
     </div>

@@ -63,8 +63,8 @@ class Post(db.Document):
         rep += ', posted_by=%r' % (self.posted_by) if self.posted_by else ""
 
         # cut down to 100 characters
-        if len(self.content) > 100:
-            rep += ', content=%r' % (self.content[:97] + "...")
+        if len(self.html_content) > 100:
+            rep += ', html_content=%r' % (self.html_content[:97] + "...")
         else:
-            rep += ', content=%r' % (self.content)
+            rep += ', html_content=%r' % (self.html_content)
         return rep

@@ -7,7 +7,15 @@ $(function() {
     /* Dismiss Flash */
     $(document).on('click', 'a[href="#dismiss-flash"]', function(e) {
         e.preventDefault();
-        $(this).parent().slideUp(200);
+        $flash_wrapper = $(this).parent().parent();
+        $flash_wrapper.addClass('dismissed');
+    });
+
+    /* Setup flashes */
+    $('.flash').each(function() {
+        $flash_wrapper = $(this).parent();
+        $(this).css({"height": $(this).outerHeight()});
+        $flash_wrapper.css({"height": $(this).outerHeight()});
     });
 
 

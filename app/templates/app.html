@@ -17,8 +17,7 @@
             ('/resources',  'Resources', 'book',        'w-9'),
             ('/blog/posts', 'Blog',      'quote-right', 'w-5'),
             ('/users',      'Users',     'users',       'w-6'),
-            ('/media',      'Media',     'picture-o',   'w-6-5'),
-            ('/admin',      'Admin',     'cogs',        'w-6-5')] %}
+            ('/media',      'Media',     'picture-o',   'w-6-5')] %}
         <li class="nav-item {{ width }}
             {% if label == active_page %}
             selected
@@ -55,16 +54,18 @@
         {% block flashes %}
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <ul class="flashes">
+            <div class="flashes">
             {% for message in messages %}
-                <li>
-                    <p>{{ message }}</p>
-                    <a href="#dismiss-flash">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </li>
+                <div class="flash-wrapper">
+                    <div class="flash">
+                        <p>{{ message }}</p>
+                        <a href="#dismiss-flash">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
             {% endfor %}
-            </ul>
+            </div>
             {% endif %}
         {% endwith %}
         {% endblock %}

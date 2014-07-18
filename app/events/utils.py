@@ -16,20 +16,17 @@ def create_event(form, event=None, update_all=False, update_following=False,
     event_data = {
         "title": form.title.data,
         "location": form.location.data,
-        "start_date": form.start_date.data,
         "start_time": form.start_time.data,
-        "end_date": form.end_date.data,
         "end_time": form.end_time.data,
         "is_published": form.is_published.data,
         "short_description": form.short_description.data,
         "long_description": form.long_description.data,
         "is_recurring": form.is_recurring.data,
     }
-    if kwargs:
-        event_data.update(kwargs)
-    if event:
-        event_data['creator'] = event.creator
-
+    date_data = {
+        "start_date": form.start_date.data,
+        "end_date": form.end_date.data,
+    }
     recurrence_data = {
         "frequency": form.frequency.data,
         "every": form.every.data,
@@ -40,55 +37,58 @@ def create_event(form, event=None, update_all=False, update_following=False,
         "recurrence_summary": form.recurrence_summary.data
     } if form.is_recurring.data else None
 
-    # Create and save a new event if this is not an update
+    if kwargs:
+        event_data.update(kwargs)
+    if event:
+        event_data['creator'] = event.creator
+
+    # Create and save a new event / series if this is not an update
     if not event:
-        create_series(event_data, recurrence_data)
+        create_series(event_data, date_data, recurrence_data)
         return
 
     # If this is no longer a recurring event, delete others and update this one
     if event.is_recurring and not form.is_recurring.data:
         event.parent_series.delete_all_except(event)
-        update_and_save(event, event_data)
+        update_and_save(event, date_data, event_data)
         return
 
     # If the recurrence is being added for the first time.
     if not event.is_recurring and form.is_recurring.data:
-        print recurrence_data
-        create_series(event_data, recurrence_data, event=event)
+        create_series(event_data, date_data, recurrence_data, event=event)
         return
 
-    # Isolate only propeties that will be changed
-    print event.parent_series
     recurrence_changes = event.parent_series and \
         any([k for k, v in recurrence_data.iteritems()
-             if getattr(event.parent_series, k) == v])
+             if getattr(event.parent_series, k) != v]) or \
+        any([k for k,v in date_data.iteritems() if getattr(event, k) != v])
 
-    if form.update_all:
+    if form.update_all.data:
         # If all the changes are easy, do the changes to the current objects
         if not recurrence_changes:
             for e in event.parent_series.events:
-                update_and_save(e, event_data)
+                update_and_save(e, event_data, {})
         else:
             # Otherwise, delete all the related events and remake them
             event.parent_series.delete_all()
-            create_series(event_data, recurrence_data)
+            create_series(event_data, date_data, recurrence_data)
 
-    elif form.update_following:
+    elif form.update_following.data:
         # If all the changes are easy, do the changes to the current objects
         if not recurrence_changes:
             for e in event.parent_series.events:
                 if e.start_datetime() >= event.start_datetime():
-                    update_and_save(e, event_data)
+                    update_and_save(e, event_data, {})
         else:
             # Otherwise delete all following events, treat the current event as
             # a root event, and make a new series.
-            e.parent_series.delete_following(event)
-            e.parent_series.delete()
-            create_series(event_data, recurrence_data)
+            event.parent_series.delete_following(event)
+            event.parent_series.delete()
+            create_series(event_data, date_data, recurrence_data)
 
     else:
         # Only update changes to the event data
-        update_and_save(event, event_data)
+        update_and_save(event, event_data, date_data)
 
 
 def create_form(event, request):
@@ -114,11 +114,13 @@ def create_form(event, request):
             "recurrence_end_date": event.parent_series.recurrence_end_date,
             "recurrence_summary": event.parent_series.recurrence_summary
         })
+        print "aloha"
+        print form_data['recurrence_end_date']
     form_data = remove_none_fields(form_data)
     return CreateEventForm(request.form, **form_data)
 
 
-def create_series(e_data, r_data, event=None):
+def create_series(e_data, d_data, r_data, event=None):
     """"""
     def increment_dates(data, delta):
         """"""
@@ -126,7 +128,7 @@ def create_series(e_data, r_data, event=None):
         data['end_date'] = data['end_date'] + delta
 
     if not e_data['is_recurring']:
-        make_event(e_data)
+        make_event(e_data, d_data)
         return
 
     # Only make the series if all of the necesary fields are valid
@@ -144,40 +146,40 @@ def create_series(e_data, r_data, event=None):
     e_data['parent_series'] = series
 
     if event:
-        update_and_save(event, e_data)
+        update_and_save(event, e_data, d_data)
         series.events.append(event)
-        increment_dates(e_data, delta)
+        increment_dates(d_data, delta)
 
     while r_data['ends_after'] and \
             len(series.events) < r_data['num_occurances'] or \
             r_data['ends_on'] and \
-            e_data['start_date'] <= r_data['repeat_end_date']:
-        e = make_event(e_data)
+            d_data['start_date'] <= r_data['recurrence_end_date']:
+        e = make_event(e_data, d_data)
         series.events.append(e)
-        increment_dates(e_data, delta)
+        increment_dates(d_data, delta)
 
     series.save()
 
 
-def update_and_save(event, d):
+def update_and_save(event, e_data, d_data):
     """"""
-    d = remove_none_fields(d)
+    d = remove_none_fields(dict(e_data.items() + d_data.items()))
     d = dict(("set__" + k, v) for k, v in d.iteritems())
     event.update(**d)
     event.save()
 
 
-def make_event(d):
+def make_event(e_data, d_data):
     """"""
-    d = remove_none_fields(d)
+    d = remove_none_fields(dict(e_data.items() + d_data.items()))
     event = Event(**d)
     event.save()
     return event
 
 
-def make_series(d):
+def make_series(r_data):
     """"""
-    d = remove_none_fields(d)
+    d = remove_none_fields(r_data)
     series = EventSeries(**d)
     series.save()
     return series

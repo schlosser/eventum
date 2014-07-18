@@ -59,8 +59,9 @@ def create_event():
         utils.create_event(form, creator=g.user)
         return redirect(url_for('.index'))
     if form.errors:
-        flash("There was a validation error." + str(form.errors))
-        pass
+        for error in form.errors:
+            for message in form.errors[error]:
+                flash(message)
     return render_template('events/create.html', form=form, user=g.user,
                            delete_form=delete_form)
 
@@ -78,11 +79,16 @@ def edit_event(event_id):
         utils.create_form(event, request)
 
     if form.validate_on_submit():
+        print "vals"
+        print form.update_all.data
+        print form.update_following.data
         utils.update_event(event, form, update_all=form.update_all.data,
                            update_following=form.update_following.data)
         return redirect(url_for('.index'))
     if form.errors:
-        flash("There was a validation error." + str(form.errors))
+        for error in form.errors:
+            for message in form.errors[error]:
+                flash(message)
 
     return render_template('events/edit.html', form=form, event=event,
                            user=g.user, delete_form=delete_form)
@@ -102,7 +108,6 @@ def delete_event(event_id):
             if form.delete_following.data:
                 series.delete_following(event)
             elif form.delete_all.data:
-                print "here"
                 series.delete_all()
             else:
                 series.delete_one(event)
@@ -162,3 +167,10 @@ def mom():
     for e in Event.objects():
         e.delete()
     return "hi"
+
+@events.route('/dad')
+def dad():
+    for e in BlogPost.objects():
+        e.creator = g.user
+        e.save()
+    return "son"

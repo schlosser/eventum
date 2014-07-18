@@ -1,13 +1,30 @@
 from app import app
 from flask import Blueprint, render_template, request, send_from_directory, \
-    abort, redirect, url_for, g, flash
+    abort, redirect, url_for, g, flash, session
 from app.blog.models import BlogPost
+from app.auth.models import User
+from mongoengine.queryset import DoesNotExist
 from app.media.models import Image
 from app.blog.forms import CreateBlogPostForm
 from app.auth.decorators import login_required, requires_privilege
 from bson.objectid import ObjectId
 
 blog = Blueprint('blog', __name__)
+
+@blog.before_request
+def lookup_current_user():
+    """Set the g.user variable to the User in the database that shares
+    openid with the session, if one exists.
+
+    Note that it gets called before all requests, but not before decorators.
+    """
+    g.user = None
+    if 'gplus_id' in session:
+        gplus_id = session['gplus_id']
+        try:
+            g.user = User.objects().get(gplus_id=gplus_id)
+        except DoesNotExist:
+            pass  # Fail gracefully if the user is not in the database yet
 
 @blog.route('/blog')
 def index():
@@ -123,3 +140,14 @@ def unpublish_event(post_id):
 @login_required
 def fetch_epiceditor_themes(folder, path):
     return send_from_directory(app.static_folder, "css/epiceditor/%s/%s" % (folder, path))
+
+@blog.route('/blog/posts/dad')
+def dad():
+    for post in BlogPost.objects():
+        post.delete()
+    return "son"
+
+@blog.route('/blog/posts/view')
+def view_all_posts():
+    return str(BlogPost.objects())
+

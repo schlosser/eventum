@@ -61,7 +61,7 @@ def register_scss():
     assets.url = app.static_url_path
     defaults = {
         'filters':'scss',
-        'depends':'scss/_colors.scss'
+        'depends':['scss/_colors.scss', 'scss/app.scss']
     }
 
     with open('config/scss.json') as f:

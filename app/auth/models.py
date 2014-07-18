@@ -98,8 +98,8 @@ class User(db.Document):
         return "User"
 
     def __repr__(self):
-        return 'User(name=%r, email=%r, roles=%r, privileges=%r, gplus_id=%r, date_created=%r)' % \
-            (self.name, self.email, self.roles,
+        return 'User(id=%r, name=%r, email=%r, roles=%r, privileges=%r, gplus_id=%r, date_created=%r)' % \
+            (self.id, self.name, self.email, self.roles,
              self.privileges, self.gplus_id, self.date_created)
 
     def __unicode__(self):

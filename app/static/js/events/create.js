@@ -10,8 +10,13 @@ $(function() {
         $('input[name="ends"]').removeAttr('checked');
         var end_val = $('input[name="m-ends"]:checked').val();
         $('input[name="ends"][value=' + end_val + ']').prop('checked', true);
-        $('#num_occurances').val($("#m-num_occurances").val());
-        $('#recurrence_end_date').val($("#m-recurrence_end_date").val());
+        if (end_val == 'on') {
+            $('#recurrence_end_date').val($("#m-recurrence_end_date").val());
+            $('#num_occurances').val(1);
+        } else if (end_val == 'after') {
+            $('#num_occurances').val($("#m-num_occurances").val());
+            $('#recurrence_end_date').val("");
+        }
         $('.create-event-form .summary').text($('.modal .summary').text());
         $('#recurrence_summary').val($('.modal .summary').text());
     }
@@ -23,7 +28,11 @@ $(function() {
         var end_val = $('input[name="ends"]:checked').val();
         $('input[name="m-ends"][value=' + end_val + ']').prop('checked', true);
         $('#m-num_occurances').val($("#num_occurances").val());
-        $('#m-recurrence_end_date').val($("#recurrence_end_date").val());
+        if ($("#recurrence_end_date").val()){
+            $('#m-recurrence_end_date').val($("#recurrence_end_date").val());
+        } else {
+            $('#m-recurrence_end_date').val($("#start_date").val());
+        }
         $('.modal .summary').val($('#recurrence_summary').text());
     }
 
@@ -48,10 +57,10 @@ $(function() {
         return summary;
     }
 
+
     /* =======================================================================
      * Initalize the date and timepickers
-     * =====================================================================*/
-
+     * ==================================================================== */
 
     $('.datetime .time').timepicker({
         'showDuration': true,
@@ -74,7 +83,6 @@ $(function() {
     $('.datetime').datepair();
 
     $(".create-event-form .summary").text($("#recurrence_summary").val());
-    $("#recurrence_end_date").val($('.datetime .date').val());
 
     /* Submit the form */
     $(document).on('click', 'a[href="#save"]', function(e) {
