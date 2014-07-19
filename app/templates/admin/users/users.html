@@ -1,0 +1,104 @@
+{% extends "admin/admin.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_auth_users" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}Manage your Whitelist{% endblock %}
+{% block pagetitle %}Users{% endblock %}
+
+{% set active_page='Users' %}
+
+{% block barright %}
+{% if current_user.can('admin') %}
+<a title="Add to the Whitelist" href="#show-modal">
+    <i class="fa fa-plus fa-2x"></i>
+</a>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+{% call macros.modal() %}
+<h2>Add a User to the Whitelist</h2>
+<small>Only emails on this whitelist can be used to make an account.</small>
+<form class="whitelist-add-form" method="POST" action="{{ url_for('whitelist.add') }}">
+    {{ whitelist_form.csrf_token }}
+    {{ macros.render_field(whitelist_form.email, required="", placeholder="Email Address", autofocus="", label=False)}}
+    {% for subfield in whitelist_form.user_type %}
+    <ul>
+        <li>{{ subfield }}</li>
+        <li>{{ subfield.label }}</li>
+    </ul>
+    {% endfor %}
+    <input class="big" type="submit" value="Add">
+</form>
+{% endcall %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{% if current_user.can("admin") %}
+<h2>Whitelist</h2>
+<small>Only emails on this whitelist can be used to make an account.</small>
+{% if whitelist %}
+<div class="full-width">
+    <table class="whitelist">
+        <thead>
+            <th class="user-type with-image">User Type</th>
+            <th class="email" >Email</th>
+            <th class="actions"></th>
+        </thead>
+        <tbody>
+            {% for user in whitelist %}
+            {% if not user.redeemed %}
+            <tr class="whitelist-item" data-email="{{ user.email }}">
+                <td class="role with-image">
+                    <p>{{ user.user_type }}</p>
+                </td>
+                <td class="email">
+                    <p>{{ user.email }}</p>
+                </td>
+                <td class="actions right">
+                    {{ macros.confirm("Revoke", url_for('whitelist.delete', email=user.email)) }}
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="no-elements">Click the plus button to add a user to the whitelist!</p>
+{% endif %}
+<h2>Users</h2>
+<small>Currently registered users</small>
+{% endif %}
+<div class="full-width">
+    <table class="users click">
+        <thead>
+            <th class="with-image">Name</th>
+            <th>Email</th>
+            <th>User Type</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr class="user" data-email="{{ user.email }}">
+                <td class="name with-image">
+                    <a class="tr-link" href="{{ url_for('users.user', slug=user.slug) }}"></a>
+                    <img src="{{ user.get_profile_picture() }}">
+                    <p>{{user.name}}</p>
+                </td>
+                <td class="email">
+                    <p class="whitelist-email">{{ user.email }}</p>
+                </td>
+                <td class="user-type">{{user.user_type}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

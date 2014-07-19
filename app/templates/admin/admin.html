@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_app" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block body %}
+{% set active_page = active_page|default('Home') -%}
+<nav class="nav">
+    <ul>
+        {% for href, label, icon, width in [
+            ('/admin/home',           'Home',      'home',        'w-6-5'),
+            ('/admin/events',     'Events',    'calendar',    'w-6-5'),
+            ('/admin/resources',  'Resources', 'book',        'w-9'),
+            ('/admin/posts', 'Blog',      'quote-right', 'w-5'),
+            ('/admin/users',      'Users',     'users',       'w-6'),
+            ('/admin/media',      'Media',     'picture-o',   'w-6-5')] %}
+        <li class="nav-item {{ width }}
+            {% if label == active_page %}
+            selected
+            {% endif %}">
+            <a class="nav-link" href="{{ href }}">
+                <i class="nav-icon fa fa-{{ icon }} fa-2x"></i>
+                <span class="nav-label">{{ label }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+<div class="main">
+    {% block main %}
+    <div class="inner">
+        {% block topbar %}
+        <div class="topbar">
+            <span class="left">
+                {% block barleft %}{% endblock %}
+            </span>
+            <span class="middle">
+                {% block barmiddle %}
+                <h1 class="page-title">
+                {% block pagetitle %}Title{% endblock %}
+                </h1>
+                {% endblock %}
+            </span>
+            <span class="right">
+                {% block barright %}{% endblock %}
+            </span>
+        </div>
+        {% endblock %}
+
+        {% block flashes %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flashes">
+            {% for message in messages %}
+                <div class="flash-wrapper">
+                    <div class="flash">
+                        <p>{{ message }}</p>
+                        <a href="#dismiss-flash">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        {% endblock %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="toolbar clearfix">
+            {% block toolbar %}{% endblock %}
+        </div>
+        {% endblock main %}
+    </div>
+</div>
+{% endblock %}

@@ -6,18 +6,18 @@
     ]
   },
   "scss_app": {
-    "output": "css/app.css",
+    "output": "css/admin/admin.css",
     "inputs": [
-      "scss/app.scss",
+      "scss/admin/admin.scss",
       "scss/buttons.scss",
       "scss/utils.scss",
       "scss/forms.scss"
     ]
   },
   "scss_auth_users": {
-    "output": "css/auth/users.css",
+    "output": "css/users/users.css",
     "inputs": [
-      "scss/auth/users.scss",
+      "scss/admin/users/users.scss",
       "scss/tables.scss",
       "scss/modal.scss"
     ]
@@ -25,53 +25,53 @@
   "scss_events_events": {
     "output": "css/events/events.css",
     "inputs": [
-      "scss/events/events.scss"
+      "scss/admin/events/events.scss"
     ]
   },
   "scss_events_create": {
     "output": "css/events/create.css",
     "inputs": [
-      "scss/events/create.scss",
+      "scss/admin/events/create.scss",
       "scss/modal.scss"
     ]
   },
   "scss_blog_edit_post": {
-    "output": "css/blog/edit_post.css",
+    "output": "css/admin/posts/edit/post.css",
     "inputs": [
-      "scss/blog/edit_post.scss",
+      "scss/admin/posts/edit.scss",
       "scss/modal.scss"
     ]
   },
   "scss_blog_posts": {
-    "output": "css/blog/posts.css",
+    "output": "css/admin/posts/posts.css",
     "inputs": [
-      "scss/blog/posts.scss",
+      "scss/admin/posts/posts.scss",
       "scss/tables.scss"
     ]
   },
   "scss_media": {
-    "output": "css/media/index.css",
+    "output": "css/admin/media/media.css",
     "inputs": [
-      "scss/media/index.scss"
+      "scss/admin/media/media.scss"
     ]
   },
   "scss_media_upload": {
-    "output": "css/media/upload.css",
+    "output": "css/admin/media/upload.css",
     "inputs": [
-      "scss/media/upload.scss"
+      "scss/admin/media/upload.scss"
     ]
   },
   "scss_auth_user": {
-    "output": "css/auth/user.css",
+    "output": "css/admin/users/user.css",
     "inputs": [
-      "scss/auth/user.scss"
+      "scss/admin/users/user.scss"
     ]
   },
   "scss_datetime_datetime": {
-    "output": "css/datetime/datetime.css",
+    "output": "css/lib/datetime.css",
     "inputs": [
-      "scss/datetime/bootstrap-datepicker.scss",
-      "scss/datetime/jquery.timepicker.scss"
+      "scss/lib/bootstrap-datepicker.scss",
+      "scss/lib/jquery.timepicker.scss"
     ]
   }
 }

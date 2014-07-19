@@ -5,8 +5,7 @@ from bson.objectid import ObjectId
 from sys import path
 path.append('../')
 
-from app.mod_events.models import Event
-from app.mod_auth.models import User
+from app.models import Event, User
 
 class TestEvents(base.TestingTemplate):
 

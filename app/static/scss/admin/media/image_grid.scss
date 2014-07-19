@@ -1,0 +1,70 @@
+@import '../../media_queries';
+
+$wide-2: 50%;
+$wide-3: 33.333%;
+$wide-4: 25%;
+$wide-5: 20%;
+$wide-6: 16.666%;
+
+$image-padding: 0.25rem;
+.image-grid {
+    width: 100%;
+    overflow: hidden;
+
+    .image {
+        width: $wide-6;
+        padding-bottom: $wide-6;
+        display: inline-block;
+        float:left;
+        position: relative;
+
+        i {
+            position: absolute;
+            top: $image-padding;
+            bottom: $image-padding;
+            left: $image-padding;
+            right: $image-padding;
+            display: block;
+            background-position: center center;
+            background-size: cover;
+        }
+    }
+}
+
+.image-grid.small-grid .image {
+    width: 4rem;
+    border-bottom: 4rem;
+}
+
+@media only screen and (max-width: $xl-desktop-max) {
+    .image {
+        width: $wide-5 !important;
+        padding-bottom: $wide-5 !important; }
+}
+
+@media only screen and (max-width: $desktop-max) {
+    .image-grid .image {
+        width: $wide-4 !important;
+        padding-bottom: $wide-4 !important; }
+    .image-grid.small-grid .image {
+        width: $wide-6 !important;
+        padding-bottom: $wide-6 !important; }
+}
+
+@media only screen and (max-width: $tablet-max) {
+    .image-grid .image {
+        width: $wide-3 !important;
+        padding-bottom: $wide-3 !important; }
+    .image-grid.small-grid .image {
+        width: $wide-4 !important;
+        padding-bottom: $wide-4 !important; }
+}
+
+@media only screen and (max-width: $phone-max) {
+    .image-grid .image {
+        width: $wide-2 !important;
+        padding-bottom: $wide-2 !important; }
+    .image-grid.small-grid .image {
+        width: $wide-3 !important;
+        padding-bottom: $wide-3 !important; }
+}

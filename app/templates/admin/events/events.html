@@ -1,0 +1,106 @@
+{% extends "admin/admin.html" %}
+{% import "macros.html" as macros %}
+
+{% set active_page='Events' %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_events_events" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}View Events{% endblock %}
+{% block pagetitle %}Events{% endblock %}
+
+{% if request.args.get('week') %}
+{% set week = request.args.get('week')|int %}
+{% else %}
+{% set week = 0 %}
+{% endif %}
+
+{% block barleft %}
+<a href="{{url_for('events.index', week=(week - 1)) }}">
+    <i class="fa fa-chevron-left fa-2x"></i>
+</a>
+<a href="{{url_for('events.index', week=(week + 1)) }}">
+    <i class="fa fa-chevron-right fa-2x"></i>
+</a>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/events/events.js') }}"></script>
+{% endblock %}
+
+{% macro render_event(event) %}
+<li
+    {% if not event.ready_for_publishing() %}
+    class="incomplete event"
+    {% elif event.published %}
+    class="published event"
+    {% else %}
+    class="unpublished event"
+    {% endif %}
+    >
+    <a href="{{ url_for('events.edit', event_id=event.id) }}">
+    <span
+        {% if event.published %}
+        class="published"
+        {% else %}
+        class="not-published"
+        {% endif %}
+    ></span>
+    <div class="text-content">
+        <h3>{{event.title}}</h3>
+        <p>{{event.location}}</p>
+        <p>{{ event.human_readable_datetime() }}</p>
+    </div>
+    <div class="creator">
+        <span class="image">
+            <img src="{{ event.creator.get_profile_picture() }}">
+        </span>
+        <p class="name">{{ event.creator.name }}</p>
+    </div>
+    </a>
+</li>
+{% endmacro %}
+
+{% block barright %}
+<a href="{{ url_for('events.create') }}"><i class="fa fa-plus fa-2x"></i></a>
+{% endblock %}
+
+{% block content %}
+<div class="this-week full-width">
+    <div class="events-wrapper">
+        <ul class="events clearfix"
+            style="width:{{ 16.5*(events.this_week|count) - 1 }}rem;">
+        {% if events.this_week %}
+            {% for event in events.this_week %}
+            {{ render_event(event) }}
+            {% endfor %}
+        {% else %}
+            <li class="no-events">
+                <p>No events this week</p>
+            </li>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+<div class="next-week full-width">
+    <div class="events-wrapper">
+        <ul class="events clearfix"
+            style="width:{{ 16.5*(events.next_week|count) - 1 }}rem;">
+        {% if events.next_week %}
+            {% for event in events.next_week %}
+            {{ render_event(event) }}
+            {% endfor %}
+        {% else %}
+            <li class="no-events">
+                <p>No events for this week.</p>
+            </li>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

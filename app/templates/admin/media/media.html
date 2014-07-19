@@ -1,0 +1,51 @@
+{% extends "admin/admin.html" %}
+{% import "macros.html" as macros %}
+
+{% set active_page='Media' %}
+{% block title %}Manage Photos and other Media{% endblock %}
+{% block pagetitle %}Media{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/media.js') }}"></script>
+{% endblock %}
+
+{% block barright %}
+<a href="{{ url_for('media.upload') }}"><i class="fa fa-plus fa-2x"></i></a>
+{% endblock %}
+
+{% block content %}
+{% if images %}
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image">
+    <i style="background-image:url({{ image.url() }});"></i>
+    <ul class="actions">
+        <li class="action">
+            <a class="delete-image" href="#" data-filename="">
+                <i class="fa fa-trash-o fa-2x"></i>
+                <form class="hidden" action="{{ url_for('media.delete', filename=image.filename) }}" method="post">
+                    <input type="submit" value="Submit"/>
+                </form>
+            </a>
+        </li>
+        <li class="action">
+            <a href="{{ url_for('media.file', filename=image.filename) }}">
+                <i class="fa fa-link fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no images.</p>
+{% endif %}
+{% endblock %}

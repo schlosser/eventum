@@ -1,12 +1,8 @@
 {% macro render_field(field, label=False, placeholder=None, hidden=None) %}
 {% if field.errors %}
 <div class="form-component {{ wrapper_class }} error">
-    {% for error in field.errors %}
-    <p>{{ error }}</p>
-    {% endfor %}
 {% elif field.flags.error %}
 <div class="form-component {{ wrapper_class }} flag">
-    {{ field.flags.error }}
 {% elif hidden %}
 <div class="form-component {{ wrapper_class }} hidden">
 {% else%}

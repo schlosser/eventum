@@ -5,7 +5,7 @@ from coverage import coverage
 from sys import path
 path.append('../')
 from app import create_app
-from app.mod_auth.models import User
+from app.models import User
 from config.flask_config import basedir
 
 GPLUS_IDS = {

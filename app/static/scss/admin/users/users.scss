@@ -1,0 +1,51 @@
+@import '../../colors';
+@import '../../tables';
+
+.whitelist-add-form {
+    ul {
+        display: inline-block;
+        margin-right: 0.5rem;
+        li { display: inline-block; }
+    }
+    div {
+        padding-right: 0.5rem;
+        display: inline-block;
+    }
+    input[type="submit"] {
+        margin-top: 0.5rem;
+        display: block;
+    }
+}
+.form-component {
+    display: inline;
+}
+
+.whitelist {
+    margin-bottom: 1rem;
+}
+
+.role, .name {
+    width: 35%;
+    text-transform: capitalize;
+}
+.email {
+    width: 40%;
+}
+.user-type, .actions {
+    width: 25%;
+}
+
+td:first-child {
+    padding-left: 0 !important;
+}
+th {
+    text-align: left;
+}
+.with-image {
+    padding-left: ($table-padding + $row-height);
+}
+
+small {
+    display: block;
+    margin-bottom: 0.5rem;
+}

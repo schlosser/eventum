@@ -4,7 +4,7 @@ from mongoengine import ValidationError, NotUniqueError
 from sys import path
 path.append('../')
 
-from app.mod_auth.models import User, Whitelist
+from app.models import User, Whitelist
 
 USER_PRIVILEGES = {
     "user": {

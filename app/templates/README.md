@@ -1,17 +1,17 @@
 # `/app/templates/`
 
-### app.html
+### admin/admin.html
 
-### auth
+### auth
 
-### base.html
+### base.html
 
-### blog
+### blog
 
-### error
+### error
 
-### events
+### events
 
-### learn
+### learn
 
-### macros.html
+### macros.html

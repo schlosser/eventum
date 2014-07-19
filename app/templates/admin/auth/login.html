@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block title %}Sign in{% endblock %}
+
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript">
+(function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+})();
+
+function render() {
+    gapi.signin.render('plus-button', {
+        'clientid': '{{ client_id }}',
+        'cookiepolicy': 'single_host_origin',
+        'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+        'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read',
+        'redirecturi':"oauth2callback",
+        {% if reauthorize %}
+        'explanation-of-this-tag':"https://developers.google.com/+/web/signin/server-side-flow#step_6_send_the_authorization_code_to_the_server",
+        'approvalprompt':"force",
+        {% endif %}
+        'accesstype':"offline",
+        'cookiepolicy':"single_host_origin",
+        'callback':"onSignInCallback"
+    });
+}
+</script>
+{% endblock %}
+
+{% block fonts %}
+<link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/plus.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="gSignInWrapper">
+    <div id="plus-button" class="customGPlusSignIn">
+        <span class="plus-icon"></span>git
+        <span class="plus-text">Sign In</span>
+    </div>
+</div>
+
+<!-- Run check if logged in automatically on page load -->
+<script type="text/javascript">var STATE = "{{ state }}", NEXT = "{{ next }}";</script>
+<script type="text/javascript" src="{{url_for('static', filename='js/auth/plus.js') }}"></script>
+{% endblock %}

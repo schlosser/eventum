@@ -1,0 +1,89 @@
+@import '../../colors';
+@import '../../media_queries';
+
+form > div {
+    margin-bottom: .5rem;
+}
+
+.location {
+    width: 100%;
+    max-width: 30rem;
+}
+
+.datetime {
+    input[type="text"] {
+        text-align: left;
+
+        &.time { width: 5rem; }
+        &.date { width: 8rem; }
+    }
+    .to { width: 1.5rem; }
+    div { display: inline-block; }
+}
+
+.descriptions {
+    margin: 1rem 0 0;
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0.5rem;
+
+        &.short { min-height: 3rem; }
+        &.long { min-height: 5rem; }
+    }
+}
+
+#m-num_occurances {
+    width: 2.5rem;
+}
+
+.ui-timepicker-wrapper {
+    width: 5.5rem;
+}
+
+.repeat {
+    line-height: 2rem;
+    a {
+        text-decoration: underline;
+        color: $blue;
+    }
+    .summary {
+        font-weight: bold;
+    }
+    .form-component {
+        display: inline-block;
+    }
+}
+
+.modal {
+    h3 {
+        margin-bottom: 1rem;
+    }
+    label:first-child {
+        min-width: 9rem;
+        display: inline-block;
+        text-align: right;
+        font-weight: bold;
+    }
+    input[name="m-num-occurances"] {
+        width: 3rem;
+    }
+    input[type="text"] {
+        padding: 1px;
+    }
+    .radio-options {
+        display: inline-block;
+    }
+    .btn {
+        margin-top: 0.25rem;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .modal {
+        label:first-child {
+            display: block;
+            text-align: left;
+        }
+    }
+}

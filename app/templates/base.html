@@ -9,9 +9,9 @@
     ========================
 
      -> Replace the ten numbered and commented out areas with your site's data.
-     -> Extend the established blocks in app.html and other templates.
+     -> Extend the established blocks in admin/admin.html and other templates.
     -->
-    <title>{% block title%}<!-- (1) APP TITLE GOES HERE-->{% endblock %}</title>
+    <title>{% block title%}Eventum{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block metaDescription %}<!-- (2) APP DESCRIPTION GOES HERE -->{% endblock %}">
     <meta name="author" content="Dan R Schlosser">
@@ -50,8 +50,8 @@
 
     {% block css%}
     <!-- Stylesheet reset -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/reset.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/admin.css') }}">
 
     {% assets "scss_base" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
@@ -64,7 +64,7 @@
     <!-- jQuery -->
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
     {% endblock js %}
 
     {% block favicon %}
