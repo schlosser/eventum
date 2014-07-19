@@ -6,6 +6,7 @@ man
 *.pyc
 flask_config.py
 client_secrets.json
+credentials.json
 .webassets-cache
 .lesshst
 .Python

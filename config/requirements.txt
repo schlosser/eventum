@@ -20,3 +20,5 @@ pymongo==2.7
 six==1.6.1
 webassets==0.8
 wsgiref==0.1.2
+pyRFC3339==0.2
+python-gflags==2.0

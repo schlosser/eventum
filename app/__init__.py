@@ -6,6 +6,7 @@ import json
 db = MongoEngine()
 app = None
 assets = None
+gcal_client = None
 
 def create_app(**config_overrides):
     """This is normal setup code for a Flask app, but we give the option
@@ -15,6 +16,7 @@ def create_app(**config_overrides):
     # we want to modify the global app, not a local copy
     global app
     global assets
+    global gcal_client
     app = Flask(__name__)
 
     # Load config then apply overrides
@@ -27,6 +29,18 @@ def create_app(**config_overrides):
 
     # Setup the database.
     db.init_app(app)
+
+    # Initialize the Google Calendar API Client, but only if the api
+    # credentials have been generated first.
+    try:
+        from app.lib.google_calendar import GoogleCalendarAPIClient
+        gcal_client = GoogleCalendarAPIClient()
+    except IOError:
+        print ('Failed to find the Google Calendar credentials file at \'%s\', '
+               'please create it by running:\n\n'
+               '    $ python manage.py --authorize\n' % app.config['CREDENTIALS_PATH'])
+        exit(1)
+
 
     register_blueprints()
 
@@ -47,13 +61,7 @@ def register_blueprints():
     from app.networking.controllers import networking as \
         networking_module
 
-    app.register_blueprint(auth_module)
-    app.register_blueprint(base_module)
-    app.register_blueprint(learn_module)
-    app.register_blueprint(events_module)
-    app.register_blueprint(blog_module)
-    app.register_blueprint(media_module)
-    app.register_blueprint(networking_module)
+    admin_blueprints = [auth_module, base_module, learn_module, events_module, blog_module, media_module, networking_module,
 
 
 def register_scss():
