@@ -1,8 +1,9 @@
-./lib
+lib
 bin
 include
 tmp
 man
+share
 *.pyc
 flask_config.py
 client_secrets.json
