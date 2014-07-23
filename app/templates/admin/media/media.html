@@ -15,6 +15,8 @@
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/media.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/image_grid.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/upload.js') }}"></script>
 {% endblock %}
 
 {% block barright %}
@@ -22,7 +24,11 @@
 {% endblock %}
 
 {% block content %}
+{{ macros.upload_form(form, uploaded_from=url_for('media.index')) }}
+
 {% if images %}
+<div class="image-grid-wrapper">
+<div class="image-grid-wrapper-inner">
 <ul class="image-grid clearfix">
 {% for image in images %}
 <li class="image">
@@ -45,7 +51,9 @@
 </li>
 {% endfor %}
 </ul>
+</div>
+</div>
 {% else %}
-<p>There are no images.</p>
+<p class="no-elements">There are no images.</p>
 {% endif %}
 {% endblock %}

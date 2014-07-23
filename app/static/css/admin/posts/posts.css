@@ -6,44 +6,55 @@ body, html {
   font-size: 16px;
 }
 
-/* line 19, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 18, /Users/dan/working/eventum/app/static/scss/base.scss */
+input, textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+textarea {
+  resize: none;
+}
+
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 29, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
   line-height: 2.4rem;
 }
 
-/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 33, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
   font-size: 1.7rem;
   line-height: 2.1rem;
 }
 
-/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 35, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
   font-size: 1.3rem;
   line-height: 1.7rem;
 }
 
-/* line 30, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 37, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 38, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 33, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 40, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -52,7 +63,7 @@ pre code {
   background: transparent;
 }
 
-/* line 40, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 47, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -63,7 +74,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 50, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 57, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -74,40 +85,40 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 67, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 72, /Users/dan/working/eventum/app/static/scss/base.scss */
 small {
   font-size: 0.8rem;
 }
 
-/* line 66, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 73, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 67, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 74, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 70, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 77, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 73, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 80, /Users/dan/working/eventum/app/static/scss/base.scss */
 hr {
   border: 0;
   height: 1px;
   background-color: #e0e0e0;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 87, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -154,24 +165,28 @@ a, a:hover {
 }
 
 /* line 8, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table {
+table.table {
   width: 100%;
   height: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 /* line 13, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table th {
+table.table th {
   font-weight: bold;
   padding: 0.5rem 0;
 }
 /* line 17, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table.click tbody tr:hover {
+table.table th.with-image {
+  padding-left: 3rem;
+}
+/* line 21, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table.click tbody tr:hover {
   background-color: #efefef;
   cursor: pointer;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr {
+/* line 25, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr {
   border-top: 1px solid #e0e0e0;
   font-size: 0;
   /* Removes spacing between table cells */
@@ -179,48 +194,48 @@ table tbody tr {
   width: 100%;
   /* Restore font size from tr being set to 0 */
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr:last-child {
+/* line 31, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr:last-child {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 29, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td {
+/* line 33, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td {
   width: 33%;
   overflow: hidden;
   font-size: 16px;
   position: relative;
   vertical-align: middle;
 }
-/* line 35, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td:first-child {
+/* line 39, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td:first-child {
   padding-left: 0.5rem;
 }
-/* line 37, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td.right > * {
+/* line 41, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td.right > * {
   float: right;
 }
-/* line 40, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td.overflowing-text {
+/* line 44, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td.overflowing-text {
   display: inline-block;
   width: 100%;
   height: 100%;
   min-height: 2.5rem;
   overflow: hidden;
 }
-/* line 47, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td.overflowing-text .text {
+/* line 51, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td.overflowing-text .text {
   position: absolute;
   top: 0;
   left: 0.5rem;
   right: 0.5rem;
 }
-/* line 56, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td.with-image p {
+/* line 60, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td.with-image p {
   margin-left: 3rem;
   display: inline-block;
 }
-/* line 60, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr td.with-image img {
+/* line 64, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr td.with-image img {
   position: absolute;
   top: 50%;
   margin-top: -1.25rem;
@@ -228,39 +243,39 @@ table tbody tr td.with-image img {
   height: 2.5rem;
   left: 0;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr h1 {
+/* line 76, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr h1 {
   font-size: 2rem;
 }
-/* line 73, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr h2 {
+/* line 77, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr h2 {
   font-size: 1.7rem;
 }
-/* line 74, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr h3 {
+/* line 78, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr h3 {
   font-size: 1.3rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr h5 {
+/* line 79, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr h5 {
   font-size: 0.83rem;
 }
-/* line 76, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr h6 {
+/* line 80, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr h6 {
   font-size: 0.75rem;
 }
-/* line 77, /Users/dan/working/eventum/app/static/scss/tables.scss */
-table tbody tr small {
+/* line 81, /Users/dan/working/eventum/app/static/scss/tables.scss */
+table.table tbody tr small {
   font-size: 0.8rem;
   line-height: 1.25rem;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/tables.scss */
+  /* line 89, /Users/dan/working/eventum/app/static/scss/tables.scss */
   table thead {
     display: none;
   }
 
-  /* line 88, /Users/dan/working/eventum/app/static/scss/tables.scss */
+  /* line 92, /Users/dan/working/eventum/app/static/scss/tables.scss */
   table tr td {
     display: inline-block;
     width: 100% !important;
@@ -269,7 +284,7 @@ table tbody tr small {
     height: 2.5rem;
     line-height: 2.5rem;
   }
-  /* line 96, /Users/dan/working/eventum/app/static/scss/tables.scss */
+  /* line 100, /Users/dan/working/eventum/app/static/scss/tables.scss */
   table tr td p {
     display: inline-block !important;
   }
@@ -300,44 +315,55 @@ body, html {
   font-size: 16px;
 }
 
-/* line 19, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 18, /Users/dan/working/eventum/app/static/scss/base.scss */
+input, textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+textarea {
+  resize: none;
+}
+
+/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
-/* line 22, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 29, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
   font-size: inherit;
 }
 
-/* line 24, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
 h1 {
   font-size: 2rem;
   line-height: 2.4rem;
 }
 
-/* line 26, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 33, /Users/dan/working/eventum/app/static/scss/base.scss */
 h2 {
   font-size: 1.7rem;
   line-height: 2.1rem;
 }
 
-/* line 28, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 35, /Users/dan/working/eventum/app/static/scss/base.scss */
 h3 {
   font-size: 1.3rem;
   line-height: 1.7rem;
 }
 
-/* line 30, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 37, /Users/dan/working/eventum/app/static/scss/base.scss */
 h5 {
   font-size: 0.83rem;
 }
 
-/* line 31, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 38, /Users/dan/working/eventum/app/static/scss/base.scss */
 h6 {
   font-size: 0.75rem;
 }
 
-/* line 33, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 40, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code {
   margin: 0;
   padding: 0;
@@ -346,7 +372,7 @@ pre code {
   background: transparent;
 }
 
-/* line 40, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 47, /Users/dan/working/eventum/app/static/scss/base.scss */
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
@@ -357,7 +383,7 @@ code, tt {
   font-family: Monospace;
 }
 
-/* line 50, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 57, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre {
   font-family: Monospace;
   background-color: #f8f8f8;
@@ -368,40 +394,40 @@ pre {
   padding: 6px 10px;
   border-radius: 3px;
 }
-/* line 60, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 67, /Users/dan/working/eventum/app/static/scss/base.scss */
 pre code, pre tt {
   background-color: transparent;
   border: none;
 }
 
-/* line 65, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 72, /Users/dan/working/eventum/app/static/scss/base.scss */
 small {
   font-size: 0.8rem;
 }
 
-/* line 66, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 73, /Users/dan/working/eventum/app/static/scss/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 67, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 74, /Users/dan/working/eventum/app/static/scss/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 70, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 77, /Users/dan/working/eventum/app/static/scss/base.scss */
 p {
   line-height: 1.3rem;
 }
 
-/* line 73, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 80, /Users/dan/working/eventum/app/static/scss/base.scss */
 hr {
   border: 0;
   height: 1px;
   background-color: #e0e0e0;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/base.scss */
+/* line 87, /Users/dan/working/eventum/app/static/scss/base.scss */
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -448,24 +474,28 @@ a, a:hover {
 }
 
 /* line 8 */
-table {
+table.table {
   width: 100%;
   height: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 /* line 13 */
-table th {
+table.table th {
   font-weight: bold;
   padding: 0.5rem 0;
 }
 /* line 17 */
-table.click tbody tr:hover {
+table.table th.with-image {
+  padding-left: 3rem;
+}
+/* line 21 */
+table.table.click tbody tr:hover {
   background-color: #efefef;
   cursor: pointer;
 }
-/* line 21 */
-table tbody tr {
+/* line 25 */
+table.table tbody tr {
   border-top: 1px solid #e0e0e0;
   font-size: 0;
   /* Removes spacing between table cells */
@@ -473,48 +503,48 @@ table tbody tr {
   width: 100%;
   /* Restore font size from tr being set to 0 */
 }
-/* line 27 */
-table tbody tr:last-child {
+/* line 31 */
+table.table tbody tr:last-child {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 29 */
-table tbody tr td {
+/* line 33 */
+table.table tbody tr td {
   width: 33%;
   overflow: hidden;
   font-size: 16px;
   position: relative;
   vertical-align: middle;
 }
-/* line 35 */
-table tbody tr td:first-child {
+/* line 39 */
+table.table tbody tr td:first-child {
   padding-left: 0.5rem;
 }
-/* line 37 */
-table tbody tr td.right > * {
+/* line 41 */
+table.table tbody tr td.right > * {
   float: right;
 }
-/* line 40 */
-table tbody tr td.overflowing-text {
+/* line 44 */
+table.table tbody tr td.overflowing-text {
   display: inline-block;
   width: 100%;
   height: 100%;
   min-height: 2.5rem;
   overflow: hidden;
 }
-/* line 47 */
-table tbody tr td.overflowing-text .text {
+/* line 51 */
+table.table tbody tr td.overflowing-text .text {
   position: absolute;
   top: 0;
   left: 0.5rem;
   right: 0.5rem;
 }
-/* line 56 */
-table tbody tr td.with-image p {
+/* line 60 */
+table.table tbody tr td.with-image p {
   margin-left: 3rem;
   display: inline-block;
 }
-/* line 60 */
-table tbody tr td.with-image img {
+/* line 64 */
+table.table tbody tr td.with-image img {
   position: absolute;
   top: 50%;
   margin-top: -1.25rem;
@@ -522,39 +552,39 @@ table tbody tr td.with-image img {
   height: 2.5rem;
   left: 0;
 }
-/* line 72 */
-table tbody tr h1 {
+/* line 76 */
+table.table tbody tr h1 {
   font-size: 2rem;
 }
-/* line 73 */
-table tbody tr h2 {
+/* line 77 */
+table.table tbody tr h2 {
   font-size: 1.7rem;
 }
-/* line 74 */
-table tbody tr h3 {
+/* line 78 */
+table.table tbody tr h3 {
   font-size: 1.3rem;
 }
-/* line 75 */
-table tbody tr h5 {
+/* line 79 */
+table.table tbody tr h5 {
   font-size: 0.83rem;
 }
-/* line 76 */
-table tbody tr h6 {
+/* line 80 */
+table.table tbody tr h6 {
   font-size: 0.75rem;
 }
-/* line 77 */
-table tbody tr small {
+/* line 81 */
+table.table tbody tr small {
   font-size: 0.8rem;
   line-height: 1.25rem;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 85 */
+  /* line 89 */
   table thead {
     display: none;
   }
 
-  /* line 88 */
+  /* line 92 */
   table tr td {
     display: inline-block;
     width: 100% !important;
@@ -563,7 +593,7 @@ table tbody tr small {
     height: 2.5rem;
     line-height: 2.5rem;
   }
-  /* line 96 */
+  /* line 100 */
   table tr td p {
     display: inline-block !important;
   }

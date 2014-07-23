@@ -23,7 +23,9 @@ class Event(db.Document):
     date_published = db.DateTimeField()
     is_recurring = db.BooleanField(required=True, default=False)
     parent_series = db.ReferenceField("EventSeries")
+    image = db.ReferenceField("Image")
     gcal_id = db.StringField()
+    gcal_calendar_id = db.StringField()
 
     def clean(self):
         """Update date_modified, and validate datetimes to ensure the event ends
@@ -66,7 +68,8 @@ class Event(db.Document):
             self.start_datetime(),
             self.end_datetime(),
             self.short_description,
-            self.long_description
+            self.long_description,
+            self.image
             ])
 
     def human_readable_datetime(self):

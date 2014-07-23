@@ -1,0 +1,24 @@
+$navbar-height: 5.5rem;
+$logo-height: 2.25rem;
+.navbar {
+    height: $navbar-height;
+    .logo {
+        height: $logo-height;
+        margin-top: (($navbar-height - $logo-height)/2);
+    }
+    .right {
+        float: right;
+    }
+    ul {
+        font-size: 0;
+        li {
+            font-size: 1rem;
+            display: inline-block;
+            a div {
+                padding: 0 1.25rem;
+                height: $navbar-height;
+                line-height: $navbar-height;
+            }
+        }
+    }
+}

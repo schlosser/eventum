@@ -1,0 +1,19 @@
+{% extends "page.html" %}
+{% block title %}{{ event.title}} | {{ super() }}{% endblock %}
+{% import "macros.html" as macros %}
+
+{% block hero %}
+<i class="solid blue"></i>
+{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>{{ event.title }}</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        {{ macros.event(event) }}
+    </div>
+</section>
+
+{% endblock main %}

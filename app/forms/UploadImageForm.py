@@ -16,6 +16,7 @@ class Unique(object):
 
 class UploadImageForm(Form):
     image = FileField('Image file')
+    uploaded_from = TextField('Uploaded from')
     filename = TextField('Filename', [
         Regexp("([a-z]|[A-Z]|[0-9]|\||-|_|@|\(|\))*"),
         Required('Please submit a filename'),

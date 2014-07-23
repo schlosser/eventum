@@ -1,0 +1,27 @@
+@import '../common/utils.scss';
+@import 'colors';
+
+button, .button {
+    @extend .h4;
+    text-transform: none;
+    padding: 1rem 1.875rem;
+    display: inline-block;
+    border-radius: .3125rem;
+    cursor: pointer;
+    background-color: $white;
+    color: $gray;
+
+    &.gray {
+        background-color: $gray;
+        color: $white;
+    }
+}
+
+@mixin scrim {
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.5) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.01)), color-stop(65%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0.5))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* W3C */
+}

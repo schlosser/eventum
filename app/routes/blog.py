@@ -6,7 +6,7 @@ blog = Blueprint('blog', __name__)
 
 @blog.route('/blog')
 def index():
-    return render_template('admin/blog/index.html', posts=BlogPost.objects())
+    return render_template('blog/blog.html', posts=BlogPost.objects())
 
 @blog.route('/blog/post/<slug>')
 def post(slug):
@@ -16,5 +16,5 @@ def post(slug):
 
     if not post.published:
         abort(404)
-    return render_template('admin/blog/post.html', post=post)
+    return render_template('blog/post.html', post=post)
 

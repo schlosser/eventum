@@ -16,7 +16,8 @@ media = Blueprint('media', __name__)
 @login_required
 def index():
     images =Image.objects()
-    return render_template('admin/media/media.html', images=images)
+    form = UploadImageForm()
+    return render_template('admin/media/media.html', images=images, form=form)
 
 
 def allowed_file(filename):
@@ -31,6 +32,7 @@ def create_filename(f, slug):
 @requires_privilege('edit')
 def upload():
     form = UploadImageForm(request.form)
+    uploaded_from = form.uploaded_from.data
     if form.validate_on_submit():
         f = request.files['image']
         if f and allowed_file(f.filename.lower()):
@@ -44,6 +46,8 @@ def upload():
         flash("Filename %s is invalid" % f.filename)
     if form.errors:
         flash(form.errors)
+    if uploaded_from:
+        return redirect(uploaded_from)
     return render_template('admin/media/upload.html', form=form)
 
 @media.route('/media/uploads/<filename>')

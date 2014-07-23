@@ -34,9 +34,10 @@
 .datepicker-dropdown {
   top: 0;
   left: 0;
+  padding: 1px;
 }
 
-/* line 31 */
+/* line 32 */
 .datepicker-dropdown:before {
   content: '';
   display: inline-block;
@@ -48,7 +49,7 @@
   position: absolute;
 }
 
-/* line 41 */
+/* line 42 */
 .datepicker-dropdown:after {
   content: '';
   display: inline-block;
@@ -59,71 +60,71 @@
   position: absolute;
 }
 
-/* line 50 */
+/* line 51 */
 .datepicker-dropdown.datepicker-orient-left:before {
   left: 6px;
 }
 
-/* line 53 */
+/* line 54 */
 .datepicker-dropdown.datepicker-orient-left:after {
   left: 7px;
 }
 
-/* line 56 */
+/* line 57 */
 .datepicker-dropdown.datepicker-orient-right:before {
   right: 6px;
 }
 
-/* line 59 */
+/* line 60 */
 .datepicker-dropdown.datepicker-orient-right:after {
   right: 7px;
 }
 
-/* line 62 */
+/* line 63 */
 .datepicker-dropdown.datepicker-orient-top:before {
   top: -7px;
 }
 
-/* line 65 */
+/* line 66 */
 .datepicker-dropdown.datepicker-orient-top:after {
   top: -6px;
 }
 
-/* line 68 */
+/* line 69 */
 .datepicker-dropdown.datepicker-orient-bottom:before {
   bottom: -7px;
   border-bottom: 0;
   border-top: 7px solid #999;
 }
 
-/* line 73 */
+/* line 74 */
 .datepicker-dropdown.datepicker-orient-bottom:after {
   bottom: -6px;
   border-bottom: 0;
   border-top: 6px solid #ffffff;
 }
 
-/* line 78 */
+/* line 79 */
 .datepicker > div {
   display: none;
 }
 
-/* line 81 */
+/* line 82 */
 .datepicker.days div.datepicker-days {
   display: block;
 }
 
-/* line 84 */
+/* line 85 */
 .datepicker.months div.datepicker-months {
   display: block;
 }
 
-/* line 87 */
+/* line 88 */
 .datepicker.years div.datepicker-years {
   display: block;
 }
 
-/* line 90 */
+/* line 91 */
 .datepicker table {
   margin: 0;
   -webkit-touch-callout: none;
@@ -134,7 +135,7 @@
   user-select: none;
 }
 
-/* line 100 */
+/* line 101 */
 .datepicker td,
 .datepicker th {
   text-align: center;
@@ -143,26 +144,26 @@
   border: none;
 }
 
-/* line 107 */
+/* line 108 */
 .table-striped .datepicker table tr td,
 .table-striped .datepicker table tr th {
   background-color: transparent;
 }
 
-/* line 111 */
+/* line 112 */
 .datepicker table tr td.day:hover,
 .datepicker table tr td.day.focused {
   background: #eeeeee;
   cursor: pointer;
 }
 
-/* line 116 */
+/* line 117 */
 .datepicker table tr td.old,
 .datepicker table tr td.new {
   color: #999999;
 }
 
-/* line 120 */
+/* line 121 */
 .datepicker table tr td.disabled,
 .datepicker table tr td.disabled:hover {
   background: none;
@@ -170,7 +171,7 @@
   cursor: default;
 }
 
-/* line 128 */
+/* line 129 */
 .datepicker table tr td.today,
 .datepicker table tr td.today:hover,
 .datepicker table tr td.today.disabled,
@@ -180,17 +181,17 @@
   color: #000;
 }
 
-/* line 133 */
+/* line 134 */
 .datepicker table tr td.today:hover:hover {
   color: #000;
 }
 
-/* line 136 */
+/* line 137 */
 .datepicker table tr td.today.active:hover {
   color: #fff;
 }
 
-/* line 142 */
+/* line 143 */
 .datepicker table tr td.range,
 .datepicker table tr td.range:hover,
 .datepicker table tr td.range.disabled,
@@ -198,7 +199,7 @@
   background: #eeeeee;
 }
 
-/* line 148 */
+/* line 149 */
 .datepicker table tr td.range.today,
 .datepicker table tr td.range.today:hover,
 .datepicker table tr td.range.today.disabled,
@@ -206,7 +207,7 @@
   background-color: #f3d17a;
 }
 
-/* line 170 */
+/* line 171 */
 .datepicker table tr td.range.today:hover,
 .datepicker table tr td.range.today:hover:hover,
 .datepicker table tr td.range.today.disabled:hover,
@@ -230,7 +231,7 @@
   background-color: #f3e97a;
 }
 
-/* line 180 */
+/* line 181 */
 .datepicker table tr td.range.today:active,
 .datepicker table tr td.range.today:hover:active,
 .datepicker table tr td.range.today.disabled:active,
@@ -242,7 +243,7 @@
   background-color: #efe24b \9;
 }
 
-/* line 186 */
+/* line 187 */
 .datepicker table tr td.selected,
 .datepicker table tr td.selected:hover,
 .datepicker table tr td.selected.disabled,
@@ -252,7 +253,7 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* line 210 */
+/* line 211 */
 .datepicker table tr td.selected:hover,
 .datepicker table tr td.selected:hover:hover,
 .datepicker table tr td.selected.disabled:hover,
@@ -276,7 +277,7 @@
   background-color: #808080;
 }
 
-/* line 220 */
+/* line 221 */
 .datepicker table tr td.selected:active,
 .datepicker table tr td.selected:hover:active,
 .datepicker table tr td.selected.disabled:active,
@@ -288,7 +289,7 @@
   background-color: #666666 \9;
 }
 
-/* line 226 */
+/* line 227 */
 .datepicker table tr td.active,
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active.disabled,
@@ -298,7 +299,7 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* line 250 */
+/* line 251 */
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active:hover:hover,
 .datepicker table tr td.active.disabled:hover,
@@ -322,7 +323,7 @@
   background-color: #3878cc;
 }
 
-/* line 260 */
+/* line 261 */
 .datepicker table tr td.active:active,
 .datepicker table tr td.active:hover:active,
 .datepicker table tr td.active.disabled:active,
@@ -334,7 +335,7 @@
   background-color: #003399 \9;
 }
 
-/* line 263 */
+/* line 264 */
 .datepicker table tr td span {
   display: block;
   width: 23%;
@@ -345,12 +346,12 @@
   cursor: pointer;
 }
 
-/* line 272 */
+/* line 273 */
 .datepicker table tr td span:hover {
   background: #eeeeee;
 }
 
-/* line 276 */
+/* line 277 */
 .datepicker table tr td span.disabled,
 .datepicker table tr td span.disabled:hover {
   background: none;
@@ -358,7 +359,7 @@
   cursor: default;
 }
 
-/* line 284 */
+/* line 285 */
 .datepicker table tr td span.active,
 .datepicker table tr td span.active:hover,
 .datepicker table tr td span.active.disabled,
@@ -368,7 +369,7 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* line 308 */
+/* line 309 */
 .datepicker table tr td span.active:hover,
 .datepicker table tr td span.active:hover:hover,
 .datepicker table tr td span.active.disabled:hover,
@@ -392,7 +393,7 @@
   background-color: #3878cc;
 }
 
-/* line 318 */
+/* line 319 */
 .datepicker table tr td span.active:active,
 .datepicker table tr td span.active:hover:active,
 .datepicker table tr td span.active.disabled:active,
@@ -404,30 +405,30 @@
   background-color: #003399 \9;
 }
 
-/* line 322 */
+/* line 323 */
 .datepicker table tr td span.old,
 .datepicker table tr td span.new {
   color: #999999;
 }
 
-/* line 325 */
+/* line 326 */
 .datepicker th.datepicker-switch {
   width: 145px;
 }
 
-/* line 329 */
+/* line 330 */
 .datepicker thead tr:first-child th,
 .datepicker tfoot tr th {
   cursor: pointer;
 }
 
-/* line 333 */
+/* line 334 */
 .datepicker thead tr:first-child th:hover,
 .datepicker tfoot tr th:hover {
   background: #eeeeee;
 }
 
-/* line 336 */
+/* line 337 */
 .datepicker .cw {
   font-size: 10px;
   width: 12px;
@@ -435,18 +436,18 @@
   vertical-align: middle;
 }
 
-/* line 342 */
+/* line 343 */
 .datepicker thead tr:first-child th.cw {
   cursor: default;
   background-color: transparent;
 }
 
-/* line 346 */
+/* line 347 */
 .input-daterange input {
   text-align: center;
 }
 
-/* line 349 */
+/* line 350 */
 .datepicker.dropdown-menu {
   position: absolute;
   top: 100%;
@@ -473,7 +474,7 @@
   line-height: 20px;
 }
 
-/* line 375 */
+/* line 376 */
 .datepicker.dropdown-menu th,
 .datepicker.dropdown-menu td {
   padding: 4px 5px;

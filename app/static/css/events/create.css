@@ -1,112 +1,421 @@
-/* line 4 */
+/* line 11, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper {
+  position: relative;
+}
+/* line 14, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper .image-grid-wrapper-inner {
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+}
+
+/* line 21, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid {
+  width: 100%;
+  overflow: hidden;
+}
+/* line 25, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid .image {
+  width: 16.666%;
+  padding-bottom: 16.666%;
+  display: inline-block;
+  float: left;
+  position: relative;
+}
+
+/* line 34, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image i:not(.fa) {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  display: block;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* line 45, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid.small-grid .image {
+  width: 4rem;
+  border-bottom: 4rem;
+}
+
+@media only screen and (max-width: 120rem) {
+  /* line 51, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 20% !important;
+    padding-bottom: 20% !important;
+  }
+}
+@media only screen and (max-width: 90rem) {
+  /* line 57, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+
+  /* line 60, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 16.666% !important;
+    padding-bottom: 16.666% !important;
+  }
+}
+@media only screen and (max-width: 64rem) {
+  /* line 66, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
+  }
+
+  /* line 69, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+}
+@media only screen and (max-width: 40rem) {
+  /* line 75, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 50% !important;
+    padding-bottom: 50% !important;
+  }
+
+  /* line 78, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
+  }
+}
+/* line 11, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper {
+  position: relative;
+}
+/* line 14, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper .image-grid-wrapper-inner {
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+}
+
+/* line 21, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid {
+  width: 100%;
+  overflow: hidden;
+}
+/* line 25, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid .image {
+  width: 16.666%;
+  padding-bottom: 16.666%;
+  display: inline-block;
+  float: left;
+  position: relative;
+}
+
+/* line 34, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image i:not(.fa) {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  display: block;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* line 45, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid.small-grid .image {
+  width: 4rem;
+  border-bottom: 4rem;
+}
+
+@media only screen and (max-width: 120rem) {
+  /* line 51, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 20% !important;
+    padding-bottom: 20% !important;
+  }
+}
+@media only screen and (max-width: 90rem) {
+  /* line 57, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+
+  /* line 60, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 16.666% !important;
+    padding-bottom: 16.666% !important;
+  }
+}
+@media only screen and (max-width: 64rem) {
+  /* line 66, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
+  }
+
+  /* line 69, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 25% !important;
+    padding-bottom: 25% !important;
+  }
+}
+@media only screen and (max-width: 40rem) {
+  /* line 75, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
+    width: 50% !important;
+    padding-bottom: 50% !important;
+  }
+
+  /* line 78, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid.small-grid .image {
+    width: 33.333% !important;
+    padding-bottom: 33.333% !important;
+  }
+}
+/* line 5, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.modal h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+/* line 9, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.modal .image-grid {
+  padding: 0;
+}
+/* line 12, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.modal .image-grid .select {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  display: none;
+  text-align: center;
+}
+/* line 21, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.modal .image-grid .select i {
+  height: 6rem;
+  line-height: 6rem;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -3rem;
+  color: white;
+  width: 100%;
+}
+/* line 34, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.modal .image-grid .image:hover .select {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 42, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.add-image {
+  background-color: #e0e0e0;
+  position: relative;
+}
+/* line 45, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.add-image i {
+  height: 6rem;
+  line-height: 6rem;
+  margin-top: -3rem;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 57, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images {
+  padding: 0.5rem 0 0;
+}
+/* line 60, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image {
+  margin-bottom: 0.5rem;
+}
+/* line 62, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image .filename {
+  position: absolute;
+  bottom: 0;
+  left: 0.5rem;
+  right: 0;
+  height: auto;
+  line-height: 1.5rem;
+  background-color: #e0e0e0;
+  text-align: center;
+  word-wrap: break-word;
+}
+/* line 74, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #3878cc;
+  color: white;
+  width: 0;
+  height: 2rem;
+  text-align: center;
+  transition: .3s ease all;
+  -webkit-transition: .3s ease all;
+  overflow: hidden;
+}
+/* line 87, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image .delete .delete-inner {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+}
+/* line 91, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image .delete .delete-inner i {
+  width: 2rem;
+  margin: 0 !important;
+}
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image:hover .delete {
+  width: 2rem;
+}
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.selected-images .image:not(:first-child) i {
+  margin-left: 0.5rem;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/media/select.scss */
+.image-help-text h3 {
+  margin-top: 0.5rem;
+}
+
+/* line 6 */
 form > div {
   margin-bottom: .5rem;
 }
 
-/* line 8 */
+/* line 14 */
 .location {
   width: 100%;
-  max-width: 30rem;
+  max-width: 29rem;
 }
 
-/* line 14 */
+/* line 20 */
 .datetime input[type="text"] {
   text-align: left;
 }
-/* line 17 */
+/* line 23 */
 .datetime input[type="text"].time {
-  width: 5rem;
+  width: 5.5rem;
 }
-/* line 18 */
+/* line 24 */
 .datetime input[type="text"].date {
   width: 8rem;
 }
-/* line 20 */
+/* line 26 */
 .datetime .to {
   width: 1.5rem;
 }
-/* line 21 */
+/* line 27 */
 .datetime div {
   display: inline-block;
 }
 
-/* line 24 */
-.descriptions {
-  margin: 1rem 0 0;
+/* line 30 */
+.event-image-and-descriptions {
+  margin-top: 1rem;
+  position: relative;
 }
-/* line 26 */
-.descriptions textarea {
+/* line 34 */
+.event-image-and-descriptions .event-image {
+  display: inline-block;
+  position: relative;
+  width: 16.666%;
+  padding-bottom: 16.666%;
+}
+/* line 41 */
+.event-image-and-descriptions .descriptions {
+  position: absolute;
+  left: 16.666%;
+  padding-left: 1rem;
+  right: 0;
+  display: inline-block;
+}
+/* line 48 */
+.event-image-and-descriptions .descriptions textarea {
   width: 100%;
   box-sizing: border-box;
   margin-top: 0.5rem;
 }
-/* line 31 */
-.descriptions textarea.short {
+/* line 53 */
+.event-image-and-descriptions .descriptions textarea.short {
   min-height: 3rem;
 }
-/* line 32 */
-.descriptions textarea.long {
+/* line 54 */
+.event-image-and-descriptions .descriptions textarea.long {
   min-height: 5rem;
 }
 
-/* line 36 */
+/* line 60 */
 #m-num_occurances {
   width: 2.5rem;
 }
 
-/* line 40 */
+/* line 64 */
 .ui-timepicker-wrapper {
   width: 5.5rem;
 }
 
-/* line 44 */
+/* line 68 */
 .repeat {
   line-height: 2rem;
 }
-/* line 46 */
+/* line 70 */
 .repeat a {
   text-decoration: underline;
   color: #3878cc;
 }
-/* line 50 */
+/* line 74 */
 .repeat .summary {
   font-weight: bold;
 }
-/* line 53 */
+/* line 77 */
 .repeat .form-component {
   display: inline-block;
 }
 
-/* line 59 */
-.modal h3 {
+/* line 83 */
+.modal[data-modal="repeat"] h3 {
   margin-bottom: 1rem;
 }
-/* line 62 */
-.modal label:first-child {
+/* line 86 */
+.modal[data-modal="repeat"] label:first-child {
   min-width: 9rem;
   display: inline-block;
   text-align: right;
   font-weight: bold;
 }
-/* line 68 */
-.modal input[name="m-num-occurances"] {
+/* line 92 */
+.modal[data-modal="repeat"] input[name="m-num-occurances"] {
   width: 3rem;
 }
-/* line 71 */
-.modal input[type="text"] {
+/* line 95 */
+.modal[data-modal="repeat"] input[type="text"] {
   padding: 1px;
 }
-/* line 74 */
-.modal .radio-options {
+/* line 98 */
+.modal[data-modal="repeat"] .radio-options {
   display: inline-block;
 }
-/* line 77 */
-.modal .btn {
+/* line 101 */
+.modal[data-modal="repeat"] .btn {
   margin-top: 0.25rem;
 }
 
 @media screen and (max-width: 40rem) {
-  /* line 84 */
+  /* line 108 */
   .modal label:first-child {
     display: block;
     text-align: left;

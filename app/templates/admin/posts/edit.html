@@ -3,9 +3,13 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_blog_edit_post" %}
+{% assets "scss_posts" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+
 <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
 {% endblock %}
 
@@ -21,6 +25,7 @@
 <script type="text/javascript" src="{{ url_for('static',
     filename='js/lib/marked.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/posts/edit.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/upload.js') }}"></script>
 {% endblock %}
 
 {% block barleft %}
@@ -34,6 +39,9 @@
 {% block main %}
 {% call macros.modal() %}
 <h3>Add an Image</h3>
+{{ macros.upload_form(upload_form, uploaded_from=url_for('posts.new')) }}
+<div class="image-grid-wrapper">
+<div class="image-grid-wrapper-inner">
 <ul class="image-grid clearfix">
 {% for image in images %}
 <li class="image" data-filename="{{ image.filename }}">
@@ -44,6 +52,8 @@
 </li>
 {% endfor %}
 </ul>
+</div>
+</div>
 {% endcall %}
 {{ super() }}
 {% endblock %}

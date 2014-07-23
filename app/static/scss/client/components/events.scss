@@ -1,0 +1,75 @@
+@import '../colors';
+@import '../base';
+
+.event {
+    position: relative;
+
+    $image-width: 23.75rem;
+    $event-height: 17.8125rem;
+    .image {
+        display: inline-block;
+        background-color: $lightgray;
+        width: $image-width;
+        height: 17.8125rem;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .text {
+        height: $event-height;
+        display: inline-block;
+        position: absolute;
+        left: ($image-width + 2.5rem);
+        .details {
+            position: absolute;
+            bottom: 0;
+
+        }
+    }
+
+    & + .event {
+        margin-top: 2.5rem;
+    }
+    &:last-child {
+        margin-bottom: 2.5rem;
+    }
+}
+
+$image-separation: 1.25rem;
+.triple-event {
+    width: $content-width + $image-separation;
+    margin-right: -($image-separation/2);
+    margin-left: -($image-separation/2);
+    &:after {
+        content: ' ';
+        clear: both;
+        display: table;
+    }
+
+    $small-event-width: 18.75rem;
+    $small-image-height: 14.0625rem;
+    .event.small-event {
+        float: left;
+        display: inline-block;
+        width: $small-event-width;
+        margin: 0 ($image-separation/2);
+
+        .image {
+            display: block;
+            width: $small-event-width;
+            height: $small-image-height;
+            margin-bottom: .625rem;
+        }
+        .text {
+            position: relative;
+            left: 0;
+            height: auto;
+            padding-bottom: 5rem;
+            .details {
+                position: relative;
+                width: 100%;
+                color: $lightgray;
+            }
+        }
+    }
+}

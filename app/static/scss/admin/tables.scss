@@ -1,11 +1,10 @@
-@import 'base';
 @import 'colors';
-@import 'utils';
-@import 'media_queries';
+@import 'base';
+@import '../common/media_queries';
 
 $table-padding: 0.5rem;
 $row-height: 2.5rem;
-table {
+table.table {
     width: 100%;
     height: 100%;
     border-spacing: 0;
@@ -13,6 +12,10 @@ table {
     th {
         font-weight: bold;
         padding: $table-padding 0;
+
+        &.with-image {
+            padding-left: ($row-height + $table-padding);
+        }
     }
     &.click tbody tr:hover {
         background-color: $offwhite;

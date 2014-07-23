@@ -1,4 +1,4 @@
-@import '../../colors';
+@import '../admin';
 
 /* Hide the file input, but without `display:none`, which is often seen as a
  * security threat by many browsers.
@@ -8,12 +8,33 @@
     overflow: hidden;
 }
 
-.form-component {
+.filename-wrapper {
     display: inline-block;
     height: 2.5rem;
 }
 
 input[type="submit"] {
-    display: block;
+    display: inline-block;
     margin-top: 1rem;
+}
+
+.filename-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .extension {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        height: 2.5rem;
+        line-height: 2.5rem;
+
+    }
+}
+
+.btn-choose {
+    margin-right: 1rem;
+}
+.upload-form {
+    margin-bottom: 0.75rem;
 }

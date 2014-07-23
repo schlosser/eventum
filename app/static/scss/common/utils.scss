@@ -22,13 +22,16 @@
     display: none !important;
 }
 
-.fa-6x {
-    font-size: 6rem;
-}
-.fa-2x {
-    font-size: 1.5em !important;
-}
-
 .small {
     font-size: 0.8rem !important;
+}
+
+@mixin transition-with-delay($speed, $delay) {
+    -webkit-transition: $speed $delay ease all;
+       -moz-transition: $speed $delay ease all;
+         -o-transition: $speed $delay ease all;
+            transition: $speed $delay ease all;
+}
+@mixin transition($speed) {
+    @include transition-width-delay($speed, 0);
 }

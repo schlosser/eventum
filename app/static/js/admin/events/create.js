@@ -177,4 +177,43 @@ $(function() {
         $('#delete_all').prop('checked', true);
         $('a[href="#delete"]').click();
     });
+
+    /* =======================================================================
+     * Event Image
+     * ==================================================================== */
+
+    $(document).on('click', 'a[href="#add-image"]', function(e) {
+        e.preventDefault();
+        var filename = $(this).data('filename'),
+            url = $(this).data('url');
+        console.log('add image: ', filename, url);
+
+        // Close the modal
+        $('a[href="#close-modal"]').click();
+
+        // Set the hidden input to have the image as it's value
+        $('#event_image').val(filename);
+
+        $('.display-image i').css({
+            'background-image': 'url(' + url + ')'
+        });
+
+        $('.add-image').addClass('hidden');
+        $('.display-image').removeClass('hidden');
+    });
+
+    $(document).on('click', 'a[href="#remove-image"]', function(e) {
+        e.preventDefault();
+        console.log('remove image');
+        $('#event_image').val('');
+        $('.display-image i').css({
+            'background-image': ''
+        });
+        $('.add-image').removeClass('hidden');
+        $('.display-image').addClass('hidden');
+    });
+
+    $('.event-image-and-descriptions').css({
+        'min-height': $('.descriptions').height()
+    });
 });

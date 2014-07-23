@@ -1,4 +1,4 @@
-{% extends "events/create.html" %}
+{% extends "admin/events/create.html" %}
 
 {% import "macros.html" as macros %}
 {% block title %}Edit {{ event.title }}{% endblock %}
@@ -19,9 +19,9 @@ action="{{ url_for('events.edit', event_id=event.id) }}"
 {% block toolbar %}
 {{ super() }}
 <div class="right">
-    {{ macros.render_field(delete_form.csrf_token) }}
-    {% call macros.confirm("Delete Post", url_for('events.delete', event_id=event.id)) %}
+    {% call macros.confirm("Delete Event", url_for('events.delete', event_id=event.id)) %}
     <div class="hidden">
+        {{ macros.render_field(delete_form.csrf_token) }}
         {{ macros.render_field(delete_form.delete_following) }}
         {{ macros.render_field(delete_form.delete_all) }}
         <input type="submit" value="submit"/>

@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 
 from app import app
 from app.models import BlogPost, Image
-from app.forms import CreateBlogPostForm
+from app.forms import CreateBlogPostForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
 posts = Blueprint('posts', __name__)
@@ -19,6 +19,7 @@ def index():
 @requires_privilege('edit')
 def new():
     form = CreateBlogPostForm(request.form)
+    upload_form = UploadImageForm()
     if form.validate_on_submit():
         print request.form
         print form.images.data
@@ -31,7 +32,8 @@ def new():
         post.save()
         return redirect(url_for('.index'))
     images = Image.objects()
-    return render_template('admin/posts/edit.html', user=g.user, form=form, images=images)
+    return render_template('admin/posts/edit.html', user=g.user, form=form,
+                           images=images, upload_form=upload_form)
 
 @posts.route('/posts/edit/<post_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -51,6 +53,7 @@ def edit(post_id):
             post.images = [Image.objects().get(filename=fn) for fn in form.images.data]
             post.save()
             return redirect(url_for('.index'))
+    upload_form = UploadImageForm()
     form = CreateBlogPostForm(request.form,
                               title=post.title,
                               slug=post.slug,
@@ -58,7 +61,8 @@ def edit(post_id):
                               body=post.markdown_content,
                               images=[image.filename for image in post.images])
     images = [image for image in Image.objects() if image not in post.images]
-    return render_template('admin/posts/edit.html', user=g.user, form=form, post=post, images=images)
+    return render_template('admin/posts/edit.html', user=g.user, form=form,
+                           post=post, images=images, upload_form=upload_form)
 
 @posts.route('/posts/delete/<post_id>', methods=['POST'])
 def delete(post_id):

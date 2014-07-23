@@ -1,6 +1,7 @@
 from flask.ext.wtf import Form
 from app.forms.fields import TimeField
-from wtforms import TextField, DateField, TextAreaField, BooleanField, \
+from app.forms.CreateBlogPostForm import image_with_same_name
+from wtforms import StringField, DateField, TextAreaField, BooleanField, \
     SelectField, IntegerField, RadioField
 from wtforms.validators import Required, ValidationError, Optional, \
     NumberRange
@@ -8,9 +9,9 @@ from wtforms.validators import Required, ValidationError, Optional, \
 
 class CreateEventForm(Form):
 
-    title = TextField('Title', [
+    title = StringField('Title', [
         Required(message="Please provide an event title.")])
-    location = TextField('Location')
+    location = StringField('Location')
     start_date = DateField('Start date', [Optional()], format='%m/%d/%Y')
     start_time = TimeField('Start time', [Optional()])
     end_date = DateField('End date', [Optional()], format='%m/%d/%Y')
@@ -26,12 +27,13 @@ class CreateEventForm(Form):
     num_occurances = IntegerField('Every', [NumberRange(min=1)], default=1)
     recurrence_end_date = DateField('Repeat End Date', [Optional()],
                                 format='%m/%d/%Y')
-    recurrence_summary = TextField('Summary')
+    recurrence_summary = StringField('Summary')
     short_description = TextAreaField('Short description')
     long_description = TextAreaField('Long description')
     is_published = BooleanField('Is Published')
     update_all = BooleanField('Update all', default=False)
     update_following = BooleanField('Update Following', default=False)
+    event_image = StringField('Image', [image_with_same_name])
 
     def post_validate(form, validation_stopped):
         """Make sure that the start datetime comes before the end datetime"""

@@ -1,77 +1,92 @@
 {
-  "scss_base": {
-    "output": "css/base.css",
-    "inputs": [
-      "scss/base.scss"
-    ]
+  "admin": {
+    "output_folder": "css/admin/",
+    "depends": [
+      "scss/admin/*.scss",
+      "scss/common/*.scss"
+    ],
+    "rules": {
+
+      "scss_admin": {
+        "output": "admin.css",
+        "inputs": [
+          "scss/admin/*.scss",
+          "scss/common/*.scss"
+        ]
+      },
+
+      "scss_users": {
+        "output": "users.css",
+        "inputs": [ "scss/admin/users/*.scss" ]
+      },
+
+      "scss_events": {
+        "output": "events.css",
+        "inputs": [ "scss/admin/events/*.scss" ]
+      },
+
+      "scss_posts": {
+        "output": "posts.css",
+        "inputs": [ "scss/admin/posts/*.scss" ]
+      },
+
+      "scss_media": {
+        "output": "media.css",
+        "inputs": [ "scss/admin/media/*.scss" ]
+      }
+    }
   },
-  "scss_app": {
-    "output": "css/admin/admin.css",
-    "inputs": [
-      "scss/admin/admin.scss",
-      "scss/buttons.scss",
-      "scss/utils.scss",
-      "scss/forms.scss"
-    ]
+
+
+  "lib": {
+    "output_folder": "css/lib/",
+    "depends": [],
+    "rules": {
+
+      "scss_datetime": {
+        "output": "datetime.css",
+        "inputs": [
+          "scss/lib/bootstrap-datepicker.scss",
+          "scss/lib/jquery.timepicker.scss"
+        ]
+      },
+
+      "scss_reset": {
+        "output": "reset.min.css",
+        "inputs": [ "scss/lib/reset.min.scss" ]
+      }
+    }
   },
-  "scss_auth_users": {
-    "output": "css/users/users.css",
-    "inputs": [
-      "scss/admin/users/users.scss",
-      "scss/tables.scss",
-      "scss/modal.scss"
-    ]
-  },
-  "scss_events_events": {
-    "output": "css/events/events.css",
-    "inputs": [
-      "scss/admin/events/events.scss"
-    ]
-  },
-  "scss_events_create": {
-    "output": "css/events/create.css",
-    "inputs": [
-      "scss/admin/events/create.scss",
-      "scss/modal.scss"
-    ]
-  },
-  "scss_blog_edit_post": {
-    "output": "css/admin/posts/edit/post.css",
-    "inputs": [
-      "scss/admin/posts/edit.scss",
-      "scss/modal.scss"
-    ]
-  },
-  "scss_blog_posts": {
-    "output": "css/admin/posts/posts.css",
-    "inputs": [
-      "scss/admin/posts/posts.scss",
-      "scss/tables.scss"
-    ]
-  },
-  "scss_media": {
-    "output": "css/admin/media/media.css",
-    "inputs": [
-      "scss/admin/media/media.scss"
-    ]
-  },
-  "scss_media_upload": {
-    "output": "css/admin/media/upload.css",
-    "inputs": [
-      "scss/admin/media/upload.scss"
-    ]
-  },
-  "scss_auth_user": {
-    "output": "css/admin/users/user.css",
-    "inputs": [
-      "scss/admin/users/user.scss"
-    ]
-  },
-  "scss_datetime_datetime": {
-    "output": "css/lib/datetime.css",
-    "inputs": [
-      "scss/lib/bootstrap-datepicker.scss",
-      "scss/lib/jquery.timepicker.scss"
-    ]
+
+
+  "client": {
+    "output_folder": "css/client/",
+    "depends": [
+      "scss/client/*.scss",
+      "scss/client/components/*.scss",
+      "scss/common/*.scss"
+    ],
+    "rules": {
+
+      "scss_client": {
+        "output": "client.css",
+        "inputs": [
+          "scss/client/*.scss",
+          "scss/client/components/*.scss",
+          "scss/common/*.scss"
+        ]
+      },
+
+      "scss_home": {
+        "output": "home.css",
+        "inputs": [ "scss/client/home/*.scss" ]
+      },
+
+      "scss_blog": {
+        "output": "blog.css",
+        "inputs": [ "scss/client/blog/*.scss" ]
+      }
+    }
   }
+
 }

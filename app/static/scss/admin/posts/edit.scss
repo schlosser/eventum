@@ -1,121 +1,14 @@
-@import '../../colors';
+@import '../colors';
 @import '../media/image_grid';
+@import '../media/select';
 @import '../admin';
 
 #epiceditor {
     margin-bottom: 1rem;
 }
 
-.title-wrapper {
-    margin-bottom: 0.5rem;
-}
-
 .content {
     padding-bottom: ($content-padding - $image-padding) !important;
-}
-
-.modal .image-grid {
-    padding: 0;
-    margin: 0 -0.25rem;
-
-    .select  {
-        position: absolute;
-        top: $image-padding;
-        bottom: $image-padding;
-        left: $image-padding;
-        right: $image-padding;
-        display: none;
-        text-align: center;
-
-        i {
-            height: 6rem;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            margin-top: -3rem;
-            color: $white;
-            width: 100%;
-        }
-    }
-
-    .image:hover {
-        .select {
-            display: block;
-            background-color: rgba(0,0,0,0.5);
-        }
-    }
-}
-.selected-images {
-    padding: 0.5rem 0 0;
-
-    .add-image {
-        background-color: $lightgray;
-        position: relative;
-        i {
-            height: 6rem;
-            margin-top: -3rem;
-            position: absolute;
-            top: 50%;
-            text-align: center;
-
-        }
-    }
-
-    .image {
-        margin-bottom: 0.5rem;
-        .filename {
-            position: absolute;
-            bottom: 0;
-            left: 0.5rem;
-            right: 0;
-            height: auto;
-            line-height: 1.5rem;
-            background-color: $lightgray;
-            text-align: center;
-            word-wrap: break-word;
-        }
-
-        .delete {
-            position: absolute;
-            top:0;
-            right: 0;
-            background-color: $blue;
-            color: $white;
-            width: 0;
-            height: 2rem;
-            text-align: center;
-            transition: .3s ease all;
-            -webkit-transition: .3s ease all;
-            overflow: hidden;
-
-            .delete-inner {
-                width: 2rem;
-                height: 2rem;
-                display: block;
-                i {
-                    width: 2rem;
-                    margin: 0 !important;
-                }
-            }
-        }
-        &:hover .delete {
-            width: 2rem;
-        }
-
-        &:not(:first-child) i {
-            margin-left: 0.5rem;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-        }
-    }
-}
-
-.image-help-text {
-    h3 {
-        margin-top: 0.5rem;
-    }
 }
 
 .permalink-wrapper {
@@ -133,6 +26,7 @@
 
     input[type="text"] {
         padding: 0.15rem 0;
+        line-height: 1rem;
         font-size: 0.8rem;
     }
 }

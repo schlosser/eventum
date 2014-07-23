@@ -1,6 +1,7 @@
-from app.models import Event, EventSeries
+from app.models import Event, EventSeries, Image
 from app.forms import CreateEventForm
 from datetime import timedelta
+from app import gcal_client
 
 
 def update_event(event, form, update_all=False, update_following=False,
@@ -13,6 +14,11 @@ def update_event(event, form, update_all=False, update_following=False,
 def create_event(form, event=None, update_all=False, update_following=False,
                  **kwargs):
     """"""
+    event_image = None
+    filename = form.event_image.data
+    if filename and Image.objects(filename=filename).count() == 1:
+        event_image = Image.objects().get(filename=filename)
+
     event_data = {
         "title": form.title.data,
         "location": form.location.data,
@@ -22,6 +28,7 @@ def create_event(form, event=None, update_all=False, update_following=False,
         "short_description": form.short_description.data,
         "long_description": form.long_description.data,
         "is_recurring": form.is_recurring.data,
+        "image": event_image
     }
     date_data = {
         "start_date": form.start_date.data,
@@ -103,7 +110,8 @@ def create_form(event, request):
         "is_published": event.is_published,
         "short_description": event.short_description,
         "long_description": event.long_description,
-        "is_recurring": event.is_recurring
+        "is_recurring": event.is_recurring,
+        "event_image": event.image.filename if event.image else None
     }
     if event.parent_series:
         form_data.update({
@@ -114,8 +122,6 @@ def create_form(event, request):
             "recurrence_end_date": event.parent_series.recurrence_end_date,
             "recurrence_summary": event.parent_series.recurrence_summary
         })
-        print "aloha"
-        print form_data['recurrence_end_date']
     form_data = remove_none_fields(form_data)
     return CreateEventForm(request.form, **form_data)
 
@@ -128,7 +134,8 @@ def create_series(e_data, d_data, r_data, event=None):
         data['end_date'] = data['end_date'] + delta
 
     if not e_data['is_recurring']:
-        make_event(e_data, d_data)
+        final = make_event(e_data, d_data)
+        gcal_client.create_event(final)
         return
 
     # Only make the series if all of the necesary fields are valid

@@ -1,9 +1,20 @@
-/* line 10, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+/* line 11, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper {
+  position: relative;
+}
+/* line 14, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image-grid-wrapper .image-grid-wrapper-inner {
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+}
+
+/* line 21, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
 .image-grid {
   width: 100%;
   overflow: hidden;
 }
-/* line 14, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+/* line 25, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
 .image-grid .image {
   width: 16.666%;
   padding-bottom: 16.666%;
@@ -11,8 +22,9 @@
   float: left;
   position: relative;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
-.image-grid .image i {
+
+/* line 34, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+.image i:not(.fa) {
   position: absolute;
   top: 0.25rem;
   bottom: 0.25rem;
@@ -23,59 +35,59 @@
   background-size: cover;
 }
 
-/* line 34, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+/* line 45, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
 .image-grid.small-grid .image {
   width: 4rem;
   border-bottom: 4rem;
 }
 
 @media only screen and (max-width: 120rem) {
-  /* line 40, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
-  .image {
+  /* line 51, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  .image-grid .image {
     width: 20% !important;
     padding-bottom: 20% !important;
   }
 }
 @media only screen and (max-width: 90rem) {
-  /* line 46, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 57, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid .image {
     width: 25% !important;
     padding-bottom: 25% !important;
   }
 
-  /* line 49, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 60, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid.small-grid .image {
     width: 16.666% !important;
     padding-bottom: 16.666% !important;
   }
 }
 @media only screen and (max-width: 64rem) {
-  /* line 55, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 66, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid .image {
     width: 33.333% !important;
     padding-bottom: 33.333% !important;
   }
 
-  /* line 58, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 69, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid.small-grid .image {
     width: 25% !important;
     padding-bottom: 25% !important;
   }
 }
 @media only screen and (max-width: 40rem) {
-  /* line 64, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 75, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid .image {
     width: 50% !important;
     padding-bottom: 50% !important;
   }
 
-  /* line 67, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
+  /* line 78, /Users/dan/working/eventum/app/static/scss/admin/media/image_grid.scss */
   .image-grid.small-grid .image {
     width: 33.333% !important;
     padding-bottom: 33.333% !important;
   }
 }
-/* line 3 */
+/* line 4 */
 .image-grid .image .actions {
   position: absolute;
   bottom: 0.25rem;
@@ -87,7 +99,7 @@
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 14 */
+/* line 15 */
 .image-grid .image .actions .action {
   height: 2.5rem;
   width: 2.5rem;
@@ -95,12 +107,12 @@
   display: inline-block;
   position: relative;
 }
-/* line 21 */
+/* line 22 */
 .image-grid .image .actions .action a, .image-grid .image .actions .action a:hover {
   color: white;
 }
 
-/* line 27 */
+/* line 30 */
 .image-grid .image:hover .actions {
   height: 2.5rem;
 }

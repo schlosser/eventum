@@ -1,10 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'page.html' %}
+{% block title %}Blog{% endblock %}
 
 {% block css %}
 {{ super() }}
-{% assets "scss_blog" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/lib/epiceditor/preview/github-highlighted.css')}}">
 {% endblock %}
 
@@ -15,22 +13,26 @@
 <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
-{% block title %}Blog{% endblock %}
-{% block body %}
-<ul class="posts">
-{% block content %}
-{% for post in posts%}
-{% if post.published %}
-<li class="post">
-    <a href="{{ url_for('blog.post', slug=post.slug) }}">
-        <h2 class="title">{{post.title}}</h2>
-    </a>
-    <p class="date-published">Posted on {{post.date_published}} </p>
-    <p class="author">By {{post.author.name}}</p>
-    {{ post.snippet() | safe }}
-</li>
-{% endif %}
-{% endfor %}
+{% block main %}
+<section class="tagline">
+    <h1>Blog</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>Latest Posts</h4>
+            <span class="bar green"></span>
+        </div>
+        {% for post in posts%}
+        {% if post.published %}
+        <a href="{{ url_for('blog.post', slug=post.slug) }}">
+            <h2 class="title">{{post.title}}</h2>
+        </a>
+        <p class="date-published">Posted on {{post.date_published}} </p>
+        <p class="author">By {{post.author.name}}</p>
+        {{ post.snippet() | safe }}
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
-</ul>
-{% endblock %}w

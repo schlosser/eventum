@@ -1,0 +1,67 @@
+{% extends "page.html" %}
+
+{% block main %}
+<section class="tagline">
+    <h1>All things tech at Columbia</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <form class="subscribe">
+            <input name="email" type="email" placeholder="email address" required>
+            <div class="button submit">Subscribe</div>
+            <label>Sign up!</label>
+            <input class="hidden" type="submit">
+        </form>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>What We do</h4>
+            <span class="bar yellow"></span>
+        </div>
+        <h3>The Application Development Initiative seeks to nurture student creativity and technological aptitude by creating a community and resources for student developers of all talents and interests.</h3>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Events</h4>
+            <span class="bar blue"></span>
+        </div>
+        {{ macros.event(events[0]) }}
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Upcoming</h4>
+            <span class="bar green"></span>
+        </div>
+        <div class="triple-event">
+            {% for _ in range(3) %}
+            {{ macros.small_event(events[1]) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="full yellow callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <h4>Projects</h4>
+                <span class="bar gray"></span>
+            </div>
+            <h3>Open source projects built by Columbia students for Columbia Students.</h3>
+            <div class="button-group">
+                <div class="button gray">Courses by ADI</div>
+                <div class="button gray">data.adicu.com</div>
+            </div>
+            <p>Learn more in <a href="/resources">Resources</a></p>
+        </div>
+        <div class="callout-right">
+            <div class="blue card"></div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

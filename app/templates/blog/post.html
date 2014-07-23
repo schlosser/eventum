@@ -1,12 +1,18 @@
-{% extends 'blog/index.html' %}
-
+{% extends 'page.html' %}
 {% block title %}{{ post.title }} | {{ super() }}{% endblock %}
 
-{% block content %}
-<li class="post">
-    <h2 class="title">{{post.title}}</h2>
-    <p class="date-published">Posted on {{post.date_published}} </p>
-    <p class="author">By {{post.author.name}}</p>
-    {{ post.html_content | safe }}
-</li>
+
+{% block main %}
+<section class="tagline">
+    <h1>{{ post.title }}</h1>
+</section>
+<section class="card top-card">
+    <div class="post content">
+        <p class="date-published">Posted on {{post.date_published}} </p>
+        <p class="author">By {{post.author.name}}</p>
+        {{ post.html_content | safe }}
+    </div>
+</section>
+<section class="post">
+</section>
 {% endblock %}

@@ -3,7 +3,7 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_blog_posts" %}
+{% assets "scss_posts" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/lib/epiceditor/preview/github-highlighted.css')}}">
@@ -27,7 +27,7 @@
 {% block content %}
 {% if posts %}
 <div class="full-width">
-<table class="posts click">
+<table class="posts click table">
     <thead>
         <tr>
             <th>Title</th>

@@ -1,29 +1,16 @@
-@import '../colors';
-@import '../media_queries';
+@import 'base';
+@import '../common/media_queries';
+@import 'utils';
+@import 'colors';
+@import 'modal';
+@import 'forms';
+@import 'tables';
+@import 'navbar';
 
 $topbar-height: 3.5rem;
-$nav-item-width: 4rem;
-$nav-item-height: 3.5rem;
-$nav-label-width: 8rem;
-$nav-wide: 12rem;
 $content-padding: 1rem;
 $content-padding-small: 0.5rem;
 
-nav {
-    z-index:1;
-    width: $nav-item-width;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: $darkgray;
-    color: $white;
-
-    a, a:hover {
-        color: $white;
-        text-decoration: none;
-    }
-}
 .main {
     min-height: 100%;
     margin-left: $nav-item-width;
@@ -131,44 +118,6 @@ nav {
     }
 }
 
-.nav-item {
-    overflow: hidden;
-    width: $nav-item-width;
-    background-color: $darkgray;
-    height: $nav-item-height;
-    line-height: $nav-item-height;
-    display: block;
-    -webkit-transition: .3s ease all;
-    transition: .3s ease all;
-    position: relative;
-
-    &.selected {
-        background-color: $blue;
-    }
-
-    .nav-icon {
-        text-align: center;
-        width: $nav-item-width;
-        height: $nav-item-height;
-        line-height: $nav-item-height;
-        display: inline-block;
-        float:left;
-    }
-    .nav-label {
-        position: absolute;
-        padding-left: 1rem;
-        font-weight: 300;
-        left: $nav-item-width;
-        right: 0;
-        display: inline-block;
-        float:right;
-        font-size: 1.5rem;
-        height: $nav-item-height;
-        line-height: $nav-item-height;
-
-    }
-}
-
 .toolbar {
     background-color: $blue;
     color: $white;
@@ -187,27 +136,6 @@ nav {
     }
 }
 
-$w-5: 5.5rem;
-$w-6: 6rem;
-$w-6-5: 6.5rem;
-$w-9: 9rem;
-.w-5 {
-    &:hover { width: $nav-item-width + $w-5; }
-    .nav-label { width: $w-5; } }
-.w-6 {
-    &:hover { width: $nav-item-width + $w-6; }
-    .nav-label { width: $w-6; } }
-.w-6-5 {
-    &:hover { width: $nav-item-width + $w-6-5; }
-    .nav-label { width: $w-6-5; } }
-.w-9 {
-    &:hover { width: $nav-item-width + $w-9; }
-    .nav-label { width: $w-9; } }
-
-.fa-2-5x {
-    font-size: 2.5em;
-}
-
 @media screen and (max-width: $phone-max) {
     .main > .inner {
         width: 100% !important;
@@ -215,33 +143,17 @@ $w-9: 9rem;
 }
 
 @media screen and (min-width: $xl-desktop-min) {
-    nav { width: $nav-wide; }
-
-    .main > .inner {
-        width: 100%;
-
-        .content {
-            width: 90%;
-            margin: 0 auto;
-        }
-    }
-
-
     .main {
         margin-left: $nav-wide;
         background-color: $white;
-    }
 
-    .nav-item {
-        -webkit-transition: none;
-        transition: none;
-        width: $nav-wide !important;
+        & > .inner {
+            width: 100%;
 
-        .nav-label {
-            padding-left: 0;
+            .content {
+                width: 90%;
+                margin: 0 auto;
+            }
         }
-
-        &:not(.selected):hover { background-color: $gray; }
-        &.selected:hover { background-color: $fadedblue; }
     }
 }

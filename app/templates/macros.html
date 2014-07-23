@@ -63,3 +63,82 @@
 </div>
 {% endmacro %}
 
+
+{% macro upload_form(form, uploaded_from="") %}
+<form class="upload-form" action="{{ url_for('media.upload', _external=True) }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="hidden-but-not-forgotten">
+        {{ render_field(form.image) }}
+        {{ render_field(form.extension) }}
+        {{ render_field(form.uploaded_from, value=uploaded_from)}}
+        <input type="submit" value="Upload">
+    </div>
+    <div class="btn btn-choose">Choose File</div>
+    <div class="filename-wrapper">
+        {{ render_field(form.filename, label=False, placeholder="No File Chosen", required="")}}
+        <span class="extension"></span>
+    </div>
+    <div class="btn btn-upload">Upload</div>
+</form>
+{% endmacro %}
+
+
+{% macro navbar(navbar_items) %}
+<div class="navbar">
+    <div class="content">
+        <nav>
+            <a href="/">
+                <img class="logo"src="{{ url_for('static', filename='img/adi-logo-tiny.png') }}">
+            </a>
+            <div class="right">
+                <ul class="menu">
+                    {% for label, url in navbar_items %}
+                    <li>
+                        <a href="{{url}}">
+                            <div>{{ label }}</div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro event(event, small=False, show_description=True) %}
+<div class="event">
+    <a href="{{ url_for('home.event', event_id=event.id) }}">
+        <i class="image" style="background-image:url({{event.image.url()}});"></i>
+    </a>
+    <div class="text">
+        <a href="{{ url_for('home.event', event_id=event.id) }}">
+            <h2>{{ event.title }}</h2>
+        </a>
+        {% if show_description %}
+        <h5>{{ event.short_description }}</h5>
+        {% endif %}
+        <div class="details">
+            <p>Wednesday, October 10, 5pm-6pm</p>
+            <p>Hamilton 305</p>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro small_event(event) %}
+<div class="event small-event">
+    <a href="{{ url_for('home.event', event_id=event.id) }}">
+        <i class="image" style="background-image:url({{event.image.url()}});"></i>
+    </a>
+    <div class="text">
+        <a href="{{ url_for('home.event', event_id=event.id) }}">
+            <h5>{{ event.title }}</h5>
+        </a>
+        <div class="details">
+            <p>Wednesday, October 10, 5pm-6pm</p>
+            <p>Hamilton 305</p>
+        </div>
+    </div>
+</div>
+{% endmacro %}

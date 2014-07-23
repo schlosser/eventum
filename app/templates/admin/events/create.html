@@ -7,10 +7,13 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_datetime_datetime" %}
+{% assets "scss_datetime" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
-{% assets "scss_events_create" %}
+{% assets "scss_events" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% assets "scss_media" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 {% endblock %}
@@ -21,6 +24,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap-datepicker.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery.timepicker.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery.datepair.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/upload.js') }}"></script>
 {% endblock %}
 
 {% block barleft %}
@@ -87,6 +91,20 @@
     <input type="submit" value="Save">
 </form>
 {% endcall %}
+{% call macros.modal(modal="image") %}
+<h3>Add an Image</h3>
+{{ macros.upload_form(upload_form, uploaded_from=url_for('posts.new')) }}
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image" data-filename="{{ image.filename }}">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#add-image">
+        <i style="background-image:url({{ image.url() }});"></i>
+        <div class="select"><i class="fa fa-plus fa-3x"></i></div>
+    </a>
+</li>
+{% endfor %}
+</ul>
+{% endcall %}
 {{ super() }}
 {% endblock %}
 
@@ -133,11 +151,35 @@
             {% endif %}
         </div>
     </div>
-    <div class="descriptions">
-        {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence destcription of the event.") }}
-        {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
+    <div class="event-image-and-descriptions">
+        <div {% if event and event.image %}
+             class="add-image event-image hidden"
+             {% else %}
+             class="add-image event-image"
+             {% endif %}>
+            <a href="#show-modal" data-modal="image">
+                <i class="fa fa-plus fa-3x"></i>
+            </a>
+        </div>
+        {% if event and event.image %}
+        <div class="display-image image event-image">
+            <a href="#remove-image">
+                <i style="background-image:url({{ event.image.url() }});"></i>
+            </a>
+        {% else %}
+        <div class="display-image event-image image hidden">
+            <a href="#remove-image">
+                <i></i>
+            </a>
+        {% endif %}
+        </div>
+        <div class="descriptions">
+            {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
+            {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
+        </div>
     </div>
     <div class="hidden">
+        {{ macros.render_field(form.event_image) }}
         {{ macros.render_field(form.is_published) }}
         {{ macros.render_field(form.frequency) }}
         {{ macros.render_field(form.every) }}

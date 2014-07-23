@@ -5,8 +5,8 @@ from flask import Blueprint, request, render_template, g, redirect, \
 
 from bson.objectid import ObjectId
 
-from app.models import Event
-from app.forms import CreateEventForm, DeleteEventForm
+from app.models import Event, Image
+from app.forms import CreateEventForm, DeleteEventForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
 from app.lib import events as utils
@@ -43,7 +43,6 @@ def calendars():
 def create():
     """"""
     form = CreateEventForm(request.form)
-    delete_form = DeleteEventForm()
     if form.validate_on_submit():
         utils.create_event(form, creator=g.user)
         return redirect(url_for('.index'))
@@ -51,8 +50,13 @@ def create():
         for error in form.errors:
             for message in form.errors[error]:
                 flash(message)
+
+    upload_form = UploadImageForm()
+    delete_form = DeleteEventForm()
+    images = Image.objects()
     return render_template('admin/events/create.html', form=form, user=g.user,
-                           delete_form=delete_form)
+                           delete_form=delete_form, upload_form=upload_form,
+                           images=images)
 
 @events.route('/events/edit/<event_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -62,7 +66,6 @@ def edit(event_id):
         abort(500) # Either invalid event ID or duplicate IDs.
 
     event = Event.objects().get(id=event_id)
-    delete_form = DeleteEventForm()
 
     form = CreateEventForm(request.form) if request.method == 'POST' else \
         utils.create_form(event, request)
@@ -79,8 +82,12 @@ def edit(event_id):
             for message in form.errors[error]:
                 flash(message)
 
+    delete_form = DeleteEventForm()
+    upload_form = UploadImageForm()
+    images = Image.objects()
     return render_template('admin/events/edit.html', form=form, event=event,
-                           user=g.user, delete_form=delete_form)
+                           user=g.user, delete_form=delete_form,
+                           upload_form=upload_form, images=images)
 
 @events.route('/events/delete/<event_id>', methods=['POST'])
 @requires_privilege('edit')

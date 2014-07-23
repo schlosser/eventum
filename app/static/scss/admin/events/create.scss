@@ -1,5 +1,5 @@
-@import '../../colors';
-@import '../../media_queries';
+@import '../admin';
+@import '../media/image_grid';
 
 form > div {
     margin-bottom: .5rem;
@@ -7,31 +7,49 @@ form > div {
 
 .location {
     width: 100%;
-    max-width: 30rem;
+    max-width: 29rem;
 }
 
 .datetime {
     input[type="text"] {
         text-align: left;
 
-        &.time { width: 5rem; }
+        &.time { width: 5.5rem; }
         &.date { width: 8rem; }
     }
     .to { width: 1.5rem; }
     div { display: inline-block; }
 }
 
-.descriptions {
-    margin: 1rem 0 0;
-    textarea {
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: 0.5rem;
+.event-image-and-descriptions {
+    margin-top: 1rem;
+    position: relative;
 
-        &.short { min-height: 3rem; }
-        &.long { min-height: 5rem; }
+    .event-image {
+        display: inline-block;
+        position: relative;
+        width: $wide-6;
+        padding-bottom: $wide-6;
+    }
+
+    .descriptions {
+        position: absolute;
+        left: $wide-6;
+        padding-left: 1rem;
+        right: 0;
+        display: inline-block;
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 0.5rem;
+
+            &.short { min-height: 3rem; }
+            &.long { min-height: 5rem; }
+        }
     }
 }
+
 
 #m-num_occurances {
     width: 2.5rem;
@@ -55,7 +73,7 @@ form > div {
     }
 }
 
-.modal {
+.modal[data-modal="repeat"] {
     h3 {
         margin-bottom: 1rem;
     }

@@ -59,8 +59,8 @@ def register_blueprints():
         app.register_blueprint(bp, url_prefix="/admin")
 
     from app.routes import base; assert base # Not a blueprint, but should be imported
-    from app.routes import blog
-    blueprints = [blog]
+    from app.routes import blog, home
+    blueprints = [blog, home]
 
     for bp in blueprints:
         app.register_blueprint(bp)
@@ -68,18 +68,17 @@ def register_blueprints():
 def register_scss():
     """"""
     assets.url = app.static_url_path
-    defaults = {
-        'filters':'scss',
-        'depends':['scss/_colors.scss', 'scss/admin/admin.scss']
-    }
-
     with open('config/scss.json') as f:
         bundle_instructions = json.loads(f.read())
-        for bundle_name, instructions in bundle_instructions.iteritems():
-            bundle = Bundle(*instructions["inputs"],
-                            output=instructions["output"],
-                            **defaults)
-            assets.register(bundle_name, bundle)
+        for _, bundle_set in bundle_instructions.iteritems():
+            output_folder = bundle_set['output_folder']
+            depends = bundle_set['depends']
+            for bundle_name, instructions in bundle_set['rules'].iteritems():
+                bundle = Bundle(*instructions['inputs'],
+                                output=output_folder + instructions['output'],
+                                depends=depends,
+                                filters='scss')
+                assets.register(bundle_name, bundle)
 
 def run():
 	app.run(host='0.0.0.0', port=5000)

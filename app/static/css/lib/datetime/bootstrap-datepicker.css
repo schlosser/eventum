@@ -112,6 +112,7 @@
 /* line 82 */
 .datepicker.days div.datepicker-days {
   display: block;
+  padding: 1px;
 }
 
 /* line 85 */

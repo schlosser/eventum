@@ -3,7 +3,7 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_auth_users" %}
+{% assets "scss_users" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 {% endblock %}
@@ -46,7 +46,7 @@
 <small>Only emails on this whitelist can be used to make an account.</small>
 {% if whitelist %}
 <div class="full-width">
-    <table class="whitelist">
+    <table class="whitelist table">
         <thead>
             <th class="user-type with-image">User Type</th>
             <th class="email" >Email</th>
@@ -78,7 +78,7 @@
 <small>Currently registered users</small>
 {% endif %}
 <div class="full-width">
-    <table class="users click">
+    <table class="users click table">
         <thead>
             <th class="with-image">Name</th>
             <th>Email</th>

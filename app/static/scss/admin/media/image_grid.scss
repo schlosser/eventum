@@ -1,4 +1,4 @@
-@import '../../media_queries';
+@import '../admin';
 
 $wide-2: 50%;
 $wide-3: 33.333%;
@@ -7,6 +7,17 @@ $wide-5: 20%;
 $wide-6: 16.666%;
 
 $image-padding: 0.25rem;
+
+.image-grid-wrapper {
+    position: relative;
+
+    .image-grid-wrapper-inner {
+        position: absolute;
+        left: -0.25rem;
+        right: -0.25rem;
+    }
+}
+
 .image-grid {
     width: 100%;
     overflow: hidden;
@@ -18,17 +29,17 @@ $image-padding: 0.25rem;
         float:left;
         position: relative;
 
-        i {
-            position: absolute;
-            top: $image-padding;
-            bottom: $image-padding;
-            left: $image-padding;
-            right: $image-padding;
-            display: block;
-            background-position: center center;
-            background-size: cover;
-        }
     }
+}
+.image i:not(.fa) {
+    position: absolute;
+    top: $image-padding;
+    bottom: $image-padding;
+    left: $image-padding;
+    right: $image-padding;
+    display: block;
+    background-position: center center;
+    background-size: cover;
 }
 
 .image-grid.small-grid .image {
@@ -37,7 +48,7 @@ $image-padding: 0.25rem;
 }
 
 @media only screen and (max-width: $xl-desktop-max) {
-    .image {
+    .image-grid .image {
         width: $wide-5 !important;
         padding-bottom: $wide-5 !important; }
 }

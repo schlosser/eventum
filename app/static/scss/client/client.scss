@@ -1,0 +1,182 @@
+@import 'base';
+@import 'colors';
+@import 'components/navbar';
+@import 'components/events';
+@import 'components/ribbon';
+
+$content-padding: 0.625rem;
+.content {
+    max-width: $content-width;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 $content-padding;
+    position: relative;
+}
+
+$hero-height: 32rem;
+.hero {
+    position: relative;
+    height: $hero-height;
+    .scrim {
+        @include scrim;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    i {
+        height: 100%;
+        display: block;
+        width: 100%;
+        background-width: 100%;
+        background-position: center center;
+    }
+
+    .solid {
+        &.blue {
+            background-color: $blue;
+        }
+    }
+}
+
+.main {
+    margin-top: -15rem;
+}
+
+$section-top: 3.75rem;
+$section-bottom: 1.25rem;
+.main {
+
+    .tagline h1 {
+        text-align: center;
+        color: $white;
+        margin-bottom: 1.5rem;
+    }
+
+    section {
+        position: relative;
+
+        &:not(:first-child) {
+            padding-top: $section-top;
+            padding-bottom: $section-bottom;
+        }
+
+        h4 + .bar {
+            width: 3.75rem;
+            height: $ribbon-height;
+            display: block;
+            background-color: $yellow;
+
+            &.blue { background-color: $blue; }
+            &.green { background-color: $green; }
+            &.yellow { background-color: $yellow; }
+            &.gray { background-color: $gray; }
+            &.white { background-color: $white; }
+        }
+
+        .section-header {
+            margin-bottom: 2.1875rem;
+        }
+    }
+
+    $radius: 0.625rem;
+    $card-gutter: 3.75rem;
+    .top-card {
+        z-index: 100;
+        width: ($content-width + 2*$card-gutter);
+        margin: 0 auto;
+        background-color: $white;
+    }
+    .card {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+    }
+
+    .subscribe {
+        width: 95%;
+        max-width: 51.25rem;
+        margin: 0 auto;
+
+        .submit {
+            background-color: $green;
+            color: $white;
+            margin-right: 1.25rem;
+        }
+
+        label {
+            width: 8.125rem;
+        }
+
+        input[type="email"] {
+            border: 0;
+            width: 30rem;
+            margin-right: 1.25rem;
+            font-size: 1.875rem;
+            border-style: solid;
+            border-bottom: 1px solid $gray;
+
+            &:focus {
+                border-bottom: 1px solid $green;
+                outline: none;
+            }
+        }
+    }
+}
+
+.callout {
+    position: relative;
+    .callout-left {
+        width: 50%;
+    }
+    .callout-right {
+        position: absolute;
+        left: 50%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .button-group {
+        .button {
+            margin-right: 1.25rem;
+        }
+        margin: 1.25rem 0;
+    }
+
+    h3 {
+        width: 20rem;
+        margin-bottom: 2.5rem;
+    }
+    p:not(:last-of-type) {
+        margin-bottom: 0.625rem;
+    }
+}
+
+.content .card {
+    width: 100%;
+    height: 20rem;
+    position: absolute;
+    bottom: -($section-bottom + 0.3125rem);
+}
+.yellow {
+    background-color: $yellow;
+    color: $gray;
+}
+.blue {
+    background-color: $blue;
+    color: $gray;
+}
+.green {
+    background-color: $green;
+    color: $gray;
+}
+.white {
+    background-color: $green;
+    color: $gray;
+}
+.yellow, .blue, .green {
+    a {
+        text-decoration: underline;
+        color: inherit;
+    }
+}
+

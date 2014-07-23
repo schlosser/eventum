@@ -17,7 +17,7 @@ class EventSeries(db.Document):
     num_occurances = db.IntField(default=1)
     recurrence_end_date = DateField()
     recurrence_summary = db.StringField()
-    gcal_id = db.StringField()
+    gcal_id = db.StringField() # ID of the first event in the series
 
     def delete_one(self, event):
         """"""

@@ -1,19 +1,29 @@
 $(function() {
+    function setInputToWidthOfText(text) {
+        width = calculateWordWidth(text);
+        $('input[name="filename"]').animate({"width":width + 10}, 50);
+    }
+
     function setInitialPositions() {
         var extension = $('input[name="extension"]').val();
         var filename = $('input[name="filename"]').val();
         $('.extension').html(extension);
         if (filename) {
-            width = calculateWordWidth(filename);
-            $('input[name="filename"]').animate({"width":width + 20}, 50);
+            setInputToWidthOfText(filename + "." + extension);
         }
     }
 
-    setInitialPositions()
+    setInitialPositions();
 
-    /* let the `btn-upload` div act as the file input */
-    $(".btn-upload").click(function () {
+    /* let the `btn-choose` div act as the file input */
+    $(".btn-choose").click(function () {
         $('input[name="image"]').trigger('click');
+        return false;
+    });
+
+    /* let the `btn-upload` div act as the submit button */
+    $(".btn-upload").click(function () {
+        $('form.upload-form').submit();
         return false;
     });
 
@@ -25,16 +35,14 @@ $(function() {
             $('.extension').html("." + pieces[1].toLowerCase());
             $('input[name="extension"]').val("." + pieces[1].toLowerCase());
         }
-        width = calculateWordWidth(pieces[0]);
+        setInputToWidthOfText(pieces[0] + "." + pieces[1]);
         $('input[name="filename"]').attr("placeholder",pieces[0]);
-        $('input[name="filename"]').animate({"width":width + 20}, 50);
         $('input[name="filename"]').val(pieces[0]);
     });
 
     /* Match the width of the filename field to the width of the input */
     $('input[name="filename"]').keydown(function() {
-        width = calculateWordWidth($(this).val());
-        $('input[name="filename"]').animate({"width":width + 20}, 50);
+        setInputToWidthOfText($(this).val() + "." + $('.extension').html());
     });
 
     function calculateWordWidth(text, classes) {

@@ -2,9 +2,20 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_app" %}
+{% assets "scss_admin" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
+{% endblock %}
+
+{% block fonts %}
+{{ super() }}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block body %}
@@ -12,10 +23,10 @@
 <nav class="nav">
     <ul>
         {% for href, label, icon, width in [
-            ('/admin/home',           'Home',      'home',        'w-6-5'),
+            ('/admin/home',       'Home',      'home',        'w-6-5'),
             ('/admin/events',     'Events',    'calendar',    'w-6-5'),
             ('/admin/resources',  'Resources', 'book',        'w-9'),
-            ('/admin/posts', 'Blog',      'quote-right', 'w-5'),
+            ('/admin/posts',      'Blog',      'quote-right', 'w-5'),
             ('/admin/users',      'Users',     'users',       'w-6'),
             ('/admin/media',      'Media',     'picture-o',   'w-6-5')] %}
         <li class="nav-item {{ width }}

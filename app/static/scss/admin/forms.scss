@@ -1,6 +1,5 @@
-@import 'colors';
 @import 'base';
-@import 'utils';
+@import 'colors';
 
 /* Remove inline-block spacing */
 form { font-size: 0; }
@@ -15,18 +14,23 @@ form li { display: inline-block; }
 input[type="text"] {
     margin: 0;
     padding: 0;
-    line-height: 1rem;
+    line-height: 2.3rem;
     min-width: 5rem;
-    padding: 0.57rem 0.2rem;
+    padding: 0 0.75rem;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
 }
 
 .title-wrapper {
+    margin-bottom: 0.5rem;
     input[type="text"] {
-        width: 100%;
-        max-width: 36rem;
+        max-width: 100%;
+        width: 36rem;
         font-size: $h2;
-        line-height: 2rem;
-        padding: 0.15rem;
+        height: 3rem;
+        line-height: 2.5rem;
+        padding: 0.15rem 0.5rem;
         vertical-align: middle;
 
         &::-webkit-input-placeholder,

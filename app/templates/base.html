@@ -44,19 +44,11 @@
 
     {% block fonts %}
     <!-- Web Fonts -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
     {% endblock fonts %}
 
     {% block css%}
     <!-- Stylesheet reset -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/reset.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/admin.css') }}">
-
-    {% assets "scss_base" %}
-    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-    {% endassets %}
-
     {% endblock css%}
 
     {% block js %}
@@ -64,7 +56,6 @@
     <!-- jQuery -->
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
     {% endblock js %}
 
     {% block favicon %}

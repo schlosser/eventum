@@ -22,8 +22,9 @@ def print_usage():
     print "%s --authorize (-a) Authorize the Google Calendar API Client"
 
 if __name__ == '__main__':
-    if len(argv) == 2 and argv[1] in ('--authorize', '-a'):
-        authorize_google_calendar()
+    if len(argv) >=2 and len(argv) <= 3:
+        if '--authorize' in argv or '-a' in argv:
+            authorize_google_calendar()
     else:
         print_usage()
         exit(1)

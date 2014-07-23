@@ -1,0 +1,55 @@
+{% extends "page.html" %}
+{% block title %}Events | {{ super() }}{% endblock %}
+
+{% block header_image %}/static/img/events.jpg{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>Events</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>This Week</h4>
+            <span class="bar green"></span>
+        </div>
+        {% for event in events %}
+            {{ macros.event(event) }}
+        {% endfor %}
+    </div>
+</section>
+<section class="full green callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <h4>Cookies and Code</h4>
+                <span class="bar white"></span>
+            </div>
+            <h3>Come meet the community. We bring the cookies, you bring the code!</h3>
+            <p>569 Learner Hall</p>
+            <p>Wednesdays, 10pm-12pm</p>
+        </div>
+        <div class="callout-right">
+            <div class="yellow card"></div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Past Events</h4>
+            <span class="bar blue"></span>
+        </div>
+        <div class="triple-event">
+            {% for _ in range(3) %}
+            {{ macros.small_event(events[1]) }}
+            {% endfor %}
+        </div>
+        <div class="triple-event">
+            {% for _ in range(3) %}
+            {{ macros.small_event(events[1]) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock main %}

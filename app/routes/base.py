@@ -6,15 +6,15 @@ from app.models import User
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('admin/error/404.html'), 404
+    return render_template('error/404.html'), 404
 
 @app.errorhandler(401)
 def not_authorized(error):
-    return render_template('admin/error/401.html'), 401
+    return render_template('error/401.html'), 401
 
 @app.errorhandler(405)
 def method_not_allowed(error):
-    return render_template('admin/error/405.html', method=request.method), 405
+    return render_template('error/405.html', method=request.method), 405
 
 @app.before_request
 def lookup_current_user():

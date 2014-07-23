@@ -65,6 +65,7 @@ $(function() {
         modal_id = $(this).data('modal') || "modal";
         $('.opaque[data-modal=' + modal_id + ']').removeClass("hidden");
         $('body').addClass('modal-open');
+        $('.image-grid-wrapper').height($('.image-grid').height());
     });
 
     /* Close the modal */
@@ -87,4 +88,10 @@ $(function() {
         e.preventDefault();
         window.location.href = $(this).find('a.tr-link').attr("href");
     });
+
+    /* =======================================================================
+     * Image Grids
+     * ==================================================================== */
+
+    $('.image-grid-wrapper').height($('.image-grid').height());
 });
