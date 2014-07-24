@@ -42,6 +42,7 @@ def create_app(**config_overrides):
         exit(1)
 
     register_blueprints()
+    register_delete_rules()
 
 def register_blueprints():
     """Registers all the Blueprints (modules) in a function, to avoid
@@ -64,6 +65,25 @@ def register_blueprints():
 
     for bp in blueprints:
         app.register_blueprint(bp)
+
+def register_delete_rules():
+    """
+
+    All delete rules for User fields must by DENY, because User objects should
+    never be deleted.  Lists of reference fields should PULL, to remove deleted
+    objects from the list, and all others should NULLIFY
+    """
+    from app.models import Event, EventSeries, User, Post, BlogPost, Image
+    from mongoengine import NULLIFY, PULL, DENY
+
+    Event.register_delete_rule(EventSeries, 'events', PULL)
+    Image.register_delete_rule(BlogPost, 'images', PULL)
+    Image.register_delete_rule(Event, 'image', NULLIFY)
+    EventSeries.register_delete_rule(Event, 'parent_series', NULLIFY)
+    User.register_delete_rule(Event, 'creator', DENY)
+    User.register_delete_rule(Image, 'creator', DENY)
+    User.register_delete_rule(Post, 'author', DENY)
+    User.register_delete_rule(Post, 'posted_by', DENY)
 
 def register_scss():
     """"""

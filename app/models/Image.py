@@ -1,6 +1,5 @@
 from flask import url_for
 from mongoengine import ValidationError
-from app.models import User
 from app import app, db
 from datetime import datetime
 import PIL, re, os

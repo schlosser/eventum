@@ -1,5 +1,4 @@
-from app import create_app, register_blueprints, run
+from app import create_app, run
 
 create_app()
-register_blueprints()
 run()
