@@ -1,5 +1,5 @@
 from flask import url_for
-from mongoengine import ValidationError
+from mongoengine import ValidationError, signals
 from app import app, db
 from datetime import datetime
 import PIL, re, os
@@ -52,7 +52,6 @@ class Image(db.Document):
             except IOError:
                 raise ValidationError('File %s does not exist.' % self.default_path)
 
-
     def pre_validate(form):
         """Ensure that the versions dictionary contains keys of the form: <width>x<height>, where
         `width` and `height` are the size of the image at the path."""
@@ -63,6 +62,16 @@ class Image(db.Document):
                     raise ValidationError('Key %s improperly describes image %s', (size, path))
             except IOError:
                 raise ValidationError('File %s does not exist.' % form.default_path)
+
+    @classmethod
+    def post_delete(klass, sender, document, **kwargs):
+        for size, old_path in document.versions.iteritems():
+            _, filename = os.path.split(old_path)
+            new_path = os.path.join(app.config['RELATIVE_DELETE_FOLDER'], filename)
+            try:
+                os.rename(old_path, new_path)
+            except IOError:
+                pass
 
     meta = {
         'allow_inheritance': True,
@@ -77,3 +86,5 @@ class Image(db.Document):
         rep = 'Photo(filename=%r, default_path=%r, caption=%r)' % \
         (self.filename, self.default_path, self.caption)
         return rep
+
+signals.post_delete.connect(Image.post_delete, sender=Image)

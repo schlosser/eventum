@@ -39,7 +39,7 @@ def upload():
             filename = create_filename(f, request.form['filename'])
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             image = Image(filename=filename,
-                          default_path='app/static/img/'+filename,
+                          default_path=app.config['RELATIVE_UPLOAD_FOLDER']+filename,
                           creator=g.user)
             image.save()
             return redirect(url_for('.index'))
