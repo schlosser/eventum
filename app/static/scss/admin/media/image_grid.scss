@@ -62,7 +62,7 @@ $image-padding: 0.25rem;
         padding-bottom: $wide-6 !important; }
 }
 
-@media only screen and (max-width: $tablet-max) {
+@media only screen and (max-width: $tablet-landscape-max) {
     .image-grid .image {
         width: $wide-3 !important;
         padding-bottom: $wide-3 !important; }

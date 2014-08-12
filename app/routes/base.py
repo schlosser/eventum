@@ -4,6 +4,8 @@ from mongoengine.queryset import DoesNotExist
 from app import app
 from app.models import User
 
+SUPER_USER_GPLUS_ID = 'super'
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('error/404.html'), 404
@@ -24,6 +26,19 @@ def lookup_current_user():
     Note that it gets called before all requests, but not before decorators.
     """
     g.user = None
+    if not app.config['AUTH']:
+        # bypass auth by mocking a super user
+        try:
+            g.user = User.objects.get(email='email@email.com')
+        except DoesNotExist:
+            user = User(name='Super User',
+                        gplus_id=SUPER_USER_GPLUS_ID,
+                        user_type='admin',
+                        email='email@email.com',
+                        image_url='https://lh6.googleusercontent.com/-K9HZ5Z5vOU8/AAAAAAAAAAI/AAAAAAAAAAA/yRoMtBSXoxQ/s48-c/photo.jpg')
+            user.save()
+            session['gplus_id'] = SUPER_USER_GPLUS_ID
+
     if 'gplus_id' in session:
         gplus_id = session['gplus_id']
         try:

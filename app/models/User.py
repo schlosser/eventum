@@ -31,7 +31,7 @@ class User(db.Document):
     """"""
 
     date_created = db.DateTimeField(required=True, default=now)
-    date_modified2 = db.DateTimeField(required=True, default=now)
+    date_modified = db.DateTimeField(required=True, default=now)
     gplus_id = db.StringField(required=True, unique=True)
     name = db.StringField(required=True, max_length=510)
     slug = db.StringField(required=True, max_length=510, unique=True,
@@ -46,7 +46,7 @@ class User(db.Document):
 
     meta = {
         'allow_inheritance': True,
-        'indexes': ['email']
+        'indexes': ['email', 'gplus_id']
     }
 
     def can(self, privilege):

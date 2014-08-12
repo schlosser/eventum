@@ -108,11 +108,11 @@
 
 {% macro event(event, small=False, show_description=True) %}
 <div class="event">
-    <a href="{{ url_for('home.event', event_id=event.id) }}">
-        <i class="image" style="background-image:url({{event.image.url()}});"></i>
+    <a href="{{ url_for('client.event', event_id=event.id) }}">
+        <i class="image" style="background-image:url({{event.image_url()}});"></i>
     </a>
     <div class="text">
-        <a href="{{ url_for('home.event', event_id=event.id) }}">
+        <a href="{{ url_for('client.event', event_id=event.id) }}">
             <h2>{{ event.title }}</h2>
         </a>
         {% if show_description %}
@@ -128,11 +128,11 @@
 
 {% macro small_event(event) %}
 <div class="event small-event">
-    <a href="{{ url_for('home.event', event_id=event.id) }}">
-        <i class="image" style="background-image:url({{event.image.url()}});"></i>
+    <a href="{{ url_for('client.event', event_id=event.id) }}">
+        <i class="image" style="background-image:url({{event.image_url()}});"></i>
     </a>
     <div class="text">
-        <a href="{{ url_for('home.event', event_id=event.id) }}">
+        <a href="{{ url_for('client.event', event_id=event.id) }}">
             <h5>{{ event.title }}</h5>
         </a>
         <div class="details">

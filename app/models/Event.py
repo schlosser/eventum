@@ -1,5 +1,6 @@
+from flask import url_for
 from mongoengine import ValidationError
-from app import db
+from app import app, db
 from app.forms.fields import DateField
 from app.models.fields import TimeField
 
@@ -26,6 +27,11 @@ class Event(db.Document):
     image = db.ReferenceField("Image")
     gcal_id = db.StringField()
     gcal_calendar_id = db.StringField()
+
+    def image_url(self):
+        if self.image:
+            return self.image.url()
+        return url_for('static', filename=app.config['DEFAULT_EVENT_IMAGE'])
 
     def clean(self):
         """Update date_modified, and validate datetimes to ensure the event ends

@@ -10,7 +10,7 @@
 (function() {
     var po = document.createElement('script');
     po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+    po.src = '//apis.google.com/js/client:plusone.js?onload=render';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(po, s);
 })();
@@ -35,7 +35,7 @@ function render() {
 {% endblock %}
 
 {% block fonts %}
-<link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block css %}
@@ -46,12 +46,12 @@ function render() {
 {% block body %}
 <div id="gSignInWrapper">
     <div id="plus-button" class="customGPlusSignIn">
-        <span class="plus-icon"></span>git
+        <span class="plus-icon"></span>
         <span class="plus-text">Sign In</span>
     </div>
 </div>
 
 <!-- Run check if logged in automatically on page load -->
 <script type="text/javascript">var STATE = "{{ state }}", NEXT = "{{ next }}";</script>
-<script type="text/javascript" src="{{url_for('static', filename='js/auth/plus.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/admin/auth/plus.js') }}"></script>
 {% endblock %}

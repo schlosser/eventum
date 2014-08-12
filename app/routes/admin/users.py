@@ -24,6 +24,19 @@ def index():
                            users=User.objects(),
                            current_user=g.user)
 
+@users.route('/users/me', methods=['GET'])
+@login_required
+def me():
+    """View the current user's profile."""
+    user = g.user
+    form = EditUserForm(request.form,
+                        name=user.name,
+                        email=user.email,
+                        # image_url=user.get_profile_picture(),
+                        user_type=user.user_type)
+    return render_template('admin/users/user.html', user=user, form=form,
+                           current_user=g.user)
+
 @users.route('/users/delete/<user_id>', methods=['POST'])
 @login_required
 def delete(user_id):
@@ -108,7 +121,7 @@ def super():
     """Special case of become()"""
     return redirect(url_for('.become', level=3))
 
-@users.route('/view-users')
+@users.route('/users/view')
 @development_only
 def view():
     """Print out all the users"""

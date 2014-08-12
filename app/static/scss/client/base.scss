@@ -1,5 +1,6 @@
-$content-width: 60rem;
+@import '../common/media_queries';
 
+$content-width: 60rem;
 $extra-bold: 800;
 $bold: 700;
 $regular: 400;
@@ -74,4 +75,28 @@ h6, .h6 {
     font-weight: $regular;
     font-size: 0.875rem;
     line-height: 1rem;
+}
+
+@media screen and (max-width: $xl-desktop-max) {
+    html, body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: $desktop-max) {
+    html, body {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-max) {
+    html, body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: $tablet-portrait-max) {
+    html, body {
+        font-size: 10px;
+    }
 }

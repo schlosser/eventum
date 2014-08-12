@@ -1,5 +1,5 @@
 from app.lib.decorators import login_required
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 
 admin = Blueprint('admin', __name__)
 
@@ -12,4 +12,4 @@ def index():
 @admin.route('/')
 @login_required
 def landing():
-    return render_template("landing.html")
+    return redirect(url_for('auth.login'))

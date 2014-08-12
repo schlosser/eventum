@@ -26,7 +26,7 @@ def login():
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('base.index'), code=303)
+        return redirect(url_for('admin.index'), code=303)
     load_csrf_token_into_session()
     args_next = request.args.get('next')
     next = args_next if args_next else request.url_root
@@ -157,7 +157,7 @@ def logout():
     """Log the user out."""
     session.pop('gplus_id', None)
     g.user = None
-    return redirect('/')
+    return redirect(url_for('client.index'))
 
 
 def load_csrf_token_into_session():
@@ -190,7 +190,7 @@ def disconnect():
         del session['credentials']
 
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('base.index'), code=303)
+        return redirect(url_for('client.index'), code=303)
     else:
         # For whatever reason, the given token was invalid.
         return response_from_json('Failed to revoke token for given user.',
