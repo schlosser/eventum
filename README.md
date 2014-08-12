@@ -44,14 +44,16 @@ python run.py
 
 #### Developing without Authentication
 
-Edit `config/flask_config.py` and set `AUTH` to `False`:
+It is possible to run Eventum without logging in using Google+ or authenticating with Google Calendar.  To do so, edit `config/flask_config.py` and set `AUTH` to `False`:
 ```diff
-
+ # Whether or not to enable Google Auth or not.
+-AUTH = True
++AUTH = False
 ```
 
 ## Organization / Structure
 
-```
+```bash
 .
 ├── app            # All code related to the running of the app
 │   ├── forms      # Flask-WTForms models, used for generating forms in HTML
