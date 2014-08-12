@@ -60,9 +60,35 @@ nav {
     }
 }
 
+$profile-picture-size: 2.5rem;
+.bottom {
+    position: absolute;
+    bottom: 0;
+    .me {
+        height: $nav-item-height;
+        i {
+            width: $nav-item-width;
+            height: $nav-item-height;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: $profile-picture-size $profile-picture-size;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            display: block;
+        }
+
+        p {
+            display: none;
+        }
+    }
+}
+
 $w-5: 5.5rem;
 $w-6: 6rem;
 $w-6-5: 6.5rem;
+$w-7: 7rem;
+$w-8: 8rem;
 $w-9: 9rem;
 .w-5 {
     &:hover { width: $nav-item-width + $w-5; }
@@ -73,6 +99,12 @@ $w-9: 9rem;
 .w-6-5 {
     &:hover { width: $nav-item-width + $w-6-5; }
     .nav-label { width: $w-6-5; } }
+.w-7 {
+    &:hover { width: $nav-item-width + $w-7; }
+    .nav-label { width: $w-7; } }
+.w-8 {
+    &:hover { width: $nav-item-width + $w-8; }
+    .nav-label { width: $w-8; } }
 .w-9 {
     &:hover { width: $nav-item-width + $w-9; }
     .nav-label { width: $w-9; } }
@@ -93,6 +125,26 @@ $w-9: 9rem;
         }
     }
 
+    .me {
+        min-width: $profile-picture-size;
+        height: $profile-picture-size;
+        position: relative;
+        margin: 0 auto;
+
+        i {
+            position: absolute;
+            width: $profile-picture-size;
+            height: $profile-picture-size;
+            display: block;
+            left: 0;
+            top: 0;
+        }
+
+        p {
+            display: inline-block;
+            padding-left: $profile-picture-size;
+        }
+    }
 
     .main {
         margin-left: $nav-wide;

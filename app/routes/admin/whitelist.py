@@ -31,7 +31,7 @@ def add():
         pass
     return redirect(url_for('users.index'))
 
-@whitelist.route('/view-whitelist')
+@whitelist.route('/whitelist/view')
 @development_only
 def view():
     """Print out all the users"""

@@ -219,84 +219,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -1026,84 +1092,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -1578,84 +1710,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -2385,84 +2583,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -2966,84 +3230,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -3773,84 +4103,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -4324,84 +4720,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -5131,84 +5593,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -5708,84 +6236,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }
@@ -6515,84 +7109,150 @@ nav a, nav a:hover {
   line-height: 3.5rem;
 }
 
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 64, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+/* line 67, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me {
+  height: 3.5rem;
+}
+/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me i {
+  width: 4rem;
+  height: 3.5rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.bottom .me p {
+  display: none;
+}
+
+/* line 94, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5:hover {
   width: 9.5rem;
 }
-/* line 69, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 95, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-5 .nav-label {
   width: 5.5rem;
 }
 
-/* line 71, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6:hover {
   width: 10rem;
 }
-/* line 72, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 98, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6 .nav-label {
   width: 6rem;
 }
 
-/* line 74, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5:hover {
   width: 10.5rem;
 }
-/* line 75, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 101, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-6-5 .nav-label {
   width: 6.5rem;
 }
 
-/* line 77, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 103, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7:hover {
+  width: 11rem;
+}
+/* line 104, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-7 .nav-label {
+  width: 7rem;
+}
+
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8:hover {
+  width: 12rem;
+}
+/* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+.w-8 .nav-label {
+  width: 8rem;
+}
+
+/* line 109, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9:hover {
   width: 13rem;
 }
-/* line 78, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .w-9 .nav-label {
   width: 9rem;
 }
 
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+/* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
 .fa-2-5x {
   font-size: 2.5em;
 }
 
 @media screen and (min-width: 90.063rem) {
-  /* line 85, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 117, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   nav {
     width: 12rem;
   }
 
-  /* line 87, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 119, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner {
     width: 100%;
   }
-  /* line 90, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 122, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main > .inner .content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* line 97, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 128, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+  /* line 134, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me i {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    left: 0;
+    top: 0;
+  }
+  /* line 143, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  .me p {
+    display: inline-block;
+    padding-left: 2.5rem;
+  }
+
+  /* line 149, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .main {
     margin-left: 12rem;
     background-color: white;
   }
 
-  /* line 102, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 154, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item {
     -webkit-transition: none;
     transition: none;
     width: 12rem !important;
   }
-  /* line 107, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 159, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item .nav-label {
     padding-left: 0;
   }
-  /* line 111, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 163, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item:not(.selected):hover {
     background-color: #919191;
   }
-  /* line 112, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
+  /* line 164, /Users/dan/working/eventum/app/static/scss/admin/navbar.scss */
   .nav-item.selected:hover {
     background-color: #306cbb;
   }

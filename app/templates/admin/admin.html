@@ -10,6 +10,15 @@
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
+<script type="text/javascript">
+(function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = '//apis.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+})();
+</script>
 {% endblock %}
 
 {% block fonts %}
@@ -40,6 +49,24 @@
         </li>
         {% endfor %}
     </ul>
+    {% if current_user %}
+    <div class="bottom">
+        <div class="me nav-item w-8">
+            <a class="nav-link" href="{{ url_for('users.me') }}">
+                <i class="nav-icon"
+                   style="background-image: url({{ current_user.get_profile_picture() }})"></i>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+        <div class="logout nav-item w-7">
+            <a class="nav-link" href="#logout">
+                <i class="nav-icon fa fa-sign-out fa-2x"></i>
+                <span class="nav-label">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    {% endif %}
 </nav>
 <div class="main">
     {% block main %}

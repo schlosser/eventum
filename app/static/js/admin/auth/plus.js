@@ -45,11 +45,9 @@ var helper = (function() {
                 url: '/admin/store-token?state=' + STATE + '&next=' + NEXT,
                 contentType: 'application/octet-stream; charset=utf-8',
                 success: function(result) {
-                    console.log(result);
                     window.location.href = result;
                 },
                 error: function(result) {
-                    console.log("hi");
                     console.log(result);
                 },
                 processData: false,

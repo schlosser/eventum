@@ -2,6 +2,7 @@ from app.models import User, Whitelist
 from app.forms import AddToWhitelistForm, EditUserForm
 from app.lib.decorators import login_required, development_only
 from apiclient.discovery import build
+from mongoengine import DoesNotExist
 from flask import Blueprint, render_template, request, \
     flash, session, g, redirect, url_for, abort
 from bson import ObjectId
@@ -52,9 +53,12 @@ def delete(user_id):
     user = User.objects().get(id=object_id)
 
     # Update whitelist
-    wl = Whitelist.objects().get(email=user.email)
-    wl.redeemed = False
-    wl.save()
+    try:
+        wl = Whitelist.objects().get(email=user.email)
+        wl.redeemed = False
+        wl.save()
+    except DoesNotExist:
+        pass
     user.delete()
 
     # Log out if a user is attempting to delete themselves

@@ -46,6 +46,10 @@ def lookup_current_user():
         except DoesNotExist:
             pass  # Fail gracefully if the user is not in the database yet
 
+@app.context_processor
+def inject_user():
+    return dict(current_user=g.user)
+
 @app.after_request
 def add_header(response):
     """

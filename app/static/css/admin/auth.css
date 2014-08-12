@@ -1,0 +1,51 @@
+/* line 5 */
+.signup-flow {
+  margin: 0 auto;
+  padding-top: 5rem;
+  width: 15rem;
+}
+/* line 10 */
+.signup-flow .profile-picture {
+  width: 5rem;
+  height: 5rem;
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+}
+/* line 17 */
+.signup-flow form {
+  margin-bottom: 1rem;
+}
+/* line 18 */
+.signup-flow form input {
+  width: 15rem;
+}
+/* line 21 */
+.signup-flow form input[type="text"] {
+  margin-bottom: 0.5rem;
+}
+/* line 28 */
+.signup-flow p {
+  text-align: center;
+}
+/* line 30 */
+.signup-flow p a {
+  color: #3878cc;
+}
+
+/* line 36 */
+.nav {
+  display: none;
+}
+
+/* line 39 */
+.main, .main > .inner {
+  width: 100% !important;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 46 */
+#gSignInWrapper {
+  height: 20rem;
+}

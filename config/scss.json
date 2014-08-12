@@ -15,6 +15,11 @@
         ]
       },
 
+      "scss_auth": {
+        "output": "auth.css",
+        "inputs": [ "scss/admin/auth/*.scss" ]
+      },
+
       "scss_users": {
         "output": "users.css",
         "inputs": [ "scss/admin/users/*.scss" ]

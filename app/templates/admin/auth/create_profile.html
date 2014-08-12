@@ -1,12 +1,19 @@
 {% extends "admin/admin.html" %}
 {% block title %}Create Profile{% endblock %}
+{% block pagetitle %}Create Profile{% endblock %}
 
 {% import 'macros.html' as macros %}
 
+{% block css %}
+{{ super() }}
+{% assets "scss_auth" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
 {% block content %}
-<div>
+<div class="signup-flow">
   <div>
-    <legend>Sign in</legend>
     {% if form.errors %}
     <div>
     {% for field, error in form.errors.items() %}
@@ -17,7 +24,7 @@
     </div>
     {% endif %}
     {% if image_url %}
-    <img src="{{ image_url }}">
+    <img class="profile-picture" src="{{ image_url |replace("sz=50", "sz=100")}}">
     {% endif %}
     <form method="POST" action="" accept-charset="UTF-8" role="form">
       {{ form.csrf_token }}
@@ -27,9 +34,9 @@
       {{ macros.render_field(form.next) }}
     </form>
   </div>
-  <p>
+  <p class="sign-out">
     If you don't want to proceed, you can <a href="{{ url_for('auth.logout')
-    }}">sign out</a> again.
+    }}">sign out</a>.
   </p>
 </div>
 {% endblock %}

@@ -33,7 +33,7 @@
 {% block toolbar %}
 {% if current_user.can('admin') %}
 <div class="right">
-    {{ macros.confirm("Delete User", "/users/delete/" + user.id_str()) }}
+    {{ macros.confirm("Delete User", url_for('users.delete', user_id=user.id)) }}
 </div>
 {% endif %}
 {% endblock %}

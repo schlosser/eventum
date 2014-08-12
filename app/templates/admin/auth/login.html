@@ -1,8 +1,20 @@
-{% extends "base.html" %}
+{% extends "admin/admin.html" %}
 
 
-{% block title %}Sign in{% endblock %}
+{% block title %}Welcome to Eventum{% endblock %}
+{% block pagetitle %}Welcome to Eventum{% endblock %}
 
+{% block css %}
+{{ super() }}
+{% assets "scss_auth" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/plus.css') }}">
+{% endblock %}
+
+{% block fonts %}
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+{% endblock %}
 
 {% block js %}
 {{ super() }}
@@ -34,23 +46,13 @@ function render() {
 </script>
 {% endblock %}
 
-{% block fonts %}
-<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block css %}
-{{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/plus.css') }}">
-{% endblock %}
-
-{% block body %}
+{% block content %}
 <div id="gSignInWrapper">
     <div id="plus-button" class="customGPlusSignIn">
         <span class="plus-icon"></span>
         <span class="plus-text">Sign In</span>
     </div>
 </div>
-
 <!-- Run check if logged in automatically on page load -->
 <script type="text/javascript">var STATE = "{{ state }}", NEXT = "{{ next }}";</script>
 <script type="text/javascript" src="{{url_for('static', filename='js/admin/auth/plus.js') }}"></script>
