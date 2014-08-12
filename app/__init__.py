@@ -32,14 +32,15 @@ def create_app(**config_overrides):
 
     # Initialize the Google Calendar API Client, but only if the api
     # credentials have been generated first.
-    try:
-        from app.lib.google_calendar import GoogleCalendarAPIClient
-        gcal_client = GoogleCalendarAPIClient()
-    except IOError:
-        print ('Failed to find the Google Calendar credentials file at \'%s\', '
-               'please create it by running:\n\n'
-               '    $ python manage.py --authorize\n' % app.config['CREDENTIALS_PATH'])
-        exit(1)
+    if not app.config['AUTH']:
+        try:
+            from app.lib.google_calendar import GoogleCalendarAPIClient
+            gcal_client = GoogleCalendarAPIClient()
+        except IOError:
+            print ('Failed to find the Google Calendar credentials file at \'%s\', '
+                   'please create it by running:\n\n'
+                   '    $ python manage.py --authorize\n' % app.config['CREDENTIALS_PATH'])
+            exit(1)
 
     register_blueprints()
     register_delete_rules()
