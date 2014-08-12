@@ -2,6 +2,13 @@
 
 Eventum is a content management system for an event-driven blog that syncs with Google Calendar.
 
+## Stack
+- Built in [Flask][flask]
+- [Flask-Mongoengine][flask-mongoengine] and [Mongoengine][mongoengine] are used to interface with [MongoDB][mongodb]  
+- Authentication is done with [Google+ server-side flow][google-plus-server-side-flow]
+- Forms and validation are done through [Flask-WTForms][flask-wtforms] and [WTForms][wtforms]
+- CSS is generated from [SCSS][scss] and managed with [Flask-Assets][flask-assets]
+
 ## Setup
 
 Eventum runs on Linux and OSX.  To get it up an running, follow these steps:
@@ -32,7 +39,8 @@ Here's how to run Eventum in a development environment:
 mongod &
 virtualenv --no-site-packages .
 source bin/activate
-pip install -r config/requirements.txt
+pip install -r config/requirements.txt --allow-external PIL --allow-unverified PIL
+
 python run.py
 ```
 Or alternately:
@@ -55,27 +63,35 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 
 ```bash
 .
-├── app            # All code related to the running of the app
-│   ├── forms      # Flask-WTForms models, used for generating forms in HTML
-│   │              #     and validating input
-│   ├── lib        # Misc helpers, tasks, and modular libraries
-│   ├── models     # Mongoengine Models
-│   ├── routes     # All Flask routes, using Blueprints
-│   ├── static     
-│   │   ├── css    # Compiled CSS 
-│   │   ├── img    # Images
-│   │   ├── js     # Javascript files
-│   │   └── scss   # Stylesheets
-│   └── templates  # HTML templates
-├── config         # Configuration files
-├── manage.py      # Run this with a `--authorize` flag to authenticate GCal
-├── run.py         # Runs the app!
-└── test           # Unit tests
+├── app              # All code related to the running of the app
+│   ├── forms        # Flask-WTForms models, used for generating forms in HTML
+│   │                #     and validating input
+│   ├── lib          # Misc helpers, tasks, and modular libraries
+│   ├── models       # Mongoengine Models
+│   ├── routes       # All Flask routes, using Blueprints
+│   ├── static       
+│   │   ├── css      # Compiled CSS 
+│   │   ├── img      # Images
+│   │   ├── js       # Javascript files
+│   │   └── scss     # Stylesheets
+│   ├── templates    # HTML templates
+│   └── __init__.py  # All app-wide setup.  Called by `run.py`
+├── config           # Configuration files
+├── manage.py        # Run this with a `--authorize` flag to authenticate GCal
+├── run.py           # Runs the app!
+└── test             # Unit tests
 ```
 
-
+[flask]: http://flask.pocoo.org/
+[flask-assets]: http://flask-assets.readthedocs.org/en/latest/
+[flask-mongoengine]: http://flask-mongoengine.readthedocs.org/en/latest/
+[flask-wtforms]: https://flask-wtf.readthedocs.org/en/latest/
 [google-developer-console]: https://console.developers.google.com/project/apps~adicu-com/apiui/credential
+[google-plus-server-side-flow]: https://developers.google.com/+/web/signin/server-side-flow
 [mongodb]: https://www.mongodb.org/
 [mongodb-linux]: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
 [mongodb-osx]: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-with-homebrew
+[mongoengine]: http://docs.mongoengine.org/
+[scss]: http://sass-lang.com/
 [virtualenv]: http://virtualenv.readthedocs.org/en/latest/
+[wtforms]: http://wtforms.readthedocs.org/en/latest/
