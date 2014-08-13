@@ -1,6 +1,5 @@
-lib
-app/static/css/gen
-!app/lib
+./lib
+/app/static/css/gen
 bin
 include
 tmp
