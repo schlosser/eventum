@@ -2,11 +2,8 @@ import unittest
 import os
 import mongoengine
 from coverage import coverage
-from sys import path
-path.append('../')
 from app import create_app
-from app.models import User
-from config.flask_config import basedir
+from config.flask_config import BASEDIR
 
 GPLUS_IDS = {
     'user': 'user123',
@@ -19,6 +16,7 @@ GPLUS_IDS = {
 class TestingTemplate(unittest.TestCase):
 
     def setUp(self):
+        from app.models import User
         for u in User.objects():
             u.delete()
         user= User(name='Test User',
@@ -92,8 +90,8 @@ class TestingTemplate(unittest.TestCase):
     @classmethod
     def main(self):
         cov = coverage(
-            branch=True, omit=['../test.py', '../test/*', '../lib/*',
-                               '../include/*', '../bin/*'])
+            branch=True, omit=['test.py', 'test/*', 'lib/*',
+                               'include/*', 'bin/*'])
         cov.start()
         try:
             unittest.main()
@@ -104,7 +102,7 @@ class TestingTemplate(unittest.TestCase):
         print "\n\nCoverage Report:\n"
         cov.report()
         print "HTML version: " + \
-            os.path.join(basedir, "tmp/coverage/index.html")
+            os.path.join(BASEDIR, "tmp/coverage/index.html")
         cov.html_report(directory='tmp/coverage')
         cov.erase()
 

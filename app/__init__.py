@@ -20,6 +20,7 @@ def create_app(**config_overrides):
     app = Flask(__name__)
 
     # Load config then apply overrides
+    app.config.update(config_overrides)
     app.config.from_object('config.flask_config')
     app.config.update(config_overrides)
 

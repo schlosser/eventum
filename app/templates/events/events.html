@@ -40,6 +40,7 @@
             <h4>Past Events</h4>
             <span class="bar blue"></span>
         </div>
+        {% if events %}
         <div class="triple-event">
             {% for _ in range(3) %}
             {{ macros.small_event(events[1]) }}
@@ -50,6 +51,7 @@
             {{ macros.small_event(events[1]) }}
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock main %}
