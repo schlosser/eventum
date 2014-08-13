@@ -4,9 +4,9 @@ Flask-Misaka==0.3.0
 Flask-Script==0.6.7
 Flask-WTF==0.9.5
 Jinja2==2.7.2
+Pillow==2.5.2
 Markdown==2.4
 MarkupSafe==0.19
-PIL==1.1.7
 WTForms==1.0.5
 Werkzeug==0.9.4
 blinker==1.3

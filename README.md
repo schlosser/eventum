@@ -39,7 +39,7 @@ Here's how to run Eventum in a development environment:
 mongod &
 virtualenv --no-site-packages .
 source bin/activate
-pip install -r config/requirements.txt --allow-external PIL --allow-unverified PIL
+pip install -r config/requirements.txt
 
 python run.py
 ```
