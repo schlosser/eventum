@@ -41,6 +41,26 @@ input[type="text"] {
     }
 }
 
+.permalink-wrapper {
+    margin-bottom: 0.5rem;
+
+    .permalink-title {
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+    p, div {
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+
+    input[type="text"] {
+        padding: 0.15rem 0;
+        line-height: 1rem;
+        font-size: 0.8rem;
+    }
+}
+
 .with-icon {
     & > i {
         position: absolute;

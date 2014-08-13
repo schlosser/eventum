@@ -9,6 +9,7 @@ class EventSeries(db.Document):
     """"""
     date_created = db.DateTimeField(required=True, default=now)
     date_modified = db.DateTimeField(required=True, default=now)
+    slug = db.StringField(required=True, unique=True, max_length=255)
     events = db.ListField(db.ReferenceField("Event"))
     frequency = db.StringField(default="weekly")
     every = db.IntField(min_value=1, max_value=30)

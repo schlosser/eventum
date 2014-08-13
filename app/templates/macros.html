@@ -108,11 +108,11 @@
 
 {% macro event(event, small=False, show_description=True) %}
 <div class="event">
-    <a href="{{ url_for('client.event', event_id=event.id) }}">
+    <a href="{{ event.get_absolute_url() }}">
         <i class="image" style="background-image:url({{event.image_url()}});"></i>
     </a>
     <div class="text">
-        <a href="{{ url_for('client.event', event_id=event.id) }}">
+        <a href="{{ event.get_absolute_url() }}">
             <h2>{{ event.title }}</h2>
         </a>
         {% if show_description %}
@@ -128,7 +128,7 @@
 
 {% macro small_event(event) %}
 <div class="event small-event">
-    <a href="{{ url_for('client.event', event_id=event.id) }}">
+    <a href="{{ event.get_absolute_url() }}">
         <i class="image" style="background-image:url({{event.image_url()}});"></i>
     </a>
     <div class="text">

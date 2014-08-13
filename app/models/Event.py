@@ -14,6 +14,7 @@ class Event(db.Document):
     title = db.StringField(required=True, max_length=255)
     creator = db.ReferenceField("User", required=True)
     location = db.StringField()
+    slug = db.StringField(required=True, max_length=255)
     start_date = DateField()
     end_time = TimeField()
     end_date = DateField()
@@ -28,10 +29,21 @@ class Event(db.Document):
     gcal_id = db.StringField()
     gcal_calendar_id = db.StringField()
 
+    def get_absolute_url(self):
+        if self.is_recurring:
+            return url_for('client.recurring_event', slug=self.slug, index=self.index)
+        return url_for('client.event', slug=self.slug)
+
     def image_url(self):
         if self.image:
             return self.image.url()
         return url_for('static', filename=app.config['DEFAULT_EVENT_IMAGE'])
+
+    @property
+    def index(self):
+        if not self.is_recurring:
+            return
+        return self.parent_series.events.index(self)
 
     def clean(self):
         """Update date_modified, and validate datetimes to ensure the event ends

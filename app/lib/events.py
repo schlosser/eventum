@@ -21,6 +21,7 @@ def create_event(form, event=None, update_all=False, update_following=False,
 
     event_data = {
         "title": form.title.data,
+        "slug": form.slug.data,
         "location": form.location.data,
         "start_time": form.start_time.data,
         "end_time": form.end_time.data,
@@ -37,6 +38,7 @@ def create_event(form, event=None, update_all=False, update_following=False,
     recurrence_data = {
         "frequency": form.frequency.data,
         "every": form.every.data,
+        "slug": form.slug.data,
         "ends_on": form.ends.data == 'on',
         "ends_after": form.ends.data == 'after',
         "num_occurances": form.num_occurances.data,
@@ -102,6 +104,7 @@ def create_form(event, request):
     """"""
     form_data = {
         "title": event.title,
+        "slug": event.slug,
         "location": event.location,
         "start_date": event.start_date,
         "start_time": event.start_time,

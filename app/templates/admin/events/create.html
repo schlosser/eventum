@@ -118,6 +118,14 @@
     <div class="title-wrapper">
         {{ macros.render_field(form.title, placeholder="Event Title", autofocus="") }}
     </div>
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Permalink:</h6>
+        <p class="permalink-base">{{ url_for('client.event', slug="", _external=True) }}</p>
+        {{ macros.render_field(form.slug, required="", label=False, placeholder="cookies-and-code")}}
+        {% if event and event.is_recurring %}
+        <p class="permalink-base">/{{ event.index }}</p>
+        {% endif %}
+    </div>
     <div class="with-icon">
         <i class="fa fa-map-marker fa-2x"></i>
         {{ macros.render_field(form.location, placeholder="Location", class="location") }}

@@ -628,7 +628,29 @@ input[type="text"] {
   line-height: 1.7rem;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 44, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper {
+  margin-bottom: 0.5rem;
+}
+/* line 47, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper .permalink-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 52, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper p, .permalink-wrapper div {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 57, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper input[type="text"] {
+  padding: 0.15rem 0;
+  line-height: 1rem;
+  font-size: 0.8rem;
+}
+
+/* line 65, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > i {
   position: absolute;
   width: 2rem;
@@ -636,12 +658,12 @@ input[type="text"] {
   text-align: center;
   line-height: 2.5rem;
 }
-/* line 54, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 74, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > div {
   margin-left: 2.5rem;
 }
 
-/* line 61, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -650,7 +672,7 @@ input[type="text"] {
   overflow: hidden;
   position: relative;
 }
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 88, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label {
   width: 2.5rem;
   position: absolute;
@@ -663,36 +685,36 @@ input[type="text"] {
   background-color: #333333;
   color: white;
 }
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label, .toggle-wrapper .label i {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 86, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on {
   background-color: #43ac6a;
   left: 0;
   right: 8rem;
 }
-/* line 90, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on .inner {
   position: absolute;
   width: 8rem;
   left: 0;
 }
-/* line 96, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 116, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off {
   background-color: #d9534f;
   left: 2rem;
   right: 0;
 }
-/* line 101, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 121, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off .inner {
   position: absolute;
   width: 8rem;
   right: 0;
 }
-/* line 107, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 127, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on, .toggle-wrapper .off {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
@@ -704,12 +726,12 @@ input[type="text"] {
   text-align: center;
   display: inline-block;
 }
-/* line 119, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 139, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label {
   top: 0;
   left: 8rem;
 }
-/* line 122, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 142, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label i {
   -webkit-transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -717,23 +739,23 @@ input[type="text"] {
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-/* line 130, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 150, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .on {
   right: 2rem;
 }
-/* line 133, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 153, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .off {
   left: 8rem;
 }
 
-/* line 140, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 160, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-wrapper {
   height: 2.5rem;
   line-height: 2.5rem;
   vertical-align: middle;
 }
 
-/* line 145, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 165, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm {
   overflow: hidden;
   width: 8rem;
@@ -745,19 +767,19 @@ input[type="text"] {
   transition: 0.3s ease all;
 }
 
-/* line 155, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 175, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-hidden {
   width: 0 !important;
 }
 
-/* line 158, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 178, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-prompt {
   line-height: 2.5rem;
   height: 2.5rem;
   padding: 0 0.5rem;
 }
 
-/* line 163, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 183, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form {
   line-height: 2.5rem;
   height: 2.5rem;
@@ -766,11 +788,11 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 170, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 190, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input {
   padding: 0.25rem;
 }
-/* line 174, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 194, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input, .confirm-form div, .confirm-form a {
   display: inline-block;
   cursor: pointer;
@@ -781,7 +803,7 @@ input[type="text"] {
   height: 2.5rem;
   width: 4rem;
 }
-/* line 184, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 204, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input.confirm-confirm, .confirm-form div.confirm-confirm, .confirm-form a.confirm-confirm {
   background-color: #d9534f;
 }
@@ -2029,7 +2051,29 @@ input[type="text"] {
   line-height: 1.7rem;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 44, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper {
+  margin-bottom: 0.5rem;
+}
+/* line 47, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper .permalink-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 52, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper p, .permalink-wrapper div {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 57, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper input[type="text"] {
+  padding: 0.15rem 0;
+  line-height: 1rem;
+  font-size: 0.8rem;
+}
+
+/* line 65, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > i {
   position: absolute;
   width: 2rem;
@@ -2037,12 +2081,12 @@ input[type="text"] {
   text-align: center;
   line-height: 2.5rem;
 }
-/* line 54, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 74, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > div {
   margin-left: 2.5rem;
 }
 
-/* line 61, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -2051,7 +2095,7 @@ input[type="text"] {
   overflow: hidden;
   position: relative;
 }
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 88, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label {
   width: 2.5rem;
   position: absolute;
@@ -2064,36 +2108,36 @@ input[type="text"] {
   background-color: #333333;
   color: white;
 }
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label, .toggle-wrapper .label i {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 86, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on {
   background-color: #43ac6a;
   left: 0;
   right: 8rem;
 }
-/* line 90, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on .inner {
   position: absolute;
   width: 8rem;
   left: 0;
 }
-/* line 96, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 116, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off {
   background-color: #d9534f;
   left: 2rem;
   right: 0;
 }
-/* line 101, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 121, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off .inner {
   position: absolute;
   width: 8rem;
   right: 0;
 }
-/* line 107, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 127, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on, .toggle-wrapper .off {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
@@ -2105,12 +2149,12 @@ input[type="text"] {
   text-align: center;
   display: inline-block;
 }
-/* line 119, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 139, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label {
   top: 0;
   left: 8rem;
 }
-/* line 122, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 142, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label i {
   -webkit-transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -2118,23 +2162,23 @@ input[type="text"] {
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-/* line 130, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 150, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .on {
   right: 2rem;
 }
-/* line 133, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 153, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .off {
   left: 8rem;
 }
 
-/* line 140, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 160, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-wrapper {
   height: 2.5rem;
   line-height: 2.5rem;
   vertical-align: middle;
 }
 
-/* line 145, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 165, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm {
   overflow: hidden;
   width: 8rem;
@@ -2146,19 +2190,19 @@ input[type="text"] {
   transition: 0.3s ease all;
 }
 
-/* line 155, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 175, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-hidden {
   width: 0 !important;
 }
 
-/* line 158, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 178, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-prompt {
   line-height: 2.5rem;
   height: 2.5rem;
   padding: 0 0.5rem;
 }
 
-/* line 163, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 183, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form {
   line-height: 2.5rem;
   height: 2.5rem;
@@ -2167,11 +2211,11 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 170, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 190, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input {
   padding: 0.25rem;
 }
-/* line 174, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 194, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input, .confirm-form div, .confirm-form a {
   display: inline-block;
   cursor: pointer;
@@ -2182,7 +2226,7 @@ input[type="text"] {
   height: 2.5rem;
   width: 4rem;
 }
-/* line 184, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 204, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input.confirm-confirm, .confirm-form div.confirm-confirm, .confirm-form a.confirm-confirm {
   background-color: #d9534f;
 }
@@ -3650,7 +3694,29 @@ input[type="text"] {
   line-height: 1.7rem;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 44, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper {
+  margin-bottom: 0.5rem;
+}
+/* line 47, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper .permalink-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 52, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper p, .permalink-wrapper div {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+/* line 57, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+.permalink-wrapper input[type="text"] {
+  padding: 0.15rem 0;
+  line-height: 1rem;
+  font-size: 0.8rem;
+}
+
+/* line 65, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > i {
   position: absolute;
   width: 2rem;
@@ -3658,12 +3724,12 @@ input[type="text"] {
   text-align: center;
   line-height: 2.5rem;
 }
-/* line 54, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 74, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .with-icon > div {
   margin-left: 2.5rem;
 }
 
-/* line 61, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 81, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -3672,7 +3738,7 @@ input[type="text"] {
   overflow: hidden;
   position: relative;
 }
-/* line 68, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 88, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label {
   width: 2.5rem;
   position: absolute;
@@ -3685,36 +3751,36 @@ input[type="text"] {
   background-color: #333333;
   color: white;
 }
-/* line 80, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 100, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .label, .toggle-wrapper .label i {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
 }
-/* line 86, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 106, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on {
   background-color: #43ac6a;
   left: 0;
   right: 8rem;
 }
-/* line 90, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 110, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on .inner {
   position: absolute;
   width: 8rem;
   left: 0;
 }
-/* line 96, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 116, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off {
   background-color: #d9534f;
   left: 2rem;
   right: 0;
 }
-/* line 101, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 121, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .off .inner {
   position: absolute;
   width: 8rem;
   right: 0;
 }
-/* line 107, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 127, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper .on, .toggle-wrapper .off {
   transition: 0.3s ease all;
   -webkit-transition: 0.3s ease all;
@@ -3726,12 +3792,12 @@ input[type="text"] {
   text-align: center;
   display: inline-block;
 }
-/* line 119, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 139, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label {
   top: 0;
   left: 8rem;
 }
-/* line 122, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 142, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .label i {
   -webkit-transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -3739,23 +3805,23 @@ input[type="text"] {
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-/* line 130, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 150, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .on {
   right: 2rem;
 }
-/* line 133, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 153, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .toggle-wrapper.active .off {
   left: 8rem;
 }
 
-/* line 140, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 160, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-wrapper {
   height: 2.5rem;
   line-height: 2.5rem;
   vertical-align: middle;
 }
 
-/* line 145, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 165, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm {
   overflow: hidden;
   width: 8rem;
@@ -3767,19 +3833,19 @@ input[type="text"] {
   transition: 0.3s ease all;
 }
 
-/* line 155, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 175, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-hidden {
   width: 0 !important;
 }
 
-/* line 158, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 178, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-prompt {
   line-height: 2.5rem;
   height: 2.5rem;
   padding: 0 0.5rem;
 }
 
-/* line 163, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 183, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form {
   line-height: 2.5rem;
   height: 2.5rem;
@@ -3788,11 +3854,11 @@ input[type="text"] {
   display: inline-block;
   font-size: 0;
 }
-/* line 170, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 190, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input {
   padding: 0.25rem;
 }
-/* line 174, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 194, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input, .confirm-form div, .confirm-form a {
   display: inline-block;
   cursor: pointer;
@@ -3803,7 +3869,7 @@ input[type="text"] {
   height: 2.5rem;
   width: 4rem;
 }
-/* line 184, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
+/* line 204, /Users/dan/working/eventum/app/static/scss/admin/forms.scss */
 .confirm-form input.confirm-confirm, .confirm-form div.confirm-confirm, .confirm-form a.confirm-confirm {
   background-color: #d9534f;
 }

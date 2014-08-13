@@ -17,4 +17,3 @@ def post(slug):
     if not post.published:
         abort(404)
     return render_template('blog/post.html', post=post)
-
