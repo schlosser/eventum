@@ -12,7 +12,17 @@
 </section>
 <section class="card top-card">
     <div class="content">
+        {% if previous_index >= 0 %}
+        <a href="{{ url_for('client.recurring_event',
+                            slug=event.slug,
+                            index=previous_index) }}">Previous</a>
+        {% endif %}
         {{ macros.event(event) }}
+        {% if next_index >= 0 %}
+        <a href="{{ url_for('client.recurring_event',
+                            slug=event.slug,
+                            index=next_index) }}">Next</a>
+        {% endif %}
     </div>
 </section>
 

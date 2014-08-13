@@ -119,8 +119,8 @@
         <h5>{{ event.short_description }}</h5>
         {% endif %}
         <div class="details">
-            <p>Wednesday, October 10, 5pm-6pm</p>
-            <p>Hamilton 305</p>
+            <p>{{ event.human_readable_datetime() }}</p>
+            <p>{{ event.location }}</p>
         </div>
     </div>
 </div>
@@ -136,8 +136,8 @@
             <h5>{{ event.title }}</h5>
         </a>
         <div class="details">
-            <p>Wednesday, October 10, 5pm-6pm</p>
-            <p>Hamilton 305</p>
+            <p>{{ event.human_readable_datetime() }}</p>
+            <p>{{ event.location }}</p>
         </div>
     </div>
 </div>

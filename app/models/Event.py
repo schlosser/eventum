@@ -93,33 +93,33 @@ class Event(db.Document):
     def human_readable_datetime(self):
         """Format the start and end date date in one of the following three
         formats:
-            1. Sun, 3/31 11:00 PM - Mon, 4/1 3:00 AM
-            2. Sun, 3/31 11:00 AM - 2:00 PM
-            3. Sun, 3/31 3:00 - 7:30 PM
+            1. Sunday, March 31 11pm - Monday, April 1 3am
+            2. Sunday, March 31 11am - 2:15pm
+            3. Sunday, March 31 3 - 7:30pm
         Depending on whether or not the start / end times / dates are the same.
         All unkown values will be replaced by question marks.
         """
         output = ""
         if self.start_date:
-            output += self.start_date.strftime("%a, %m/%d ") \
+            output += self.start_date.strftime("%A, %B %d ") \
                 .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
         if self.start_time:
-            start_format = "%I:%M - " if self.end_time and \
+            start_format = "%I:%M-" if self.end_time and \
                 self.start_time.strftime("%p")==self.end_time.strftime("%p") \
-                else "%I:%M %p - "
+                else "%I:%M%p-".lower()
             output += self.start_time.strftime(start_format).lstrip("0")
         else:
             output += "??:?? - "
         if self.end_date:
             if self.start_date and self.start_date != self.end_date:
-                output += self.end_date.strftime("%a, %m/%d ") \
+                output += self.end_date.strftime("%A, %B %d ") \
                     .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
         if self.end_time:
-            output += self.end_time.strftime("%I:%M %p").lstrip("0")
+            output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
         else:
             output += "??:??"
         return output
