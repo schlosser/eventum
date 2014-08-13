@@ -1,7 +1,8 @@
-# `/app/static/css/`
+# `/app/static/css`
 
-### app.css
+CSS files live here.
 
-### auth
+## Subdirectories
 
-### reset.min.css
+- **gen**: CSS files generated from SCSS.  This folder is `.gitignore`'d, and will be generated on run.
+- **lib**: CSS libraries.  These are not generated, so this folder shouldn't be deleted

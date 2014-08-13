@@ -1,19 +1,20 @@
-# `/app/`
+# `/app`
 
-### __init__.py
+All code relevant to running Eventum lives here.
 
-### auth
+## Subdirectories
 
-### base
+- **forms**: [Flask-WTForms][flask-wtforms] models, used for generating forms in HTML and validating input
+- **lib**: Misc helpers, tasks, and modular libraries
+- **models**: The [Mongoengine][mongoengine] models
+- **routes**: The Flask Blueprints that handle routing
+- **static**: CSS, JS, and images
+- **templates**: HTML templates
 
-### blog
+## Notable files
 
-### events
+- **__init__.py**: Holds all the setup and initialization of dependencies, Blueprints, and the database.
 
-### learn
 
-### networking
-
-### static
-
-### templates
+[mongoengine]: http://docs.mongoengine.org/
+[flask-wtforms]: https://flask-wtf.readthedocs.org/en/latest/

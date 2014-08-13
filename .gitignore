@@ -1,4 +1,5 @@
 lib
+app/static/css/gen
 !app/lib
 bin
 include

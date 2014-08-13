@@ -1,6 +1,6 @@
 {
   "admin": {
-    "output_folder": "css/admin/",
+    "output_folder": "css/gen/admin/",
     "depends": [
       "scss/admin/*.scss",
       "scss/common/*.scss"
@@ -54,18 +54,13 @@
           "scss/lib/bootstrap-datepicker.scss",
           "scss/lib/jquery.timepicker.scss"
         ]
-      },
-
-      "scss_reset": {
-        "output": "reset.min.css",
-        "inputs": [ "scss/lib/reset.min.scss" ]
       }
     }
   },
 
 
   "client": {
-    "output_folder": "css/client/",
+    "output_folder": "css/gen/client/",
     "depends": [
       "scss/client/*.scss",
       "scss/client/components/*.scss",

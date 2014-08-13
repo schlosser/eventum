@@ -70,7 +70,9 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 │   ├── models       # Mongoengine Models
 │   ├── routes       # All Flask routes, using Blueprints
 │   ├── static       
-│   │   ├── css      # Compiled CSS 
+│   │   ├── css      # CSS
+│   │   │   ├── lib  # CSS libraries
+│   │   │   └── gen  # CSS generated from SCSS
 │   │   ├── img      # Images
 │   │   ├── js       # Javascript files
 │   │   └── scss     # Stylesheets
