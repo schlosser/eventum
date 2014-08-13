@@ -1,4 +1,5 @@
 lib
+!app/lib
 bin
 include
 tmp
