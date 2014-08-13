@@ -2,8 +2,6 @@ import base
 from mongoengine import ValidationError
 from datetime import datetime, timedelta
 from bson.objectid import ObjectId
-from sys import path
-path.append('../')
 
 from app.models import Event, User
 
@@ -12,12 +10,14 @@ class TestEvents(base.TestingTemplate):
     USER = User.objects().first()
     START = datetime.now()
     END = datetime.now() + timedelta(minutes=1)
-    TITLE = "Some Title"
-    LOCATION = "Some Location"
+    TITLE = 'Some Title'
+    LOCATION = 'Some Location'
+    SLUG = 'my-cool-event'
     def make_event(self):
         return Event(title=self.TITLE,
                      creator=self.USER,
                      location=self.LOCATION,
+                     slug=self.SLUG,
                      start_date=self.START.date(),
                      start_time=self.START.time(),
                      end_date=self.END.date(),
@@ -29,32 +29,32 @@ class TestEvents(base.TestingTemplate):
         super(TestEvents, self).setUp()
 
     def test_events_route_logged_in(self):
-        """Test the `/events` route, logged in."""
-        resp = self.request_with_role('/events', role='user')
+        """Test the `/admin/events` route, logged in."""
+        resp = self.request_with_role('/admin/events', role='user')
         self.assertEqual(resp.status_code, 200)
 
     def test_events_route_logged_out(self):
-        """Test the `/events` route, logged out."""
-        resp = self.request_with_role('/events', role='none')
+        """Test the `/admin/events` route, logged out."""
+        resp = self.request_with_role('/admin/events', role='none')
         self.assertEqual(resp.status_code, 302)
 
     def test_create_event_route_with_correct_privileges(self):
-        """Test the `/events/create` route, logged in with correct
+        """Test the `/admin/events/create` route, logged in with correct
         privileges.
         """
-        resp = self.request_with_role('/events/create', role='editor')
+        resp = self.request_with_role('/admin/events/create', role='editor')
         self.assertEqual(resp.status_code, 200)
 
     def test_create_event_route_with_incorrect_privileges(self):
-        """Test the `/events/create` route, logged in with
+        """Test the `/admin/events/create` route, logged in with
         incorrect privileges.
         """
-        resp = self.request_with_role('/events/create', role='user')
+        resp = self.request_with_role('/admin/events/create', role='user')
         self.assertEqual(resp.status_code, 401)
 
     def test_create_event_route_logged_out(self):
-        """Test the `/events/create` route, logged out."""
-        resp = self.request_with_role('/events/create', role='none')
+        """Test the `/admin/events/create` route, logged out."""
+        resp = self.request_with_role('/admin/events/create', role='none')
         self.assertEqual(resp.status_code, 302)
 
     def test_create_event_model_missing_title(self):
@@ -144,7 +144,7 @@ class TestEvents(base.TestingTemplate):
         self.assertEqual(Event.objects().get(creator=self.USER), e)
 
     def test_create_event_model_using_form(self):
-        """Test creating an event by POSTing data to the `/events/create`
+        """Test creating an event by POSTing data to the `/admin/events/create`
         route.
         """
         query_string_data = {
@@ -159,7 +159,7 @@ class TestEvents(base.TestingTemplate):
         }
 
         self.assertEqual(Event.objects(location="45 Some Location").count(), 0)
-        resp = self.request_with_role('/events/create',
+        resp = self.request_with_role('/admin/events/create',
             method='POST',
             data=query_string_data,
             follow_redirects=True)
@@ -167,7 +167,7 @@ class TestEvents(base.TestingTemplate):
         self.assertEqual(Event.objects(location="45 Some Location").count(), 1)
 
     def test_create_event_model_using_form_without_title(self):
-        """Test that POSTing event data to `/events/create` without a title does
+        """Test that POSTing event data to `/admin/events/create` without a title does
         not result in event creation.
         """
 
@@ -182,7 +182,7 @@ class TestEvents(base.TestingTemplate):
         }
 
         self.assertEqual(Event.objects(location="45 Some Location").count(), 0)
-        resp = self.request_with_role('/events/create',
+        resp = self.request_with_role('/admin/events/create',
             method='POST',
             data=bad_data,
             follow_redirects=True)
@@ -191,14 +191,14 @@ class TestEvents(base.TestingTemplate):
 
     def test_delete_event_when_event_exists(self):
         """Test that when an event with id `_id` exists in the database and the
-        `/events/delete/_id` route is POSTed to, it is deleted.
+        `/admin/events/delete/_id` route is POSTed to, it is deleted.
         """
         e = self.make_event()
         e.save()
         print str(Event.objects())
         self.assertEqual(Event.objects(creator=e.creator).count(), 1)
         _id = e.id
-        resp = self.request_with_role('/events/delete/%s' % _id, method="POST",
+        resp = self.request_with_role('/admin/events/delete/%s' % _id, method="POST",
                                follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(creator=e.creator).count(), 0)
@@ -206,90 +206,90 @@ class TestEvents(base.TestingTemplate):
 
     def test_delete_event_when_event_does_not_exist(self):
         """Test that when an event with id `_id` exists in the database and the
-        `/events/delete/someotherid` route is POSTed to, it is deleted.
+        `/admin/events/delete/someotherid` route is POSTed to, it is deleted.
         """
         e = self.make_event()
         e.save()
         other_id = ObjectId()
-        resp = self.request_with_role('/events/delete/%s' % other_id, method="POST",
+        resp = self.request_with_role('/admin/events/delete/%s' % other_id, method="POST",
                                follow_redirects=True)
         self.assertIn('Invalid event id', resp.data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(creator=e.creator).count(), 1)
 
     def test_publish_as_publisher(self):
-        """Test that when the `/events/publish/<event_id>` routeis POSTed
+        """Test that when the `/admin/events/publish/<event_id>` routeis POSTed
         to by a publisher the event with that id is published.
         """
         e = self.make_event()
         e.save()
         event_id = e.id
-        resp = self.request_with_role('/events/publish/%s' % event_id, role='publisher',
+        resp = self.request_with_role('/admin/events/publish/%s' % event_id, role='publisher',
                                method='POST', follow_redirects=True)
         self.assertIn('Event published', resp.data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(published=True).count(), 1)
 
     def test_publish_event_as_publisher_when_event_does_not_exist(self):
-        """Test that when the `/events/publish/<event_id>` route is POSTed
+        """Test that when the `/admin/events/publish/<event_id>` route is POSTed
         to with no such event_id in the database, no events are published.
         """
         e = self.make_event()
         e.save()
         other_id = ObjectId()
-        resp = self.request_with_role('/events/publish/%s' % other_id, role='publisher',
+        resp = self.request_with_role('/admin/events/publish/%s' % other_id, role='publisher',
                                method='POST', follow_redirects=True)
         self.assertIn('Invalid event id', resp.data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(published=True).count(), 0)
 
     def test_publish_as_editor(self):
-        """Test that when the `/events/publish/<event_id>` routeis POSTed
+        """Test that when the `/admin/events/publish/<event_id>` routeis POSTed
         to by a non-publisher an error is thrown.
         """
         e = self.make_event()
         e.save()
         event_id = e.id
-        resp = self.request_with_role('/events/publish/%s' % event_id, role='editor',
+        resp = self.request_with_role('/admin/events/publish/%s' % event_id, role='editor',
                                method='POST')
         self.assertEqual(resp.status_code, 401)
         self.assertEqual(Event.objects(published=True).count(), 0)
 
     def test_unpublish_as_publisher(self):
-        """Test that when the `/events/unpublish/<event_id>` routeis POSTed
+        """Test that when the `/admin/events/unpublish/<event_id>` routeis POSTed
         to by a publisher the event with that id is unpublished.
         """
         e = self.make_event()
         e.published=True
         e.save()
-        resp = self.request_with_role('/events/unpublish/%s' % e.id, role='publisher',
+        resp = self.request_with_role('/admin/events/unpublish/%s' % e.id, role='publisher',
                                method='POST', follow_redirects=True)
         self.assertIn('Event unpublished', resp.data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(published=False).count(), 1)
 
     def test_unpublish_event_as_publisher_when_event_does_not_exist(self):
-        """Test that when the `/events/unpublish/<event_id>` route is POSTed
+        """Test that when the `/admin/events/unpublish/<event_id>` route is POSTed
         to with no such event_id in the database, no events are unpublished.
         """
         e = self.make_event()
         e.published=True
         e.save()
         other_id = ObjectId()
-        resp = self.request_with_role('/events/unpublish/%s' % other_id, role='publisher',
+        resp = self.request_with_role('/admin/events/unpublish/%s' % other_id, role='publisher',
                                method='POST', follow_redirects=True)
         self.assertIn('Invalid event id', resp.data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(Event.objects(published=False).count(), 0)
 
     def test_unpublish_as_editor(self):
-        """Test that when the `/events/unpublish/<event_id>` route is POSTed
+        """Test that when the `/admin/events/unpublish/<event_id>` route is POSTed
         to by a non-unpublisher an error is thrown.
         """
         e = self.make_event()
         e.published=True
         e.save()
-        resp = self.request_with_role('/events/unpublish/%s' % e.id, role='editor',
+        resp = self.request_with_role('/admin/events/unpublish/%s' % e.id, role='editor',
                                method='POST')
         self.assertEqual(resp.status_code, 401)
         self.assertEqual(Event.objects(published=False).count(), 0)

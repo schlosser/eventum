@@ -20,6 +20,7 @@ def create_app(**config_overrides):
     app = Flask(__name__)
 
     # Load config then apply overrides
+    app.config.update(config_overrides)
     app.config.from_object('config.flask_config')
     app.config.update(config_overrides)
 
@@ -32,7 +33,7 @@ def create_app(**config_overrides):
 
     # Initialize the Google Calendar API Client, but only if the api
     # credentials have been generated first.
-    if not app.config['AUTH']:
+    if app.config['AUTH']:
         try:
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()

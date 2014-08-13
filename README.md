@@ -59,6 +59,15 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 +AUTH = False
 ```
 
+## Testing
+
+Tests live in the `test` directory, and can be run via nosetests:
+
+```bash
+source bin/activate # If you are not already in your virtualenv
+nosetests
+```
+
 ## Organization / Structure
 
 ```bash

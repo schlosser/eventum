@@ -28,6 +28,7 @@ def lookup_current_user():
     g.user = None
     if not app.config['AUTH']:
         # bypass auth by mocking a super user
+        session['gplus_id'] = SUPER_USER_GPLUS_ID
         try:
             g.user = User.objects.get(email='email@email.com')
         except DoesNotExist:
@@ -37,7 +38,6 @@ def lookup_current_user():
                         email='email@email.com',
                         image_url='https://lh6.googleusercontent.com/-K9HZ5Z5vOU8/AAAAAAAAAAI/AAAAAAAAAAA/yRoMtBSXoxQ/s48-c/photo.jpg')
             user.save()
-            session['gplus_id'] = SUPER_USER_GPLUS_ID
 
     if 'gplus_id' in session:
         gplus_id = session['gplus_id']

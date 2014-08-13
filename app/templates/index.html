@@ -29,7 +29,9 @@
             <h4>Events</h4>
             <span class="bar blue"></span>
         </div>
+        {% if events %}
         {{ macros.event(events[0]) }}
+        {% endif %}
     </div>
 </section>
 <section>
@@ -39,9 +41,11 @@
             <span class="bar green"></span>
         </div>
         <div class="triple-event">
+            {% if events %}
             {% for _ in range(3) %}
             {{ macros.small_event(events[1]) }}
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

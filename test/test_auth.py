@@ -1,9 +1,6 @@
 import base
 from mongoengine import ValidationError, NotUniqueError
 
-from sys import path
-path.append('../')
-
 from app.models import User, Whitelist
 
 USER_PRIVILEGES = {

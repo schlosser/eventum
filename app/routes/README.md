@@ -6,7 +6,7 @@
 
 ## Subdirectories
 
-- **fields** stores custom [WTForms][wtforms] fields.
+- `fields` stores custom [WTForms][wtforms] fields.
 
 [blueprints]: http://flask.pocoo.org/docs/blueprints/
 [flask]: http://flask.pocoo.org/

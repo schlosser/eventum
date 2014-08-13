@@ -1,6 +1,7 @@
 from flask import url_for
 from mongoengine import ValidationError, signals
 from app import app, db
+from config.flask_config import ALLOWED_EXTENSIONS
 from datetime import datetime
 import PIL, re, os
 now = datetime.now
@@ -17,7 +18,7 @@ class Image(db.Document):
     filename = db.StringField(
         unique=True, max_length=255, required=True, verbose_name="Filename",
         regex="([a-z]|[A-Z]|[0-9]|\||-|_|@|\(|\))*(" + \
-        ('|'.join(app.config['ALLOWED_EXTENSIONS'])+')'),
+        ('|'.join(ALLOWED_EXTENSIONS)+')'),
         help_text="Title of the event (255 characters max)")
     creator = db.ReferenceField(
         'User', required=True, verbose_name="Creator",
@@ -41,8 +42,6 @@ class Image(db.Document):
         """Update date_modified and populate the versions dict."""
         VALID_PATHS = re.compile("^("+app.config['BASEDIR']+"|http://|https://).*$")
         self.date_modified = now()
-        print self.default_path
-        print app.config['BASEDIR']
         if not VALID_PATHS.match(self.default_path):
             self.default_path = os.path.join(app.config['BASEDIR'], self.default_path)
         if self.default_path and self.default_path not in self.versions.values():

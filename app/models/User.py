@@ -82,7 +82,7 @@ class User(db.Document):
                 new_slug = re.sub(r"-([0-9])*$", "-%s" % i, new_slug)
         self.slug = new_slug
 
-        if "googleusercontent.com" in self.image_url:
+        if self.image_url and "googleusercontent.com" in self.image_url:
             self.image_url = re.sub(r"sz=([0-9]*)$", "sz=", self.image_url)
 
     def id_str(self):

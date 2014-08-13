@@ -1,11 +1,10 @@
-# `/test/`
+# `/test`
 
-### base.py
+Unit tests live here.
 
-### test_auth.py
+Run in the root directory by running:
 
-### test_documentation.py
-
-### test_events.py
-
-### tmp
+```bash
+source bin/activate # If you are not already in your virtualenv
+nosetests
+```
