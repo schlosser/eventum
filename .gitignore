@@ -2,7 +2,7 @@
 /lib
 /bin
 /include
-/tmp
+tmp
 /man
 /share
 *.pyc
