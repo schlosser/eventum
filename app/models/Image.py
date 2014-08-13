@@ -66,7 +66,10 @@ class Image(db.Document):
     def post_delete(klass, sender, document, **kwargs):
         for size, old_path in document.versions.iteritems():
             _, filename = os.path.split(old_path)
-            new_path = os.path.join(app.config['RELATIVE_DELETE_FOLDER'], filename)
+            delete_folder = app.config['RELATIVE_DELETE_FOLDER']
+            if not os.path.isdir(delete_folder):
+                os.mkdir(delete_folder)
+            new_path = os.path.join(delete_folder, filename)
             try:
                 os.rename(old_path, new_path)
             except IOError:

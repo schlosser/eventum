@@ -1,7 +1,8 @@
 # `/app/static/img/`
 
-### auth
+Images live here, organized by use / type.
 
-### favicon.ico
+## Subdirectories
 
-### logo
+- `uploaded`: Images uploaded in the admin interface.
+

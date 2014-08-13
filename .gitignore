@@ -1,4 +1,5 @@
 /app/static/css/gen
+/app/static/img/uploaded/deleted/*
 /lib
 /bin
 /include

@@ -1,7 +1,3 @@
 # `/app/static/js/`
 
-### app.js
-
-### auth
-
-### events
+JavaScript files live here, organized by section of the app.
