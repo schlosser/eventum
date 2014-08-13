@@ -42,9 +42,9 @@ $creator-size: 3rem;
             &:not(:first-child) {
                 margin-left: 1rem;
             }
-            &.incomplete { border: 0.25rem solid $red; }
-            &.published { border: 0.25rem solid $green; }
-            &.unpublished { border: 0.25rem solid $yellow; }
+            &.incomplete { border-bottom: 0.5rem solid $red; }
+            &.published { border-bottom: 0.5rem solid $green; }
+            &.unpublished { border-bottom: 0.5rem solid $yellow; }
 
             .text-content {
                 padding: 0.5rem;

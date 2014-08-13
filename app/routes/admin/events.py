@@ -6,7 +6,7 @@ from flask import Blueprint, request, render_template, g, redirect, \
 from bson.objectid import ObjectId
 
 from app.models import Event, Image
-from app.forms import CreateEventForm, DeleteEventForm, UploadImageForm
+from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
 from app.lib import events as utils
@@ -67,13 +67,10 @@ def edit(event_id):
 
     event = Event.objects().get(id=event_id)
 
-    form = CreateEventForm(request.form) if request.method == 'POST' else \
+    form = EditEventForm(request.form) if request.method == 'POST' else \
         utils.create_form(event, request)
 
     if form.validate_on_submit():
-        print "vals"
-        print form.update_all.data
-        print form.update_following.data
         utils.update_event(event, form, update_all=form.update_all.data,
                            update_following=form.update_following.data)
         return redirect(url_for('.index'))
