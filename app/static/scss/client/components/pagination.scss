@@ -1,0 +1,44 @@
+@import '../colors';
+@import '../utils';
+
+$pagination-height: 8rem;
+
+.pagination {
+    @extends .clearfix;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    height: $pagination-height;
+
+    .previous, .next, .archive{
+        height: $pagination-height;
+        font-size: 2rem;
+        text-align: center;
+        color: $gray;
+
+        p {
+            height: $pagination-height;
+            line-height: $pagination-height;
+            &:hover {
+                background-color: $ultralightgray;
+            }
+        }
+    }
+    .previous {
+        display: inline-block;
+        width: 50%;
+        float: left;
+
+        i {
+            margin-right: 1rem;
+        }
+    }
+    .next {
+        display: inline-block;
+        width: 50%;
+        float: left;
+
+        i {
+            margin-left: 1rem;
+        }
+    }
+}

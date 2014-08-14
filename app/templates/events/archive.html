@@ -1,0 +1,37 @@
+{% extends "page.html" %}
+{% block title %}Events Archive | {{ super() }}{% endblock %}
+
+{% block header_image %}/static/img/hero/events.jpg{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>Past Events</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        {% for event in events %}
+            {{ macros.event(event) }}
+        {% endfor %}
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="pagination">
+            <div class="previous">
+                {% if previous_index >= 0 %}
+                <a href="{{ url_for('client.event_archive', index=previous_index) }}">
+                    <p><i class="fa fa-chevron-left"></i>Previous</p>
+                </a>
+                {% endif %}
+            </div>
+            <div class="next">
+                {% if next_index >= 0 %}
+                <a href="{{ url_for('client.event_archive', index=next_index) }}">
+                    <p>Next<i class="fa fa-chevron-right"></i></p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

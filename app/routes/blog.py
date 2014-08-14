@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, redirect, url_for
 
 from app.models import BlogPost
 
@@ -6,8 +6,30 @@ blog = Blueprint('blog', __name__)
 
 @blog.route('/blog')
 def index():
+    blog_posts = BlogPost.objects(published=True).order_by('-date_published')[:10]
+    previous_index = None
+    next_index = 1
+    return render_template('blog/blog.html', posts=blog_posts,
+                           previous_index=previous_index,
+                           next_index=next_index)
+
+@blog.route('/blog/<index>')
+def blog_archive(index):
+    index = int(index)
+
+    if index <= 0:
+        return redirect(url_for('.index'))
+
+
     blog_posts = BlogPost.objects(published=True).order_by('-date_published')
-    return render_template('blog/blog.html', posts=blog_posts)
+    if len(blog_posts) < 10*(index+1):
+        next_index = None
+    else:
+        next_index = index + 1
+    previous_index = index - 1
+    return render_template('blog/blog.html', posts=blog_posts[10*index:10*(index+1)],
+                           previous_index=previous_index,
+                           next_index=next_index)
 
 @blog.route('/blog/post/<slug>')
 def post(slug):

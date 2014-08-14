@@ -6,11 +6,25 @@ client = Blueprint('client', __name__)
 
 @client.route('/')
 def index():
-    return render_template('index.html', events=Event.objects())
+    events=Event.objects().order_by('start_date-')
+    return render_template('index.html', events=events)
 
 @client.route('/events')
 def events():
-    return render_template('events/events.html', events=Event.objects())
+    events=Event.objects().order_by('start_date-')
+    return render_template('events/events.html', events=events)
+
+@client.route('/events/<index>')
+def event_archive(index):
+    index = int(index)
+    if index <= 0:
+        return redirect(url_for('.events'))
+
+    events=Event.objects().order_by('start_date-')
+
+    return render_template('events/archive.html', events=events,
+                           previous_index=0,
+                           next_index=2)
 
 
 def _neighbor_indexes_for_event(event):

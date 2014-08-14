@@ -54,4 +54,15 @@
         {% endif %}
     </div>
 </section>
+<section>
+    <div class="content">
+        <div class="pagination">
+            <div class="archive">
+                <a href="{{ url_for('client.event_archive', index=1) }}">
+                    <p>Previous events</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock main %}
