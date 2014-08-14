@@ -1,4 +1,4 @@
-`/app/static/img/uploaded`
+# `/app/static/img/uploaded`
 
 Images that were uploaded in the admin interface live here.
 
