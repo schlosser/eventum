@@ -24,14 +24,12 @@
             <span class="bar green"></span>
         </div>
         {% for post in posts%}
-        {% if post.published %}
         <a href="{{ url_for('blog.post', slug=post.slug) }}">
             <h2 class="title">{{post.title}}</h2>
         </a>
-        <p class="date-published">Posted on {{post.date_published}} </p>
+        <p class="date-published">Posted on {{ post.human_readable_date() }} </p>
         <p class="author">By {{post.author.name}}</p>
         {{ post.snippet() | safe }}
-        {% endif %}
         {% endfor %}
     </div>
 </section>

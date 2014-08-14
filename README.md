@@ -88,8 +88,10 @@ nosetests
 │   ├── templates    # HTML templates
 │   └── __init__.py  # All app-wide setup.  Called by `run.py`
 ├── config           # Configuration files
-├── manage.py        # Run this with a `--authorize` flag to authenticate GCal
+├── data             # Backup data
+├── manage.py        # Various scripts.  Run `python manage.py` to view usage.
 ├── run.py           # Runs the app!
+├── script           # Scripts run by `manage.py` outside of the app
 └── test             # Unit tests
 ```
 

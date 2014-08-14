@@ -8,7 +8,7 @@
 </section>
 <section class="card top-card">
     <div class="post content">
-        <p class="date-published">Posted on {{post.date_published}} </p>
+        <p class="date-published">Posted on {{post.human_readable_date() }} </p>
         <p class="author">By {{post.author.name}}</p>
         {{ post.html_content | safe }}
     </div>

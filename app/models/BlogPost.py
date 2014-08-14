@@ -26,6 +26,9 @@ class BlogPost(Post):
     def get_absolute_url(self):
         return url_for('blog.post', slug=self.slug)
 
+    def human_readable_date(self):
+        return self.date_published.strftime('%b %d %Y')
+
     def pretty_date(self):
         if self.published:
             return self.date_published.strftime("Published %d/%b/%y")

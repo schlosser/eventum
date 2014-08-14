@@ -11,11 +11,10 @@ def truncate_html(text, truncate_len, truncate_text):
 
     Newlines in the HTML are preserved.
     """
-
     re_words = re.compile(r'<.*?>|((?:\w[-\w]*|&.*?;)+)', re.U | re.S)
     re_tag = re.compile(r'<(/)?([^ ]+?)(?:(\s*/)| .*?)?>', re.S)
 
-    length = len(text)
+    length = truncate_len
 
     if length <= 0:
         return ''

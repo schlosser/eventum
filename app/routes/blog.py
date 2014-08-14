@@ -6,7 +6,8 @@ blog = Blueprint('blog', __name__)
 
 @blog.route('/blog')
 def index():
-    return render_template('blog/blog.html', posts=BlogPost.objects())
+    blog_posts = BlogPost.objects(published=True).order_by('-date_published')
+    return render_template('blog/blog.html', posts=blog_posts)
 
 @blog.route('/blog/post/<slug>')
 def post(slug):

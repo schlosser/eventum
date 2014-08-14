@@ -4,7 +4,7 @@ from config import flask_config
 
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.tools import run
-
+from script import backfill_blog
 
 def authorize_google_calendar():
     FLOW = OAuth2WebServerFlow(
@@ -19,12 +19,14 @@ def authorize_google_calendar():
 
 def print_usage():
     print "Usage:"
-    print "%s --authorize (-a) Authorize the Google Calendar API Client"
+    print "%s --authorize (-a)     Authorize the Google Calendar API Client" % argv[0]
+    print "%s --backfill-blog (-b) Backfill blog posts from data/jekyll-posts" % argv[0]
 
 if __name__ == '__main__':
-    if len(argv) >=2 and len(argv) <= 3:
-        if '--authorize' in argv or '-a' in argv:
-            authorize_google_calendar()
+    if '--authorize' in argv or '-a' in argv:
+        authorize_google_calendar()
+    elif '--backfill-blog' in argv or '-b' in argv:
+        backfill_blog.backfill_from_jekyll('data/jekyll-posts')
     else:
         print_usage()
         exit(1)
