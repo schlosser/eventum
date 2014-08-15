@@ -13,7 +13,7 @@ posts = Blueprint('posts', __name__)
 @posts.route('/posts')
 @login_required
 def index():
-    return render_template('admin/posts/posts.html', posts=BlogPost.objects())
+    return render_template('admin/posts/posts.html', posts=BlogPost.objects().order_by('published', '-date_published'))
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -110,7 +110,7 @@ def unpublish(post_id):
     return set_published_status(post_id, False)
 
 @posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
-@posts.route('/posts/epiceditor/themes/<folder>/<path>')
+@posts.route('/events/edit/epiceditor/themes/<folder>/<path>')
 @login_required
 def fetch_epiceditor_themes(folder, path):
     return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))

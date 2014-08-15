@@ -34,3 +34,10 @@ class BlogPost(Post):
             return self.date_published.strftime("Published %d/%b/%y")
         return self.date_modified.strftime("Modified %d/%b/%y")
 
+    def status(self):
+        if self.published:
+            return 'published'
+        if self.html_content and self.title and self.slug and self.author:
+            return 'complete'
+        return 'incomplete'
+

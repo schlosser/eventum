@@ -214,6 +214,28 @@ $(function() {
     });
 
     $('.event-image-and-descriptions').css({
-        'min-height': $('.descriptions').height()
+        'min-height': Math.max($('.descriptions').height(), 256)
+    });
+
+
+    /* =======================================================================
+     * Marked / Epiceditor initialization
+     * =====================================================================*/
+
+    var opts = window.epicEditorDefaultOpts;
+    opts.container='epiceditor-short-description';
+    opts.textarea='short_description';
+    var shortDescriptionEditor = new EpicEditor(opts).load();
+    opts.container='epiceditor-long-description';
+    opts.textarea='long_description';
+    opts.autogrow = {
+        minHeight: 160,
+        maxHeight: 320
+    };
+    var shortDescriptionEditor = new EpicEditor(opts).load();
+
+    /* Populated object of associated images for markdown rendering */
+    $('.post-image').each(function() {
+        window.markdownImages[$(this).data('filename')] = $(this).data('url');
     });
 });

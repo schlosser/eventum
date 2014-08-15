@@ -32,67 +32,21 @@ $(function() {
     }
 
 
-    /* Initalize the markdown renderer */
-    var maxHeight = $(window).height()*0.75,
-        marked_custom = marked,
-        renderer = new marked.Renderer(),
-        markdown_images = {};
+    /* =======================================================================
+     * Marked / Epiceditor initialization
+     * =====================================================================*/
+
+
+    var opts = window.epicEditorDefaultOpts,
+        maxHeight = $(window).height()*0.75;
+
+    opts.autogrow.maxHeight = maxHeight;
+    var editor = new EpicEditor(opts).load();
 
     /* Populated object of associated images for markdown rendering */
     $('.post-image').each(function() {
-        markdown_images[$(this).data('filename')] = $(this).data('url');
+        window.markdownImages[$(this).data('filename')] = $(this).data('url');
     });
-
-    /* EpicEditor renders everything in an `iframe`, so relative paths to
-     * image urls.  This function replaces any `href` in an image that points
-     * to an associated image with the actual url that it should be rendered from.
-     *
-     * This is an override of a Marked function.
-     */
-    renderer.image = function(href, title, text) {
-        if (href in markdown_images) {
-            href = markdown_images[href];
-        }
-        var out = '<img src="' + href + '" alt="' + text + '"';
-        if (title) {
-           out += ' title="' + title + '"';
-        }
-        out += this.options.xhtml ? '/>' : '>';
-        return out;
-    };
-
-    // Marked options
-    marked_custom.setOptions({
-        renderer: renderer,
-        gfm: true,
-        tables: true,
-        breaks: false,
-        pedantic: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: false,
-        highlight: function (code) {
-            return hljs.highlightAuto(code).value;
-        }
-    });
-
-    // EpicEditor options
-    var opts = {
-        container: 'epiceditor',
-        parser: marked_custom,
-        textarea: 'body',
-        useNativeFullscreen: false,
-        autogrow: {
-            minHeight: 160,
-            maxHeight: maxHeight
-        },
-        theme: {
-            base: '/themes/base/epiceditor.css',
-            preview: '/themes/preview/github-highlighted.css',
-            editor: '/themes/editor/epic-dark.css'
-        }
-    };
-    var editor = new EpicEditor(opts).load();
 
     /* =======================================================================
      * Click Handlers
@@ -109,7 +63,7 @@ $(function() {
             url = $(this).data('url');
 
         // Remove the image from the markdown rendering list
-        delete markdown_images[filename];
+        delete window.markdownImages[filename];
 
         // Add the image back to the list in the modal
         $('.modal .image-grid').append(modalImage(filename, url));

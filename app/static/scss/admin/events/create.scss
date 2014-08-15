@@ -1,8 +1,11 @@
 @import '../admin';
 @import '../media/image_grid';
 
-form > div {
-    margin-bottom: .5rem;
+form {
+    width: 100%;
+    & > div {
+        margin-bottom: .5rem;
+    }
 }
 
 .location {
@@ -25,21 +28,22 @@ form > div {
     margin-top: 1rem;
     position: relative;
 
+    $event-image-width: 25%;
     .event-image {
         display: inline-block;
         position: relative;
-        width: $wide-6;
-        padding-bottom: $wide-6;
+        width: $event-image-width;
+        padding-bottom: $event-image-width;
     }
 
     .descriptions {
         position: absolute;
-        left: $wide-6;
+        left: $event-image-width;
         padding-left: 1rem;
         right: 0;
         display: inline-block;
 
-        textarea {
+        div {
             width: 100%;
             box-sizing: border-box;
             margin-top: 0.5rem;

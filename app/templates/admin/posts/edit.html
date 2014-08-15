@@ -20,10 +20,6 @@
 {% block js %}
 {{ super() }}
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static',
-    filename='js/lib/epiceditor.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static',
-    filename='js/lib/marked.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/posts/edit.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/upload.js') }}"></script>
 {% endblock %}

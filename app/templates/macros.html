@@ -116,7 +116,7 @@
             <h2>{{ event.title }}</h2>
         </a>
         {% if show_description %}
-        <h5>{{ event.short_description }}</h5>
+        <h5>{{ event.short_description | safe }}</h5>
         {% endif %}
         <div class="details">
             <p>{{ event.human_readable_datetime() }}</p>

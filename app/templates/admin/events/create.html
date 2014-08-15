@@ -182,8 +182,10 @@
         {% endif %}
         </div>
         <div class="descriptions">
-            {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
-            {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
+            <div id="epiceditor-short-description">
+            </div>
+            <div id="epiceditor-long-description">
+            </div>
         </div>
     </div>
     <div class="hidden">
@@ -197,6 +199,8 @@
                 <li>{{ subfield.label }}</li>
             </ul>
         {% endfor %}
+        {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
+        {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
         {{ macros.render_field(form.num_occurances) }}
         {{ macros.render_field(form.recurrence_end_date) }}
         {{ macros.render_field(form.recurrence_summary) }}

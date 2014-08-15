@@ -40,6 +40,7 @@
 {% for post in posts %}
 <tr class="post">
     <td class="post-title">
+        <span class="post-status {{ post.status() }}"></span>
         <a class="tr-link" href="{{ url_for('posts.edit', post_id=post.id)}}"></a>
             <p>{{post.title}}</p>
     </td>

@@ -9,7 +9,12 @@
 
 {% block js %}
 {{ super() }}
-<script type="text/javascript" src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/lib/epiceditor.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/lib/marked.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
 <script type="text/javascript">
 (function() {
     var po = document.createElement('script');

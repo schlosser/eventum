@@ -3,6 +3,7 @@ from mongoengine import ValidationError
 from app import app, db
 from app.forms.fields import DateField
 from app.models.fields import TimeField
+import markdown
 
 from datetime import datetime
 now = datetime.now
@@ -21,6 +22,8 @@ class Event(db.Document):
     start_time = TimeField()
     short_description = db.StringField()
     long_description = db.StringField()
+    short_description_markdown = db.StringField()
+    long_description_markdown = db.StringField()
     is_published = db.BooleanField(required=True, default=False)
     date_published = db.DateTimeField()
     is_recurring = db.BooleanField(required=True, default=False)
@@ -50,6 +53,14 @@ class Event(db.Document):
         after it starts.
         """
         self.date_modified = now()
+
+        if self.short_description_markdown:
+            self.short_description = markdown.markdown(self.short_description_markdown,
+                                                       ['extra', 'smarty'])
+
+        if self.long_description_markdown:
+            self.long_description = markdown.markdown(self.long_description_markdown,
+                                                      ['extra', 'smarty'])
 
         if self.start_date and self.end_date and \
                 self.start_date > self.end_date:

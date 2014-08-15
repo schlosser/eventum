@@ -104,4 +104,67 @@ $(function() {
      * ==================================================================== */
 
     $('.image-grid-wrapper').height($('.image-grid').height());
+
+    /* =======================================================================
+     * Marked (Markdown Renderer)
+     * ==================================================================== */
+
+
+    /* Initalize the markdown renderer */
+    var marked_custom = marked,
+        renderer = new marked.Renderer();
+    window.markdownImages = {};
+
+    /* EpicEditor renders everything in an `iframe`, so relative paths to
+     * image urls.  This function replaces any `href` in an image that points
+     * to an associated image with the actual url that it should be rendered from.
+     *
+     * This is an override of a Marked function.
+     */
+
+    renderer.image = function(href, title, text) {
+        if (href in window.markdownImages) {
+            href = window.markdownImages[href];
+        }
+        var out = '<img src="' + href + '" alt="' + text + '"';
+        if (title) {
+           out += ' title="' + title + '"';
+        }
+        out += this.options.xhtml ? '/>' : '>';
+        return out;
+    };
+
+    // Marked options
+    marked_custom.setOptions({
+        renderer: renderer,
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        highlight: function (code) {
+            return hljs.highlightAuto(code).value;
+        }
+    });
+
+    // EpicEditor options
+    window.epicEditorDefaultOpts = {
+        container: 'epiceditor',
+        parser: marked_custom,
+        textarea: 'body',
+        useNativeFullscreen: false,
+        autogrow: {
+            minHeight: 80,
+            maxHeight: 160
+        },
+        theme: {
+            base: '/themes/base/epiceditor.css',
+            preview: '/themes/preview/github-highlighted.css',
+            editor: '/themes/editor/epic-dark.css'
+        }
+    };
+
+
 });

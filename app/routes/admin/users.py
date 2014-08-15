@@ -21,7 +21,7 @@ def index():
     whitelist_form = AddToWhitelistForm()
     return render_template('admin/users/users.html',
                            whitelist_form=whitelist_form,
-                           whitelist=Whitelist.objects(),
+                           whitelist=Whitelist.objects(redeemed=False),
                            users=User.objects(),
                            current_user=g.user)
 

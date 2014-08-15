@@ -26,8 +26,8 @@ def create_event(form, event=None, update_all=False, update_following=False,
         "start_time": form.start_time.data,
         "end_time": form.end_time.data,
         "is_published": form.is_published.data,
-        "short_description": form.short_description.data,
-        "long_description": form.long_description.data,
+        "short_description_markdown": form.short_description.data,
+        "long_description_markdown": form.long_description.data,
         "is_recurring": form.is_recurring.data,
         "image": event_image
     }
@@ -111,8 +111,8 @@ def create_form(event, request):
         "end_date": event.end_date,
         "end_time": event.end_time,
         "is_published": event.is_published,
-        "short_description": event.short_description,
-        "long_description": event.long_description,
+        "short_description": event.short_description_markdown,
+        "long_description": event.long_description_markdown,
         "is_recurring": event.is_recurring,
         "event_image": event.image.filename if event.image else None
     }
