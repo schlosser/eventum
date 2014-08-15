@@ -84,6 +84,7 @@ $section-bottom: 1.25rem;
     .top-card {
         z-index: 100;
         width: ($content-width + 2*$card-gutter);
+        max-width: 95%;
         margin: 0 auto;
         background-color: $white;
     }

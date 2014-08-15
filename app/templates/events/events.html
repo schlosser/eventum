@@ -13,11 +13,24 @@
             <h4>This Week</h4>
             <span class="bar green"></span>
         </div>
-        {% for event in events %}
+        {% for event in events_this_week %}
             {{ macros.event(event) }}
         {% endfor %}
     </div>
 </section>
+{% if upcoming_events %}
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Next Week</h4>
+            <span class="bar blue"></span>
+        </div>
+        {% for event in upcoming_events %}
+            {{ macros.event(event) }}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 <section class="full green callout">
     <div class="content">
         <div class="callout-left">
@@ -34,32 +47,33 @@
         </div>
     </div>
 </section>
+{% if recent_events %}
 <section>
     <div class="content">
         <div class="section-header">
             <h4>Past Events</h4>
             <span class="bar blue"></span>
         </div>
-        {% if events %}
+        {% for triple in range(((recent_events|length) // 3) + 1) %}
         <div class="triple-event">
-            {% for _ in range(3) %}
-            {{ macros.small_event(events[1]) }}
+            {% for i in range(3) %}
+            {% with index = 3 * triple + i %}
+            {% if index < (recent_events | length) %}
+                {{ macros.small_event(recent_events[index]) }}
+            {% endif %}
+            {% endwith %}
             {% endfor %}
         </div>
-        <div class="triple-event">
-            {% for _ in range(3) %}
-            {{ macros.small_event(events[1]) }}
-            {% endfor %}
-        </div>
-        {% endif %}
+        {% endfor %}
     </div>
 </section>
+{% endif %}
 <section>
     <div class="content">
         <div class="pagination">
             <div class="archive">
                 <a href="{{ url_for('client.event_archive', index=1) }}">
-                    <p>Previous events</p>
+                    <p>Older events</p>
                 </a>
             </div>
         </div>

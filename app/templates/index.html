@@ -42,8 +42,8 @@
         </div>
         <div class="triple-event">
             {% if events %}
-            {% for _ in range(3) %}
-            {{ macros.small_event(events[1]) }}
+            {% for index in range(1,(events|length)) %}
+            {{ macros.small_event(events[index]) }}
             {% endfor %}
             {% endif %}
         </div>
