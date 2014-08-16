@@ -20,10 +20,23 @@
         display: inline-block;
         position: absolute;
         left: ($image-width + 2.5rem);
-        .details {
-            position: absolute;
-            bottom: 0;
+        right: 0;
 
+        .description {
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.4rem;
+        }
+        .details {
+            // position: absolute;
+            // bottom: 0;
+            i {
+                width: 1.5rem;
+                margin-right:0.5rem;
+                text-align: center;
+            }
         }
     }
 
@@ -69,7 +82,18 @@ $image-separation: 1.25rem;
                 position: relative;
                 width: 100%;
                 color: $lightgray;
+                p {
+                    font-size: 1rem;
+                    line-height: 1.2rem;
+                }
             }
         }
+    }
+}
+
+
+.single-event {
+    .event {
+        margin-bottom: 3rem;
     }
 }

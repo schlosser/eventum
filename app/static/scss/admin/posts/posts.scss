@@ -28,4 +28,9 @@
         &.complete { background-color:$yellow; }
         &.incomplete { background-color:$red; }
     }
+
+    .post-image {
+        width: 600;
+        height: 400;
+    }
 }

@@ -1,5 +1,7 @@
 /app/static/css/gen
-/app/static/img/uploaded/deleted/*
+/app/static/img/uploaded/*
+!/app/static/img/uploaded/README.md
+/app/static/img/uploaded/*
 /lib
 /bin
 /include

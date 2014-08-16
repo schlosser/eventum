@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, send_from_directory, \
     abort, redirect, url_for, g, flash
 
 from bson.objectid import ObjectId
+from bson.objectid import InvalidId
 
 from app import app
 from app.models import BlogPost, Image
@@ -38,7 +39,10 @@ def new():
 @posts.route('/posts/edit/<post_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def edit(post_id):
-    object_id = ObjectId(post_id)
+    try:
+        object_id = ObjectId(post_id)
+    except InvalidId:
+        return abort(404)
     if BlogPost.objects(id=object_id).count() != 1:
         abort(501)
 
@@ -51,15 +55,21 @@ def edit(post_id):
             post.slug=form.slug.data
             post.markdown_content = form.body.data
             post.images = [Image.objects().get(filename=fn) for fn in form.images.data]
+            if form.featured_image.data:
+                post.featured_image = Image.objects().get(filename=form.featured_image.data)
+            else:
+                post.featured_image = None
             post.save()
             return redirect(url_for('.index'))
     upload_form = UploadImageForm()
+    featured_image = post.featured_image.filename if post.featured_image else None
     form = CreateBlogPostForm(request.form,
                               title=post.title,
                               slug=post.slug,
                               published=post.published,
                               body=post.markdown_content,
-                              images=[image.filename for image in post.images])
+                              images=[image.filename for image in post.images],
+                              featured_image=featured_image)
     images = [image for image in Image.objects() if image not in post.images]
     return render_template('admin/posts/edit.html', user=g.user, form=form,
                            post=post, images=images, upload_form=upload_form)

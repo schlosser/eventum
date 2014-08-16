@@ -9,13 +9,17 @@ $pagination-height: 8rem;
     margin-bottom: 2rem;
     height: $pagination-height;
 
+    a, a:hover {
+        color: $gray;
+    }
+
     .previous, .next, .archive{
         height: $pagination-height;
-        font-size: 2rem;
         text-align: center;
         color: $gray;
 
         p {
+            font-size: 2rem;
             height: $pagination-height;
             line-height: $pagination-height;
             &:hover {

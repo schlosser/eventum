@@ -1,4 +1,4 @@
-{% extends "admin/admin.html" %}
+ {% extends "admin/admin.html" %}
 {% import "macros.html" as macros %}
 
 {% block css %}
@@ -81,9 +81,15 @@
         <h6 class="permalink-title">Permalink:</h6>
         <p class="permalink-base">{{ url_for('blog.post', slug="", _external=True) }}</p>
         {{ macros.render_field(form.slug, required="", label=False, placeholder="my-cool-post   ")}}
+        {% if post.published %}
+        <a href="{{ url_for('blog.post', slug=post.slug)}}" target="_blank">
+            <i class="fa fa-external-link"></i>
+        </a>
+        {% endif %}
     </div>
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
     {{ macros.render_field(form.images, hidden="hidden")}}
+    {{ macros.render_field(form.featured_image, hidden="hidden")}}
     <div class="full-width" id="epiceditor"></div>
     <div class="image-help-text">
         <h3>Add Images</h3>
@@ -97,12 +103,20 @@
         </a>
         {% if post and post.images %}
         {% for image in post.images %}
-        <li class="image post-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
+        <li class="image post-image"
+            data-filename="{{ image.filename }}"
+            data-url="{{ image.url() }}">
             <i style="background-image:url({{ image.url() }});"></i>
-            <p class="filename">{{ image.filename }}</p>
+            <p class="filename">
+                <i class="fa fa-star-o featured-image"
+                   data-filename="{{ image.filename }}"></i>
+                {{ image.filename }}
+            </p>
             <span class="delete">
                 <span class="delete-inner">
-                    <a href="#remove-image" data-filename="{{ image.filename }}" data-url="{{ image.url() }}">
+                    <a href="#remove-image"
+                       data-filename="{{ image.filename }}"
+                       data-url="{{ image.url() }}">
                         <i class="fa fa-trash-o fa-2x"></i>
                     </a>
                 </span>

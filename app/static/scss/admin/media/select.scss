@@ -65,10 +65,21 @@
             left: 0.5rem;
             right: 0;
             height: auto;
-            line-height: 1.5rem;
+            text-align: left;
+            line-height: 2rem;
+            height: 2rem;
             background-color: $lightgray;
-            text-align: center;
             word-wrap: break-word;
+
+            i {
+                cursor: pointer;
+                font-size: 1.2em;
+                margin-right: 0.25rem;
+
+                &.fa-star {
+                    color: $gold;
+                }
+            }
         }
 
         .delete {

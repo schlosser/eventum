@@ -11,6 +11,16 @@ $content-padding: 0.625rem;
     margin: 0 auto;
     padding: 0 $content-padding;
     position: relative;
+
+    a, a:hover {
+        color: $blue;
+    }
+}
+
+
+.post-image {
+    width: 600px;
+    display: block;
 }
 
 $hero-height: 32rem;
@@ -175,9 +185,9 @@ $section-bottom: 1.25rem;
     color: $gray;
 }
 .yellow, .blue, .green {
-    a {
+    p a {
         text-decoration: underline;
-        color: inherit;
+        color: $gray !important;
     }
 }
 

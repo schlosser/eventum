@@ -30,7 +30,7 @@ def events():
                            events_this_week=events_this_week,
                            upcoming_events=upcoming_events)
 
-@client.route('/events/<index>')
+@client.route('/events/<int:index>')
 def event_archive(index):
     index = int(index)
     if index <= 0:
@@ -67,7 +67,7 @@ def event(slug):
     event = Event.objects(slug=slug)[0]
 
     if event.is_recurring:
-        upcoming_event_instances = Event.objects(start_date__gt=datetime.now()).order_by('start_date')
+        upcoming_event_instances = Event.objects(slug=slug, start_date__gt=datetime.now()).order_by('start_date')
         if upcoming_event_instances:
             event = upcoming_event_instances[0]
         else:

@@ -10,19 +10,51 @@
 <section class="tagline">
     <h1>{{ event.title }}</h1>
 </section>
-<section class="card top-card">
+<section class="single-event card top-card">
     <div class="content">
-        {% if previous_index >= 0 %}
-        <a href="{{ url_for('client.recurring_event',
+        <div class="event">
+            <i class="image" style="background-image:url({{event.image_url()}});"></i>
+            <div class="text">
+                <a href="{{ event.get_absolute_url() }}">
+                    <h2>{{ event.title }}</h2>
+                </a>
+                <div class="details">
+                    <p>
+                        <i class="fa fa-calendar"></i>
+                        {{ event.human_readable_datetime() }}
+                    </p>
+                    <p>
+                        <i class="fa fa-map-marker"></i>
+                        {{ event.location }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p>{{ event.long_description | safe }}</p>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="pagination">
+            <div class="previous">
+                {% if previous_index >= 0 %}
+                <a href="{{ url_for('client.recurring_event',
                             slug=event.slug,
-                            index=previous_index) }}">Previous</a>
-        {% endif %}
-        {{ macros.event(event) }}
-        {% if next_index >= 0 %}
-        <a href="{{ url_for('client.recurring_event',
+                            index=previous_index) }}">
+                    <p><i class="fa fa-chevron-left"></i>Previous</p>
+                </a>
+                {% endif %}
+            </div>
+            <div class="next">
+                {% if next_index >= 0 %}
+                <a href="{{ url_for('client.recurring_event',
                             slug=event.slug,
-                            index=next_index) }}">Next</a>
-        {% endif %}
+                            index=next_index) }}">
+                    <p>Next<i class="fa fa-chevron-right"></i></p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </section>
 

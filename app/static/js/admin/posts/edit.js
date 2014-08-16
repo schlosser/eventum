@@ -9,7 +9,9 @@ $(function() {
     function selectedImage(filename, url) {
         return '<li class="image post-image" data-filename="' + filename + '" data-url="' + url + '"> ' +
                '    <i style="background-image:url(' + url + ');"></i>' +
-               '    <p class="filename">' + filename + '</p>' +
+               '    <p class="filename">' +
+               '        <i class="featured-image fa fa-star-o"></i>' + filename +
+               '    </p>'
                '    <span class="delete">' +
                '        <span class="delete-inner">' +
                '            <a href="#remove-image" data-filename="' + filename + '" data-url="' + url + '">' +
@@ -91,7 +93,7 @@ $(function() {
         $('a[href="#close-modal"]').click();
 
         // Add to record of filenames to replace on markdown rendering
-        images[filename] = url;
+        window.markdownImages[filename] = url;
 
         // Remove the image from the list in the modal
         $('.modal .image[data-filename="' + filename + '"]').remove();
@@ -107,6 +109,34 @@ $(function() {
     $(document).on('click', 'a[href="#save"]', function(e) {
         e.preventDefault();
         $('#save-post').click();
+    });
+
+    /**/
+    var featuredImage = $('#featured_image').val();
+    if (featuredImage) {
+        var $imageToSelect = $('.featured-image[data-filename="' + featuredImage + '"]');
+        $imageToSelect.addClass('fa-star').removeClass('fa-star-o');
+    }
+
+    /* Add featured image */
+    $(document).on('click', '.featured-image.fa-star-o', function(e) {
+        e.preventDefault();
+
+        // Remove any other featured-images
+        $('.featured-image.fa-star').removeClass('fa-star').addClass('fa-star-o');
+
+        $(this).removeClass('fa-star-o').addClass('fa-star');
+
+        var filename = $(this).data('filename');
+        $('#featured_image').val(filename);
+    });
+
+    /* Remove featured image */
+    $(document).on('click', '.featured-image.fa-star', function(e) {
+        e.preventDefault();
+
+        $(this).removeClass('fa-star').addClass('fa-star-o');
+        $('#featured_image').val('');
     });
 
 

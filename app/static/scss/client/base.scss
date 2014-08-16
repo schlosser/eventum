@@ -1,4 +1,5 @@
 @import '../common/media_queries';
+@import 'colors';
 
 $content-width: 60rem;
 $extra-bold: 800;
@@ -15,6 +16,14 @@ body, html {
 
 p {
     margin-bottom: 0.3125rem;
+    font-family: $slab;
+    font-weight: $regular;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+img {
+    max-width: 100%;
 }
 
 a, a:hover {
@@ -42,18 +51,21 @@ h1, .h1 {
     font-weight: $extra-bold;
     font-size: 3.75rem;
     line-height: 4.5rem;
+    color: $gray;
 }
 h2, .h2 {
     font-family: $sans;
     font-weight: $bold;
     font-size: 2.25rem;
     line-height: 3rem;
+    color: $gray;
 }
 h3, .h3 {
     font-family: $slab;
     font-weight: $regular;
     font-size: 1.5rem;
     line-height: 2.25rem;
+    color: $gray;
 }
 h4, .h4 {
     font-family: $sans;
@@ -62,6 +74,7 @@ h4, .h4 {
     line-height: 1.5rem;
     margin-bottom: .625rem;
     text-transform: uppercase;
+    color: $gray;
 }
 h5, .h5 {
     font-family: $slab;
@@ -69,12 +82,14 @@ h5, .h5 {
     font-size: 1.125rem;
     line-height: 1.5rem;
     margin-bottom: 0.625rem;
+    color: $gray;
 }
 h6, .h6 {
     font-family: $sans;
     font-weight: $regular;
     font-size: 0.875rem;
     line-height: 1rem;
+    color: $gray;
 }
 
 @media screen and (max-width: $xl-desktop-max) {

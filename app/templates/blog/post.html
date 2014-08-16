@@ -8,6 +8,9 @@
 </section>
 <section class="card top-card">
     <div class="post content">
+        {% if post.featured_image %}
+        <img class="post-image" src="{{ post.featured_image.url() }}" />
+        {% endif %}
         <p class="date-published">Posted on {{post.human_readable_date() }} </p>
         <p class="author">By {{post.author.name}}</p>
         {{ post.html_content | safe }}

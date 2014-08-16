@@ -12,6 +12,9 @@ class Post(db.Document):
     author = db.ReferenceField(User, required=True)
     html_content = db.StringField()
     markdown_content = db.StringField(required=True)
+    images = db.ListField(
+        db.ReferenceField('Image'))
+    featured_image = db.ReferenceField('Image')
     slug = db.StringField(required=True, regex="([a-z]|[A-Z]|[1-9]|-)*")
     categories = db.ListField(db.StringField(db_field='category',
                                              max_length=255), default=list)

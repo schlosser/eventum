@@ -116,11 +116,17 @@
             <h2>{{ event.title }}</h2>
         </a>
         {% if show_description %}
-        <h5>{{ event.short_description | safe }}</h5>
+        <p class="description">{{ event.short_description | safe }}</p>
         {% endif %}
         <div class="details">
-            <p>{{ event.human_readable_datetime() }}</p>
-            <p>{{ event.location }}</p>
+            <p>
+                <i class="fa fa-calendar"></i>
+                {{ event.human_readable_datetime() }}
+            </p>
+            <p>
+                <i class="fa fa-map-marker"></i>
+                {{ event.location }}
+            </p>
         </div>
     </div>
 </div>
@@ -136,8 +142,14 @@
             <h5>{{ event.title }}</h5>
         </a>
         <div class="details">
-            <p>{{ event.human_readable_datetime() }}</p>
-            <p>{{ event.location }}</p>
+            <p>
+                <i class="fa fa-calendar"></i>
+                {{ event.human_readable_datetime() }}
+            </p>
+            <p>
+                <i class="fa fa-map-marker"></i>
+                {{ event.location }}
+            </p>
         </div>
     </div>
 </div>

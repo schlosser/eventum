@@ -20,3 +20,4 @@ class CreateBlogPostForm(Form):
         default="Type your post here.\n\nRendered in **Markdown**!")
     images = FieldList(StringField('Image', [image_with_same_name]), [Required("add images!")])
     published = BooleanField('Published')
+    featured_image = StringField('Featured Image', [image_with_same_name])
