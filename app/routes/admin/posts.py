@@ -22,8 +22,6 @@ def new():
     form = CreateBlogPostForm(request.form)
     upload_form = UploadImageForm()
     if form.validate_on_submit():
-        print request.form
-        print form.images.data
         post = BlogPost(title=form.title.data,
                         slug=form.slug.data,
                         published=form.published.data,
@@ -50,7 +48,8 @@ def edit(post_id):
     if request.method == 'POST':
         form = CreateBlogPostForm(request.form)
         if form.validate_on_submit():
-            post.published = form.published.data
+            was_published = post.published
+            should_be_published = form.published.data
             post.title=form.title.data
             post.slug=form.slug.data
             post.markdown_content = form.body.data
@@ -60,6 +59,11 @@ def edit(post_id):
             else:
                 post.featured_image = None
             post.save()
+            if was_published != should_be_published:
+                if was_published:
+                    set_published_status(post.id, False)
+                else:
+                    set_published_status(post.id, True)
             return redirect(url_for('.index'))
     upload_form = UploadImageForm()
     featured_image = post.featured_image.filename if post.featured_image else None
@@ -107,20 +111,10 @@ def set_published_status(post_id, status):
         pass
     return redirect(url_for('.index'))
 
-
-@posts.route('/posts/publish/<post_id>', methods=['POST'])
-@requires_privilege('publish')
-def publish(post_id):
-    return set_published_status(post_id, True)
-
-
-@posts.route('/posts/unpublish/<post_id>', methods=['POST'])
-@requires_privilege('publish')
-def unpublish(post_id):
-    return set_published_status(post_id, False)
-
 @posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
+@posts.route('/posts/epiceditor/themes/<folder>/<path>')
 @posts.route('/events/edit/epiceditor/themes/<folder>/<path>')
+@posts.route('/events/epiceditor/themes/<folder>/<path>')
 @login_required
 def fetch_epiceditor_themes(folder, path):
     return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))

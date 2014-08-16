@@ -30,18 +30,21 @@ form {
 
     $event-image-width: 25%;
     .event-image {
+        position: absolute;
+        top: 0;
+        left: 0;
         display: inline-block;
-        position: relative;
         width: $event-image-width;
         padding-bottom: $event-image-width;
     }
 
     .descriptions {
-        position: absolute;
-        left: $event-image-width;
+        margin-left: $event-image-width;
         padding-left: 1rem;
-        right: 0;
+        position: relative;
         display: inline-block;
+        box-sizing: border-box;
+        width: 75%;
 
         div {
             width: 100%;

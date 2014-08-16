@@ -2,18 +2,25 @@
 
 {% import "macros.html" as macros %}
 {% block title %}Edit {{ event.title }}{% endblock %}
-{% block pagetitle %}Edit {{ event.title }}{% endblock %}
+{% block pagetitle %}Edit Post{% endblock %}
 
 {% block action %}
 action="{{ url_for('events.edit', event_id=event.id) }}"
 {% endblock %}
 
 {% block barright %}
-    {% if event.is_recurring %}
-        <a class="text-button " href="#show-modal" data-modal="save-options">Save</a>
+{% if event.is_recurring %}
+    <a class="text-button save-button" href="#show-modal" data-modal="save-options">Save Draft</a>
+{% else %}
+    <a class="text-button save-button" href="#save">Save Draft</a>
+{% endif %}
+{% if current_user.can("publish") %}
+    {% if event and event.published %}
+        {{ macros.toggle("Publish", "Unpublish")}}
     {% else %}
-        <a class="text-button " href="#save">Save</a>
+        {{ macros.toggle("Publish", "Unpublish", start_on=False)}}
     {% endif %}
+{% endif %}
 {% endblock %}
 
 {% block toolbar %}

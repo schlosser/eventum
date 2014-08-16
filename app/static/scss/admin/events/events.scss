@@ -52,10 +52,9 @@ $creator-size: 3rem;
 
             .creator {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background-color: $lightgray;
+                bottom: 0.5rem;
+                left: 0.5rem;
+                right: 0.5rem;
 
                 .image {
                     width: $creator-size;

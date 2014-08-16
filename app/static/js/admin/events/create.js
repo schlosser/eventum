@@ -92,9 +92,17 @@ $(function() {
 
     /* Tie the published toggle to the form element */
     $(document).on('click', '.active a[href="#toggle"]', function(e) {
-        $('#is_published').prop('checked', false); });
+        $('#is_published').prop('checked', false);
+        setTimeout(function() {
+            $('.save-button').click();
+        }, 500);
+    });
     $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
-        $('#is_published').prop('checked', true); });
+        $('#is_published').prop('checked', true);
+        setTimeout(function() {
+            $('.save-button').click();
+        }, 500);
+    });
 
 
     $(document).on('click', '#is_recurring', function(e) {
@@ -213,10 +221,6 @@ $(function() {
         $('.display-image').addClass('hidden');
     });
 
-    $('.event-image-and-descriptions').css({
-        'min-height': Math.max($('.descriptions').height(), 256)
-    });
-
 
     /* =======================================================================
      * Marked / Epiceditor initialization
@@ -226,13 +230,14 @@ $(function() {
     opts.container='epiceditor-short-description';
     opts.textarea='short_description';
     var shortDescriptionEditor = new EpicEditor(opts).load();
+
     opts.container='epiceditor-long-description';
     opts.textarea='long_description';
     opts.autogrow = {
         minHeight: 160,
         maxHeight: 320
     };
-    var shortDescriptionEditor = new EpicEditor(opts).load();
+    var longDescriptionEditor = new EpicEditor(opts).load();
 
     /* Populated object of associated images for markdown rendering */
     $('.post-image').each(function() {

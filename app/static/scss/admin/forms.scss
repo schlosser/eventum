@@ -77,21 +77,23 @@ input[type="text"] {
 }
 
 $toggle-speed: 0.3s;
-
+$toggle-height: 3.5rem;
 .toggle-wrapper {
     display: inline-block;
-    vertical-align: middle;
-    height: 2.5rem;
-    width: 10.5rem;
+    vertical-align: top;
+    height: $toggle-height;
+    width: 11.5rem;
     overflow: hidden;
     position: relative;
+    margin-right: -1rem;
+    margin-left: 1rem;
     .label {
-        width: 2.5rem;
+        width: $toggle-height;
         position: absolute;
         text-align: center;
-        height: 2.5rem;
+        height: $toggle-height;
         line-height: 2.2rem;
-        font-size: 1.5rem;
+        font-size: 2rem;
         top: 0;
         left: 0;
         background-color: $darkgray;
@@ -104,24 +106,26 @@ $toggle-speed: 0.3s;
         }
     }
     .on {
-        background-color: $green;
+        background-color: $red;
         left: 0;
         right: 8rem;
         .inner {
             position: absolute;
             width: 8rem;
             left: 0;
+            font-size: 1.2rem;
         }
     }
     .off {
-        background-color: $red;
-        left: 2rem;
+        background-color: $green;
+        left: 3.5rem;
         right: 0;
 
         .inner {
             position: absolute;
             width: 8rem;
             right: 0;
+            font-size: 1.2rem;
         }
     }
     .on, .off {
@@ -129,8 +133,8 @@ $toggle-speed: 0.3s;
         -webkit-transition: $toggle-speed ease all;
         overflow: hidden;
         position: absolute;
-        height: 2.5rem;
-        line-height: 2.5rem;
+        height: $toggle-height;
+        line-height: $toggle-height;
         color: white;
         text-align: center;
         display: inline-block;
@@ -148,7 +152,7 @@ $toggle-speed: 0.3s;
             }
         }
         .on {
-            right: 2rem;
+            right: 3.5rem;
         }
         .off {
             left: 8rem;
