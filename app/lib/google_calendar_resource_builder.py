@@ -31,7 +31,7 @@ class GoogleCalendarResourceBuilder():
         recurrence = klass._recurrence(event_series)
 
         resource = klass.event_resource(event)
-        resource['recurrence'] = recurrence
+        resource['recurrence'] = [recurrence]
         return resource
 
     @classmethod

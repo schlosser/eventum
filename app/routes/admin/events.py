@@ -9,7 +9,7 @@ from app.models import Event, Image
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
-from app.lib import events as utils
+from app.lib.events import EventsHelper
 events = Blueprint('events', __name__)
 
 @events.route('/events')
@@ -44,7 +44,7 @@ def create():
     """"""
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
-        utils.create_event(form, creator=g.user)
+        EventsHelper.create_event(form, g.user)
         return redirect(url_for('.index'))
     if form.errors:
         for error in form.errors:
@@ -54,7 +54,7 @@ def create():
     upload_form = UploadImageForm()
     delete_form = DeleteEventForm()
     images = Image.objects()
-    return render_template('admin/events/create.html', form=form, user=g.user,
+    return render_template('admin/events/create.html', form=form,
                            delete_form=delete_form, upload_form=upload_form,
                            images=images)
 
@@ -68,11 +68,10 @@ def edit(event_id):
     event = Event.objects().get(id=event_id)
 
     form = EditEventForm(request.form) if request.method == 'POST' else \
-        utils.create_form(event, request)
+        EventsHelper.create_form(event, request)
 
     if form.validate_on_submit():
-        utils.update_event(event, form, update_all=form.update_all.data,
-                           update_following=form.update_following.data)
+        EventsHelper.update_event(event, form)
         return redirect(url_for('.index'))
     if form.errors:
         for error in form.errors:
@@ -83,8 +82,8 @@ def edit(event_id):
     upload_form = UploadImageForm()
     images = Image.objects()
     return render_template('admin/events/edit.html', form=form, event=event,
-                           user=g.user, delete_form=delete_form,
-                           upload_form=upload_form, images=images)
+                           delete_form=delete_form, upload_form=upload_form,
+                           images=images)
 
 @events.route('/events/delete/<event_id>', methods=['POST'])
 @requires_privilege('edit')
@@ -95,17 +94,13 @@ def delete(event_id):
     if Event.objects(id=object_id).count() == 1:
         event = Event.objects().with_id(object_id)
         if event.is_recurring:
-            series = event.parent_series
-            # Delete the desired subset of events from the series
-            if form.delete_following.data:
-                series.delete_following(event)
-            elif form.delete_all.data:
-                series.delete_all()
+            if form.delete_all.data:
+                EventsHelper.delete_series(event)
             else:
-                series.delete_one(event)
+                EventsHelper.delete_single_event_from_series(event)
         else:
             # The event is not recurring, so just delete it
-            event.delete()
+            EventsHelper.delete_single_event(event)
     else:
         flash('Invalid event id')
     return redirect(url_for('.index'))

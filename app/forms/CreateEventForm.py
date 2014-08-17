@@ -43,7 +43,6 @@ class CreateEventForm(Form):
     long_description = TextAreaField('Long description')
     is_published = BooleanField('Is Published')
     update_all = BooleanField('Update all', default=False)
-    update_following = BooleanField('Update Following', default=False)
     event_image = StringField('Image', [image_with_same_name])
 
     def post_validate(form, validation_stopped):

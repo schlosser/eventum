@@ -26,14 +26,6 @@ class EventSeries(db.Document):
         event.delete()
         self.save()
 
-    def delete_following(self, event):
-        """"""
-        for e in self.events[:]:
-            if e.start_datetime() >= event.start_datetime():
-                self.events.remove(e)
-                e.delete()
-        self.save()
-
     def delete_all_except(self, event):
         """"""
         for e in self.events[:]:

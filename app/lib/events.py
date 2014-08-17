@@ -4,197 +4,375 @@ from datetime import timedelta
 from app import gcal_client
 
 
-def update_event(event, form, update_all=False, update_following=False,
-                 **kwargs):
-    """"""
-    create_event(form, event=event, update_all=update_all,
-                 update_following=update_following, **kwargs)
+class EventsHelper(object):
 
+    PUBLIC = 'public'
+    PRIVATE = 'private'
 
-def create_event(form, event=None, update_all=False, update_following=False,
-                 **kwargs):
-    """"""
-    event_image = None
-    filename = form.event_image.data
-    if filename and Image.objects(filename=filename).count() == 1:
-        event_image = Image.objects().get(filename=filename)
-
-    event_data = {
-        "title": form.title.data,
-        "slug": form.slug.data,
-        "location": form.location.data,
-        "start_time": form.start_time.data,
-        "end_time": form.end_time.data,
-        "is_published": form.is_published.data,
-        "short_description_markdown": form.short_description.data,
-        "long_description_markdown": form.long_description.data,
-        "is_recurring": form.is_recurring.data,
-        "image": event_image
-    }
-    date_data = {
-        "start_date": form.start_date.data,
-        "end_date": form.end_date.data,
-    }
-    recurrence_data = {
-        "frequency": form.frequency.data,
-        "every": form.every.data,
-        "slug": form.slug.data,
-        "ends_on": form.ends.data == 'on',
-        "ends_after": form.ends.data == 'after',
-        "num_occurances": form.num_occurances.data,
-        "recurrence_end_date": form.recurrence_end_date.data,
-        "recurrence_summary": form.recurrence_summary.data
-    } if form.is_recurring.data else None
-
-    if kwargs:
-        event_data.update(kwargs)
-    if event:
-        event_data['creator'] = event.creator
-
-    # Create and save a new event / series if this is not an update
-    if not event:
-        create_series(event_data, date_data, recurrence_data)
-        return
-
-    # If this is no longer a recurring event, delete others and update this one
-    if event.is_recurring and not form.is_recurring.data:
-        event.parent_series.delete_all_except(event)
-        update_and_save(event, date_data, event_data)
-        return
-
-    # If the recurrence is being added for the first time.
-    if not event.is_recurring and form.is_recurring.data:
-        create_series(event_data, date_data, recurrence_data, event=event)
-        return
-
-    recurrence_changes = event.parent_series and \
-        any([k for k, v in recurrence_data.iteritems()
-             if getattr(event.parent_series, k) != v]) or \
-        any([k for k,v in date_data.iteritems() if getattr(event, k) != v])
-
-    if form.update_all.data:
-        # If all the changes are easy, do the changes to the current objects
-        if not recurrence_changes:
-            for e in event.parent_series.events:
-                update_and_save(e, event_data, {})
-        else:
-            # Otherwise, delete all the related events and remake them
-            event.parent_series.delete_all()
-            create_series(event_data, date_data, recurrence_data)
-
-    elif form.update_following.data:
-        # If all the changes are easy, do the changes to the current objects
-        if not recurrence_changes:
-            for e in event.parent_series.events:
-                if e.start_datetime() >= event.start_datetime():
-                    update_and_save(e, event_data, {})
-        else:
-            # Otherwise delete all following events, treat the current event as
-            # a root event, and make a new series.
-            event.parent_series.delete_following(event)
-            event.parent_series.delete()
-            create_series(event_data, date_data, recurrence_data)
-
-    else:
-        # Only update changes to the event data
-        update_and_save(event, event_data, date_data)
-
-
-def create_form(event, request):
-    """"""
-    form_data = {
-        "title": event.title,
-        "slug": event.slug,
-        "location": event.location,
-        "start_date": event.start_date,
-        "start_time": event.start_time,
-        "end_date": event.end_date,
-        "end_time": event.end_time,
-        "is_published": event.is_published,
-        "short_description": event.short_description_markdown,
-        "long_description": event.long_description_markdown,
-        "is_recurring": event.is_recurring,
-        "event_image": event.image.filename if event.image else None
-    }
-    if event.parent_series:
-        form_data.update({
-            "frequency": event.parent_series.frequency,
-            "every": event.parent_series.every,
-            "ends": "on" if event.parent_series.ends_on else "after",
-            "num_occurances": event.parent_series.num_occurances,
-            "recurrence_end_date": event.parent_series.recurrence_end_date,
-            "recurrence_summary": event.parent_series.recurrence_summary
-        })
-    form_data = remove_none_fields(form_data)
-    return CreateEventForm(request.form, **form_data)
-
-
-def create_series(e_data, d_data, r_data, event=None):
-    """"""
-    def increment_dates(data, delta):
+    @classmethod
+    def create_form(klass, event, request):
         """"""
-        data['start_date'] = data['start_date'] + delta
-        data['end_date'] = data['end_date'] + delta
+        form_data = DataBuilder.form_data_from_event(event)
+        if event.parent_series:
+            updates = DataBuilder.form_data_from_series(event.parent_series)
+            form_data.update(updates)
+        form_data = klass._remove_none_fields(form_data)
+        return CreateEventForm(request.form, **form_data)
 
-    if not e_data['is_recurring']:
-        final = make_event(e_data, d_data)
-        gcal_client.create_event(final)
-        return
+    @classmethod
+    def create_event(klass, form, creator):
+        """"""
+        if form.is_recurring.data:
+            # Series
+            return klass.create_series(form, creator)
+        # Single event
+        return klass.create_single_event(form, creator)
 
-    # Only make the series if all of the necesary fields are valid
-    if not r_data['frequency'] or \
-        r_data['ends_on'] and not r_data['recurrence_end_date'] or \
-            r_data['ends_after'] and not r_data['num_occurances']:
-        return
+    @classmethod
+    def update_event(klass, event, form):
+        """"""
+        # Determine if the event should be moved between calendars
+        move_to = None
+        if event.is_published != form.is_published.data:
+            move_to = klass.PUBLIC if form.is_published.data else klass.PRIVATE
 
-    if r_data['frequency'] == "weekly":
-        delta = timedelta(days=7 * r_data['every'])
-    else:
-        raise ValueError('Unknown frequency value "%s"' % r_data.frequency)
+        if event.is_recurring != form.is_recurring.data:
+            if event.is_recurring:
+                # Series -> single event
+                return klass.convert_to_single_event(event, form, move_to=move_to)
+            # Single event -> series
+            return klass.convert_to_series(event, form, move_to=move_to)
 
-    series = make_series(r_data)
-    e_data['parent_series'] = series
+        elif event.is_recurring:
+            if form.update_all.data:
+                # Entire series
+                return klass.update_series(event, form, move_to=move_to)
+            # Single event from series
+            return klass.update_single_event_from_series(event, form, move_to=move_to)
+        # Single event
+        return klass.update_single_event(event, form, move_to=move_to)
 
-    if event:
-        update_and_save(event, e_data, d_data)
+    @classmethod
+    def delete_event(klass, event, form):
+        """"""
+        if event.is_recurring:
+            if form.delete_all.data:
+                # Series
+                return klass.delete_series(event)
+            # Single event from series
+            return klass.delete_single_event_from_series(event)
+        # Single event
+        return klass.delete_single_event(event)
+
+    @classmethod
+    def create_single_event(klass, form, creator):
+        """"""
+        # Generate the event and date data
+        event_and_date_data = DataBuilder.event_and_date_data_from_form(form, creator=creator)
+        event_and_date_data = klass._remove_none_fields(event_and_date_data)
+
+        event = Event(**event_and_date_data)
+        event.save()
+
+        # Return the Google Calendar response
+        return gcal_client.create_event(event)
+
+    @classmethod
+    def create_series(klass, form, creator):
+        """"""
+        event_data = DataBuilder.event_data_from_form(form, creator=creator)
+        date_data = DataBuilder.date_data_from_form(form)
+
+        # Make the parent series
+        series = klass._make_series(form)
+
+        # Update event_data with the parent series
+        event_data['parent_series'] = series
+
+        # Make the individual Event objects in the series
+        while klass._more_events(series, date_data):
+            ev = klass._make_event(event_data, date_data)
+            series.events.append(ev)
+            klass._increment_date_data(series, date_data)
+
+        series.save()
+
+        # Return the Google Calendar response
+        return gcal_client.create_event(series.events[0])
+
+    @classmethod
+    def update_single_event(klass, event, form, move_to=None):
+        """"""
+        event_and_date_data = DataBuilder.event_and_date_data_from_form(form)
+        event_and_date_data = klass._remove_none_fields(event_and_date_data)
+        event._update_event(event_and_date_data)
+
+        # Update the event and publish it as necessary
+        response = gcal_client.update_event(event)
+        if move_to == klass.PUBLIC:
+            response = gcal_client.publish_event(event)
+        elif move_to == klass.PRIVATE:
+            response = gcal_client.unpublish_event(event)
+
+        # Return the Google Calendar response
+        return response
+
+    @classmethod
+    def update_series(klass, event, form, move_to=None):
+        """"""
+        event_data = DataBuilder.event_data_from_form(form)
+        date_data = DataBuilder.date_data_from_form(form)
+
+        # Make the parent series
+        series_data = DataBuilder.series_data_from_form(form)
+        klass._validate_series_data(series_data)
+
+        if klass._changes_are_easy(event, series_data, date_data):
+            for e in event.parent_series.events:
+                # the date data isn't changing, so pass in {}
+                klass._update_event(e, event_data, {})
+        else:
+            event.parent_series.delete_all()
+            klass._create_series(event_data, date_data, series_data)
+
+        # Return the Google Calendar response
+        # TODO: where do the API calls go?
+        return # response
+
+    @classmethod
+    def update_single_event_from_series(klass, event, form):
+        """"""
+        event_and_date_data = DataBuilder.event_and_date_data_from_form(form)
+        event_and_date_data = klass._remove_none_fields(event_and_date_data)
+        event._update_event(event_and_date_data)
+
+        # Return Google Calendar response
+        return gcal_client.update_event(event)
+
+    @classmethod
+    def convert_to_series(klass, event, form, move_to=None):
+        """"""
+        event_data = DataBuilder.event_data_from_form(form)
+        date_data = DataBuilder.date_data_from_form(form)
+
+        # Make the parent series
+        series = klass._make_series(form)
+
+        # Update event_data with the parent series
+        event_data['parent_series'] = series
+
+        klass._update_and_save(event, event_data, date_data)
         series.events.append(event)
-        increment_dates(d_data, delta)
+        klass._increment_dates(series, date_data)
 
-    while r_data['ends_after'] and \
-            len(series.events) < r_data['num_occurances'] or \
-            r_data['ends_on'] and \
-            d_data['start_date'] <= r_data['recurrence_end_date']:
-        e = make_event(e_data, d_data)
-        series.events.append(e)
-        increment_dates(d_data, delta)
+        # Make the individual Event objects in the series
+        while klass._more_events(series, date_data):
+            ev = klass._make_event(event_data, date_data)
+            series.events.append(ev)
+            klass._increment_date_data(series, date_data)
 
-    series.save()
+        series.save()
 
+        # Return the Google Calendar response
+        # TODO: where do the API calls go?
+        return # response
 
-def update_and_save(event, e_data, d_data):
-    """"""
-    d = remove_none_fields(dict(e_data.items() + d_data.items()))
-    d = dict(("set__" + k, v) for k, v in d.iteritems())
-    event.update(**d)
-    event.save()
+    @classmethod
+    def convert_to_single_event(klass, event, form, move_to=None):
+        """"""
+        event_data = DataBuilder.event_data_from_form(form)
+        date_data = DataBuilder.date_data_from_form(form)
 
+        event.parent_series.delete_all_except(event)
+        klass._update_event(event, date_data, event_data)
 
-def make_event(e_data, d_data):
-    """"""
-    d = remove_none_fields(dict(e_data.items() + d_data.items()))
-    event = Event(**d)
-    event.save()
-    return event
-
-
-def make_series(r_data):
-    """"""
-    d = remove_none_fields(r_data)
-    series = EventSeries(**d)
-    series.save()
-    return series
+        # Delete the series and create a single event
+        gcal_client.delete_event(event)
+        return gcal_client.create_event(event)
 
 
-def remove_none_fields(d):
-    """"""
-    return dict((k, v) for k, v in d.iteritems() if v is not None)
+    @classmethod
+    def delete_single_event(klass, event):
+        """"""
+        response = gcal_client.delete_event(event)
+        event.delete()
+
+        # Return the Google Calendar response
+        return response
+
+    @classmethod
+    def delete_single_event_from_series(klass, event):
+        """"""
+        # Cancel the series on GCal
+        response = gcal_client.cancel_event(event)
+
+        # Delete the one event
+        event.parent_series.delete_one(event)
+
+        # Return the Google Calendar response
+        return response
+
+    @classmethod
+    def delete_series(klass, event):
+        """"""
+        # Delete the series
+        response = gcal_client.delete_event(event)
+        event.parent_series.delete_all()
+
+        # Return the Google Calendar response
+        return response
+
+    @classmethod
+    def _remove_none_fields(klass, d):
+        """"""
+        return dict((k, v) for k, v in d.iteritems() if v is not None)
+
+    @classmethod
+    def _increment_date_data(klass, series, date_data):
+        """"""
+        # delta is the timedelta in between events
+        delta = timedelta(days=7 * series.every)
+        date_data['start_date'] = date_data['start_date'] + delta
+        date_data['end_date'] = date_data['end_date'] + delta
+
+    @classmethod
+    def _validate_series_data(klass, s_data):
+        """"""
+        if not (s_data['frequency'] and
+                s_data['every'] and
+                (s_data['ends_on'] and s_data['recurrence_end_date'] or
+                 s_data['ends_after'] and s_data['num_occurances'])):
+            raise ValueError('Cannont create recurrence from series data.')
+
+        if s_data['frequency'] != 'weekly':
+            raise ValueError('Unknown frequency value "%s"' % s_data.frequency)
+
+    @classmethod
+    def _more_events(klass, series, date_data):
+        """"""
+        if (series.ends_after and len(series.events) >= series.num_occurances or
+            series.ends_on and date_data['start_data'] > series.recurrence_end_date):
+            return False
+        return True
+
+    @classmethod
+    def _make_event(klass, e_data, d_data):
+        """"""
+        params = klass._remove_none_fields(dict(e_data.items() + d_data.items()))
+        event = Event(**params)
+        event.save()
+        return event
+
+    @classmethod
+    def _make_series(klass, form):
+        series_data = DataBuilder.series_data_from_form(form)
+        klass._validate_series_data(series_data)
+        series_data = klass._remove_none_fields(series_data)
+
+        series = EventSeries(**series_data)
+        series.save()
+        return series
+
+    def _update_event(klass, event, e_data, d_data):
+        """"""
+        d = klass._remove_none_fields(dict(e_data.items() + d_data.items()))
+        d = dict(("set__" + k, v) for k, v in d.iteritems())
+        event.update(**d)
+        event.save()
+
+
+    @classmethod
+    def _changes_are_easy(klass, event, series_data, date_data):
+        """"""
+        # Changes in how the recurrence behaves are hard.
+        for k, v in series_data.iteritems():
+            if getattr(event.parent_series, k) != v:
+                return False
+
+        # Changes in start and end dates are hard.
+        for k, v in date_data.iteritems():
+            if getattr(event, k) != v:
+                return False
+
+        # Changes are easy
+        return True
+
+class DataBuilder(object):
+
+    @classmethod
+    def form_data_from_event(klass, event):
+        return {
+            'title': event.title,
+            'slug': event.slug,
+            'location': event.location,
+            'start_date': event.start_date,
+            'start_time': event.start_time,
+            'end_date': event.end_date,
+            'end_time': event.end_time,
+            'is_published': event.is_published,
+            'short_description': event.short_description_markdown,
+            'long_description': event.long_description_markdown,
+            'is_recurring': event.is_recurring,
+            'event_image': event.image.filename if event.image else None
+        }
+
+    @classmethod
+    def form_data_from_series(klass, series):
+        return {
+            'frequency': series.frequency,
+            'every': series.every,
+            'ends': 'on' if series.ends_on else 'after',
+            'num_occurances': series.num_occurances,
+            'recurrence_end_date': series.recurrence_end_date,
+            'recurrence_summary': series.recurrence_summary
+        }
+
+    @classmethod
+    def event_data_from_form(klass, form, creator=None):
+        event_image = None
+        filename = form.event_image.data
+        if filename and Image.objects(filename=filename).count() == 1:
+            event_image = Image.objects().get(filename=filename)
+
+        event_data =  {
+            'title': form.title.data,
+            'slug': form.slug.data,
+            'location': form.location.data,
+            'start_time': form.start_time.data,
+            'end_time': form.end_time.data,
+            'is_published': form.is_published.data,
+            'short_description_markdown': form.short_description.data,
+            'long_description_markdown': form.long_description.data,
+            'is_recurring': form.is_recurring.data,
+            'image': event_image
+        }
+        if creator:
+            event_data['creator'] = creator
+        return event_data
+
+    @classmethod
+    def date_data_from_form(klass, form):
+        return {
+            'start_date': form.start_date.data,
+            'end_date': form.end_date.data,
+        }
+
+    @classmethod
+    def series_data_from_form(klass, form):
+        return {
+            'frequency': form.frequency.data,
+            'every': form.every.data,
+            'slug': form.slug.data,
+            'ends_on': form.ends.data == 'on',
+            'ends_after': form.ends.data == 'after',
+            'num_occurances': form.num_occurances.data,
+            'recurrence_end_date': form.recurrence_end_date.data,
+            'recurrence_summary': form.recurrence_summary.data
+        }
+
+    @classmethod
+    def event_and_date_data_from_form(klass, form, creator=None):
+        event_data = klass.event_data_from_form(form, creator=creator)
+        date_data = klass.date_data_from_form(form)
+        return dict(event_data.items() + date_data.items())
+
