@@ -1,10 +1,12 @@
 import httplib2
 from apiclient.discovery import build
+from apiclient.errors import HttpError
 from oauth2client.file import Storage
 
 from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuilder
 from app.lib.error import GoogleCalendarAPIError, GoogleCalendarAPIMissingID
 from app import app
+from app.models import Event
 
 
 class GoogleCalendarAPIClient():
@@ -50,65 +52,64 @@ class GoogleCalendarAPIClient():
     def create_event(self, event):
         """"""
         resource = None
-        if event.is_recurring:
-            resource = GoogleCalendarResourceBuilder.recurring_event_resource(event)
-        else:
-            resource = GoogleCalendarResourceBuilder.event_resource(event)
+        resource = GoogleCalendarResourceBuilder.event_resource(event)
 
         calendar_id = self._calendar_id_for_event(event)
         print '[GOOGLE_CALENDAR]: Create Event'
         created_event = self.service.events().insert(calendarId=calendar_id,
                                                      body=resource).execute()
-        gcal_id = created_event.get('id')
-        if not gcal_id:
-            raise GoogleCalendarAPIError('Request failed. %s' % created_event)
 
-        if event.is_recurring:
-            event.parent_series.gcal_id = gcal_id
-            for ev in event.parent_series.events:
-                ev.gcal_id = gcal_id
-                ev.save()
-            event.parent_series.save()
-        else:
-            event.gcal_id = gcal_id
-            event.save()
+        self._update_event_from_response(event, created_event)
 
         return created_event
 
-    def update_event(self, event):
+    def update_event(self, stale_event, as_exception=False):
         """"""
+        event = Event.objects().get(id=stale_event.id)
+
         if not event.gcal_id:
             raise GoogleCalendarAPIMissingID()
 
         resource = None
-        if event.is_recurring:
-            resource = GoogleCalendarResourceBuilder.recurring_event_resource(event)
-        else:
-            resource = GoogleCalendarResourceBuilder.event_resource(event)
+        resource = GoogleCalendarResourceBuilder.event_resource(event, for_update=True)
 
         calendar_id = self._calendar_id_for_event(event)
+        event_id_for_update = event.gcal_id
+        if as_exception:
+            instance = self._instance_resource_for_event_in_series(event)
+            instance.update(resource)
+            resource = instance
+            event_id_for_update = instance['id']
+
         print '[GOOGLE_CALENDAR]: Update Event'
         updated_event = self.service.events().update(calendarId=calendar_id,
-                                                     eventId=event.gcal_id,
-                                                     body=resource)
+                                                     eventId=event_id_for_update,
+                                                     body=resource).execute()
+
+        self._update_event_from_response(event, updated_event)
+
         return updated_event
 
-    def publish_event(self, event):
+    def publish_event(self, stale_event):
         """Publish an event, moving it to the public calendar.
 
         - event (Event): The event to publish
         """
+        event = Event.objects().get(id=stale_event.id)
+
         if not event.is_published:
             raise GoogleCalendarAPIError('Event must have is_published as `True` before publishing')
 
         return self.move_event(event, from_id=self.private_calendar_id,
                                to_id=self.public_calendar_id)
 
-    def unpublish_event(self, event):
+    def unpublish_event(self, stale_event):
         """Unpublish an event, moving it to the private calendar.
 
         - event (Event): The event to unpublish
         """
+        event = Event.objects().get(id=stale_event.id)
+
         if event.is_published:
             raise GoogleCalendarAPIError('Event must have is_published as `False` before unpublishing')
 
@@ -126,21 +127,36 @@ class GoogleCalendarAPIClient():
             raise GoogleCalendarAPIMissingID()
 
         print '[GOOGLE_CALENDAR]: Move Event'
-        return self.service.events().move(calendarId=from_id,
-                                          eventId=event.gcal_id,
-                                          destination=to_id)
+        moved_event = self.service.events().move(calendarId=from_id,
+                                                 eventId=event.gcal_id,
+                                                 destination=to_id).execute()
+        return moved_event
 
-    def delete_event(self, event, calendar_id=None):
+    def delete_event(self, event, as_exception=False):
         if not event.gcal_id:
             raise GoogleCalendarAPIMissingID()
-        if not calendar_id:
-            calendar_id = self._calendar_id_for_event(event)
+
+        calendar_id = self._calendar_id_for_event(event)
 
         print '[GOOGLE_CALENDAR]: Delete Event'
-        return self.service.events().delete(calendarId=calendar_id,
-                                            eventId=event.gcal_id).execute()
+        if as_exception:
+            resource = GoogleCalendarResourceBuilder.event_resource(event)
+            instance = self._instance_resource_for_event_in_series(event)
+            instance.update(resource)
+            instance['status'] = u'cancelled'
+            updated_event = self.service.events().update(calendarId=calendar_id,
+                                                         eventId=instance['id'],
+                                                         body=instance).execute()
+            return updated_event
+
+        try:
+            return self.service.events().delete(calendarId=calendar_id,
+                                                eventId=event.gcal_id).execute()
+        except HttpError as e:
+            print e
 
     def get_calendar_list_resources(self):
+        """"""
         calendar_list_resources = []
         page_token = None
         while True:
@@ -152,3 +168,40 @@ class GoogleCalendarAPIClient():
                 break
         return calendar_list_resources
 
+    def _instance_resource_for_event_in_series(self, event):
+        """"""
+        calendar_id = self._calendar_id_for_event(event)
+        event_start_date = GoogleCalendarResourceBuilder.rfc3339(event.start_datetime())
+
+        page_token = None
+        while True:
+          instances = self.service.events().instances(calendarId=calendar_id,
+                                                   eventId=event.gcal_id,
+                                                   pageToken=page_token).execute()
+          for instance in instances['items']:
+            if instance['start']['dateTime'] == event_start_date:
+                return instance
+          page_token = instances.get('nextPageToken')
+          if not page_token:
+            break
+
+        return None
+
+    def _update_event_from_response(self, event, response):
+        """"""
+        gcal_id = response.get('id')
+        gcal_sequence = response.get('sequence')
+        if not gcal_id or not gcal_sequence:
+            raise GoogleCalendarAPIError('Request failed. %s' % response)
+
+        if event.is_recurring:
+            event.parent_series.gcal_id = gcal_id
+            for ev in event.parent_series.events:
+                ev.gcal_id = gcal_id
+                ev.gcal_sequence = gcal_sequence
+                ev.save()
+            event.parent_series.save()
+        else:
+            event.gcal_id = gcal_id
+            event.gcal_sequence = gcal_sequence
+            event.save()

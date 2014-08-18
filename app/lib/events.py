@@ -48,7 +48,7 @@ class EventsHelper(object):
                 # Entire series
                 return klass.update_series(event, form, move_to=move_to)
             # Single event from series
-            return klass.update_single_event_from_series(event, form, move_to=move_to)
+            return klass.update_single_event_from_series(event, form)
         # Single event
         return klass.update_single_event(event, form, move_to=move_to)
 
@@ -105,14 +105,14 @@ class EventsHelper(object):
         """"""
         event_and_date_data = DataBuilder.event_and_date_data_from_form(form)
         event_and_date_data = klass._remove_none_fields(event_and_date_data)
-        event._update_event(event_and_date_data)
+        klass._update_event(event, event_and_date_data)
 
         # Update the event and publish it as necessary
-        response = gcal_client.update_event(event)
         if move_to == klass.PUBLIC:
             response = gcal_client.publish_event(event)
         elif move_to == klass.PRIVATE:
             response = gcal_client.unpublish_event(event)
+        response = gcal_client.update_event(event)
 
         # Return the Google Calendar response
         return response
@@ -131,23 +131,45 @@ class EventsHelper(object):
             for e in event.parent_series.events:
                 # the date data isn't changing, so pass in {}
                 klass._update_event(e, event_data, {})
+            series = event.parent_series
         else:
-            event.parent_series.delete_all()
-            klass._create_series(event_data, date_data, series_data)
+            shared_gcal_id = event.gcal_id
+            shared_gcal_sequence = event.gcal_sequence
+            shared_creator = event.creator
 
-        # Return the Google Calendar response
-        # TODO: where do the API calls go?
-        return # response
+            event.parent_series.delete_all()
+            series = klass._make_series(None, gcal_id=shared_gcal_id, **series_data)
+
+            # Update event_data with the parent series
+            event_data['parent_series'] = series
+            event_data['gcal_id'] = shared_gcal_id
+            event_data['gcal_sequence'] = shared_gcal_sequence
+            event_data['creator'] = shared_creator
+
+            # Make the individual Event objects in the series
+            while klass._more_events(series, date_data):
+                ev = klass._make_event(event_data, date_data)
+                series.events.append(ev)
+                klass._increment_date_data(series, date_data)
+
+            series.save()
+
+        if move_to == klass.PUBLIC:
+            response = gcal_client.publish_event(series.events[0])
+        elif move_to == klass.PRIVATE:
+            response = gcal_client.unpublish_event(series.events[0])
+        response = gcal_client.update_event(series.events[0])
+        return response
 
     @classmethod
     def update_single_event_from_series(klass, event, form):
         """"""
         event_and_date_data = DataBuilder.event_and_date_data_from_form(form)
         event_and_date_data = klass._remove_none_fields(event_and_date_data)
-        event._update_event(event_and_date_data)
+        klass._update_event(event, event_and_date_data)
 
         # Return Google Calendar response
-        return gcal_client.update_event(event)
+        return gcal_client.update_event(event, as_exception=True)
 
     @classmethod
     def convert_to_series(klass, event, form, move_to=None):
@@ -156,14 +178,16 @@ class EventsHelper(object):
         date_data = DataBuilder.date_data_from_form(form)
 
         # Make the parent series
-        series = klass._make_series(form)
+        series = klass._make_series(form, gcal_id=event.gcal_id)
 
         # Update event_data with the parent series
         event_data['parent_series'] = series
+        event_data['creator'] = event.creator
+        event_data['gcal_id'] = event.gcal_id
 
-        klass._update_and_save(event, event_data, date_data)
+        klass._update_event(event, event_data, date_data)
         series.events.append(event)
-        klass._increment_dates(series, date_data)
+        klass._increment_date_data(series, date_data)
 
         # Make the individual Event objects in the series
         while klass._more_events(series, date_data):
@@ -174,8 +198,7 @@ class EventsHelper(object):
         series.save()
 
         # Return the Google Calendar response
-        # TODO: where do the API calls go?
-        return # response
+        return gcal_client.update_event(series.events[0])
 
     @classmethod
     def convert_to_single_event(klass, event, form, move_to=None):
@@ -187,8 +210,7 @@ class EventsHelper(object):
         klass._update_event(event, date_data, event_data)
 
         # Delete the series and create a single event
-        gcal_client.delete_event(event)
-        return gcal_client.create_event(event)
+        return gcal_client.update_event(event)
 
 
     @classmethod
@@ -203,8 +225,8 @@ class EventsHelper(object):
     @classmethod
     def delete_single_event_from_series(klass, event):
         """"""
-        # Cancel the series on GCal
-        response = gcal_client.cancel_event(event)
+        # Cancel the series on Google Calendar
+        response = gcal_client.delete_event(event, as_exception=True)
 
         # Delete the one event
         event.parent_series.delete_one(event)
@@ -251,7 +273,7 @@ class EventsHelper(object):
     def _more_events(klass, series, date_data):
         """"""
         if (series.ends_after and len(series.events) >= series.num_occurances or
-            series.ends_on and date_data['start_data'] > series.recurrence_end_date):
+            series.ends_on and date_data['start_date'] > series.recurrence_end_date):
             return False
         return True
 
@@ -264,8 +286,9 @@ class EventsHelper(object):
         return event
 
     @classmethod
-    def _make_series(klass, form):
+    def _make_series(klass, form, **kwargs):
         series_data = DataBuilder.series_data_from_form(form)
+        series_data.update(kwargs)
         klass._validate_series_data(series_data)
         series_data = klass._remove_none_fields(series_data)
 
@@ -273,13 +296,16 @@ class EventsHelper(object):
         series.save()
         return series
 
-    def _update_event(klass, event, e_data, d_data):
+    @classmethod
+    def _update_event(klass, event, *data_dicts):
         """"""
-        d = klass._remove_none_fields(dict(e_data.items() + d_data.items()))
+        d = {}
+        for data_dict in data_dicts:
+            d.update(data_dict)
+        d = klass._remove_none_fields(d)
         d = dict(("set__" + k, v) for k, v in d.iteritems())
         event.update(**d)
         event.save()
-
 
     @classmethod
     def _changes_are_easy(klass, event, series_data, date_data):
@@ -296,6 +322,8 @@ class EventsHelper(object):
 
         # Changes are easy
         return True
+
+
 
 class DataBuilder(object):
 
@@ -329,6 +357,8 @@ class DataBuilder(object):
 
     @classmethod
     def event_data_from_form(klass, form, creator=None):
+        if not form:
+            return {}
         event_image = None
         filename = form.event_image.data
         if filename and Image.objects(filename=filename).count() == 1:
@@ -352,6 +382,8 @@ class DataBuilder(object):
 
     @classmethod
     def date_data_from_form(klass, form):
+        if not form:
+            return {}
         return {
             'start_date': form.start_date.data,
             'end_date': form.end_date.data,
@@ -359,6 +391,8 @@ class DataBuilder(object):
 
     @classmethod
     def series_data_from_form(klass, form):
+        if not form:
+            return {}
         return {
             'frequency': form.frequency.data,
             'every': form.every.data,
@@ -372,6 +406,8 @@ class DataBuilder(object):
 
     @classmethod
     def event_and_date_data_from_form(klass, form, creator=None):
+        if not form:
+            return {}
         event_data = klass.event_data_from_form(form, creator=creator)
         date_data = klass.date_data_from_form(form)
         return dict(event_data.items() + date_data.items())

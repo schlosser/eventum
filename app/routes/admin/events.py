@@ -27,9 +27,9 @@ def index():
         year, week, _ = event.start_date.isocalendar()
         index = year*52 + week
         if index == today_index:
-            events["this_week"].append(event)
+            events["this_week"].insert(0, event)
         elif index == today_index + 1:
-            events["next_week"].append(event)
+            events["next_week"].insert(0,event)
 
     return render_template('admin/events/events.html', events=events)
 
@@ -81,6 +81,7 @@ def edit(event_id):
     delete_form = DeleteEventForm()
     upload_form = UploadImageForm()
     images = Image.objects()
+
     return render_template('admin/events/edit.html', form=form, event=event,
                            delete_form=delete_form, upload_form=upload_form,
                            images=images)

@@ -30,7 +30,7 @@ class Event(db.Document):
     parent_series = db.ReferenceField("EventSeries")
     image = db.ReferenceField("Image")
     gcal_id = db.StringField()
-    gcal_calendar_id = db.StringField()
+    gcal_sequence = db.IntField()
 
     def get_absolute_url(self):
         if self.is_recurring:
@@ -146,6 +146,6 @@ class Event(db.Document):
 
     def __repr__(self):
         return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
-            'is_published=%r' % (self.title, self.location, self.creator,
+            'is_published=%r)' % (self.title, self.location, self.creator,
                              self.start_datetime(), self.end_datetime(),
                              self.is_published)

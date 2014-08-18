@@ -37,7 +37,7 @@
 <li
     {% if not event.ready_for_publishing() %}
     class="incomplete event"
-    {% elif event.published %}
+    {% elif event.is_published %}
     class="published event"
     {% else %}
     class="unpublished event"
