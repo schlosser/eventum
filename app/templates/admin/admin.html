@@ -37,7 +37,7 @@
 <nav class="nav">
     <ul>
         {% for href, label, icon, width in [
-            ('/admin/home',       'Home',      'home',        'w-6-5'),
+            ('/admin/home',       'Home',      'home',        ''),
             ('/admin/events',     'Events',    'calendar',    'w-6-5'),
             ('/admin/resources',  'Resources', 'book',        'w-9'),
             ('/admin/posts',      'Blog',      'quote-right', 'w-5'),
@@ -78,19 +78,20 @@
     <div class="inner">
         {% block topbar %}
         <div class="topbar">
-            <span class="left">
-                {% block barleft %}{% endblock %}
-            </span>
-            <span class="middle">
-                {% block barmiddle %}
-                <h1 class="page-title">
-                {% block pagetitle %}Title{% endblock %}
-                </h1>
-                {% endblock %}
-            </span>
-            <span class="right">
-                {% block barright %}{% endblock %}
-            </span>
+            <div class="content">
+                <span class="left">
+                    <a href="{% block pagelink %}{% endblock %}">
+                        {% block barleft %}
+                        <h1 class="page-title">
+                        {% block pagetitle %}Title{% endblock %}
+                        </h1>
+                        {% endblock %}
+                    </a>
+                </span>
+                <span class="right">
+                    {% block barright %}{% endblock %}
+                </span>
+            </div>
         </div>
         {% endblock %}
 

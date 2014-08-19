@@ -14,34 +14,40 @@ $content-padding-small: 0.5rem;
 .main {
     min-height: 100%;
     margin-left: $nav-item-width;
-    background-color: $offwhite;
 
     & > .inner {
-        width: 90%;
+        width: 100%;
         max-width: 100rem;
-        margin: 0 auto;
     }
 }
 
 .topbar {
+
     background-color: $blue;
     color: $white;
-    position: relative;
+    position: fixed;
     height: $topbar-height;
     line-height: $topbar-height;
+    right: 0;
+    left: $nav-item-width;
+    z-index: 50;
+
+    .content {
+        padding: 0;
+        margin: 0 auto;
+    }
 
     .left {
         float:left;
+        height: 3.5rem;
         i {
-            margin-left: 1rem;
+            vertical-align: top;
+            margin-right: 0.5rem;
+            display: inline-block;
 
         }
-    }
-    .middle {
-        margin-left: 1rem;
-
         .page-title {
-            display: inline;
+            display: inline-block;
             width: auto;
             line-height: $topbar-height;
         }
@@ -102,10 +108,11 @@ $content-padding-small: 0.5rem;
 }
 
 .content {
-    background-color: $white;
     position: relative;
+    width: 90%;
     min-height: 100%;
-    padding: $content-padding;
+    margin: 0 auto;
+    padding: (3.5rem + $content-padding) $content-padding $content-padding;
 
     .full-width {
         margin: 0 (-1 * $content-padding);
@@ -116,6 +123,7 @@ $content-padding-small: 0.5rem;
 .toolbar {
     background-color: $blue;
     color: $white;
+    padding: 0 5%;
 
     .middle {
         display: inline;
@@ -131,6 +139,11 @@ $content-padding-small: 0.5rem;
     }
 }
 
+.section-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 @media screen and (max-width: $phone-max) {
     .main > .inner {
         width: 100% !important;
@@ -143,12 +156,19 @@ $content-padding-small: 0.5rem;
         background-color: $white;
 
         & > .inner {
+            margin: 0 auto;
             width: 100%;
-
             .content {
-                width: 90%;
+                width: 100%;
                 margin: 0 auto;
             }
+        }
+    }
+    .topbar {
+        left: $nav-wide;
+        .content {
+            max-width: 100rem;
+            padding: 0 1rem;
         }
     }
 }

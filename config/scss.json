@@ -11,7 +11,8 @@
         "output": "admin.css",
         "inputs": [
           "scss/admin/*.scss",
-          "scss/common/*.scss"
+          "scss/common/*.scss",
+          "scss/admin/home/*.scss"
         ]
       },
 
@@ -75,11 +76,6 @@
           "scss/client/components/*.scss",
           "scss/common/*.scss"
         ]
-      },
-
-      "scss_home": {
-        "output": "home.css",
-        "inputs": [ "scss/client/home/*.scss" ]
       },
 
       "scss_blog": {

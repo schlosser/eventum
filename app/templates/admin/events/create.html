@@ -3,6 +3,7 @@
 
 {% block title %}Create a New Event{% endblock %}
 {% block pagetitle %}New Event{% endblock %}
+{% block pagelink %}{{ url_for('events.index') }}{% endblock %}
 {% set active_page = "Events" %}
 
 {% block css %}
@@ -28,7 +29,8 @@
 {% endblock %}
 
 {% block barleft %}
-<a href="{{ url_for('events.index') }}"><i class="fa fa-arrow-left fa-2x"></i></a>
+<i class="fa fa-arrow-left fa-2x"></i>
+{{ super() }}
 {% endblock %}
 
 {% block barright %}

@@ -12,21 +12,18 @@
 
 {% block title %}View Events{% endblock %}
 {% block pagetitle %}Events{% endblock %}
+{% block pagelink %}{{ url_for('events.index') }}{% endblock %}
 
-{% if request.args.get('week') %}
-{% set week = request.args.get('week')|int %}
+{% if request.args.get('past') %}
+{% set past = request.args.get('past')|int %}
 {% else %}
-{% set week = 0 %}
+{% set past = 0 %}
 {% endif %}
-
-{% block barleft %}
-<a href="{{url_for('events.index', week=(week - 1)) }}">
-    <i class="fa fa-chevron-left fa-2x"></i>
-</a>
-<a href="{{url_for('events.index', week=(week + 1)) }}">
-    <i class="fa fa-chevron-right fa-2x"></i>
-</a>
-{% endblock %}
+{% if request.args.get('future') %}
+{% set future = request.args.get('future')|int %}
+{% else %}
+{% set future = 0 %}
+{% endif %}
 
 {% block js %}
 {{ super() }}
@@ -66,41 +63,61 @@
 </li>
 {% endmacro %}
 
+{% macro render_week (week_name, events) %}
+{% if week_name %}
+<h2>{{ week_name }}</h2>
+{% endif %}
+<div class="events-wrapper">
+    <ul class="events clearfix"
+        style="width:{{ 16.5*(events|count) - 1 }}rem;">
+    {% if events %}
+        {% for event in events %}
+        {{ render_event(event) }}
+        {% endfor %}
+    {% else %}
+        <li class="no-events">
+            <p>No events this week</p>
+        </li>
+    {% endif %}
+    </ul>
+</div>
+{% endmacro%}
+
 {% block barright %}
-<a href="{{ url_for('events.create') }}"><i class="fa fa-plus fa-2x"></i></a>
+<a href="{{ url_for('events.create') }}">
+    <i class="fa fa-plus fa-2x"></i>
+</a>
 {% endblock %}
 
 {% block content %}
-<div class="this-week full-width">
-    <div class="events-wrapper">
-        <ul class="events clearfix"
-            style="width:{{ 16.5*(events.this_week|count) - 1 }}rem;">
-        {% if events.this_week %}
-            {% for event in events.this_week %}
-            {{ render_event(event) }}
-            {% endfor %}
-        {% else %}
-            <li class="no-events">
-                <p>No events this week</p>
-            </li>
-        {% endif %}
-        </ul>
+<div class="pagination">
+    <div class="past">
+        <a href="{{url_for('events.index', future=future, past=(past + 1)) }}">
+            <p>Past events</p>
+        </a>
     </div>
 </div>
-<div class="next-week full-width">
-    <div class="events-wrapper">
-        <ul class="events clearfix"
-            style="width:{{ 16.5*(events.next_week|count) - 1 }}rem;">
-        {% if events.next_week %}
-            {% for event in events.next_week %}
-            {{ render_event(event) }}
-            {% endfor %}
-        {% else %}
-            <li class="no-events">
-                <p>No events for this week.</p>
-            </li>
-        {% endif %}
-        </ul>
+{% for week in past_events %}
+<div class="past-week week">
+    {{ render_week("Week of " + week.week_name, week.events) }}
+</div>
+{% endfor %}
+<div class="this-week week">
+    {{ render_week("This Week", next_week) }}
+</div>
+<div class="next-week week">
+    {{ render_week("Next Week", next_week) }}
+</div>
+{% for week in future_events %}
+<div class="future-week week">
+    {{ render_week("Week of " + week.week_name, week.events) }}
+</div>
+{% endfor %}
+<div class="pagination" id="bottom">
+    <div class="future">
+        <a href="{{url_for('events.index', future=(future + 1), past=past) }}#bottom">
+            <p>Future events</p>
+        </a>
     </div>
 </div>
 {% endblock %}

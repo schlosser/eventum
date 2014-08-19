@@ -196,6 +196,7 @@ $toggle-height: 3.5rem;
 
     }
     input, div, a {
+        vertical-align: top;
         display: inline-block;
         cursor: pointer;
         border: 0;

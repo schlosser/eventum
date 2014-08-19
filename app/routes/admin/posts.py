@@ -14,7 +14,8 @@ posts = Blueprint('posts', __name__)
 @posts.route('/posts')
 @login_required
 def index():
-    return render_template('admin/posts/posts.html', posts=BlogPost.objects().order_by('published', '-date_published'))
+    all_posts = BlogPost.objects().order_by('published', '-date_published')
+    return render_template('admin/posts/posts.html', posts=all_posts)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 @requires_privilege('edit')

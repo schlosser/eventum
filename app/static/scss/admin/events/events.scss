@@ -2,13 +2,17 @@
 
 $event-width: 15rem;
 $creator-size: 3rem;
+
+.week {
+    margin: 0 0 1.5rem;
+    padding-top: 0.5rem;
+}
+
 .events-wrapper {
-    margin: 2rem 0;
     overflow-x: scroll;
 
 
     .events {
-        background-color: $offwhite;
         min-width: 100%;
         margin: 0;
         padding: 0;
@@ -38,7 +42,7 @@ $creator-size: 3rem;
             position: relative;
             display: inline-block;
             width: $event-width;
-            background-color: $white;
+            background-color: $offwhite;
             &:not(:first-child) {
                 margin-left: 1rem;
             }
@@ -74,6 +78,17 @@ $creator-size: 3rem;
             }
         }
     }
+}
+
+.reset {
+    line-height: 3.5rem;
+    margin-left: 1rem;
+}
+
+.this-week {
+    margin-left: -1rem;
+    padding-left: 1rem;
+    border-left: 0.5rem solid $blue;
 }
 
 form {

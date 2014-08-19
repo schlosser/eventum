@@ -24,9 +24,7 @@
 {% endblock %}
 {% set active_page="Blog" %}
 
-{% block content %}
-{% if posts %}
-<div class="full-width">
+{% macro render_posts(posts) %}
 <table class="posts click table">
     <thead>
         <tr>
@@ -60,8 +58,14 @@
 {% endfor %}
 </tbody>
 </table>
-</div>
+{% endmacro%}
+
+
+{% block content %}
+{% if posts %}
+{{ render_posts(posts) }}
 {% else %}
 <p style="text-align: center;">No posts!</p>
 {% endif %}
+
 {% endblock %}

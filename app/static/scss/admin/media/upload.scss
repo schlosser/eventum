@@ -8,33 +8,35 @@
     overflow: hidden;
 }
 
-.filename-wrapper {
-    display: inline-block;
-    height: 2.5rem;
-}
 
-input[type="submit"] {
-    display: inline-block;
-    margin-top: 1rem;
-}
-
-.filename-wrapper {
-    position: relative;
-    display: inline-block;
-
-    .extension {
-        position: absolute;
-        right: 10px;
-        top: 0;
-        height: 2.5rem;
-        line-height: 2.5rem;
-
-    }
-}
-
-.btn-choose {
-    margin-right: 1rem;
-}
 .upload-form {
     margin-bottom: 0.75rem;
+
+    .filename-wrapper {
+        display: inline-block;
+        height: 2.5rem;
+    }
+
+    input[type="submit"] {
+        display: inline-block;
+        margin-top: 1rem;
+    }
+
+    .filename-wrapper {
+        position: relative;
+        display: inline-block;
+
+        .extension {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            height: 2.5rem;
+            line-height: 2.5rem;
+
+        }
+    }
+
+    .btn-choose {
+        margin-right: 1rem;
+    }
 }

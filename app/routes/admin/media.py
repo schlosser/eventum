@@ -28,7 +28,7 @@ def create_filename(f, slug):
     if '.' in f.filename:
         return secure_filename(slug+os.path.splitext(f.filename)[1].lower())
 
-@media.route('/media/upload', methods=['GET', 'POST'])
+@media.route('/media/upload', methods=['POST'])
 @requires_privilege('edit')
 def upload():
     form = UploadImageForm(request.form)

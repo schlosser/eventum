@@ -3,6 +3,7 @@
 {% import "macros.html" as macros %}
 {% block title %}Edit {{ event.title }}{% endblock %}
 {% block pagetitle %}Edit Post{% endblock %}
+{% block pagelink %}{{ url_for('events.index') }}{% endblock %}
 
 {% block action %}
 action="{{ url_for('events.edit', event_id=event.id) }}"

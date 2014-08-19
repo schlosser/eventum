@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta, date
 
 from flask import Blueprint, request, render_template, g, redirect, \
     url_for, flash, abort, jsonify
@@ -16,22 +16,61 @@ events = Blueprint('events', __name__)
 @login_required
 def index():
     """"""
-    offset = int(request.args.get('week')) if request.args.get('week') else 0
-    today_year, today_week, _ = datetime.now().isocalendar()
-    today_index = today_year*52 + today_week + 2*offset
-    events = {
-        "this_week": [],
-        "next_week": []
-    }
-    for event in [e for e in Event.objects() if e.start_date]:
-        year, week, _ = event.start_date.isocalendar()
-        index = year*52 + week
-        if index == today_index:
-            events["this_week"].insert(0, event)
-        elif index == today_index + 1:
-            events["next_week"].insert(0,event)
 
-    return render_template('admin/events/events.html', events=events)
+    past = int(request.args.get('past')) if request.args.get('past') else 0
+    future = int(request.args.get('future')) if request.args.get('future') else 0
+
+    past_events, this_week, next_week, future_events = \
+    _get_events_for_template(past, future)
+
+    return render_template('admin/events/events.html',
+                           past_events=past_events,
+                           this_week=this_week,
+                           next_week=next_week,
+                           future_events=future_events)
+
+def _format_for_display(dt):
+    """"""
+    return dt.strftime("%A, %B ") + str(int(dt.strftime("%d")))
+
+def _get_events_for_template(past, future):
+    """"""
+    today = date.today()
+    last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)+7),
+                                   datetime.min.time())
+    next_sunday = last_sunday + timedelta(days=7)
+    following_sunday = last_sunday + timedelta(days=14)
+
+    this_week = Event.objects(start_date__gt=last_sunday,
+                              start_date__lt=next_sunday).order_by('start_date')
+    next_week = Event.objects(start_date__gt=next_sunday,
+                              start_date__lt=following_sunday).order_by('start_date')
+    past_events = []
+    future_events = []
+
+    for week_no in range(past):
+        ending_sunday = last_sunday - timedelta(days=7 * week_no)
+        starting_sunday = last_sunday - timedelta(days=7 * (week_no + 1))
+        week_name = _format_for_display(starting_sunday)
+        events = Event.objects(start_date__gt=starting_sunday,
+                               start_date__lt=ending_sunday)
+        past_events.insert(0, {
+            'week_name': week_name,
+            'events': events,
+        })
+
+    for week_no in range(future):
+        starting_sunday = following_sunday + timedelta(days=7 * week_no)
+        ending_sunday = last_sunday + timedelta(days=7 * (week_no + 1))
+        week_name = _format_for_display(starting_sunday)
+        events = Event.objects(start_date__gt=starting_sunday,
+                               start_date__lt=ending_sunday)
+        future_events.append({
+            'week_name': week_name,
+            'events': events,
+        })
+
+    return past_events, this_week, next_week, future_events
 
 from app import gcal_client
 @events.route('/gcal/cals', methods=['GET'])

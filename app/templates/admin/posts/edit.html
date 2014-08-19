@@ -15,6 +15,7 @@
 
 {% block title %}Write a Blog Post{% endblock %}
 {% block pagetitle %}Edit Post{% endblock %}
+{% block pagelink %}{{ url_for('posts.index') }}{% endblock %}
 {% set active_page="Blog" %}
 
 {% block js %}
@@ -25,7 +26,8 @@
 {% endblock %}
 
 {% block barleft %}
-<a href="{{ url_for('posts.index') }}"><i class="fa fa-arrow-left fa-2x"></i></a>
+<i class="fa fa-arrow-left fa-2x"></i>
+{{ super() }}
 {% endblock %}
 
 {% block barright %}
@@ -89,12 +91,12 @@
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
     {{ macros.render_field(form.images, hidden="hidden")}}
     {{ macros.render_field(form.featured_image, hidden="hidden")}}
-    <div class="full-width" id="epiceditor"></div>
+    <div id="epiceditor"></div>
     <div class="image-help-text">
         <h3>Add Images</h3>
         <p class="small">Images can be reference by name in markdown once they have been added here.</p>
     </div>
-    <ul class="full-width image-grid small-grid selected-images clearfix">
+    <ul class="image-grid small-grid selected-images clearfix">
         <a href="#show-modal">
             <li class="image add-image">
                 <i class="fa fa-plus fa-6x"></i>
