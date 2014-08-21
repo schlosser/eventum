@@ -5,7 +5,7 @@ from app.forms.fields import DateField
 from app.models.fields import TimeField
 import markdown
 
-from datetime import datetime
+from datetime import datetime, timedelta, time
 now = datetime.now
 
 class Event(db.Document):
@@ -100,6 +100,35 @@ class Event(db.Document):
             self.long_description,
             self.image
             ])
+
+    def is_multiday(self):
+        """Retuns whether or not the event spans muliple days or not."""
+        if self.start_date == self.end_date:
+            return False
+        if self.start_date == self.end_date - timedelta(days=1) and self.end_time.hour() < 5:
+            return False
+        return True
+
+    def human_readable_date(self):
+        """Return the date of the event (presumed not multiday) formatted like:
+            1. Sunday, March 31
+        """
+        return self.start_date.strftime("%A, %B %d")
+
+    def human_readable_time(self):
+        """Return the time range of the event (presumed not multiday) formatted
+        like:
+            1. 11am - 2:15pm
+            2. 3 - 7:30pm
+        """
+        output = ''
+        if self.start_time.strftime("%p")==self.end_time.strftime("%p"):
+            format = "%I:%M-"
+        else:
+            format = "%I:%M%p-".lower()
+        output += self.start_time.strftime(format).lstrip("0")
+        output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
+        return output
 
     def human_readable_datetime(self):
         """Format the start and end date date in one of the following three

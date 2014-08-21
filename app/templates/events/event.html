@@ -2,42 +2,72 @@
 {% block title %}{{ event.title}} | {{ super() }}{% endblock %}
 {% import "macros.html" as macros %}
 
-{% block hero %}
-<i class="solid blue"></i>
+{% set should_include_hero = False%}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_single_event" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
 {% endblock %}
 
+{% block heroclass %}hidden{% endblock %}
+{% block hero %}
+{% endblock %}
+
+{% block mainclass %}no-hero{% endblock %}
 {% block main %}
-<section class="tagline">
-    <h1>{{ event.title }}</h1>
-</section>
-<section class="single-event card top-card">
-    <div class="content">
-        <div class="event">
-            <i class="image" style="background-image:url({{event.image_url()}});"></i>
-            <div class="text">
-                <a href="{{ event.get_absolute_url() }}">
-                    <h2>{{ event.title }}</h2>
-                </a>
-                <div class="details">
-                    <p>
-                        <i class="fa fa-calendar"></i>
-                        {{ event.human_readable_datetime() }}
-                    </p>
-                    <p>
-                        <i class="fa fa-map-marker"></i>
-                        {{ event.location }}
-                    </p>
-                </div>
+<section class="single-event">
+    <div class="content with-sidebar">
+        <div class="content-inner">
+            <h1>{{ event.title }}</h1>
+            <p>{{ event.long_description | safe }}</p>
+        </div>
+        <div class="sidebar">
+            <img src="{{event.image_url()}}" />
+            <div class="details">
+                {% if event.is_multiday() %}
+                <p>
+                    <i class="fa fa-calendar"></i>
+                    {{ event.human_readable_datetime() }}
+                </p>
+                {% else %}
+                <p>
+                    <i class="fa fa-calendar"></i>
+                    {{ event.human_readable_date() }}
+                </p>
+                <p>
+                    <i class="fa fa-clock-o"></i>
+                    {{ event.human_readable_time() }}
+                </p>
+                {% endif %}
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    {{ event.location }}
+                </p>
             </div>
         </div>
-        <p>{{ event.long_description | safe }}</p>
     </div>
 </section>
 <section>
     <div class="content">
+        <div class="section-header">
+            <h4>Other Upcoming Events</h4>
+            <span class="bar blue"></span>
+        </div>
+        <div class="triple-event">
+            {% for event in upcoming_events %}
+                {{ macros.small_event(event) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% if previous_index is defined or next_index is defined %}
+<section>
+    <div class="content">
         <div class="pagination">
             <div class="previous">
-                {% if previous_index >= 0 %}
+                {% if previous_index is defined %}
                 <a href="{{ url_for('client.recurring_event',
                             slug=event.slug,
                             index=previous_index) }}">
@@ -46,7 +76,7 @@
                 {% endif %}
             </div>
             <div class="next">
-                {% if next_index >= 0 %}
+                {% if next_index is defined %}
                 <a href="{{ url_for('client.recurring_event',
                             slug=event.slug,
                             index=next_index) }}">
@@ -57,5 +87,5 @@
         </div>
     </div>
 </section>
-
+{% endif %}
 {% endblock main %}

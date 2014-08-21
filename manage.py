@@ -1,21 +1,25 @@
+import gflags
 from sys import argv, exit
 from oauth2client.file import Storage
 from config import flask_config
 
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.tools import run
+from oauth2client.client import flow_from_clientsecrets
+from oauth2client.tools import run_flow
+from oauth2client import tools
+import argparse
 from script import backfill_blog, import_images
 
+parser = argparse.ArgumentParser(parents=[tools.argparser])
+FLAGS = parser.parse_args()
+
 def authorize_google_calendar():
-    FLOW = OAuth2WebServerFlow(
-        client_id=flask_config.CLIENT_ID,
-        client_secret=flask_config.CLIENT_SECRET,
-        scope='https://www.googleapis.com/auth/calendar',
-        user_agent='EVENTUM/0.1')
+
+    FLOW = flow_from_clientsecrets('client_secrets.json',
+                   scope='https://www.googleapis.com/auth/calendar')
 
     # Save the credentials file here for use by the app
     storage = Storage(flask_config.CREDENTIALS_PATH)
-    run(FLOW, storage)
+    run_flow(FLOW, storage, FLAGS)
 
 def print_usage():
     print "Usage:"
@@ -24,12 +28,9 @@ def print_usage():
     print "%s --import-images (-i) Import images from data/jekyll-images" % argv[0]
 
 if __name__ == '__main__':
-    if '--authorize' in argv or '-a' in argv:
-        authorize_google_calendar()
-    elif '--backfill-blog' in argv or '-b' in argv:
+    if '--backfill-blog' in argv or '-b' in argv:
         backfill_blog.backfill_from_jekyll('data/jekyll-posts')
     elif '--import-images' in argv or '-i' in argv:
         import_images.import_from_directory('data/jekyll-images')
     else:
-        print_usage()
-        exit(1)
+        authorize_google_calendar()

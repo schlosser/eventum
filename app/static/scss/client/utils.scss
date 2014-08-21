@@ -1,4 +1,4 @@
-@import '../common/utils.scss';
+@import '../common/utils';
 @import 'colors';
 @import 'base';
 
@@ -25,4 +25,10 @@ button, .button {
     background: -o-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* W3C */
+}
+
+@mixin shadow {
+    box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
+    -moz-box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
+    -webkit-box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
 }

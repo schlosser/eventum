@@ -49,18 +49,22 @@ $hero-height: 32rem;
     }
 }
 
-.main {
-    margin-top: -15rem;
-}
 
 $section-top: 3.75rem;
 $section-bottom: 1.25rem;
 .main {
+    margin-top: -15rem;
+    &.no-hero {
+        margin-top: ($navbar-height + 5rem);
+    }
 
     .tagline h1 {
-        text-align: center;
         color: $white;
-        margin-bottom: 1.5rem;
+        margin: 1.5rem auto 0;
+        width: $content-width;
+        &.centered {
+            text-align: center;
+        }
     }
 
     section {

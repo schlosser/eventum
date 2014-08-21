@@ -33,5 +33,5 @@
             transition: $speed $delay ease all;
 }
 @mixin transition($speed) {
-    @include transition-width-delay($speed, 0);
+    @include transition-with-delay($speed, 0);
 }

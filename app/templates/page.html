@@ -41,15 +41,14 @@
 
 {{ macros.navbar(navbar_items) }}
 
-
-<div class="hero">
+<div class="hero {% block heroclass %}{% endblock %}">
     {% block hero %}
     <div class="scrim"></div>
     <i style="background-image: url({% block header_image %}/static/img/hero/header.jpg{% endblock%});"></i>
     {% endblock %}
 </div>
 
-<div class="main">
+<div class="main {% block mainclass %}{% endblock %}">
     {% block main %}{% endblock %}
 </div>
 {% endblock body %}

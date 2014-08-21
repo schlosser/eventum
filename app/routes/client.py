@@ -66,6 +66,7 @@ def event(slug):
 
     event = Event.objects(slug=slug)[0]
 
+
     if event.is_recurring:
         upcoming_event_instances = Event.objects(slug=slug, start_date__gt=datetime.now()).order_by('start_date')
         if upcoming_event_instances:
@@ -73,11 +74,21 @@ def event(slug):
         else:
             event = event.parent_series.events[-1]
         previous_index, next_index = _neighbor_indexes_for_event(event)
+
+        upcoming_events = Event.objects(start_date__gt=datetime.now(),
+                                id__ne=event.id).order_by('start_date')[:3]
+
+
         return render_template('events/event.html', event=event,
+                               upcoming_events=upcoming_events,
                                previous_index=previous_index,
                                next_index=next_index)
 
-    return render_template('events/event.html', event=event)
+    upcoming_events = Event.objects(start_date__gt=datetime.now(),
+                                    id__ne=event.id).order_by('start_date')[:3]
+
+    return render_template('events/event.html', event=event,
+                           upcoming_events=upcoming_events)
 
 @client.route('/events/<slug>/<index>')
 def recurring_event(slug, index):
@@ -86,11 +97,16 @@ def recurring_event(slug, index):
 
     event = Event.objects(slug=slug)[0]
 
+    upcoming_events = Event.objects(start_date__gt=datetime.now(),
+                                id__ne=event.id).order_by('start_date')[:3]
+
+
     if not event.is_recurring or not event.parent_series:
         return redirect(url_for('.event', slug=slug))
 
     event = event.parent_series.events[int(index)]
     previous_index, next_index = _neighbor_indexes_for_event(event)
     return render_template('events/event.html', event=event,
+                           upcoming_events=upcoming_events,
                            previous_index=previous_index,
                            next_index=next_index)

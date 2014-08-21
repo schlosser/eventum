@@ -81,6 +81,11 @@
       "scss_blog": {
         "output": "blog.css",
         "inputs": [ "scss/client/blog/*.scss" ]
+      },
+
+      "scss_single_event": {
+        "output": "single_event.css",
+        "inputs": [ "scss/client/single_event/*.scss" ]
       }
     }
   }
