@@ -4,7 +4,6 @@ $ribbon-height: 0.3125rem;
 $ribbon-strip-width: 7.5rem;
 body { padding-top: $ribbon-height; }
 .ribbon {
-    @include transition-with-delay(0.1s, 0.2s);
     position: fixed;
     top: 0;
     z-index: 10000;
@@ -24,8 +23,5 @@ body { padding-top: $ribbon-height; }
             &.yellow { background-color: $yellow; }
         }
 
-    }
-    &:hover, &:hover .ribbon-strip {
-        height: 0.625rem;
     }
 }

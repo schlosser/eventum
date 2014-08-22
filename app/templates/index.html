@@ -34,6 +34,21 @@
         {% endif %}
     </div>
 </section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Upcoming</h4>
+            <span class="bar green"></span>
+        </div>
+        <div class="triple">
+            {% if events %}
+            {% for index in range(1,(events|length)) %}
+            {{ macros.small_event(events[index]) }}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
 <section class="full yellow callout">
     <div class="content">
         <div class="callout-left">
@@ -49,7 +64,11 @@
             <p>Learn more in <a href="/resources">Resources</a></p>
         </div>
         <div class="callout-right">
-            <div class="blue card"></div>
+            <div class="card">
+                <a href="http://courses.adicu.com">
+                    <img src="{{ url_for('static', filename='img/courses_by_adi.png') }}"/>
+                </a>
+            </div>
         </div>
     </div>
 </section>

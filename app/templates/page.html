@@ -28,15 +28,13 @@
 
 {%- block body -%}
 <div class="ribbon">
-    <a href="#top">
-        <div class="ribbon-inner">
-            {% for i in range(8) %}
-            <span class="ribbon-strip blue"></span>
-            <span class="ribbon-strip yellow"></span>
-            <span class="ribbon-strip green"></span>
-            {% endfor %}
-        </div>
-    </a>
+    <div class="ribbon-inner">
+        {% for i in range(8) %}
+        <span class="ribbon-strip blue"></span>
+        <span class="ribbon-strip yellow"></span>
+        <span class="ribbon-strip green"></span>
+        {% endfor %}
+    </div>
 </div>
 
 {{ macros.navbar(navbar_items) }}
