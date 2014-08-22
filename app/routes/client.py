@@ -9,6 +9,10 @@ def index():
     events=Event.objects(end_date__gt=datetime.now()).order_by('start_date-')[:4]
     return render_template('index.html', events=events)
 
+@client.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @client.route('/events')
 def events():
     today = date.today()

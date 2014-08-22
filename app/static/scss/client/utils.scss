@@ -20,6 +20,16 @@ button, .button {
     &.blue {
         background-color: $blue;
         color: $white;
+        a {
+            color: $white !important;
+        }
+    }
+    &.green {
+        background-color: $green;
+        color: $white;
+        a {
+            color: $white !important;
+        }
     }
 }
 
