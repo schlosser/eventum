@@ -1,0 +1,55 @@
+@import '../colors';
+@import '../utils';
+
+$image-separation: 1.25rem;
+.triple {
+    width: 100%;
+    &:after {
+        @include clearfix;
+    }
+
+    $small-event-width: 18.75rem;
+    $small-image-height: 14.0625rem;
+    .small {
+        margin-top: 0;
+        float: left;
+        display: inline-block;
+        width: 33.3333333%;
+        position: relative;
+
+        &:first-child > .inner {
+            padding-right: ($image-separation *2/3);
+        }
+        &:nth-child(2) > .inner {
+            padding: 0 ($image-separation/3);
+        }
+        &:nth-child(3) > .inner {
+            padding-left: ($image-separation *2/3);
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-bottom: .625rem;
+            background-position: center center;
+            background-size: cover;
+        }
+        .text {
+            position: relative;
+            left: 0;
+            height: auto;
+            padding-bottom: 5rem;
+            .details {
+                position: relative;
+                width: 100%;
+                color: $lightgray;
+            }
+            p {
+                font-size: 1rem;
+                line-height: 1.2rem;
+            }
+        }
+    }
+}

@@ -37,6 +37,7 @@ def post(slug):
         abort(404)
     post = BlogPost.objects().get(slug=slug)
 
+    recent_posts = BlogPost.objects(id__ne=post.id, featured_image__ne=None).order_by('-date_published')[:3]
     if not post.published:
         abort(404)
-    return render_template('blog/post.html', post=post)
+    return render_template('blog/post.html', post=post, recent_posts=recent_posts)

@@ -1,21 +1,54 @@
 {% extends 'page.html' %}
 {% block title %}{{ post.title }} | {{ super() }}{% endblock %}
+{% import "macros.html" as macros %}
 
+{% set should_include_hero = False%}
 
+{% block css %}
+{{ super() }}
+{% assets "scss_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block heroclass %}hidden{% endblock %}
+{% block hero %}
+{% endblock %}
+
+{% block mainclass %}no-hero{% endblock %}
 {% block main %}
-<section class="tagline">
-    <h1>{{ post.title }}</h1>
-</section>
-<section class="card top-card">
-    <div class="post content">
+<section class="single post">
+    <div class="content">
         {% if post.featured_image %}
-        <img class="post-image" src="{{ post.featured_image.url() }}" />
+        <i class="image"
+           style="background-image:url({{ post.featured_image.url() }})"></i>
         {% endif %}
-        <p class="date-published">Posted on {{post.human_readable_date() }} </p>
-        <p class="author">By {{post.author.name}}</p>
-        {{ post.html_content | safe }}
+        <h1>{{ post.title }}</h1>
+        <div class="details">
+            <div class="section-header">
+                <h4>{{ post.human_readable_date() }}</h4>
+                <span class="bar yellow"></span>
+            </div>
+            <img class="author" src="{{ post.author.image_url }}"/>
+            <span class="author">{{post.author.name}}</span>
+
+        </div>
+        <div class="text">
+            {{ post.html_content | safe }}
+        </div>
     </div>
 </section>
-<section class="post">
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Recent Posts</h4>
+            <span class="bar blue"></span>
+        </div>
+        <div class="triple">
+            {% for p in recent_posts %}
+                {{ macros.small_post(p) }}
+            {% endfor %}
+        </div>
+    </div>
 </section>
-{% endblock %}
+{% endblock main %}

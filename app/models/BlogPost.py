@@ -23,7 +23,7 @@ class BlogPost(Post):
         return url_for('blog.post', slug=self.slug)
 
     def human_readable_date(self):
-        return self.date_published.strftime('%b %d %Y')
+        return self.date_published.strftime('%b %d, %Y')
 
     def pretty_date(self):
         if self.published:

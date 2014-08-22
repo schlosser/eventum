@@ -47,8 +47,23 @@
     <i style="background-image: url({% block header_image %}/static/img/hero/header.jpg{% endblock%});"></i>
     {% endblock %}
 </div>
-
 <div class="main {% block mainclass %}{% endblock %}">
     {% block main %}{% endblock %}
 </div>
+<footer>
+    <div class="content">
+        <p>
+            Built by Dan Schlosser <br />
+            Maintained by ADI Infrastructure
+        </p>
+        <p class="right">
+            This work is licensed under a <br />
+            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+                Creative Commons license.
+            </a>
+        </p>
+    </div>
+</footer>
 {% endblock body %}
+
+

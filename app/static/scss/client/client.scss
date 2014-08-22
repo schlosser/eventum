@@ -3,6 +3,7 @@
 @import 'components/navbar';
 @import 'components/events';
 @import 'components/ribbon';
+@import 'components/footer';
 
 $content-padding: 0.625rem;
 .content {
@@ -23,8 +24,9 @@ $content-padding: 0.625rem;
     display: block;
 }
 
-$hero-height: 32rem;
+$hero-height: 38rem;
 .hero {
+    padding-top: $navbar-height;
     position: relative;
     height: $hero-height;
     .scrim {
@@ -32,13 +34,14 @@ $hero-height: 32rem;
         height: 100%;
         width: 100%;
         position: absolute;
+        top: 0;
     }
 
     i {
-        height: 100%;
         display: block;
+        margin-top: -$navbar-height;
+        height: ($hero-height + $navbar-height);
         width: 100%;
-        background-width: 100%;
         background-position: center center;
     }
 
@@ -54,22 +57,27 @@ $section-top: 3.75rem;
 $section-bottom: 1.25rem;
 .main {
     margin-top: -15rem;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
     &.no-hero {
-        margin-top: ($navbar-height + 5rem);
+        margin-top: ($navbar-height + 3rem);
     }
 
     .tagline h1 {
         color: $white;
-        margin: 1.5rem auto 0;
+        margin: 1.5rem auto;
         width: $content-width;
-        &.centered {
-            text-align: center;
-        }
+        text-align: center;
     }
 
     section {
         position: relative;
 
+        &:after {
+            @include clearfix;
+        }
         &:not(:first-child) {
             padding-top: $section-top;
             padding-bottom: $section-bottom;

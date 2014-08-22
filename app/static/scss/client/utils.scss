@@ -16,6 +16,11 @@ button, .button {
         background-color: $gray;
         color: $white;
     }
+
+    &.blue {
+        background-color: $blue;
+        color: $white;
+    }
 }
 
 @mixin scrim {

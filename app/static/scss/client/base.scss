@@ -8,10 +8,11 @@ $regular: 400;
 $sans: 'Merriweather Sans', 'Helvetica Neue', Helvetica, Ariel sans-serif;
 $slab:'Roboto Slab', Georgia, serif;
 
-body, html {
+html, body {
     font-family: $sans;
     font-weight: $regular;
     font-size: 16px;
+    height: 100%;
 }
 
 p {
@@ -20,6 +21,14 @@ p {
     font-weight: $regular;
     font-size: 1.4rem;
     line-height: 2rem;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 700;
 }
 
 img {
@@ -79,8 +88,8 @@ h4, .h4 {
 h5, .h5 {
     font-family: $slab;
     font-weight: $regular;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
     margin-bottom: 0.625rem;
     color: $gray;
 }

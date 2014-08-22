@@ -1,0 +1,56 @@
+@import '../colors';
+@import 'triple';
+
+.single {
+    margin-bottom: 2rem;
+
+    h1 {
+        margin: 2rem 0;
+    }
+
+    .image {
+        display: block;
+        background-color: $lightgray;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .text {
+        margin-top: 1rem;
+        p {
+            font-family: $sans;
+            font-size: 1.4rem;
+            line-height: 2.1rem;
+            padding-left: ($image-separation/3);
+            width: 100%;
+            & + p {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    .details {
+        margin-top: 0.5rem;
+        font-size: 2rem;
+        width: 30%;
+        float: left;
+
+        .button {
+            margin-top: 1rem;
+        }
+        p {
+            font-family: $sans;
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            line-height: 2rem;
+        }
+        i {
+            font-size: 1.3rem;
+            width: 2.5rem;
+            margin-right:0.5rem;
+            text-align: center;
+        }
+    }
+}

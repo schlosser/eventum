@@ -7,6 +7,7 @@
 <section class="tagline">
     <h1>Events</h1>
 </section>
+{% if events_this_week %}
 <section class="card top-card">
     <div class="content">
         <div class="section-header">
@@ -18,8 +19,13 @@
         {% endfor %}
     </div>
 </section>
+{% endif %}
 {% if upcoming_events %}
+{% if events_this_week %}
 <section>
+{% else %}
+<section class="card top-card">
+{% endif %}
     <div class="content">
         <div class="section-header">
             <h4>Next Week</h4>
@@ -59,7 +65,7 @@
             <span class="bar blue"></span>
         </div>
         {% for triple in range(((recent_events|length) // 3) + 1) %}
-        <div class="triple-event">
+        <div class="triple">
             {% for i in range(3) %}
             {% with index = 3 * triple + i %}
             {% if index < (recent_events | length) %}

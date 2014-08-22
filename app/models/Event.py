@@ -111,9 +111,9 @@ class Event(db.Document):
 
     def human_readable_date(self):
         """Return the date of the event (presumed not multiday) formatted like:
-            1. Sunday, March 31
+            1. Sunday, Mar 31
         """
-        return self.start_date.strftime("%A, %B %d")
+        return self.start_date.strftime("%A, %b %d")
 
     def human_readable_time(self):
         """Return the time range of the event (presumed not multiday) formatted

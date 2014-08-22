@@ -52,13 +52,6 @@ def event_archive(index):
                            previous_index=previous_index,
                            next_index=next_index)
 
-def _neighbor_indexes_for_event(event):
-    """"""
-    index = event.parent_series.events.index(event)
-    next_index = index + 1 if index + 1 < len(event.parent_series.events) else None
-    previous_index = index - 1 if index -1 >= 0 else None
-    return previous_index, next_index
-
 @client.route('/events/<slug>')
 def event(slug):
     if Event.objects(slug=slug).count() == 0:
@@ -73,16 +66,13 @@ def event(slug):
             event = upcoming_event_instances[0]
         else:
             event = event.parent_series.events[-1]
-        previous_index, next_index = _neighbor_indexes_for_event(event)
 
         upcoming_events = Event.objects(start_date__gt=datetime.now(),
                                 id__ne=event.id).order_by('start_date')[:3]
 
 
         return render_template('events/event.html', event=event,
-                               upcoming_events=upcoming_events,
-                               previous_index=previous_index,
-                               next_index=next_index)
+                               upcoming_events=upcoming_events)
 
     upcoming_events = Event.objects(start_date__gt=datetime.now(),
                                     id__ne=event.id).order_by('start_date')[:3]
@@ -95,6 +85,8 @@ def recurring_event(slug, index):
     if Event.objects(slug=slug).count() == 0:
         abort(404) # Either invalid event ID or duplicate IDs.
 
+    index = int(index)
+
     event = Event.objects(slug=slug)[0]
 
     upcoming_events = Event.objects(start_date__gt=datetime.now(),
@@ -104,9 +96,9 @@ def recurring_event(slug, index):
     if not event.is_recurring or not event.parent_series:
         return redirect(url_for('.event', slug=slug))
 
-    event = event.parent_series.events[int(index)]
-    previous_index, next_index = _neighbor_indexes_for_event(event)
+    if len(event.parent_series.events) <= index:
+      abort(404)
+
+    event = event.parent_series.events[index]
     return render_template('events/event.html', event=event,
-                           upcoming_events=upcoming_events,
-                           previous_index=previous_index,
-                           next_index=next_index)
+                           upcoming_events=upcoming_events)

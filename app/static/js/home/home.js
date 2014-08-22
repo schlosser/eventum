@@ -13,11 +13,11 @@ $(function() {
         }, 200  );
     });
 
-    $(window).scroll( function(e) {
-        if ($(window).scrollTop() > 20) {
-            $('.navbar').addClass('scroll');
-        } else {
-            $('.navbar').removeClass('scroll');
-        }
-    });
+    // $(window).scroll( function(e) {
+    //     if ($(window).scrollTop() > 200) {
+    //         $('.navbar').addClass('scroll');
+    //     } else {
+    //         $('.navbar').removeClass('scroll');
+    //     }
+    // });
 });
