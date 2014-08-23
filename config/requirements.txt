@@ -14,6 +14,7 @@ coverage==3.7.1
 flask-mongoengine==0.7.0
 gnureadline==6.3.3
 google-api-python-client==1.2
+gunicorn==19.1.1
 httplib2==0.8
 ipdb==0.8
 ipython==2.1.0
