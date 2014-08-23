@@ -105,7 +105,7 @@ class Event(db.Document):
         """Retuns whether or not the event spans muliple days or not."""
         if self.start_date == self.end_date:
             return False
-        if self.start_date == self.end_date - timedelta(days=1) and self.end_time.hour() < 5:
+        if self.start_date == self.end_date - timedelta(days=1) and self.end_time.hour < 5:
             return False
         return True
 
@@ -125,8 +125,8 @@ class Event(db.Document):
         if self.start_time.strftime("%p")==self.end_time.strftime("%p"):
             format = "%I:%M-"
         else:
-            format = "%I:%M%p-".lower()
-        output += self.start_time.strftime(format).lstrip("0")
+            format = "%I:%M%p-"
+        output += self.start_time.strftime(format).lstrip("0").lower()
         output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
         return output
 
@@ -148,8 +148,8 @@ class Event(db.Document):
         if self.start_time:
             start_format = "%I:%M-" if self.end_time and \
                 self.start_time.strftime("%p")==self.end_time.strftime("%p") \
-                else "%I:%M%p-".lower()
-            output += self.start_time.strftime(start_format).lstrip("0")
+                else "%I:%M%p-"
+            output += self.start_time.strftime(start_format).lstrip("0").lower()
         else:
             output += "??:?? - "
         if self.end_date:

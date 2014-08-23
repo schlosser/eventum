@@ -6,7 +6,7 @@ client = Blueprint('client', __name__)
 
 @client.route('/')
 def index():
-    events=Event.objects(end_date__gt=datetime.now()).order_by('start_date-')[:4]
+    events=Event.objects(end_date__gt=datetime.now()).order_by('start_date')[:4]
     return render_template('index.html', events=events)
 
 @client.route('/contact')
