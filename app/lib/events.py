@@ -2,6 +2,7 @@ from app.models import Event, EventSeries, Image
 from app.forms import CreateEventForm
 from datetime import timedelta
 from app import gcal_client
+from app.lib.error import GoogleCalendarAPIMissingID
 
 
 class EventsHelper(object):
@@ -216,7 +217,10 @@ class EventsHelper(object):
     @classmethod
     def delete_single_event(klass, event):
         """"""
-        response = gcal_client.delete_event(event)
+        try:
+            response = gcal_client.delete_event(event)
+        except GoogleCalendarAPIMissingID:
+            response = None
         event.delete()
 
         # Return the Google Calendar response
@@ -226,7 +230,10 @@ class EventsHelper(object):
     def delete_single_event_from_series(klass, event):
         """"""
         # Cancel the series on Google Calendar
-        response = gcal_client.delete_event(event, as_exception=True)
+        try:
+            response = gcal_client.delete_event(event, as_exception=True)
+        except GoogleCalendarAPIMissingID:
+            response = None
 
         # Delete the one event
         event.parent_series.delete_one(event)
@@ -238,7 +245,10 @@ class EventsHelper(object):
     def delete_series(klass, event):
         """"""
         # Delete the series
-        response = gcal_client.delete_event(event)
+        try:
+            response = gcal_client.delete_event(event)
+        except GoogleCalendarAPIMissingID:
+            response = None
         event.parent_series.delete_all()
 
         # Return the Google Calendar response
