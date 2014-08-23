@@ -74,17 +74,23 @@ $hero-height: 38rem;
     }
 }
 
+.all-wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: (-1*($footer-height + 2 * $footer-padding));
+}
 
 $section-top: 3.75rem;
 $section-bottom: 1.25rem;
 .main {
     margin-top: -15rem;
-    min-height: 100%;
     height: auto !important;
     height: 100%;
 
     &.no-hero {
-        margin-top: ($navbar-height + 3rem);
+        padding-top: ($navbar-height + 3rem);
+        margin-top: 0;
     }
 
     .tagline h1 {

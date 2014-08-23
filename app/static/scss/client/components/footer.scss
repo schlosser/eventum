@@ -1,11 +1,14 @@
 @import '../colors';
 @import '../utils';
 
+$footer-height: 4rem;
+$footer-padding: 4rem;
 footer {
     @extend .clearfix;
     background-color: $offgray;
     color: $white;
-    padding: 4rem;
+    padding: $footer-padding;
+    height: $footer-height;
     p {
         float: left;
         font-size: 1rem;
@@ -21,4 +24,8 @@ footer {
             float: right;
         }
     }
+}
+
+.footer-spacer {
+    height: ($footer-height + 2*$footer-padding);
 }
