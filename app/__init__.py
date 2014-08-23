@@ -46,6 +46,8 @@ def create_app(**config_overrides):
     register_blueprints()
     register_delete_rules()
 
+    return app
+
 def register_blueprints():
     """Registers all the Blueprints (modules) in a function, to avoid
     circular dependancies.
