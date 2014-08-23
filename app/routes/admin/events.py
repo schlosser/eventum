@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta, date
 
 from flask import Blueprint, request, render_template, g, redirect, \
-    url_for, flash, abort, jsonify
+    url_for, flash, jsonify
 
 from bson.objectid import ObjectId
+from mongoengine.errors import DoesNotExist, ValidationError
 
 from app.models import Event, Image
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
@@ -61,7 +62,7 @@ def _get_events_for_template(past, future):
 
     for week_no in range(future):
         starting_sunday = following_sunday + timedelta(days=7 * week_no)
-        ending_sunday = last_sunday + timedelta(days=7 * (week_no + 1))
+        ending_sunday = following_sunday + timedelta(days=7 * (week_no + 1))
         week_name = _format_for_display(starting_sunday)
         events = Event.objects(start_date__gt=starting_sunday,
                                start_date__lt=ending_sunday)
@@ -83,6 +84,7 @@ def create():
     """"""
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
+        import ipdb; ipdb.set_trace()
         EventsHelper.create_event(form, g.user)
         return redirect(url_for('.index'))
     if form.errors:
@@ -101,10 +103,11 @@ def create():
 @requires_privilege('edit')
 def edit(event_id):
     """"""
-    if Event.objects(id=event_id).count() != 1:
-        abort(500) # Either invalid event ID or duplicate IDs.
-
-    event = Event.objects().get(id=event_id)
+    try:
+        event = Event.objects().get(id=event_id)
+    except (DoesNotExist, ValidationError):
+        flash('Cannont find event with id "%s"' % event_id)
+        return redirect(url_for('.index'))
 
     form = EditEventForm(request.form) if request.method == 'POST' else \
         EventsHelper.create_form(event, request)

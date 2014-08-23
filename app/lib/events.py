@@ -120,6 +120,7 @@ class EventsHelper(object):
     @classmethod
     def update_series(klass, event, form, move_to=None):
         """"""
+        import ipdb; ipdb.set_trace()
         event_data = DataBuilder.event_data_from_form(form)
         date_data = DataBuilder.date_data_from_form(form)
 

@@ -4,6 +4,8 @@ from flask import Blueprint, render_template, request, send_from_directory, \
 from bson.objectid import ObjectId
 from bson.objectid import InvalidId
 
+from mongoengine.errors import DoesNotExist, ValidationError
+
 from app import app
 from app.models import BlogPost, Image
 from app.forms import CreateBlogPostForm, UploadImageForm
@@ -42,10 +44,12 @@ def edit(post_id):
         object_id = ObjectId(post_id)
     except InvalidId:
         return abort(404)
-    if BlogPost.objects(id=object_id).count() != 1:
-        abort(501)
+    try:
+        post = BlogPost.objects().with_id(object_id)
+    except (DoesNotExist, ValidationError):
+        flash('Cannot find blog post with id %s.' % post_id)
+        return redirect(url_for('.index'))
 
-    post = BlogPost.objects().with_id(object_id)
     if request.method == 'POST':
         form = CreateBlogPostForm(request.form)
         if form.validate_on_submit():

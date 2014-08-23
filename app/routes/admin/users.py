@@ -73,10 +73,12 @@ def delete(user_id):
 @login_required
 def user(slug):
     """"""
-    if User.objects(slug=slug).count() != 1:
+    try:
+        user = User.objects().get(slug=slug)
+    except DoesNotExist:
         flash("Invalid user slug '%s'" % slug)
-        abort(500)
-    user = User.objects().get(slug=slug)
+        return redirect(url_for('.index'))
+
     form = EditUserForm(request.form,
                         name=user.name,
                         email=user.email,

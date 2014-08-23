@@ -39,8 +39,8 @@ class CreateEventForm(Form):
     recurrence_end_date = DateField('Repeat End Date', [Optional()],
                                 format='%m/%d/%Y')
     recurrence_summary = StringField('Summary')
-    short_description = TextAreaField('Short description')
-    long_description = TextAreaField('Long description')
+    short_description = TextAreaField('Short description', default="Short Description.  This should be **one to two** sentences long.")
+    long_description = TextAreaField('Long description', default="Long Description.  This should be **four to five** sentences.  Feel free to include [links](http://adicu.com).")
     is_published = BooleanField('Is Published')
     update_all = BooleanField('Update all', default=False)
     event_image = StringField('Image', [image_with_same_name])

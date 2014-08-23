@@ -56,8 +56,12 @@ class GoogleCalendarAPIClient():
 
         calendar_id = self._calendar_id_for_event(event)
         print '[GOOGLE_CALENDAR]: Create Event'
-        created_event = self.service.events().insert(calendarId=calendar_id,
-                                                     body=resource).execute()
+        try:
+            created_event = self.service.events().insert(calendarId=calendar_id,
+                                                         body=resource).execute()
+        except httplib2.BadStatusLine:
+            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event'
+            pass
 
         self._update_event_from_response(event, created_event)
 
@@ -82,9 +86,19 @@ class GoogleCalendarAPIClient():
             event_id_for_update = instance['id']
 
         print '[GOOGLE_CALENDAR]: Update Event'
-        updated_event = self.service.events().update(calendarId=calendar_id,
-                                                     eventId=event_id_for_update,
-                                                     body=resource).execute()
+        try:
+            updated_event = self.service.events().update(calendarId=calendar_id,
+                                                         eventId=event_id_for_update,
+                                                         body=resource).execute()
+        except httplib2.BadStatusLine:
+            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event'
+            try:
+                updated_event = self.service.events().update(calendarId=calendar_id,
+                                                         eventId=event_id_for_update,
+                                                         body=resource).execute()
+            except httplib2.BadStatusLine:
+                print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event Again!'
+                return None
 
         self._update_event_from_response(event, updated_event)
 
@@ -127,9 +141,13 @@ class GoogleCalendarAPIClient():
             raise GoogleCalendarAPIMissingID()
 
         print '[GOOGLE_CALENDAR]: Move Event'
-        moved_event = self.service.events().move(calendarId=from_id,
-                                                 eventId=event.gcal_id,
-                                                 destination=to_id).execute()
+        try:
+            moved_event = self.service.events().move(calendarId=from_id,
+                                                     eventId=event.gcal_id,
+                                                     destination=to_id).execute()
+        except httplib2.BadStatusLine:
+            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Move Event'
+            return None
         return moved_event
 
     def delete_event(self, event, as_exception=False):
@@ -144,9 +162,13 @@ class GoogleCalendarAPIClient():
             instance = self._instance_resource_for_event_in_series(event)
             instance.update(resource)
             instance['status'] = u'cancelled'
-            updated_event = self.service.events().update(calendarId=calendar_id,
-                                                         eventId=instance['id'],
-                                                         body=instance).execute()
+            try:
+                updated_event = self.service.events().update(calendarId=calendar_id,
+                                                             eventId=instance['id'],
+                                                             body=instance).execute()
+            except httplib2.BadStatusLine:
+                print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event (as exception)'
+                return None
             return updated_event
 
         try:
@@ -154,6 +176,10 @@ class GoogleCalendarAPIClient():
                                                 eventId=event.gcal_id).execute()
         except HttpError as e:
             print e
+            return None
+        except httplib2.BadStatusLine:
+            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event'
+            return None
 
     def get_calendar_list_resources(self):
         """"""

@@ -74,14 +74,19 @@ $content-padding-small: 0.5rem;
         text-decoration: none !important;
     }
 }
+.topbar-spacer {
+    height: $topbar-height;
+    width: 100%;
+    display: block;
+}
+
 
 .flashes {
     color: $white;
     text-align: center;
     overflow: hidden;
     width: 100%;
-    display: inline;
-
+    display: block;
 
     .flash-wrapper {
         transition: 0.2s ease all;
@@ -112,7 +117,7 @@ $content-padding-small: 0.5rem;
     width: 90%;
     min-height: 100%;
     margin: 0 auto;
-    padding: (3.5rem + $content-padding) $content-padding $content-padding;
+    padding: $content-padding;
 
     .full-width {
         margin: 0 (-1 * $content-padding);
