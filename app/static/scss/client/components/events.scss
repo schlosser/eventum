@@ -2,46 +2,17 @@
 @import '../base';
 
 .event {
-    position: relative;
-
-    $image-width: 23.75rem;
-    $event-height: 17.8125rem;
-    .image {
-        display: inline-block;
-        background-color: $lightgray;
-        width: $image-width;
-        height: 17.8125rem;
-        background-position: center center;
-        background-size: cover;
+    .description {
+        margin-bottom: 1rem;
     }
-
-    .text {
-        height: $event-height;
-        display: inline-block;
-        position: absolute;
-        left: ($image-width + 2.5rem);
-        right: 0;
-
-        .description {
-            margin-bottom: 1rem;
+    .details {
+        margin-top: 1rem;
+        i {
+            font-size: 1.3rem;
+            width: 2.5rem;
+            margin-right:0.5rem;
+            text-align: center;
         }
-        p {
-            font-family: $sans;
-            font-size: 1.1rem;
-            line-height: 1.7rem;
-        }
-        .details {
-            i {
-                font-size: 0.8rem;
-                width: 1.5rem;
-                margin-right:0.5rem;
-                text-align: center;
-            }
-        }
-    }
-
-    & + .event:not(.small) {
-        margin-top: 2.5rem;
     }
     &:last-child {
         margin-bottom: 2.5rem;

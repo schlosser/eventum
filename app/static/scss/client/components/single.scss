@@ -21,8 +21,6 @@
         margin-top: 1rem;
         p {
             font-family: $sans;
-            font-size: 1.4rem;
-            line-height: 2.1rem;
             padding-left: ($image-separation/3);
             width: 100%;
             & + p {
@@ -33,18 +31,16 @@
 
     .details {
         margin-top: 0.5rem;
-        font-size: 2rem;
         width: 30%;
         float: left;
 
         .button {
             margin-top: 1rem;
         }
-        p {
+        p, span {
             font-family: $sans;
             margin-top: 1rem;
-            font-size: 1.4rem;
-            line-height: 2rem;
+            font-size: 1.2rem;
         }
         i {
             font-size: 1.3rem;

@@ -1,8 +1,12 @@
 {% extends 'page.html' %}
 {% block title %}Blog{% endblock %}
+{% import 'macros.html' as macros %}
 
 {% block css %}
 {{ super() }}
+{% assets "scss_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/lib/epiceditor/preview/github-highlighted.css')}}">
 {% endblock %}
 
@@ -24,12 +28,7 @@
             <span class="bar green"></span>
         </div>
         {% for post in posts%}
-        <a href="{{ url_for('blog.post', slug=post.slug) }}">
-            <h2 class="title">{{post.title}}</h2>
-        </a>
-        <p class="date-published">Posted on {{ post.human_readable_date() }} </p>
-        <p class="author">By {{post.author.name}}</p>
-        {{ post.snippet() | safe }}
+        {{ macros.post(post) }}
         {% endfor %}
     </div>
 </section>

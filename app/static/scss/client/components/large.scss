@@ -1,0 +1,46 @@
+@import '../colors';
+@import '../base';
+@import '../utils';
+
+.large {
+    position: relative;
+    &:after {
+        @include clearfix;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    .image {
+        display: inline-block;
+        width: 50%;
+        padding-bottom: 33.33333%;
+        position: relative;
+
+        i {
+            position: absolute;
+            right: 1rem;
+            left: 0;
+            background-position: center center;
+            height: 100%;
+            background-size: cover;
+        }
+    }
+
+    .text {
+        float: right;
+        width: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        padding-left: 1rem;
+        p {
+            font-family: $sans;
+        }
+    }
+
+
+    & + .large {
+        margin-top: 2.5rem;
+    }
+}
