@@ -84,7 +84,6 @@ def create():
     """"""
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
-        import ipdb; ipdb.set_trace()
         EventsHelper.create_event(form, g.user)
         return redirect(url_for('.index'))
     if form.errors:
