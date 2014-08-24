@@ -53,3 +53,14 @@ $image-separation: 1.25rem;
         }
     }
 }
+
+@media screen and (max-width: $phone-max) {
+    .triple .small {
+        width: 100%;
+        padding: 0!important;
+        margin-bottom: 1rem;
+        .text {
+            padding-bottom: 0;
+        }
+    }
+}

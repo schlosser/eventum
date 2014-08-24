@@ -1,7 +1,7 @@
 @import '../colors';
 @import '../base';
 @import '../utils';
-
+@import '../../common/media_queries';
 .large {
     position: relative;
     &:after {
@@ -43,5 +43,24 @@
 
     & + .large {
         margin-top: 2.5rem;
+    }
+}
+
+@media screen and (max-width: $phone-max){
+    .large {
+        .image {
+            width: 100%;
+            padding-bottom: 66%;
+            float: none;
+
+            i {
+                right: 0;
+            }
+        }
+        .text {
+            float: none;
+            padding-left: 0;
+            width: 100%;
+        }
     }
 }

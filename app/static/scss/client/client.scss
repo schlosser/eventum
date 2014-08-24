@@ -1,5 +1,6 @@
 @import 'base';
 @import 'colors';
+@import '../common/media_queries';
 @import 'components/navbar';
 @import 'components/events';
 @import 'components/ribbon';
@@ -105,7 +106,8 @@ $section-bottom: 1.25rem;
     .tagline h1 {
         color: $white;
         margin: 1.5rem auto;
-        width: $content-width;
+        width: 95%;
+        max-width: $content-width;
         text-align: center;
     }
 
@@ -265,3 +267,39 @@ $section-bottom: 1.25rem;
     }
 }
 
+@media screen and (max-width: $phone-max) {
+    .main .top-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .callout {
+        h3 {
+            width: 100%;
+        }
+        .callout-right {
+            display: none;
+        }
+        .callout-left {
+            width: 100%;
+        }
+    }
+
+    .main .subscribe {
+        .submit {
+            display: block;
+            margin: 0 auto;
+            float: none;
+            margin-top: 1rem;
+        }
+        .left  {
+            position:relative;
+
+            input[type="email"] {
+                width: 100%;
+            }
+        }
+    }
+
+}

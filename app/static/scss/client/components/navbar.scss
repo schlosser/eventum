@@ -1,6 +1,7 @@
 @import '../colors';
 @import '../utils';
 @import 'ribbon';
+@import '../../common/media_queries';
 
 $navbar-height: 5.5rem;
 $navbar-scroll-height: 3.5rem;
@@ -60,4 +61,23 @@ $speed: 0.3s;
     &.up {
         top: -$navbar-height;
     }
+}
+
+@media screen and (max-width: $phone-max) {
+    .navbar  {
+        &.up {
+            top: 0;
+        }
+
+        ul li{
+            a div {
+                padding: 0 0.75rem;
+            }
+
+            &:last-child a div {
+                margin-right: 0;
+            }
+        }
+    }
+
 }

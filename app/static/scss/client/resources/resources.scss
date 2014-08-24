@@ -83,6 +83,7 @@ section.with-sidebar {
         padding-top: $sidebar-padding-top;
         top:0;
         left: 0;
+        bottom: 0;
         overflow-y: scroll;
         width: $sidebar-width;
         z-index: 100;
@@ -132,6 +133,30 @@ section.with-sidebar {
                     font-family: $sans;
                     font-size: 1rem !important;
                     line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .sidebar {
+        display: none !important;
+    }
+    section.with-sidebar {
+        padding-left: 0 !important;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    .resources  {
+        li {
+            padding-top: 0;
+
+            .resource {
+                width: 100% !important;
+                margin-top: 1rem;
+                .inner {
+                    padding: 0 !important;
                 }
             }
         }
