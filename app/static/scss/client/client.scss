@@ -156,28 +156,38 @@ $section-bottom: 1.25rem;
         width: 95%;
         max-width: 51.25rem;
         margin: 0 auto;
+        position: relative;
 
         .submit {
             background-color: $green;
             color: $white;
-            margin-right: 1.25rem;
+            float: right;
+            display: inline-block;
+            width: 6rem;
+            text-align: center;
         }
 
         label {
             width: 8.125rem;
         }
+        .left {
+            position: absolute;
+            left: 0;
+            right: 14rem;
 
-        input[type="email"] {
-            border: 0;
-            width: 30rem;
-            margin-right: 1.25rem;
-            font-size: 1.875rem;
-            border-style: solid;
-            border-bottom: 1px solid $gray;
 
-            &:focus {
-                border-bottom: 1px solid $green;
-                outline: none;
+            input[type="email"] {
+                border: 0;
+                width: 100%;
+                margin-right: 8.25rem;
+                font-size: 1.875rem;
+                border-style: solid;
+                border-bottom: 1px solid $gray;
+
+                &:focus {
+                    border-bottom: 1px solid $green;
+                    outline: none;
+                }
             }
         }
     }
