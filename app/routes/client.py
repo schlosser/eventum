@@ -1,13 +1,14 @@
 from flask import Blueprint, render_template, abort, redirect, url_for
-from app.models import Event
+from app.models import Event, BlogPost
 from datetime import datetime, date, timedelta
 
 client = Blueprint('client', __name__)
 
 @client.route('/')
 def index():
-    events=Event.objects(end_date__gt=datetime.now()).order_by('start_date')[:4]
-    return render_template('index.html', events=events)
+    events = Event.objects(end_date__gt=datetime.now()).order_by('start_date')[:4]
+    blog_post = BlogPost.objects(published=True).order_by('-date_published')[0]
+    return render_template('index.html', events=events, blog_post=blog_post)
 
 @client.route('/contact')
 def contact():

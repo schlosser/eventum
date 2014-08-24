@@ -1,5 +1,13 @@
 {% extends "page.html" %}
 
+{% block css %}
+{{ super() }}
+{% assets "scss_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+
 {% block main %}
 <section class="tagline">
     <h1>All things tech at Columbia</h1>
@@ -75,14 +83,12 @@
 <section>
     <div class="content">
         <div class="section-header">
-            <h4>Upcoming</h4>
-            <span class="bar green"></span>
+            <h4>From our Blog</h4>
+            <span class="bar blue"></span>
         </div>
         <div class="triple">
-            {% if events %}
-            {% for index in range(1,(events|length)) %}
-            {{ macros.small_event(events[index]) }}
-            {% endfor %}
+            {% if blog_post %}
+                {{ macros.post(blog_post) }}
             {% endif %}
         </div>
     </div>
