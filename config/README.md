@@ -4,7 +4,7 @@ Configuration and settings files live here.
 
 ## Notable files
 
-- `flask_config.py`: Stores configurations for Flask, including secret keys, global variables, flags, and extenral integration account info.
+- `flask_config.py`: Stores configurations for Flask, including secret keys, global variables, flags, and extenral integration account info. This file is currently `.gitignore`d.  
 - `requirements.txt`: Pip requirements.  Install from the root directory using:
   
     ```bash
