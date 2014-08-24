@@ -120,22 +120,22 @@ $section-bottom: 1.25rem;
             padding-bottom: $section-bottom;
         }
 
-        h4 + .bar {
-            width: 3.75rem;
-            height: $ribbon-height;
-            display: block;
-            background-color: $yellow;
-
-            &.blue { background-color: $blue; }
-            &.green { background-color: $green; }
-            &.yellow { background-color: $yellow; }
-            &.gray { background-color: $gray; }
-            &.white { background-color: $white; }
-        }
 
         .section-header {
             margin-bottom: 2.1875rem;
         }
+    }
+    .bar {
+        width: 3.75rem;
+        height: $ribbon-height;
+        display: block;
+        background-color: $yellow;
+
+        &.blue { background-color: $blue; }
+        &.green { background-color: $green; }
+        &.yellow { background-color: $yellow; }
+        &.gray { background-color: $gray; }
+        &.white { background-color: $white; }
     }
 
     $radius: 0.625rem;
