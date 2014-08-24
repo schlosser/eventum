@@ -298,8 +298,14 @@ $section-bottom: 1.25rem;
 
             input[type="email"] {
                 width: 100%;
+                margin-right: 0;
             }
         }
     }
 
+    .contact-options {
+        li {
+            width: 100%;
+        }
+    }
 }
