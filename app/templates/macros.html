@@ -65,7 +65,7 @@
 
 
 {% macro upload_form(form, uploaded_from="") %}
-<form class="upload-form" action="{{ url_for('media.upload', _external=True) }}" method="post" enctype="multipart/form-data">
+<form class="upload-form" action="{{ url_for('media.upload') }}" method="post" enctype="multipart/form-data">
     {{ form.csrf_token }}
     <div class="hidden-but-not-forgotten">
         {{ render_field(form.image) }}
