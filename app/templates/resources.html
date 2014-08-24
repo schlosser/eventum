@@ -1,0 +1,98 @@
+{% extends "page.html" %}
+{% block title %}Resources | {{ super() }}{% endblock %}
+{% block header_image %}/static/img/hero/puzzled.jpg{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_resources" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/resources/resources.js')}}"></script>
+{% endblock %}
+
+{% set colors = ['green', 'yellow', 'blue'] %}
+
+{% macro render_resource(resource) %}
+<div class="resource">
+    <div class="inner">
+        <h5><a href="{{ resource.url }}">{{ resource.name }}</a></h5>
+        <p>{{ resource.description }}</p>
+    </div>
+</div>
+{% endmacro%}
+
+{% block main %}
+<section class="tagline">
+    <h1>Resources</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>Learn to Code</h4>
+            <span class="bar blue"></span>
+        </div>
+        <h3>There are tons of different technologies out there, each of which has its own tutorials, documentation, and community (good or bad). ADI has done the hard work of tracking down the best resources, summarizing each technology, and identify critical concepts based on goal so that the only thing standing between you and the implementation of your idea is a little bit of learning and hard work.</h3>
+    </div>
+</section>
+<div class="sidebar-wrapper">
+    <div class="sidebar">
+        <div class="inner">
+            <h4>Tracks</h4>
+            <span class="bar gray"></span>
+            <ul class="tracks">
+            {% for track in resources.tracks %}
+                <li>
+                    <a href="#set-track" data-topics="{{ track.topics | join(',') }}">
+                        <p>
+                            {{ track.name }}
+                            <i class="fa fa-times"></i>
+                        </p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+            <h4>Topics</h4>
+            <span class="bar gray"></span>
+            <ul class="topics">
+            {% for topic in resources.topics %}
+                <li data-topic="{{ topic.id }}">
+                    <a class="slideto" href="#{{topic.id}}">
+                        <p>{{ topic.name }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% for topic in resources.topics %}
+    <section class="topic with-sidebar" id="{{ topic.id }}">
+        <div class="content">
+            <div class="section-header">
+                <h4>{{ topic.name }}</h4>
+                <span class="bar {{ colors[loop.index0 % 3] }}"></span>
+            </div>
+            <h3>{{ topic.description }}</h3>
+            <ul class="resources">
+            {% for index in range((topic.resources | length / 2) | round(0, 'ceil') | int ) %}
+                <li>
+                    {% with resource = topic.resources[2*index] %}
+                        {{ render_resource(resource) }}
+                    {% endwith %}
+                    {% if topic.resources | length >     2*index + 1 %}
+                        {% with resource = topic.resources[2*index + 1] %}
+                            {{ render_resource(resource) }}
+                        {% endwith %}
+                    {% endif %}
+                </li>
+            {% endfor%}
+            </ul>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+
+{% endblock main %}

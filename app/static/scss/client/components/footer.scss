@@ -7,8 +7,11 @@ footer {
     @extend .clearfix;
     background-color: $offgray;
     color: $white;
-    padding: $footer-padding;
+    padding: $footer-padding 0;
     height: $footer-height;
+    position: absolute;
+    width: 100%;
+    z-index: 100000;
     p {
         float: left;
         font-size: 1rem;

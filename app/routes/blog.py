@@ -6,7 +6,7 @@ blog = Blueprint('blog', __name__)
 
 @blog.route('/blog')
 def index():
-    blog_posts = BlogPost.objects(published=True).order_by('-date_published')[:10]
+    blog_posts = list(BlogPost.objects(published=True).order_by('-date_published')[:10])
     previous_index = None
     next_index = 1
     return render_template('blog/blog.html', posts=blog_posts,
@@ -27,7 +27,7 @@ def blog_archive(index):
     else:
         next_index = index + 1
     previous_index = index - 1
-    return render_template('blog/blog.html', posts=blog_posts[10*index:10*(index+1)],
+    return render_template('blog/blog.html', posts=list(blog_posts[10*index:10*(index+1)]),
                            previous_index=previous_index,
                            next_index=next_index)
 

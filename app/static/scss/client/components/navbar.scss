@@ -56,4 +56,8 @@ $speed: 0.3s;
     a, a:hover {
         color: $gray;
     }
+
+    &.up {
+        top: -$navbar-height;
+    }
 }

@@ -42,8 +42,12 @@ button, .button {
     background: linear-gradient(to bottom, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.3) 65%,rgba(0,0,0,0.5) 100%); /* W3C */
 }
 
+@mixin shadow-right($right) {
+    box-shadow: $right 0 4px (2px - $right) rgba(115, 115, 115, 0.25);
+    -moz-box-shadow: $right 0 4px (2px - $right)rgba(115, 115, 115, 0.25);
+    -webkit-box-shadow: $right 0 4px (2px - $right) rgba(115, 115, 115, 0.25);
+}
+
 @mixin shadow {
-    box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
-    -moz-box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
-    -webkit-box-shadow: 0 0 4px 2px rgba(115, 115, 115, 0.25);
+    @include shadow-right(0);
 }

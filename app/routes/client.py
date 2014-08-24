@@ -1,8 +1,12 @@
-from flask import Blueprint, render_template, abort, redirect, url_for
+from app import app
+import json
+from flask import Blueprint, render_template, abort, redirect, url_for, request
 from app.models import Event, BlogPost
 from datetime import datetime, date, timedelta
 
 client = Blueprint('client', __name__)
+
+_resources = None
 
 @client.route('/')
 def index():
@@ -13,6 +17,19 @@ def index():
 @client.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@client.route('/resources')
+def resources():
+    force = request.args.get('force') is not None
+    resources_data = _get_resources(force=force)
+    return render_template('resources.html', resources=resources_data)
+
+def _get_resources(force=False):
+    global _resources
+    if not _resources or force:
+        with open(app.config['RESOURCES_PATH']) as f:
+            _resources = json.loads(f.read())
+    return _resources
 
 @client.route('/events')
 def events():

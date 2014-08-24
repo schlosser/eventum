@@ -86,6 +86,11 @@
       "scss_single_event": {
         "output": "single_event.css",
         "inputs": [ "scss/client/single_event/*.scss" ]
+      },
+
+      "scss_resources": {
+        "output": "single_event.css",
+        "inputs": [ "scss/client/resources/*.scss" ]
       }
     }
   }

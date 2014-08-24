@@ -1,0 +1,139 @@
+@import '../utils';
+@import '../colors';
+@import '../base';
+@import '../../common/media_queries';
+.resources {
+
+    li {
+        padding: 2rem 0 0;
+        &:after {
+            @include clearfix;
+        }
+
+        .resource {
+            display: inline-block;
+            width: 50%;
+            float: left;
+
+            &:first-child .inner {
+                padding-right: 1rem;
+            }
+            &:nth-child(2) .inner {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+
+$sidebar-width: 13rem;
+$sidebar-padding-top: 2rem;
+
+section.with-sidebar {
+    @include transition(0.2s);
+    padding: 2rem 0 !important;
+}
+
+.topic, .topics li, .tracks li {
+    &.in-track {
+        display: none;
+        &.on {
+            display: block;
+        }
+    }
+}
+
+.tracks {
+
+    i {
+        display: none;
+    }
+    .on {
+        i {
+            position: absolute;
+            right: 0.5rem;
+            line-height: 2.5rem;
+            display: inline;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-landscape-max) {
+    section.with-sidebar {
+        padding-left: $sidebar-width !important;
+
+    }
+    .sidebar.fixed {
+        left: 0 !important  ;
+    }
+}
+
+.main {
+    padding-bottom: 0;
+}
+
+.sidebar-wrapper {
+    position: relative;
+    margin:3rem auto 0;
+    overflow-y: hidden;
+    width: 100%;
+    max-width: ($content-width + 2*$sidebar-width + 6rem) ;
+
+    .sidebar {
+        @include transition(0.4s);
+        padding-top: $sidebar-padding-top;
+        top:0;
+        left: 0;
+        overflow-y: scroll;
+        width: $sidebar-width;
+        z-index: 100;
+        position: absolute;
+
+        & > .inner {
+            padding-left: 1rem;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bar {
+            margin-bottom: 1rem;
+            height: 0.3125rem !important;
+
+        }
+
+        &.fixed {
+            position: fixed;
+            left: auto;
+        }
+
+        &.bottom {
+            overflow-y: hidden;
+            bottom: 0;
+            top: auto;
+            position: absolute;
+        }
+
+        ul {
+            font-size: 0;
+
+            li {
+                font-size: 1rem;
+                margin-left: -1rem;
+                padding-left: 1rem;
+                margin-top: -4px;
+                &:hover {
+                    background-color: $ultralightgray;
+                }
+
+                p {
+                    margin-left: -1rem;
+                    padding-left: 1rem;
+                    font-family: $sans;
+                    font-size: 1rem !important;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}
