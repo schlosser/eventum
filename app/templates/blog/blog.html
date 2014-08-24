@@ -1,5 +1,5 @@
 {% extends 'page.html' %}
-{% block title %}Blog{% endblock %}
+{% block title %}Blog | {{ super() }}{% endblock %}
 {% import 'macros.html' as macros %}
 
 {% block header_image %}/static/img/hero/writing.jpg{% endblock %}
@@ -29,7 +29,41 @@
             <h4>Latest Posts</h4>
             <span class="bar green"></span>
         </div>
-        {% for post in posts%}
+        {% for post in posts[:5] %}
+        {{ macros.post(post) }}
+        {% endfor %}
+    </div>
+</section>
+<section class="full blue callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                <h4>Partner with ADI</h4>
+                </a>
+                <span class="bar white"></span>
+            </div>
+            <h3>Interested in working on an event with ADI? We'd love to work with you!</h3>
+            <div class="button-group">
+                <div class="button gray">
+                    <a href="{{ url_for('client.contact') }}">
+                        Get in touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="callout-right">
+            <div class="card">
+                <a href="{{ url_for('client.contact') }}">
+                    <i style="background-image:url({{ url_for('static', filename='img/hero/judges.jpg') }})"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="card top-card">
+    <div class="content">
+        {% for post in posts[5:] %}
         {{ macros.post(post) }}
         {% endfor %}
     </div>

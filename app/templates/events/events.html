@@ -48,13 +48,18 @@
                 <span class="bar white"></span>
             </div>
             <h3>Come meet the community. We bring the cookies, you bring the code!</h3>
-            <p>569 Lerner Hall</p>
-            <p>Wednesdays, 10pm-12pm</p>
+            <div class="button-group">
+                <div class="button gray">
+                    <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                        Find the next Cookies and Code
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="callout-right">
             <div class="card">
                 <a href="{{ url_for('client.event', slug='cookies-and-code')}}">
-                    <i style="background-image:url({{ url_for('static', filename='img/events/cookie_monster_original.jpg') }})"></i>
+                    <i style="background-image:url({{ url_for('static', filename='img/hero/judges.jpg') }})"></i>
                 </a>
             </div>
         </div>
