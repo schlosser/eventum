@@ -1,7 +1,8 @@
 {% extends "page.html" %}
 {% block title %}Events | {{ super() }}{% endblock %}
 
-{% block header_image %}/static/img/hero/events.jpg{% endblock %}
+{% block header_image_class %}top{% endblock %}
+{% block header_image %}/static/img/hero/group.jpg{% endblock %}
 
 {% block main %}
 <section class="tagline">
@@ -28,7 +29,7 @@
 {% endif %}
     <div class="content">
         <div class="section-header">
-            <h4>Next Week</h4>
+            <h4>Upcoming</h4>
             <span class="bar blue"></span>
         </div>
         {% for event in upcoming_events %}
@@ -51,9 +52,11 @@
             <p>Wednesdays, 10pm-12pm</p>
         </div>
         <div class="callout-right">
-            <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
-            <div class="yellow card"></div>
-            </a>
+            <div class="card">
+                <a href="{{ url_for('client.event', slug='cookies-and-code')}}">
+                    <i style="background-image:url({{ url_for('static', filename='img/events/cookie_monster_original.jpg') }})"></i>
+                </a>
+            </div>
         </div>
     </div>
 </section>

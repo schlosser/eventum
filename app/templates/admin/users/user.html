@@ -50,12 +50,14 @@
                 {{ macros.render_field(form.name, required="", label=False,  placeholder="Name", autofocus="") }}
             </div>
             {{ macros.render_field(form.email, required="", label=False, placeholder="Email Address") }}
-            {% for subfield in form.user_type %}
-            <ul class="form-component">
-                <li>{{ subfield }}</li>
-                <li>{{ subfield.label }}</li>
-            </ul>
-            {% endfor %}
+            <div>
+                {% for subfield in form.user_type %}
+                <ul class="form-component">
+                    <li>{{ subfield }}</li>
+                    <li>{{ subfield.label }}</li>
+                </ul>
+                {% endfor %}
+            </div>
             <div class="hidden">
                 {{ macros.render_field(form.csrf_token)}}
                 <input type="submit" value="Submit">

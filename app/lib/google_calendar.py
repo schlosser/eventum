@@ -1,4 +1,5 @@
 import httplib2
+import httplib
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.file import Storage
@@ -59,7 +60,7 @@ class GoogleCalendarAPIClient():
         try:
             created_event = self.service.events().insert(calendarId=calendar_id,
                                                          body=resource).execute()
-        except httplib2.BadStatusLine:
+        except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event'
             pass
 
@@ -90,13 +91,13 @@ class GoogleCalendarAPIClient():
             updated_event = self.service.events().update(calendarId=calendar_id,
                                                          eventId=event_id_for_update,
                                                          body=resource).execute()
-        except httplib2.BadStatusLine:
+        except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event'
             try:
                 updated_event = self.service.events().update(calendarId=calendar_id,
                                                          eventId=event_id_for_update,
                                                          body=resource).execute()
-            except httplib2.BadStatusLine:
+            except httplib.BadStatusLine:
                 print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event Again!'
                 return None
 
@@ -145,7 +146,7 @@ class GoogleCalendarAPIClient():
             moved_event = self.service.events().move(calendarId=from_id,
                                                      eventId=event.gcal_id,
                                                      destination=to_id).execute()
-        except httplib2.BadStatusLine:
+        except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Move Event'
             return None
         return moved_event
@@ -166,7 +167,7 @@ class GoogleCalendarAPIClient():
                 updated_event = self.service.events().update(calendarId=calendar_id,
                                                              eventId=instance['id'],
                                                              body=instance).execute()
-            except httplib2.BadStatusLine:
+            except httplib.BadStatusLine:
                 print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event (as exception)'
                 return None
             return updated_event
@@ -177,7 +178,7 @@ class GoogleCalendarAPIClient():
         except HttpError as e:
             print e
             return None
-        except httplib2.BadStatusLine:
+        except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event'
             return None
 

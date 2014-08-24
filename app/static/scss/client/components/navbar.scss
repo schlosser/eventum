@@ -1,5 +1,6 @@
 @import '../colors';
 @import '../utils';
+@import 'ribbon';
 
 $navbar-height: 5.5rem;
 $navbar-scroll-height: 3.5rem;
@@ -14,6 +15,7 @@ $speed: 0.3s;
     right: 0;
     background-color: $white;
     z-index: 1000;
+    top: $ribbon-height;
 
     &.scroll {
         height: $navbar-scroll-height;

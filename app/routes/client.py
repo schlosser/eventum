@@ -17,9 +17,9 @@ def contact():
 @client.route('/events')
 def events():
     today = date.today()
-    last_sunday = datetime.combine(today - timedelta(days=today.weekday()+7),
+    last_sunday = datetime.combine(today - timedelta(days=today.isoweekday()+7),
                                    datetime.min.time())
-    next_sunday = datetime.combine(today + timedelta(days=7-today.weekday()),
+    next_sunday = datetime.combine(today + timedelta(days=7-today.isoweekday()),
                                    datetime.min.time())
     recent_and_upcoming = Event.objects(start_date__gt=last_sunday).order_by('start_date-')
 
@@ -66,20 +66,20 @@ def event(slug):
 
 
     if event.is_recurring:
-        upcoming_event_instances = Event.objects(slug=slug, start_date__gt=datetime.now()).order_by('start_date')
+        upcoming_event_instances = Event.objects(slug=slug, start_date__gte=date.today()).order_by('start_date')
         if upcoming_event_instances:
             event = upcoming_event_instances[0]
         else:
             event = event.parent_series.events[-1]
 
-        upcoming_events = Event.objects(start_date__gt=datetime.now(),
+        upcoming_events = Event.objects(start_date__gte=date.today(),
                                 id__ne=event.id).order_by('start_date')[:3]
 
 
         return render_template('events/event.html', event=event,
                                upcoming_events=upcoming_events)
 
-    upcoming_events = Event.objects(start_date__gt=datetime.now(),
+    upcoming_events = Event.objects(start_date__gte=date.today(),
                                     id__ne=event.id).order_by('start_date')[:3]
 
     return render_template('events/event.html', event=event,
@@ -94,7 +94,7 @@ def recurring_event(slug, index):
 
     event = Event.objects(slug=slug)[0]
 
-    upcoming_events = Event.objects(start_date__gt=datetime.now(),
+    upcoming_events = Event.objects(start_date__gte=date.today(),
                                 id__ne=event.id).order_by('start_date')[:3]
 
 
