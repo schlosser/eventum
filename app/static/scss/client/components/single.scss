@@ -1,5 +1,6 @@
 @import '../colors';
 @import 'triple';
+@import '../../common/media_queries';
 
 .single {
     margin-bottom: 2rem;
@@ -47,6 +48,19 @@
             width: 2.5rem;
             margin-right:0.5rem;
             text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .single {
+        .details {
+            float: none;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .text {
+            margin-left: 0;
         }
     }
 }

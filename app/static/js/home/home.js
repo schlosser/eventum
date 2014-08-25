@@ -12,12 +12,4 @@ $(function() {
           scrollTop: $('html, body').offset().top
         }, 200  );
     });
-
-    // $(window).scroll( function(e) {
-    //     if ($(window).scrollTop() > 200) {
-    //         $('.navbar').addClass('scroll');
-    //     } else {
-    //         $('.navbar').removeClass('scroll');
-    //     }
-    // });
 });

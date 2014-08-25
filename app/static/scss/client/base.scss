@@ -11,8 +11,8 @@ $slab:'Roboto Slab', Georgia, serif;
 html, body {
     font-family: $sans;
     font-weight: $regular;
-    font-size: 16px;
     height: 100%;
+    -webkit-text-size-adjust:none;
 }
 
 p {
@@ -106,26 +106,36 @@ h6, .h6 {
     color: $gray;
 }
 
-@media screen and (max-width: $xl-desktop-max) {
+@media screen and (max-width: $xl-desktop-max) and (min-width: $xl-desktop-min) {
     html, body {
         font-size: 14px;
+        -webkit-text-size-adjust:14px;
     }
 }
 
-@media screen and (max-width: $desktop-max) {
+@media screen and (max-width: $desktop-max) and (min-width: $desktop-min) {
     html, body {
         font-size: 12px;
+        -webkit-text-size-adjust:12px;
     }
 }
 
-@media screen and (max-width: $tablet-landscape-max) {
+@media screen and (max-width: $tablet-landscape-max) and (min-width: $tablet-landscape-min) {
     html, body {
         font-size: 14px;
+        -webkit-text-size-adjust:14px;
     }
 }
 
-@media screen and (max-width: $tablet-portrait-max) {
+@media screen and (max-width: $tablet-portrait-max) and (min-width: $tablet-portrait-min) {
     html, body {
         font-size: 10px;
+        -webkit-text-size-adjust:10px;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    html, body {
+        font-size: 16px;
     }
 }

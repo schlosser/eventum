@@ -1,11 +1,16 @@
 @import '../utils';
 @import '../components/events';
-
-
+@import '../../common/media_queries';
 
 .single-event {
     .text {
         margin-left: 33%;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .single-event .text {
+        margin-left: 0;
     }
 }
 
