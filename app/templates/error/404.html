@@ -1,1 +1,17 @@
-Whoops! 404.
+{% extends "page.html" %}
+{% block title %}Page not found | {{ super() }}{% endblock %}
+
+{% set should_include_hero = False%}
+
+{% block heroclass %}hidden{% endblock %}
+
+{% block mainclass %}no-hero{% endblock %}
+{% block main %}
+<section>
+    <div class="content error">
+        <i style="background-image:url({{ url_for('static', filename='img/hero/404.jpg') }});"></i>
+        <h1>Not Found (404).</h1>
+        <p>We couldn't find anything at this URL. Try following the links above, or click <a href="{{ url_for('client.index') }}">here</a>.</p>
+    </div>
+</section>
+{% endblock main %}

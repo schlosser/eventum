@@ -19,7 +19,16 @@
 {% macro render_resource(resource) %}
 <div class="resource">
     <div class="inner">
-        <h5><a href="{{ resource.url }}">{{ resource.name }}</a></h5>
+        <h5><a href="{{ resource.url }}" target="_blank">{{ resource.name }}</a></h5>
+        <p>{{ resource.description }}</p>
+    </div>
+</div>
+{% endmacro%}
+
+{% macro render_featured_resource(resource, color='blue') %}
+<div class="resource featured {{ color }}">
+    <div class="inner">
+        <h5><a href="{{ resource.url }}" target="_blank">{{ resource.name }}</a></h5>
         <p>{{ resource.description }}</p>
     </div>
 </div>
@@ -82,13 +91,18 @@
                     {% with resource = topic.resources[2*index] %}
                         {{ render_resource(resource) }}
                     {% endwith %}
-                    {% if topic.resources | length >     2*index + 1 %}
+                    {% if topic.resources | length > 2*index + 1 %}
                         {% with resource = topic.resources[2*index + 1] %}
                             {{ render_resource(resource) }}
                         {% endwith %}
                     {% endif %}
                 </li>
             {% endfor%}
+            {% for resource in topic.featured %}
+                <li>
+                    {{ render_featured_resource(resource, color=colors[loop.index0 % 3]) }}
+                </li>
+            {% endfor %}
             </ul>
         </div>
     </section>

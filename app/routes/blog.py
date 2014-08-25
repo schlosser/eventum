@@ -13,7 +13,7 @@ def index():
                            previous_index=previous_index,
                            next_index=next_index)
 
-@blog.route('/blog/<index>')
+@blog.route('/blog/<int:index>')
 def blog_archive(index):
     index = int(index)
 

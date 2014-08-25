@@ -32,6 +32,10 @@ $content-padding-small: 0.5rem;
     left: $nav-item-width;
     z-index: 50;
 
+    &.full {
+        left: 0;
+    }
+
     .content {
         padding: 0;
         margin: 0 auto;

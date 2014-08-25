@@ -1,5 +1,6 @@
-from flask import g, session, render_template, request
+from flask import g, session, render_template, request, redirect
 from mongoengine.queryset import DoesNotExist
+import requests
 
 from app import app
 from app.models import User
@@ -8,6 +9,11 @@ SUPER_USER_GPLUS_ID = 'super'
 
 @app.errorhandler(404)
 def not_found(error):
+    old_site_url = 'http://adicu.github.com' + request.path
+    response = requests.get(old_site_url)
+    if response.status_code == 200:
+        return redirect(old_site_url)
+
     return render_template('error/404.html'), 404
 
 @app.errorhandler(401)

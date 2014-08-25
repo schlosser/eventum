@@ -76,7 +76,7 @@
     {% block main %}
     <div class="inner">
         {% block topbar %}
-        <div class="topbar">
+        <div class="topbar {% block topbarclass %}{% endblock %}">
             <div class="content">
                 <span class="left">
                     <a href="{% block pagelink %}{% endblock %}">
