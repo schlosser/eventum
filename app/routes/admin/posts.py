@@ -7,7 +7,7 @@ from bson.objectid import InvalidId
 from mongoengine.errors import DoesNotExist, ValidationError
 
 from app import app
-from app.models import BlogPost, Image
+from app.models import BlogPost, Image, User
 from app.forms import CreateBlogPostForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
@@ -23,14 +23,20 @@ def index():
 @requires_privilege('edit')
 def new():
     form = CreateBlogPostForm(request.form)
+    form.author.choices = [
+            (str(u.id), u.name + " (You)" if u == g.user else u.name)
+            for u in User.objects()]
+    form.author.default = str(g.user.id)
     upload_form = UploadImageForm()
     if form.validate_on_submit():
+        author = User.objects().get(id=ObjectId(form.author.data))
         post = BlogPost(title=form.title.data,
                         slug=form.slug.data,
                         published=form.published.data,
                         images=[Image.objects().get(filename=fn) for fn in form.images.data],
                         markdown_content=form.body.data,
-                        author=g.user)
+                        author=author,
+                        posted_by=g.user)
         post.save()
         return redirect(url_for('.index'))
     images = Image.objects()
@@ -52,11 +58,16 @@ def edit(post_id):
 
     if request.method == 'POST':
         form = CreateBlogPostForm(request.form)
+        form.author.choices = [
+            (str(u.id), u.name + " (You)" if u == g.user else u.name)
+            for u in User.objects()]
+        form.author.default = str(g.user.id)
         if form.validate_on_submit():
             was_published = post.published
             should_be_published = form.published.data
-            post.title=form.title.data
-            post.slug=form.slug.data
+            post.title = form.title.data
+            post.author = User.objects.get(id=ObjectId(form.author.data))
+            post.slug = form.slug.data
             post.markdown_content = form.body.data
             post.images = [Image.objects().get(filename=fn) for fn in form.images.data]
             if form.featured_image.data:
@@ -78,7 +89,12 @@ def edit(post_id):
                               published=post.published,
                               body=post.markdown_content,
                               images=[image.filename for image in post.images],
+                              author=str(post.author.id),
                               featured_image=featured_image)
+    form.author.choices = [
+            (str(u.id), u.name + " (You)" if u == g.user else u.name)
+            for u in User.objects()]
+    form.author.default = str(g.user.id)
     images = [image for image in Image.objects() if image not in post.images]
     return render_template('admin/posts/edit.html', user=g.user, form=form,
                            post=post, images=images, upload_form=upload_form)

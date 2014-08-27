@@ -1,4 +1,4 @@
-from wtforms import FieldList, StringField, TextAreaField, BooleanField
+from wtforms import FieldList, StringField, TextAreaField, BooleanField, SelectField
 from flask.ext.wtf import Form
 from wtforms.validators import Regexp, Required
 from app.forms.validators import image_with_same_name
@@ -7,6 +7,7 @@ class CreateBlogPostForm(Form):
 
     title = StringField('Title', [
         Required(message="Please provide the post title.")])
+    author = SelectField('Author')
     slug = StringField('Post Slug', [
         Required(message="Please provide a post slug."),
         Regexp('([0-9]|[a-z]|[A-Z]|-)*', message="Post slug should only contain numbers, letters and dashes.")])

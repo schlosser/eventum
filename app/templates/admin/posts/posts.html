@@ -48,7 +48,10 @@
         </small>
     </td>
     <td class="post-author with-image">
-        <img class="post-author-image" src="{{ post.author.get_profile_picture() }}">
+        <div class="image-wrapper">
+            <i class="post-author-image"
+               style="background-image:url({{ post.author.get_profile_picture() }})"></i>
+        </div>
         <p class="post-author-name">{{ post.author.name }}</p>
     </td>
     <td class="post-date">

@@ -88,6 +88,11 @@
         </a>
         {% endif %}
     </div>
+
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Author:</h6>
+        {{ macros.render_field(form.author, required="") }}
+    </div>
     {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
     {{ macros.render_field(form.images, hidden="hidden")}}
     {{ macros.render_field(form.featured_image, hidden="hidden")}}

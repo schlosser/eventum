@@ -45,5 +45,4 @@ $(function() {
         $('.set-image').removeClass('hidden');
         $('.display-image').addClass('hidden');
     });
-
 });
