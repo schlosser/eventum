@@ -1,7 +1,8 @@
-from app.models import User, Whitelist
+from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm
 from app.lib.decorators import login_required, development_only
 from flask import Blueprint, request, flash, redirect, url_for
+import uuid
 
 whitelist = Blueprint('whitelist', __name__)
 
@@ -22,13 +23,35 @@ def delete(email):
 def add():
     """Add `email` to the whitelist."""
     form = AddToWhitelistForm(request.form)
-    user_exists = User.objects(email=form.email.data).count() != 0
-    if form.validate_on_submit() and not user_exists:
-        wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
-        wl.save()
+
+    if form.user_type.data == 'fake_user':
+        if form.validate_on_submit():
+            fake_id = str(uuid.uuid4())
+            fake_email = fake_id[:10] + "@fake-users.com"
+            filename = form.fake_user_image.data
+            try:
+                import ipdb; ipdb.set_trace()
+                fake_image = Image.objects().get(filename=filename)
+                fake_user = User(email=fake_email,
+                                 gplus_id=fake_id,
+                                 name=form.name.data,
+                                 user_type=form.user_type.data,
+                                 image=fake_image)
+            except Image.DoesNotExist:
+                fake_user = User(email=fake_email,
+                                 gplus_id=fake_id,
+                                 name=form.name.data,
+                                 user_type=form.user_type.data)
+            fake_user.save()
+        else:
+            print form.errors
     else:
-        print form.errors
-        pass
+        user_exists = User.objects(email=form.email.data).count() != 0
+        if form.validate_on_submit() and not user_exists:
+            wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
+            wl.save()
+        else:
+            print form.errors
     return redirect(url_for('users.index'))
 
 @whitelist.route('/whitelist/view')

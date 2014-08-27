@@ -7,7 +7,8 @@ class Whitelist(db.Document):
     date_created = db.DateTimeField(required=True, default=now)
     date_modified = db.DateTimeField(required=True, default=now)
     email = db.EmailField(required=True, unique=True)
-    user_type = db.StringField()
+    user_type = db.StringField(default='editor',
+                               regex="(fake_user|editor|publisher|admin)")
     redeemed = db.BooleanField(required=True, default=False)
 
     meta = { 'indexes': ['email'] }

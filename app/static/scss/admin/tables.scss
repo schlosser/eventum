@@ -60,13 +60,21 @@ table.table {
                     margin-left: ($row-height + $table-padding);
                     display: inline-block;
                 }
-                img {
+                .image-wrapper {
                     position: absolute;
                     top: 50%;
                     margin-top: -($row-height/2);
                     width: $row-height;
                     height: $row-height;
                     left: 0;
+
+                    i {
+                        background-size: cover;
+                        background-position: center center;
+                        display: block;
+                        height: $row-height;
+                        width: $row-height;
+                    }
                 }
             }
         }

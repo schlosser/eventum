@@ -6,6 +6,14 @@
 {% assets "scss_users" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/users/users.js') }}"></script>
 {% endblock %}
 
 {% block title %}Manage your Whitelist{% endblock %}
@@ -15,28 +23,61 @@
 
 {% block barright %}
 {% if current_user.can('admin') %}
-<a title="Add to the Whitelist" href="#show-modal">
+<a title="Add to the Whitelist" href="#show-modal" data-modal="new-user">
     <i class="fa fa-plus fa-2x"></i>
 </a>
 {% endif %}
 {% endblock %}
 
 {% block main %}
-{% call macros.modal() %}
+{% call macros.modal(modal="new-user") %}
 <h2>Add a User to the Whitelist</h2>
 <small>Only emails on this whitelist can be used to make an account.</small>
 <form class="whitelist-add-form" method="POST" action="{{ url_for('whitelist.add') }}">
     {{ whitelist_form.csrf_token }}
-    {{ macros.render_field(whitelist_form.email, required="", placeholder="Email Address", autofocus="", label=False)}}
-    {% for subfield in whitelist_form.user_type %}
-    <ul>
-        <li>{{ subfield }}</li>
-        <li>{{ subfield.label }}</li>
-    </ul>
-    {% endfor %}
+    <div>
+        {% for subfield in whitelist_form.user_type %}
+        <ul>
+            <li>{{ subfield }}</li>
+            <li>{{ subfield.label }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    <div class="for-whitelist hidden">
+    {{ macros.render_field(whitelist_form.email, placeholder="Email Address", autofocus="", label=False)}}
+    </div>
+    <div class="for-fake-user hidden">
+        {{ macros.render_field(whitelist_form.name, placeholder="Name", autofocus="", label=False)}}
+        {{ macros.render_field(whitelist_form.fake_user_image, hidden="hidden")}}
+        <div class="set-image fake-user-image">
+            <a href="#show-modal" data-modal="image">
+                <i class="fa fa-plus fa-3x"></i>
+            </a>
+        </div>
+        <div class="display-image fake-user-image image hidden">
+            <a href="#remove-image">
+                <i></i>
+            </a>
+        </div>
+    </div>
     <input class="big" type="submit" value="Add">
 </form>
 {% endcall %}
+{% call macros.modal(modal="image") %}
+<h3>Add an Image</h3>
+{{ macros.upload_form(upload_form, uploaded_from=url_for('posts.new')) }}
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image" data-filename="{{ image.filename }}">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#set-image">
+        <i style="background-image:url({{ image.url() }});"></i>
+        <div class="select"><i class="fa fa-plus fa-3x"></i></div>
+    </a>
+</li>
+{% endfor %}
+</ul>
+{% endcall %}
+
 {{ super() }}
 {% endblock %}
 
@@ -86,7 +127,9 @@
         <tr class="user" data-email="{{ user.email }}">
             <td class="name with-image">
                 <a class="tr-link" href="{{ url_for('users.user', slug=user.slug) }}"></a>
-                <img src="{{ user.get_profile_picture() }}">
+                <div class="image-wrapper">
+                    <i style="background-image:url({{ user.get_profile_picture() }});"></i>
+                </div>
                 <p>{{user.name}}</p>
             </td>
             <td class="email">

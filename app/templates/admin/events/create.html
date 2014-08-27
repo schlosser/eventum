@@ -96,7 +96,7 @@
 <ul class="image-grid clearfix">
 {% for image in images %}
 <li class="image" data-filename="{{ image.filename }}">
-    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#add-image">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#set-image">
         <i style="background-image:url({{ image.url() }});"></i>
         <div class="select"><i class="fa fa-plus fa-3x"></i></div>
     </a>
@@ -160,9 +160,9 @@
     </div>
     <div class="event-image-and-descriptions">
         <div {% if event and event.image %}
-             class="add-image event-image hidden"
+             class="set-image event-image hidden"
              {% else %}
-             class="add-image event-image"
+             class="set-image event-image"
              {% endif %}>
             <a href="#show-modal" data-modal="image">
                 <i class="fa fa-plus fa-3x"></i>

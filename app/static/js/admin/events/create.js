@@ -190,11 +190,10 @@ $(function() {
      * Event Image
      * ==================================================================== */
 
-    $(document).on('click', 'a[href="#add-image"]', function(e) {
+    $(document).on('click', 'a[href="#set-image"]', function(e) {
         e.preventDefault();
         var filename = $(this).data('filename'),
             url = $(this).data('url');
-        console.log('add image: ', filename, url);
 
         // Close the modal
         $('a[href="#close-modal"]').click();
@@ -206,18 +205,18 @@ $(function() {
             'background-image': 'url(' + url + ')'
         });
 
-        $('.add-image').addClass('hidden');
+        $('.set-image').addClass('hidden');
         $('.display-image').removeClass('hidden');
     });
 
     $(document).on('click', 'a[href="#remove-image"]', function(e) {
         e.preventDefault();
-        console.log('remove image');
+
         $('#event_image').val('');
         $('.display-image i').css({
             'background-image': ''
         });
-        $('.add-image').removeClass('hidden');
+        $('.set-image').removeClass('hidden');
         $('.display-image').addClass('hidden');
     });
 

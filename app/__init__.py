@@ -82,6 +82,7 @@ def register_delete_rules():
 
     Event.register_delete_rule(EventSeries, 'events', PULL)
     Image.register_delete_rule(BlogPost, 'images', PULL)
+    Image.register_delete_rule(User, 'image', NULLIFY)
     Image.register_delete_rule(BlogPost, 'featured_image', NULLIFY)
     Image.register_delete_rule(Event, 'image', NULLIFY)
     EventSeries.register_delete_rule(Event, 'parent_series', NULLIFY)

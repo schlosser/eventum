@@ -4,7 +4,7 @@ from datetime import datetime
 now = datetime.now
 
 USER_TYPES = {
-    "user": {
+    "fake_user": {
         "edit": False,
         "publish": False,
         "admin": False
@@ -40,8 +40,9 @@ class User(db.Document):
     roles = db.ListField(db.StringField(db_field="role"), default=list)
     privileges = db.DictField(required=True, default={})
     image_url = db.URLField()
-    user_type = db.StringField(default='user',
-                               regex="(user|editor|publisher|admin)")
+    image = db.ReferenceField('Image')
+    user_type = db.StringField(default='editor',
+                               regex="(fake_user|editor|publisher|admin)")
     last_logon = db.DateTimeField()
 
     meta = {
@@ -54,6 +55,10 @@ class User(db.Document):
         return self.privileges.get(privilege)
 
     def get_profile_picture(self, size=50):
+        if self.image:
+            return self.image.url()
+        if not self.image_url:
+            return 'https://lh6.googleusercontent.com/-K9HZ5Z5vOU8/AAAAAAAAAAI/AAAAAAAAAAA/yRoMtBSXoxQ/s48-c/photo.jpg'
         if "googleusercontent.com" in self.image_url:
             return self.image_url + str(size)
         return self.image_url
@@ -95,7 +100,7 @@ class User(db.Document):
             return "Publisher"
         if self.can('edit'):
             return "Editor"
-        return "User"
+        return "Fake User"
 
     def __repr__(self):
         return 'User(id=%r, name=%r, email=%r, roles=%r, privileges=%r, gplus_id=%r, date_created=%r)' % \
@@ -110,4 +115,4 @@ class User(db.Document):
         if self.can('edit'):
             return '%r <%r> (Editor)' % (self.name, self.email)
         else:
-            return '%r <%r>' % (self.name, self.email)
+            return '%r <%r> (Fake User)' % (self.name, self.email)

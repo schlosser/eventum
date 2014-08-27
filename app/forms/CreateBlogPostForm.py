@@ -1,12 +1,7 @@
-from app.models import Image
 from wtforms import FieldList, StringField, TextAreaField, BooleanField
 from flask.ext.wtf import Form
-from wtforms.validators import Regexp, Required, ValidationError
-
-def image_with_same_name(form,field):
-    if Image.objects(filename=field.data).count() != 1:
-        return ValidationError(
-            message="Can't find image `%s` in the database" % field.data)
+from wtforms.validators import Regexp, Required
+from app.forms.validators import image_with_same_name
 
 class CreateBlogPostForm(Form):
 

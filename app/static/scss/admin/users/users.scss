@@ -7,14 +7,25 @@
         li { display: inline-block; }
     }
     div {
-        padding-right: 0.5rem;
-        display: inline-block;
+        margin-top: 1rem;
+        display: block;
     }
     input[type="submit"] {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         display: block;
     }
 }
+
+.for-fake-user {
+    $fake-user-image-width: 25%;
+    .fake-user-image {
+        display: block;
+        position: relative;
+        width: $fake-user-image-width;
+        padding-bottom: $fake-user-image-width;
+    }
+}
+
 .form-component {
     display: inline;
 }

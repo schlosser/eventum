@@ -40,7 +40,7 @@
 
 {% block content %}
 <div class="profile-picture">
-    <img src="{{ user.get_profile_picture(size=300) }}">
+    <i style="background-image:url({{ user.get_profile_picture(size=300) }})"></i>
 </div>
 <div class="info">
     <div class="inner">

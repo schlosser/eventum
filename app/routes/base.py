@@ -10,7 +10,7 @@ SUPER_USER_GPLUS_ID = 'super'
 @app.errorhandler(404)
 def not_found(error):
     old_site_url = 'http://adicu.github.com' + request.path
-    response = requests.get(old_site_url)
+    response = requests.head(old_site_url)
     if response.status_code == 200:
         return redirect(old_site_url)
 
@@ -41,8 +41,7 @@ def lookup_current_user():
             user = User(name='Super User',
                         gplus_id=SUPER_USER_GPLUS_ID,
                         user_type='admin',
-                        email='email@email.com',
-                        image_url='https://lh6.googleusercontent.com/-K9HZ5Z5vOU8/AAAAAAAAAAI/AAAAAAAAAAA/yRoMtBSXoxQ/s48-c/photo.jpg')
+                        email='email@email.com')
             user.save()
 
     if 'gplus_id' in session:

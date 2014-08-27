@@ -5,7 +5,7 @@ from app.forms.fields import DateField
 from app.models.fields import TimeField
 import markdown
 
-from datetime import datetime, timedelta, time
+from datetime import datetime, timedelta
 now = datetime.now
 
 class Event(db.Document):

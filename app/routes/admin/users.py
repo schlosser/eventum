@@ -1,5 +1,5 @@
-from app.models import User, Whitelist
-from app.forms import AddToWhitelistForm, EditUserForm
+from app.models import User, Whitelist, Image
+from app.forms import AddToWhitelistForm, EditUserForm, UploadImageForm
 from app.lib.decorators import login_required, development_only
 from apiclient.discovery import build
 from mongoengine import DoesNotExist
@@ -18,11 +18,14 @@ def index():
 
     Whitelisted users are the only ones allowed to make user accounts.
     """
+    upload_form = UploadImageForm()
     whitelist_form = AddToWhitelistForm()
     return render_template('admin/users/users.html',
                            whitelist_form=whitelist_form,
+                           upload_form=upload_form,
                            whitelist=Whitelist.objects(redeemed=False),
                            users=User.objects(),
+                           images=Image.objects(),
                            current_user=g.user)
 
 @users.route('/users/me', methods=['GET'])
@@ -35,8 +38,7 @@ def me():
                         email=user.email,
                         # image_url=user.get_profile_picture(),
                         user_type=user.user_type)
-    return render_template('admin/users/user.html', user=user, form=form,
-                           current_user=g.user)
+    return render_template('admin/users/user.html', user=user, form=form)
 
 @users.route('/users/delete/<user_id>', methods=['POST'])
 @login_required
