@@ -10,7 +10,7 @@ _resources = None
 
 @client.route('/')
 def index():
-    events = Event.objects(end_date__gt=datetime.now()).order_by('start_date')[:4]
+    events = Event.objects(end_date__gt=datetime.now()).order_by('start_date', 'start_time')[:4]
     blog_post = BlogPost.objects(published=True).order_by('-date_published')[0]
     return render_template('index.html', events=events, blog_post=blog_post)
 
@@ -38,7 +38,7 @@ def events():
                                    datetime.min.time())
     next_sunday = datetime.combine(today + timedelta(days=7-today.isoweekday()),
                                    datetime.min.time())
-    recent_and_upcoming = Event.objects(start_date__gt=last_sunday).order_by('start_date-')
+    recent_and_upcoming = Event.objects(start_date__gt=last_sunday).order_by('start_date', 'start_time')
 
     recent_events = recent_and_upcoming.filter(end_date__lt=datetime.now())
 
@@ -47,10 +47,13 @@ def events():
 
     upcoming_events = recent_and_upcoming.filter(start_date__gt=next_sunday)[:4]
 
+    more_past_events = bool(Event.objects(start_date__lte=last_sunday).count())
+
     return render_template('events/events.html',
                            recent_events=recent_events,
                            events_this_week=events_this_week,
-                           upcoming_events=upcoming_events)
+                           upcoming_events=upcoming_events,
+                           more_past_events=more_past_events)
 
 @client.route('/events/<int:index>')
 def event_archive(index):
@@ -62,7 +65,7 @@ def event_archive(index):
     last_sunday = datetime.combine(today - timedelta(days=today.weekday()+7),
                                    datetime.min.time())
 
-    past_events=Event.objects(start_date__lt=last_sunday).order_by('start_date-')
+    past_events=Event.objects(start_date__lt=last_sunday).order_by('start_date')
 
     if not past_events:
         return redirect(url_for('.events'))
