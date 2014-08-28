@@ -4,7 +4,7 @@ from app.forms.CreateBlogPostForm import image_with_same_name
 from wtforms import StringField, DateField, TextAreaField, BooleanField, \
     SelectField, IntegerField, RadioField
 from wtforms.validators import Required, ValidationError, Optional, \
-    NumberRange, Regexp
+    NumberRange, Regexp, URL
 
 
 def unique_with_database(form, field):
@@ -43,6 +43,7 @@ class CreateEventForm(Form):
     long_description = TextAreaField('Long description', default="Long Description.  This should be **four to five** sentences.  Feel free to include [links](http://adicu.com).")
     is_published = BooleanField('Is Published')
     update_all = BooleanField('Update all', default=False)
+    facebook_url = StringField('Facebook  URL', [URL()])
     event_image = StringField('Image', [image_with_same_name])
 
     def post_validate(form, validation_stopped):

@@ -45,6 +45,15 @@
                 <i class="fa fa-map-marker"></i>
                 {{ event.location }}
             </p>
+            {% if event.facebook_url %}
+            <a href="{{event.facebook_url}}">
+                <div class="button blue">
+                    <i class="fa fa-facebook"></i>
+                    RSVP on Facebook
+                </div>
+            </a>
+
+            {% endif %}
         </div>
         <div class="text">
             {{ event.long_description | safe }}

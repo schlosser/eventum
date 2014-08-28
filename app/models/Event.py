@@ -29,6 +29,7 @@ class Event(db.Document):
     is_recurring = db.BooleanField(required=True, default=False)
     parent_series = db.ReferenceField("EventSeries")
     image = db.ReferenceField("Image")
+    facebook_url = db.URLField()
     gcal_id = db.StringField()
     gcal_sequence = db.IntField()
 

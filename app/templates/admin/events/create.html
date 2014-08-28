@@ -144,6 +144,10 @@
         </div>
     </div>
     <div class="with-icon">
+        <i class="fa fa-facebook fa-2x"></i>
+        {{ macros.render_field(form.facebook_url, placeholder="Facebook Event URL", class="location") }}
+    </div>
+    <div class="with-icon">
         <i class="fa fa-repeat fa-2x"></i>
         <div class="repeat">
             {{ macros.render_field(form.is_recurring) }}

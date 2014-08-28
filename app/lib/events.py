@@ -351,6 +351,7 @@ class DataBuilder(object):
             'short_description': event.short_description_markdown,
             'long_description': event.long_description_markdown,
             'is_recurring': event.is_recurring,
+            'facebook_url': event.facebook_url,
             'event_image': event.image.filename if event.image else None
         }
 
@@ -384,6 +385,7 @@ class DataBuilder(object):
             'short_description_markdown': form.short_description.data,
             'long_description_markdown': form.long_description.data,
             'is_recurring': form.is_recurring.data,
+            'facebook_url': form.facebook_url.data,
             'image': event_image
         }
         if creator:
