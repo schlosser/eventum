@@ -286,6 +286,14 @@ $section-bottom: 1.25rem;
         }
     }
 
+    .hero {
+        height: ($hero-height - 10rem);
+
+        i {
+            height: ($hero-height + $navbar-height - 10rem);
+        }
+    }
+
     .main .subscribe {
         .submit {
             display: block;
