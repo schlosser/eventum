@@ -37,7 +37,8 @@ def _format_for_display(dt):
 def _get_events_for_template(past, future):
     """"""
     today = date.today()
-    last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)+7),
+    import ipdb; ipdb.set_trace()
+    last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)),
                                    datetime.min.time())
     next_sunday = last_sunday + timedelta(days=7)
     following_sunday = last_sunday + timedelta(days=14)
