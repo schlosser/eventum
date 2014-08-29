@@ -483,9 +483,29 @@
       "description": "The Android SDK is the library that lets you write programs that run on Android.",
       "resources": [
         {
+          "name": "Intro to Android by ADI",
+          "url": "https://github.com/parthibanloganathan/android-tutorial",
+          "description": "If you want to learn Android, ADI's got your back. We have an introductory Android tutorial to help you make a fully functional Android app in a matter of hours."
+        },
+        {
           "name": "Android Developer Reference",
           "url": "https://developer.android.com/develop/index.html",
           "description": "Portal for all things Android development: references, tools, news."
+        },
+        {
+          "name": "Vogella",
+          "url": "http://www.vogella.com/tutorials/android.html",
+          "description": "Detailed Android development tutorials covering almost everything you would want to know"
+        },
+        {
+          "name": "Programming Mobile Applications for Android Handheld Systems",
+          "url": "https://www.coursera.org/course/android",
+          "description": "Coursera class to use if you want to learn Android more formally"
+        },
+        {
+          "name": "Mobile Cloud Computing with Android",
+          "url": "https://www.coursera.org/specialization/mobilecloudcomputing/2",
+          "description": "Coursera specialization to become an Android pro"
         }
       ]
     },
@@ -505,9 +525,14 @@
           "description": "How Twitter ramps up their engineers (with Java experience) on Scala."
         },
         {
+          "name": "Functional Programming Principles in Scala",
+          "url": "https://www.coursera.org/course/progfun",
+          "description": "Take a Coursera class from Martin Odersky, the creator of Scala himself"
+        }
+        {
           "name": "Programming in Scala",
           "url": "http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644",
-          "description": "Written by one of the authors of Scala, this is the definitive guide to the language."
+          "description": "Written by Martin Odersky, this is the definitive guide to the language."
         },
         {
           "name": "Effective Scala",
