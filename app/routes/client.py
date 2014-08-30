@@ -18,6 +18,10 @@ def index():
 def contact():
     return render_template('contact.html')
 
+@client.route('/learn')
+def learn():
+    return redirect(url_for('.resources'))
+
 @client.route('/resources')
 def resources():
     force = request.args.get('force') is not None
