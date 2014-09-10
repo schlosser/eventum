@@ -3,6 +3,7 @@ import json
 from flask import Blueprint, render_template, abort, redirect, url_for, request
 from app.models import Event, BlogPost
 from datetime import datetime, date, timedelta
+from mongoengine import Q
 
 client = Blueprint('client', __name__)
 
@@ -10,7 +11,9 @@ _resources = None
 
 @client.route('/')
 def index():
-    events = Event.objects(end_date__gt=datetime.now()).order_by('start_date', 'start_time')[:4]
+    all_events = (Event.objects(Q(end_date__gt=date.today()) |
+                                Q(end_date=date.today(), end_time__gt=datetime.now().time())))
+    events = all_events.order_by('start_date', 'start_time')[:4]
     blog_post = BlogPost.objects(published=True).order_by('-date_published')[0]
     return render_template('index.html', events=events, blog_post=blog_post)
 
