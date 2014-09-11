@@ -75,20 +75,19 @@
     <div class="content">
         <div class="callout-left">
             <div class="section-header">
-                <h4>Projects</h4>
+                <h4>Learn to Code</h4>
                 <span class="bar gray"></span>
             </div>
-            <h3>Open source projects built by Columbia students for Columbia Students.</h3>
+            <h3>We've collected everything you need to learn to make your first app.</h3>
             <div class="button-group">
-                <div class="button gray"><a href="http://courses.adicu.com">Courses by ADI</a></div>
-                <div class="button gray"><a href="http://data.adicu.com">data.adicu.com</a></div>
+                <div class="button gray"><a href="{{ url_for('client.resources') }}">Learn to Code</a></div>
             </div>
-            <p>Learn more in <a href="/resources">Resources</a></p>
+            <p>Or, apply your knowledge with <a href="{{ url_for('client.labs') }}">ADI Labs</a></p>
         </div>
         <div class="callout-right">
             <div class="card">
                 <a href="http://courses.adicu.com">
-                    <i style="background-image:url({{ url_for('static', filename='img/courses_by_adi.png') }})"></i>
+                    <i style="background-image:url({{ url_for('static', filename='img/learn.jpg') }})"></i>
                 </a>
             </div>
         </div>
