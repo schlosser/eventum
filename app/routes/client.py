@@ -21,6 +21,10 @@ def index():
 def contact():
     return render_template('contact.html')
 
+@client.route('/labs')
+def labs():
+    return render_template('labs.html')
+
 @client.route('/learn')
 def learn():
     return redirect(url_for('.resources'))
