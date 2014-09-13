@@ -41,6 +41,36 @@ $content-padding: 0.625rem;
     }
 }
 
+.faqs {
+
+    .pair:after {
+        @extend .clearfix;
+    }
+
+    strong {
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .faq {
+        margin-bottom: 2rem;
+        width: 50%;
+        float: left;
+        display: block;
+        box-sizing: border-box;
+        &:first-child {
+            padding-right: 1rem;
+        }
+        &:nth-child(2) {
+            padding-left: 1rem;
+        }
+    }
+
+    p {
+        font-family: $sans;
+    }
+}
+
 
 .post-image {
     width: 600px;

@@ -8,6 +8,7 @@ from mongoengine import Q
 client = Blueprint('client', __name__)
 
 _resources = None
+_faqs = None
 
 @client.route('/')
 def index():
@@ -23,7 +24,16 @@ def contact():
 
 @client.route('/labs')
 def labs():
-    return render_template('labs.html')
+    force = request.args.get('force') is not None
+    faqs = _get_faqs(force=force)
+    return render_template('labs.html', faqs=faqs)
+
+def _get_faqs(force=False):
+    global _faqs
+    if not _faqs or force:
+        with open(app.config['FAQ_PATH']) as f:
+            _faqs = json.loads(f.read())['questions']
+    return _faqs
 
 @client.route('/learn')
 def learn():

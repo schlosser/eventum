@@ -1,0 +1,52 @@
+{
+    "questions": [
+        {
+            "question": "What will I get out of ADI Labs?",
+            "answer": "Experienced developers will have the opportunity to mentor less experienced developers as well as perform architectural work on new projects. Less experienced developers will learn industry standard best practices and how to work in a large project."
+        },
+        {
+            "question": "What is the time commitment for ADI Labs? Will there be homework?",
+            "answer": "You’ll be expected to be at most of the four hour weekly sessions, and the more time you put into the projects the more you will get out of it.  We expect that you will be a part of ADI Labs for the whole semester, and you're welcome to continue in subsequent semesters."
+        },
+        {
+            "question": "Am I qualified enough to be a part of ADI Labs? Is it appropriate for me?",
+            "answer": "It’s okay if you’re inexperienced but we think it will be most useful if you have some programming background or have taken Data Structures. You’ll have the opportunity to learn more about the operations that go into launching software as well as monitoring it.  We also welcome experienced programmers that want to do more industry-style programming."
+        },
+        {
+            "question": "Is 1004, 1006 or 1007 sufficient?",
+            "answer": "If you’ve done prior web/mobile development outside of class or have had an internship in software engineering, you’re definitely qualified. If you haven’t, we suggest that you attend some <a href=\"http://adicu.com/events\">ADI Workshops</a> and learn basic web programming first."
+        },
+        {
+            "question": "Will I get course credit for this?  Is this something I can put on my resume?",
+            "answer": "No, while you can’t get course credit for this, companies love seeing big outside projects on your resume, so go ahead and talk about us!"
+        },
+        {
+            "question": "Is ADI Labs the same as ADI Committee?",
+            "answer":"The ADI Committee organizes ADI events.  ADI Labs mentors and members may be a part of ADI Committee, but are not required to do so."
+        },
+        {
+            "question": "What are you looking for in the application?  Who will be admitted?",
+            "answer": "We’ll be bringing on people of all ability levels, not just the best programmers.  It’s most important that you’re willing to put in the time to participate."
+        },
+        {
+            "question": "What should I put down if I don't have any past projects? Are they mandatory?",
+            "answer": "Past projects are not mandatory, it’s just a way for us get a better idea of your experience level and what you might like to work on."
+        },
+        {
+            "question": "I don't know what GitHub is, or I don't have one.  Can I leave it blank?",
+            "answer": "Yes. We will teach you about Git and GitHub if you’re not familiar."
+        },
+        {
+            "question": "Is the admissions process rolling?",
+            "answer": "Yes, the application process is rolling. The dates serve as a guideline for when we’ll be done accepting applications."
+        },
+        {
+            "question": "Can I work on my own project?",
+            "answer": "Unfortunately not. The purpose of ADI Labs is to provide you with experience working on a project with others. This is easier to accomplish with projects that mentors are familar with."
+        },
+        {
+            "question": "Can I suggest a project?",
+            "answer": "We have a set of projects for the first semester of ADI Labs.  Moving forward, however, we may be open to new project ideas."
+        }
+    ]
+}
