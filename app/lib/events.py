@@ -34,8 +34,8 @@ class EventsHelper(object):
         """"""
         # Determine if the event should be moved between calendars
         move_to = None
-        if event.is_published != form.is_published.data:
-            move_to = klass.PUBLIC if form.is_published.data else klass.PRIVATE
+        if event.published != form.published.data:
+            move_to = klass.PUBLIC if form.published.data else klass.PRIVATE
 
         if event.is_recurring != form.is_recurring.data:
             if event.is_recurring:
@@ -347,7 +347,7 @@ class DataBuilder(object):
             'start_time': event.start_time,
             'end_date': event.end_date,
             'end_time': event.end_time,
-            'is_published': event.is_published,
+            'published': event.published,
             'short_description': event.short_description_markdown,
             'long_description': event.long_description_markdown,
             'is_recurring': event.is_recurring,
@@ -381,7 +381,7 @@ class DataBuilder(object):
             'location': form.location.data,
             'start_time': form.start_time.data,
             'end_time': form.end_time.data,
-            'is_published': form.is_published.data,
+            'published': form.published.data,
             'short_description_markdown': form.short_description.data,
             'long_description_markdown': form.long_description.data,
             'is_recurring': form.is_recurring.data,

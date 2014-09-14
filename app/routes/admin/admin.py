@@ -9,7 +9,7 @@ admin = Blueprint('admin', __name__)
 @login_required
 def index():
     today = date.today()
-    last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)+7),
+    last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)),
                                    datetime.min.time())
     next_sunday = last_sunday + timedelta(days=7)
 

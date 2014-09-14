@@ -10,9 +10,12 @@ SUPER_USER_GPLUS_ID = 'super'
 @app.errorhandler(404)
 def not_found(error):
     old_site_url = 'http://adicu.github.com' + request.path
-    response = requests.head(old_site_url, allow_redirects=True)
-    if response.status_code == 200:
-        return redirect(old_site_url)
+    try:
+        response = requests.head(old_site_url, allow_redirects=True)
+        if response.status_code == 200:
+            return redirect(old_site_url)
+    except requests.exceptions.ConnectionError:
+        pass
 
     return render_template('error/404.html'), 404
 

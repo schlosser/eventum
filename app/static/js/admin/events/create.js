@@ -92,13 +92,13 @@ $(function() {
 
     /* Tie the published toggle to the form element */
     $(document).on('click', '.active a[href="#toggle"]', function(e) {
-        $('#is_published').prop('checked', false);
+        $('#published').prop('checked', false);
         setTimeout(function() {
             $('.save-button').click();
         }, 500);
     });
     $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
-        $('#is_published').prop('checked', true);
+        $('#published').prop('checked', true);
         setTimeout(function() {
             $('.save-button').click();
         }, 500);

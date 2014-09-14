@@ -12,7 +12,7 @@ action="{{ url_for('events.edit', event_id=event.id) }}"
 {% block barright %}
 {% if event.is_recurring %}
     <a class="text-button save-button" href="#show-modal" data-modal="save-options">
-        {% if event.is_published %}
+        {% if event.published %}
             Save
         {% else %}
             Save Draft
@@ -20,7 +20,7 @@ action="{{ url_for('events.edit', event_id=event.id) }}"
     </a>
 {% else %}
     <a class="text-button save-button" href="#save">
-        {% if event.is_published %}
+        {% if event.published %}
             Save
         {% else %}
             Save Draft
@@ -28,7 +28,7 @@ action="{{ url_for('events.edit', event_id=event.id) }}"
     </a>
 {% endif %}
 {% if current_user.can("publish") %}
-    {% if event.is_published %}
+    {% if event.published %}
         {{ macros.toggle("Publish", "Unpublish")}}
     {% else %}
         {{ macros.toggle("Publish", "Unpublish", start_on=False)}}

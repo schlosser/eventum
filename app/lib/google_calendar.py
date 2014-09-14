@@ -24,7 +24,7 @@ class GoogleCalendarAPIClient():
         """Returns the ID for the public or private calendar, depending on
         whether or not the event is published.
         """
-        return self.public_calendar_id if event.is_published else self.private_calendar_id
+        return self.public_calendar_id if event.published else self.private_calendar_id
 
 
     def _get_service(self):
@@ -62,7 +62,7 @@ class GoogleCalendarAPIClient():
                                                          body=resource).execute()
         except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event'
-            pass
+            return None
 
         self._update_event_from_response(event, created_event)
 
@@ -112,8 +112,8 @@ class GoogleCalendarAPIClient():
         """
         event = Event.objects().get(id=stale_event.id)
 
-        if not event.is_published:
-            raise GoogleCalendarAPIError('Event must have is_published as `True` before publishing')
+        if not event.published:
+            raise GoogleCalendarAPIError('Event must have published as `True` before publishing')
 
         return self.move_event(event, from_id=self.private_calendar_id,
                                to_id=self.public_calendar_id)
@@ -125,8 +125,8 @@ class GoogleCalendarAPIClient():
         """
         event = Event.objects().get(id=stale_event.id)
 
-        if event.is_published:
-            raise GoogleCalendarAPIError('Event must have is_published as `False` before unpublishing')
+        if event.published:
+            raise GoogleCalendarAPIError('Event must have published as `False` before unpublishing')
 
         return self.move_event(event, from_id=self.public_calendar_id,
                                to_id=self.private_calendar_id)

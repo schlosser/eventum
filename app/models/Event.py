@@ -24,7 +24,7 @@ class Event(db.Document):
     long_description = db.StringField()
     short_description_markdown = db.StringField()
     long_description_markdown = db.StringField()
-    is_published = db.BooleanField(required=True, default=False)
+    published = db.BooleanField(required=True, default=False)
     date_published = db.DateTimeField()
     is_recurring = db.BooleanField(required=True, default=False)
     parent_series = db.ReferenceField("EventSeries")
@@ -176,6 +176,6 @@ class Event(db.Document):
 
     def __repr__(self):
         return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
-            'is_published=%r)' % (self.title, self.location, self.creator,
+            'published=%r)' % (self.title, self.location, self.creator,
                              self.start_datetime(), self.end_datetime(),
-                             self.is_published)
+                             self.published)
