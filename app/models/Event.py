@@ -63,13 +63,16 @@ class Event(db.Document):
             self.long_description = markdown.markdown(self.long_description_markdown,
                                                       ['extra', 'smarty'])
 
-        if self.start_date and self.end_date and \
-                self.start_date > self.end_date:
+        if (self.start_date and
+                self.end_date and
+                self.start_date > self.end_date):
             raise ValidationError("Start date should always come before end "
                                   "date. Got (%r,%r)" % (self.start_date,
                                                          self.end_date))
-        if self.start_time and self.end_time and \
-                self.start_time > self.end_time:
+        if (self.start_date == self.start_time and
+                self.start_time is not None and
+                self.end_time is not None and
+                self.start_time > self.end_time):
             raise ValidationError("Start time should always come before end "
                                   "time. Got (%r,%r)" % (self.start_time,
                                                          self.end_time))
@@ -123,7 +126,7 @@ class Event(db.Document):
             2. 3 - 7:30pm
         """
         output = ''
-        if self.start_time.strftime("%p")==self.end_time.strftime("%p"):
+        if self.start_time.strftime("%p") == self.end_time.strftime("%p"):
             format = "%I:%M-"
         else:
             format = "%I:%M%p-"
@@ -146,20 +149,25 @@ class Event(db.Document):
                 .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
-        if self.start_time:
-            start_format = "%I:%M-" if self.end_time and \
-                self.start_time.strftime("%p")==self.end_time.strftime("%p") \
-                else "%I:%M%p-"
+
+        if self.start_time is not None:
+            if (self.end_time is not None and
+                    self.start_time.strftime("%p")==self.end_time.strftime("%p")):
+                start_format = "%I:%M-"
+            else:
+                start_format = "%I:%M%p-"
             output += self.start_time.strftime(start_format).lstrip("0").lower()
         else:
             output += "??:?? - "
+
         if self.end_date:
             if self.start_date and self.start_date != self.end_date:
                 output += self.end_date.strftime("%A, %B %d ") \
                     .replace(" 0", " ").replace("/0", "/")
         else:
             output += "???, ??/?? "
-        if self.end_time:
+
+        if self.end_time is not None:
             output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
         else:
             output += "??:??"

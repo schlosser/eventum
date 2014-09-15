@@ -10,6 +10,7 @@ from app.models import Event, Image
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege
 
+from app.lib.error import GoogleCalendarAPIError
 from app.lib.events import EventsHelper
 events = Blueprint('events', __name__)
 
@@ -42,9 +43,9 @@ def _get_events_for_template(past, future):
     next_sunday = last_sunday + timedelta(days=7)
     following_sunday = last_sunday + timedelta(days=14)
 
-    this_week = Event.objects(start_date__gt=last_sunday,
+    this_week = Event.objects(start_date__gte=last_sunday,
                               start_date__lt=next_sunday).order_by('start_date')
-    next_week = Event.objects(start_date__gt=next_sunday,
+    next_week = Event.objects(start_date__gte=next_sunday,
                               start_date__lt=following_sunday).order_by('start_date')
     past_events = []
     future_events = []
@@ -53,7 +54,7 @@ def _get_events_for_template(past, future):
         ending_sunday = last_sunday - timedelta(days=7 * week_no)
         starting_sunday = last_sunday - timedelta(days=7 * (week_no + 1))
         week_name = _format_for_display(starting_sunday)
-        events = Event.objects(start_date__gt=starting_sunday,
+        events = Event.objects(start_date__gte=starting_sunday,
                                start_date__lt=ending_sunday)
         past_events.insert(0, {
             'week_name': week_name,
@@ -64,7 +65,7 @@ def _get_events_for_template(past, future):
         starting_sunday = following_sunday + timedelta(days=7 * week_no)
         ending_sunday = following_sunday + timedelta(days=7 * (week_no + 1))
         week_name = _format_for_display(starting_sunday)
-        events = Event.objects(start_date__gt=starting_sunday,
+        events = Event.objects(start_date__gte=starting_sunday,
                                start_date__lt=ending_sunday)
         future_events.append({
             'week_name': week_name,
@@ -84,7 +85,11 @@ def create():
     """"""
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
-        EventsHelper.create_event(form, g.user)
+        try:
+            EventsHelper.create_event(form, g.user)
+        except GoogleCalendarAPIError as e:
+            flash(e.message)
+
         return redirect(url_for('.index'))
     if form.errors:
         for error in form.errors:
@@ -112,7 +117,11 @@ def edit(event_id):
         EventsHelper.create_form(event, request)
 
     if form.validate_on_submit():
-        EventsHelper.update_event(event, form)
+        try:
+            EventsHelper.update_event(event, form)
+        except GoogleCalendarAPIError as e:
+            flash(e.message)
+
         return redirect(url_for('.index'))
     if form.errors:
         for error in form.errors:
@@ -135,14 +144,10 @@ def delete(event_id):
     form = DeleteEventForm(request.form)
     if Event.objects(id=object_id).count() == 1:
         event = Event.objects().with_id(object_id)
-        if event.is_recurring:
-            if form.delete_all.data:
-                EventsHelper.delete_series(event)
-            else:
-                EventsHelper.delete_single_event_from_series(event)
-        else:
-            # The event is not recurring, so just delete it
-            EventsHelper.delete_single_event(event)
+        try:
+            EventsHelper.delete_event(event, form)
+        except GoogleCalendarAPIError as e:
+            flash(e.message)
     else:
         flash('Invalid event id')
     return redirect(url_for('.index'))

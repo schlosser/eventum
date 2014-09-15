@@ -5,7 +5,10 @@ from apiclient.errors import HttpError
 from oauth2client.file import Storage
 
 from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuilder
-from app.lib.error import GoogleCalendarAPIError, GoogleCalendarAPIMissingID
+from app.lib.error import (GoogleCalendarAPIError,
+                           GoogleCalendarAPIMissingID,
+                           GoogleCalendarAPIBadStatusLine,
+                           GoogleCalendarAPIEventAlreadyDeleted)
 from app import app
 from app.models import Event
 
@@ -62,7 +65,12 @@ class GoogleCalendarAPIClient():
                                                          body=resource).execute()
         except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event'
-            return None
+            try:
+                created_event = self.service.events().insert(calendarId=calendar_id,
+                                                         body=resource).execute()
+            except httplib.BadStatusLine:
+                print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event Again!'
+                raise GoogleCalendarAPIBadStatusLine
 
         self._update_event_from_response(event, created_event)
 
@@ -73,7 +81,8 @@ class GoogleCalendarAPIClient():
         event = Event.objects().get(id=stale_event.id)
 
         if not event.gcal_id:
-            raise GoogleCalendarAPIMissingID()
+            self.create_event(stale_event)
+            raise GoogleCalendarAPIMissingID('Missing gplus_id. Successfully fell back to create.')
 
         resource = None
         resource = GoogleCalendarResourceBuilder.event_resource(event, for_update=True)
@@ -95,11 +104,11 @@ class GoogleCalendarAPIClient():
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event'
             try:
                 updated_event = self.service.events().update(calendarId=calendar_id,
-                                                         eventId=event_id_for_update,
-                                                         body=resource).execute()
+                                                             eventId=event_id_for_update,
+                                                             body=resource).execute()
             except httplib.BadStatusLine:
                 print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event Again!'
-                return None
+                raise GoogleCalendarAPIBadStatusLine
 
         self._update_event_from_response(event, updated_event)
 
@@ -148,7 +157,7 @@ class GoogleCalendarAPIClient():
                                                      destination=to_id).execute()
         except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Move Event'
-            return None
+            raise GoogleCalendarAPIBadStatusLine
         return moved_event
 
     def delete_event(self, event, as_exception=False):
@@ -169,7 +178,7 @@ class GoogleCalendarAPIClient():
                                                              body=instance).execute()
             except httplib.BadStatusLine:
                 print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event (as exception)'
-                return None
+                raise GoogleCalendarAPIBadStatusLine
             return updated_event
 
         try:
@@ -177,10 +186,10 @@ class GoogleCalendarAPIClient():
                                                 eventId=event.gcal_id).execute()
         except HttpError as e:
             print e
-            return None
+            raise GoogleCalendarAPIEventAlreadyDeleted
         except httplib.BadStatusLine:
             print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event'
-            return None
+            raise GoogleCalendarAPIBadStatusLine
 
     def get_calendar_list_resources(self):
         """"""
@@ -203,8 +212,8 @@ class GoogleCalendarAPIClient():
         page_token = None
         while True:
           instances = self.service.events().instances(calendarId=calendar_id,
-                                                   eventId=event.gcal_id,
-                                                   pageToken=page_token).execute()
+                                                      eventId=event.gcal_id,
+                                                      pageToken=page_token).execute()
           for instance in instances['items']:
             if instance['start']['dateTime'] == event_start_date:
                 return instance
@@ -218,8 +227,9 @@ class GoogleCalendarAPIClient():
         """"""
         gcal_id = response.get('id')
         gcal_sequence = response.get('sequence')
-        if not gcal_id or not gcal_sequence:
-            raise GoogleCalendarAPIError('Request failed. %s' % response)
+        if gcal_id is None or gcal_sequence is None:
+            print 'Request failed. %s' % response
+            raise GoogleCalendarAPIError('Request Failed.')
 
         if event.is_recurring:
             event.parent_series.gcal_id = gcal_id

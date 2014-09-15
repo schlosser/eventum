@@ -219,8 +219,10 @@ class EventsHelper(object):
         """"""
         try:
             response = gcal_client.delete_event(event)
-        except GoogleCalendarAPIMissingID:
-            response = None
+        except GoogleCalendarAPIMissingID as e:
+            event.delete()
+            raise e
+
         event.delete()
 
         # Return the Google Calendar response
@@ -232,8 +234,9 @@ class EventsHelper(object):
         # Cancel the series on Google Calendar
         try:
             response = gcal_client.delete_event(event, as_exception=True)
-        except GoogleCalendarAPIMissingID:
-            response = None
+        except GoogleCalendarAPIMissingID as e:
+            event.parent_series.delete_one(event)
+            raise e
 
         # Delete the one event
         event.parent_series.delete_one(event)
@@ -247,8 +250,10 @@ class EventsHelper(object):
         # Delete the series
         try:
             response = gcal_client.delete_event(event)
-        except GoogleCalendarAPIMissingID:
-            response = None
+        except GoogleCalendarAPIMissingID as e:
+            event.parent_series.delete_all()
+            raise e
+
         event.parent_series.delete_all()
 
         # Return the Google Calendar response
