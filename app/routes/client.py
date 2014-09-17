@@ -31,6 +31,10 @@ def index():
 def contact():
     return render_template('contact.html')
 
+@client.route('/jobfair')
+def jobfair():
+    return render_template('jobfair.html')
+
 @client.route('/labs')
 def labs():
     force = request.args.get('force') is not None

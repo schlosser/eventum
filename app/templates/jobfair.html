@@ -1,0 +1,49 @@
+{% extends "page.html" %}
+{% block title %}Startup Career Fair | {{ super() }}{% endblock %}
+
+{% block header_image_class %}top{% endblock %}
+{% block header_image %}/static/img/hero/startup.jpg{% endblock %}
+
+{% block main %}
+<section class="tagline">
+   <h1>ADI Startup Career Fair</h1>
+</section>
+<section class="card top-card">
+   <div class="single content">
+       <div class="details">
+            <div class="section-header">
+                <h4>Details</h4>
+                <span class="bar yellow"></span>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i><!-- Fix space on inline-block elements, do not remove
+             -->Friday, October 17th
+            </p>
+            <p>
+                <i class="fa fa-clock-o"></i><!-- Fix space on inline-block elements, do not remove
+             -->1:00-4:00pm
+            </p>
+            <p>
+                <i class="fa fa-map-marker"></i><!-- Fix space on inline-block elements, do not remove
+             --><span>C555 Lerner Hall</span> <br />
+                <span>2920 Broadway</span> <br />
+                <span>Ave New York</span>
+            </p>
+        </div>
+        <div class="text">
+            <p>Interested in getting a job or internship at an NYC startup?  Join ADI at the 4th annual Startup Career Fair to meet some of New York's most exciting tech startups.</p>
+            <p>Bring your resumes!  Last year over 250 Columbia students met over 20 New York tech startups and this year it's going to be even better.</p>
+            <p>Check back here for more details on this year's startups and how to RSVP.</p>
+        </div>
+   </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Companies</h4>
+            <span class="bar blue"></span>
+        </div>
+        <h3>Coming Soon!</h3>
+    </div>
+</section>
+{% endblock %}
