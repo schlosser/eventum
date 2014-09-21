@@ -1,6 +1,6 @@
 from pyrfc3339 import generate
 import pytz
-import re
+from app.lib.text import strip_html
 from app.lib.error import GoogleCalendarAPIError
 
 class GoogleCalendarResourceBuilder():
@@ -13,7 +13,7 @@ class GoogleCalendarResourceBuilder():
         resource = {}
         resource['summary'] = event.title
         resource['location'] = event.location
-        resource['description'] = klass._strip_tags(event.long_description)
+        resource['description'] = strip_html(event.long_description)
         resource['status'] = 'confirmed' if event.published else 'tentative'
         if for_update:
             resource['sequence'] = event.gcal_sequence + 1
@@ -53,11 +53,6 @@ class GoogleCalendarResourceBuilder():
         """"""
         d = s.recurrence_end_date
         return '%d%02d%02dT235959Z' % (d.year, d.month, d.day)
-
-    @classmethod
-    def _strip_tags(klass, html):
-        p = re.compile(r'<.*?>')
-        return p.sub(' ', html)
 
     @classmethod
     def rfc3339(klass, datetime):
