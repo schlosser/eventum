@@ -30,7 +30,6 @@ def add():
             fake_email = fake_id[:10] + "@fake-users.com"
             filename = form.fake_user_image.data
             try:
-                import ipdb; ipdb.set_trace()
                 fake_image = Image.objects().get(filename=filename)
                 fake_user = User(email=fake_email,
                                  gplus_id=fake_id,
