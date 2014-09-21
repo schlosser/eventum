@@ -45,6 +45,7 @@ class User(db.Document):
                                regex="(fake_user|editor|publisher|admin)")
     last_logon = db.DateTimeField()
 
+    # MongoEngine ORM metadata
     meta = {
         'allow_inheritance': True,
         'indexes': ['email', 'gplus_id']

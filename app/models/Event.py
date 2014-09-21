@@ -151,8 +151,7 @@ class Event(db.Document):
             output += "???, ??/?? "
 
         if self.start_time is not None:
-            if (self.end_time is not None and
-                    self.start_time.strftime("%p")==self.end_time.strftime("%p")):
+            if self._start_and_end_time_share_am_or_pm():
                 start_format = "%I:%M-"
             else:
                 start_format = "%I:%M%p-"
@@ -173,6 +172,12 @@ class Event(db.Document):
             output += "??:??"
         return output
 
+    def _start_and_end_time_share_am_or_pm(self):
+        return (self.start_time is not None and
+                self.end_time is not None and
+                self.start_time.strftime("%p")==self.end_time.strftime("%p"))
+
+    # MongoEngine ORM metadata
     meta = {
         'allow_inheritance': True,
         'indexes': ['start_date', 'creator'],
