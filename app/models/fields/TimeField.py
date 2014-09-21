@@ -39,3 +39,9 @@ class TimeField(BaseField):
                    value.microsecond / 1000000
         if isinstance(value, (int, float)):
             return value
+
+    def __nonzero__(self):
+        """Defining all TimeField instances to be truthy avoids a problem where
+        TimeField instances representing midnight (00:00) are falsey.
+        """
+        return True

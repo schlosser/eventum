@@ -34,9 +34,3 @@ class TimeField(Field):
             except ValueError:
                 self.data = None
                 raise ValueError(self.gettext(self.error_msg))
-
-    def __nonzero__(self):
-        """Defining all TimeField instances to be truthy avoids a problem where
-        TimeField instances representing midnight (00:00) are falsey.
-        """
-        return True
