@@ -70,8 +70,8 @@ class Event(db.Document):
                                   "date. Got (%r,%r)" % (self.start_date,
                                                          self.end_date))
         if (self.start_date == self.start_time and
-                self.start_time is not None and
-                self.end_time is not None and
+                self.start_time and
+                self.end_time and
                 self.start_time > self.end_time):
             raise ValidationError("Start time should always come before end "
                                   "time. Got (%r,%r)" % (self.start_time,
@@ -79,13 +79,13 @@ class Event(db.Document):
 
     def start_datetime(self):
         """A convenience method to combine start_date and start_time"""
-        if self.start_date is None or self.start_time is None:
+        if not self.start_date or not self.start_time:
             return None
         return datetime.combine(self.start_date, self.start_time)
 
     def end_datetime(self):
         """A convenience method to combine end_date and end_time"""
-        if self.end_date is None or self.end_time is None:
+        if not self.end_date or not self.end_time:
             return None
         return datetime.combine(self.end_date, self.end_time)
 
@@ -150,7 +150,7 @@ class Event(db.Document):
         else:
             output += "???, ??/?? "
 
-        if self.start_time is not None:
+        if self.start_time:
             if self._start_and_end_time_share_am_or_pm():
                 start_format = "%I:%M-"
             else:
@@ -166,15 +166,15 @@ class Event(db.Document):
         else:
             output += "???, ??/?? "
 
-        if self.end_time is not None:
+        if self.end_time:
             output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
         else:
             output += "??:??"
         return output
 
     def _start_and_end_time_share_am_or_pm(self):
-        return (self.start_time is not None and
-                self.end_time is not None and
+        return (self.start_time and
+                self.end_time and
                 self.start_time.strftime("%p")==self.end_time.strftime("%p"))
 
     # MongoEngine ORM metadata

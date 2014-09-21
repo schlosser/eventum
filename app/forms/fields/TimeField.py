@@ -4,8 +4,7 @@ from wtforms import Field
 from wtforms.widgets.html5 import TimeInput
 
 class TimeField(Field):
-    """
-    A text field which stores a `datetime.time` matching a format.
+    """A text field which stores a `datetime.time` matching a format.
 
     Taken from
     http://flask-admin.readthedocs.org/en/v1.0.7/_modules/flask/ext/admin
@@ -35,3 +34,9 @@ class TimeField(Field):
             except ValueError:
                 self.data = None
                 raise ValueError(self.gettext(self.error_msg))
+
+    def __nonzero__(self):
+        """Defining all TimeField instances to be truthy avoids a problem where
+        TimeField instances representing midnight (00:00) are falsey.
+        """
+        return True
