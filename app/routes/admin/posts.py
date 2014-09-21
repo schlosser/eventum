@@ -26,7 +26,7 @@ def new():
     form.author.choices = [
             (str(u.id), u.name + " (You)" if u == g.user else u.name)
             for u in User.objects()]
-    form.author.default = str(g.user.id)
+    form.author.data = str(g.user.id)
     upload_form = UploadImageForm()
     if form.validate_on_submit():
         author = User.objects().get(id=ObjectId(form.author.data))
