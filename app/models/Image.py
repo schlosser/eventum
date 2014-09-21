@@ -75,6 +75,7 @@ class Image(db.Document):
             except IOError:
                 pass
 
+    # MongoEngine ORM metadata
     meta = {
         'allow_inheritance': True,
         'indexes': ['creator'],

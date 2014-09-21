@@ -5,7 +5,10 @@ from apiclient.errors import HttpError
 from oauth2client.file import Storage
 
 from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuilder
-from app.lib.error import GoogleCalendarAPIError, GoogleCalendarAPIMissingID
+from app.lib.error import (GoogleCalendarAPIError,
+                           GoogleCalendarAPIMissingID,
+                           GoogleCalendarAPIBadStatusLine,
+                           GoogleCalendarAPIEventAlreadyDeleted)
 from app import app
 from app.models import Event
 
@@ -56,13 +59,11 @@ class GoogleCalendarAPIClient():
         resource = GoogleCalendarResourceBuilder.event_resource(event)
 
         calendar_id = self._calendar_id_for_event(event)
+
         print '[GOOGLE_CALENDAR]: Create Event'
-        try:
-            created_event = self.service.events().insert(calendarId=calendar_id,
-                                                         body=resource).execute()
-        except httplib.BadStatusLine:
-            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Create Event'
-            return None
+        request = self.service.events().insert(calendarId=calendar_id,
+                                               body=resource)
+        created_event = self._execute_request(request)
 
         self._update_event_from_response(event, created_event)
 
@@ -73,10 +74,12 @@ class GoogleCalendarAPIClient():
         event = Event.objects().get(id=stale_event.id)
 
         if not event.gcal_id:
-            raise GoogleCalendarAPIMissingID()
+            self.create_event(stale_event)
+            raise GoogleCalendarAPIMissingID('Missing gplus_id. Successfully fell back to create.')
 
         resource = None
-        resource = GoogleCalendarResourceBuilder.event_resource(event, for_update=True)
+        resource = GoogleCalendarResourceBuilder.event_resource(event,
+                                                                for_update=True)
 
         calendar_id = self._calendar_id_for_event(event)
         event_id_for_update = event.gcal_id
@@ -87,19 +90,10 @@ class GoogleCalendarAPIClient():
             event_id_for_update = instance['id']
 
         print '[GOOGLE_CALENDAR]: Update Event'
-        try:
-            updated_event = self.service.events().update(calendarId=calendar_id,
-                                                         eventId=event_id_for_update,
-                                                         body=resource).execute()
-        except httplib.BadStatusLine:
-            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event'
-            try:
-                updated_event = self.service.events().update(calendarId=calendar_id,
-                                                         eventId=event_id_for_update,
-                                                         body=resource).execute()
-            except httplib.BadStatusLine:
-                print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Update Event Again!'
-                return None
+        request = self.service.events().update(calendarId=calendar_id,
+                                               eventId=event_id_for_update,
+                                               body=resource)
+        updated_event = self._execute_request(request)
 
         self._update_event_from_response(event, updated_event)
 
@@ -142,14 +136,10 @@ class GoogleCalendarAPIClient():
             raise GoogleCalendarAPIMissingID()
 
         print '[GOOGLE_CALENDAR]: Move Event'
-        try:
-            moved_event = self.service.events().move(calendarId=from_id,
-                                                     eventId=event.gcal_id,
-                                                     destination=to_id).execute()
-        except httplib.BadStatusLine:
-            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Move Event'
-            return None
-        return moved_event
+        request =  self.service.events().move(calendarId=from_id,
+                                              eventId=event.gcal_id,
+                                              destination=to_id)
+        return self._execute_request(request)
 
     def delete_event(self, event, as_exception=False):
         if not event.gcal_id:
@@ -157,30 +147,26 @@ class GoogleCalendarAPIClient():
 
         calendar_id = self._calendar_id_for_event(event)
 
-        print '[GOOGLE_CALENDAR]: Delete Event'
         if as_exception:
+            print '[GOOGLE_CALENDAR]: Delete Event (as exception)'
             resource = GoogleCalendarResourceBuilder.event_resource(event)
             instance = self._instance_resource_for_event_in_series(event)
             instance.update(resource)
             instance['status'] = u'cancelled'
-            try:
-                updated_event = self.service.events().update(calendarId=calendar_id,
-                                                             eventId=instance['id'],
-                                                             body=instance).execute()
-            except httplib.BadStatusLine:
-                print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event (as exception)'
-                return None
-            return updated_event
 
+            request = self.service.events().update(calendarId=calendar_id,
+                                                   eventId=instance['id'],
+                                                   body=instance)
+        else:
+            print '[GOOGLE_CALENDAR]: Delete Event'
+            request = self.service.events().delete(calendarId=calendar_id,
+                                                   eventId=event.gcal_id)
         try:
-            return self.service.events().delete(calendarId=calendar_id,
-                                                eventId=event.gcal_id).execute()
+            return self._execute_request(request)
         except HttpError as e:
+            # If the resource has already been deleted, fail quietly.
             print e
-            return None
-        except httplib.BadStatusLine:
-            print '[GOOGLE_CALENDAR]: [BAD_STATUS_LINE]: Delete Event'
-            return None
+            raise GoogleCalendarAPIEventAlreadyDeleted
 
     def get_calendar_list_resources(self):
         """"""
@@ -203,8 +189,8 @@ class GoogleCalendarAPIClient():
         page_token = None
         while True:
           instances = self.service.events().instances(calendarId=calendar_id,
-                                                   eventId=event.gcal_id,
-                                                   pageToken=page_token).execute()
+                                                      eventId=event.gcal_id,
+                                                      pageToken=page_token).execute()
           for instance in instances['items']:
             if instance['start']['dateTime'] == event_start_date:
                 return instance
@@ -218,8 +204,9 @@ class GoogleCalendarAPIClient():
         """"""
         gcal_id = response.get('id')
         gcal_sequence = response.get('sequence')
-        if not gcal_id or not gcal_sequence:
-            raise GoogleCalendarAPIError('Request failed. %s' % response)
+        if gcal_id is None or gcal_sequence is None:
+            print 'Request failed. %s' % response
+            raise GoogleCalendarAPIError('Request Failed.')
 
         if event.is_recurring:
             event.parent_series.gcal_id = gcal_id
@@ -232,3 +219,17 @@ class GoogleCalendarAPIClient():
             event.gcal_id = gcal_id
             event.gcal_sequence = gcal_sequence
             event.save()
+
+    def _execute_request(self, request):
+        """"""
+        try:
+            return request.execute()
+        except httplib.BadStatusLine as e:
+            print e.line, e.message
+            print '[GOOGLE_CALENDAR]: Got BadStatusLine.  Retrying...'
+            try:
+                return request.execute()
+            except httplib.BadStatusLine as e:
+                print '[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.'
+                raise GoogleCalendarAPIBadStatusLine('Line: %s, Message: %s' %
+                                                     (e.line, e.message))

@@ -11,6 +11,7 @@ class Whitelist(db.Document):
                                regex="(fake_user|editor|publisher|admin)")
     redeemed = db.BooleanField(required=True, default=False)
 
+    # MongoEngine ORM metadata
     meta = { 'indexes': ['email'] }
 
     def clean(self):

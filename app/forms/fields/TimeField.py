@@ -4,8 +4,7 @@ from wtforms import Field
 from wtforms.widgets.html5 import TimeInput
 
 class TimeField(Field):
-    """
-    A text field which stores a `datetime.time` matching a format.
+    """A text field which stores a `datetime.time` matching a format.
 
     Taken from
     http://flask-admin.readthedocs.org/en/v1.0.7/_modules/flask/ext/admin
