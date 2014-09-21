@@ -138,7 +138,7 @@ class GoogleCalendarAPIClient():
         print '[GOOGLE_CALENDAR]: Move Event'
         request =  self.service.events().move(calendarId=from_id,
                                               eventId=event.gcal_id,
-                                              destination=to_id).execute()
+                                              destination=to_id)
         return self._execute_request(request)
 
     def delete_event(self, event, as_exception=False):
@@ -220,7 +220,7 @@ class GoogleCalendarAPIClient():
             event.gcal_sequence = gcal_sequence
             event.save()
 
-    def _execute_request(request):
+    def _execute_request(self, request):
         """"""
         try:
             return request.execute()
