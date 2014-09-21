@@ -43,7 +43,7 @@ class CreateEventForm(Form):
     long_description = TextAreaField('Long description', default="Long Description.  This should be **four to five** sentences.  Feel free to include [links](http://adicu.com).")
     published = BooleanField('Published')
     update_all = BooleanField('Update all', default=False)
-    facebook_url = StringField('Facebook  URL', [URL()])
+    facebook_url = StringField('Facebook  URL', [Optional(), URL()])
     event_image = StringField('Image', [image_with_same_name])
 
     def post_validate(form, validation_stopped):

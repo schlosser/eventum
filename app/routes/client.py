@@ -72,9 +72,9 @@ def events():
                                         start_date__gt=last_sunday).order_by('start_date',
                                                                              'start_time')
 
-    recent_events = recent_and_upcoming.filter(end_date__lt=datetime.now())
+    recent_events = recent_and_upcoming.filter(end_date__lt=today)
 
-    events_this_week = recent_and_upcoming.filter(end_date__gt=datetime.now(),
+    events_this_week = recent_and_upcoming.filter(end_date__gte=today,
                                                   start_date__lt=next_sunday)
 
     upcoming_events = recent_and_upcoming.filter(start_date__gt=next_sunday)[:4]
