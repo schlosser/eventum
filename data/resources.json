@@ -118,8 +118,8 @@
         },
         {
           "name": "Intro to JavaScript",
-          "url": "https://docs.google.com/a/adicu.com/presentation/d/1-3ctZ2obbnF09CBcc2Q70cSUrwk08HT7zDGHSG3qqR8/edit?usp=sharing",
-          "description": "Written and developed by Gilad Penn, covering syntax, dom manipulation, and a bit of jQuery.",
+          "url": "https://docs.google.com/presentation/d/1-3ctZ2obbnF09CBcc2Q70cSUrwk08HT7zDGHSG3qqR8/edit?usp=sharing",
+          "description": "Written and developed by Gilad Penn, covering syntax, Document Object Model manipulation, and a bit of jQuery.",
           "adi": true
         }
       ]
