@@ -8,7 +8,8 @@ from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuild
 from app.lib.error import (GoogleCalendarAPIError,
                            GoogleCalendarAPIMissingID,
                            GoogleCalendarAPIBadStatusLine,
-                           GoogleCalendarAPIEventAlreadyDeleted)
+                           GoogleCalendarAPIEventAlreadyDeleted,
+                           GoogleCalendarAPIErrorNotFound)
 from app import app
 from app.models import Event
 
@@ -139,7 +140,11 @@ class GoogleCalendarAPIClient():
         request =  self.service.events().move(calendarId=from_id,
                                               eventId=event.gcal_id,
                                               destination=to_id)
-        return self._execute_request(request)
+        try:
+            return self._execute_request(request)
+        except GoogleCalendarAPIErrorNotFound:
+
+            raise GoogleCalendarAPIErrorNotFound('')
 
     def delete_event(self, event, as_exception=False):
         if not event.gcal_id:
@@ -233,3 +238,5 @@ class GoogleCalendarAPIClient():
                 print '[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.'
                 raise GoogleCalendarAPIBadStatusLine('Line: %s, Message: %s' %
                                                      (e.line, e.message))
+        except HttpError as e:
+            raise GoogleCalendarAPIErrorNotFound(uri=e.uri)
