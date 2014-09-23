@@ -4,6 +4,8 @@
 
 {% set should_include_hero = False%}
 
+{% block author %}{{post.author.name}}{% endblock %}
+
 {% block css %}
 {{ super() }}
 {% assets "scss_blog" %}
