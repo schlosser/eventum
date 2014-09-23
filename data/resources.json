@@ -115,6 +115,12 @@
           "name": "Airbnb JavaScript Style Guide",
           "url": "https://github.com/airbnb/javascript",
           "description": "This page is Airbnb's JavaScript style guide, and is a great reference for writing quality JavaScript code.  They include suggestions for spacing, variable declarations, and pretty much everything else JavaScript."
+        },
+        {
+          "name": "Slides from the Javascript Talk",
+          "url": "https://docs.google.com/a/adicu.com/presentation/d/1-3ctZ2obbnF09CBcc2Q70cSUrwk08HT7zDGHSG3qqR8/edit?usp=sharing",
+          "description": "Written and developed by Gilad Penn, covering syntax, dom manipulation, and a bit of jquery.",
+          "adi": true
         }
       ]
     },
