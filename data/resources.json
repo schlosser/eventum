@@ -213,11 +213,6 @@
           "name": "AngularJS Learning",
           "url": "https://github.com/jmcunningham/AngularJS-Learning",
           "description": "A bunch of links to blog posts, articles, videos, etc. for learning AngularJS."
-        },
-        {
-          "name": "ADI Schedule Builder",
-          "url": "http://courses.adicu.com",
-          "description": "ADIs tool for planning your semester's courses. Built on AngularJS."
         }
       ]
     },
@@ -269,6 +264,12 @@
           "name": "LearnStreet beginner course on Python",
           "url": "https://www.learnstreet.com/lessons/study/python",
           "description": "Online intro to Python 2.7. Will teach you the key concepts in Python. No experience necessary."
+        },
+        {
+          "name": "An Introduction to Python Programming",
+          "url": "http://adicu.github.com/intro-webdev/python/",
+          "description": "Written and developed by ADI, this tutorial covers basics of programming in Python.",
+          "adi": true
         }
       ]
     },
@@ -286,13 +287,12 @@
           "name": "The Flask Mega-Tutorial",
           "url": "http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world",
           "description": "An 18-part tutorial that starts from Hello World and takes you to an advanced Flask app.  Assumes some knowledge of Python."
-        }
-      ],
-      "featured": [
+        },
         {
           "name": "An Accelerated Introduction to Web Development",
           "url": "http://adicu.github.com/intro-webdev",
-          "description": "Written and developed by ADI, this 5-part tutorial covers basic Python, Flask, HTML, CSS, and API programming."
+          "description": "Written and developed by ADI, this 5-part tutorial covers basic Python, Flask, HTML, CSS, and API programming.",
+          "adi": true
         }
       ]
     },
@@ -485,7 +485,8 @@
         {
           "name": "Intro to Android by ADI",
           "url": "https://github.com/parthibanloganathan/android-tutorial",
-          "description": "If you want to learn Android, ADI's got your back. We have an introductory Android tutorial to help you make a fully functional Android app in a matter of hours."
+          "description": "If you want to learn Android, ADI's got your back. We have an introductory Android tutorial to help you make a fully functional Android app in a matter of hours.",
+          "adi": true
         },
         {
           "name": "Android Developer Reference",

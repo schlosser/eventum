@@ -19,16 +19,7 @@
 {% macro render_resource(resource) %}
 <div class="resource">
     <div class="inner">
-        <h5><a href="{{ resource.url }}" target="_blank">{{ resource.name }}</a></h5>
-        <p>{{ resource.description }}</p>
-    </div>
-</div>
-{% endmacro%}
-
-{% macro render_featured_resource(resource, color='blue') %}
-<div class="resource featured {{ color }}">
-    <div class="inner">
-        <h5><a href="{{ resource.url }}" target="_blank">{{ resource.name }}</a></h5>
+        <h5><a href="{{ resource.url }}" target="_blank">{{ resource.name }} {% if resource.adi %}<img class="adi-resource" src="{{ url_for('static', filename='img/logo/adi-gear.png') }}" />{% endif %}</a></h5>
         <p>{{ resource.description }}</p>
     </div>
 </div>
@@ -45,6 +36,15 @@
             <span class="bar blue"></span>
         </div>
         <h3>There are tons of different technologies out there, each of which has its own tutorials, documentation, and community (good or bad). ADI has done the hard work of tracking down the best resources, summarizing each technology, and identify critical concepts based on goal so that the only thing standing between you and the implementation of your idea is a little bit of learning and hard work.</h3>
+    </div>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>ADI-Developed Resources</h4>
+            <span class="bar yellow"></span>
+        </div>
+        <h3>Over the course of multiple years of holding student-run workshops, ADI has developed a large number of resources itself, on a wide variety of topics.  See resources written by ADI members highlighed with a gear (<img class="adi-resource" src="{{ url_for('static', filename='img/logo/adi-gear.png') }}"/>).</h3>
     </div>
 </section>
 <div class="sidebar-wrapper">
@@ -98,11 +98,6 @@
                     {% endif %}
                 </li>
             {% endfor%}
-            {% for resource in topic.featured %}
-                <li>
-                    {{ render_featured_resource(resource, color=colors[loop.index0 % 3]) }}
-                </li>
-            {% endfor %}
             </ul>
         </div>
     </section>
