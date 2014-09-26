@@ -8,7 +8,8 @@ from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuild
 from app.lib.error import (GoogleCalendarAPIError,
                            GoogleCalendarAPIMissingID,
                            GoogleCalendarAPIBadStatusLine,
-                           GoogleCalendarAPIEventAlreadyDeleted)
+                           GoogleCalendarAPIEventAlreadyDeleted,
+                           GoogleCalendarAPIErrorNotFound)
 from app import app
 from app.models import Event
 
@@ -93,7 +94,13 @@ class GoogleCalendarAPIClient():
         request = self.service.events().update(calendarId=calendar_id,
                                                eventId=event_id_for_update,
                                                body=resource)
-        updated_event = self._execute_request(request)
+        try:
+            updated_event = self._execute_request(request)
+        except GoogleCalendarAPIErrorNotFound as e:
+            self.create_event(event)
+            print e.message
+            raise GoogleCalendarAPIErrorNotFound('Couldn\'t find event to update. '
+                                                 'Successfully fell back to create.')
 
         self._update_event_from_response(event, updated_event)
 
@@ -139,7 +146,11 @@ class GoogleCalendarAPIClient():
         request =  self.service.events().move(calendarId=from_id,
                                               eventId=event.gcal_id,
                                               destination=to_id)
-        return self._execute_request(request)
+        try:
+            return self._execute_request(request)
+        except GoogleCalendarAPIErrorNotFound:
+            self._execute_request(event)
+            raise GoogleCalendarAPIErrorNotFound('Move failed.  Successfully fell back to create.')
 
     def delete_event(self, event, as_exception=False):
         if not event.gcal_id:
@@ -233,3 +244,5 @@ class GoogleCalendarAPIClient():
                 print '[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.'
                 raise GoogleCalendarAPIBadStatusLine('Line: %s, Message: %s' %
                                                      (e.line, e.message))
+        except HttpError as e:
+            raise GoogleCalendarAPIErrorNotFound(uri=e.uri)

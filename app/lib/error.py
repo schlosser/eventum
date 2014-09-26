@@ -13,3 +13,8 @@ class GoogleCalendarAPIBadStatusLine(GoogleCalendarAPIError):
 class GoogleCalendarAPIEventAlreadyDeleted(GoogleCalendarAPIError):
     def __init__(self, message='This event was deleted from Google Calendar'):
         GoogleCalendarAPIError.__init__(self, message)
+
+class GoogleCalendarAPIErrorNotFound(GoogleCalendarAPIError):
+    def __init__(self, uri, message='Got \'Not Found\' from Google Calendar: '):
+        GoogleCalendarAPIError.__init__(self, message=message + uri)
+
