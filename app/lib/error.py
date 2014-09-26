@@ -17,3 +17,4 @@ class GoogleCalendarAPIEventAlreadyDeleted(GoogleCalendarAPIError):
 class GoogleCalendarAPIErrorNotFound(GoogleCalendarAPIError):
     def __init__(self, uri, message='Got \'Not Found\' from Google Calendar: '):
         GoogleCalendarAPIError.__init__(self, message=message + uri)
+

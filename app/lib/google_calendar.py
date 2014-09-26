@@ -94,7 +94,13 @@ class GoogleCalendarAPIClient():
         request = self.service.events().update(calendarId=calendar_id,
                                                eventId=event_id_for_update,
                                                body=resource)
-        updated_event = self._execute_request(request)
+        try:
+            updated_event = self._execute_request(request)
+        except GoogleCalendarAPIErrorNotFound as e:
+            self.create_event(event)
+            print e.message
+            raise GoogleCalendarAPIErrorNotFound('Couldn\'t find event to update. '
+                                                 'Successfully fell back to create.')
 
         self._update_event_from_response(event, updated_event)
 
@@ -143,8 +149,8 @@ class GoogleCalendarAPIClient():
         try:
             return self._execute_request(request)
         except GoogleCalendarAPIErrorNotFound:
-
-            raise GoogleCalendarAPIErrorNotFound('')
+            self._execute_request(event)
+            raise GoogleCalendarAPIErrorNotFound('Move failed.  Successfully fell back to create.')
 
     def delete_event(self, event, as_exception=False):
         if not event.gcal_id:
