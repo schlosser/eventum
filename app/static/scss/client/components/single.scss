@@ -30,6 +30,21 @@
 
         h3 {
             margin: 2rem 0 1rem;
+
+        }
+
+        hr {
+            border: none;
+            padding: 1rem 0 2rem;
+            margin: 0;
+
+            &:after {
+                text-align: center;
+                width: 100%;
+                content: "* * *";
+                margin: 0 auto;
+                position: absolute;
+            }
         }
     }
 
