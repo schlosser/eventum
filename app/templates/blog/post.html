@@ -11,6 +11,14 @@
 {% assets "scss_blog" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
+
+<link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/github.min.css">
+{% endblock %}
+
+{% block js%}
+{{ super() }}
+<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
 {% block heroclass %}hidden{% endblock %}
