@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 
-<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+<link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/github.min.css">
 {% endblock %}
 
 {% block title %}Write a Blog Post{% endblock %}
@@ -20,7 +20,7 @@
 
 {% block js %}
 {{ super() }}
-<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/posts/edit.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/admin/media/upload.js') }}"></script>
 {% endblock %}
