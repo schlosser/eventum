@@ -1,9 +1,6 @@
 #plus-button {
-  position: absolute;
-  top: 40%;
-  margin: -24px 0 0 -90px;
-  left: 50%;
-  display: inline-block;
+  display: block;
+  margin: 8rem auto 0;
   background: #dd4b39;
   color: white;
   height: 48px;

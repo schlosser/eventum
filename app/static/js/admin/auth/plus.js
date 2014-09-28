@@ -10,11 +10,7 @@ var helper = (function() {
          *     other authentication information.
          */
         onSignInCallback: function(authResult) {
-            $('#gSignInWrapper').hide();
-            $('#authResult').html('Auth Result:<br/>');
-            for (var field in authResult) {
-                $('#authResult').append(' ' + field + ': ' + authResult[field] + '<br/>');
-            }
+            $('#plus-button-wrapper').hide();
             if (authResult['access_token']) {
                 // The user is signed in
                 this.authResult = authResult;
@@ -27,9 +23,8 @@ var helper = (function() {
                 console.log('There was an error: ' + authResult['error']);
                 $('#authResult').append('Logged out');
                 $('#authOps').hide('slow');
-                $('#gSignInWrapper').show();
+                $('#plus-button-wrapper').show();
             }
-            console.log('authResult', authResult);
         },
         /**
          * Calls the server endpoint to connect the app for the user. The client
@@ -39,7 +34,6 @@ var helper = (function() {
          *     https://developers.google.com/+/web/signin/server-side-flow
          */
         connectServer: function() {
-            console.log(this.authResult.code);
             $.ajax({
                 type: 'POST',
                 url: '/admin/store-token?state=' + STATE + '&next=' + NEXT,
@@ -47,8 +41,22 @@ var helper = (function() {
                 success: function(result) {
                     window.location.href = result;
                 },
-                error: function(result) {
-                    console.log(result);
+                error: function(xhr, status, err) {
+                    if (xhr.status == 200) {
+                        window.location.href = xhr.responseText;
+                    }
+                    // Set window.error, to be parsed in displayErrors()
+                    if (xhr.responseText) {
+                        console.log(xhr.responseText);
+                        try {
+                            window.error = JSON.parse(xhr.responseText);
+                        }
+                        catch (ex) {
+                            window.error = xhr.responseText;
+                        }
+                    } else {
+                        console.log("Unhandled response: ", xhr);
+                    }
                 },
                 processData: false,
                 data: this.authResult.code
@@ -56,6 +64,32 @@ var helper = (function() {
         }
     };
 })();
+
+
+/**
+ * Constantly be checking for window.error, and load messages.  Even if Google
+ * redirects and wipes the page away, window.error will remain.
+ */
+$(function() {
+    function displayErrors() {
+        if (window.error !== undefined){
+            $('#plus-button-wrapper').hide();
+            if (window.error.code && window.error.code == 1) {
+                $('#unknown-error').addClass('hidden');
+                $('#not-whitelisted').removeClass('hidden');
+                $('#email').html(window.error.email);
+            } else {
+                $('#not-whitelisted').addClass('hidden');
+                $('#unknown-error').removeClass('hidden');
+                $('#error-msg').html(window.error);
+            }
+        } else {
+            $('#plus-button-wrapper').show();
+        }
+        setTimeout(displayErrors, 500);
+    }
+    displayErrors();
+});
 
 /**
  * Calls the helper method that handles the authentication flow.

@@ -49,7 +49,7 @@ def store_token():
             window.location.href = response;
         }
     """
-    if request.args.get('state', '') != session['state']:
+    if request.args.get('state', '') != session.get('state'):
         return response_from_json('Invalid state parameter.', 401)
 
     del session['state']
@@ -83,7 +83,11 @@ def store_token():
         # The user must be whitelisted in order to create an account.
         email = people_document['emails'][0]['value']
         if Whitelist.objects(email=email).count() != 1:
-            return response_from_json('User has not been whitelisted.', 401)
+            return response_from_json({
+                'code': 1,
+                'title': 'User has not been whitelisted.',
+                'email': email
+                }, 401)
 
         return response_from_json(url_for(
             '.create_profile',
@@ -110,7 +114,7 @@ def create_profile():
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('base.index'), code=303)
+        return redirect(url_for('admin.index'), code=303)
     form = CreateProfileForm(request.form,
                              name=request.args['name'],
                              email=request.args['email'],
@@ -185,12 +189,15 @@ def disconnect():
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
 
+    session.pop('gplus_id', None)
+    g.user = None
+
     if result['status'] == '200':
         # Reset the user's session.
         del session['credentials']
 
         # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('client.index'), code=303)
+        return redirect(url_for('.login'), code=303)
     else:
         # For whatever reason, the given token was invalid.
         return response_from_json('Failed to revoke token for given user.',
