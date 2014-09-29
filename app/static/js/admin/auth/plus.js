@@ -45,7 +45,11 @@ var helper = (function() {
                     if (xhr.status == 200) {
                         window.location.href = xhr.responseText;
                     }
-                    // Set window.error, to be parsed in displayErrors()
+                    /*
+                     * Set window.error, to be parsed in displayErrors(). See
+                     * below for further explination.
+                     */
+
                     if (xhr.responseText) {
                         console.log(xhr.responseText);
                         try {
@@ -66,15 +70,21 @@ var helper = (function() {
 })();
 
 
+var WHITELIST_CODE = 1;
 /**
- * Constantly be checking for window.error, and load messages.  Even if Google
- * redirects and wipes the page away, window.error will remain.
+ * Constantly be checking for window.error, and load messages.
+ *
+ * The Google JavaScript client library attempts to request the next page, even
+ * if the server returned a 401.  Because of this, any error messages that we
+ * want to display on the login page would have to exist after a failed redirect
+ * (a page refresh).  Therefore, we store the error in `window.error`, and poll
+ * for errors here.
  */
 $(function() {
     function displayErrors() {
         if (window.error !== undefined){
             $('#plus-button-wrapper').hide();
-            if (window.error.code && window.error.code == 1) {
+            if (window.error.code && window.error.code == WHITELIST_CODE) {
                 $('#unknown-error').addClass('hidden');
                 $('#not-whitelisted').removeClass('hidden');
                 $('#email').html(window.error.email);

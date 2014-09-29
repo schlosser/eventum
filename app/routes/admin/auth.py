@@ -36,6 +36,7 @@ def login():
                            # reauthorize=True,
                            next=next)
 
+WHITELIST_CODE = 1
 
 @auth.route('/store-token', methods=['POST'])
 def store_token():
@@ -84,7 +85,7 @@ def store_token():
         email = people_document['emails'][0]['value']
         if Whitelist.objects(email=email).count() != 1:
             return response_from_json({
-                'code': 1,
+                'code': WHITELIST_CODE,
                 'title': 'User has not been whitelisted.',
                 'email': email
                 }, 401)
