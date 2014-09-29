@@ -2,7 +2,7 @@ import string
 import random
 import httplib2
 from app import app
-from app.lib.networking import response_from_json
+from app.lib.networking import json_response
 from app.models import User, Whitelist
 from app.forms import CreateProfileForm
 from app.lib.decorators import development_only
@@ -51,7 +51,7 @@ def store_token():
         }
     """
     if request.args.get('state', '') != session.get('state'):
-        return response_from_json('Invalid state parameter.', 401)
+        return json_response('Invalid state parameter.', 401)
 
     del session['state']
     code = request.data
@@ -63,7 +63,7 @@ def store_token():
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
-        return response_from_json('Failed to upgrade the authorization code.',
+        return json_response('Failed to upgrade the authorization code.',
                                   401)
 
     gplus_id = credentials.id_token['sub']
@@ -84,13 +84,13 @@ def store_token():
         # The user must be whitelisted in order to create an account.
         email = people_document['emails'][0]['value']
         if Whitelist.objects(email=email).count() != 1:
-            return response_from_json({
+            return json_response({
                 'code': WHITELIST_CODE,
                 'title': 'User has not been whitelisted.',
                 'email': email
                 }, 401)
 
-        return response_from_json(url_for(
+        return json_response(url_for(
             '.create_profile',
             next=request.args.get('next'),
             name=people_document['displayName'],
@@ -104,8 +104,8 @@ def store_token():
     # The user already exists.  Redirect to the next url or
     # the root of the application ('/')
     if request.args.get('next'):
-        return response_from_json(request.args.get('next'), 200)
-    return response_from_json(request.url_root, 200)
+        return json_response(request.args.get('next'), 200)
+    return json_response(request.url_root, 200)
 
 
 @auth.route('/create-profile', methods=['GET', 'POST'])
@@ -181,7 +181,7 @@ def disconnect():
     credentials = AccessTokenCredentials(
         session.get('credentials'), request.headers.get('User-Agent'))
     if credentials is None:
-        return response_from_json('Current user not connected.', 401)
+        return json_response('Current user not connected.', 401)
 
     # Execute HTTP GET request to revoke current token.
     access_token = credentials.access_token
@@ -201,7 +201,7 @@ def disconnect():
         return redirect(url_for('.login'), code=303)
     else:
         # For whatever reason, the given token was invalid.
-        return response_from_json('Failed to revoke token for given user.',
+        return json_response('Failed to revoke token for given user.',
                                   400)
 
 @auth.route('/session')

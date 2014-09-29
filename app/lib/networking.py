@@ -1,7 +1,7 @@
 from flask import make_response
 import json
 
-def response_from_json(data, code):
+def json_response(data, code):
     """"""
     # TODO: Split this out into two functions, one that take strings, and
     # another that takes dictionaries
