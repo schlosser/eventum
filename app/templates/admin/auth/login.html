@@ -49,10 +49,24 @@ function render() {
 
 {% block content %}
 <div id="gSignInWrapper">
-    <div id="plus-button" class="customGPlusSignIn">
-        <span class="plus-icon"></span>
-        <span class="plus-text">Sign In</span>
+    <div id="plus-button-wrapper">
+        <div id="plus-button" class="customGPlusSignIn">
+            <span class="plus-icon"></span>
+            <span class="plus-text">Sign In</span>
+        </div>
     </div>
+    <ul id="errors">
+        <li class="error hidden" id="not-whitelisted">
+            <h4>Not Whitelisted</h4>
+            <p>Your email address "<span id="email"></span>" has not been whitelisted in Eventum.  Please contact the system administator to add your email.</p>
+            <p class="retry"><a href="/admin/disconnect" class="button">Log out</a> to try again.</p>
+        </li>
+        <li class="error hidden" id="unknown-error">
+            <h4 id="error-msg">Unknown Error</h4>
+            <p>We ran into a problem logging you in.  If the problem persists, try disabling AdBlock.</p>
+            <p class="retry"><a href="/admin/disconnect" class="button">Log out</a> to try again.</p>
+        </li>
+    </ul>
 </div>
 <!-- Run check if logged in automatically on page load -->
 <script type="text/javascript">var STATE = "{{ state }}", NEXT = "{{ next }}";</script>

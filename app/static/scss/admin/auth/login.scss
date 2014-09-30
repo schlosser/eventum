@@ -1,0 +1,45 @@
+@import '../colors';
+@import '../base';
+
+#gSignInWrapper {
+    width: 360px;
+    margin: 0 auto;
+    display: block;
+}
+
+#errorText {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#errors {
+    margin-top: 8rem;
+    .error {
+        h4 {
+            background-color: #dd4b39;
+            padding: 1rem;
+            color: $white;
+        }
+        p {
+            padding: 1rem;
+            background-color: $lightgray
+        }
+    }
+}
+
+.retry {
+    text-align: center;
+
+    a {
+        background-color: $darkgray;
+        color: $white;
+        padding: 0.5rem 1rem;
+    }
+}
