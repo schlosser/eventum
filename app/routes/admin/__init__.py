@@ -7,6 +7,7 @@ from posts import posts
 from users import users
 from whitelist import whitelist
 
+# note: silences pyflakes unused variables
 assert (admin,
         auth,
         events,

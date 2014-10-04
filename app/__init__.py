@@ -33,14 +33,15 @@ def create_app(**config_overrides):
 
     # Initialize the Google Calendar API Client, but only if the api
     # credentials have been generated first.
-    if app.config['AUTH']:
+    if app.config.get('GOOGLE_AUTH_ENABLED', None):
         try:
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()
         except IOError:
             print ('Failed to find the Google Calendar credentials file at \'%s\', '
                    'please create it by running:\n\n'
-                   '    $ python manage.py --authorize\n' % app.config['CREDENTIALS_PATH'])
+                   '    $ python manage.py --authorize\n'
+                   % app.config['INSTALLED_APP_CREDENTIALS_PATH'])
             exit(1)
 
     register_blueprints()
@@ -107,4 +108,4 @@ def register_scss():
                 assets.register(bundle_name, bundle)
 
 def run():
-	app.run(host='0.0.0.0', port=5000)
+    app.run(host=app.config.get('HOST'), port=app.config.get('PORT'))

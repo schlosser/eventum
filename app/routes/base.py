@@ -35,7 +35,7 @@ def lookup_current_user():
     Note that it gets called before all requests, but not before decorators.
     """
     g.user = None
-    if not app.config['AUTH']:
+    if not app.config.get('GOOGLE_AUTH_ENABLED'):
         # bypass auth by mocking a super user
         session['gplus_id'] = SUPER_USER_GPLUS_ID
         try:

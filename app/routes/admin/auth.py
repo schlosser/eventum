@@ -31,7 +31,7 @@ def login():
     args_next = request.args.get('next')
     next = args_next if args_next else request.url_root
     return render_template('admin/auth/login.html',
-                           client_id=app.config["CLIENT_ID"],
+                           client_id=app.config["GOOGLE_CLIENT_ID"],
                            state=session['state'],
                            # reauthorize=True,
                            next=next)

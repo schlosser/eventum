@@ -1,7 +1,8 @@
 from flask import url_for
 from mongoengine import ValidationError, signals
 from app import db
-from config.flask_config import ALLOWED_EXTENSIONS, BASEDIR, RELATIVE_DELETE_FOLDER
+from config.flask_config import ALLOWED_UPLOAD_EXTENSIONS, BASEDIR, \
+                                RELATIVE_DELETE_FOLDER
 from datetime import datetime
 import PIL, re, os
 now = datetime.now
@@ -18,7 +19,7 @@ class Image(db.Document):
     filename = db.StringField(
         unique=True, max_length=255, required=True, verbose_name="Filename",
         regex="([a-z]|[A-Z]|[0-9]|\||-|_|@|\(|\))*(" + \
-        ('|'.join(ALLOWED_EXTENSIONS)+')'),
+        ('|'.join(ALLOWED_UPLOAD_EXTENSIONS)+')'),
         help_text="Title of the event (255 characters max)")
     creator = db.ReferenceField(
         'User', required=True, verbose_name="Creator",

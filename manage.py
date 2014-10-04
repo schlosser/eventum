@@ -14,7 +14,7 @@ FLAGS = parser.parse_args()
 
 def authorize_google_calendar():
 
-    FLOW = flow_from_clientsecrets('client_secrets.json',
+    FLOW = flow_from_clientsecrets(flask_config.INSTALLED_APP_SECRET_PATH,
                    scope='https://www.googleapis.com/auth/calendar')
 
     # Save the credentials file here for use by the app
