@@ -19,6 +19,13 @@ $content-padding: 0.625rem;
     }
 }
 
+.company {
+    margin-bottom: 2rem;
+    img {
+        margin-bottom: 1rem;
+    }
+}
+
 .contact-options {
     &:after {
         @include clearfix;
