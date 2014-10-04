@@ -42,7 +42,7 @@ def _get_companies(force=False):
     global _companies
     if not _companies or force:
         with open(app.config['COMPANIES_PATH']) as f:
-            _companies = json.loads(f.read())['companies']
+            _companies = json.loads(f.read()).get('companies')
     return _companies
 
 @client.route('/labs')
@@ -55,7 +55,7 @@ def _get_faqs(force=False):
     global _faqs
     if not _faqs or force:
         with open(app.config['FAQ_PATH']) as f:
-            _faqs = json.loads(f.read())['questions']
+            _faqs = json.loads(f.read()).get('questions')
     return _faqs
 
 @client.route('/learn')
