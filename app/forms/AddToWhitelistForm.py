@@ -5,45 +5,12 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-
-from app.models import Whitelist
 from flask.ext.wtf import Form
 from wtforms import StringField, RadioField
-from wtforms.validators import Required, Email, ValidationError, Optional
-from app.forms.validators import image_with_same_name
+from wtforms.validators import Required, Email, Optional
+from app.forms.validators import image_with_same_name, UniqueEmail
 
 EMAIL_ERROR = 'Please provide a valid email address.'
-
-
-class UniqueEmail(object):
-    """A validator that verifies whether or not an email address is unique in
-    the :class:`Whitelist` collection.
-    """
-
-    DEFAULT_MESSAGE = 'A user with that email address already exists'
-
-    def __init__(self, message=None):
-        """Ensures unique emails are unique in the :class:`Whitelist`
-        collection.
-
-        :param str message: An alternate message to be raised.
-        """
-        if not message:
-            message = self.DEFAULT_MESSAGE
-        self.message = message
-
-    def __call__(self, form, field):
-        """Called internally by :mod:`wtforms` on validation of the field.
-
-        :param form: The parent form
-        :type form: :class:`Form`
-        :param field: The field to validate
-        :type field: :class:`Field`
-        :raises: :exc:`ValidationError`
-        """
-        if form.user_type.data != 'fake_user' and \
-                Whitelist.objects(email=field.data).count() != 0:
-            raise ValidationError(self.message)
 
 
 class AddToWhitelistForm(Form):

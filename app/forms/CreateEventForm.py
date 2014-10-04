@@ -12,30 +12,7 @@ from wtforms import StringField, DateField, TextAreaField, BooleanField, \
     SelectField, IntegerField, RadioField
 from wtforms.validators import Required, ValidationError, Optional, \
     NumberRange, Regexp, URL
-
-
-def unique_with_database(form, field):
-    """A validator that ensures that an event slug is unique.
-
-    Checks the field data against the slugs in the :class:`Event` and
-    :class:`EventSeries` collections, so that
-
-        ``url_for('client.events', slug={{ some slug }})``
-
-    is unique.
-
-    :param form: The parent form
-    :type form: :class:`Form`
-    :param field: The field to validate
-    :type field: :class:`Field`
-    :raises: :exc:`ValidationError`
-    """
-    message = "An event with that slug already exists."
-    from app.models import Event, EventSeries
-    if EventSeries.objects(slug=field.data).count() != 0:
-        raise ValidationError(message)
-    if Event.objects(slug=field.data).count() != 0:
-        raise ValidationError(message)
+from app.forms.validators import UniqueEvent
 
 class CreateEventForm(Form):
     """A form for the creation of a :class:`~app.models.BlogPost` entry.
@@ -59,7 +36,7 @@ class CreateEventForm(Form):
 
     title = StringField('Title', [
         Required(message="Please provide an event title.")])
-    slug = StringField('Slug', [unique_with_database,
+    slug = StringField('Slug', [UniqueEvent(),
         Regexp('([0-9]|[a-z]|[A-Z]|-)*',
                message="Post slug should only contain numbers, letters and dashes.")])
     location = StringField('Location')
