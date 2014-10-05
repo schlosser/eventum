@@ -51,9 +51,11 @@
                     {% with company = companies[index] %}
                     <div class="small company">
                         <div class="inner">
-                            <a href="{{ company.url }}">
-                                <img src="{{ url_for('static', filename= company.image) }}" />
-                            </a>
+                            <div class="image-wrapper">
+                                <a href="{{ company.url }}">
+                                    <i style="background-image: url({{ url_for('static', filename= company.image) }});"></i>
+                                </a>
+                            </div>
                             <p>{{ company.blurb }}</p>
                         </div>
                     </div>
