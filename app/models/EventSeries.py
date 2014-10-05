@@ -15,7 +15,7 @@ class EventSeries(db.Document):
     every = db.IntField(min_value=1, max_value=30)
     ends_after = db.BooleanField(default=True)
     ends_on = db.BooleanField(default=False)
-    num_occurances = db.IntField(default=1)
+    num_occurrences = db.IntField(default=1)
     recurrence_end_date = DateField()
     recurrence_summary = db.StringField()
     gcal_id = db.StringField() # ID of the first event in the series

@@ -52,7 +52,7 @@ class CreateEventForm(Form):
         ("after", "After"),
         ("on", "On")
     ], default="after")
-    num_occurances = IntegerField('Every', [NumberRange(min=1)], default=1)
+    num_occurrences = IntegerField('Every', [NumberRange(min=1)], default=1)
     recurrence_end_date = DateField('Repeat End Date', [Optional()],
                                 format='%m/%d/%Y')
     recurrence_summary = StringField('Summary')
