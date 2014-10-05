@@ -33,7 +33,7 @@ def create_app(**config_overrides):
 
     # Initialize the Google Calendar API Client, but only if the api
     # credentials have been generated first.
-    if app.config.get('GOOGLE_AUTH_ENABLED', None):
+    if app.config.get('GOOGLE_AUTH_ENABLED'):
         try:
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()

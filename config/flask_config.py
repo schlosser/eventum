@@ -50,35 +50,6 @@ try:
     # Mongo configs
     MONGODB_SETTINGS = {'DB': environ.get('MONGO_DATABASE', 'eventum')}
 
-    ############################################################################
-    #  Constants in version control
-    ############################################################################
-
-    # Base directory
-    BASEDIR = path.abspath(path.join(path.dirname(__file__), pardir))
-
-    RELATIVE_UPLOAD_FOLDER = 'app/static/img/uploaded/'
-    UPLOAD_FOLDER = path.join(BASEDIR, RELATIVE_UPLOAD_FOLDER)
-    RELATIVE_DELETE_FOLDER = 'app/static/img/uploaded/deleted/'
-    DELETE_FOLDER = path.join(BASEDIR, RELATIVE_DELETE_FOLDER)
-
-    # The file extensions that may be uploaded
-    ALLOWED_UPLOAD_EXTENSIONS = set(['.txt',
-        '.pdf',
-        '.png',
-        '.jpg',
-        '.jpeg',
-        '.gif'
-    ])
-
-    # Default Event Image
-    DEFAULT_EVENT_IMAGE = 'img/events/default_event.png'
-
-    # Resources
-    RESOURCES_PATH = 'data/resources.json'
-
-    # Labs FAQ
-    FAQ_PATH = 'data/labs_faq.json'
 
 except KeyError:
     """ Throw an error if a setting is missing """
@@ -86,3 +57,33 @@ except KeyError:
     "You probably need to run:\n\n\tsource config/<your settings file>")
     exit(1)
 
+
+############################################################################
+#  Constants in version control
+############################################################################
+
+# Base directory
+BASEDIR = path.abspath(path.join(path.dirname(__file__), pardir))
+
+RELATIVE_UPLOAD_FOLDER = 'app/static/img/uploaded/'
+UPLOAD_FOLDER = path.join(BASEDIR, RELATIVE_UPLOAD_FOLDER)
+RELATIVE_DELETE_FOLDER = 'app/static/img/uploaded/deleted/'
+DELETE_FOLDER = path.join(BASEDIR, RELATIVE_DELETE_FOLDER)
+
+# The file extensions that may be uploaded
+ALLOWED_UPLOAD_EXTENSIONS = set(['.txt',
+    '.pdf',
+    '.png',
+    '.jpg',
+    '.jpeg',
+    '.gif'
+])
+
+# Default Event Image
+DEFAULT_EVENT_IMAGE = 'img/events/default_event.png'
+
+# Resources
+RESOURCES_PATH = 'data/resources.json'
+
+# Labs FAQ
+FAQ_PATH = 'data/labs_faq.json'
