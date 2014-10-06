@@ -41,7 +41,7 @@ class Event(db.Document):
     def image_url(self):
         if self.image:
             return self.image.url()
-        return url_for('static', filename=app.config['DEFAULT_EVENT_IMAGE'])
+        return url_for('static', filename=app.adi['DEFAULT_EVENT_IMAGE'])
 
     @property
     def index(self):

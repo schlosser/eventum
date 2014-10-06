@@ -3,8 +3,11 @@ from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
 import json
 
+from config import adi_config
+
 db = MongoEngine()
 app = None
+adi = dict()
 assets = None
 gcal_client = None
 
@@ -15,6 +18,7 @@ def create_app(**config_overrides):
     """
     # we want to modify the global app, not a local copy
     global app
+    global adi
     global assets
     global gcal_client
     app = Flask(__name__)
@@ -23,6 +27,10 @@ def create_app(**config_overrides):
     app.config.update(config_overrides)
     app.config.from_object('config.flask_config')
     app.config.update(config_overrides)
+
+    # load ADI specific configurations (ignore built-in methods)
+    for attr in (x for x in dir(adi_config) if x[:2] != "__"):
+        adi[attr] = getattr(adi_config, attr)
 
     # Initialize assets
     assets = Environment(app)

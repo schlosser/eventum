@@ -78,12 +78,3 @@ ALLOWED_UPLOAD_EXTENSIONS = set(['.txt',
     '.jpeg',
     '.gif'
 ])
-
-# Default Event Image
-DEFAULT_EVENT_IMAGE = 'img/events/default_event.png'
-
-# Resources
-RESOURCES_PATH = 'data/resources.json'
-
-# Labs FAQ
-FAQ_PATH = 'data/labs_faq.json'

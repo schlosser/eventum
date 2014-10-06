@@ -9,7 +9,7 @@ export SECRET_KEY=
 # google related credentials
 export INSTALLED_APP_CLIENT_SECRET_PATH=client_secrets.json
 export CREDENTIALS_PATH=config/credentials.json
-export GOOGLE_AUTH_ENABLED=TRUE
+export GOOGLE_AUTH_ENABLED=FALSE
 export CLIENT_SECRETS_PATH=config/client_secrets.json
 
 # Cross-site request forgery settings
