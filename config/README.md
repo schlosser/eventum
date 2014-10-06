@@ -4,9 +4,11 @@ Configuration and settings files live here.
 
 ## Notable files
 
-- `flask_config.py`: Stores configurations for Flask, including secret keys, global variables, flags, and extenral integration account info. This file is currently `.gitignore`d.  
+- `settings.sh`: Stores configurations for Flask, including secret keys, global variables, flags, and extenral integration account info.
+- `flask_config.py`: This pulls in all configurations for Eventum that are stored in environment variables. A few configurations are constants and are stored here.
+- `adi_config.py`: This stores some ADI-specific configurations for Eventume.
 - `requirements.txt`: Pip requirements.  Install from the root directory using:
-  
+
     ```bash
     $ pip install -r config/requirements.txt
     ```
