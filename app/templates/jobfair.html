@@ -9,7 +9,7 @@
    <h1>ADI Startup Career Fair</h1>
 </section>
 <section class="card top-card">
-   <div class="single content">
+   <div class="single content jobfair">
        <div class="details">
             <div class="section-header">
                 <h4>Details</h4>
@@ -32,18 +32,63 @@
         </div>
         <div class="text">
             <p>Interested in getting a job or internship at an NYC startup?  Join ADI at the 4th annual Startup Career Fair to meet some of New York's most exciting tech startups.</p>
-            <p>Bring your resumes!  Last year over 250 Columbia students met over 20 New York tech startups and this year it's going to be even better.</p>
-            <p>Check back here for more details on this year's startups and how to RSVP.</p>
+            <p>Bring your resumes!  Last year over 250 Columbia students met over 20 New York tech startups and this year it's going to be even better.  Engineers will tell you about what it's like to work at a tech startup, and can even give you tips for how to interview and get a job!</p>
+            <p>Registration is now open! <a href="http://bit.ly/startupcareer2014">Register online</a>, and then <a href="https://www.facebook.com/events/290041244526506/">RSVP on Facebook</a> to see who else is going. See you there!</p>
         </div>
    </div>
 </section>
-<section>
+<section class="full yellow callout">
     <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <h4>Register</h4>
+                <span class="bar gray"></span>
+            </div>
+            <h3>Interested in attending?  Fill out our registration form to reserve your spot!</h3>
+            <div class="button-group">
+                <div class="button gray">
+                    <a href="http://bit.ly/startupcareer2014">Register Today</a>
+                </div>
+            </div>
+        </div>
+        <div class="callout-right">
+            <div class="card">
+                <a href="http://bit.ly/startupcareer2014">
+                    <i style="background-image:url({{ url_for('static', filename='img/events/jobfair.jpg') }})"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content companies">
         <div class="section-header">
             <h4>Companies</h4>
             <span class="bar blue"></span>
         </div>
-        <h3>Coming Soon!</h3>
+        <h3>We just announced 21 amazing startups that will be in attendance.  Check out the full list below!</h3>
+        {% for triple in range((companies | length)//3) %}
+            <div class="triple">
+            {% for i in range(3) %}
+                {% with index = triple * 3 + i%}
+                {% if index <= (companies | length) %}
+                    {% with company = companies[index] %}
+                    <div class="small company">
+                        <div class="inner">
+                            <div class="image-wrapper">
+                                <a href="{{ company.url }}">
+                                    <i style="background-image: url({{ url_for('static', filename= company.image) }});"></i>
+                                </a>
+                            </div>
+                            <p>{{ company.blurb }}</p>
+                        </div>
+                    </div>
+                    {% endwith %}
+                {% endif %}
+                {% endwith %}
+            {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
