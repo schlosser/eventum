@@ -40,7 +40,7 @@ class GoogleCalendarAPIClient():
         The service object is used to make API requests to Google Calendar, but
         will raise IOError if the credentials file is not generated
         """
-        storage = Storage(app.config['CREDENTIALS_PATH'])
+        storage = Storage(app.config['INSTALLED_APP_SECRET_PATH'])
         credentials = storage.get()
 
         if credentials is None:
