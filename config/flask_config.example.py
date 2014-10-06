@@ -61,3 +61,6 @@ RESOURCES_PATH = 'data/resources.json'
 
 # Labs FAQ
 FAQ_PATH = 'data/labs_faq.json'
+
+# Jobfair Companies
+COMPANIES_PATH = 'data/companies.json'

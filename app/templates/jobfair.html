@@ -38,12 +38,33 @@
    </div>
 </section>
 <section>
-    <div class="content">
+    <div class="content companies">
         <div class="section-header">
             <h4>Companies</h4>
             <span class="bar blue"></span>
         </div>
-        <h3>Coming Soon!</h3>
+        {% for triple in range((companies | length)//3) %}
+            <div class="triple">
+            {% for i in range(3) %}
+                {% with index = triple * 3 + i%}
+                {% if index <= (companies | length) %}
+                    {% with company = companies[index] %}
+                    <div class="small company">
+                        <div class="inner">
+                            <div class="image-wrapper">
+                                <a href="{{ company.url }}">
+                                    <i style="background-image: url({{ url_for('static', filename= company.image) }});"></i>
+                                </a>
+                            </div>
+                            <p>{{ company.blurb }}</p>
+                        </div>
+                    </div>
+                    {% endwith %}
+                {% endif %}
+                {% endwith %}
+            {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

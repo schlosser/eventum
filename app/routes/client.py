@@ -9,6 +9,7 @@ client = Blueprint('client', __name__)
 
 _resources = None
 _faqs = None
+_companies = None
 
 @client.route('/')
 def index():
@@ -33,7 +34,16 @@ def contact():
 
 @client.route('/jobfair')
 def jobfair():
-    return render_template('jobfair.html')
+    force = request.args.get('force') is not None
+    companies = _get_companies(force=force)
+    return render_template('jobfair.html', companies=companies)
+
+def _get_companies(force=False):
+    global _companies
+    if not _companies or force:
+        with open(app.config['COMPANIES_PATH']) as f:
+            _companies = json.loads(f.read()).get('companies')
+    return _companies
 
 @client.route('/labs')
 def labs():
@@ -45,7 +55,7 @@ def _get_faqs(force=False):
     global _faqs
     if not _faqs or force:
         with open(app.config['FAQ_PATH']) as f:
-            _faqs = json.loads(f.read())['questions']
+            _faqs = json.loads(f.read()).get('questions')
     return _faqs
 
 @client.route('/learn')
@@ -64,6 +74,7 @@ def _get_resources(force=False):
         with open(app.config['RESOURCES_PATH']) as f:
             _resources = json.loads(f.read())
     return _resources
+
 
 @client.route('/events')
 def events():
