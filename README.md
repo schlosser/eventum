@@ -14,7 +14,7 @@ Eventum is a content management system for an event-driven blog that syncs with 
 Eventum runs on Linux and OSX.  To get it up an running, follow these steps:
 
 1.  Install [MongoDB][mongodb] ([Ubuntu Linux][mongodb-linux], [OSX][mongodb-osx]).
-    
+
     > On OSX, you may have to run `$ mkdir /data /data/db` before you can run `mongod` without errors.
 
 2.  Install [VirtualEnv][virtualenv]:
@@ -39,24 +39,28 @@ Here's how to run Eventum in a development environment:
 mongod &
 virtualenv --no-site-packages .
 source bin/activate
+source config/settings.sh
 pip install -r config/requirements.txt
 
 python run.py
 ```
+
 Or alternately:
+
 ```
 ./develop.sh
 source bin/activate
+source config/settings.sh
 python run.py
 ```
 
 #### Developing without Authentication
 
-It is possible to run Eventum without logging in using Google+ or authenticating with Google Calendar.  To do so, edit `config/flask_config.py` and set `AUTH` to `False`:
-```diff
- # Whether or not to enable Google Auth or not.
--AUTH = True
-+AUTH = False
+It is possible to run Eventum without logging in using Google+ or authenticating with Google Calendar.  To do so, edit `config/settings.sh` and set `GOOGLE_AUTH_ENABLED` to `FALSE`:
+
+```bash
+# Whether or not to enable Google Auth or not.
+echo $GOOGLE_AUTH_ENABLED
 ```
 
 ## Testing
@@ -78,7 +82,7 @@ nosetests
 │   ├── lib          # Misc helpers, tasks, and modular libraries
 │   ├── models       # Mongoengine Models
 │   ├── routes       # All Flask routes, using Blueprints
-│   ├── static       
+│   ├── static
 │   │   ├── css      # CSS
 │   │   │   ├── lib  # CSS libraries
 │   │   │   └── gen  # CSS generated from SCSS
