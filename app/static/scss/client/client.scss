@@ -18,6 +18,13 @@ $content-padding: 0.625rem;
         color: $blue;
     }
 }
+.jobfair {
+    .button i {
+        display: inline;
+        margin-left: -0.8rem;
+        margin-right: 1rem;
+    }
+}
 
 .company {
     margin-bottom: 2rem;
