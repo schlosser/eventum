@@ -223,6 +223,19 @@
       ]
     },
     {
+      "name": "Meteor",
+      "id": "meteor",
+      "description": "MeteorJS allows you to program in Javascript on the client and on the server. Have all of your users be in sync automatically!",
+      "resources": [
+        {
+          "name": "Intro to Meteor.js",
+          "url": "https://speakerdeck.com/brishin/intro-to-meteor-dot-js",
+          "description": "Given by ADI's Brian Shin, this talk goes into the basics and explains why your next app should be built in Meteor!",
+          "adi": true
+        }
+      ]
+    },
+    {
       "name": "Backbone.js",
       "id": "backbone-js",
       "description": "An MVC framework for frontend JavaScript. Backbone.js gives structure to web applications. If you have enough JavaScript going on that things are starting to get complicated, look into Backbone. ",
