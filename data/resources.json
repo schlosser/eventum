@@ -225,13 +225,18 @@
     {
       "name": "Meteor",
       "id": "meteor",
-      "description": "MeteorJS allows you to program in Javascript on the client and on the server. Have all of your users be in sync automatically!",
+      "description": "Meteor allows you to program in Javascript on the client and on the server. Have all of your users be in sync automatically!",
       "resources": [
         {
           "name": "Intro to Meteor.js",
           "url": "https://speakerdeck.com/brishin/intro-to-meteor-dot-js",
           "description": "Given by ADI's Brian Shin, this talk goes into the basics and explains why your next app should be built in Meteor!",
           "adi": true
+        },
+        {
+          "name": "Best Learning Resources for Meteor.js",
+          "url": "https://www.yauh.de/articles/376/best-learning-resources-for-meteorjs/",
+          "description": "This blog post collects all of the resources, tutorials, and code samples for learning JavaScript and Meteor."
         }
       ]
     },
