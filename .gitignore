@@ -10,6 +10,8 @@ tmp
 /share
 *.pyc
 flask_config.py
+settings.dev
+settings.prod
 client_secrets.json
 credentials.json
 .webassets-cache

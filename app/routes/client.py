@@ -1,4 +1,4 @@
-from app import app
+from app import adi
 import json
 from flask import Blueprint, render_template, abort, redirect, url_for, request
 from app.models import Event, BlogPost
@@ -41,7 +41,7 @@ def jobfair():
 def _get_companies(force=False):
     global _companies
     if not _companies or force:
-        with open(app.config['COMPANIES_PATH']) as f:
+        with open(adi['COMPANIES_PATH']) as f:
             _companies = json.loads(f.read()).get('companies')
     return _companies
 
@@ -54,7 +54,7 @@ def labs():
 def _get_faqs(force=False):
     global _faqs
     if not _faqs or force:
-        with open(app.adi['FAQ_PATH']) as f:
+        with open(adi['FAQ_PATH']) as f:
             _faqs = json.loads(f.read()).get('questions')
     return _faqs
 
@@ -71,7 +71,7 @@ def resources():
 def _get_resources(force=False):
     global _resources
     if not _resources or force:
-        with open(app.adi['RESOURCES_PATH']) as f:
+        with open(adi['RESOURCES_PATH']) as f:
             _resources = json.loads(f.read())
     return _resources
 
