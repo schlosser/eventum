@@ -22,7 +22,7 @@ def index():
 
 def allowed_file(filename):
     return '.' in filename and \
-            os.path.splitext(filename)[1] in app.config['ALLOWED_EXTENSIONS']
+            os.path.splitext(filename)[1] in app.config['ALLOWED_UPLOAD_EXTENSIONS']
 
 def create_filename(f, slug):
     if '.' in f.filename:
