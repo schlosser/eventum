@@ -18,7 +18,7 @@ def authorize_google_calendar():
                    scope='https://www.googleapis.com/auth/calendar')
 
     # Save the credentials file here for use by the app
-    storage = Storage(flask_config.CREDENTIALS_PATH)
+    storage = Storage(flask_config.INSTALLED_APP_CREDENTIALS_PATH)
     run_flow(FLOW, storage, FLAGS)
 
 def print_usage():
