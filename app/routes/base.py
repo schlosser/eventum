@@ -39,7 +39,7 @@ def lookup_current_user():
         # bypass auth by mocking a super user
         session['gplus_id'] = SUPER_USER_GPLUS_ID
         try:
-            g.user = User.objects.get(email='email@email.com')
+            g.user = User.objects.get(gplus_id=SUPER_USER_GPLUS_ID)
         except DoesNotExist:
             user = User(name='Super User',
                         gplus_id=SUPER_USER_GPLUS_ID,
