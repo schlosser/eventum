@@ -27,7 +27,7 @@ try:
     # Setup Google Auth
     if GOOGLE_AUTH_ENABLED:
         try:
-            with open(INSTALLED_APP_SECRET_PATH, 'r') as f:
+            with open(CLIENT_SECRETS_PATH, 'r') as f:
                 _secrets_data = json.loads(f.read())['web']
                 GOOGLE_CLIENT_ID = _secrets_data['client_id']
                 if not _secrets_data.get('client_secret', None):
