@@ -5,7 +5,16 @@ import markdown
 now = datetime.now
 
 class Post(db.Document):
-    """"""
+    """A generic post object.
+    """
+
+    # MongoEngine ORM metadata
+    meta = {
+        'allow_inheritance': True,
+        'indexes': ['title', 'date_created'],
+        'ordering': ['-date_created']
+    }
+
     date_created = db.DateTimeField(required=True, default=now)
     date_modified = db.DateTimeField(required=True, default=now)
     title = db.StringField(required=True, max_length=255)
@@ -17,17 +26,13 @@ class Post(db.Document):
     featured_image = db.ReferenceField('Image')
     slug = db.StringField(required=True, regex="([a-z]|[A-Z]|[1-9]|-)*")
     categories = db.ListField(db.StringField(db_field='category',
-                                             max_length=255), default=list)
+                                             max_length=255),
+                              default=list)
     tags = db.ListField(db.StringField(db_field='tag', max_length=255),
                         default=list)
     published = db.BooleanField(required=True, default=False)
     date_published = db.DateTimeField()
     posted_by = db.ReferenceField(User, required=True)
-    meta = {
-        'allow_inheritance': True,
-        'indexes': ['title', 'date_created'],
-        'ordering': ['-date_created']
-    }
 
     def id_str(self):
         return str(self.id)

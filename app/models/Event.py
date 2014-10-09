@@ -8,7 +8,65 @@ from datetime import datetime, timedelta
 now = datetime.now
 
 class Event(db.Document):
-    """"""
+    """The object that represents an individual event in Mongoengine.
+
+    Recurring events also have a :class:`~app.models.EventSeries` instance that
+    connects them to the other events in the series.
+
+    :ivar date_created: :class:`mongoengine.DateTimeField` - The date that the
+        event object was created.
+    :ivar date_modified: :class:`mongoengine.DateTimeField` - The last date the
+        event was modified.
+    :ivar title: :class:`mongoengine.StringField` - The title of the event.
+    :ivar creator: :class:`mongoengine.ReferenceField` - The User that created
+        the event.
+    :ivar location: :class:`mongoengine.StringField` - The event's location.
+    :ivar slug: :class:`mongoengine.StringField` - The URL slug associated with
+        the event. **Note:** appending the slug to the base path for events
+        will not always yield the functioning URL for the event, because
+        recurring events have indexes appended to the url. User
+        :method:`get_absolute_url` always.
+    :ivar start_date: :class:`DateField` - The date the event starts.
+    :ivar end_date: :class:`DateField` - The date the event ends
+    :ivar start_time: :class:`TimeField` - The time the event starts
+    :ivar end_time: :class:`TimeField` - The time the event ends
+    :ivar short_description: :class:`mongoengine.StringField` - The HTML short
+        description of the event.
+    :ivar long_description: :class:`mongoengine.StringField` - The HTML long
+        description of the event.
+    :ivar short_description_markdown: :class:`mongoengine.StringField` - The
+        markdown short description of the event.
+    :ivar long_description_markdown: :class:`mongoengine.StringField` - The
+        markdown long description of the event.
+    :ivar published: :class:`mongoengine.BooleanField` - True if the event is
+        published.
+    :ivar date_published: :class:`mongoengine.DateTimeField` - The date that
+        the event was published.
+    :ivar is_recurring: :class:`mongoengine.BooleanField` - True if the event
+        is recurring.
+    :ivar parent_series: :class:`mongoengine.ReferenceField` - The
+        :class:`~app.models.EventSeries` object that holds the recurrence info
+        for an event, if it is recurring.
+    :ivar image: :class:`mongoengine.ReferenceField` - The headline image for
+        the event.
+    :ivar facebook_url: :class:`mongoengine.StringField` - The URL to the
+        Facebook event associated with this event.
+    :ivar gcal_id: :class:`mongoengine.StringField` - The ID for this event on
+        Google Calendar.  In Google Calendar API responses, this is stored as
+        the ``id`` field for events. If this field is None, then we never got
+        a proper response from Google Calendar when (if) we made a request to
+        create it there. It most likely does not exist on Google Calendar.
+    :ivar gcal_sequence: :class:`mongoengine.IntField` - The sequence number for
+        the event, used by Google Calendar for versioning.
+    """
+
+    # MongoEngine ORM metadata
+    meta = {
+        'allow_inheritance': True,
+        'indexes': ['start_date', 'creator'],
+        'ordering': ['-start_date']
+    }
+
     date_created = db.DateTimeField(required=True, default=now)
     date_modified = db.DateTimeField(required=True, default=now)
     title = db.StringField(required=True, max_length=255)
@@ -16,9 +74,9 @@ class Event(db.Document):
     location = db.StringField()
     slug = db.StringField(required=True, max_length=255)
     start_date = DateField()
-    end_time = TimeField()
     end_date = DateField()
     start_time = TimeField()
+    end_time = TimeField()
     short_description = db.StringField()
     long_description = db.StringField()
     short_description_markdown = db.StringField()
@@ -33,24 +91,46 @@ class Event(db.Document):
     gcal_sequence = db.IntField()
 
     def get_absolute_url(self):
+        """Returns the URL path that points to the client-facing version of
+        this event.
+
+        :returns: A URL path like ``"/events/cookies-and-code"``.
+        :rtype: str
+        """
         if self.is_recurring:
             return url_for('client.recurring_event', slug=self.slug, index=self.index)
         return url_for('client.event', slug=self.slug)
 
     def image_url(self):
+        """Returns the URL path that points to the image for the event.
+
+        :returns: The URL path like ``"/static/img/cat.jpg"``.
+        :rtype: str
+        """
         if self.image:
             return self.image.url()
         return url_for('static', filename=adi['DEFAULT_EVENT_IMAGE'])
 
     @property
     def index(self):
+        """Represents the index of this event in it's parent
+        :class:`~app.models.EventSeries.  Returns ``None`` if the event is not
+        recurring.
+
+        :returns: The index of the event in it's series.
+        :rtype: int
+        """
         if not self.is_recurring:
             return
         return self.parent_series.events.index(self)
 
     def clean(self):
-        """Update date_modified, and validate datetimes to ensure the event ends
-        after it starts.
+        """Called by Mongoengine on every ``.save()`` to the object.
+
+        Updates date_modified, renders the markdown into the HTML fields, and
+        validates datetimes to ensure the event ends after it starts.
+
+        :raises: :class:`ValidationError`
         """
         self.date_modified = now()
 
@@ -77,22 +157,54 @@ class Event(db.Document):
                                                          self.end_time))
 
     def start_datetime(self):
-        """A convenience method to combine start_date and start_time"""
+        """A convenience method to combine ``start_date`` and ``start_time``
+        into one :class:`datetime`.
+
+        :returns: The combined datetime, or ``None` if ``start_date`` or
+            ``start_time`` are ``None``.
+        :rtype: :class:`datetime`.
+        """
         if self.start_date is None or self.start_time is None:
             return None
         return datetime.combine(self.start_date, self.start_time)
 
     def end_datetime(self):
-        """A convenience method to combine end_date and end_time"""
+        """A convenience method to combine ``end_date`` and ``end_time``
+        into one :class:`datetime`.
+
+        :returns: The combined datetime, or ``None` if ``end_date`` or
+            ``end_time`` are ``None``.
+        :rtype: :class:`datetime`.
+        """
         if self.end_date is None or self.end_time is None:
             return None
         return datetime.combine(self.end_date, self.end_time)
 
     def id_str(self):
+        """The id of this object, as a string.
+
+        :returns: The id
+        :rtype: str
+        """
         return str(self.id)
 
     def ready_for_publishing(self):
-        """"""
+        """Returns True if the event has all necessary fields filled out.
+
+        Necessary fields are:
+
+        - ``title``
+        - ``creator``
+        - ``location``
+        - ``start_datetime``
+        - ``end_datetime``
+        - ``short_description``
+        - ``long_description``
+        - ``image``
+
+        :Returns: True if we are ready for publishing.
+        :rtype: bool
+        """
         return all([
             self.title,
             self.creator,
@@ -105,7 +217,11 @@ class Event(db.Document):
             ])
 
     def is_multiday(self):
-        """Retuns whether or not the event spans muliple days or not."""
+        """Retuns True if the event spans muliple days.
+
+        :returns: True if the event spans multiple days.
+        :rtype: bool
+        """
         if self.start_date == self.end_date:
             return False
         if self.start_date == self.end_date - timedelta(days=1) and self.end_time.hour < 5:
@@ -114,15 +230,19 @@ class Event(db.Document):
 
     def human_readable_date(self):
         """Return the date of the event (presumed not multiday) formatted like:
-            1. Sunday, Mar 31
+        ``"Sunday, Mar 31"``.
+
+        :returns: The formatted date.
+        :rtype: str
         """
         return self.start_date.strftime("%A, %b %d")
 
     def human_readable_time(self):
         """Return the time range of the event (presumed not multiday) formatted
-        like:
-            1. 11am - 2:15pm
-            2. 3 - 7:30pm
+        like ``"11am - 2:15pm"`` or ``"3 - 7:30pm"``.
+
+        :returns: The formatted date.
+        :rtype: str
         """
         output = ''
         if self.start_time.strftime("%p") == self.end_time.strftime("%p"):
@@ -136,11 +256,16 @@ class Event(db.Document):
     def human_readable_datetime(self):
         """Format the start and end date date in one of the following three
         formats:
-            1. Sunday, March 31 11pm - Monday, April 1 3am
-            2. Sunday, March 31 11am - 2:15pm
-            3. Sunday, March 31 3 - 7:30pm
+
+        1. ``"Sunday, March 31 11pm - Monday, April 1 3am"``
+        2. ``"Sunday, March 31 11am - 2:15pm"``
+        3. ``"Sunday, March 31 3 - 7:30pm"``
+
         Depending on whether or not the start / end times / dates are the same.
         All unkown values will be replaced by question marks.
+
+        :returns: The formatted date.
+        :rtype: str
         """
         output = ""
         if self.start_date:
@@ -172,21 +297,31 @@ class Event(db.Document):
         return output
 
     def _start_and_end_time_share_am_or_pm(self):
+        """Returns True if the start and end times for an event are both pm or
+        am.
+
+        :returns: True if the start and end times for an event are both pm or
+            am.
+        :rtype: bool
+        """
         return (self.start_time is not None and
                 self.end_time is not None and
                 self.start_time.strftime("%p")==self.end_time.strftime("%p"))
 
-    # MongoEngine ORM metadata
-    meta = {
-        'allow_inheritance': True,
-        'indexes': ['start_date', 'creator'],
-        'ordering': ['-start_date']
-    }
-
     def __unicode__(self):
+        """This event, as a unicode string.
+
+        :returns: The title of the event
+        :rtype: str
+        """
         return self.title
 
     def __repr__(self):
+        """The representation of this event.
+
+        :returns: The event's details.
+        :rtype: str
+        """
         return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
             'published=%r)' % (self.title, self.location, self.creator,
                              self.start_datetime(), self.end_datetime(),
