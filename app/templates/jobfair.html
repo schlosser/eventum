@@ -32,7 +32,7 @@
         </div>
         <div class="text">
             <p>Interested in getting a job or internship at an NYC startup?  Join ADI at the 4th annual Startup Career Fair to meet some of New York's most exciting tech startups.</p>
-            <p>Bring your resumes!  Last year over 250 Columbia students met over 20 New York tech startups and this year it's going to be even better.  Engineers will tell you about what it's like to work at a tech startup, and can even give you tips for how to interview and get a job!</p>
+            <p>Bring your resumes!  Last year over 250 Columbia students met 20 New York tech startups and this year it's going to be even better.  Engineers will tell you about what it's like to work at a tech startup, and can even give you tips for how to interview and get a job!</p>
             <p>Registration is now open! <a href="http://bit.ly/startupcareer2014">Register online</a>, and then <a href="https://www.facebook.com/events/290041244526506/">RSVP on Facebook</a> to see who else is going. See you there!</p>
         </div>
    </div>
@@ -66,12 +66,12 @@
             <h4>Companies</h4>
             <span class="bar blue"></span>
         </div>
-        <h3>We just announced 21 amazing startups that will be in attendance.  Check out the full list below!</h3>
-        {% for triple in range((companies | length)//3) %}
+        <h3>We just announced 20 amazing startups that will be in attendance.  Check out the full list below!</h3>
+        {% for triple in range(((companies|length) // 3) + 1) %}
             <div class="triple">
             {% for i in range(3) %}
                 {% with index = triple * 3 + i%}
-                {% if index <= (companies | length) %}
+                {% if index < (companies | length) %}
                     {% with company = companies[index] %}
                     <div class="small company">
                         <div class="inner">
