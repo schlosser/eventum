@@ -45,62 +45,57 @@
             "image": "img/jobfair/factual.png",
             "blurb": "Factual’s location platform enriches mobile location signals with definitive global data, enabling personalized and contextually relevant mobile experiences. "
         },
-          {
+        {
             "url": "http://www.flatiron.com/",
             "image": "img/jobfair/flatiron.png",
             "blurb": "Flatiron Health is a health care technology company building the most comprehensive system of oncology data intelligence in the US."
         },
-          {
+        {
             "url": "http://www.foursquare.com/",
             "image": "img/jobfair/foursquare.png",
             "blurb": "At Foursquare, we’re building products that will learn what you like and lead you to places that you'll love, and they’ll help you keep up and meet up with friends once you get there!"
         },
-          {
+        {
             "url": "http://www.jawbone.com/",
             "image": "img/jobfair/jawbone.png",
             "blurb": "Jawbone® is a world-leader in consumer technology and wearable devices, building hardware products and software platforms powered by data science."
         },
-          {
-            "url": "http://www.meetup.com/",
-            "image": "img/jobfair/meetup.png",
-            "blurb": "Meetup is the world's largest network of local groups. Meetup's mission is to revitalize local community and help people around the world self-organize."
-        },
-          {
+        {
             "url": "http://www.oysterbooks.com/",
             "image": "img/jobfair/oyster.png",
             "blurb": "Oyster is the leading streaming service for books. With over half a million titles and new books arriving every day, it’s never been easier to find a story to dive into."
         },
-          {
+        {
             "url": "http://www.paperlesspost.com/",
             "image": "img/jobfair/paperlesspost.png",
             "blurb": "Paperless Post helps people communicate beautifully regardless of the medium. Design custom stationery that reflects your personal style."
         },
-          {
+        {
             "url": "http://www.redballoonsecurity.com/",
             "image": "img/jobfair/redballoonsecurity.png",
             "blurb": "Red Balloon Security develops host-based defensive technology for embedded devices, like writing an antivirus for your printer but way more fun."
         },
-          {
+        {
             "url": "http://www.sailthru.com/",
             "image": "img/jobfair/sailthru.jpg",
             "blurb": "Sailthru creates cross-platform personalization software to collect actionable data and market relevant content with individual customization."
         },
-          {
+        {
             "url": "http://www.thinkful.com/",
             "image": "img/jobfair/thinkful.jpg",
             "blurb": "Thinkful is reinventing online education (HTML, JS, Py, etc.) with weekly mentor video-chats. Lead your own project, take free classes, and work in Manhattan."
         },
-          {
+        {
             "url": "http://www.venmo.com/",
             "image": "img/jobfair/venmo.png",
             "blurb": "Pay anyone instantly using money you have in Venmo or link a bank account or debit card in seconds."
         },
-          {
+        {
             "url": "http://www.vimeo.com/",
             "image": "img/jobfair/vimeo.png",
             "blurb": "Vimeo is video + you. We put your videos first and give you the best ways to share, discover, and be inspired."
         },
-          {
+        {
             "url": "http://www.wework.com/",
             "image": "img/jobfair/wework.png",
             "blurb": "WeWork is the community for creators. We provide the space, community, and services so our members can do what they love."
