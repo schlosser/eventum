@@ -7,7 +7,6 @@ from .Image import Image
 from .BlogPost import BlogPost
 from .Event import Event
 from .EventSeries import EventSeries
-from .Resource import Resource
 
 assert (absolute_import,
         BlogPost,
@@ -15,6 +14,5 @@ assert (absolute_import,
         EventSeries,
         Image,
         Post,
-        Resource,
         User,
         Whitelist)

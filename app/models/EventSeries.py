@@ -1,3 +1,10 @@
+"""
+.. module:: EventSeries
+    :synopsis: A database model for an event series.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from mongoengine import ValidationError
 from app.models.fields import DateField
 from app import db

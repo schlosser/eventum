@@ -1,3 +1,10 @@
+"""
+.. module:: Image
+    :synopsis: A image database model.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from flask import url_for
 from mongoengine import ValidationError, signals
 from app import db

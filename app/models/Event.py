@@ -1,3 +1,10 @@
+"""
+.. module:: Event
+    :synopsis: An event database model.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from flask import url_for
 from mongoengine import ValidationError
 from app import adi, db

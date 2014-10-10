@@ -1,3 +1,9 @@
+"""
+.. module:: BlogPost
+    :synopsis: A blog post database model.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
 import re
 from datetime import datetime
 
@@ -87,4 +93,3 @@ class BlogPost(Post):
         if self.html_content and self.title and self.slug and self.author:
             return 'complete'
         return 'incomplete'
-
