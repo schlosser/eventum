@@ -8,7 +8,7 @@ from mongoengine.errors import DoesNotExist, ValidationError
 
 from app.models import Event, Image
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
-from app.lib.decorators import login_required, requires_privilege
+from app.lib.decorators import login_required, requires_privilege, development_only
 
 from app.lib.error import GoogleCalendarAPIError
 from app.lib.events import EventsHelper
@@ -73,11 +73,6 @@ def _get_events_for_template(past, future):
         })
 
     return past_events, this_week, next_week, future_events
-
-from app import gcal_client
-@events.route('/gcal/cals', methods=['GET'])
-def calendars():
-    return jsonify({'data':gcal_client.get_calendar_list_resources()})
 
 @events.route('/events/create', methods=['GET', 'POST'])
 @requires_privilege('edit')
@@ -189,10 +184,12 @@ def unpublish(event_id):
 
 @events.route('/events/view')
 @requires_privilege('edit')
+@development_only
 def view():
     return str(Event.objects())
 
 @events.route('/events/wipe')
+@development_only
 def mom():
     for e in Event.objects():
         e.delete()
