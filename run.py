@@ -19,7 +19,7 @@ if __name__ == "__main__":
     appHandler.setLevel(logging.INFO)
     appHandler.setFormatter(formatter)
 
-    accessHandler = logging.handlers.RotatingFileHandler("log/access.log",
+    accessHandler = logging.handlers.RotatingFileHandler("log/werkzeug.log",
                                                          maxBytes=maxBytes)
     accessHandler.setLevel(logging.INFO)
     logging.getLogger("werkzeug").addHandler(accessHandler)

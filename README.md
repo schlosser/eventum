@@ -100,7 +100,8 @@ nosetests
 ├── manage.py        # Various scripts.  Run `python manage.py` to view usage.
 ├── run.py           # Runs the app!
 ├── script           # Scripts run by `manage.py` outside of the app
-└── test             # Unit tests
+├── test             # Unit tests
+└── log              # Log Files
 ```
 
 [flask]: http://flask.pocoo.org/
