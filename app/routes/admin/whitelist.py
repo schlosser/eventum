@@ -1,7 +1,6 @@
-import logging
 import uuid
 
-from flask import Blueprint, request, flash, redirect, url_for
+from flask import Blueprint, request, flash, redirect, url_for, current_app
 
 from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm
@@ -46,14 +45,14 @@ def add():
                                  user_type=form.user_type.data)
             fake_user.save()
         else:
-            logging.warning(form.errors)
+            current_app.logger.warning(form.errors)
     else:
         user_exists = User.objects(email=form.email.data).count() != 0
         if form.validate_on_submit() and not user_exists:
             wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
             wl.save()
         else:
-            logging.warning(form.errors)
+            current_app.logger.warning(form.errors)
     return redirect(url_for('users.index'))
 
 @whitelist.route('/whitelist/view')
