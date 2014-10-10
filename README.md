@@ -22,12 +22,14 @@ Eventum runs on Linux and OSX.  To get it up an running, follow these steps:
     $ sudo pip install virtualenv
     ```
 
-4.  Download a copy of `client_secrets.json` from the [Google Developer Console][google-developer-console] or from a friend, and place it in the `config` folder.
+3.  Download a copy of `client_secrets.json` from the [Google Developer Console][google-developer-console] or from a friend, and place it in the `config` folder.
 
-5.  Authorize the Google Calendar API:
+4.  Authorize the Google Calendar API:
     ```bash
     $ python manage.py --authorize
     ```
+5.  Install SASS gem `gem install sass`
+    * otherwise, you will see an `OS` error
 
 Then you should be all set to run!
 
@@ -39,7 +41,7 @@ Here's how to run Eventum in a development environment:
 mongod &
 virtualenv --no-site-packages .
 source bin/activate
-source config/settings.sh
+source config/settings.dev
 pip install -r config/requirements.txt
 
 python run.py
@@ -50,9 +52,11 @@ Or alternately:
 ```
 ./develop.sh
 source bin/activate
-source config/settings.sh
+source config/settings.dev
 python run.py
 ```
+
+Finally, go to `localhost:5000` on your browser 
 
 #### Developing without Authentication
 
