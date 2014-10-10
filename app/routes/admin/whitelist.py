@@ -1,8 +1,11 @@
+import logging
+import uuid
+
+from flask import Blueprint, request, flash, redirect, url_for
+
 from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm
 from app.lib.decorators import login_required, development_only
-from flask import Blueprint, request, flash, redirect, url_for
-import uuid
 
 whitelist = Blueprint('whitelist', __name__)
 
@@ -43,14 +46,14 @@ def add():
                                  user_type=form.user_type.data)
             fake_user.save()
         else:
-            print form.errors
+            logging.warning(form.errors)
     else:
         user_exists = User.objects(email=form.email.data).count() != 0
         if form.validate_on_submit() and not user_exists:
             wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
             wl.save()
         else:
-            print form.errors
+            logging.warning(form.errors)
     return redirect(url_for('users.index'))
 
 @whitelist.route('/whitelist/view')
