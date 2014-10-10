@@ -53,18 +53,18 @@ class Event(db.Document):
         is recurring.
     :ivar parent_series: :class:`mongoengine.ReferenceField` - The
         :class:`~app.models.EventSeries` object that holds the recurrence info
-        for an event, if it is recurring.
+        for an event, if it is recurring.
     :ivar image: :class:`mongoengine.ReferenceField` - The headline image for
         the event.
     :ivar facebook_url: :class:`mongoengine.StringField` - The URL to the
         Facebook event associated with this event.
     :ivar gcal_id: :class:`mongoengine.StringField` - The ID for this event on
-        Google Calendar.  In Google Calendar API responses, this is stored as
-        the ``id`` field for events. If this field is None, then we never got
-        a proper response from Google Calendar when (if) we made a request to
+        Google Calendar. In Google Calendar API responses, this is stored as
+        the ``id`` field for events. If this field is None, then we never got a
+        proper response from Google Calendar when (if) we made a request to
         create it there. It most likely does not exist on Google Calendar.
-    :ivar gcal_sequence: :class:`mongoengine.IntField` - The sequence number for
-        the event, used by Google Calendar for versioning.
+    :ivar gcal_sequence: :class:`mongoengine.IntField` - The sequence number
+        for the event, used by Google Calendar for versioning.
     """
 
     # MongoEngine ORM metadata

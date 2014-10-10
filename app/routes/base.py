@@ -1,6 +1,5 @@
 import sys
-
-from flask import g, session, render_template, request, redirect
+from flask import g, session, render_template, request, redirect, Blueprint
 from mongoengine.queryset import DoesNotExist
 import requests
 
@@ -9,12 +8,15 @@ from app.models import User
 
 SUPER_USER_GPLUS_ID = 'super'
 
-@app.errorhandler(Exception)
+base = Blueprint('base', __name__)
+
+@base.errorhandler(Exception)
 def exceptionHandler(error):
-    app.logger.error("Uncaught Exception", exc_info=sys.exc_info()) 
+    app.logger.error("Uncaught Exception", exc_info=sys.exc_info())
     app.handle_exception(error) # default error handler
 
-@app.errorhandler(404)
+
+@base.errorhandler(404)
 def not_found(error):
     old_site_url = 'http://adicu.github.com' + request.path
     try:
@@ -26,15 +28,15 @@ def not_found(error):
 
     return render_template('error/404.html'), 404
 
-@app.errorhandler(401)
+@base.errorhandler(401)
 def not_authorized(error):
     return render_template('error/401.html'), 401
 
-@app.errorhandler(405)
+@base.errorhandler(405)
 def method_not_allowed(error):
     return render_template('error/405.html', method=request.method), 405
 
-@app.before_request
+@base.before_request
 def lookup_current_user():
     """Set the g.user variable to the User in the database that shares
     openid with the session, if one exists.
@@ -61,11 +63,11 @@ def lookup_current_user():
         except DoesNotExist:
             pass  # Fail gracefully if the user is not in the database yet
 
-@app.context_processor
+@base.context_processor
 def inject_user():
     return dict(current_user=g.user)
 
-@app.after_request
+@base.after_request
 def add_header(response):
     """
     Add headers to both force latest IE rendering engine or Chrome Frame,

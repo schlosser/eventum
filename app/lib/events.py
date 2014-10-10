@@ -3,79 +3,79 @@
     :synopsis: This module contains classes that aid in the translation from
         Mongoengine events to Google Calendar events and WTForms.
 
-        This file passes around data in several forms, which can be confusing.
-        If we are not dealing with an instance of :class:`CreateEventForm` or a
-        subclass, a Mongoengine object like :class:`Event` or
-        :class:`EventSeries`, then we are probably dealing with a dictionary
-        representing an intermediate form.  These forms include:
-
-        ``event_data``::
-
-            {
-                'title': 'My Event',
-                'slug': 'my-event',
-                'location': '742 Evergreen Terrace',
-                'start_time': datetime.time(13, 0, 0, 0),
-                'end_time': datetime.time(14, 30, 0, 0),
-                'published': True,
-                'short_description_markdown': 'Come to my event',
-                'long_description_markdown': 'I swear, it\'ll be *great*!`,
-                'is_recurring': False,
-                'facebook_url': 'http://facebook.com/events/123456789012345',
-                'image': 'simpsons.png'
-            }
-
-        ``date_data``::
-
-            {
-                'start_date': datetime.date(2014, 10, 4),
-                'end_date': datetime.date(2014, 10, 4),
-            }
-
-        ``series_data``::
-
-
-            {
-                'frequency': 'weekly',
-                'every': 1,
-                'slug': 'my-event',
-                'ends_on': True,
-                'ends_after': False,
-                'num_occurrences': 5,
-                'recurrence_summary': 'Every 1 week for 5 occurrences.'
-            }
-
-            # OR:
-
-            {
-                'frequency': 'weekly',
-                'every': 1,
-                'slug': 'my-event,
-                'ends_on': False,
-                'ends_after': True,
-                'recurrence_end_date': datetime.date(2014, 10, 4),
-                'recurrence_summary': 'Every 1 week, ending on October 4th.'
-            }
-
-        ``form_data``::
-
-            {
-                'title': 'My Event',
-                'slug': 'my-event',
-                'location': '742 Evergreen Terrace',
-                'start_date': datetime.date(2014, 10, 4),
-                'start_time': datetime.time(13, 0, 0, 0),
-                'end_date': datetime.date(2014, 10, 4),
-                'end_time': datetime.time(14, 30, 0, 0),
-                'published': True,
-                'short_description_markdown': 'Come to my event',
-                'long_description_markdown': 'I swear, it\'ll be *great*!`,
-                'is_recurring': False,
-                'facebook_url': 'http://facebook.com/events/123456789012345',
-                'event_image': 'simpsons.png'
-            }
-
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+
+This file passes around data in several forms, which can be confusing.
+If we are not dealing with an instance of :class:`CreateEventForm` or a
+subclass, a Mongoengine object like :class:`Event` or
+:class:`EventSeries`, then we are probably dealing with a dictionary
+representing an intermediate form.  These forms include:
+
+``event_data``::
+
+    {
+        'title': 'My Event',
+        'slug': 'my-event',
+        'location': '742 Evergreen Terrace',
+        'start_time': datetime.time(13, 0, 0, 0),
+        'end_time': datetime.time(14, 30, 0, 0),
+        'published': True,
+        'short_description_markdown': 'Come to my event',
+        'long_description_markdown': 'I swear, it\'ll be *great*!`,
+        'is_recurring': False,
+        'facebook_url': 'http://facebook.com/events/123456789012345',
+        'image': 'simpsons.png'
+    }
+
+    ``date_data``::
+
+    {
+        'start_date': datetime.date(2014, 10, 4),
+        'end_date': datetime.date(2014, 10, 4),
+    }
+
+    ``series_data``::
+
+
+    {
+        'frequency': 'weekly',
+        'every': 1,
+        'slug': 'my-event',
+        'ends_on': True,
+        'ends_after': False,
+        'num_occurrences': 5,
+        'recurrence_summary': 'Every 1 week for 5 occurrences.'
+    }
+
+    # OR:
+
+    {
+        'frequency': 'weekly',
+        'every': 1,
+        'slug': 'my-event,
+        'ends_on': False,
+        'ends_after': True,
+        'recurrence_end_date': datetime.date(2014, 10, 4),
+        'recurrence_summary': 'Every 1 week, ending on October 4th.'
+    }
+
+    ``form_data``::
+
+    {
+        'title': 'My Event',
+        'slug': 'my-event',
+        'location': '742 Evergreen Terrace',
+        'start_date': datetime.date(2014, 10, 4),
+        'start_time': datetime.time(13, 0, 0, 0),
+        'end_date': datetime.date(2014, 10, 4),
+        'end_time': datetime.time(14, 30, 0, 0),
+        'published': True,
+        'short_description_markdown': 'Come to my event',
+        'long_description_markdown': 'I swear, it\'ll be *great*!`,
+        'is_recurring': False,
+        'facebook_url': 'http://facebook.com/events/123456789012345',
+        'event_image': 'simpsons.png'
+    }
 """
 
 from app.models import Event, EventSeries, Image
@@ -91,10 +91,10 @@ class EventsHelper(object):
 
     In general, :class:`EventsHelper` should only be used to call:
 
-    - :method:`create_form`
-    - :method:`create_event`
-    - :method:`update_event`
-    - :method:`delete_event`
+    - :func:`create_form`
+    - :func:`create_event`
+    - :func:`update_event`
+    - :func:`delete_event`
     """
 
     PUBLIC = 'public'
@@ -139,7 +139,7 @@ class EventsHelper(object):
     def create_event(klass, form, creator):
         """Creates a Mongoengine and Google Calendar event from form data.
 
-        Calls either :method:`create_series` or :method:`create_single_event`
+        Calls either :func:`create_series` or :func:`create_single_event`
         depending on whether or not the event should be recurring.
 
         :param form: The WTForms form.
@@ -163,13 +163,13 @@ class EventsHelper(object):
     def update_event(klass, event, form):
         """Updates ``event``, syncing changes to Google Calendar.
 
-        Calls either :method:`update_series`, :method:`update_single_event`, or
-        :method:`update_single_event_from_series` depending on whether the
+        Calls either :func:`update_series`, :func:`update_single_event`, or
+        :func:`update_single_event_from_series` depending on whether the
         event is recurring and whether all updates in a series should be
         updated.
 
         If the event is being made recurring, or a recurrence is being removed,
-        :method:`convert_to_series` or :method:`convert_to_single_event` will
+        :func:`convert_to_series` or :func:`convert_to_single_event` will
         be called instead.
 
         :param event: The event to update.
@@ -210,8 +210,8 @@ class EventsHelper(object):
     def delete_event(klass, event, form):
         """Deletes ``event``, syncing changes to Google Calendar.
 
-        Calls either :method:`delete_series`, :method:`delete_single_event`, or
-        :method:`delete_single_event_from_series` depending on whether the
+        Calls either :func:`delete_series`, :func:`delete_single_event`, or
+        :func:`delete_single_event_from_series` depending on whether the
         event is recurring and whether all updates in a series should be
         deleted.
 

@@ -23,7 +23,7 @@ class EventSeries(db.Document):
     :ivar slug: :class:`mongoengine.StringField` - The URL slug for this event.
         **Note:** this slug is shared across all :class:`~app.models.Event`s in
         this series.  This is not the event's unique URL, rather the slug that
-        is unique between series'.
+        is unique between series objects.
     :ivar events: :class:`mongoengine.ListField` - A list of
         :class:`~app.models.Event`s in this series.
     :ivar frequency: :class:`mongoengine.StringField` - The interval of the

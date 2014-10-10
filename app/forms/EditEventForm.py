@@ -5,7 +5,8 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app.forms import CreateEventForm, INVALID_SLUG
+from app.forms import CreateEventForm
+from app.forms.CreateEventForm import INVALID_SLUG
 from wtforms import StringField, BooleanField
 from wtforms.validators import Regexp
 

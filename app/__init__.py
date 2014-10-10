@@ -90,9 +90,8 @@ def register_blueprints():
     for bp in admin_blueprints:
         app.register_blueprint(bp, url_prefix="/admin")
 
-    from app.routes import base; assert base # Not a blueprint, but should be imported
-    from app.routes import blog, client
-    blueprints = [blog, client]
+    from app.routes import blog, client, base
+    blueprints = [blog, client, base]
 
     for bp in blueprints:
         app.register_blueprint(bp)
