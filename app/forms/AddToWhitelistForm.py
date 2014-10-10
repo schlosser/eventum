@@ -18,22 +18,24 @@ class AddToWhitelistForm(Form):
 
     There are four options for ``user_type``:
 
-    - Editor (``editor``): Can edit content on Eventum.
-    - Publisher (``publisher``) Can publish content to the client.
-    - Admin (``publisher``) Can manage user accounts and permissions.
-    - Fake User (``fake_user``) Can not do anything, and should only be used as
+    - Editor (``"editor"``): Can edit content on Eventum.
+    - Publisher (``"publisher"``) Can publish content to the client.
+    - Admin (``"publisher"``) Can manage user accounts and permissions.
+    - Fake User (``"fake_user"``) Can not do anything, and should only be used as
         dummy accounts for guest blog posts.
 
     If the whitelisted user is a fake user (``user_type`` is set to
     ``fake_user``) then ``name`` and ``fake_user_image`` must also be set.
     Otherwise, these fields may be omitted.
 
-    :ivar email: :class:`StringField` - The email address to be whitelisted
-    :ivar name: :class:`StringField` - The name of the user to whitelist (fake
-        users only)
-    :ivar fake_user_image: :class:`StringField` - A URL to a profile picture
-        (fake users only)
-    :ivar user_type: :class:`RadioField` - The permission level for the user.
+    :ivar email: :class:`wtforms.fields.StringField` - The email address to be
+        whitelisted
+    :ivar name: :class:`wtforms.fields.StringField` - The name of the user to
+        whitelist (fake users only)
+    :ivar fake_user_image: :class:`wtforms.fields.StringField` - A URL to a
+        profile picture (fake users only)
+    :ivar user_type: :class:`wtforms.fields.RadioField` - The permission level
+        for the user.
     """
     email = StringField('Email Address', [Email(message=EMAIL_ERROR),
                                           Optional(),

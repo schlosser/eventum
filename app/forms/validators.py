@@ -51,7 +51,8 @@ class UniqueEvent(object):
         :type form: :class:`Form`
         :param field: The field to validate
         :type field: :class:`Field`
-        :raises: :exc:`ValidationError`
+
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         from app.models import Event, EventSeries
 
@@ -83,7 +84,8 @@ class UniqueImage(object):
         :type form: :class:`Form`
         :param field: The field to validate
         :type field: :class:`Field`
-        :raises: :exc:`ValidationError`
+
+        :raises: :class:`wtforms.validators.ValidationError`
         """
 
         filename = '%s.' % field.data
@@ -115,7 +117,8 @@ class UniqueEmail(object):
         :type form: :class:`Form`
         :param field: The field to validate
         :type field: :class:`Field`
-        :raises: :exc:`ValidationError`
+
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         if form.user_type.data != 'fake_user' and \
                 Whitelist.objects(email=field.data).count() != 0:

@@ -17,15 +17,16 @@ class Whitelist(db.Document):
     they authenticate with the whitelisted email, a :class:`~app.models.User`
     object is made, but the whitelist entry remains, but is marked redeemed.
 
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date that the
-        whitelist entry was created.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The date when the
-        whitelist entry was last modified.
-    :ivar email: :class:`mongoengine.EmailField` - The email to be whitelisted.
-    :ivar user_type: :class:`mongoengine.StringField` - The user type to
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        that the whitelist entry was created.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date
+        when the whitelist entry was last modified.
+    :ivar email: :class:`mongoengine.fields.EmailField` - The email to be
+        whitelisted.
+    :ivar user_type: :class:`mongoengine.fields.StringField` - The user type to
         associate with the email address.
-    :ivar redeemed: :class:`mongoengine.BooleanField` - True if the user has
-        authenticated with this email and made an account on Eventum.
+    :ivar redeemed: :class:`mongoengine.fields.BooleanField` - True if the user
+        has authenticated with this email and made an account on Eventum.
     """
     date_created = db.DateTimeField(required=True, default=now)
     date_modified = db.DateTimeField(required=True, default=now)

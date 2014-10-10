@@ -42,31 +42,33 @@ class User(db.Document):
     The :class:`User` object is only created once the user logs in for the
     first time and confirms the details of their account.
 
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date that this
-        user was created.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The date the this
-        user was last modified.
-    :ivar gplus_id: :class:`mongoengine.StringField` - The Google+ ID for this
-        user.  It's what we use in the Google+ authentication.
-    :ivar name: :class:`mongoengine.StringField` - The user's name.
-    :ivar slug: :class:`mongoengine.StringField` - A URL slug to their internal
-        profile page.
-    :ivar email: :class:`mongoengine.EmailField` - The user's email address.
-    :ivar roles: :class:`mongoengine.ListField` of
-        :class:`mongoengine.StringField` - A list of roles that the user has.
-    :ivar privileges: :class:`mongoengine.DictField` - A dictionary of
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        that this user was created.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date
+        the this user was last modified.
+    :ivar gplus_id: :class:`mongoengine.fields.StringField` - The Google+ ID
+        for this user.  It's what we use in the Google+ authentication.
+    :ivar name: :class:`mongoengine.fields.StringField` - The user's name.
+    :ivar slug: :class:`mongoengine.fields.StringField` - A URL slug to their
+        internal profile page.
+    :ivar email: :class:`mongoengine.fields.EmailField` - The user's email
+        address.
+    :ivar roles: :class:`mongoengine.fields.ListField` of
+        :class:`mongoengine.fields.StringField` - A list of roles that the user
+        has.
+    :ivar privileges: :class:`mongoengine.fields.DictField` - A dictionary of
         privileges that the user has.  Often determined soley by their
         ``user_type``.
-    :ivar image_url: :class:`mongoengine.URLField` - The URL of the profile
-        picture for the user's profile picture.
-    :ivar image: :class:`mongoengine.ReferenceField` - The local image for the
-        user's profile picture.
-    :ivar user_type: :class:`mongoengine.StringField` - The type of the user.
-        Can either be ``"fake_user"``, ``"editor"``, ``"publisher"``, or
+    :ivar image_url: :class:`mongoengine.fields.URLField` - The URL of the
+        profile picture for the user's profile picture.
+    :ivar image: :class:`mongoengine.fields.ReferenceField` - The local image
+        for the user's profile picture.
+    :ivar user_type: :class:`mongoengine.fields.StringField` - The type of the
+        user. Can either be ``"fake_user"``, ``"editor"``, ``"publisher"``, or
         ``"admin"``.  The selection of user type determines their
         ``privileges``.
-    :ivar last_logon: :class:`mongoengine.DateTimeField` - The date of this
-        user's last logon.
+    :ivar last_logon: :class:`mongoengine.fields.DateTimeField` - The date of
+        this user's last logon.
     """
 
     date_created = db.DateTimeField(required=True, default=now)
@@ -128,7 +130,7 @@ class User(db.Document):
 
         Update date_modified and apply privileges shorthand notation.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         self.date_modified = now()
 

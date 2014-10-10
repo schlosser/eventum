@@ -16,41 +16,42 @@ class EventSeries(db.Document):
     """A model that stores the recurrence information for a recurring event
     series.
 
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date when the
-        series was created.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The date when the
-        series was last modified
-    :ivar slug: :class:`mongoengine.StringField` - The URL slug for this event.
-        **Note:** this slug is shared across all :class:`~app.models.Event`s in
-        this series.  This is not the event's unique URL, rather the slug that
-        is unique between series objects.
-    :ivar events: :class:`mongoengine.ListField` - A list of
-        :class:`~app.models.Event`s in this series.
-    :ivar frequency: :class:`mongoengine.StringField` - The interval of the
-        occurrence. Can only take the value ``"weekly"``.
-    :ivar every: :class:`mongoengine.IntField` - The number of ``frequency``
-        units after which the event repeats. For example,
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        when the series was created.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date
+        when the series was last modified
+    :ivar slug: :class:`mongoengine.fields.StringField` - The URL slug for this
+        event. **Note:** this slug is shared across all
+        :class:`~app.models.Event` s in this series.  This is not the event's
+        unique URL, rather the slug that is unique between series objects.
+    :ivar events: :class:`mongoengine.fields.ListField` - A list of
+        :class:`~app.models.Event` s in this series.
+    :ivar frequency: :class:`mongoengine.fields.StringField` - The interval of
+        the occurrence. Can only take the value ``"weekly"``.
+    :ivar every: :class:`mongoengine.fields.IntField` - The number of
+        ``frequency`` units after which the event repeats. For example,
         ``frequency = "weekly"`` and ``every = 2`` indicates that the event
         occurs every two weeks.
-    :ivar ends_after: :class:`mongoengine.BooleanField` - True if the event ends
-        after a specific number of occurences.  Must be set opposite to
-        ``ends_on``.
-    :ivar ends_on: :class:`mongoengine.BooleanField` - True if the event ends
-        on a certain date. Must be set opposite to ``ends_after``.
-    :ivar num_occurrences: :class:`mongoengine.IntField` - The number of
+    :ivar ends_after: :class:`mongoengine.fields.BooleanField` - True if the
+        event ends after a specific number of occurences.  Must be set opposite
+        to ``ends_on``.
+    :ivar ends_on: :class:`mongoengine.fields.BooleanField` - True if the event
+        ends on a certain date. Must be set opposite to ``ends_after``.
+    :ivar num_occurrences: :class:`mongoengine.fields.IntField` - The number of
         occurrences for a recurring event.  Should be set only if ``ends_after``
         is ``True``.
     :ivar recurrence_end_date: :class:`DateField` - The date that the
         recurrence ends on.  Should be set only if ``ends_on`` is ``True``.
-    :ivar recurrence_summary: :class:`mongoengine.StringField` - A plain English
-        explanation of the recurrence. Generated in JavaScript but stored here.
-    :ivar gcal_id: :class:`mongoengine.StringField` - The ID for this event
-        series on Google Calendar.  In Google Calendar API responses, this is
-        stored as the ``id`` field for events. If this field is None, then we
-        never got a proper response from Google Calendar when (if) we made a
-        request to create it there. It most likely does not exist on Google
-        Calendar.  This is the same as the ``gcal_id`` of the first event in
-        the series.
+    :ivar recurrence_summary: :class:`mongoengine.fields.StringField` - A plain
+        English explanation of the recurrence. Generated in JavaScript but
+        stored here.
+    :ivar gcal_id: :class:`mongoengine.fields.StringField` - The ID for this
+        event series on Google Calendar.  In Google Calendar API responses,
+        this is stored as the ``id`` field for events. If this field is None,
+        then we never got a proper response from Google Calendar when (if) we
+        made a request to create it there. It most likely does not exist on
+        Google Calendar.  This is the same as the ``gcal_id`` of the first
+        event in the series.
     """
 
     # MongoEngine ORM metadata
@@ -104,7 +105,7 @@ class EventSeries(db.Document):
         Update date_modified, and ensure that exactly one of `ends_after`
         and `ends_on` is True at a time.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         self.date_modified = now()
 

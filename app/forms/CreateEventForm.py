@@ -26,38 +26,48 @@ INVALID_SLUG = 'Post slug should only contain numbers, letters and dashes.'
 class CreateEventForm(Form):
     """A form for the creation of a :class:`~app.models.Event` object.
 
-    :ivar title: :class:`StringField` - The title of the event.
-    :ivar slug: :class:`StringField` - A unique url fragment for this blog post.
-        This may only contain letters, numbers, and dashes (``-``).
-    :ivar location: :class:`StringField` - The location of the event.
-    :ivar start_date: :class:`DateField` - The date the event starts on.
-    :ivar end_date: :class:`DateField` - The date the event ends on.
+    :ivar title: :class:`wtforms.fields.StringField` - The title of the event.
+    :ivar slug: :class:`wtforms.fields.StringField` - A unique url fragment for
+        this blog post. This may only contain letters, numbers, and dashes
+        (``-``).
+    :ivar location: :class:`wtforms.fields.StringField` - The location of the
+        event.
+    :ivar start_date: :class:`wtforms.fields.DateField` - The date the event
+        starts on.
+    :ivar end_date: :class:`wtforms.fields.DateField` - The date the event
+        ends on.
     :ivar start_time: :class:`TimeField` - The time the event starts.
     :ivar end_time: :class:`TimeField` - The time the event ends.
-    :ivar is_recurring: :class:`BooleanField` - True if the event is recurring.
-    :ivar frequency: :class:`SelectField` - The interval of the occurrence. Can
-        only take the value ``"weekly"``.
-    :ivar every: :class:`IntegerField` - The number of ``frequency`` units
-        after which the event repeats. For example, ``frequency = "weekly"``
-        and ``every = 2`` indicates that the event occurs every two weeks.
-    :ivar ends: :class:`RadioField` - ``"after"`` if the event ends after
-        ``num_occurrences`` occurrences, or ``"on"`` if the date ends on
-        ``recurrence_end_date``.
-    :ivar num_occurrences: :class:`IntegerField` - The number of occurrences
-        for a recurring event.  Should be set only if ``ends`` is set to
-        ``"after"``.
-    :ivar recurrence_end_date: :class:`DateField` - The date that the
-        recurrence ends on.  Should be set only if ``ends`` is set to ``"on"``.
-    :ivar recurrence_summary: :class:`StringField` - A plain English
-        explanation of the recurrence. Generated in JavaScript but stored here.
-    :ivar short_description: :class:`TextAreaField` - The markdown text of the
-        short description for the event.
-    :ivar long_description: :class:`TextAreaField` - The markdown text of the
-        long description for the event.
-    :ivar published: :class:`BooleanField` - True if the event is published.
-    :ivar facebook_url: :class:`StringField` - The URL of the associated
-        Facebook event.
-    :ivar event_image: :StringField: - The filename of the headline image.
+    :ivar is_recurring: :class:`wtforms.fields.BooleanField` - True if the
+        event is recurring.
+    :ivar frequency: :class:`wtforms.fields.SelectField` - The interval of the
+        occurrence. Can only take the value ``"weekly"``.
+    :ivar every: :class:`wtforms.fields.IntegerField` - The number of
+        ``frequency`` units after which the event repeats. For example,
+        ``frequency = "weekly"`` and ``every = 2`` indicates that the event
+        occurs every two weeks.
+    :ivar ends: :class:`wtforms.fields.RadioField` - ``"after"`` if the event
+        ends after ``num_occurrences`` occurrences, or ``"on"`` if the date
+        ends on ``recurrence_end_date``.
+    :ivar num_occurrences: :class:`wtforms.fields.IntegerField` - The number of
+        occurrences for a recurring event.  Should be set only if ``ends`` is
+        set to ``"after"``.
+    :ivar recurrence_end_date: :class:`wtforms.fields.DateField` - The date
+        that the recurrence ends on.  Should be set only if ``ends`` is set to
+        ``"on"``.
+    :ivar recurrence_summary: :class:`wtforms.fields.StringField` - A plain
+        English explanation of the recurrence. Generated in JavaScript but
+        stored here.
+    :ivar short_description: :class:`wtforms.fields.TextAreaField` - The
+        markdown text of the short description for the event.
+    :ivar long_description: :class:`wtforms.fields.TextAreaField` - The
+        markdown text of the long description for the event.
+    :ivar published: :class:`wtforms.fields.BooleanField` - True if the event
+        is published.
+    :ivar facebook_url: :class:`wtforms.fields.StringField` - The URL of the
+        associated Facebook event.
+    :ivar event_image: :class:`wtforms.fields.StringField` - The filename of
+        the headline image.
     """
 
     title = StringField('Title', [
@@ -99,7 +109,7 @@ class CreateEventForm(Form):
         :type form: :class:`Form`
         :param bool validation_stopped: True if any validator raised
             :class:`~wtforms.validators.StopValidation`.
-        :raises: :exc:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         if not validation_stopped:
             start_date = form.start_date.data

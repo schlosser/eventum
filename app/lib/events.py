@@ -13,6 +13,7 @@ representing an intermediate form.  These forms include:
 
 ``event_data``::
 
+
     {
         'title': 'My Event',
         'slug': 'my-event',
@@ -27,14 +28,15 @@ representing an intermediate form.  These forms include:
         'image': 'simpsons.png'
     }
 
-    ``date_data``::
+``date_data``::
+
 
     {
         'start_date': datetime.date(2014, 10, 4),
         'end_date': datetime.date(2014, 10, 4),
     }
 
-    ``series_data``::
+``series_data``::
 
 
     {
@@ -59,7 +61,8 @@ representing an intermediate form.  These forms include:
         'recurrence_summary': 'Every 1 week, ending on October 4th.'
     }
 
-    ``form_data``::
+``form_data``::
+
 
     {
         'title': 'My Event',

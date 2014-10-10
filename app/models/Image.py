@@ -17,21 +17,22 @@ now = datetime.now
 
 class Image(db.Document):
     """
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date when the
-        document was created, localized to the server.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The date when the
-        document was last modified, localized to the server.
-    :ivar filename: :class:`mongoengine.StringField` - The filename with
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        when the document was created, localized to the server.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date
+        when the document was last modified, localized to the server.
+    :ivar filename: :class:`mongoengine.fields.StringField` - The filename with
         extension of the image.
-    :ivar creator: :class:`mongoengine.ReferenceField` - Reference to the User
-        that uploaded the photo.
-    :ivar caption: :class:`mongoengine.StringField` - A caption for the photo.
-    :ivar source: :class:`mongoengine.StringField` - A source credit for the
-        picture, if one is needed.
-    :ivar default_path: :class:`mongoengine.StringField` - The path the the
-        version of the image that should be used by default.
-    :ivar versions: :class:`mongoengine.DictField` - A dictionary of sizes to
-        file paths.
+    :ivar creator: :class:`mongoengine.fields.ReferenceField` - Reference to
+        the User that uploaded the photo.
+    :ivar caption: :class:`mongoengine.fields.StringField` - A caption for the
+        photo.
+    :ivar source: :class:`mongoengine.fields.StringField` - A source credit for
+        the picture, if one is needed.
+    :ivar default_path: :class:`mongoengine.fields.StringField` - The path the
+        the version of the image that should be used by default.
+    :ivar versions: :class:`mongoengine.fields.DictField` - A dictionary of
+        sizes to file paths.
     """
 
     # MongoEngine ORM metadata
@@ -67,7 +68,7 @@ class Image(db.Document):
 
         Update date_modified and populate the versions dict.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         VALID_PATHS = re.compile("^(" + BASEDIR + "|http://|https://).*$")
         self.date_modified = now()
@@ -87,7 +88,7 @@ class Image(db.Document):
         ``"<width>x<height>"``, where ``width`` and ``height`` are the size of
         the image at the path.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         for size,path in form.versions:
             try:

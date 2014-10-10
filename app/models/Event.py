@@ -20,51 +20,54 @@ class Event(db.Document):
     Recurring events also have a :class:`~app.models.EventSeries` instance that
     connects them to the other events in the series.
 
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date that the
-        event object was created.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The last date the
-        event was modified.
-    :ivar title: :class:`mongoengine.StringField` - The title of the event.
-    :ivar creator: :class:`mongoengine.ReferenceField` - The User that created
-        the event.
-    :ivar location: :class:`mongoengine.StringField` - The event's location.
-    :ivar slug: :class:`mongoengine.StringField` - The URL slug associated with
-        the event. **Note:** appending the slug to the base path for events
-        will not always yield the functioning URL for the event, because
-        recurring events have indexes appended to the url. User
-        :method:`get_absolute_url` always.
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        that the event object was created.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The last
+        date the event was modified.
+    :ivar title: :class:`mongoengine.fields.StringField` - The title of the
+        event.
+    :ivar creator: :class:`mongoengine.fields.ReferenceField` - The User that
+        created the event.
+    :ivar location: :class:`mongoengine.fields.StringField` - The event's
+        location.
+    :ivar slug: :class:`mongoengine.fields.StringField` - The URL slug
+        associated with the event. **Note:** appending the slug to the base
+        path for events will not always yield the functioning URL for the
+        event, because recurring events have indexes appended to the url. User
+        :func:`get_absolute_url` always.
     :ivar start_date: :class:`DateField` - The date the event starts.
     :ivar end_date: :class:`DateField` - The date the event ends
     :ivar start_time: :class:`TimeField` - The time the event starts
     :ivar end_time: :class:`TimeField` - The time the event ends
-    :ivar short_description: :class:`mongoengine.StringField` - The HTML short
-        description of the event.
-    :ivar long_description: :class:`mongoengine.StringField` - The HTML long
-        description of the event.
-    :ivar short_description_markdown: :class:`mongoengine.StringField` - The
-        markdown short description of the event.
-    :ivar long_description_markdown: :class:`mongoengine.StringField` - The
-        markdown long description of the event.
-    :ivar published: :class:`mongoengine.BooleanField` - True if the event is
-        published.
-    :ivar date_published: :class:`mongoengine.DateTimeField` - The date that
-        the event was published.
-    :ivar is_recurring: :class:`mongoengine.BooleanField` - True if the event
-        is recurring.
-    :ivar parent_series: :class:`mongoengine.ReferenceField` - The
+    :ivar short_description: :class:`mongoengine.fields.StringField` - The HTML
+        short description of the event.
+    :ivar long_description: :class:`mongoengine.fields.StringField` - The HTML
+        long description of the event.
+    :ivar short_description_markdown: :class:`mongoengine.fields.StringField` -
+        The markdown short description of the event.
+    :ivar long_description_markdown: :class:`mongoengine.fields.StringField` -
+        The markdown long description of the event.
+    :ivar published: :class:`mongoengine.fields.BooleanField` - True if the
+        event is published.
+    :ivar date_published: :class:`mongoengine.fields.DateTimeField` - The date
+        that the event was published.
+    :ivar is_recurring: :class:`mongoengine.fields.BooleanField` - True if the
+        event is recurring.
+    :ivar parent_series: :class:`mongoengine.fields.ReferenceField` - The
         :class:`~app.models.EventSeries` object that holds the recurrence info
         for an event, if it is recurring.
-    :ivar image: :class:`mongoengine.ReferenceField` - The headline image for
-        the event.
-    :ivar facebook_url: :class:`mongoengine.StringField` - The URL to the
-        Facebook event associated with this event.
-    :ivar gcal_id: :class:`mongoengine.StringField` - The ID for this event on
-        Google Calendar. In Google Calendar API responses, this is stored as
-        the ``id`` field for events. If this field is None, then we never got a
-        proper response from Google Calendar when (if) we made a request to
-        create it there. It most likely does not exist on Google Calendar.
-    :ivar gcal_sequence: :class:`mongoengine.IntField` - The sequence number
-        for the event, used by Google Calendar for versioning.
+    :ivar image: :class:`mongoengine.fields.ReferenceField` - The headline
+        image for the event.
+    :ivar facebook_url: :class:`mongoengine.fields.StringField` - The URL to
+        the Facebook event associated with this event.
+    :ivar gcal_id: :class:`mongoengine.fields.StringField` - The ID for this
+        event on Google Calendar. In Google Calendar API responses, this is
+        stored asthe ``id`` field for events. If this field is None, then we
+        never got a proper response from Google Calendar when (if) we made a
+        request to create it there. It most likely does not exist on Google
+        Calendar.
+    :ivar gcal_sequence: :class:`mongoengine.fields.IntField` - The sequence
+        number for the event, used by Google Calendar for versioning.
     """
 
     # MongoEngine ORM metadata
@@ -121,7 +124,7 @@ class Event(db.Document):
     @property
     def index(self):
         """Represents the index of this event in it's parent
-        :class:`~app.models.EventSeries.  Returns ``None`` if the event is not
+        :class:`~app.models.EventSeries`. Returns ``None`` if the event is not
         recurring.
 
         :returns: The index of the event in it's series.
@@ -137,7 +140,7 @@ class Event(db.Document):
         Updates date_modified, renders the markdown into the HTML fields, and
         validates datetimes to ensure the event ends after it starts.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
         self.date_modified = now()
 

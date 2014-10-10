@@ -14,33 +14,37 @@ now = datetime.now
 class Post(db.Document):
     """A generic post object.
 
-    :ivar date_created: :class:`mongoengine.DateTimeField` - The date the post
-        was created.
-    :ivar date_modified: :class:`mongoengine.DateTimeField` - The date the post
-        was last modified.
-    :ivar title: :class:`mongoengine.StringField` - The title of the post.
-    :ivar author: :class:`mongoengine.ReferenceField` - The author of the post.
-    :ivar html_content: :class:`mongoengine.StringField` - The HTML body of the
+    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date
+        the post was created.
+    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date
+        the post was last modified.
+    :ivar title: :class:`mongoengine.fields.StringField` - The title of the
         post.
-    :ivar markdown_content: :class:`mongoengine.StringField` - The markdown
-        body of the post, which will be rendered to HTML.
-    :ivar images: :class:`mongoengine.ListField` of
-        :class:`mongoengine.ReferenceField` - The images for this blog post.
-    :ivar featured_image: :class:`mongoengine.ReferenceField` - The featured
-        image on this post.
-    :ivar slug: :class:`mongoengine.StringField` - The URL slug associated with
-        this post.
-    :ivar categories: :class:`mongoengine.ListField` of
-        :class:`mongoengine.StringField` - A list of categories for this post.
-    :ivar tags: :class:`mongoengine.ListField` of
-        :class:`mongoengine.StringField` - A list of tags for this post.
-    :ivar published: :class:`mongoengine.BooleanField` - True if the event is
-        published.
-    :ivar date_published: :class:`mongoengine.DateTimeField` - The date when
-        this post was published.
-    :ivar posted_by: :class:`mongoengine.ReferenceField` - The user that posted
-        this event. This may be different than the post's author, if the author
-        was a guest writer or someone not registered with Eventum.
+    :ivar author: :class:`mongoengine.fields.ReferenceField` - The author of
+        the post.
+    :ivar html_content: :class:`mongoengine.fields.StringField` - The HTML body
+        of the post.
+    :ivar markdown_content: :class:`mongoengine.fields.StringField` - The
+        markdown body of the post, which will be rendered to HTML.
+    :ivar images: :class:`mongoengine.fields.ListField` of
+        :class:`mongoengine.fields.ReferenceField` - The images for this blog
+        post.
+    :ivar featured_image: :class:`mongoengine.fields.ReferenceField` - The
+        featured image on this post.
+    :ivar slug: :class:`mongoengine.fields.StringField` - The URL slug
+        associated with this post.
+    :ivar categories: :class:`mongoengine.fields.ListField` of
+        :class:`mongoengine.fields.StringField` - A list of categories for this
+        post.
+    :ivar tags: :class:`mongoengine.fields.ListField` of
+        :class:`mongoengine.fields.StringField` - A list of tags for this post.
+    :ivar published: :class:`mongoengine.fields.BooleanField` - True if the
+        event is published.
+    :ivar date_published: :class:`mongoengine.fields.DateTimeField` - The date
+        when this post was published.
+    :ivar posted_by: :class:`mongoengine.fields.ReferenceField` - The user that
+        posted this event. This may be different than the post's author, if the
+        author was a guest writer or someone not registered with Eventum.
     """
 
     # MongoEngine ORM metadata
@@ -82,7 +86,7 @@ class Post(db.Document):
         Update date_modified, and fill in posted_by and html_content
         if invalid.
 
-        :raises: :class:`ValidationError`
+        :raises: :class:`wtforms.validators.ValidationError`
         """
 
         self.date_modified = now()

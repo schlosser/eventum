@@ -20,7 +20,7 @@ import os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
 
-import app
+import app, wtforms, mongoengine, datetime
 
 # -- General configuration ------------------------------------------------
 
@@ -270,4 +270,9 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
+intersphinx_mapping = {
+  'python': ('http://docs.python.org/', None),
+  'mongoengine': ('http://docs.mongoengine.org/en/latest/', 'http://mongoengine.readthedocs.org/en/latest/objects.inv'),
+  'wtforms': ('http://wtforms.readthedocs.org/en/latest/', 'http://wtforms.readthedocs.org/en/latest/objects.inv'),
+  'flaskwtf': ('https://flask-wtf.readthedocs.org/en/latest/', 'https://flask-wtf.readthedocs.org/en/latest/objects.inv')
+  }

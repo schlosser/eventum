@@ -18,8 +18,8 @@ class EditEventForm(CreateEventForm):
     This inherits from :class:`CreateEventForm`, changing that slugs should not
     check for uniqueness in the database.
 
-    :ivar update_all: :class:`BooleanField` - True if all events should be
-        modified in this update.
+    :ivar update_all: :class:`wtforms.fields.BooleanField` - True if all events
+        should be modified in this update.
     """
     update_all = BooleanField('Update all', default=False)
     slug = StringField('Slug', [Regexp('([0-9]|[a-z]|[A-Z]|-)*',
