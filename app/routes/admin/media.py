@@ -5,7 +5,7 @@ from flask import Blueprint, request, redirect, url_for, render_template, \
 from werkzeug.utils import secure_filename
 
 from app import app
-from app.lib.decorators import login_required, requires_privilege
+from app.lib.decorators import login_required, requires_privilege, development_only
 from app.forms import UploadImageForm
 from app.models import Image
 
@@ -51,11 +51,13 @@ def upload():
     return render_template('admin/media/upload.html', form=form)
 
 @media.route('/media/uploads/<filename>')
+@requires_privilege('edit')
 def file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
 @media.route('/media/delete/<filename>', methods=['POST'])
+@requires_privilege('edit')
 def delete(filename):
     if Image.objects(filename=filename).count() == 1:
         image = Image.objects().get(filename=filename)
@@ -65,6 +67,7 @@ def delete(filename):
         pass
     return redirect(url_for('.index'))
 
+@development_only
 @media.route('/media/view')
 def view():
     return str(Image.objects())

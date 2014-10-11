@@ -9,7 +9,7 @@ from mongoengine.errors import DoesNotExist, ValidationError
 from app import app
 from app.models import BlogPost, Image, User
 from app.forms import CreateBlogPostForm, UploadImageForm
-from app.lib.decorators import login_required, requires_privilege
+from app.lib.decorators import login_required, requires_privilege, development_only
 
 posts = Blueprint('posts', __name__)
 
@@ -141,12 +141,14 @@ def fetch_epiceditor_themes(folder, path):
     return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))
 
 @posts.route('/posts/dad')
+@development_only
 def dad():
     for post in BlogPost.objects():
         post.delete()
     return "son"
 
 @posts.route('/posts/view')
+@development_only
 def view_all_posts():
     return str(BlogPost.objects())
 
