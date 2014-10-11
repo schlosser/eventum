@@ -51,7 +51,6 @@ def upload():
     return render_template('admin/media/upload.html', form=form)
 
 @media.route('/media/uploads/<filename>')
-@requires_privilege('edit')
 def file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
