@@ -199,9 +199,10 @@ class GoogleCalendarAPIClient():
 
         page_token = None
         while True:
-          instances = self.service.events().instances(calendarId=calendar_id,
+          request = self.service.events().instances(calendarId=calendar_id,
                                                       eventId=event.gcal_id,
-                                                      pageToken=page_token).execute()
+                                                      pageToken=page_token)
+          instances = self._execute_request(request)
           for instance in instances['items']:
             if instance['start']['dateTime'] == event_start_date:
                 return instance
