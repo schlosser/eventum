@@ -23,7 +23,6 @@ try:
                             else False
     CLIENT_SECRETS_PATH = environ.get('GOOGLE_AUTH_SECRETS',
                                       'config/client_secrets.json')
-
     # Setup Google Auth
     if GOOGLE_AUTH_ENABLED:
         try:
@@ -51,6 +50,10 @@ try:
     # Mongo configs
     MONGODB_SETTINGS = {'DB': environ.get('MONGO_DATABASE', 'eventum')}
 
+    # Logging settings
+    LOG_FILE_MAX_SIZE = environ.get("LOG_FILE_MAX_SIZE")
+    APP_LOG_FILENAME = environ.get("APP_LOG_FILENAME")
+    WERKZEUG_LOG_FILENAME = environ.get("WERKZEUG_LOG_FILENAME")
 
 except KeyError:
     """ Throw an error if a setting is missing """
