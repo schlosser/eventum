@@ -1,15 +1,8 @@
 import logging
-import sys
-import traceback
 
 from app import create_app, run
 
 app = create_app()
-
-@app.errorhandler(Exception)
-def exceptionHandler(error):
-    app.logger.error("Uncaught Exception", exc_info=sys.exc_info()) 
-    app.handle_exception(error) # default error handler
 
 if __name__ == "__main__":
     maxBytes = 1024 * 1024 * 256    # cap files at 256 MB (should we?)

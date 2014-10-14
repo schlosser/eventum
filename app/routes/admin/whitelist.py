@@ -1,7 +1,8 @@
 import uuid
 
-from flask import Blueprint, request, flash, redirect, url_for, current_app
+from flask import Blueprint, request, flash, redirect, url_for
 
+from app import app
 from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm
 from app.lib.decorators import login_required, development_only
@@ -45,14 +46,14 @@ def add():
                                  user_type=form.user_type.data)
             fake_user.save()
         else:
-            current_app.logger.warning(form.errors)
+            app.logger.warning(form.errors)
     else:
         user_exists = User.objects(email=form.email.data).count() != 0
         if form.validate_on_submit() and not user_exists:
             wl = Whitelist(email=form.email.data, user_type=form.user_type.data)
             wl.save()
         else:
-            current_app.logger.warning(form.errors)
+            app.logger.warning(form.errors)
     return redirect(url_for('users.index'))
 
 @whitelist.route('/whitelist/view')
@@ -71,6 +72,7 @@ def wipe():
             w.delete()
         # use code=303 to avoid POSTing to the next page.
         return redirect(url_for('users.index'), code=303)
-    return '''<form action="" method=post>
-        <input type=submit value="Wipe the Database">
-        </form>'''
+    return '''\
+<form action="" method=post>
+<input type=submit value="Wipe the Database">
+</form>'''
