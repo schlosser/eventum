@@ -52,8 +52,8 @@ try:
 
     # Logging settings
     LOG_FILE_MAX_SIZE = environ.get("LOG_FILE_MAX_SIZE")
-    APP_LOG_FILENAME = environ.get("APP_LOG_FILENAME")
-    WERKZEUG_LOG_FILENAME = environ.get("WERKZEUG_LOG_FILENAME")
+    APP_LOG_NAME = environ.get("APP_LOG_NAME")
+    WERKZEUG_LOG_NAME = environ.get("WERKZEUG_LOG_NAME")
 
 except KeyError:
     """ Throw an error if a setting is missing """
