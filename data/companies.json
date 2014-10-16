@@ -1,11 +1,6 @@
 {
     "companies": [
         {
-            "url": "http://www.altschool.com/",
-            "image": "img/jobfair/altschool.png",
-            "blurb": "At AltSchool, we believe all children should have access to an exceptional, personalized education that enables them to live a happy and successful life.  "
-        },
-        {
             "url": "http://www.appnexus.com/",
             "image": "img/jobfair/appnexus.png",
             "blurb": "AppNexus provides trading solutions and powers marketplaces for Internet advertising."
@@ -56,11 +51,6 @@
             "blurb": "At Foursquare, we’re building products that will learn what you like and lead you to places that you'll love, and they’ll help you keep up and meet up with friends once you get there!"
         },
         {
-            "url": "http://www.jawbone.com/",
-            "image": "img/jobfair/jawbone.png",
-            "blurb": "Jawbone® is a world-leader in consumer technology and wearable devices, building hardware products and software platforms powered by data science."
-        },
-        {
             "url": "http://www.oysterbooks.com/",
             "image": "img/jobfair/oyster.png",
             "blurb": "Oyster is the leading streaming service for books. With over half a million titles and new books arriving every day, it’s never been easier to find a story to dive into."
@@ -79,6 +69,11 @@
             "url": "http://www.sailthru.com/",
             "image": "img/jobfair/sailthru.jpg",
             "blurb": "Sailthru creates cross-platform personalization software to collect actionable data and market relevant content with individual customization."
+        },
+        {
+            "url": "http://www.shapeways.com/",
+            "image": "img/jobfair/shapeways.png",
+            "blurb": "Shapeways is the leading 3D printing marketplace and community, empowering designers to bring amazing products to life."
         },
         {
             "url": "http://www.thinkful.com/",
