@@ -509,7 +509,8 @@
         {
           "name": "Data Structures for Interviews",
           "url": "http://www.columbia.edu/~jxz2101/",
-          "description": "Assumes you already know Java, and gives a solid run down for data structures and algorithms in presentation format."
+          "description": "Assumes you already know Java, and gives a solid run down for data structures and algorithms in presentation format.",
+          "adi": true
         },
         {
           "name": "ADI's Interview Practice Questions",
@@ -526,7 +527,7 @@
           "name": "Cracking the Coding Interview",
           "url": "http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X",
           "description": "Cracking the Coding Interview gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book is over 500 pages and includes 150 programming interview questions and answers, as well as other advice."
-        },
+        }
       ]
     },
     {
