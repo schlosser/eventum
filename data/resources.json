@@ -502,24 +502,25 @@
       ]
     },
     {
-      "name": "Data Structures Overview",
-      "id": "ds_interviews",
-      "description": "Data structures and algorithms are essential for acing your technical interviews.",
+      "name": "Data Structures",
+      "id": "data-structures",
+      "description": "Data structures and algorithms are essential for your general computer science knowledge, solving problems, and acing your technical interviews.",
       "resources": [
         {
           "name": "Data Structures for Interviews",
-          "url": "www.columbia.edu/~jxz2101",
+          "url": "http://www.columbia.edu/~jxz2101/",
           "description": "Assumes you already know Java, and gives a solid run down for data structures and algorithms in presentation format."
         },
         {
           "name": "ADI's Interview Practice Questions",
           "url": "https://github.com/adicu/interview_help",
-          "description": "ADI's personal collection of favorite interview questions."
+          "description": "ADI's personal collection of favorite interview questions.",
+          "adi": true
         },
         {
           "name": "Hackerrank",
-          "url": "hackerrank.com",
-          "description": "Web platform for practicing interview questions on a wide variety of topics including data structures and algorithms."
+          "url": "https://www.hackerrank.com/",
+          "description": "Hackerrank is a web platform for practicing interview questions on a wide variety of topics including data structures and algorithms."
         },
         {
           "name": "Cracking the Coding Interview",
