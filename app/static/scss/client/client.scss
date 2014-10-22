@@ -293,9 +293,10 @@ $section-bottom: 1.25rem;
         width: 20rem;
         margin-bottom: 2.5rem;
     }
-    p:not(:last-of-type) {
-        margin-bottom: 0.625rem;
-    }
+    // p:not(p:last-child) {
+    //     margin-bottom: 0.625rem;
+    // }
+    // TODO: scss is broken: https://github.com/sass/sass/issues/1476
 }
 .button-group {
     margin: 1.25rem 0;
