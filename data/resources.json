@@ -502,6 +502,35 @@
       ]
     },
     {
+      "name": "Data Structures",
+      "id": "data-structures",
+      "description": "Data structures and algorithms are essential for your general computer science knowledge, solving problems, and acing your technical interviews.",
+      "resources": [
+        {
+          "name": "Data Structures for Interviews",
+          "url": "http://www.columbia.edu/~jxz2101/",
+          "description": "Assumes you already know Java, and gives a solid run down for data structures and algorithms in presentation format.",
+          "adi": true
+        },
+        {
+          "name": "ADI's Interview Practice Questions",
+          "url": "https://github.com/adicu/interview_help",
+          "description": "ADI's personal collection of favorite interview questions.",
+          "adi": true
+        },
+        {
+          "name": "Hackerrank",
+          "url": "https://www.hackerrank.com/",
+          "description": "Hackerrank is a web platform for practicing interview questions on a wide variety of topics including data structures and algorithms."
+        },
+        {
+          "name": "Cracking the Coding Interview",
+          "url": "http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X",
+          "description": "Cracking the Coding Interview gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book is over 500 pages and includes 150 programming interview questions and answers, as well as other advice."
+        }
+      ]
+    },
+    {
       "name": "Android",
       "id": "android",
       "description": "The Android SDK is the library that lets you write programs that run on Android.",
