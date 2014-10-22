@@ -18,11 +18,7 @@
     <meta name="robots" content="index, follow">
 
     <!-- Google Authorship and Publisher Markup -->
-<<<<<<< HEAD
-    <link rel="publisher" href="https://plus.google.com/u/0/+{%- block metaGooglePlusName -%}<!-- (3) GOOGLE PLUS NAME GOES HERE -->{%- endblock -%}"/>
-=======
     <link rel="publisher" href="https://plus.google.com/u/0/+{%- block metaGooglePlusName -%}{%- endblock -%}"/>
->>>>>>> better metas
     <!-- You can find (3) by going to your Google Plus profile and copying everything in the url after the plus sign and before the next slash -->
     <link rel="author" href="https://plus.google.com/u/0/+{{ self.metaGooglePlusName() }}/posts"/>
     <meta itemprop="name" content="{{ self.title() }}">
@@ -32,11 +28,7 @@
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
-<<<<<<< HEAD
-    <meta name="twitter:site" content="{%- block metaTwitterHandle -%}<!-- (5) TWITTER HANDLE GOES HERE -->{%- endblock -%}">
-=======
     <meta name="twitter:site" content="{%- block metaTwitterHandle -%}adicu{%- endblock -%}">
->>>>>>> better metas
     <meta name="twitter:title" content="{{ self.title() }}">
     <meta name="twitter:description" content="{{ self.metaDescription() }}">
     <meta name="twitter:creator" content="{{ self.metaTwitterHandle }}">
@@ -46,13 +38,8 @@
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="{{ self.title() }}">
     <meta property="og:type" content="{%- block metaType -%}website{%- endblock -%}">
-<<<<<<< HEAD
-    <meta property="og:url" content="<!-- (8) WEBSITE URL GOES HERE (ie. http://mysite.com) -->">
-    <meta property="og:image" content="<!-- (9) URL OF YOUR GRAVATAR / PROFILE PICTURE GOES HERE, SAME AS (4) -->">
-=======
     <meta property="og:url" content="https://adicu.com">
     <meta property="og:image" content="{{ self.metaImageUrl }}">
->>>>>>> better metas
     <meta property="og:description" content="{{ self.metaDescription() }}">
     {%- endblock meta-%}
 
