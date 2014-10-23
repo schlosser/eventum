@@ -1,12 +1,13 @@
-import gflags
+import argparse
 from sys import argv, exit
-from oauth2client.file import Storage
-from config import flask_config
 
+import gflags
+from oauth2client.file import Storage
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.tools import run_flow
 from oauth2client import tools
-import argparse
+
+from config import flask_config
 from script import backfill_blog, import_images
 
 parser = argparse.ArgumentParser(parents=[tools.argparser])

@@ -166,8 +166,6 @@ def set_published_status(event_id, status):
             flash("The event had not been published.  No changes made.")
     else:
         flash('Invalid event id')
-        # print "Invalid event id"
-        pass
     return redirect(url_for('.index'))
 
 @events.route('/events/publish/<event_id>', methods=['POST'])
@@ -194,5 +192,3 @@ def mom():
     for e in Event.objects():
         e.delete()
     return "hi"
-
-

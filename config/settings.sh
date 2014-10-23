@@ -23,3 +23,7 @@ export PUBLIC_CALENDAR_ID=
 # mongo db settings
 export MONGO_DATABASE=eventum
 
+# logging settings
+export LOG_FILE_MAX_SIZE=256   # in MB
+export APP_LOG_NAME=log/app.log
+export WERKZEUG_LOG_NAME=log/werkzeug.log

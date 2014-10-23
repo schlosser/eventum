@@ -15,7 +15,6 @@ class TimeField(Field):
 
     def __init__(self, label=None, validators=None, format='%I:%M%p', **kwargs):
         super(TimeField, self).__init__(label, validators, **kwargs)
-        print kwargs
         self.format = format
 
     def _value(self):

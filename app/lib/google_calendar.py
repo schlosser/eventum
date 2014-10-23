@@ -1,5 +1,6 @@
 import httplib2
 import httplib
+
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.file import Storage
@@ -61,7 +62,7 @@ class GoogleCalendarAPIClient():
 
         calendar_id = self._calendar_id_for_event(event)
 
-        print '[GOOGLE_CALENDAR]: Create Event'
+        app.logger.info('[GOOGLE_CALENDAR]: Create Event')
         request = self.service.events().insert(calendarId=calendar_id,
                                                body=resource)
         created_event = self._execute_request(request)
@@ -90,7 +91,7 @@ class GoogleCalendarAPIClient():
             resource = instance
             event_id_for_update = instance['id']
 
-        print '[GOOGLE_CALENDAR]: Update Event'
+        app.logger.info('[GOOGLE_CALENDAR]: Update Event')
         request = self.service.events().update(calendarId=calendar_id,
                                                eventId=event_id_for_update,
                                                body=resource)
@@ -98,7 +99,7 @@ class GoogleCalendarAPIClient():
             updated_event = self._execute_request(request)
         except GoogleCalendarAPIErrorNotFound as e:
             self.create_event(event)
-            print e.message
+            app.logger.warning(e.message)
             raise GoogleCalendarAPIErrorNotFound('Couldn\'t find event to update. '
                                                  'Successfully fell back to create.')
 
@@ -142,7 +143,7 @@ class GoogleCalendarAPIClient():
         if not event.gcal_id:
             raise GoogleCalendarAPIMissingID()
 
-        print '[GOOGLE_CALENDAR]: Move Event'
+        app.logger.info('[GOOGLE_CALENDAR]: Move Event')
         request =  self.service.events().move(calendarId=from_id,
                                               eventId=event.gcal_id,
                                               destination=to_id)
@@ -159,7 +160,7 @@ class GoogleCalendarAPIClient():
         calendar_id = self._calendar_id_for_event(event)
 
         if as_exception:
-            print '[GOOGLE_CALENDAR]: Delete Event (as exception)'
+            app.logger.info('[GOOGLE_CALENDAR]: Delete Event (as exception)')
             resource = GoogleCalendarResourceBuilder.event_resource(event)
             instance = self._instance_resource_for_event_in_series(event)
             instance.update(resource)
@@ -169,14 +170,14 @@ class GoogleCalendarAPIClient():
                                                    eventId=instance['id'],
                                                    body=instance)
         else:
-            print '[GOOGLE_CALENDAR]: Delete Event'
+            app.logger.info('[GOOGLE_CALENDAR]: Delete Event')
             request = self.service.events().delete(calendarId=calendar_id,
                                                    eventId=event.gcal_id)
         try:
             return self._execute_request(request)
         except HttpError as e:
             # If the resource has already been deleted, fail quietly.
-            print e
+            app.logger.warning(e)
             raise GoogleCalendarAPIEventAlreadyDeleted
 
     def get_calendar_list_resources(self):
@@ -217,7 +218,7 @@ class GoogleCalendarAPIClient():
         gcal_id = response.get('id')
         gcal_sequence = response.get('sequence')
         if gcal_id is None or gcal_sequence is None:
-            print 'Request failed. %s' % response
+            app.logger.error('Request failed. %s' % response)
             raise GoogleCalendarAPIError('Request Failed.')
 
         if event.is_recurring:
@@ -237,12 +238,11 @@ class GoogleCalendarAPIClient():
         try:
             return request.execute()
         except httplib.BadStatusLine as e:
-            print e.line, e.message
-            print '[GOOGLE_CALENDAR]: Got BadStatusLine.  Retrying...'
+            app.logger.warning('[GOOGLE_CALENDAR]: Got BadStatusLine.  Retrying...')
             try:
                 return request.execute()
             except httplib.BadStatusLine as e:
-                print '[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.'
+                app.logger.error('[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.')
                 raise GoogleCalendarAPIBadStatusLine('Line: %s, Message: %s' %
                                                      (e.line, e.message))
         except HttpError as e:
