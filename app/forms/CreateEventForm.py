@@ -45,6 +45,7 @@ class CreateEventForm(Form):
     update_all = BooleanField('Update all', default=False)
     facebook_url = StringField('Facebook  URL', [Optional(), URL()])
     event_image = StringField('Image', [image_with_same_name])
+    owner = SelectField('Owner', choices=[])
 
     def post_validate(form, validation_stopped):
         """Make sure that the start datetime comes before the end datetime"""

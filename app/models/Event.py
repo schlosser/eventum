@@ -32,6 +32,7 @@ class Event(db.Document):
     facebook_url = db.StringField()
     gcal_id = db.StringField()
     gcal_sequence = db.IntField()
+    owner = db.ReferenceField("User", required=True)
 
     def get_absolute_url(self):
         if self.is_recurring:
@@ -76,6 +77,10 @@ class Event(db.Document):
             raise ValidationError("Start time should always come before end "
                                   "time. Got (%r,%r)" % (self.start_time,
                                                          self.end_time))
+
+        if self.owner is None:
+            self.owner = self.creator
+
 
     def start_datetime(self):
         """A convenience method to combine start_date and start_time"""
