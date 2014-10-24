@@ -6,22 +6,18 @@ from wtforms import StringField, DateField, TextAreaField, BooleanField, \
 from wtforms.validators import Required, ValidationError, Optional, \
     NumberRange, Regexp, URL
 
-
 def unique_with_database(form, field):
-    message = "An event with that slug already exists."
     from app.models import Event, EventSeries
-    if EventSeries.objects(slug=field.data).count() != 0:
-        raise ValidationError(message)
-    if Event.objects(slug=field.data).count() != 0:
-        raise ValidationError(message)
+    if (EventSeries.objects(slug=field.data).count() > 0 or
+            Event.objects(slug=field.data).count() > 0):
+        raise ValidationError("An event with that slug already exists")
 
 class CreateEventForm(Form):
-
-    title = StringField('Title', [
-        Required(message="Please provide an event title.")])
-    slug = StringField('Slug', [unique_with_database,
-        Regexp('([0-9]|[a-z]|[A-Z]|-)*',
-               message="Post slug should only contain numbers, letters and dashes.")])
+    title = StringField('Title', [Required(message="Please provide an event title.")])
+    slug = StringField('Slug',
+            [unique_with_database, 
+             Regexp('[0-9a-zA-Z-*]*', 
+                    message="Post slug should have only numbers, letters, or dashes")])
     location = StringField('Location')
     start_date = DateField('Start date', [Optional()], format='%m/%d/%Y')
     start_time = TimeField('Start time', [Optional()])
