@@ -18,6 +18,7 @@ def index():
 
     Whitelisted users are the only ones allowed to make user accounts.
     """
+
     upload_form = UploadImageForm()
     whitelist_form = AddToWhitelistForm()
     return render_template('admin/users/users.html',
@@ -28,17 +29,11 @@ def index():
                            images=Image.objects(),
                            current_user=g.user)
 
-@users.route('/users/me', methods=['GET'])
+@users.route('/users/me', methods=['GET', 'POST'])
 @login_required
 def me():
     """View the current user's profile."""
-    user = g.user
-    form = EditUserForm(request.form,
-                        name=user.name,
-                        email=user.email,
-                        # image_url=user.get_profile_picture(),
-                        user_type=user.user_type)
-    return render_template('admin/users/user.html', user=user, form=form)
+    return redirect(url_for(".user", slug=g.user.slug))
 
 @users.route('/users/delete/<user_id>', methods=['POST'])
 @login_required
