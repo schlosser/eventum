@@ -32,12 +32,17 @@ def new():
         author = User.objects().get(id=ObjectId(form.author.data))
         post = BlogPost(title=form.title.data,
                         slug=form.slug.data,
-                        published=form.published.data,
                         images=[Image.objects().get(filename=fn) for fn in form.images.data],
                         markdown_content=form.body.data,
                         author=author,
                         posted_by=g.user)
         post.save()
+
+        if form.published.data:
+            post.publish()
+        else:
+            post.unpublish()
+
         return redirect(url_for('.index'))
     images = Image.objects()
     return render_template('admin/posts/edit.html', user=g.user, form=form,
@@ -63,8 +68,6 @@ def edit(post_id):
             for u in User.objects()]
         form.author.default = str(g.user.id)
         if form.validate_on_submit():
-            was_published = post.published
-            should_be_published = form.published.data
             post.title = form.title.data
             post.author = User.objects.get(id=ObjectId(form.author.data))
             post.slug = form.slug.data
@@ -75,12 +78,17 @@ def edit(post_id):
             else:
                 post.featured_image = None
             post.save()
-            if was_published != should_be_published:
-                if was_published:
-                    set_published_status(post.id, False)
+
+            if post.published != form.published.data:
+                if form.published.data:
+                    post.publish()
+                    flash('Blogpost published')
                 else:
-                    set_published_status(post.id, True)
+                    post.unpublish()
+                    flash('Blogpost unpublished')
+
             return redirect(url_for('.index'))
+
     upload_form = UploadImageForm()
     featured_image = post.featured_image.filename if post.featured_image else None
     form = CreateBlogPostForm(request.form,
@@ -111,23 +119,6 @@ def delete(post_id):
     return redirect(url_for('.index'))
 
 
-def set_published_status(post_id, status):
-    object_id = ObjectId(post_id)
-    if BlogPost.objects(id=object_id).count() == 1:
-        post = BlogPost.objects().with_id(object_id)
-        if status != post.published:
-            post.published = status
-            # TODO Actually publish/unpublish the post here
-            if post.published:
-                flash('Blogpost published')
-            else:
-                flash('Blogpost unpublished')
-            post.save()
-        else:
-            flash("The blog post had not been published.  No changes made.")
-    else:
-        flash('Invalid post id')
-    return redirect(url_for('.index'))
 
 @posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
 @posts.route('/posts/epiceditor/themes/<folder>/<path>')
