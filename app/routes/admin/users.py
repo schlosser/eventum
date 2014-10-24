@@ -29,7 +29,7 @@ def index():
                            images=Image.objects(),
                            current_user=g.user)
 
-@users.route('/users/me', methods=['GET', 'POST'])
+@users.route('/users/me', methods=['GET'])
 @login_required
 def me():
     """View the current user's profile."""
