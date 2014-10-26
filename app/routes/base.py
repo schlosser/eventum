@@ -1,3 +1,11 @@
+"""
+.. module:: base
+    :synopsis: All routes on the ``base`` Blueprint, as well as error handlers,
+        before and after request handlers, and context processors.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 import sys
 from flask import g, session, render_template, request, redirect, Blueprint
 from mongoengine.queryset import DoesNotExist
@@ -12,12 +20,13 @@ base = Blueprint('base', __name__)
 
 @base.errorhandler(Exception)
 def exceptionHandler(error):
+    """Handle uncaught exceptions."""
     app.logger.error("Uncaught Exception", exc_info=sys.exc_info())
     app.handle_exception(error) # default error handler
 
-
 @base.errorhandler(404)
 def not_found(error):
+    """Handle 404 errors."""
     old_site_url = 'http://adicu.github.com' + request.path
     try:
         response = requests.head(old_site_url, allow_redirects=True)
@@ -30,11 +39,13 @@ def not_found(error):
 
 @base.errorhandler(401)
 def not_authorized(error):
-    return render_template('error/401.html'), 401
+    """Handle 401 errors."""
+    return render_template('error/404.html'), 401
 
 @base.errorhandler(405)
 def method_not_allowed(error):
-    return render_template('error/405.html', method=request.method), 405
+    """Handle 405 errors."""
+    return render_template('error/404.html', method=request.method), 405
 
 @base.before_request
 def lookup_current_user():
@@ -65,6 +76,9 @@ def lookup_current_user():
 
 @base.context_processor
 def inject_user():
+    """Injects a variable named ``current_user`` into all of the Jinja
+    templates, so that it can be used at will.
+    """
     return dict(current_user=g.user)
 
 @base.after_request

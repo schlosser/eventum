@@ -36,13 +36,6 @@ app.routes.admin.posts
     :members:
     :show-inheritance:
 
-app.routes.admin.resources
---------------------------
-
-.. automodule:: app.routes.admin.resources
-    :members:
-    :show-inheritance:
-
 app.routes.admin.users
 ----------------------
 

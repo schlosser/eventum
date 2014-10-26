@@ -1,8 +1,15 @@
+"""
+.. module:: auth
+    :synopsis: All routes on the ``auth`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 import string
 import random
 import httplib2
 from app import app
-from app.lib.networking import response_from_json
+from app.lib.networking import json_response
 from app.models import User, Whitelist
 from app.forms import CreateProfileForm
 from apiclient.discovery import build
@@ -22,6 +29,10 @@ def login():
     make a request to Google to authenticate.
 
     If they are logged in, redirect.
+
+    **Route:** ``/admin/login``
+
+    **Methods:** ``GET``
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
@@ -42,19 +53,23 @@ def store_token():
     """Do the oauth flow for Google plus sign in, storing the access token
     in the session, and redircting to create an account if appropriate.
 
-    Because this method will be called from a `$.ajax()` request in JavaScript,
-    we can't return `redirect()`, so instead this method returns the URL that
-    the user should be redirected to, and the redirect happens in
+    Because this method will be called from a ``$.ajax()`` request in
+    JavaScript, we can't return ``redirect()``, so instead this method returns
+    the URL that the user should be redirected to, and the redirect happens in
+    html:
 
-    .. highlight:: javascript
+    .. code:: javascript
 
         success: function(response) {
             window.location.href = response;
         }
 
+    **Route:** ``/admin/store-token``
+
+    **Methods:** ``POST``
     """
     if request.args.get('state', '') != session.get('state'):
-        return response_from_json('Invalid state parameter.', 401)
+        return json_response('Invalid state parameter.', 401)
 
     del session['state']
     code = request.data
@@ -66,7 +81,7 @@ def store_token():
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
-        return response_from_json('Failed to upgrade the authorization code.',
+        return json_response('Failed to upgrade the authorization code.',
                                   401)
 
     gplus_id = credentials.id_token['sub']
@@ -87,13 +102,13 @@ def store_token():
         # The user must be whitelisted in order to create an account.
         email = people_document['emails'][0]['value']
         if Whitelist.objects(email=email).count() != 1:
-            return response_from_json({
+            return json_response({
                 'code': WHITELIST_CODE,
                 'title': 'User has not been whitelisted.',
                 'email': email
                 }, 401)
 
-        return response_from_json(url_for(
+        return json_response(url_for(
             '.create_profile',
             next=request.args.get('next'),
             name=people_document['displayName'],
@@ -107,14 +122,18 @@ def store_token():
     # The user already exists.  Redirect to the next url or
     # the root of the application ('/')
     if request.args.get('next'):
-        return response_from_json(request.args.get('next'), 200)
-    return response_from_json(request.url_root, 200)
+        return json_response(request.args.get('next'), 200)
+    return json_response(request.url_root, 200)
 
 
 @auth.route('/create-profile', methods=['GET', 'POST'])
 def create_profile():
     """Create a profile (filling in the form with openid data), and
     register it in the database.
+
+    **Route:** ``/admin/create-profile``
+
+    **Methods:** ``GET, POST``
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
@@ -164,7 +183,9 @@ def create_profile():
 def logout():
     """Logs out the current user.
 
-    **Route:** `/admin/logout`
+    **Route:** ``/admin/logout``
+
+    **Methods:** ``GET``
     """
     session.pop('gplus_id', None)
     g.user = None
@@ -184,13 +205,15 @@ def load_csrf_token_into_session():
 def disconnect():
     """Revoke current user's token and reset their session.
 
-    **Route:** `/admin/disconnect`
+    **Route:** ``/admin/disconnect``
+
+    **Methods:** ``GET, POST``
     """
     # Only disconnect a connected user.
     credentials = AccessTokenCredentials(
         session.get('credentials'), request.headers.get('User-Agent'))
     if credentials is None:
-        return response_from_json('Current user not connected.', 401)
+        return json_response('Current user not connected.', 401)
 
     # Execute HTTP GET request to revoke current token.
     access_token = credentials.access_token
@@ -210,5 +233,5 @@ def disconnect():
         return redirect(url_for('.login'), code=303)
     else:
         # For whatever reason, the given token was invalid.
-        return response_from_json('Failed to revoke token for given user.',
+        return json_response('Failed to revoke token for given user.',
                                   400)

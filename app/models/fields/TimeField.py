@@ -32,7 +32,7 @@ class TimeField(BaseField):
         """Called by :mod:`mongoengine` to convert ``value`` to the value it
         will be stored as in Mongo.
 
-        This is a wrapper on top of :method:`prepare_query_value`.
+        This is a wrapper on top of :func:`prepare_query_value`.
 
         :param value: The value to validate (and later store).
         :type value: int, float, or :class:`datetime.time`.

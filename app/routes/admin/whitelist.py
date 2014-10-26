@@ -1,3 +1,10 @@
+"""
+.. module:: whitelist
+    :synopsis: All routes on the ``whitelist`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 import uuid
 
 from flask import Blueprint, request, flash, redirect, url_for
@@ -5,14 +12,21 @@ from flask import Blueprint, request, flash, redirect, url_for
 from app import app
 from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm
-from app.lib.decorators import login_required, development_only
+from app.lib.decorators import login_required
 
 whitelist = Blueprint('whitelist', __name__)
 
 @whitelist.route('/whitelist/delete/<email>', methods=['POST'])
 @login_required
 def delete(email):
-    """Delete `email` from the whitelist."""
+    """Delete ``email`` from the whitelist.
+
+    **Route:** ``/admin/whitelist/delete/<email>``
+
+    **Methods:** ``POST``
+
+    :param str email: The email address to delete from the whitelist.
+    """
     if Whitelist.objects(email=email).count() > 0:
         Whitelist.objects.get(email=email).delete()
         flash("Whitelist entry revoked successfully.")
@@ -24,7 +38,12 @@ def delete(email):
 @whitelist.route('/whitelist/add', methods=['POST'])
 @login_required
 def add():
-    """Add `email` to the whitelist."""
+    """Add and email to the whitelist.
+
+    **Route:** ``/admin/whitelist/add``
+
+    **Methods:** ``POST``
+    """
     form = AddToWhitelistForm(request.form)
 
     if form.user_type.data == 'fake_user':
@@ -55,24 +74,3 @@ def add():
         else:
             app.logger.warning(form.errors)
     return redirect(url_for('users.index'))
-
-@whitelist.route('/whitelist/view')
-@development_only
-def view():
-    """Print out all the users"""
-    return str(Whitelist.objects)
-
-
-@whitelist.route('/whitelist/wipe', methods=['GET', 'POST'])
-@development_only
-def wipe():
-    """Wipe all users from the database"""
-    if request.method == "POST":
-        for w in Whitelist.objects():
-            w.delete()
-        # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('users.index'), code=303)
-    return '''\
-<form action="" method=post>
-<input type=submit value="Wipe the Database">
-</form>'''

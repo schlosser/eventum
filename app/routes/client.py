@@ -1,3 +1,10 @@
+"""
+.. module:: client
+    :synopsis: All routes on the ``client`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from app import adi
 import json
 from flask import Blueprint, render_template, abort, redirect, url_for, request
@@ -11,8 +18,15 @@ _resources = None
 _faqs = None
 _companies = None
 
-@client.route('/')
+@client.route('/', methods=['GET'])
 def index():
+    """View the ADI homepage.
+
+    **Route:** ``/``
+
+    **Methods:** ``GET``
+    """
+
     all_events = (Event.objects(
         Q(published=True,
           end_date__gt=date.today()) |
@@ -28,12 +42,24 @@ def index():
                            events=events,
                            blog_post=blog_post)
 
-@client.route('/contact')
+@client.route('/contact', methods=['GET'])
 def contact():
+    """View contact information.
+
+    **Route:** ``/contact``
+
+    **Methods:** ``GET``
+    """
     return render_template('contact.html')
 
-@client.route('/jobfair')
+@client.route('/jobfair', methods=['GET'])
 def jobfair():
+    """View the ADI Startup Career Fair page.
+
+    **Route:** ``/jobfair``
+
+    **Methods:** ``GET``
+    """
     force = request.args.get('force') is not None
     companies = _get_companies(force=force)
     return render_template('jobfair.html', companies=companies)
@@ -45,8 +71,14 @@ def _get_companies(force=False):
             _companies = json.loads(f.read()).get('companies')
     return _companies
 
-@client.route('/labs')
+@client.route('/labs', methods=['GET'])
 def labs():
+    """View information about ADI Labs
+
+    **Route:** ``/labs``
+
+    **Methods:** ``GET``
+    """
     force = request.args.get('force') is not None
     faqs = _get_faqs(force=force)
     return render_template('labs.html', faqs=faqs)
@@ -58,12 +90,25 @@ def _get_faqs(force=False):
             _faqs = json.loads(f.read()).get('questions')
     return _faqs
 
-@client.route('/learn')
+@client.route('/learn', methods=['GET'])
 def learn():
+    """Alias for :func:`resources`.
+
+    **Route:** ``/learn``
+
+    **Methods:** ``GET``
+    """
     return redirect(url_for('.resources'))
 
-@client.route('/resources')
+@client.route('/resources', methods=['GET'])
 def resources():
+    """Learn to code! View resources for learning how to program different
+    websites.
+
+    **Route:** ``/resources``
+
+    **Methods:** ``GET``
+    """
     force = request.args.get('force') is not None
     resources_data = _get_resources(force=force)
     return render_template('resources.html', resources=resources_data)
@@ -75,9 +120,14 @@ def _get_resources(force=False):
             _resources = json.loads(f.read())
     return _resources
 
-
-@client.route('/events')
+@client.route('/events', methods=['GET'])
 def events():
+    """View the latest events.
+
+    **Route:** ``/events``
+
+    **Methods:** ``GET``
+    """
     today = date.today()
     last_sunday = datetime.combine(today - timedelta(days=today.isoweekday()+7),
                                    datetime.min.time())
@@ -103,8 +153,16 @@ def events():
                            upcoming_events=upcoming_events,
                            more_past_events=more_past_events)
 
-@client.route('/events/<int:index>')
+@client.route('/events/<int:index>', methods=['GET'])
 def event_archive(index):
+    """View old events.
+
+    **Route:** ``/events/<index>``
+
+    **Methods:** ``GET``
+
+    :param int index: The page to fetch
+    """
     index = int(index)
     if index <= 0:
         return redirect(url_for('.events'))
@@ -126,8 +184,17 @@ def event_archive(index):
                            previous_index=previous_index,
                            next_index=next_index)
 
-@client.route('/events/<slug>')
+@client.route('/events/<slug>', methods=['GET'])
 def event(slug):
+    """View a specific non-recurring event, or the next upcoming instance of
+    a recurring event.
+
+    **Route:** ``/events/<slug>``
+
+    **Methods:** ``GET``
+
+    :param str slug: The unique slug ID for the post.
+    """
     if Event.objects(published=True, slug=slug).count() == 0:
         abort(404) # Either invalid event ID or duplicate IDs.
 
@@ -160,8 +227,17 @@ def event(slug):
                            event=event,
                            upcoming_events=upcoming_events)
 
-@client.route('/events/<slug>/<index>')
+@client.route('/events/<slug>/<index>', methods=['GET'])
 def recurring_event(slug, index):
+    """View a specific instance of a recurring event.
+
+    **Route:** ``/events/<slug>/<index>``
+
+    **Methods:** ``GET``
+
+    :param str slug: The unique slug ID for the post.
+    :param int index: The instance of the event to fetch.
+    """
     if Event.objects(published=True, slug=slug).count() == 0:
         abort(404) # Either invalid event ID or duplicate IDs.
 

@@ -278,7 +278,7 @@ class EventsHelper(object):
         """Creates a recurring Mongoengine and Google Calendar event from
         form data.
 
-        Creates both a :class:`EventSeries` and its associated :class:`Event`s.
+        Creates both a :class:`EventSeries` and its associated :class:`Event` s.
 
         :param form: The WTForms form.
         :type form: :class:`CreateEventForm` or a subclass.
@@ -571,7 +571,7 @@ class EventsHelper(object):
 
     @classmethod
     def delete_series(klass, event):
-        """Deletes the recurring ``event`, syncing changes to Google Calendar.
+        """Deletes the recurring `event`, syncing changes to Google Calendar.
 
         :param event: The event to delete.
         :type event: :class:`Event`

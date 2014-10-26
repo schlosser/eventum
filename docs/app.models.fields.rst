@@ -12,6 +12,7 @@ app.models.fields.TimeField
 ---------------------------
 
 .. automodule:: app.models.fields.TimeField
-    :members::undoc-members:
+    :members:
+    :undoc-members:
     :show-inheritance:
 
