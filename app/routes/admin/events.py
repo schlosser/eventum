@@ -17,7 +17,11 @@ events = Blueprint('events', __name__)
 @events.route('/events')
 @login_required
 def index():
-    """"""
+    """View the events for this and next week, with optional future and past
+    events.
+
+    **Route:** `/admin/events`
+    """
 
     past = int(request.args.get('past')) if request.args.get('past') else 0
     future = int(request.args.get('future')) if request.args.get('future') else 0
@@ -32,11 +36,20 @@ def index():
                            future_events=future_events)
 
 def _format_for_display(dt):
-    """"""
+    """Formats `dt` like "Saturday, October 25".
+
+    :param dt: The datetime to fomat.
+    :type dt: :class:`datetime.datetime`.
+
+    :returns: The formatted date.
+    :rtype: str
+    """
+    # Cast the %d part to int and back so that 06 --> 6
     return dt.strftime("%A, %B ") + str(int(dt.strftime("%d")))
 
 def _get_events_for_template(past, future):
-    """"""
+    """Returns the events to insert in the events template.  Forms four lists
+    of dates"""
     today = date.today()
     last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)),
                                    datetime.min.time())
