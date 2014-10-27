@@ -11,6 +11,11 @@ _resources = None
 _faqs = None
 _companies = None
 
+@client.route('/feedback')
+def feedback():
+    feedback_url = 'https://docs.google.com/forms/d/14tPl61drtlez_AiTu5kdNCQgaUUqJwP17dHsthLWXjU/viewform'
+    return redirect(feedback_url)
+
 @client.route('/')
 def index():
     all_events = (Event.objects(
