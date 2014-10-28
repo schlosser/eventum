@@ -16,17 +16,21 @@ class Event(db.Document):
     creator = db.ReferenceField("User", required=True)
     location = db.StringField()
     slug = db.StringField(required=True, max_length=255)
+
     start_date = DateField()
     end_time = TimeField()
     end_date = DateField()
     start_time = TimeField()
+    is_recurring = db.BooleanField(required=True, default=False)
+
     short_description = db.StringField()
     long_description = db.StringField()
     short_description_markdown = db.StringField()
     long_description_markdown = db.StringField()
+
     published = db.BooleanField(required=True, default=False)
     date_published = db.DateTimeField()
-    is_recurring = db.BooleanField(required=True, default=False)
+
     parent_series = db.ReferenceField("EventSeries")
     image = db.ReferenceField("Image")
     facebook_url = db.StringField()
@@ -63,15 +67,13 @@ class Event(db.Document):
             self.long_description = markdown.markdown(self.long_description_markdown,
                                                       ['extra', 'smarty'])
 
-        if (self.start_date and
-                self.end_date and
+        if (self.start_date and self.end_date and
                 self.start_date > self.end_date):
             raise ValidationError("Start date should always come before end "
                                   "date. Got (%r,%r)" % (self.start_date,
                                                          self.end_date))
-        if (self.start_date == self.start_time and
-                self.start_time is not None and
-                self.end_time is not None and
+        if (self.start_date == self.end_date and
+                self.start_time is not None and self.end_time is not None and
                 self.start_time > self.end_time):
             raise ValidationError("Start time should always come before end "
                                   "time. Got (%r,%r)" % (self.start_time,
@@ -106,7 +108,7 @@ class Event(db.Document):
             ])
 
     def is_multiday(self):
-        """Retuns whether or not the event spans muliple days or not."""
+        """Returns whether the event spans muliple days or not."""
         if self.start_date == self.end_date:
             return False
         if self.start_date == self.end_date - timedelta(days=1) and self.end_time.hour < 5:
