@@ -55,7 +55,9 @@ class TimeField(BaseField):
         """
         if isinstance(value, (int, float)):
             value = int(value)
-            return time(hour=value/3600, minute=value%3600/60, second=value%60)
+            return time(hour=value/3600,
+                        minute=(value%3600)/60,
+                        second=value%60)
         return value
 
     def prepare_query_value(self, op, value):

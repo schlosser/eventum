@@ -13,6 +13,7 @@ from wtforms import StringField, DateField, TextAreaField, BooleanField, \
 from wtforms.validators import Required, ValidationError, Optional, \
     NumberRange, Regexp, URL
 from app.forms.validators import UniqueEvent
+from app.lib.regex import SLUG_REGEX
 
 
 SHORT_DESCRIPTION_PLACEHOLDER = ('Short Description.  This should be **one to '
@@ -21,7 +22,7 @@ LONG_DESCRIPTION_PLACEHOLDER = ('Long Description.  This should be **four to '
                                 'five** sentences.  Feel free to include '
                                 '[links](http://adicu.com).')
 INVALID_SLUG = 'Post slug should only contain numbers, letters and dashes.'
-
+DATE_FORMAT = '%m/%d/%Y'
 
 class CreateEventForm(Form):
     """A form for the creation of a :class:`~app.models.Event` object.
@@ -72,13 +73,12 @@ class CreateEventForm(Form):
 
     title = StringField('Title', [
         Required(message="Please provide an event title.")])
-    slug = StringField('Slug',
-                       [UniqueEvent(), Regexp('([0-9]|[a-z]|[A-Z]|-)*',
-                                              message=INVALID_SLUG)])
+    slug = StringField('Slug',[UniqueEvent(),
+                               Regexp(SLUG_REGEX, message=INVALID_SLUG)])
     location = StringField('Location')
-    start_date = DateField('Start date', [Optional()], format='%m/%d/%Y')
+    start_date = DateField('Start date', [Optional()], format=DATE_FORMAT)
     start_time = TimeField('Start time', [Optional()])
-    end_date = DateField('End date', [Optional()], format='%m/%d/%Y')
+    end_date = DateField('End date', [Optional()], format=DATE_FORMAT)
     end_time = TimeField('End time', [Optional()])
     is_recurring = BooleanField('Is Recurring')
     frequency = SelectField('Repeats',
@@ -91,7 +91,7 @@ class CreateEventForm(Form):
     num_occurrences = IntegerField('Every', [NumberRange(min=1)], default=1)
     recurrence_end_date = DateField('Repeat End Date',
                                     [Optional()],
-                                    format='%m/%d/%Y')
+                                    format=DATE_FORMAT)
     recurrence_summary = StringField('Summary')
     short_description = TextAreaField('Short description',
                                       default=SHORT_DESCRIPTION_PLACEHOLDER)
@@ -120,6 +120,6 @@ class CreateEventForm(Form):
             # Start and end dates should be in order.
             if start_date and end_date and start_date > end_date:
                 raise ValidationError("Start date should come before end date")
-            if all([start_date, start_time, end_date, end_time]) and \
-                    start_time > end_time:
+            if (all([start_date, start_time, end_date, end_time]) and
+                    start_time > end_time):
                 raise ValidationError("Start time should come before end date")

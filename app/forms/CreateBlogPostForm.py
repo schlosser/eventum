@@ -9,6 +9,7 @@ from wtforms import FieldList, StringField, TextAreaField, BooleanField, SelectF
 from flask.ext.wtf import Form
 from wtforms.validators import Regexp, Required
 from app.forms.validators import image_with_same_name
+from app.lib.regex import SLUG_REGEX
 
 INVALID_SLUG = 'Post slug should only contain numbers, letters and dashes.'
 BODY_DEFAULT = 'Type your post here.\n\nRendered in **Markdown**!'
@@ -41,11 +42,9 @@ class CreateBlogPostForm(Form):
     title = StringField('Title', [
         Required(message="Please provide the post title.")])
     author = SelectField('Author')
-
-    # TODO: make slugs actually unique
     slug = StringField('Post Slug',
                        [Required(message="Please provide a post slug."),
-                        Regexp('([0-9]|[a-z]|[A-Z]|-)*', message=INVALID_SLUG)])
+                        Regexp(SLUG_REGEX, message=INVALID_SLUG)])
     body = TextAreaField('Post Body',
                          [Required(message="Please provide a post body.")],
                          default=BODY_DEFAULT)

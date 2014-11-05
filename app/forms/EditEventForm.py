@@ -9,7 +9,7 @@ from app.forms import CreateEventForm
 from app.forms.CreateEventForm import INVALID_SLUG
 from wtforms import StringField, BooleanField
 from wtforms.validators import Regexp
-
+from app.lib.regex import SLUG_REGEX
 
 
 class EditEventForm(CreateEventForm):
@@ -22,5 +22,4 @@ class EditEventForm(CreateEventForm):
         should be modified in this update.
     """
     update_all = BooleanField('Update all', default=False)
-    slug = StringField('Slug', [Regexp('([0-9]|[a-z]|[A-Z]|-)*',
-                                       message=INVALID_SLUG)])
+    slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG)])

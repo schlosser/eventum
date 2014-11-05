@@ -7,6 +7,7 @@
 
 from app import db
 from app.models import User
+from app.lib.regex import SLUG_REGEX
 from datetime import datetime
 import markdown
 now = datetime.now
@@ -62,7 +63,7 @@ class Post(db.Document):
     markdown_content = db.StringField(required=True)
     images = db.ListField(db.ReferenceField('Image'))
     featured_image = db.ReferenceField('Image')
-    slug = db.StringField(required=True, regex="([a-z]|[A-Z]|[1-9]|-)*")
+    slug = db.StringField(required=True, regex=SLUG_REGEX)
     categories = db.ListField(db.StringField(db_field='category',
                                              max_length=255),
                               default=list)

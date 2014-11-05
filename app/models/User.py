@@ -7,6 +7,7 @@
 
 import re
 from app import db
+from app.lib.regex import SLUG_REGEX
 from datetime import datetime
 now = datetime.now
 
@@ -49,7 +50,7 @@ class User(db.Document):
     :ivar gplus_id: :class:`mongoengine.fields.StringField` - The Google+ ID
         for this user.  It's what we use in the Google+ authentication.
     :ivar name: :class:`mongoengine.fields.StringField` - The user's name.
-    :ivar slug: :class:`mongoengine.fields.StringField` - A URL slug to their
+    :ivar slug: :class:`mongoengine.fields.StringField` - A URL slug  their
         internal profile page.
     :ivar email: :class:`mongoengine.fields.EmailField` - The user's email
         address.
@@ -78,7 +79,7 @@ class User(db.Document):
     slug = db.StringField(required=True,
                           max_length=510,
                           unique=True,
-                          regex='([a-z]|[A-Z]|[1-9]|-)*')
+                          regex=SLUG_REGEX)
     email = db.EmailField(required=True, unique=True)
     roles = db.ListField(db.StringField(db_field="role"), default=list)
     privileges = db.DictField(required=True, default={})

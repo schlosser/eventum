@@ -10,7 +10,8 @@ from flask import url_for, redirect, session, request, g, abort
 from functools import wraps
 
 def login_required(f):
-    """A decorator requiring a user to be logged in.
+    """A decorator requiring a user to be logged in.  Use this to decorate
+    routes that require a user logged into Eventum to access.
 
     If there is no Google Plus ID in the session or user in the database,
     then redirect to login.  Else, run the decorated function.
@@ -40,7 +41,9 @@ def login_required(f):
 
 
 class requires_privilege(object):
-    """A decorator requiring a user to be logged in.
+    """A decorator requiring a user to be logged in.  Use this to decorate
+    routes that require a user logged into Eventum with a certain level of
+    privilege to access.
 
     If there is no Google Plus ID in the session or user in the database,
     then redirect to login.  Else, run the decorated function.

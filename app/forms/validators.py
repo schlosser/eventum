@@ -56,9 +56,9 @@ class UniqueEvent(object):
         """
         from app.models import Event, EventSeries
 
-        if EventSeries.objects(slug=field.data).count() != 0:
+        if EventSeries.objects(slug=field.data).count():
             raise ValidationError(self.message)
-        if Event.objects(slug=field.data).count() != 0:
+        if Event.objects(slug=field.data).count():
             raise ValidationError(self.message)
 
 
@@ -74,7 +74,7 @@ class UniqueImage(object):
         """
 
         if not message:
-            message = u'A image with that name already exists'
+            message = 'A image with that name already exists'
         self.message = message
 
     def __call__(self, form, field):
@@ -89,7 +89,7 @@ class UniqueImage(object):
         """
 
         filename = '%s.' % field.data
-        if Image.objects(filename__startswith=filename).count() != 0:
+        if Image.objects(filename__startswith=filename).count():
             raise ValidationError(self.message)
 
 
@@ -121,5 +121,5 @@ class UniqueEmail(object):
         :raises: :class:`wtforms.validators.ValidationError`
         """
         if form.user_type.data != 'fake_user' and \
-                Whitelist.objects(email=field.data).count() != 0:
+                Whitelist.objects(email=field.data).count():
             raise ValidationError(self.message)

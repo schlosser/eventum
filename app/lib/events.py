@@ -9,7 +9,9 @@ This file passes around data in several forms, which can be confusing.
 If we are not dealing with an instance of :class:`CreateEventForm` or a
 subclass, a Mongoengine object like :class:`Event` or
 :class:`EventSeries`, then we are probably dealing with a dictionary
-representing an intermediate form.  These forms include:
+representing an intermediate form. For details on what these fields represent,
+see :class:`Event`, :class:`EventSeries`, or :class:`CreateEventForm`.
+These data structures include:
 
 ``event_data``::
 
@@ -119,7 +121,7 @@ class EventsHelper(object):
 
         :param event: The event from Mongoengine.
         :type event: :class:`Event`
-        :param request: The flask reqeust object, from which we'll make the
+        :param request: The flask request object, from which we'll make the
             form.  On most requests, this will not contribute to any change in
             how the form is created, but it is a required parameter for
             creating a subclass of :class:`flask.ext.wtforms.Form`.
@@ -534,10 +536,8 @@ class EventsHelper(object):
         # event from MongoEngine even if Google Calendar throws an error.
         try:
             response = gcal_client.delete_event(event)
+        finally:
             event.delete()
-        except GoogleCalendarAPIError as e:
-            event.delete()
-            raise e
 
         # Return the Google Calendar response
         return response
@@ -561,10 +561,8 @@ class EventsHelper(object):
         try:
             # Cancel the series on Google Calendar
             response = gcal_client.delete_event(event, as_exception=True)
+        finally:
             event.parent_series.delete_one(event)
-        except GoogleCalendarAPIError as e:
-            event.parent_series.delete_one(event)
-            raise e
 
         # Return the Google Calendar response
         return response
@@ -586,10 +584,8 @@ class EventsHelper(object):
         # event from MongoEngine even if Google Calendar throws an error.
         try:
             response = gcal_client.delete_event(event)
+        finally:
             event.parent_series.delete_all()
-        except GoogleCalendarAPIError as e:
-            event.parent_series.delete_all()
-            raise e
 
         # Return the Google Calendar response
         return response

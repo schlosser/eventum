@@ -158,6 +158,7 @@ class Event(db.Document):
             raise ValidationError("Start date should always come before end "
                                   "date. Got (%r,%r)" % (self.start_date,
                                                          self.end_date))
+        # Check times against None, because midnight is represented by 0.
         if (self.start_date == self.start_time and
                 self.start_time is not None and
                 self.end_time is not None and
@@ -174,6 +175,7 @@ class Event(db.Document):
             ``start_time`` are ``None``.
         :rtype: :class:`datetime`.
         """
+        # Check times against None, because midnight is represented by 0.
         if self.start_date is None or self.start_time is None:
             return None
         return datetime.combine(self.start_date, self.start_time)
@@ -186,6 +188,7 @@ class Event(db.Document):
             ``end_time`` are ``None``.
         :rtype: :class:`datetime`.
         """
+        # Check times against None, because midnight is represented by 0.
         if self.end_date is None or self.end_time is None:
             return None
         return datetime.combine(self.end_date, self.end_time)
@@ -284,6 +287,7 @@ class Event(db.Document):
         else:
             output += "???, ??/?? "
 
+        # Check times against None, because midnight is represented by 0.
         if self.start_time is not None:
             if self._start_and_end_time_share_am_or_pm():
                 start_format = "%I:%M-"
@@ -300,6 +304,7 @@ class Event(db.Document):
         else:
             output += "???, ??/?? "
 
+        # Check times against None, because midnight is represented by 0.
         if self.end_time is not None:
             output += self.end_time.strftime("%I:%M%p").lower().lstrip("0")
         else:
@@ -314,6 +319,7 @@ class Event(db.Document):
             am.
         :rtype: bool
         """
+        # Check times against None, because midnight is represented by 0.
         return (self.start_time is not None and
                 self.end_time is not None and
                 self.start_time.strftime("%p")==self.end_time.strftime("%p"))

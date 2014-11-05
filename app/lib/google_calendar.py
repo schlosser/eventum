@@ -47,8 +47,8 @@ class GoogleCalendarAPIClient():
         return self.private_calendar_id
 
     def _get_service(self):
-        """Generate the Google Calendar service, using the credentials
-        generated through the command::
+        """Create and return the Google Calendar service object, using the
+        credentials file generated through the command::
 
             python manage.py --authorize
 
@@ -133,8 +133,6 @@ class GoogleCalendarAPIClient():
         event = Event.objects().get(id=stale_event.id)
 
         if not event.gcal_id:
-            # TODO: Why does this happen?
-            #
             # If we don't have a reference if it's associate Google Calendar
             # ID, then create it fresh.  This raises still because it
             # *shouldn't* ever happen, but it does.
@@ -260,10 +258,11 @@ class GoogleCalendarAPIClient():
         # Execute the request
         try:
             return self._execute_request(request)
-        except GoogleCalendarAPIErrorNotFound:
-            self._execute_request(event)
-            raise GoogleCalendarAPIErrorNotFound('Move failed.  Successfully '
-                                                 'fell back to create.')
+        except GoogleCalendarAPIErrorNotFound as e:
+            self.create_event(event)
+            message = 'Move failed.  Successfully fell back to create.'
+            app.logger.warning('[GOOGLE_CALENDAR]: ' + message)
+            raise GoogleCalendarAPIErrorNotFound(message, uri=e.uri)
 
     def delete_event(self, event, as_exception=False):
         """Delete an event or series from Google Calendar, or cancel a single
@@ -308,9 +307,7 @@ class GoogleCalendarAPIClient():
         # deleted from Google Calendar.
         try:
             return self._execute_request(request)
-        except HttpError as e:
-            # TODO: this codepath will never execute.
-            #
+        except GoogleCalendarAPIErrorNotFound as e:
             # If the resource has already been deleted, fail quietly.
             app.logger.warning(e)
             raise GoogleCalendarAPIEventAlreadyDeleted
@@ -327,15 +324,14 @@ class GoogleCalendarAPIClient():
         :rtype: dict
         """
         calendar_id = self._calendar_id_for_event(event)
-        event_start_date = \
-            GoogleCalendarResourceBuilder.rfc3339(event.start_datetime())
-
+        event_start_date = (GoogleCalendarResourceBuilder
+                            .rfc3339(event.start_datetime()))
         page_token = None
         while True:
             # Find more instances
             request = self.service.events().instances(calendarId=calendar_id,
-                                                    eventId=event.gcal_id,
-                                                    pageToken=page_token)
+                                                      eventId=event.gcal_id,
+                                                      pageToken=page_token)
             instances = self._execute_request(request)
 
             # Look for instances with matching start date

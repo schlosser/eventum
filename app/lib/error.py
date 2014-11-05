@@ -36,7 +36,7 @@ class GoogleCalendarAPIEventAlreadyDeleted(GoogleCalendarAPIError):
 class GoogleCalendarAPIErrorNotFound(GoogleCalendarAPIError):
     """Got 'Not Found' from Google Calendar"""
 
-    DEFAULT_MESSAGE = 'Got \'Not Found\' from Google Calendar: '
+    DEFAULT_MESSAGE = "Got 'Not Found' from Google Calendar: "
 
     def __init__(self, uri, message=None):
         if not message:
