@@ -443,12 +443,40 @@
         {
           "name": "MongoDB",
           "url": "http://try.mongodb.org",
-          "description": "A \"non-relational\" database. You put whole \"objects\" in and can query them in simple or complicated ways. Check out the interactive dmeo!"
+          "description": "A \"non-relational\" database. You put whole \"objects\" in and can query them in simple or complicated ways. Check out the interactive demo!"
         },
         {
           "name": "MariaDB (MySQL)",
           "url": "https://mariadb.org",
           "description": "Another \"relational\" database. This one is very popular, and also powerful. You need to know SQL for this. MariaDB is based on MySQL, and was forked after the community worried that Oracle wasn't devoting enough time to the project and was hiding things; they're mostly identical, but MariaDB is the way to go for \"MySQL\" nowadays."
+        }
+      ]
+    },
+    {
+      "name": "Golang",
+      "id": "golang",
+      "description": "Golang is a staticly-typed compiled language with a focus on easy networking development and concurrency. Golang has a focus on conciseness, simplicity, and safety. It is used in many infrastructural systems because of its simplicity and expansive standard library.",
+      "resources": [
+        {
+          "name": "Golang Tour",
+          "url": "http://tour.golang.org/#1",
+          "description": "Introduce yourself to Go without installing it! These example programs demonstrate different aspects of Go. The programs in the tour are meant to be starting points for your own experimentation."
+        },
+        {
+          "name": "Go Bootcamp",
+          "url": "http://www.golangbootcamp.com/book/",
+          "description": "Everything you need to know to get started with Go. This EBook covers all aspects of the language."
+        },
+        {
+          "name": "Go Blog",
+          "url": "http://blog.golang.org/",
+          "description": "Golang developers peroidically dive into various topics to explain use cases and idioms in depth."
+        },
+        {
+          "name": "Concurrency & Go",
+          "url": "http://natebrennand.github.io/concurrency_and_golang/#1",
+          "description": "An introduction to concurrency using Golang. Learn the fastest way to download cat pictures.",
+          "adi": true
         }
       ]
     },
@@ -531,6 +559,38 @@
       ]
     },
     {
+      "name": "Scala",
+      "id": "scala",
+      "description": "A powerful and flexible programming language, useful for tackling hard problems.",
+      "resources": [
+        {
+          "name": "Try Scala",
+          "url": "http://www.tryscala.com",
+          "description": "An interactive Scala demo. Try it out and try not to get hooked."
+        },
+        {
+          "name": "Scala School",
+          "url": "http://twitter.github.io/scala_school",
+          "description": "How Twitter ramps up their engineers (with Java experience) on Scala."
+        },
+        {
+          "name": "Functional Programming Principles in Scala",
+          "url": "https://www.coursera.org/course/progfun",
+          "description": "Take a Coursera class from Martin Odersky, the creator of Scala himself"
+        },
+        {
+          "name": "Programming in Scala",
+          "url": "http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644",
+          "description": "Written by Martin Odersky, this is the definitive guide to the language."
+        },
+        {
+          "name": "Effective Scala",
+          "url": "http://twitter.github.io/effectivescala",
+          "description": "Twitter Scala style guide."
+        }
+      ]
+    },
+    {
       "name": "Android",
       "id": "android",
       "description": "The Android SDK is the library that lets you write programs that run on Android.",
@@ -560,38 +620,6 @@
           "name": "Mobile Cloud Computing with Android",
           "url": "https://www.coursera.org/specialization/mobilecloudcomputing/2",
           "description": "Coursera specialization to become an Android pro"
-        }
-      ]
-    },
-    {
-      "name": "Scala",
-      "id": "scala",
-      "description": "A powerful and flexible programming language, useful for tackling hard problems.",
-      "resources": [
-        {
-          "name": "Try Scala",
-          "url": "http://www.tryscala.com",
-          "description": "An interactive Scala demo. Try it out and try not to get hooked."
-        },
-        {
-          "name": "Scala School",
-          "url": "http://twitter.github.io/scala_school",
-          "description": "How Twitter ramps up their engineers (with Java experience) on Scala."
-        },
-        {
-          "name": "Functional Programming Principles in Scala",
-          "url": "https://www.coursera.org/course/progfun",
-          "description": "Take a Coursera class from Martin Odersky, the creator of Scala himself"
-        },
-        {
-          "name": "Programming in Scala",
-          "url": "http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644",
-          "description": "Written by Martin Odersky, this is the definitive guide to the language."
-        },
-        {
-          "name": "Effective Scala",
-          "url": "http://twitter.github.io/effectivescala",
-          "description": "Twitter Scala style guide."
         }
       ]
     },
