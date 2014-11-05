@@ -37,7 +37,7 @@ def not_authorized(error):
 @app.errorhandler(403)
 def forbidden(error):
     """Handle 403 errors."""
-    return render_template('error/403.html')
+    return render_template('error/403.html'), 403
 
 @app.errorhandler(404)
 def not_found(error):
