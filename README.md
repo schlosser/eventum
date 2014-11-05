@@ -49,7 +49,7 @@ python run.py
 
 Or alternately:
 
-```
+```bash
 ./develop.sh
 source bin/activate
 source config/settings.dev
@@ -65,6 +65,31 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 ```bash
 # Whether or not to enable Google Auth or not.
 echo $GOOGLE_AUTH_ENABLED
+```
+
+## Documentation
+
+Eventum uses [Sphinx](http://sphinx-doc.org/) to compile documentation to an HTML website.  This documentation is generated from the source code.
+
+Here's how to compile the docs:
+
+```bash
+# The documentation requires that the app is runnable, so you must be in a
+# development environment
+./develop.sh
+source bin/activate
+source config/settings.sh
+
+cd docs
+# This will generate the documentation website in /docs/_build/html
+make html 
+
+# Then either host the docs on localhost:8000
+cd _build/html
+python -m SimpleHTTPServer .
+
+# Or open them directly
+open _build/html/index.html
 ```
 
 ## Testing

@@ -82,23 +82,26 @@ def register_blueprints():
     Be careful rearranging the order of the app.register_blueprint()
     calls, as it can also result in circular dependancies.
     """
-    from app.routes.admin import (admin, auth, events, resources, media, posts,
+    from app.routes.admin import (admin, auth, events, media, posts,
                                   users, whitelist)
-    admin_blueprints = [admin, auth, events, resources, media, posts, users,
+    admin_blueprints = [admin, auth, events, media, posts, users,
                         whitelist]
 
     for bp in admin_blueprints:
         app.register_blueprint(bp, url_prefix="/admin")
 
-    from app.routes import base; assert base # Not a blueprint, but should be imported
-    from app.routes import blog, client
-    blueprints = [blog, client]
+    from app.routes import blog, client, base
+    blueprints = [blog, client, base]
 
     for bp in blueprints:
         app.register_blueprint(bp)
 
 def register_delete_rules():
-    """
+    """Registers rules for how Mongoengine handles the deletion of objects
+    that are being referenced by other objects.
+
+    See the documentation for :func:`mongoengine.model.register_delete_rule`
+    for more information.
 
     All delete rules for User fields must by DENY, because User objects should
     never be deleted.  Lists of reference fields should PULL, to remove deleted
@@ -119,7 +122,9 @@ def register_delete_rules():
     User.register_delete_rule(Post, 'posted_by', DENY)
 
 def register_scss():
-    """"""
+    """Registers the Flask-Assets rules for scss compilation.  This reads from
+    ``config/scss.json`` to make these rules.
+    """
     assets.url = app.static_url_path
     with open('config/scss.json') as f:
         bundle_instructions = json.loads(f.read())
@@ -134,4 +139,5 @@ def register_scss():
                 assets.register(bundle_name, bundle)
 
 def run():
+    """Runs the app."""
     app.run(host=app.config.get('HOST'), port=app.config.get('PORT'))

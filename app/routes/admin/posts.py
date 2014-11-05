@@ -1,3 +1,10 @@
+"""
+.. module:: posts
+    :synopsis: All routes on the ``posts`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from flask import Blueprint, render_template, request, send_from_directory, \
     abort, redirect, url_for, g, flash
 
@@ -9,19 +16,31 @@ from mongoengine.errors import DoesNotExist, ValidationError
 from app import app
 from app.models import BlogPost, Image, User
 from app.forms import CreateBlogPostForm, UploadImageForm
-from app.lib.decorators import login_required, requires_privilege, development_only
+from app.lib.decorators import login_required, requires_privilege
 
 posts = Blueprint('posts', __name__)
 
-@posts.route('/posts')
+@posts.route('/posts', methods=['GET'])
 @login_required
 def index():
+    """View all of the blog posts.
+
+    **Route:** ``/admin/posts``
+
+    **Methods:** ``GET``
+    """
     all_posts = BlogPost.objects().order_by('published', '-date_published')
     return render_template('admin/posts/posts.html', posts=all_posts)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def new():
+    """Create a new blog post.
+
+    **Route:** ``/admin/posts/new``
+
+    **Methods:** ``POST``
+    """
     form = CreateBlogPostForm(request.form)
     form.author.choices = [
             (str(u.id), u.name + " (You)" if u == g.user else u.name)
@@ -51,6 +70,14 @@ def new():
 @posts.route('/posts/edit/<post_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def edit(post_id):
+    """Edit an existing blog post.
+
+    **Route:** ``/admin/posts/edit/<post_id>``
+
+    **Methods:** ``GET, POST``
+
+    :param str post_id: The ID of the post to edit.
+    """
     try:
         object_id = ObjectId(post_id)
     except InvalidId:
@@ -109,6 +136,14 @@ def edit(post_id):
 
 @posts.route('/posts/delete/<post_id>', methods=['POST'])
 def delete(post_id):
+    """Delete an existing blog post.
+
+    **Route:** ``/admin/posts/delete/<post_id>``
+
+    **Methods:** ``POST``
+
+    :param str post_id: The ID of the post to edit.
+    """
     object_id = ObjectId(post_id)
     if BlogPost.objects(id=object_id).count() == 1:
         post = BlogPost.objects().with_id(object_id)
@@ -118,25 +153,29 @@ def delete(post_id):
         pass
     return redirect(url_for('.index'))
 
-
-
-@posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
-@posts.route('/posts/epiceditor/themes/<folder>/<path>')
-@posts.route('/events/edit/epiceditor/themes/<folder>/<path>')
-@posts.route('/events/epiceditor/themes/<folder>/<path>')
+@posts.route('/posts/edit/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/posts/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/events/edit/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/events/epiceditor/themes/<folder>/<path>', methods=['GET'])
 @login_required
 def fetch_epiceditor_themes(folder, path):
+    """Static path for the css files for Epiceditor. Because there doesn't
+    appear to be a way to customize the URL at which EpicEditor requests it's
+    static files, there isn't any way to serve them except by putting them at'
+    all of the different places where EpicEditor might look (depending on what
+    page it is on when it requests static files).
+
+    **Route:** ``/posts/edit/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/posts/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/events/edit/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/events/epiceditor/themes/<folder>/<path>``
+
+    **Methods:** ``GET``
+
+    :param str folder: The folder that EpicEditor wants.
+    :param str path: The path of the file that EpicEditor wants.
+    """
     return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))
-
-@posts.route('/posts/dad')
-@development_only
-def dad():
-    for post in BlogPost.objects():
-        post.delete()
-    return "son"
-
-@posts.route('/posts/view')
-@development_only
-def view_all_posts():
-    return str(BlogPost.objects())
-

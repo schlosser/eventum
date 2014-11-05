@@ -1,23 +1,36 @@
+"""
+.. module:: events
+    :synopsis: All routes on the ``events`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from datetime import datetime, timedelta, date
 
 from flask import Blueprint, request, render_template, g, redirect, \
-    url_for, flash, jsonify
+    url_for, flash
 
 from bson.objectid import ObjectId
 from mongoengine.errors import DoesNotExist, ValidationError
 
 from app.models import Event, Image
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
-from app.lib.decorators import login_required, requires_privilege, development_only
+from app.lib.decorators import login_required, requires_privilege
 
 from app.lib.error import GoogleCalendarAPIError
 from app.lib.events import EventsHelper
 events = Blueprint('events', __name__)
 
-@events.route('/events')
+@events.route('/events', methods=['GET'])
 @login_required
 def index():
-    """"""
+    """View the events for this and next week, with optional future and past
+    events.
+
+    **Route:** ``/admin/events``
+
+    **Methods:** ``GET``
+    """
 
     past = int(request.args.get('past')) if request.args.get('past') else 0
     future = int(request.args.get('future')) if request.args.get('future') else 0
@@ -32,11 +45,30 @@ def index():
                            future_events=future_events)
 
 def _format_for_display(dt):
-    """"""
+    """Formats ``dt`` like "Saturday, October 25".
+
+    :param dt: The datetime to fomat.
+    :type dt: :class:``datetime.datetime``.
+
+    :returns: The formatted date.
+    :rtype: str
+    """
+    # Cast the %d part to int and back so that 06 --> 6
     return dt.strftime("%A, %B ") + str(int(dt.strftime("%d")))
 
 def _get_events_for_template(past, future):
-    """"""
+    """Returns the events to insert in the events template.  Returns four
+    groups of dates:
+
+    - ``past_events``: A list of dictionaries, where the dictionaries contain a
+        list of events for a week, and a label for the week.
+    - ``this_week``: A list of events happening this week.
+    - ``next_week``: A list of events happening next week.
+    - ``future_events``: A list of dictionaries similar to ``post_events``, but for
+        events happening in the future.
+
+    :returns: ``past_events``, ``this_week``, ``next_week``, ``future_events``
+    """
     today = date.today()
     last_sunday = datetime.combine(today - timedelta(days=(today.isoweekday() % 7)),
                                    datetime.min.time())
@@ -77,7 +109,13 @@ def _get_events_for_template(past, future):
 @events.route('/events/create', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def create():
-    """"""
+    """Create a new event.
+
+    **Route:** ``/admin/events/create``
+
+    **Methods:** ``GET, POST``
+    """
+
     form = CreateEventForm(request.form)
     if form.validate_on_submit():
         try:
@@ -101,7 +139,15 @@ def create():
 @events.route('/events/edit/<event_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def edit(event_id):
-    """"""
+    """Edit an existing event.
+
+    **Route:** ``/admin/events/edit/<event_id>``
+
+    **Methods:** ``GET, POST``
+
+    :param str event_id: The ID of the event to edit.
+    """
+
     try:
         event = Event.objects().get(id=event_id)
     except (DoesNotExist, ValidationError):
@@ -134,7 +180,14 @@ def edit(event_id):
 @events.route('/events/delete/<event_id>', methods=['POST'])
 @requires_privilege('edit')
 def delete(event_id):
-    """"""
+    """Delete an existing event.
+
+    **Route:** ``/admin/events/delete/<event_id>``
+
+    **Methods:** ``POST``
+
+    :param str event_id: The ID of the event to delete.
+    """
     object_id = ObjectId(event_id)
     form = DeleteEventForm(request.form)
     if Event.objects(id=object_id).count() == 1:
@@ -179,16 +232,3 @@ def publish(event_id):
 def unpublish(event_id):
     """"""
     return set_published_status(event_id, False)
-
-@events.route('/events/view')
-@requires_privilege('edit')
-@development_only
-def view():
-    return str(Event.objects())
-
-@events.route('/events/wipe')
-@development_only
-def mom():
-    for e in Event.objects():
-        e.delete()
-    return "hi"

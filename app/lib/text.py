@@ -1,15 +1,22 @@
 import re
 
-# Modified from django.utils.text
-# https://github.com/django/django/blob/master/django/utils/text.py
 def truncate_html(text, truncate_len, truncate_text):
-    """
-    Truncates HTML to a certain number of words (not counting tags and
-    comments). Closes opened tags if they were correctly closed in the
-    given HTML. If text is truncated, truncate_text will be appended
-    to the result.
+    """ Truncates HTML to a certain number of words (not counting tags and
+    comments). Closes opened tags if they were correctly closed in the given
+    HTML. If text is truncated, truncate_text will be appended to the result.
 
     Newlines in the HTML are preserved.
+
+    Modified from django.utils.text
+    https://github.com/django/django/blob/master/django/utils/text.py
+
+    :param str text: The text to truncate.
+    :param str truncate_len: The number of words to shorten the HTML to
+    :param int truncate_len: Text like '...' to append to the end of tuncated
+        text.
+
+    :returns: The truncated HTML
+    :rtype: str
     """
     re_words = re.compile(r'<.*?>|((?:\w[-\w]*|&.*?;)+)', re.U | re.S)
     re_tag = re.compile(r'<(/)?([^ ]+?)(?:(\s*/)| .*?)?>', re.S)

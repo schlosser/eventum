@@ -14,7 +14,6 @@ parser = argparse.ArgumentParser(parents=[tools.argparser])
 FLAGS = parser.parse_args()
 
 def authorize_google_calendar():
-
     FLOW = flow_from_clientsecrets(flask_config.INSTALLED_APP_SECRET_PATH,
                    scope='https://www.googleapis.com/auth/calendar')
 
