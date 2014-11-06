@@ -94,7 +94,9 @@ def inject_user():
     """Injects a variable named ``current_user`` into all of the Jinja
     templates, so that it can be used at will.
     """
-    return dict(current_user=g.user)
+    if hasattr(g, 'user'):
+        return dict(current_user=g.user)
+    return dict(current_user=None)
 
 @base.after_request
 def add_header(response):
