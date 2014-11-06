@@ -84,11 +84,9 @@ These data structures include:
 """
 
 from app.models import Event, EventSeries, Image
-from app.forms import CreateEventForm
+from app.forms import EditEventForm
 from datetime import timedelta
 from app import gcal_client
-from app.lib.error import GoogleCalendarAPIError
-
 
 class EventsHelper(object):
     """A class with helper functions that translate WTForms to Mongoengine
@@ -138,7 +136,7 @@ class EventsHelper(object):
             updates = DataBuilder.form_data_from_series(event.parent_series)
             form_data.update(updates)
         form_data = klass._remove_none_fields(form_data)
-        return CreateEventForm(request.form, **form_data)
+        return EditEventForm(request.form, **form_data)
 
     @classmethod
     def create_event(klass, form, creator):

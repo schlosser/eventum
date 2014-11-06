@@ -89,7 +89,7 @@ def lookup_current_user():
         except DoesNotExist:
             pass  # Fail gracefully if the user is not in the database yet
 
-@base.context_processor
+@app.context_processor
 def inject_user():
     """Injects a variable named ``current_user`` into all of the Jinja
     templates, so that it can be used at will.

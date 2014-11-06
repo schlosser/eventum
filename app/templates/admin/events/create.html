@@ -210,8 +210,9 @@
         {{ macros.render_field(form.recurrence_end_date) }}
         {{ macros.render_field(form.recurrence_summary) }}
 
+        {% if event %}
         {{ macros.render_field(form.update_all) }}
-
+        {% endif %}
         <input type="submit" id="save-event" value="Add">
     </div>
 </form>
