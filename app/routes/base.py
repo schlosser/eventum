@@ -62,7 +62,7 @@ def internal_server_error(error):
     """Handle 500 errors."""
     return render_template('error/500.html'), 500
 
-@base.before_request
+@app.before_request
 def lookup_current_user():
     """Set the g.user variable to the User in the database that shares
     openid with the session, if one exists.
@@ -98,7 +98,7 @@ def inject_user():
         return dict(current_user=g.user)
     return dict(current_user=None)
 
-@base.after_request
+@app.after_request
 def add_header(response):
     """
     Add headers to both force latest IE rendering engine or Chrome Frame,
