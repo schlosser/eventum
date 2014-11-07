@@ -29,8 +29,8 @@ def print_usage():
 
 if __name__ == '__main__':
     if '--backfill-blog' in argv or '-b' in argv:
-        backfill_blog.backfill_from_jekyll('data/jekyll-posts')
+        backfill_blog.backfill_from_jekyll('data/old-website-data/posts')
     elif '--import-images' in argv or '-i' in argv:
-        import_images.import_from_directory('data/jekyll-images')
+        import_images.import_from_directory('data/old-website-data/images')
     else:
         authorize_google_calendar()
