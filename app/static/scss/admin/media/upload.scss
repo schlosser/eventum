@@ -32,7 +32,16 @@
             top: 0;
             height: 2.5rem;
             line-height: 2.5rem;
+            box-sizing: border-box; 
+            outline: #9CBA7F dotted thick;
+        }
 
+        #filename {
+            width: 200px;
+            min-width: 100px;
+            transition: width 0.25s;
+            box-sizing: border-box; 
+            outline: #9CBA7F dotted thick;
         }
     }
 

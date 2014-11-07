@@ -1,7 +1,7 @@
 $(function() {
     function setInputToWidthOfText(text) {
         width = calculateWordWidth(text);
-        $('input[name="filename"]').animate({"width":width + 10}, 50);
+        $('input[name="filename"]').animate({"width":width + 30}, 10);
     }
 
     function setInitialPositions() {
