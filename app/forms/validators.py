@@ -59,6 +59,7 @@ class UniqueEvent(object):
         if Event.objects(slug=field.data).count():
             raise ValidationError(self.message)
 
+
 class UniqueEditEvent(UniqueEvent):
     def __init__(self, original, message="An event with that slug already exists."):
         """Ensures that edited slugs are unique in the :class:`Event` and
@@ -69,6 +70,7 @@ class UniqueEditEvent(UniqueEvent):
         """
         self.original = original
         self.message = message
+
     def __call__(self, form, field):
         """Called internally by :mod:`wtforms` on validation of the field.
 
@@ -86,6 +88,7 @@ class UniqueEditEvent(UniqueEvent):
                 raise ValidationError(self.message)
             if Event.objects(slug=field.data).count():
                 raise ValidationError(self.message)
+
 
 class UniqueImage(object):
     """A validator that verifies whether or not an image filename is unique in

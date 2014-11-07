@@ -27,5 +27,6 @@ def EditEventForm(original, *args, **kwargs):
             should be modified in this update.
         """
         update_all = BooleanField('Update all', default=False)
-        slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG), UniqueEditEvent(original)]) 
+        slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG),
+                                    UniqueEditEvent(original)]) 
     return EditEventForm(*args, **kwargs)
