@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+{% block title %}{%- block error -%}{%- endblock -%} | {{ super() }}{% endblock %}
+
+{% set should_include_hero = False%}
+
+{% block heroclass %}hidden{% endblock %}
+
+{% block mainclass %}no-hero{% endblock %}
+{% block main %}
+<section>
+    <div class="content error">
+        <i style="background-image:url({{ url_for('static', filename='img/hero/404.jpg') }});"></i>
+        <h1>{{ self.error() }} ({%- block code -%}{%- endblock -%}).</h1>
+        <p>{%- block message -%}{%- endblock %} Try following the links above, or click <a href="{{ url_for('client.index') }}">here</a>.</p>
+    </div>
+</section>
+{% endblock main %}

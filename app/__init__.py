@@ -1,7 +1,9 @@
+import json
+import logging
+
 from flask import Flask
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
-import json
 
 from config import adi_config
 
@@ -46,7 +48,7 @@ def create_app(**config_overrides):
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()
         except IOError:
-            print ('Failed to find the Google Calendar credentials file at \'%s\', '
+            print ("Failed to find the Google Calendar credentials file at '%s', "
                    'please create it by running:\n\n'
                    '    $ python manage.py --authorize\n'
                    % app.config['INSTALLED_APP_CREDENTIALS_PATH'])
@@ -54,6 +56,22 @@ def create_app(**config_overrides):
 
     register_blueprints()
     register_delete_rules()
+
+    # Logging
+    maxBytes = int(app.config["LOG_FILE_MAX_SIZE"]) * 1024 * 1024   # MB to B
+    Handler = logging.handlers.RotatingFileHandler
+    fStr = "%(levelname)s @ %(asctime)s @ %(filename)s %(funcName)s %(lineno)d: %(message)s"
+
+    accessHandler = Handler(app.config["WERKZEUG_LOG_NAME"], maxBytes=maxBytes)
+    accessHandler.setLevel(logging.INFO)
+    logging.getLogger("werkzeug").addHandler(accessHandler)
+
+    appHandler = Handler(app.config["APP_LOG_NAME"], maxBytes=maxBytes)
+    formatter = logging.Formatter(fStr)
+    appHandler.setLevel(logging.INFO)
+    appHandler.setFormatter(formatter)
+
+    app.logger.addHandler(appHandler)
 
     return app
 
@@ -64,23 +82,26 @@ def register_blueprints():
     Be careful rearranging the order of the app.register_blueprint()
     calls, as it can also result in circular dependancies.
     """
-    from app.routes.admin import (admin, auth, events, resources, media, posts,
+    from app.routes.admin import (admin, auth, events, media, posts,
                                   users, whitelist)
-    admin_blueprints = [admin, auth, events, resources, media, posts, users,
+    admin_blueprints = [admin, auth, events, media, posts, users,
                         whitelist]
 
     for bp in admin_blueprints:
         app.register_blueprint(bp, url_prefix="/admin")
 
-    from app.routes import base; assert base # Not a blueprint, but should be imported
-    from app.routes import blog, client
-    blueprints = [blog, client]
+    from app.routes import blog, client, base
+    blueprints = [blog, client, base]
 
     for bp in blueprints:
         app.register_blueprint(bp)
 
 def register_delete_rules():
-    """
+    """Registers rules for how Mongoengine handles the deletion of objects
+    that are being referenced by other objects.
+
+    See the documentation for :func:`mongoengine.model.register_delete_rule`
+    for more information.
 
     All delete rules for User fields must by DENY, because User objects should
     never be deleted.  Lists of reference fields should PULL, to remove deleted
@@ -101,7 +122,9 @@ def register_delete_rules():
     User.register_delete_rule(Post, 'posted_by', DENY)
 
 def register_scss():
-    """"""
+    """Registers the Flask-Assets rules for scss compilation.  This reads from
+    ``config/scss.json`` to make these rules.
+    """
     assets.url = app.static_url_path
     with open('config/scss.json') as f:
         bundle_instructions = json.loads(f.read())
@@ -116,4 +139,5 @@ def register_scss():
                 assets.register(bundle_name, bundle)
 
 def run():
+    """Runs the app."""
     app.run(host=app.config.get('HOST'), port=app.config.get('PORT'))

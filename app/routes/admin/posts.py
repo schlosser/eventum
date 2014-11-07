@@ -1,3 +1,10 @@
+"""
+.. module:: posts
+    :synopsis: All routes on the ``posts`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from flask import Blueprint, render_template, request, send_from_directory, \
     abort, redirect, url_for, g, flash
 
@@ -13,15 +20,27 @@ from app.lib.decorators import login_required, requires_privilege
 
 posts = Blueprint('posts', __name__)
 
-@posts.route('/posts')
+@posts.route('/posts', methods=['GET'])
 @login_required
 def index():
+    """View all of the blog posts.
+
+    **Route:** ``/admin/posts``
+
+    **Methods:** ``GET``
+    """
     all_posts = BlogPost.objects().order_by('published', '-date_published')
     return render_template('admin/posts/posts.html', posts=all_posts)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def new():
+    """Create a new blog post.
+
+    **Route:** ``/admin/posts/new``
+
+    **Methods:** ``POST``
+    """
     form = CreateBlogPostForm(request.form)
     form.author.choices = [
             (str(u.id), u.name + " (You)" if u == g.user else u.name)
@@ -32,12 +51,17 @@ def new():
         author = User.objects().get(id=ObjectId(form.author.data))
         post = BlogPost(title=form.title.data,
                         slug=form.slug.data,
-                        published=form.published.data,
                         images=[Image.objects().get(filename=fn) for fn in form.images.data],
                         markdown_content=form.body.data,
                         author=author,
                         posted_by=g.user)
         post.save()
+
+        if form.published.data:
+            post.publish()
+        else:
+            post.unpublish()
+
         return redirect(url_for('.index'))
     images = Image.objects()
     return render_template('admin/posts/edit.html', user=g.user, form=form,
@@ -46,6 +70,14 @@ def new():
 @posts.route('/posts/edit/<post_id>', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def edit(post_id):
+    """Edit an existing blog post.
+
+    **Route:** ``/admin/posts/edit/<post_id>``
+
+    **Methods:** ``GET, POST``
+
+    :param str post_id: The ID of the post to edit.
+    """
     try:
         object_id = ObjectId(post_id)
     except InvalidId:
@@ -63,8 +95,6 @@ def edit(post_id):
             for u in User.objects()]
         form.author.default = str(g.user.id)
         if form.validate_on_submit():
-            was_published = post.published
-            should_be_published = form.published.data
             post.title = form.title.data
             post.author = User.objects.get(id=ObjectId(form.author.data))
             post.slug = form.slug.data
@@ -75,12 +105,17 @@ def edit(post_id):
             else:
                 post.featured_image = None
             post.save()
-            if was_published != should_be_published:
-                if was_published:
-                    set_published_status(post.id, False)
+
+            if post.published != form.published.data:
+                if form.published.data:
+                    post.publish()
+                    flash('Blogpost published')
                 else:
-                    set_published_status(post.id, True)
+                    post.unpublish()
+                    flash('Blogpost unpublished')
+
             return redirect(url_for('.index'))
+
     upload_form = UploadImageForm()
     featured_image = post.featured_image.filename if post.featured_image else None
     form = CreateBlogPostForm(request.form,
@@ -101,52 +136,46 @@ def edit(post_id):
 
 @posts.route('/posts/delete/<post_id>', methods=['POST'])
 def delete(post_id):
+    """Delete an existing blog post.
+
+    **Route:** ``/admin/posts/delete/<post_id>``
+
+    **Methods:** ``POST``
+
+    :param str post_id: The ID of the post to edit.
+    """
     object_id = ObjectId(post_id)
     if BlogPost.objects(id=object_id).count() == 1:
         post = BlogPost.objects().with_id(object_id)
         post.delete()
     else:
         flash('Invalid event id')
-        # print "Invalid event id"
         pass
     return redirect(url_for('.index'))
 
-
-def set_published_status(post_id, status):
-    object_id = ObjectId(post_id)
-    if BlogPost.objects(id=object_id).count() == 1:
-        post = BlogPost.objects().with_id(object_id)
-        if status != post.published:
-            post.published = status
-            # TODO Actually publish/unpublish the post here
-            if post.published:
-                flash('Blogpost published')
-            else:
-                flash('Blogpost unpublished')
-            post.save()
-        else:
-            flash("The blog post had not been published.  No changes made.")
-    else:
-        flash('Invalid post id')
-        # print "Invalid post id"
-        pass
-    return redirect(url_for('.index'))
-
-@posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
-@posts.route('/posts/epiceditor/themes/<folder>/<path>')
-@posts.route('/events/edit/epiceditor/themes/<folder>/<path>')
-@posts.route('/events/epiceditor/themes/<folder>/<path>')
+@posts.route('/posts/edit/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/posts/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/events/edit/epiceditor/themes/<folder>/<path>', methods=['GET'])
+@posts.route('/events/epiceditor/themes/<folder>/<path>', methods=['GET'])
 @login_required
 def fetch_epiceditor_themes(folder, path):
+    """Static path for the css files for Epiceditor. Because there doesn't
+    appear to be a way to customize the URL at which EpicEditor requests it's
+    static files, there isn't any way to serve them except by putting them at'
+    all of the different places where EpicEditor might look (depending on what
+    page it is on when it requests static files).
+
+    **Route:** ``/posts/edit/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/posts/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/events/edit/epiceditor/themes/<folder>/<path>``
+
+    **Route:** ``/events/epiceditor/themes/<folder>/<path>``
+
+    **Methods:** ``GET``
+
+    :param str folder: The folder that EpicEditor wants.
+    :param str path: The path of the file that EpicEditor wants.
+    """
     return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))
-
-@posts.route('/posts/dad')
-def dad():
-    for post in BlogPost.objects():
-        post.delete()
-    return "son"
-
-@posts.route('/posts/view')
-def view_all_posts():
-    return str(BlogPost.objects())
-

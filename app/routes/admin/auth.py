@@ -1,3 +1,10 @@
+"""
+.. module:: auth
+    :synopsis: All routes on the ``auth`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 import string
 import random
 import httplib2
@@ -5,7 +12,6 @@ from app import app
 from app.lib.networking import json_response
 from app.models import User, Whitelist
 from app.forms import CreateProfileForm
-from app.lib.decorators import development_only
 from apiclient.discovery import build
 from flask import Blueprint, render_template, request, \
     flash, session, g, redirect, url_for
@@ -23,6 +29,10 @@ def login():
     make a request to Google to authenticate.
 
     If they are logged in, redirect.
+
+    **Route:** ``/admin/login``
+
+    **Methods:** ``GET``
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
@@ -43,12 +53,20 @@ def store_token():
     """Do the oauth flow for Google plus sign in, storing the access token
     in the session, and redircting to create an account if appropriate.
 
-    Because this method will be called from a $.ajax() request in JavaScript,
-    we can't return redirect(), so instead this method returns the URL that
-    the user should be redirected to, and the redirect happens in JavaScript:
+    Because this method will be called from a ``$.ajax()`` request in
+    JavaScript, we can't return ``redirect()``, so instead this method returns
+    the URL that the user should be redirected to, and the redirect happens in
+    html:
+
+    .. code:: javascript
+
         success: function(response) {
             window.location.href = response;
         }
+
+    **Route:** ``/admin/store-token``
+
+    **Methods:** ``POST``
     """
     if request.args.get('state', '') != session.get('state'):
         return json_response('Invalid state parameter.', 401)
@@ -112,6 +130,10 @@ def store_token():
 def create_profile():
     """Create a profile (filling in the form with openid data), and
     register it in the database.
+
+    **Route:** ``/admin/create-profile``
+
+    **Methods:** ``GET, POST``
     """
     if g.user is not None and 'gplus_id' in session:
         # use code=303 to avoid POSTing to the next page.
@@ -159,7 +181,12 @@ def create_profile():
 
 @auth.route('/logout', methods=['GET'])
 def logout():
-    """Log the user out."""
+    """Logs out the current user.
+
+    **Route:** ``/admin/logout``
+
+    **Methods:** ``GET``
+    """
     session.pop('gplus_id', None)
     g.user = None
     return redirect(url_for('client.index'))
@@ -176,7 +203,12 @@ def load_csrf_token_into_session():
 
 @auth.route('/disconnect', methods=['GET', 'POST'])
 def disconnect():
-    """Revoke current user's token and reset their session."""
+    """Revoke current user's token and reset their session.
+
+    **Route:** ``/admin/disconnect``
+
+    **Methods:** ``GET, POST``
+    """
     # Only disconnect a connected user.
     credentials = AccessTokenCredentials(
         session.get('credentials'), request.headers.get('User-Agent'))
@@ -203,8 +235,3 @@ def disconnect():
         # For whatever reason, the given token was invalid.
         return json_response('Failed to revoke token for given user.',
                                   400)
-
-@auth.route('/session')
-@development_only
-def view_session():
-    return "<p>" + str(dict(session)) + "</p>"

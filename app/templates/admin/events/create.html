@@ -73,9 +73,9 @@
         <label></label>
         <input type="radio" name="m-ends" id="m-ends-after" value="after"
             required>
-        <label for="m-num_occurances">After</label>
-        <input type="number" name="m-num_occurances" id="m-num_occurances" value="25">
-        <label for="m-num_occurances">occurances</label>
+        <label for="m-num_occurrences">After</label>
+        <input type="number" name="m-num_occurrences" id="m-num_occurrences" value="25">
+        <label for="m-num_occurrences">occurrences</label>
     </div>
     <div class="form-control">
         <label></label>
@@ -206,12 +206,13 @@
         {% endfor %}
         {{ macros.render_field(form.short_description, label=True, class="short", placeholder="A catchy, one sentence description of the event.") }}
         {{ macros.render_field(form.long_description, label=True, class="long", placeholder="A three to five sentence description that goes into more detail.") }}
-        {{ macros.render_field(form.num_occurances) }}
+        {{ macros.render_field(form.num_occurrences) }}
         {{ macros.render_field(form.recurrence_end_date) }}
         {{ macros.render_field(form.recurrence_summary) }}
 
+        {% if event %}
         {{ macros.render_field(form.update_all) }}
-
+        {% endif %}
         <input type="submit" id="save-event" value="Add">
     </div>
 </form>

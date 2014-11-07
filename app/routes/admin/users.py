@@ -1,3 +1,10 @@
+"""
+.. module:: users
+    :synopsis: All routes on the ``users`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from app.models import User, Whitelist, Image
 from app.forms import AddToWhitelistForm, EditUserForm, UploadImageForm
 from app.lib.decorators import login_required, development_only
@@ -14,10 +21,15 @@ gplus_service = build('plus', 'v1')
 @users.route('/users', methods=['GET'])
 @login_required
 def index():
-    """View and manage users
+    """View and manage users.
 
     Whitelisted users are the only ones allowed to make user accounts.
+
+    **Route:** ``/admin/users``
+
+    **Methods:** ``GET``
     """
+
     upload_form = UploadImageForm()
     whitelist_form = AddToWhitelistForm()
     return render_template('admin/users/users.html',
@@ -31,23 +43,26 @@ def index():
 @users.route('/users/me', methods=['GET'])
 @login_required
 def me():
-    """View the current user's profile."""
-    user = g.user
-    form = EditUserForm(request.form,
-                        name=user.name,
-                        email=user.email,
-                        # image_url=user.get_profile_picture(),
-                        user_type=user.user_type)
-    return render_template('admin/users/user.html', user=user, form=form)
+    """View the current user's profile.
+
+    **Route:** ``/admin/users/me``
+
+    **Methods:** ``GET``
+    """
+    return redirect(url_for(".user", slug=g.user.slug))
 
 @users.route('/users/delete/<user_id>', methods=['POST'])
 @login_required
 def delete(user_id):
-    """Delete the user with id `user_id`
+    """Delete the user with id ``user_id``
 
-    If the `revoke` property is set to true,
+    If the ``revoke`` property is set to true,
     then the user will be removed from the whitelist, and not be
     allowed to make an account again.
+
+    **Route:** ``/admin/users/delete/<user_id>``
+
+    **Methods:** ``POST``
     """
     object_id = ObjectId(user_id)
     if User.objects(id=object_id).count() != 1:
@@ -74,7 +89,12 @@ def delete(user_id):
 @users.route('/user/<slug>', methods=['GET', 'POST'])
 @login_required
 def user(slug):
-    """"""
+    """View and edit the profile of a user.
+
+    **Route:** ``/admin/user/<slug>``
+
+    **Methods:** ``GET, POST``
+    """
     try:
         user = User.objects().get(slug=slug)
     except DoesNotExist:
@@ -103,13 +123,17 @@ def user(slug):
 #============================================================
 # Development Only (quick and dirty ways to play with Users)
 #============================================================
-@users.route('/become/<level>')
+@users.route('/become/<level>', methods=['GET'])
 @development_only
 @login_required
 def become(level=0):
     """Change the privileges of the logged in user.
 
-    level -- 1: Editor, 2: Publisher, 3: Admin
+    **Route:** ``/admin/become``
+
+    **Methods:** ``GET``
+
+    :param int level: 1: Editor, 2: Publisher, 3: Admin
     """
     level = int(level)
     admin_privileges = {
@@ -122,33 +146,14 @@ def become(level=0):
     User.objects(gplus_id=session['gplus_id']).update(**db_dict)
     return redirect(url_for('.index'))
 
-@users.route('/super')
+@users.route('/super', methods=['GET'])
 @development_only
 @login_required
 def super():
-    """Special case of become()"""
+    """Special case of :func:``become()`` for becoming an admin.
+
+    **Route:** ``/admin/super``
+
+    **Methods:** ``GET``
+    """
     return redirect(url_for('.become', level=3))
-
-@users.route('/users/view')
-@development_only
-def view():
-    """Print out all the users"""
-    return str(User.objects)
-
-@users.route('/users/wipe', methods=['GET', 'POST'])
-@development_only
-def wipe():
-    """Wipe all users from the database"""
-    if request.method == "POST":
-        for u in User.objects():
-            u.delete()
-        # use code=303 to avoid POSTing to the next page.
-        return redirect(url_for('.index'), code=303)
-    return '''<form action="" method=post>
-        <input type=submit value="Wipe the Database">
-        </form>'''
-
-@users.route('/session')
-@development_only
-def show_session():
-    return "<p>" + str(dict(session)) + "</p>"
