@@ -135,10 +135,8 @@ class User(db.Document):
         """
         self.date_modified = now()
 
-        # If undefined, update self.privileges with one of the USER_TYPES
-        # dictionaries
-        if self.privileges == {}:
-            self.privileges.update(USER_TYPES[self.user_type])
+        # Update self.privileges with one of the USER_TYPES dictionaries
+        self.privileges.update(USER_TYPES[self.user_type])
 
         # Update the slug for the user (used in URLs)
         new_slug = self.name.lower().replace(' ', '-')
