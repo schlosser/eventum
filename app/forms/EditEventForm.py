@@ -22,4 +22,14 @@ class EditEventForm(CreateEventForm):
         should be modified in this update.
     """
     update_all = BooleanField('Update all', default=False)
-    slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG)])
+    slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG)]) 
+
+    def __init__(self, original, *args, **kwargs):
+        super(EditEventForm, self).__init__(*args, **kwargs)
+        self.original = original
+        self.slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG), 
+                                         self.slug_verify])
+
+    def slug_verify(self, form, field):
+        if field.data != self.original.slug:
+            unique_with_database(form, field)

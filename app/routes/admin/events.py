@@ -154,7 +154,7 @@ def edit(event_id):
         flash('Cannont find event with id "%s"' % event_id)
         return redirect(url_for('.index'))
 
-    form = EditEventForm(request.form) if request.method == 'POST' else \
+    form = EditEventForm(event, request.form) if request.method == 'POST' else \
         EventsHelper.create_form(event, request)
 
     if form.validate_on_submit():

@@ -71,8 +71,8 @@ class CreateEventForm(Form):
         the headline image.
     """
 
-    title = StringField('Title', [
-        Required(message="Please provide an event title.")])
+    title = StringField('Title', 
+                        [Required(message="Please provide an event title.")])
     slug = StringField('Slug',[UniqueEvent(),
                                Regexp(SLUG_REGEX, message=INVALID_SLUG)])
     location = StringField('Location')
@@ -81,16 +81,13 @@ class CreateEventForm(Form):
     end_date = DateField('End date', [Optional()], format=DATE_FORMAT)
     end_time = TimeField('End time', [Optional()])
     is_recurring = BooleanField('Is Recurring')
-    frequency = SelectField('Repeats',
-                            choices=[('weekly', 'Weekly')],
+    frequency = SelectField('Repeats', choices=[('weekly', 'Weekly')],
                             default="weekly")
     every = IntegerField('Every', [NumberRange(min=1, max=30)], default=1)
-    ends = RadioField('Ends',
-                      choices=[("after", "After"),("on", "On")],
+    ends = RadioField('Ends', choices=[("after", "After"),("on", "On")],
                       default="after")
     num_occurrences = IntegerField('Every', [NumberRange(min=1)], default=1)
-    recurrence_end_date = DateField('Repeat End Date',
-                                    [Optional()],
+    recurrence_end_date = DateField('Repeat End Date', [Optional()],
                                     format=DATE_FORMAT)
     recurrence_summary = StringField('Summary')
     short_description = TextAreaField('Short description',

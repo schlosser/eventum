@@ -136,7 +136,7 @@ class EventsHelper(object):
             updates = DataBuilder.form_data_from_series(event.parent_series)
             form_data.update(updates)
         form_data = klass._remove_none_fields(form_data)
-        return EditEventForm(request.form, **form_data)
+        return EditEventForm(event, request.form, **form_data)
 
     @classmethod
     def create_event(klass, form, creator):
