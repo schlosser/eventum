@@ -7,29 +7,25 @@
 
 from app.forms import CreateEventForm
 from app.forms.CreateEventForm import INVALID_SLUG
+from app.forms.validators import UniqueEditEvent
 from wtforms import StringField, BooleanField
 from wtforms.validators import Regexp
 from app.lib.regex import SLUG_REGEX
 
-
-class EditEventForm(CreateEventForm):
-    """A form for editing an :class:`~app.models.Event`.
-
-    This inherits from :class:`CreateEventForm`, changing that slugs should not
-    check for uniqueness in the database.
-
-    :ivar update_all: :class:`wtforms.fields.BooleanField` - True if all events
-        should be modified in this update.
+def EditEventForm(original, *args, **kwargs):
+    """ Creates an edit form. Function closure w/ original to prevent problems
+        
+        :param Event original: the event being edited
     """
-    update_all = BooleanField('Update all', default=False)
-    slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG)]) 
+    class EditEventForm(CreateEventForm):
+        """A form for editing an :class:`~app.models.Event`.
 
-    def __init__(self, original, *args, **kwargs):
-        super(EditEventForm, self).__init__(*args, **kwargs)
-        self.original = original
-        self.slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG), 
-                                         self.slug_verify])
+        This inherits from :class:`CreateEventForm`, changing that slugs should not
+        check for uniqueness in the database.
 
-    def slug_verify(self, form, field):
-        if field.data != self.original.slug:
-            unique_with_database(form, field)
+        :ivar update_all: :class:`wtforms.fields.BooleanField` - True if all events
+            should be modified in this update.
+        """
+        update_all = BooleanField('Update all', default=False)
+        slug = StringField('Slug', [Regexp(SLUG_REGEX, message=INVALID_SLUG), UniqueEditEvent(original)]) 
+    return EditEventForm(*args, **kwargs)

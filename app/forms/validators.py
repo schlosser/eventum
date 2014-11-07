@@ -34,14 +34,12 @@ class UniqueEvent(object):
     is unique.
     """
 
-    def __init__(self, message=None):
+    def __init__(self, message="An event with that slug already exists."):
         """Ensures that slugs are unique in the :class:`Event` and
         :class:`EventSeries` collections.
 
         :param str message: An alternate message to be raised.
         """
-        if not message:
-            message = "An event with that slug already exists."
         self.message = message
 
     def __call__(self, form, field):
@@ -61,6 +59,33 @@ class UniqueEvent(object):
         if Event.objects(slug=field.data).count():
             raise ValidationError(self.message)
 
+class UniqueEditEvent(UniqueEvent):
+    def __init__(self, original, message="An event with that slug already exists."):
+        """Ensures that edited slugs are unique in the :class:`Event` and
+        :class:`EventSeries` collections.
+
+        :param Event original: The event that is being edited
+        :param str message: An alternate message to be raised.
+        """
+        self.original = original
+        self.message = message
+    def __call__(self, form, field):
+        """Called internally by :mod:`wtforms` on validation of the field.
+
+        :param form: The parent form
+        :type form: :class:`Form`
+        :param field: The field to validate
+        :type field: :class:`Field`
+
+        :raises: :class:`wtforms.validators.ValidationError`
+        """
+        from app.models import Event, EventSeries
+
+        if self.original.slug != field.data:
+            if EventSeries.objects(slug=field.data).count():
+                raise ValidationError(self.message)
+            if Event.objects(slug=field.data).count():
+                raise ValidationError(self.message)
 
 class UniqueImage(object):
     """A validator that verifies whether or not an image filename is unique in
