@@ -1,8 +1,10 @@
-from app.models import Event, EventSeries, Image
+from app.models import Event, EventSeries, Image, User
 from app.forms import CreateEventForm
 from datetime import timedelta
 from app import gcal_client
 from app.lib.error import GoogleCalendarAPIError
+
+from bson.objectid import ObjectId
 
 
 class EventsHelper(object):
@@ -357,7 +359,8 @@ class DataBuilder(object):
             'long_description': event.long_description_markdown,
             'is_recurring': event.is_recurring,
             'facebook_url': event.facebook_url,
-            'event_image': event.image.filename if event.image else None
+            'event_image': event.image.filename if event.image else None,
+            'owner': str(User.objects.get(id=ObjectId(event.owner.data)))
         }
 
     @classmethod
@@ -391,7 +394,8 @@ class DataBuilder(object):
             'long_description_markdown': form.long_description.data,
             'is_recurring': form.is_recurring.data,
             'facebook_url': form.facebook_url.data,
-            'image': event_image
+            'image': event_image,
+            'owner': User.objects.get(id=ObjectId(form.owner.data)) 
         }
         if creator:
             event_data['creator'] = creator
