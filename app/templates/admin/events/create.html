@@ -127,6 +127,10 @@
         <p class="permalink-base">/{{ event.index }}</p>
         {% endif %}
     </div>
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Owner:</h6>
+        {{ macros.render_field(form.owner, required="") }}
+    </div>
     <div class="with-icon">
         <i class="fa fa-map-marker fa-2x"></i>
         {{ macros.render_field(form.location, placeholder="Location", class="location") }}

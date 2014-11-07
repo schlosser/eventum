@@ -6,7 +6,7 @@ from flask import Blueprint, request, render_template, g, redirect, \
 from bson.objectid import ObjectId
 from mongoengine.errors import DoesNotExist, ValidationError
 
-from app.models import Event, Image
+from app.models import Event, Image, User
 from app.forms import CreateEventForm, EditEventForm, DeleteEventForm, UploadImageForm
 from app.lib.decorators import login_required, requires_privilege, development_only
 
@@ -79,6 +79,10 @@ def _get_events_for_template(past, future):
 def create():
     """"""
     form = CreateEventForm(request.form)
+    form.owner.choices = [
+            (str(u.id), u.name + " (You)" if u == g.user else u.name)
+    for u in User.objects()]
+    form.owner.default = str(g.user.id)
     if form.validate_on_submit():
         try:
             EventsHelper.create_event(form, g.user)
