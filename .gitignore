@@ -3,12 +3,15 @@
 !/app/static/img/uploaded/README.md
 /app/static/img/uploaded/*
 /lib
+/local
+/log/*
 /bin
 /include
 tmp
 /man
 /share
 *.pyc
+*.swp
 flask_config.py
 settings.dev
 settings.prod

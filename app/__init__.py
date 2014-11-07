@@ -1,7 +1,9 @@
+import json
+import logging
+
 from flask import Flask
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
-import json
 
 from config import adi_config
 
@@ -46,7 +48,7 @@ def create_app(**config_overrides):
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()
         except IOError:
-            print ('Failed to find the Google Calendar credentials file at \'%s\', '
+            print ("Failed to find the Google Calendar credentials file at '%s', "
                    'please create it by running:\n\n'
                    '    $ python manage.py --authorize\n'
                    % app.config['INSTALLED_APP_CREDENTIALS_PATH'])
@@ -54,6 +56,22 @@ def create_app(**config_overrides):
 
     register_blueprints()
     register_delete_rules()
+
+    # Logging
+    maxBytes = int(app.config["LOG_FILE_MAX_SIZE"]) * 1024 * 1024   # MB to B
+    Handler = logging.handlers.RotatingFileHandler
+    fStr = "%(levelname)s @ %(asctime)s @ %(filename)s %(funcName)s %(lineno)d: %(message)s"
+
+    accessHandler = Handler(app.config["WERKZEUG_LOG_NAME"], maxBytes=maxBytes)
+    accessHandler.setLevel(logging.INFO)
+    logging.getLogger("werkzeug").addHandler(accessHandler)
+
+    appHandler = Handler(app.config["APP_LOG_NAME"], maxBytes=maxBytes)
+    formatter = logging.Formatter(fStr)
+    appHandler.setLevel(logging.INFO)
+    appHandler.setFormatter(formatter)
+
+    app.logger.addHandler(appHandler)
 
     return app
 

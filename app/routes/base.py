@@ -1,3 +1,5 @@
+import sys
+
 from flask import g, session, render_template, request, redirect
 from mongoengine.queryset import DoesNotExist
 import requests
@@ -6,6 +8,11 @@ from app import app
 from app.models import User
 
 SUPER_USER_GPLUS_ID = 'super'
+
+@app.errorhandler(Exception)
+def exceptionHandler(error):
+    app.logger.error("Uncaught Exception", exc_info=sys.exc_info()) 
+    app.handle_exception(error) # default error handler
 
 @app.errorhandler(404)
 def not_found(error):

@@ -107,7 +107,6 @@ def delete(post_id):
         post.delete()
     else:
         flash('Invalid event id')
-        # print "Invalid event id"
         pass
     return redirect(url_for('.index'))
 
@@ -128,8 +127,6 @@ def set_published_status(post_id, status):
             flash("The blog post had not been published.  No changes made.")
     else:
         flash('Invalid post id')
-        # print "Invalid post id"
-        pass
     return redirect(url_for('.index'))
 
 @posts.route('/posts/edit/epiceditor/themes/<folder>/<path>')
