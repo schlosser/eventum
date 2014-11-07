@@ -98,7 +98,7 @@ def user(slug):
     try:
         user = User.objects().get(slug=slug)
     except DoesNotExist:
-        flash("Invalid user slug '%s'" % slug)
+        flash("Invalid user slug '{}'".format(slug))
         return redirect(url_for('.index'))
 
     form = EditUserForm(request.form,
@@ -115,7 +115,7 @@ def user(slug):
             user.save()
             return redirect(url_for('.index'))
         else:
-            flash("Your Form had errors: %s" % (form.errors))
+            flash("Your Form had errors: {}".format(form.errors))
 
     return render_template('admin/users/user.html', user=user, form=form,
                            current_user=g.user)
@@ -141,7 +141,7 @@ def become(level=0):
         "publish": level > 1,
         "admin": level > 2
     }
-    db_dict = dict((("set__privileges__%s" % k, v)
+    db_dict = dict((("set__privileges__{}".format(k), v)
                    for k, v in admin_privileges.iteritems()))
     User.objects(gplus_id=session['gplus_id']).update(**db_dict)
     return redirect(url_for('.index'))

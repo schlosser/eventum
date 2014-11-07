@@ -361,7 +361,7 @@ class GoogleCalendarAPIClient():
         gcal_id = response.get('id')
         gcal_sequence = response.get('sequence')
         if gcal_id is None or gcal_sequence is None:
-            app.logger.error('Request failed. %s' % response)
+            app.logger.error('Request failed. {}'.format(response))
             raise GoogleCalendarAPIError('Request Failed.')
 
         if event.is_recurring:
@@ -395,7 +395,8 @@ class GoogleCalendarAPIClient():
                 return request.execute()
             except httplib.BadStatusLine as e:
                 app.logger.error('[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.')
-                raise GoogleCalendarAPIBadStatusLine('Line: %s, Message: %s' %
-                                                     (e.line, e.message))
+                message = ('Line: {eline}, Message: {emessage}'
+                           .format(eline=e.line, emessage=e.message))
+                raise GoogleCalendarAPIBadStatusLine(message)
         except HttpError as e:
             raise GoogleCalendarAPIErrorNotFound(uri=e.uri)

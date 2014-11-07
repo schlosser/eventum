@@ -35,7 +35,7 @@ USER_TYPES = {
         "admin": True
     }
 }
-USER_TYPE_REGEX = "(%s)" % '|'.join(USER_TYPES.keys())
+USER_TYPE_REGEX = "({})".format('|'.join(USER_TYPES.keys())
 
 class User(db.Document):
     """A user model.
@@ -145,10 +145,10 @@ class User(db.Document):
         new_slug = re.sub(r"\'|\.|\_|", "", new_slug)
         if User.objects(slug=new_slug).count() > 0:
             i = 2
-            new_slug = new_slug + "-%s" % i
+            new_slug = new_slug + "-{}".format(i)
             while User.objects(slug=new_slug).count() > 0:
                 i += 1
-                new_slug = re.sub(r"-([0-9])*$", "-%s" % i, new_slug)
+                new_slug = re.sub(r"-([0-9])*$", "-{}".format(i), new_slug)
         self.slug = new_slug
 
         if self.image_url and "googleusercontent.com" in self.image_url:
