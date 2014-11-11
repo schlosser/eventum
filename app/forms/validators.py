@@ -83,6 +83,7 @@ class UniqueEditEvent(UniqueEvent):
         """
         from app.models import Event, EventSeries
 
+        # If we change the slug, make sure the new slug doesn't exist
         if self.original.slug != field.data:
             if EventSeries.objects(slug=field.data).count():
                 raise ValidationError(self.message)
