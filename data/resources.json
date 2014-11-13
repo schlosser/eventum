@@ -652,14 +652,19 @@
       "description": "Learn to build an iOS application by learning to code in Objective-C.",
       "resources": [
         {
+          "name": "Diving into iOS Programming Talk",
+          "url": "http://slides.com/mattpiccolella/diving-into-ios-development/",
+          "description": "An introductory talk given by ADI member Matt Piccolella. This explains the key concepts of iOS development and helps you build your first app!"
+        },
+        {
+          "name": "SimpleQuizGame",
+          "url": "https://github.com/mjp2220/SimpleQuizGame",
+          "description": "A simple, heavily-commented iOS application that shows the important parts that go into building an app."
+        },
+        {
           "name": "Big Nerd Ranch iOS Programming Guide",
           "url": "http://www.bignerdranch.com/book/ios_programming_the_big_nerd_ranch_guide_rd_edition_",
           "description": "A great book that walks beginners through the basics of iOS.  Best after the Big Nerd Ranch Objective-C book."
-        },
-        {
-          "name": "NSHipster",
-          "url": "http://nshipster.com",
-          "description": "NSHipster is a blog that has great explanations for some of the quirks and \"overlooked bits\" of Objective-C and Cocoa."
         }
       ]
     }
