@@ -20,8 +20,7 @@ def image_with_same_name(form, field):
     """
     if Image.objects(filename=field.data).count() != 1:
         return ValidationError(
-            message="Can't find image `%s` in the database" % field.data)
-
+            message="Can't find image '{}' in the database".format(field.data))
 
 class UniqueEvent(object):
     """A validator that ensures that an event slug is unique.
@@ -117,7 +116,7 @@ class UniqueImage(object):
         :raises: :class:`wtforms.validators.ValidationError`
         """
 
-        filename = '%s.' % field.data
+        filename = '{}.'.format(field.data)
         if Image.objects(filename__startswith=filename).count():
             raise ValidationError(self.message)
 

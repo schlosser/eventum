@@ -35,7 +35,7 @@ USER_TYPES = {
         "admin": True
     }
 }
-USER_TYPE_REGEX = "(%s)" % '|'.join(USER_TYPES.keys())
+USER_TYPE_REGEX = "({})".format('|'.join(USER_TYPES.keys()))
 
 class User(db.Document):
     """A user model.
@@ -135,20 +135,18 @@ class User(db.Document):
         """
         self.date_modified = now()
 
-        # If undefined, update self.privileges with one of the USER_TYPES
-        # dictionaries
-        if self.privileges == {}:
-            self.privileges.update(USER_TYPES[self.user_type])
+        # Update self.privileges with one of the USER_TYPES dictionaries
+        self.privileges.update(USER_TYPES[self.user_type])
 
         # Update the slug for the user (used in URLs)
         new_slug = self.name.lower().replace(' ', '-')
         new_slug = re.sub(r"\'|\.|\_|", "", new_slug)
         if User.objects(slug=new_slug).count() > 0:
             i = 2
-            new_slug = new_slug + "-%s" % i
+            new_slug = new_slug + "-{}".format(i)
             while User.objects(slug=new_slug).count() > 0:
                 i += 1
-                new_slug = re.sub(r"-([0-9])*$", "-%s" % i, new_slug)
+                new_slug = re.sub(r"-([0-9])*$", "-{}".format(i), new_slug)
         self.slug = new_slug
 
         if self.image_url and "googleusercontent.com" in self.image_url:
