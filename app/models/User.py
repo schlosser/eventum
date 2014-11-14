@@ -35,7 +35,7 @@ USER_TYPES = {
         "admin": True
     }
 }
-USER_TYPE_REGEX = "({})".format('|'.join(USER_TYPES.keys())
+USER_TYPE_REGEX = "({})".format('|'.join(USER_TYPES.keys()))
 
 class User(db.Document):
     """A user model.

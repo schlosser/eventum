@@ -1,4 +1,4 @@
-."""
+"""
 .. module:: Image
     :synopsis: A image database model.
 

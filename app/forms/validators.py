@@ -20,7 +20,7 @@ def image_with_same_name(form, field):
     """
     if Image.objects(filename=field.data).count() != 1:
         return ValidationError(
-            message="Can't find image '{}' in the database".format(field.data)
+            message="Can't find image '{}' in the database".format(field.data))
 
 class UniqueEvent(object):
     """A validator that ensures that an event slug is unique.

@@ -48,7 +48,7 @@ def create_app(**config_overrides):
             from app.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()
         except IOError:
-            print (("Failed to find the Google Calendar credentials file at '{}', "
+            print ("Failed to find the Google Calendar credentials file at '{}', "
                    'please create it by running:\n\n'
                    '    $ python manage.py --authorize\n'
                     .format(app.config['INSTALLED_APP_CREDENTIALS_PATH']))
