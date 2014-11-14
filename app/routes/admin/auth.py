@@ -217,8 +217,8 @@ def disconnect():
 
     # Execute HTTP GET request to revoke current token.
     access_token = credentials.access_token
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % \
-        str(access_token)
+    url = ('https://accounts.google.com/o/oauth2/revoke?token={}'
+           .format(str(access_token)))
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
 

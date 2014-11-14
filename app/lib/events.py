@@ -646,7 +646,7 @@ class EventsHelper(object):
             raise ValueError('Cannont create recurrence from series data.')
 
         if s_data['frequency'] != 'weekly':
-            raise ValueError('Unknown frequency value "%s"' % s_data.frequency)
+            raise ValueError('Unknown frequency value "{}"'.format(s_data.frequency))
 
     @classmethod
     def _more_events(klass, series, date_data):

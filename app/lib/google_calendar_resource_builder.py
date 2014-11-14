@@ -61,11 +61,11 @@ class GoogleCalendarResourceBuilder():
         :rtype: str
         """
 
-        r = 'RRULE:FREQ=%s' % s.frequency.upper()
+        r = 'RRULE:FREQ={}'.format(s.frequency.upper())
         if s.every > 1:
             r += ';INTERVAL=%d' % s.every
         if s.ends_on:
-            r += ';UNTIL=%s' % klass._recurrence_end_date(s)
+            r += ';UNTIL={}'.format(klass._recurrence_end_date(s))
         elif s.ends_after:
             r += ';COUNT=%d' % s.num_occurrences
         else:

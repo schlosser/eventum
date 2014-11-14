@@ -76,9 +76,9 @@ class Image(db.Document):
         if self.default_path and self.default_path not in self.versions.values():
             try:
                 width, height = PIL.Image.open(self.default_path).size
-                self.versions['%sx%s' % (width, height)] = self.default_path
+                self.versions['{width}x{height}'.format(width=width, height=height)] = self.default_path
             except IOError:
-                raise ValidationError('File %s does not exist.' % self.default_path)
+                raise ValidationError('File {} does not exist.'.format(self.default_path))
 
     def pre_validate(form):
         """Called by Mongoengine before the validation occurs.
@@ -92,11 +92,11 @@ class Image(db.Document):
         for size,path in form.versions:
             try:
                 width, height = PIL.Image.open(path).size
-                if size != '%sx%s' % (width, height):
-                    error = 'Key %s improperly describes image %s', (size, path)
+                if size != '{width}x{height}'.format(width=width, height=height):
+                    error = 'Key {size} improperly describes image {path}'.format(size=size, path=path)
                     raise ValidationError(error)
             except IOError:
-                error = 'File %s does not exist.' % form.default_path
+                error = 'File {} does not exist.'.format(form.default_path)
                 raise ValidationError(error)
 
     @classmethod

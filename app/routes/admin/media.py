@@ -76,7 +76,7 @@ def upload():
                           creator=g.user)
             image.save()
             return redirect(url_for('.index'))
-        flash("Filename %s is invalid" % f.filename)
+        flash("Filename {} is invalid".format(f.filename))
     if form.errors:
         flash(form.errors)
     if uploaded_from:

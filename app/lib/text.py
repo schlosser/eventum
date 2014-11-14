@@ -80,6 +80,6 @@ def truncate_html(text, truncate_len, truncate_text):
         out += truncate_text
     # Close any tags still open
     for tag in open_tags:
-        out += '</%s>' % tag
+        out += '</{}>'.format(tag)
     # Return string
     return out

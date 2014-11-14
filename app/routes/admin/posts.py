@@ -85,7 +85,7 @@ def edit(post_id):
     try:
         post = BlogPost.objects().with_id(object_id)
     except (DoesNotExist, ValidationError):
-        flash('Cannot find blog post with id %s.' % post_id)
+        flash('Cannot find blog post with id {}.'.format(post_id))
         return redirect(url_for('.index'))
 
     if request.method == 'POST':
@@ -178,4 +178,4 @@ def fetch_epiceditor_themes(folder, path):
     :param str folder: The folder that EpicEditor wants.
     :param str path: The path of the file that EpicEditor wants.
     """
-    return send_from_directory(app.static_folder, "css/lib/epiceditor/%s/%s" % (folder, path))
+    return send_from_directory(app.static_folder, "css/lib/epiceditor/{folder}/{path}".format(folder=folder, path=path))
