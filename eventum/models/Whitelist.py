@@ -5,9 +5,9 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app import db
+from eventum import db
 from datetime import datetime
-from app.models.User import USER_TYPE_REGEX
+from eventum.models.User import USER_TYPE_REGEX
 now = datetime.now
 
 class Whitelist(db.Document):

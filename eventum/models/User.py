@@ -6,8 +6,8 @@
 """
 
 import re
-from app import db
-from app.lib.regex import SLUG_REGEX
+from eventum import db
+from eventum.lib.regex import SLUG_REGEX
 from datetime import datetime
 now = datetime.now
 

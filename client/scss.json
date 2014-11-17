@@ -1,0 +1,36 @@
+{
+  "client": {
+    "output_folder": "css/gen/",
+    "depends": [
+      "scss/*.scss",
+      "scss/components/*.scss"
+    ],
+    "rules": {
+
+      "scss_client": {
+        "output": "client.css",
+        "inputs": [
+          "scss/*.scss",
+          "scss/components/*.scss",
+          "scss/common/*.scss"
+        ]
+      },
+
+      "scss_blog": {
+        "output": "blog.css",
+        "inputs": [ "scss/blog/*.scss" ]
+      },
+
+      "scss_single_event": {
+        "output": "single_event.css",
+        "inputs": [ "scss/single_event/*.scss" ]
+      },
+
+      "scss_resources": {
+        "output": "single_event.css",
+        "inputs": [ "scss/resources/*.scss" ]
+      }
+    }
+  }
+
+}

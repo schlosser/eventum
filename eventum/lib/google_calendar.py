@@ -5,14 +5,14 @@ from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.file import Storage
 
-from app.lib.google_calendar_resource_builder import GoogleCalendarResourceBuilder
-from app.lib.error import (GoogleCalendarAPIError,
+from eventum.lib.google_calendar_resource_builder import GoogleCalendarResourceBuilder
+from eventum.lib.error import (GoogleCalendarAPIError,
                            GoogleCalendarAPIMissingID,
                            GoogleCalendarAPIBadStatusLine,
                            GoogleCalendarAPIEventAlreadyDeleted,
                            GoogleCalendarAPIErrorNotFound)
-from app import app
-from app.models import Event
+from eventum import app
+from eventum.models import Event
 
 
 class GoogleCalendarAPIClient():

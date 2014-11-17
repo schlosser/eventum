@@ -1,0 +1,87 @@
+@import '../colors';
+@import 'triple';
+@import '../media_queries';
+
+.single {
+    margin-bottom: 2rem;
+
+    h1 {
+        margin: 2rem 0;
+    }
+
+    .image {
+        display: block;
+        background-color: $lightgray;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .text {
+        margin-top: 1rem;
+        p {
+            font-family: $sans;
+            width: 100%;
+            & + p {
+                margin-top: 1rem;
+            }
+        }
+
+        h3 {
+            margin: 2rem 0 1rem;
+
+        }
+
+        hr {
+            border: none;
+            padding: 1rem 0 2rem;
+            margin: 0;
+
+            &:after {
+                text-align: center;
+                width: 100%;
+                content: "* * *";
+                margin: 0 auto;
+                position: absolute;
+            }
+        }
+    }
+
+    .details {
+        margin-top: 0.5rem;
+        width: 30%;
+        float: left;
+
+        .button {
+            margin-top: 1rem;
+        }
+        p, span {
+            font-family: $sans;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        i {
+            font-size: 1.3rem;
+            width: 2.5rem;
+            margin-right:0.5rem;
+            text-align: center;
+        }
+        br + span {
+            margin-left: 3rem;
+        }
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .single {
+        .details {
+            float: none;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .text {
+            margin-left: 0;
+        }
+    }
+}

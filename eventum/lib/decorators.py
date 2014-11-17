@@ -5,7 +5,7 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app import app
+from eventum import app
 from flask import url_for, redirect, session, request, g, abort
 from functools import wraps
 
@@ -20,7 +20,7 @@ def login_required(f):
     :returns: The parameter function ``f``, but with checks for login.
     :rtype: func
     """
-    from app.routes.base import lookup_current_user
+    from eventum.routes.base import lookup_current_user
     @wraps(f)
     def decorated_function(*args, **kwargs):
         """The decorated version of ``f`` (see :method:``login_required``).
@@ -71,7 +71,7 @@ class requires_privilege(object):
         :returns: The parameter function ``f``, but with checks for login.
         :rtype: func
         """
-        from app.routes.base import lookup_current_user
+        from eventum.routes.base import lookup_current_user
 
         @login_required
         @wraps(f)

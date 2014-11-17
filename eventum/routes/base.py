@@ -11,8 +11,8 @@ from flask import g, session, render_template, request, redirect, Blueprint
 from mongoengine.queryset import DoesNotExist
 import requests
 
-from app import app
-from app.models import User
+from eventum import app
+from eventum.models import User
 
 SUPER_USER_GPLUS_ID = 'super'
 

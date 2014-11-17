@@ -5,9 +5,9 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app.models import Image
+from eventum.models import Image
 from wtforms.validators import ValidationError
-from app.models import Whitelist
+from eventum.models import Whitelist
 
 def image_with_same_name(form, field):
     """A validator that ensures that there is an image in the database with the
@@ -54,7 +54,7 @@ class UniqueEvent(object):
 
         :raises: :class:`wtforms.validators.ValidationError`
         """
-        from app.models import Event, EventSeries
+        from eventum.models import Event, EventSeries
 
         if EventSeries.objects(slug=field.data).count():
             raise ValidationError(self.message)

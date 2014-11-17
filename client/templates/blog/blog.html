@@ -1,0 +1,90 @@
+{% extends 'page.html' %}
+{% block title %}Blog | {{ super() }}{% endblock %}
+{% import 'macros.html' as macros %}
+
+{% block header_image %}/static/img/hero/writing.jpg{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/lib/epiceditor/preview/github-highlighted.css')}}">
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>Blog</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>Latest Posts</h4>
+            <span class="bar green"></span>
+        </div>
+        {% for post in posts[:5] %}
+        {{ macros.post(post) }}
+        {% endfor %}
+    </div>
+</section>
+<section class="full yellow callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                <h4>Partner with ADI</h4>
+                </a>
+                <span class="bar gray"></span>
+            </div>
+            <h3>Interested in working on an event with ADI? We'd love to work with you!</h3>
+            <div class="button-group">
+                <div class="button gray">
+                    <a href="{{ url_for('client.contact') }}">
+                        Get in touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="callout-right">
+            <div class="card">
+                <a href="{{ url_for('client.contact') }}">
+                    <i style="background-image:url({{ url_for('static', filename='img/hero/hello.jpg') }})"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="card top-card">
+    <div class="content">
+        {% for post in posts[5:] %}
+        {{ macros.post(post) }}
+        {% endfor %}
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="pagination">
+            <div class="previous">
+                {% if previous_index >= 0 %}
+                <a href="{{ url_for('blog.blog_archive', index=previous_index) }}">
+                    <p><i class="fa fa-chevron-left"></i>Previous</p>
+                </a>
+                {% endif %}
+            </div>
+            <div class="next">
+                {% if next_index >= 0 %}
+                <a href="{{ url_for('blog.blog_archive', index=next_index) }}">
+                    <p>Next<i class="fa fa-chevron-right"></i></p>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

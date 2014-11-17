@@ -7,9 +7,9 @@
 
 from flask import url_for
 from mongoengine import ValidationError, signals
-from app import db
+from eventum import db
 from config.flask_config import BASEDIR, RELATIVE_DELETE_FOLDER
-from app.lib.regex import FULL_FILENAME_REGEX
+from eventum.lib.regex import FULL_FILENAME_REGEX
 from datetime import datetime
 import PIL, re, os
 now = datetime.now

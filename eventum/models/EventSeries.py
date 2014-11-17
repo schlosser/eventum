@@ -6,8 +6,8 @@
 """
 
 from mongoengine import ValidationError
-from app.models.fields import DateField
-from app import db
+from eventum.models.fields import DateField
+from eventum import db
 from datetime import datetime
 now = datetime.now
 

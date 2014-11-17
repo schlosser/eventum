@@ -1,0 +1,83 @@
+@import '../colors';
+@import '../utils';
+@import 'ribbon';
+@import '../media_queries';
+
+$navbar-height: 5.5rem;
+$navbar-scroll-height: 3.5rem;
+$logo-height: 2.25rem;
+$speed: 0.3s;
+.navbar {
+    @include transition($speed);
+    @include shadow;
+    height: $navbar-height;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    z-index: 1000;
+    top: $ribbon-height;
+
+    &.scroll {
+        height: $navbar-scroll-height;
+        .logo {
+            margin-top: (($navbar-scroll-height - $logo-height)/2);
+        }
+        ul li a div {
+            height: $navbar-scroll-height;
+            line-height: $navbar-scroll-height;
+        }
+    }
+
+    .logo {
+        @include transition($speed);
+        height: $logo-height;
+        margin-top: (($navbar-height - $logo-height)/2);
+    }
+    .right {
+        float: right;
+    }
+    ul {
+        font-size: 0;
+        li {
+            font-size: 1rem;
+            display: inline-block;
+            a div {
+                @include transition($speed);
+                padding: 0 1.25rem;
+                height: $navbar-height;
+                line-height: $navbar-height;
+            }
+        }
+        li:last-child a div {
+            margin-right: -1.25rem;
+        }
+    }
+
+    a, a:hover {
+        color: $gray;
+    }
+
+    &.up {
+        top: -$navbar-height;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .navbar  {
+        &.up {
+            top: 0;
+        }
+
+        ul li{
+            a div {
+                padding: 0 0.75rem;
+            }
+
+            &:last-child a div {
+                margin-right: 0;
+            }
+        }
+    }
+
+}

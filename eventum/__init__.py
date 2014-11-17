@@ -45,7 +45,7 @@ def create_app(**config_overrides):
     # credentials have been generated first.
     if app.config.get('GOOGLE_AUTH_ENABLED'):
         try:
-            from app.lib.google_calendar import GoogleCalendarAPIClient
+            from eventum.lib.google_calendar import GoogleCalendarAPIClient
             gcal_client = GoogleCalendarAPIClient()
         except IOError:
             print ("Failed to find the Google Calendar credentials file at '%s', "
@@ -82,18 +82,12 @@ def register_blueprints():
     Be careful rearranging the order of the app.register_blueprint()
     calls, as it can also result in circular dependancies.
     """
-    from app.routes.admin import (admin, auth, events, media, posts,
-                                  users, whitelist)
-    admin_blueprints = [admin, auth, events, media, posts, users,
-                        whitelist]
+    from eventum.routes import (admin, auth, events, media, posts,
+                                users, whitelist, base)
+    admin_blueprints = [admin, auth, events, media, posts, users, whitelist, 
+                        base]
 
     for bp in admin_blueprints:
-        app.register_blueprint(bp, url_prefix="/admin")
-
-    from app.routes import blog, client, base
-    blueprints = [blog, client, base]
-
-    for bp in blueprints:
         app.register_blueprint(bp)
 
 def register_delete_rules():
@@ -107,7 +101,7 @@ def register_delete_rules():
     never be deleted.  Lists of reference fields should PULL, to remove deleted
     objects from the list, and all others should NULLIFY
     """
-    from app.models import Event, EventSeries, User, Post, BlogPost, Image
+    from eventum.models import Event, EventSeries, User, Post, BlogPost, Image
     from mongoengine import NULLIFY, PULL, DENY
 
     Event.register_delete_rule(EventSeries, 'events', PULL)

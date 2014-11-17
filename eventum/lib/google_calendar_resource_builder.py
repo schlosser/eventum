@@ -1,7 +1,7 @@
 from pyrfc3339 import generate
 import pytz
 import re
-from app.lib.error import GoogleCalendarAPIError
+from eventum.lib.error import GoogleCalendarAPIError
 
 class GoogleCalendarResourceBuilder():
 

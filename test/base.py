@@ -2,7 +2,7 @@ import unittest
 import os
 import mongoengine
 from coverage import coverage
-from app import create_app
+from eventum import create_app
 from config.flask_config import BASEDIR
 
 GPLUS_IDS = {
@@ -16,7 +16,7 @@ GPLUS_IDS = {
 class TestingTemplate(unittest.TestCase):
 
     def setUp(self):
-        from app.models import User
+        from eventum.models import User
         for u in User.objects():
             u.delete()
         user= User(name='Test User',
@@ -50,7 +50,7 @@ class TestingTemplate(unittest.TestCase):
             CSRF_ENABLED=False,
             WTF_CSRF_ENABLED=False
         )
-        from app import app
+        from eventum import app
         self.app = app
 
     @classmethod

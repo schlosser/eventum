@@ -8,7 +8,7 @@
 from flask.ext.wtf import Form
 from wtforms import StringField, RadioField
 from wtforms.validators import Required, Email, Optional
-from app.forms.validators import image_with_same_name, UniqueEmail
+from eventum.forms.validators import image_with_same_name, UniqueEmail
 
 EMAIL_ERROR = 'Please provide a valid email address.'
 

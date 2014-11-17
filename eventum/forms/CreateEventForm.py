@@ -6,14 +6,14 @@
 """
 
 from flask.ext.wtf import Form
-from app.forms.fields import TimeField
-from app.forms.CreateBlogPostForm import image_with_same_name
+from eventum.forms.fields import TimeField
+from eventum.forms.CreateBlogPostForm import image_with_same_name
 from wtforms import StringField, DateField, TextAreaField, BooleanField, \
     SelectField, IntegerField, RadioField
 from wtforms.validators import Required, ValidationError, Optional, \
     NumberRange, Regexp, URL
-from app.forms.validators import UniqueEvent
-from app.lib.regex import SLUG_REGEX
+from eventum.forms.validators import UniqueEvent
+from eventum.lib.regex import SLUG_REGEX
 
 
 SHORT_DESCRIPTION_PLACEHOLDER = ('Short Description.  This should be **one to '

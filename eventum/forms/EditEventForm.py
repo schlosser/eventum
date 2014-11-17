@@ -5,11 +5,11 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app.forms import CreateEventForm
-from app.forms.CreateEventForm import INVALID_SLUG
+from eventum.forms import CreateEventForm
+from eventum.forms.CreateEventForm import INVALID_SLUG
 from wtforms import StringField, BooleanField
 from wtforms.validators import Regexp
-from app.lib.regex import SLUG_REGEX
+from eventum.lib.regex import SLUG_REGEX
 
 
 class EditEventForm(CreateEventForm):

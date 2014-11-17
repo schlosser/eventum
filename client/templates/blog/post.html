@@ -1,0 +1,64 @@
+{% extends 'page.html' %}
+{% block title %}{{ post.title }} | {{ super() }}{% endblock %}
+{% import "macros.html" as macros %}
+
+{% set should_include_hero = False%}
+
+{% block author %}{{post.author.name}}{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_blog" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+
+<link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/github.min.css">
+{% endblock %}
+
+{% block js%}
+{{ super() }}
+<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
+{% block heroclass %}hidden{% endblock %}
+{% block hero %}
+{% endblock %}
+
+{% block mainclass %}no-hero{% endblock %}
+{% block main %}
+<section class="single post">
+    <div class="content">
+        {% if post.featured_image %}
+        <i class="image"
+           style="background-image:url({{ post.featured_image.url() }})"></i>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <div class="details">
+            <div class="section-header">
+                <h4>{{ post.human_readable_date() }}</h4>
+                <span class="bar yellow"></span>
+            </div>
+            <i class="author" style="background-image:url({{ post.author.get_profile_picture() }})"></i>
+            <span class="author">{{post.author.name}}</span>
+
+        </div>
+        <div class="text">
+            {{ post.html_content | safe }}
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Recent Posts</h4>
+            <span class="bar blue"></span>
+        </div>
+        <div class="triple">
+            {% for p in recent_posts %}
+                {{ macros.small_post(p) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock main %}

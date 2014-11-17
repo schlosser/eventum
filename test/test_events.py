@@ -3,7 +3,7 @@ from mongoengine import ValidationError
 from datetime import datetime, timedelta
 from bson.objectid import ObjectId
 
-from app.models import Event, User
+from eventum.models import Event, User
 
 class TestEvents(base.TestingTemplate):
 

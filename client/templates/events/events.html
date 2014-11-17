@@ -1,0 +1,102 @@
+{% extends "page.html" %}
+{% block title %}Events | {{ super() }}{% endblock %}
+
+{% block header_image_class %}top{% endblock %}
+{% block header_image %}/static/img/hero/group.jpg{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>Events</h1>
+</section>
+{% if events_this_week %}
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>This Week</h4>
+            <span class="bar green"></span>
+        </div>
+        {% for event in events_this_week %}
+            {{ macros.event(event) }}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% if upcoming_events %}
+{% if events_this_week %}
+<section>
+{% else %}
+<section class="card top-card">
+{% endif %}
+    <div class="content">
+        <div class="section-header">
+            <h4>Upcoming</h4>
+            <span class="bar blue"></span>
+        </div>
+        {% for event in upcoming_events %}
+            {{ macros.event(event) }}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+<section class="full green callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                <h4>Cookies and Code</h4>
+                </a>
+                <span class="bar gray"></span>
+            </div>
+            <h3>Come meet the community. We bring the cookies, you bring the code!</h3>
+            <div class="button-group">
+                <div class="button gray">
+                    <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                        Find the next Cookies and Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="callout-right">
+            <div class="card">
+                <a href="{{ url_for('client.event', slug='cookies-and-code')}}">
+                    <i style="background-image:url({{ url_for('static', filename='img/events/cookie_monster_original.jpg') }})"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% if recent_events %}
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Past Events</h4>
+            <span class="bar blue"></span>
+        </div>
+        {% for triple in range(((recent_events|length) // 3) + 1) %}
+        <div class="triple">
+            {% for i in range(3) %}
+            {% with index = 3 * triple + i %}
+            {% if index < (recent_events | length) %}
+                {{ macros.small_event(recent_events[index]) }}
+            {% endif %}
+            {% endwith %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% if more_past_events %}
+<section>
+    <div class="content">
+        <div class="pagination">
+            <div class="archive">
+                <a href="{{ url_for('client.event_archive', index=1) }}">
+                    <p>Older events</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock main %}

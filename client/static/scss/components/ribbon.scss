@@ -1,0 +1,27 @@
+@import '../utils';
+
+$ribbon-height: 0.3125rem;
+$ribbon-strip-width: 7.5rem;
+body { padding-top: $ribbon-height; }
+.ribbon {
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    height: $ribbon-height;
+    font-size: 0; // no space in between inline elements
+    overflow: hidden;
+
+
+    .ribbon-inner {
+        width: ($ribbon-strip-width * 24);
+        .ribbon-strip {
+            height: $ribbon-height;
+            width: $ribbon-strip-width;
+            display: inline-block;
+            &.blue { background-color: $blue; }
+            &.green { background-color: $green; }
+            &.yellow { background-color: $yellow; }
+        }
+
+    }
+}

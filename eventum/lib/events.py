@@ -83,10 +83,10 @@ These data structures include:
     }
 """
 
-from app.models import Event, EventSeries, Image
-from app.forms import EditEventForm
+from eventum.models import Event, EventSeries, Image
+from eventum.forms import EditEventForm
 from datetime import timedelta
-from app import gcal_client
+from eventum import gcal_client
 
 class EventsHelper(object):
     """A class with helper functions that translate WTForms to Mongoengine

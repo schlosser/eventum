@@ -9,8 +9,8 @@ from datetime import datetime
 
 from flask import url_for
 
-from app.models import Post
-from app.lib.text import truncate_html
+from eventum.models import Post
+from eventum.lib.text import truncate_html
 
 now = datetime.now
 

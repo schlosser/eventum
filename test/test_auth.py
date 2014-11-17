@@ -1,7 +1,7 @@
 import base
 from mongoengine import ValidationError, NotUniqueError
 
-from app.models import User, Whitelist
+from eventum.models import User, Whitelist
 
 USER_PRIVILEGES = {
     "user": {

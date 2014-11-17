@@ -1,4 +1,4 @@
-from app.models import BlogPost, User
+from eventum.models import BlogPost, User
 from mongoengine import connect
 
 import os

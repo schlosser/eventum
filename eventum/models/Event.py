@@ -7,8 +7,8 @@
 
 from flask import url_for
 from mongoengine import ValidationError
-from app import adi, db
-from app.models.fields import DateField, TimeField
+from eventum import adi, db
+from eventum.models.fields import DateField, TimeField
 import markdown
 
 from datetime import datetime, timedelta

@@ -5,9 +5,9 @@
 .. moduleauthor:: Dan Schlosser <dan@danrs.ch>
 """
 
-from app import db
-from app.models import User
-from app.lib.regex import SLUG_REGEX
+from eventum import db
+from eventum.models import User
+from eventum.lib.regex import SLUG_REGEX
 from datetime import datetime
 import markdown
 now = datetime.now

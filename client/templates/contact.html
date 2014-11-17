@@ -1,0 +1,111 @@
+{% extends "page.html" %}
+{% block title %}Contact | {{ super() }}{% endblock %}
+
+{% block header_image %}/static/img/hero/contact.jpg{% endblock %}
+
+{% block main %}
+<section class="tagline">
+    <h1>Contact</h1>
+</section>
+<section class="card top-card">
+    <div class="content">
+        <div class="section-header">
+            <h4>Come meet ADI</h4>
+            <span class="bar blue"></span>
+        </div>
+        <h3>Interested in learning more about ADI?  The best way to get to know
+            us better is by coming to
+            <a href="{{ url_for('client.event', slug='cookies-and-code') }}">Cookies and Code</a>,
+            Wednesdays from 10pm-midnight in Lerner 569. People of all experience
+            levels are welcome to come by, meet our members, work on personal
+            projects, and eat free cookies! What could be better?</h3>
+        <div class="button-group centered">
+            <div class="blue button">
+                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                    Find the next Cookies and Code
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="full green callout">
+    <div class="content">
+        <div class="callout-left">
+            <div class="section-header">
+                <h4>Jobs</h4>
+                <span class="bar gray"></span>
+            </div>
+            <h3>Have a job opportunity or looking for one yourself?  Check out the CORE Jobs Board!</h3>
+            <div class="button-group">
+                <div class="button gray"><a target="_blank" href="http://jobs.coreatcu.com">Launch</a></div>
+            </div>
+        </div>
+        <div class="callout-right">
+            <div class="card">
+                <a href="http://jobs.coreatcu.com">
+                    <i style="background-image:url({{ url_for('static', filename='img/jobs.png') }})"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content">
+        <div class="section-header">
+            <h4>Send us an Email</h4>
+            <span class="bar blue"></span>
+        </div>
+        <ul class="contact-options">
+            <li>
+                <h3>Networking</h3>
+                <p>Part of the NYC startup community or an established business? Reach out to Columbia hackers.</p>
+                <div class="button-group centered">
+                    <div class="blue button">
+                        <a href="mailto://networking@adicu.com">
+                           networking@adicu.com
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h3>Workshops</h3>
+                <p>Host a workshop with us. We'll take care of the details so you can focus on what's important: teaching.</p>
+                <div class="button-group centered">
+                    <div class="blue button">
+                        <a href="mailto://workshops@adicu.com">
+                            workshops@adicu.com
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="contact-options">
+            <li>
+                <h3>Social</h3>
+                <p>Co-sponsor an campus event with us, we put the "Fun" in "Fundamentals of Computer Science".</p>
+                <div class="button-group centered">
+                    <div class="blue button">
+                        <a href="mailto://social@adicu.com">
+                            social@adicu.com
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h3>Infrastructure</h3>
+                <p>Help make ADI's technical projects better by suggesting cool features and providing feedback.</p>
+                <div class="button-group centered">
+                    <div class="blue button">
+                        <a href="mailto://infrastructure@adicu.com">
+                            infrastructure@adicu.com
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% if events %}
+        {{ macros.event(events[0]) }}
+        {% endif %}
+    </div>
+</section>
+{% endblock main %}

@@ -1,0 +1,34 @@
+@import '../colors';
+@import '../utils';
+
+$footer-height: 4rem;
+$footer-padding: 4rem;
+footer {
+    @extend .clearfix;
+    background-color: $offgray;
+    color: $white;
+    padding: $footer-padding 0;
+    height: $footer-height;
+    position: absolute;
+    width: 100%;
+    z-index: 100000;
+    p {
+        float: left;
+        font-size: 1rem;
+
+        a {
+            color :$white;
+            &:hover {
+                color: $blue;
+            }
+        }
+
+        &.right {
+            float: right;
+        }
+    }
+}
+
+.footer-spacer {
+    height: ($footer-height + 2*$footer-padding);
+}

@@ -1,0 +1,27 @@
+@import '../colors';
+@import '../base';
+
+.event {
+    .description {
+        margin-bottom: 1rem;
+    }
+    .details {
+        margin-top: 1rem;
+        i {
+            font-size: 1.3rem;
+            width: 2.5rem;
+            margin-right:0.5rem;
+            text-align: center;
+        }
+    }
+    &:last-child {
+        margin-bottom: 2.5rem;
+    }
+}
+
+
+.single-event {
+    .event {
+        margin-bottom: 3rem;
+    }
+}
