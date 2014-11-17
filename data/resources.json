@@ -559,6 +559,28 @@
       ]
     },
     {
+      "name": "Haskell",
+      "id": "haskell",
+      "description": "Haskell is an advanced purely-functional programming language. With strong support for integration with other languages, built-in concurrency and parallelism, debuggers, profilers, rich libraries and an active community, Haskell makes it easier to produce flexible, maintainable, high-quality software.",
+      "resources": [
+        {
+          "name": "Learn You a Haskell for Great Good",
+          "url": "http://learnyouahaskell.com",
+          "description": "A free and fun online resource for learning Haskell. 'The funkiest way to learn Haskell.'"
+        },
+        {
+          "name": "Real World Haskell",
+          "url": "http://book.realworldhaskell.org",
+          "description": "Another high-quality free online resource for learning Haskell, with a bit more serious tone."
+        },
+        {
+          "name": "Haskell Home Page",
+          "url": "https://www.haskell.org/haskellwiki/Haskell",
+          "description": "The main Haskell website, from where you can download the language, visit the very detailed wiki, and explore the many Haskell libraries freely available through Cabal."
+        }
+      ]
+    },
+    {
       "name": "Scala",
       "id": "scala",
       "description": "A powerful and flexible programming language, useful for tackling hard problems.",
