@@ -676,12 +676,14 @@
         {
           "name": "Diving into iOS Programming Talk",
           "url": "http://slides.com/mattpiccolella/diving-into-ios-development/",
-          "description": "An introductory talk given by ADI member Matt Piccolella. This explains the key concepts of iOS development and helps you build your first app!"
+          "description": "An introductory talk given by ADI member Matt Piccolella. This explains the key concepts of iOS development and helps you build your first app!",
+          "adi": true
         },
         {
           "name": "SimpleQuizGame",
           "url": "https://github.com/mjp2220/SimpleQuizGame",
-          "description": "A simple, heavily-commented iOS application that shows the important parts that go into building an app."
+          "description": "A simple, heavily-commented iOS application that shows the important parts that go into building an app.",
+          "adi": true
         },
         {
           "name": "Big Nerd Ranch iOS Programming Guide",
