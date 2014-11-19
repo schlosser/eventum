@@ -317,6 +317,12 @@
           "url": "http://adicu.github.com/intro-webdev",
           "description": "Written and developed by ADI, this 5-part tutorial covers basic Python, Flask, HTML, CSS, and API programming.",
           "adi": true
+        },
+        {
+          "name": "Intermediate Flask",
+          "url": "https://github.com/danrschlosser/intermediate-flask",
+          "description": "Written as a natural extension of the ADI's Accelerated Introduction to Web Development, this tutorial covers advanced topics in Flask, including building large Flask apps, managing dependencies, using a database, and processing form data.",
+          "adi": true
         }
       ]
     },
