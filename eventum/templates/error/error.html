@@ -11,7 +11,7 @@
     <div class="content error">
         <i style="background-image:url({{ url_for('static', filename='img/hero/404.jpg') }});"></i>
         <h1>{{ self.error() }} ({%- block code -%}{%- endblock -%}).</h1>
-        <p>{%- block message -%}{%- endblock %} Try following the links above, or click <a href="{{ url_for('client.index') }}">here</a>.</p>
+        <p>{%- block message -%}{%- endblock %} Try following the links above, or click <a href="{{ client_url_for('home.index') }}">here</a>.</p>
     </div>
 </section>
 {% endblock main %}

@@ -67,7 +67,7 @@
             <i class="image" style="background-image:url({{event.image_url()}});"></i>
         </a>
         <div class="text">
-            <a href="{{ url_for('client.event', slug=event.slug) }}">
+            <a href="{{ url_for('home.event', slug=event.slug) }}">
                 <h5>{{ event.title }}</h5>
             </a>
             <div class="details">

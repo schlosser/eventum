@@ -7,8 +7,7 @@
 import re
 from datetime import datetime
 
-from flask import url_for
-
+from common.interface import client_url_for
 from eventum.models import Post
 from eventum.lib.text import truncate_html
 
@@ -51,7 +50,7 @@ class BlogPost(Post):
         :returns: The url.
         :rtype: str
         """
-        return url_for('blog.post', slug=self.slug)
+        return client_url_for('blog.post', slug=self.slug)
 
     def human_readable_date(self):
         """Retuns the date this post was published, formatted like Oct 08, 2014.

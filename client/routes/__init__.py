@@ -1,8 +1,5 @@
-from client.routes.blog import blog
-from client.routes.client import client
-from client.routes.base import base
+from blog import blog
+from home import home
 
 # note: silences pyflakes unused variables
-assert (base,
-        blog,
-        client)
+assert blog and home

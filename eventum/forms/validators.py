@@ -29,7 +29,7 @@ class UniqueEvent(object):
     Checks the field data against the slugs in the :class:`Event` and
     :class:`EventSeries` collections, so that
 
-        ``url_for('client.events', slug={{ some slug }})``
+        ``url_for('home.events', slug={{ some slug }})``
 
     is unique.
     """

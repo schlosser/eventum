@@ -25,14 +25,14 @@ def index():
 
     Whitelisted users are the only ones allowed to make user accounts.
 
-    **Route:** ``/admin/users``
+    **Route:** ``/users``
 
     **Methods:** ``GET``
     """
 
     upload_form = UploadImageForm()
     whitelist_form = AddToWhitelistForm()
-    return render_template('admin/users/users.html',
+    return render_template('users/users.html',
                            whitelist_form=whitelist_form,
                            upload_form=upload_form,
                            whitelist=Whitelist.objects(redeemed=False),
@@ -45,7 +45,7 @@ def index():
 def me():
     """View the current user's profile.
 
-    **Route:** ``/admin/users/me``
+    **Route:** ``/users/me``
 
     **Methods:** ``GET``
     """
@@ -60,7 +60,7 @@ def delete(user_id):
     then the user will be removed from the whitelist, and not be
     allowed to make an account again.
 
-    **Route:** ``/admin/users/delete/<user_id>``
+    **Route:** ``/users/delete/<user_id>``
 
     **Methods:** ``POST``
     """
@@ -91,7 +91,7 @@ def delete(user_id):
 def user(slug):
     """View and edit the profile of a user.
 
-    **Route:** ``/admin/user/<slug>``
+    **Route:** ``/user/<slug>``
 
     **Methods:** ``GET, POST``
     """
@@ -117,7 +117,7 @@ def user(slug):
         else:
             flash("Your Form had errors: %s" % (form.errors))
 
-    return render_template('admin/users/user.html', user=user, form=form,
+    return render_template('users/user.html', user=user, form=form,
                            current_user=g.user)
 
 #============================================================
@@ -129,7 +129,7 @@ def user(slug):
 def become(level=0):
     """Change the privileges of the logged in user.
 
-    **Route:** ``/admin/become``
+    **Route:** ``/become``
 
     **Methods:** ``GET``
 
@@ -152,7 +152,7 @@ def become(level=0):
 def super():
     """Special case of :func:``become()`` for becoming an admin.
 
-    **Route:** ``/admin/super``
+    **Route:** ``/super``
 
     **Methods:** ``GET``
     """

@@ -1,6 +1,6 @@
 # `/app/templates/`
 
-### admin/admin.html
+### admin.html
 
 ### auth
 

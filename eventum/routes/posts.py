@@ -25,19 +25,19 @@ posts = Blueprint('posts', __name__)
 def index():
     """View all of the blog posts.
 
-    **Route:** ``/admin/posts``
+    **Route:** ``/posts``
 
     **Methods:** ``GET``
     """
     all_posts = BlogPost.objects().order_by('published', '-date_published')
-    return render_template('admin/posts/posts.html', posts=all_posts)
+    return render_template('posts/posts.html', posts=all_posts)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 @requires_privilege('edit')
 def new():
     """Create a new blog post.
 
-    **Route:** ``/admin/posts/new``
+    **Route:** ``/posts/new``
 
     **Methods:** ``POST``
     """
@@ -64,7 +64,7 @@ def new():
 
         return redirect(url_for('.index'))
     images = Image.objects()
-    return render_template('admin/posts/edit.html', user=g.user, form=form,
+    return render_template('posts/edit.html', user=g.user, form=form,
                            images=images, upload_form=upload_form)
 
 @posts.route('/posts/edit/<post_id>', methods=['GET', 'POST'])
@@ -72,7 +72,7 @@ def new():
 def edit(post_id):
     """Edit an existing blog post.
 
-    **Route:** ``/admin/posts/edit/<post_id>``
+    **Route:** ``/posts/edit/<post_id>``
 
     **Methods:** ``GET, POST``
 
@@ -131,14 +131,14 @@ def edit(post_id):
             for u in User.objects()]
     form.author.default = str(g.user.id)
     images = [image for image in Image.objects() if image not in post.images]
-    return render_template('admin/posts/edit.html', user=g.user, form=form,
+    return render_template('posts/edit.html', user=g.user, form=form,
                            post=post, images=images, upload_form=upload_form)
 
 @posts.route('/posts/delete/<post_id>', methods=['POST'])
 def delete(post_id):
     """Delete an existing blog post.
 
-    **Route:** ``/admin/posts/delete/<post_id>``
+    **Route:** ``/posts/delete/<post_id>``
 
     **Methods:** ``POST``
 

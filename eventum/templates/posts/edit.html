@@ -1,0 +1,144 @@
+{% extends "admin.html" %}
+{% import "macros.html" as macros %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_posts" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+
+<link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/github.min.css">
+{% endblock %}
+
+{% block title %}Write a Blog Post{% endblock %}
+{% block pagetitle %}Edit Post{% endblock %}
+{% block pagelink %}{{ url_for('posts.index') }}{% endblock %}
+{% set active_page="Blog" %}
+
+{% block js %}
+{{ super() }}
+<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/posts/edit.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/media/upload.js') }}"></script>
+{% endblock %}
+
+{% block barleft %}
+<i class="fa fa-arrow-left fa-2x"></i>
+{{ super() }}
+{% endblock %}
+
+{% block barright %}
+<a class="text-button" href="#save">Save Draft</a>
+{% if user.can("publish") %}
+{% if post and post.published %}
+{{ macros.toggle("Publish", "Unpublish")}}
+{% else %}
+{{ macros.toggle("Publish", "Unpublish", start_on=False)}}
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block main %}
+{% call macros.modal() %}
+<h3>Add an Image</h3>
+{{ macros.upload_form(upload_form, uploaded_from=url_for('posts.new')) }}
+<div class="image-grid-wrapper">
+<div class="image-grid-wrapper-inner">
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image" data-filename="{{ image.filename }}">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#add-image">
+        <i style="background-image:url({{ image.url() }});"></i>
+        <div class="select"><i class="fa fa-plus fa-6x"></i></div>
+    </a>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endcall %}
+{{ super() }}
+{% endblock %}
+
+{% block toolbar %}
+
+{% if post %}
+<div class="right">
+    {{ macros.confirm("Delete Post", url_for('posts.delete', post_id=post.id)) }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<form class="edit-post-form" method="POST" action="">
+    {{ form.csrf_token }}
+    <div class="title-wrapper">
+        {{ macros.render_field(form.title, required="", label=False,  placeholder="Title", autofocus="")}}
+    </div>
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Permalink:</h6>
+        <p class="permalink-base">{{ client_url_for('blog.post', slug="") }}</p>
+        {{ macros.render_field(form.slug, required="", label=False, placeholder="my-cool-post   ")}}
+        {% if post and post.published %}
+        <a href="{{ client_url_for('blog.post', slug=post.slug)}}" target="_blank">
+            <i class="fa fa-external-link"></i>
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="permalink-wrapper small">
+        <h6 class="permalink-title">Author:</h6>
+        {{ macros.render_field(form.author, required="") }}
+    </div>
+    {{ macros.render_field(form.body, required="", placeholder="Body", hidden="hidden")}}
+    {{ macros.render_field(form.images, hidden="hidden")}}
+    {{ macros.render_field(form.featured_image, hidden="hidden")}}
+    <div id="epiceditor"></div>
+    <div class="image-help-text">
+        <h3>Add Images</h3>
+        <p class="small">Images can be reference by name in markdown once they have been added here.</p>
+    </div>
+    <ul class="image-grid small-grid selected-images clearfix">
+        <a href="#show-modal">
+            <li class="image add-image">
+                <i class="fa fa-plus fa-6x"></i>
+            </li>
+        </a>
+        {% if post and post.images %}
+        {% for image in post.images %}
+        <li class="image post-image"
+            data-filename="{{ image.filename }}"
+            data-url="{{ image.url() }}">
+            <i style="background-image:url({{ image.url() }});"></i>
+            <p class="filename">
+                <i class="fa fa-star-o featured-image"
+                   data-filename="{{ image.filename }}"></i>
+                {{ image.filename }}
+            </p>
+            <span class="delete">
+                <span class="delete-inner">
+                    <a href="#remove-image"
+                       data-filename="{{ image.filename }}"
+                       data-url="{{ image.url() }}">
+                        <i class="fa fa-trash-o fa-2x"></i>
+                    </a>
+                </span>
+            </span>
+        </li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    <div class="hidden">
+        {{ macros.render_field(form.published) }}
+        <input id="save-post" type="submit" value="Save">
+    </div>
+</form>
+{% endblock %}
+
+
+
+
+

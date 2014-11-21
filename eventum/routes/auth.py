@@ -30,7 +30,7 @@ def login():
 
     If they are logged in, redirect.
 
-    **Route:** ``/admin/login``
+    **Route:** ``/login``
 
     **Methods:** ``GET``
     """
@@ -40,7 +40,7 @@ def login():
     load_csrf_token_into_session()
     args_next = request.args.get('next')
     next = args_next if args_next else request.url_root
-    return render_template('admin/auth/login.html',
+    return render_template('auth/login.html',
                            client_id=app.config["GOOGLE_CLIENT_ID"],
                            state=session['state'],
                            # reauthorize=True,
@@ -64,7 +64,7 @@ def store_token():
             window.location.href = response;
         }
 
-    **Route:** ``/admin/store-token``
+    **Route:** ``/store-token``
 
     **Methods:** ``POST``
     """
@@ -131,7 +131,7 @@ def create_profile():
     """Create a profile (filling in the form with openid data), and
     register it in the database.
 
-    **Route:** ``/admin/create-profile``
+    **Route:** ``/create-profile``
 
     **Methods:** ``GET, POST``
     """
@@ -174,7 +174,7 @@ def create_profile():
         # use code=303 to avoid POSTing to the next page.
         return redirect('/', code=303)
 
-    return render_template('admin/auth/create_profile.html',
+    return render_template('auth/create_profile.html',
                            image_url=request.args.get('image_url'), form=form)
 
 
@@ -183,13 +183,13 @@ def create_profile():
 def logout():
     """Logs out the current user.
 
-    **Route:** ``/admin/logout``
+    **Route:** ``/logout``
 
     **Methods:** ``GET``
     """
     session.pop('gplus_id', None)
     g.user = None
-    return redirect(url_for('client.index'))
+    return redirect(client_url_for('home.index'))
 
 
 def load_csrf_token_into_session():
@@ -205,7 +205,7 @@ def load_csrf_token_into_session():
 def disconnect():
     """Revoke current user's token and reset their session.
 
-    **Route:** ``/admin/disconnect``
+    **Route:** ``/disconnect``
 
     **Methods:** ``GET, POST``
     """

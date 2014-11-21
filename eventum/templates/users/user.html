@@ -1,0 +1,75 @@
+{% extends "admin.html" %}
+{% import "macros.html" as macros %}
+
+{% set active_page = "Users" %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_users" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}{{user.name}} | View User Data{% endblock %}
+{% block pagetitle %}{{user.name}}{% endblock %}
+
+{% block barleft %}
+<a href="{{url_for('users.index')}}">
+    <i class="fa fa-arrow-left fa-2x"></i>
+</a>
+{% endblock %}
+
+{% block barright %}
+{% if current_user.can('admin') %}
+<a class="text-button" href="#save">Save</a>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/users/user.js') }}"></script>
+{% endblock %}
+
+{% block toolbar %}
+{% if current_user.can('admin') %}
+<div class="right">
+    {{ macros.confirm("Delete User", url_for('users.delete', user_id=user.id)) }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="profile-picture">
+    <i style="background-image:url({{ user.get_profile_picture(size=300) }})"></i>
+</div>
+<div class="info">
+    <div class="inner">
+        {% if current_user.can('admin') %}
+        <form class="edit-user-form" action="" method="POST">
+            <div class="title-wrapper">
+                {{ macros.render_field(form.name, required="", label=False,  placeholder="Name", autofocus="") }}
+            </div>
+            {{ macros.render_field(form.email, required="", label=False, placeholder="Email Address") }}
+            <div>
+                {% for subfield in form.user_type %}
+                <ul class="form-component">
+                    <li>{{ subfield }}</li>
+                    <li>{{ subfield.label }}</li>
+                </ul>
+                {% endfor %}
+            </div>
+            <div class="hidden">
+                {{ macros.render_field(form.csrf_token)}}
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        {% else %}
+            <h2>{{ user.name }}</h2>
+            <p>{{user.email}}</p>
+            <p>{{user.user_type}} </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+

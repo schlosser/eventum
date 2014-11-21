@@ -1,7 +1,8 @@
-/app/static/css/gen
-/app/static/img/uploaded/*
+/eventum/static/css/gen
+/client/static/css/gen
+/eventum/static/img/uploaded/*
 !/app/static/img/uploaded/README.md
-/app/static/img/uploaded/*
+/eventum/static/img/uploaded/*
 /lib
 /local
 /log/*

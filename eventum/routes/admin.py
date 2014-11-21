@@ -12,12 +12,13 @@ from eventum.models import Event, BlogPost
 
 admin = Blueprint('admin', __name__)
 
+
 @admin.route('/home', methods=['GET'])
 @login_required
 def index():
     """The homepage of Eventum. Shows the latest blog posts and events.
 
-    **Route:** ``/admin/home``
+    **Route:** ``/home``
 
     **Methods:** ``GET``
     """
@@ -30,7 +31,7 @@ def index():
                               start_date__lt=next_sunday).order_by('start_date')
     posts = BlogPost.objects().order_by('published', '-date_published')[:5]
 
-    return render_template("admin/home.html", this_week=this_week, recent_posts=posts)
+    return render_template("home.html", this_week=this_week, recent_posts=posts)
 
 
 @admin.route('/', methods=['GET'])

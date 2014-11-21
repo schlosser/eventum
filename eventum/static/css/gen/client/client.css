@@ -146,14 +146,14 @@ h6, .h6 {
   }
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -162,7 +162,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -170,48 +170,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -220,7 +220,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -229,7 +229,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -238,7 +238,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -249,7 +249,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -259,7 +259,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -269,30 +269,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -302,7 +302,7 @@ h6, .h6 {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after, footer:after, .faqs .pair:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -312,24 +312,24 @@ h6, .h6 {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -338,7 +338,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -346,48 +346,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -396,7 +396,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -405,7 +405,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -414,7 +414,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -425,7 +425,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -435,7 +435,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -445,30 +445,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -478,31 +478,31 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -512,7 +512,7 @@ button.green a, .button.green a {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after, footer:after, .faqs .pair:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -522,24 +522,24 @@ button.green a, .button.green a {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -548,7 +548,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -556,48 +556,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -606,7 +606,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -615,7 +615,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -624,7 +624,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -635,7 +635,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -645,7 +645,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -655,30 +655,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -688,36 +688,36 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 body {
   padding-top: 0.3125rem;
 }
 
-/* line 6, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 6, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon {
   position: fixed;
   top: 0;
@@ -726,30 +726,30 @@ body {
   font-size: 0;
   overflow: hidden;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner {
   width: 180rem;
 }
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip {
   height: 0.3125rem;
   width: 7.5rem;
   display: inline-block;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.blue {
   background-color: #59ACFF;
 }
-/* line 22, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 22, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.green {
   background-color: #50E582;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.yellow {
   background-color: #FFF159;
 }
 
-/* line 10, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 10, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar {
   -webkit-transition: 0.3s 0 ease all;
   -moz-transition: 0.3s 0 ease all;
@@ -766,20 +766,20 @@ body {
   z-index: 1000;
   top: 0.3125rem;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar.scroll {
   height: 3.5rem;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar.scroll .logo {
   margin-top: 0.625rem;
 }
-/* line 26, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 26, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar.scroll ul li a div {
   height: 3.5rem;
   line-height: 3.5rem;
 }
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar .logo {
   -webkit-transition: 0.3s 0 ease all;
   -moz-transition: 0.3s 0 ease all;
@@ -788,20 +788,20 @@ body {
   height: 2.25rem;
   margin-top: 1.625rem;
 }
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar .right {
   float: right;
 }
-/* line 40, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 40, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar ul {
   font-size: 0;
 }
-/* line 42, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 42, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar ul li {
   font-size: 1rem;
   display: inline-block;
 }
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar ul li a div {
   -webkit-transition: 0.3s 0 ease all;
   -moz-transition: 0.3s 0 ease all;
@@ -811,41 +811,41 @@ body {
   height: 5.5rem;
   line-height: 5.5rem;
 }
-/* line 52, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 52, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar ul li:last-child a div {
   margin-right: -1.25rem;
 }
-/* line 57, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 57, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar a, .navbar a:hover {
   color: #222;
 }
-/* line 61, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+/* line 61, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
 .navbar.up {
   top: -5.5rem;
 }
 
 @media screen and (max-width: 640px) {
-  /* line 68, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+  /* line 68, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
   .navbar.up {
     top: 0;
   }
-  /* line 73, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+  /* line 73, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
   .navbar ul li a div {
     padding: 0 0.75rem;
   }
-  /* line 77, /Users/dan/working/eventum/app/static/scss/client/components/navbar.scss */
+  /* line 77, /Users/dan/working/eventum/eventum/static/scss/client/components/navbar.scss */
   .navbar ul li:last-child a div {
     margin-right: 0;
   }
 }
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -854,7 +854,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -862,48 +862,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -912,7 +912,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -921,7 +921,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -930,7 +930,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -941,7 +941,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -951,7 +951,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -961,55 +961,55 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/components/events.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/components/events.scss */
 .event .description {
   margin-bottom: 1rem;
 }
-/* line 8, /Users/dan/working/eventum/app/static/scss/client/components/events.scss */
+/* line 8, /Users/dan/working/eventum/eventum/static/scss/client/components/events.scss */
 .event .details {
   margin-top: 1rem;
 }
-/* line 10, /Users/dan/working/eventum/app/static/scss/client/components/events.scss */
+/* line 10, /Users/dan/working/eventum/eventum/static/scss/client/components/events.scss */
 .event .details i {
   font-size: 1.3rem;
   width: 2.5rem;
   margin-right: 0.5rem;
   text-align: center;
 }
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/components/events.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/components/events.scss */
 .event:last-child {
   margin-bottom: 2.5rem;
 }
 
-/* line 24, /Users/dan/working/eventum/app/static/scss/client/components/events.scss */
+/* line 24, /Users/dan/working/eventum/eventum/static/scss/client/components/events.scss */
 .single-event .event {
   margin-bottom: 3rem;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -1019,7 +1019,7 @@ h6, .h6 {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after, footer:after, .faqs .pair:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -1029,24 +1029,24 @@ h6, .h6 {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -1055,7 +1055,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -1063,48 +1063,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -1113,7 +1113,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -1122,7 +1122,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -1131,7 +1131,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -1142,7 +1142,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -1152,7 +1152,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -1162,30 +1162,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -1195,36 +1195,36 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 body {
   padding-top: 0.3125rem;
 }
 
-/* line 6, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 6, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon {
   position: fixed;
   top: 0;
@@ -1233,30 +1233,30 @@ body {
   font-size: 0;
   overflow: hidden;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner {
   width: 180rem;
 }
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip {
   height: 0.3125rem;
   width: 7.5rem;
   display: inline-block;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.blue {
   background-color: #59ACFF;
 }
-/* line 22, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 22, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.green {
   background-color: #50E582;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.yellow {
   background-color: #FFF159;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -1266,7 +1266,7 @@ body {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after, footer:after, .faqs .pair:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -1276,24 +1276,24 @@ body {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -1302,7 +1302,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -1310,48 +1310,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -1360,7 +1360,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -1369,7 +1369,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -1378,7 +1378,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -1389,7 +1389,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -1399,7 +1399,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -1409,30 +1409,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -1442,31 +1442,31 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 6, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 6, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 footer {
   background-color: #333;
   color: white;
@@ -1476,25 +1476,25 @@ footer {
   width: 100%;
   z-index: 100000;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 footer p {
   float: left;
   font-size: 1rem;
 }
-/* line 19, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 19, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 footer p a {
   color: white;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 footer p a:hover {
   color: #59ACFF;
 }
-/* line 26, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 26, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 footer p.right {
   float: right;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/components/footer.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/components/footer.scss */
 .footer-spacer {
   height: 12rem;
 }
@@ -1929,7 +1929,7 @@ footer p.right {
   }
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -1939,7 +1939,7 @@ footer p.right {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -1949,24 +1949,24 @@ footer p.right {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -1975,7 +1975,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -1983,48 +1983,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -2033,7 +2033,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2042,7 +2042,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2051,7 +2051,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2062,7 +2062,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2072,7 +2072,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -2082,25 +2082,25 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
@@ -2152,14 +2152,14 @@ button.green a, .button.green a {
   display: block;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -2168,7 +2168,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -2176,48 +2176,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -2226,7 +2226,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2235,7 +2235,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2244,7 +2244,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2255,7 +2255,7 @@ h4, .h4 {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2265,7 +2265,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -2275,25 +2275,25 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
@@ -2323,7 +2323,7 @@ h6, .h6 {
   margin-bottom: 3rem;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -2333,7 +2333,7 @@ h6, .h6 {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after, footer:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -2343,24 +2343,24 @@ h6, .h6 {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -2369,7 +2369,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -2377,48 +2377,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -2427,7 +2427,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2436,7 +2436,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2445,7 +2445,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2456,7 +2456,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2466,7 +2466,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -2476,30 +2476,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -2509,26 +2509,26 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
@@ -2566,14 +2566,14 @@ footer p.right {
   height: 12rem;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -2582,7 +2582,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -2590,48 +2590,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -2640,7 +2640,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2649,7 +2649,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2658,7 +2658,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2669,7 +2669,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2679,7 +2679,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -2689,30 +2689,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -2722,7 +2722,7 @@ h6, .h6 {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -2732,24 +2732,24 @@ h6, .h6 {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -2758,7 +2758,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -2766,48 +2766,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -2816,7 +2816,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2825,7 +2825,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2834,7 +2834,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -2845,7 +2845,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -2855,7 +2855,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -2865,30 +2865,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -2898,26 +2898,26 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
@@ -2992,7 +2992,7 @@ button.green a, .button.green a {
   }
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -3002,7 +3002,7 @@ button.green a, .button.green a {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -3012,24 +3012,24 @@ button.green a, .button.green a {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -3038,7 +3038,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -3046,48 +3046,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -3096,7 +3096,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3105,7 +3105,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3114,7 +3114,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3125,7 +3125,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3135,7 +3135,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -3145,30 +3145,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -3178,31 +3178,31 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -3212,7 +3212,7 @@ button.green a, .button.green a {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -3222,24 +3222,24 @@ button.green a, .button.green a {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -3248,7 +3248,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -3256,48 +3256,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -3306,7 +3306,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3315,7 +3315,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3324,7 +3324,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3335,7 +3335,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3345,7 +3345,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -3355,30 +3355,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -3388,36 +3388,36 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 body {
   padding-top: 0.3125rem;
 }
 
-/* line 6, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 6, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon {
   position: fixed;
   top: 0;
@@ -3426,25 +3426,25 @@ body {
   font-size: 0;
   overflow: hidden;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner {
   width: 180rem;
 }
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip {
   height: 0.3125rem;
   width: 7.5rem;
   display: inline-block;
 }
-/* line 21, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.blue {
   background-color: #59ACFF;
 }
-/* line 22, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 22, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.green {
   background-color: #50E582;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/components/ribbon.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/components/ribbon.scss */
 .ribbon .ribbon-inner .ribbon-strip.yellow {
   background-color: #FFF159;
 }
@@ -3539,7 +3539,7 @@ body {
   }
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -3549,7 +3549,7 @@ body {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -3559,24 +3559,24 @@ body {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -3585,7 +3585,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -3593,48 +3593,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -3643,7 +3643,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3652,7 +3652,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3661,7 +3661,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3672,7 +3672,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3682,7 +3682,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -3692,30 +3692,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -3725,26 +3725,26 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
@@ -3797,7 +3797,7 @@ button.green a, .button.green a {
   margin-left: 1rem;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -3807,7 +3807,7 @@ button.green a, .button.green a {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -3817,24 +3817,24 @@ button.green a, .button.green a {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -3843,7 +3843,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -3851,48 +3851,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -3901,7 +3901,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3910,7 +3910,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3919,7 +3919,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -3930,7 +3930,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -3940,7 +3940,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -3950,30 +3950,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -3983,26 +3983,26 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
@@ -4044,7 +4044,7 @@ body {
   background-color: #FFF159;
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -4054,7 +4054,7 @@ body {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -4064,24 +4064,24 @@ body {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -4090,7 +4090,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -4098,48 +4098,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -4148,7 +4148,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -4157,7 +4157,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -4166,7 +4166,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -4177,7 +4177,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -4187,7 +4187,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -4197,30 +4197,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -4230,35 +4230,35 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }
 
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple {
   width: 100%;
 }
-/* line 7, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 7, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -4267,7 +4267,7 @@ button.green a, .button.green a {
   height: 0;
   clear: both;
 }
-/* line 13, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 13, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small {
   margin-top: 0;
   float: left;
@@ -4275,19 +4275,19 @@ button.green a, .button.green a {
   width: 33.3333333%;
   position: relative;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small:first-child > .inner {
   padding-right: 0.83333rem;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small:nth-child(2) > .inner {
   padding: 0 0.41667rem;
 }
-/* line 26, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 26, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small:nth-child(3) > .inner {
   padding-left: 0.83333rem;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small .image {
   display: block;
   width: 100%;
@@ -4297,33 +4297,33 @@ button.green a, .button.green a {
   background-position: center center;
   background-size: cover;
 }
-/* line 39, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 39, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small .text {
   position: relative;
   left: 0;
   height: auto;
   padding-bottom: 5rem;
 }
-/* line 44, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 44, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small .text .details {
   position: relative;
   width: 100%;
   color: #999;
 }
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
 .triple .small .text p {
   font-size: 1rem;
   line-height: 1.2rem;
 }
 
 @media screen and (max-width: 640px) {
-  /* line 58, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+  /* line 58, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
   .triple .small {
     width: 100%;
     padding: 0 !important;
     margin-bottom: 1rem;
   }
-  /* line 62, /Users/dan/working/eventum/app/static/scss/client/components/triple.scss */
+  /* line 62, /Users/dan/working/eventum/eventum/static/scss/client/components/triple.scss */
   .triple .small .text {
     padding-bottom: 0;
   }
@@ -4417,7 +4417,7 @@ button.green a, .button.green a {
   }
 }
 
-/* line 1, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 1, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .text-width-calculation {
   position: absolute;
   visibility: hidden;
@@ -4427,7 +4427,7 @@ button.green a, .button.green a {
   white-space: nowrap;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .clearfix:after {
   content: " ";
   /* Older browser do not support empty content */
@@ -4437,24 +4437,24 @@ button.green a, .button.green a {
   clear: both;
 }
 
-/* line 21, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 21, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .hidden {
   display: none !important;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/common/utils.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/common/utils.scss */
 .small {
   font-size: 0.8rem !important;
 }
 
-/* line 11, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 11, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 html, body {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
   height: 100%;
 }
 
-/* line 17, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 17, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 p {
   margin-bottom: 0.3125rem;
   font-family: "Roboto Slab", Georgia, serif;
@@ -4463,7 +4463,7 @@ p {
   line-height: 1.9rem;
 }
 
-/* line 25, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 25, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -4471,48 +4471,48 @@ pre {
   font-family: monospace;
 }
 
-/* line 32, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 32, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 ul li {
   font-size: 1.2rem;
   line-height: 1.9rem;
 }
 
-/* line 37, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 37, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 em {
   font-style: italic;
 }
 
-/* line 41, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 41, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 45, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 45, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 img {
   max-width: 100%;
 }
 
-/* line 49, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 49, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 a, a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 54, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 54, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input, textarea {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
   padding: 0.3125rem;
 }
-/* line 59, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 59, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-/* line 69, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 69, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h1, .h1 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 800;
@@ -4521,7 +4521,7 @@ h1, .h1 {
   color: #222;
 }
 
-/* line 76, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 76, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h2, .h2 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -4530,7 +4530,7 @@ h2, .h2 {
   color: #222;
 }
 
-/* line 83, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 83, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h3, .h3 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -4539,7 +4539,7 @@ h3, .h3 {
   color: #222;
 }
 
-/* line 90, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 90, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h4, .h4, button, .button {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 700;
@@ -4550,7 +4550,7 @@ h4, .h4, button, .button {
   color: #222;
 }
 
-/* line 99, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 99, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h5, .h5 {
   font-family: "Roboto Slab", Georgia, serif;
   font-weight: 400;
@@ -4560,7 +4560,7 @@ h5, .h5 {
   color: #222;
 }
 
-/* line 107, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+/* line 107, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
 h6, .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Ariel sans-serif;
   font-weight: 400;
@@ -4570,30 +4570,30 @@ h6, .h6 {
 }
 
 @media screen and (max-width: 1920px) {
-  /* line 116, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 116, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 1440px) {
-  /* line 122, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 122, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 12px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 128, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 128, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 134, /Users/dan/working/eventum/app/static/scss/client/base.scss */
+  /* line 134, /Users/dan/working/eventum/eventum/static/scss/client/base.scss */
   html, body {
     font-size: 10px;
   }
 }
-/* line 5, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 5, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button, .button {
   text-transform: none;
   padding: 1rem 1.875rem;
@@ -4603,26 +4603,26 @@ button, .button {
   background-color: white;
   color: #222;
 }
-/* line 15, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 15, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.gray, .button.gray {
   background-color: #222;
   color: white;
 }
-/* line 20, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 20, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue, .button.blue {
   background-color: #59ACFF;
   color: white;
 }
-/* line 23, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 23, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.blue a, .button.blue a {
   color: white !important;
 }
-/* line 27, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 27, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green, .button.green {
   background-color: #50E582;
   color: white;
 }
-/* line 30, /Users/dan/working/eventum/app/static/scss/client/utils.scss */
+/* line 30, /Users/dan/working/eventum/eventum/static/scss/client/utils.scss */
 button.green a, .button.green a {
   color: white !important;
 }

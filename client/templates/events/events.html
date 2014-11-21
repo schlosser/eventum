@@ -42,7 +42,7 @@
     <div class="content">
         <div class="callout-left">
             <div class="section-header">
-                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                <a href="{{ url_for('home.event', slug='cookies-and-code') }}">
                 <h4>Cookies and Code</h4>
                 </a>
                 <span class="bar gray"></span>
@@ -50,7 +50,7 @@
             <h3>Come meet the community. We bring the cookies, you bring the code!</h3>
             <div class="button-group">
                 <div class="button gray">
-                    <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
+                    <a href="{{ url_for('home.event', slug='cookies-and-code') }}">
                         Find the next Cookies and Code
                     </a>
                 </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="callout-right">
             <div class="card">
-                <a href="{{ url_for('client.event', slug='cookies-and-code')}}">
+                <a href="{{ url_for('home.event', slug='cookies-and-code')}}">
                     <i style="background-image:url({{ url_for('static', filename='img/events/cookie_monster_original.jpg') }})"></i>
                 </a>
             </div>
@@ -91,7 +91,7 @@
     <div class="content">
         <div class="pagination">
             <div class="archive">
-                <a href="{{ url_for('client.event_archive', index=1) }}">
+                <a href="{{ url_for('home.event_archive', index=1) }}">
                     <p>Older events</p>
                 </a>
             </div>

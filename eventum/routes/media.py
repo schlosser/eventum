@@ -24,13 +24,13 @@ media = Blueprint('media', __name__)
 def index():
     """View all of the uploaded images.
 
-    **Route:** ``/admin/media``
+    **Route:** ``/media``
 
     **Methods:** ``GET``
     """
-    images =Image.objects()
+    images = Image.objects()
     form = UploadImageForm()
-    return render_template('admin/media/media.html', images=images, form=form)
+    return render_template('media/media.html', images=images, form=form)
 
 
 def allowed_file(filename):
@@ -60,7 +60,7 @@ def create_filename(f, slug):
 def upload():
     """Upload an image to Eventum
 
-    **Route:** ``/admin/media/upload``
+    **Route:** ``/media/upload``
 
     **Methods:** ``POST``
     """
@@ -81,13 +81,13 @@ def upload():
         flash(form.errors)
     if uploaded_from:
         return redirect(uploaded_from)
-    return render_template('admin/media/upload.html', form=form)
+    return render_template('media/upload.html', form=form)
 
 @media.route('/media/uploads/<filename>', methods=['GET'])
 def file(filename):
     """View the raw image file for the file with name ``filename``.
 
-    **Route:** ``/admin/media/uploads/<filename>``
+    **Route:** ``/media/uploads/<filename>``
 
     **Methods:** ``GET``
 
@@ -101,7 +101,7 @@ def file(filename):
 def delete(filename):
     """View all of the uploaded images.
 
-    **Route:** ``/admin/media/delete/<filename>``
+    **Route:** ``/media/delete/<filename>``
 
     **Methods:** ``POST``
     """

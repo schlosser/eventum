@@ -1,0 +1,62 @@
+{
+  "admin": {
+    "output_folder": "css/gen/",
+    "depends": [
+      "scss/*.scss",
+      "scss/common/*.scss"
+    ],
+    "rules": {
+
+      "scss_admin": {
+        "output": "admin.css",
+        "inputs": [
+          "scss/*.scss",
+          "scss/common/*.scss",
+          "scss/home/*.scss"
+        ]
+      },
+
+      "scss_auth": {
+        "output": "auth.css",
+        "inputs": [ "scss/auth/*.scss" ]
+      },
+
+      "scss_users": {
+        "output": "users.css",
+        "inputs": [ "scss/users/*.scss" ]
+      },
+
+      "scss_events": {
+        "output": "events.css",
+        "inputs": [ "scss/events/*.scss" ]
+      },
+
+      "scss_posts": {
+        "output": "posts.css",
+        "inputs": [ "scss/posts/*.scss" ]
+      },
+
+      "scss_media": {
+        "output": "media.css",
+        "inputs": [ "scss/media/*.scss" ]
+      }
+    }
+  },
+
+
+  "lib": {
+    "output_folder": "css/lib/",
+    "depends": [],
+    "rules": {
+
+      "scss_datetime": {
+        "output": "datetime.css",
+        "inputs": [
+          "scss/lib/bootstrap-datepicker.scss",
+          "scss/lib/jquery.timepicker.scss"
+        ]
+      }
+    }
+  }
+
+}

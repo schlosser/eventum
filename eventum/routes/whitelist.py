@@ -21,7 +21,7 @@ whitelist = Blueprint('whitelist', __name__)
 def delete(email):
     """Delete ``email`` from the whitelist.
 
-    **Route:** ``/admin/whitelist/delete/<email>``
+    **Route:** ``/whitelist/delete/<email>``
 
     **Methods:** ``POST``
 
@@ -40,7 +40,7 @@ def delete(email):
 def add():
     """Add and email to the whitelist.
 
-    **Route:** ``/admin/whitelist/add``
+    **Route:** ``/whitelist/add``
 
     **Methods:** ``POST``
     """

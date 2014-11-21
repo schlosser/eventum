@@ -5,14 +5,12 @@ from media import media
 from posts import posts
 from users import users
 from whitelist import whitelist
-from base import base
 
 # note: silences pyflakes unused variables
-assert (admin,
-        auth,
-        events,
-        media,
-        posts,
-        users,
-        whitelist,
-        base)
+assert (admin and
+        auth and
+        events and
+        media and
+        posts and
+        users and
+        whitelist)

@@ -8,6 +8,38 @@
 from eventum import app
 from flask import url_for, redirect, session, request, g, abort
 from functools import wraps
+from mongoengine.queryset import DoesNotExist
+
+SUPER_USER_GPLUS_ID = 'super'
+
+
+def lookup_current_user():
+    """Set the g.user variable to the User in the database that shares
+    openid with the session, if one exists.
+
+    Note that it gets called before all requests but not before decorators.
+    """
+    from eventum.models import User
+    g.user = None
+    if not app.config.get('GOOGLE_AUTH_ENABLED'):
+        # bypass auth by mocking a super user
+        session['gplus_id'] = SUPER_USER_GPLUS_ID
+        try:
+            g.user = User.objects.get(gplus_id=SUPER_USER_GPLUS_ID)
+        except DoesNotExist:
+            user = User(name='Super User',
+                        gplus_id=SUPER_USER_GPLUS_ID,
+                        user_type='admin',
+                        email='email@email.com')
+            user.save()
+
+    if 'gplus_id' in session:
+        gplus_id = session['gplus_id']
+        try:
+            g.user = User.objects().get(gplus_id=gplus_id)
+        except DoesNotExist:
+            pass  # Fail gracefully if the user is not in the database yet
+
 
 def login_required(f):
     """A decorator requiring a user to be logged in.  Use this to decorate
@@ -20,7 +52,6 @@ def login_required(f):
     :returns: The parameter function ``f``, but with checks for login.
     :rtype: func
     """
-    from eventum.routes.base import lookup_current_user
     @wraps(f)
     def decorated_function(*args, **kwargs):
         """The decorated version of ``f`` (see :method:``login_required``).
@@ -28,7 +59,6 @@ def login_required(f):
         :param args: Arguments for ``f``.
         :params kwargs: Keyword arguments for ``f``.
         """
-
         lookup_current_user()
         try:
             if g.user is None or 'gplus_id' not in session:
@@ -59,7 +89,7 @@ class requires_privilege(object):
         """Create a decorator to limit access to a decorated function to the
         secified privileges.
 
-        :param str privilege: The privilege that the logged in user should have.
+        :param str privilege: The privilege that the logged in user should have
         It can be either ``"edit"``, ``"publish"``, or ``"admin"``.
         """
         self.privilege = privilege
@@ -71,7 +101,6 @@ class requires_privilege(object):
         :returns: The parameter function ``f``, but with checks for login.
         :rtype: func
         """
-        from eventum.routes.base import lookup_current_user
 
         @login_required
         @wraps(f)

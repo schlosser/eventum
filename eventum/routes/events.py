@@ -27,7 +27,7 @@ def index():
     """View the events for this and next week, with optional future and past
     events.
 
-    **Route:** ``/admin/events``
+    **Route:** ``/events``
 
     **Methods:** ``GET``
     """
@@ -38,7 +38,7 @@ def index():
     past_events, this_week, next_week, future_events = \
     _get_events_for_template(past, future)
 
-    return render_template('admin/events/events.html',
+    return render_template('events/events.html',
                            past_events=past_events,
                            this_week=this_week,
                            next_week=next_week,
@@ -111,7 +111,7 @@ def _get_events_for_template(past, future):
 def create():
     """Create a new event.
 
-    **Route:** ``/admin/events/create``
+    **Route:** ``/events/create``
 
     **Methods:** ``GET, POST``
     """
@@ -132,7 +132,7 @@ def create():
     upload_form = UploadImageForm()
     delete_form = DeleteEventForm()
     images = Image.objects()
-    return render_template('admin/events/create.html', form=form,
+    return render_template('events/create.html', form=form,
                            delete_form=delete_form, upload_form=upload_form,
                            images=images)
 
@@ -141,7 +141,7 @@ def create():
 def edit(event_id):
     """Edit an existing event.
 
-    **Route:** ``/admin/events/edit/<event_id>``
+    **Route:** ``/events/edit/<event_id>``
 
     **Methods:** ``GET, POST``
 
@@ -173,7 +173,7 @@ def edit(event_id):
     upload_form = UploadImageForm()
     images = Image.objects()
 
-    return render_template('admin/events/edit.html', form=form, event=event,
+    return render_template('events/edit.html', form=form, event=event,
                            delete_form=delete_form, upload_form=upload_form,
                            images=images)
 
@@ -182,7 +182,7 @@ def edit(event_id):
 def delete(event_id):
     """Delete an existing event.
 
-    **Route:** ``/admin/events/delete/<event_id>``
+    **Route:** ``/events/delete/<event_id>``
 
     **Methods:** ``POST``
 

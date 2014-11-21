@@ -1,102 +1,123 @@
-{% extends "page.html" %}
-{% block title %}Events | {{ super() }}{% endblock %}
+{% extends "admin.html" %}
+{% import "macros.html" as macros %}
 
-{% block header_image_class %}top{% endblock %}
-{% block header_image %}/static/img/hero/group.jpg{% endblock %}
+{% set active_page='Events' %}
 
-{% block main %}
-<section class="tagline">
-    <h1>Events</h1>
-</section>
-{% if events_this_week %}
-<section class="card top-card">
-    <div class="content">
-        <div class="section-header">
-            <h4>This Week</h4>
-            <span class="bar green"></span>
-        </div>
-        {% for event in events_this_week %}
-            {{ macros.event(event) }}
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-{% if upcoming_events %}
-{% if events_this_week %}
-<section>
+{% block css %}
+{{ super() }}
+{% assets "scss_events" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block title %}View Events{% endblock %}
+{% block pagetitle %}Events{% endblock %}
+{% block pagelink %}{{ url_for('events.index') }}{% endblock %}
+
+{% if request.args.get('past') %}
+{% set past = request.args.get('past')|int %}
 {% else %}
-<section class="card top-card">
+{% set past = 0 %}
 {% endif %}
-    <div class="content">
-        <div class="section-header">
-            <h4>Upcoming</h4>
-            <span class="bar blue"></span>
-        </div>
-        {% for event in upcoming_events %}
-            {{ macros.event(event) }}
+{% if request.args.get('future') %}
+{% set future = request.args.get('future')|int %}
+{% else %}
+{% set future = 0 %}
+{% endif %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/events/events.js') }}"></script>
+{% endblock %}
+
+{% macro render_event(event) %}
+<li
+    {% if not event.ready_for_publishing() %}
+    class="incomplete event"
+    {% elif event.published %}
+    class="published event"
+    {% else %}
+    class="unpublished event"
+    {% endif %}
+    >
+    <a href="{{ url_for('events.edit', event_id=event.id) }}">
+    <span
+        {% if event.published %}
+        class="published"
+        {% else %}
+        class="not-published"
+        {% endif %}
+    ></span>
+    <div class="text-content">
+        <h3>{{event.title}}</h3>
+        <p>{{event.location}}</p>
+        <p>{{ event.human_readable_datetime() }}</p>
+    </div>
+    <div class="creator">
+        <span class="image">
+            <img src="{{ event.creator.get_profile_picture() }}">
+        </span>
+        <p class="name">{{ event.creator.name }}</p>
+    </div>
+    </a>
+</li>
+{% endmacro %}
+
+{% macro render_week (week_name, events) %}
+{% if week_name %}
+<h2>{{ week_name }}</h2>
+{% endif %}
+<div class="events-wrapper">
+    <ul class="events clearfix"
+        style="width:{{ 16.5*(events|count) - 1 }}rem;">
+    {% if events %}
+        {% for event in events %}
+        {{ render_event(event) }}
         {% endfor %}
+    {% else %}
+        <li class="no-events">
+            <p>No events this week</p>
+        </li>
+    {% endif %}
+    </ul>
+</div>
+{% endmacro%}
+
+{% block barright %}
+<a href="{{ url_for('events.create') }}">
+    <i class="fa fa-plus fa-2x"></i>
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="pagination">
+    <div class="past">
+        <a href="{{url_for('events.index', future=future, past=(past + 1)) }}">
+            <p>Past events</p>
+        </a>
     </div>
-</section>
-{% endif %}
-<section class="full green callout">
-    <div class="content">
-        <div class="callout-left">
-            <div class="section-header">
-                <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
-                <h4>Cookies and Code</h4>
-                </a>
-                <span class="bar gray"></span>
-            </div>
-            <h3>Come meet the community. We bring the cookies, you bring the code!</h3>
-            <div class="button-group">
-                <div class="button gray">
-                    <a href="{{ url_for('client.event', slug='cookies-and-code') }}">
-                        Find the next Cookies and Code
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="callout-right">
-            <div class="card">
-                <a href="{{ url_for('client.event', slug='cookies-and-code')}}">
-                    <i style="background-image:url({{ url_for('static', filename='img/events/cookie_monster_original.jpg') }})"></i>
-                </a>
-            </div>
-        </div>
+</div>
+{% for week in past_events %}
+<div class="past-week week">
+    {{ render_week("Week of " + week.week_name, week.events) }}
+</div>
+{% endfor %}
+<div class="this-week week">
+    {{ render_week("This Week", this_week) }}
+</div>
+<div class="next-week week">
+    {{ render_week("Next Week", next_week) }}
+</div>
+{% for week in future_events %}
+<div class="future-week week">
+    {{ render_week("Week of " + week.week_name, week.events) }}
+</div>
+{% endfor %}
+<div class="pagination" id="bottom">
+    <div class="future">
+        <a href="{{url_for('events.index', future=(future + 1), past=past) }}#bottom">
+            <p>Future events</p>
+        </a>
     </div>
-</section>
-{% if recent_events %}
-<section>
-    <div class="content">
-        <div class="section-header">
-            <h4>Past Events</h4>
-            <span class="bar blue"></span>
-        </div>
-        {% for triple in range(((recent_events|length) // 3) + 1) %}
-        <div class="triple">
-            {% for i in range(3) %}
-            {% with index = 3 * triple + i %}
-            {% if index < (recent_events | length) %}
-                {{ macros.small_event(recent_events[index]) }}
-            {% endif %}
-            {% endwith %}
-            {% endfor %}
-        </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-{% if more_past_events %}
-<section>
-    <div class="content">
-        <div class="pagination">
-            <div class="archive">
-                <a href="{{ url_for('client.event_archive', index=1) }}">
-                    <p>Older events</p>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-{% endif %}
-{% endblock main %}
+</div>
+{% endblock %}
