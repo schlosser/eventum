@@ -1,11 +1,24 @@
+"""
+.. module:: blog
+    :synopsis: All routes on the ``blog`` Blueprint.
+
+.. moduleauthor:: Dan Schlosser <dan@danrs.ch>
+"""
+
 from flask import Blueprint, render_template, abort, redirect, url_for
 
 from app.models import BlogPost
 
 blog = Blueprint('blog', __name__)
 
-@blog.route('/blog')
+@blog.route('/blog', methods=['GET'])
 def index():
+    """View recent blog posts.
+
+    **Route:** ``/blog``
+
+    **Methods:** ``GET``
+    """
     blog_posts = list(BlogPost.objects(published=True).order_by('-date_published')[:10])
     previous_index = None
     next_index = 1
@@ -14,8 +27,14 @@ def index():
                            previous_index=previous_index,
                            next_index=next_index)
 
-@blog.route('/blog/<int:index>')
+@blog.route('/blog/<int:index>', methods=['GET'])
 def blog_archive(index):
+    """View older blog posts.
+
+    **Route:** ``/blog/<index>``
+
+    **Methods:** ``GET``
+    """
     index = int(index)
 
     if index <= 0:
@@ -33,8 +52,14 @@ def blog_archive(index):
                            previous_index=previous_index,
                            next_index=next_index)
 
-@blog.route('/blog/post/<slug>')
+@blog.route('/blog/post/<slug>', methods=['GET'])
 def post(slug):
+    """View an individual blog post.
+
+    **Route:** ``/blog/post/<slug>``
+
+    **Methods:** ``GET``
+    """
     if BlogPost.objects(slug=slug).count() != 1:
         abort(404)
     post = BlogPost.objects().get(slug=slug)

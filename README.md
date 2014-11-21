@@ -49,7 +49,7 @@ python run.py
 
 Or alternately:
 
-```
+```bash
 ./develop.sh
 source bin/activate
 source config/settings.dev
@@ -65,6 +65,63 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 ```bash
 # Whether or not to enable Google Auth or not.
 echo $GOOGLE_AUTH_ENABLED
+```
+
+
+
+
+## Vagrant
+
+There is an alternative installation route that will set up a virtual machine on your computer and install all necessary software for you.
+You must first install [Virtual box](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/).
+
+
+```bash
+vagrant up
+# wait for installation
+
+# enter your virtual machine
+vagrant ssh
+
+# enter your project directory
+cd /vagrant
+
+# add application settings to your environment
+source config/settings.sh
+
+# run the application
+python run.py
+
+# view the app!
+# open your browser to localhost:5000
+```
+
+
+
+
+## Documentation
+
+Eventum uses [Sphinx](http://sphinx-doc.org/) to compile documentation to an HTML website.  This documentation is generated from the source code.
+
+Here's how to compile the docs:
+
+```bash
+# The documentation requires that the app is runnable, so you must be in a
+# development environment
+./develop.sh
+source bin/activate
+source config/settings.sh
+
+cd docs
+# This will generate the documentation website in /docs/_build/html
+make html 
+
+# Then either host the docs on localhost:8000
+cd _build/html
+python -m SimpleHTTPServer .
+
+# Or open them directly
+open _build/html/index.html
 ```
 
 ## Testing

@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # flask settings
-export HOST=localhost
+export HOST=0.0.0.0
 export PORT=5000
 export DEBUG=TRUE
-export SECRET_KEY=
+export SECRET_KEY=INSERT_YOUR_KEY
 
 # google related credentials
 export INSTALLED_APP_CLIENT_SECRET_PATH=client_secrets.json

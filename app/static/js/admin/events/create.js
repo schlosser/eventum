@@ -12,9 +12,9 @@ $(function() {
         $('input[name="ends"][value=' + end_val + ']').prop('checked', true);
         if (end_val == 'on') {
             $('#recurrence_end_date').val($("#m-recurrence_end_date").val());
-            $('#num_occurances').val(1);
+            $('#num_occurrences').val(1);
         } else if (end_val == 'after') {
-            $('#num_occurances').val($("#m-num_occurances").val());
+            $('#num_occurrences').val($("#m-num_occurrences").val());
             $('#recurrence_end_date').val("");
         }
         $('.create-event-form .summary').text($('.modal .summary').text());
@@ -27,7 +27,7 @@ $(function() {
         $('input[name="m-ends"]').removeAttr('checked');
         var end_val = $('input[name="ends"]:checked').val();
         $('input[name="m-ends"][value=' + end_val + ']').prop('checked', true);
-        $('#m-num_occurances').val($("#num_occurances").val());
+        $('#m-num_occurrences').val($("#num_occurrences").val());
         if ($("#recurrence_end_date").val()){
             $('#m-recurrence_end_date').val($("#recurrence_end_date").val());
         } else {
@@ -49,7 +49,7 @@ $(function() {
         summary += " on " + dayAtIndex($('#m-starts').datepicker('getDate').getDay());
         switch ($('input[name="m-ends"]:checked').val()) {
             case "after":
-                summary += ", for " + $("#m-num_occurances").val() + " occurances";
+                summary += ", for " + $("#m-num_occurrences").val() + " occurrences";
                 break;
             case "on":
                 summary += ", until " + $("#m-recurrence_end_date").val();
@@ -141,7 +141,7 @@ $(function() {
         $('input[name="m-ends"]').removeAttr('checked');
         $(this).siblings('input[type="radio"]').prop("checked", true);
     });
-    $(document).on('focus', '#m-num_occurances', function() {
+    $(document).on('focus', '#m-num_occurrences', function() {
         $('input[name="m-ends"]').removeAttr('checked');
         $(this).siblings('input[type="radio"]').prop("checked", true);
     });

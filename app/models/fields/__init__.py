@@ -1,3 +1,4 @@
 from TimeField import TimeField
+from DateField import DateField
 
-assert (TimeField)
+assert (TimeField, DateField)

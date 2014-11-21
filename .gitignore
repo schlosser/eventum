@@ -20,3 +20,8 @@ credentials.json
 .webassets-cache
 .lesshst
 .Python
+
+# Sphinx
+_build
+
+.vagrant
