@@ -230,7 +230,7 @@ class Event(db.Document):
             ])
 
     def is_multiday(self):
-        """Retuns True if the event spans muliple days.
+        """Returns True if the event spans muliple days.
 
         :returns: True if the event spans multiple days.
         :rtype: bool

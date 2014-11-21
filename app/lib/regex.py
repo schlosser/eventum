@@ -7,7 +7,7 @@
 
 from config.flask_config import ALLOWED_UPLOAD_EXTENSIONS
 
-SLUG_REGEX = r'([0-9]|[a-z]|[A-Z]|\-)+'
+SLUG_REGEX = r'[0-9a-zA-Z-]+'
 FILENAME_REGEX = r'[\w\-@\|\(\)]+'
-FULL_FILENAME_REGEX = ( FILENAME_REGEX + '(' + 
-                       ('|'.join(ALLOWED_UPLOAD_EXTENSIONS)+')'))
+FULL_FILENAME_REGEX = "{fname}({ext})".format(fname=FILENAME_REGEX,
+        ext="|".join(ALLOWED_UPLOAD_EXTENSIONS))
