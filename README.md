@@ -67,6 +67,38 @@ It is possible to run Eventum without logging in using Google+ or authenticating
 echo $GOOGLE_AUTH_ENABLED
 ```
 
+
+
+
+## Vagrant
+
+There is an alternative installation route that will set up a virtual machine on your computer and install all necessary software for you.
+You must first install [Virtual box](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/).
+
+
+```bash
+vagrant up
+# wait for installation
+
+# enter your virtual machine
+vagrant ssh
+
+# enter your project directory
+cd /vagrant
+
+# add application settings to your environment
+source config/settings.sh
+
+# run the application
+python run.py
+
+# view the app!
+# open your browser to localhost:5000
+```
+
+
+
+
 ## Documentation
 
 Eventum uses [Sphinx](http://sphinx-doc.org/) to compile documentation to an HTML website.  This documentation is generated from the source code.
