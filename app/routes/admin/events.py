@@ -82,7 +82,7 @@ def create():
     form.owner.choices = [
             (str(u.id), u.name + " (You)" if u == g.user else u.name)
     for u in User.objects()]
-    form.owner.default = str(g.user.id)
+    form.owner.data = str(g.user.id)
     if form.validate_on_submit():
         try:
             EventsHelper.create_event(form, g.user)

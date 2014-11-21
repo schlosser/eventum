@@ -360,7 +360,7 @@ class DataBuilder(object):
             'is_recurring': event.is_recurring,
             'facebook_url': event.facebook_url,
             'event_image': event.image.filename if event.image else None,
-            'owner': str(User.objects.get(id=ObjectId(event.owner.data)))
+            'owner': User.objects.get(id=ObjectId(event.owner.id))
         }
 
     @classmethod
@@ -395,7 +395,7 @@ class DataBuilder(object):
             'is_recurring': form.is_recurring.data,
             'facebook_url': form.facebook_url.data,
             'image': event_image,
-            'owner': User.objects.get(id=ObjectId(form.owner.data)) 
+            'owner': User.objects.get(id=ObjectId(form.owner.data))
         }
         if creator:
             event_data['creator'] = creator

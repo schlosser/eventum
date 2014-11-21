@@ -67,6 +67,7 @@ def edit(post_id):
             should_be_published = form.published.data
             post.title = form.title.data
             post.author = User.objects.get(id=ObjectId(form.author.data))
+            raise Exception("TEST")
             post.slug = form.slug.data
             post.markdown_content = form.body.data
             post.images = [Image.objects().get(filename=fn) for fn in form.images.data]
