@@ -630,6 +630,12 @@
           "adi": true
         },
         {
+          "name": "Intro to Android by ADI Slides",
+          "url": "http://slides.com/parthibanloganathan/intro-to-android-development",
+          "description": "In addition to the tutorial on GitHub, check out the slides from our Android workshop.",
+          "adi": true
+        },
+        {
           "name": "Android Developer Reference",
           "url": "https://developer.android.com/develop/index.html",
           "description": "Portal for all things Android development: references, tools, news."
