@@ -160,6 +160,10 @@ def edit(event_id):
 
     form = EditEventForm(request.form) if request.method == 'POST' else \
         EventsHelper.create_form(event, request)
+    form.owner.choices = [
+            (str(u.id), u.name + " (You)" if u == g.user else u.name)
+    for u in User.objects()]
+    form.owner.data = str(g.user.id)
 
     if form.validate_on_submit():
         try:

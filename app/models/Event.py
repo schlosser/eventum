@@ -344,6 +344,6 @@ class Event(db.Document):
         :rtype: str
         """
         return 'Event(title=%r, location=%r, creator=%r, start=%r, end=%r, ' \
-            'published=%r)' % (self.title, self.location, self.creator,
+            'published=%r, owner=%r)' % (self.title, self.location, self.creator,
                              self.start_datetime(), self.end_datetime(),
-                             self.published)
+                             self.published, self.owner)

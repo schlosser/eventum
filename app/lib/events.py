@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-from app.models import Event, EventSeries, Image, User
-from app.forms import CreateEventForm
-from datetime import timedelta
-from app import gcal_client
-from app.lib.error import GoogleCalendarAPIError
-
-from bson.objectid import ObjectId
-
-=======
 """
 .. module:: events
     :synopsis: This module contains classes that aid in the translation from
@@ -93,11 +83,11 @@ These data structures include:
     }
 """
 
-from app.models import Event, EventSeries, Image
+from app.models import Event, EventSeries, Image, User
 from app.forms import EditEventForm
+from bson.objectid import ObjectId
 from datetime import timedelta
 from app import gcal_client
->>>>>>> upstream/master
 
 class EventsHelper(object):
     """A class with helper functions that translate WTForms to Mongoengine
@@ -394,6 +384,7 @@ class EventsHelper(object):
             shared_gcal_id = event.gcal_id
             shared_gcal_sequence = event.gcal_sequence
             shared_creator = event.creator
+            shared_owner = event.owner
 
             event.parent_series.delete_all()
             series = klass._make_series(None,
@@ -405,6 +396,7 @@ class EventsHelper(object):
             event_data['gcal_id'] = shared_gcal_id
             event_data['gcal_sequence'] = shared_gcal_sequence
             event_data['creator'] = shared_creator
+            event_date['owner'] = shared_owner
 
             # Make the individual Event objects in the series
             while klass._more_events(series, date_data):
@@ -481,6 +473,7 @@ class EventsHelper(object):
         event_data['parent_series'] = series
         event_data['creator'] = event.creator
         event_data['gcal_id'] = event.gcal_id
+        event_date['owner'] = event.owner
 
         klass._update_event(event, event_data, date_data)
         series.events.append(event)
@@ -818,7 +811,7 @@ class DataBuilder(object):
             'is_recurring': event.is_recurring,
             'facebook_url': event.facebook_url,
             'event_image': event.image.filename if event.image else None,
-            'owner': User.objects.get(id=ObjectId(event.owner.id))
+            'owner': User.objects.get(id=event.owner.id)
         }
 
     @classmethod
