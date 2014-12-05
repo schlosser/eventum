@@ -111,6 +111,8 @@ $hero-height: 38rem;
     padding-top: $navbar-height;
     position: relative;
     height: $hero-height;
+    overflow: hidden;
+
     .scrim {
         @include scrim;
         height: 100%;
@@ -121,18 +123,10 @@ $hero-height: 38rem;
 
     i {
         display: block;
-        margin-top: -$navbar-height;
         height: ($hero-height + $navbar-height);
         width: 100%;
         background-position: center center;
         background-size: cover;
-
-        &.top {
-            background-position: top center;
-        }
-        &.top-offset {
-            background-position: top -4rem center;
-        }
     }
 
     .solid {
@@ -152,17 +146,19 @@ $hero-height: 38rem;
 $section-top: 3.75rem;
 $section-bottom: 1.25rem;
 .main {
-    margin-top: -15rem;
+    margin-top: -18rem;
     height: auto !important;
     height: 100%;
-    padding-bottom: 4rem;
 
     &.no-hero {
         padding-top: ($navbar-height + 3rem);
         margin-top: 0;
     }
-
+    .tagline{
+        background-color: $transparent;
+    }
     .tagline h1 {
+
         color: $white;
         margin: 1.5rem auto;
         width: 95%;
@@ -171,6 +167,7 @@ $section-bottom: 1.25rem;
     }
 
     section {
+        background-color: $white;
         position: relative;
 
         &:after {
@@ -187,6 +184,10 @@ $section-bottom: 1.25rem;
 
         .section-header {
             margin-bottom: 2.1875rem;
+        }
+
+        &:last-child{
+            padding-bottom: 4rem;
         }
     }
     .bar {
@@ -210,6 +211,10 @@ $section-bottom: 1.25rem;
         max-width: 95%;
         margin: 0 auto;
         background-color: $white;
+        &+section{
+
+            background-color: $white;
+        }
     }
     .card {
         border-top-left-radius: $radius;
@@ -355,6 +360,8 @@ $section-bottom: 1.25rem;
         i {
             height: ($hero-height + $navbar-height - 10rem);
         }
+        
+
     }
 
     .main .subscribe {
