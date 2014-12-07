@@ -12,4 +12,14 @@ $(function() {
           scrollTop: $('html, body').offset().top
         }, 200  );
     });
+
+
+
+    $(window).scroll(function(e){
+      parallax();
+    });
+    function parallax(){
+      var scrolled = $(window).scrollTop();
+      $('.hero i').css('margin-top',(scrolled/2)+'px');
+    }
 });
