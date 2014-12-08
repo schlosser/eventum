@@ -196,7 +196,7 @@ $section-bottom: 1.25rem;
         display: block;
         background-color: $yellow;
 
-        &.blue { background-color: $blue; }
+        &.blue { background-color: $blue;  }
         &.green { background-color: $green; }
         &.yellow { background-color: $yellow; }
         &.gray { background-color: $gray; }
@@ -313,20 +313,20 @@ $section-bottom: 1.25rem;
     }
 }
 .yellow {
-    background-color: $yellow;
-    color: $gray;
+    background-color: $yellow !important;
+    color: $gray !important;
 }
 .blue {
-    background-color: $blue;
-    color: $gray;
+    background-color: $blue !important;
+    color: $gray !important;
 }
 .green {
-    background-color: $green;
-    color: $gray;
+    background-color: $green !important;
+    color: $gray !important;
 }
 .white {
-    background-color: $green;
-    color: $gray;
+    background-color: $green !important;
+    color: $gray !important;
 }
 .yellow, .blue, .green {
     p a {
@@ -360,7 +360,7 @@ $section-bottom: 1.25rem;
         i {
             height: ($hero-height + $navbar-height - 10rem);
         }
-        
+
 
     }
 
