@@ -1,5 +1,43 @@
 {
-    "questions": [
+    "projects": [
+        {
+            "title": "Density",
+            "image": "img/density.png",
+            "url": "http://density.adicu.com",
+            "buttons": [
+                {
+                    "title": "Find Study Space",
+                    "url": "http://density.adicu.com"
+                }
+            ],
+            "description": "Using Wi-Fi data acquired thanks to the help of Engineering Student Council and CUIT, we are able to estimate how full certain areas are. What this means it that now you can check if Butler is full without having to actually go to Butler! Density updates every 15 minutes."
+        },
+        {
+            "title": "Courses",
+            "image": "img/courses.png",
+            "url": "http://courses.adicu.com",
+            "buttons": [
+                {
+                    "title": "Plan Your Schedule",
+                    "url": "http://courses.adicu.com"
+                }
+            ],
+            "description": "Courses by ADI is a course scheduler for Columbia students.  Orginally developed in 2011 by ADI's founders, Courses has been taken over by ADI Labs, who is maintaining it using a data pipeline provided by <a href=\"https://cuit.columbia.edu/\">CUIT</a>."
+        },
+        {
+            "title": "Eventum",
+            "image": "img/eventum.png",
+            "url": "https://adicu.com/blog/post/origins-of-eventum",
+            "buttons": [
+                {
+                    "title": "Learn More",
+                    "url": "https://adicu.com/blog/post/origins-of-eventum"
+                }
+            ],
+            "description": "Eventum is the content management system that powers <a href=\"https://adicu.com\">adicu.com</a>, driving the events, blog, and Google Calendar.  Eventum will allow student groups to better organize their events at Columbia, while reducing the organizational effort needed."
+        }
+    ],
+    "faqs": [
         {
             "question": "What will I get out of ADI Labs?",
             "answer": "Experienced developers will have the opportunity to mentor less experienced developers as well as perform architectural work on new projects. Less experienced developers will learn industry standard best practices and how to work in a large project."

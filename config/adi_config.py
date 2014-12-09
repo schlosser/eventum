@@ -7,8 +7,8 @@ DEFAULT_EVENT_IMAGE = 'img/events/default_event.png'
 # Resources
 RESOURCES_PATH = 'data/resources.json'
 
-# Labs FAQ
-FAQ_PATH = 'data/labs_faq.json'
+# Labs Data
+LABS_DATA_PATH = 'data/labs_data.json'
 
 # Jobfair Companies
 COMPANIES_PATH = 'data/companies.json'

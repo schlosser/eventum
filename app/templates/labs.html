@@ -17,38 +17,65 @@
    <div class="content">
         <h3>Learn software engineering by working on apps used by thousands of Columbia students! ADI Labs meets once a week for four hours to develop software intended to make life easier at Columbia.
         </h3>
-        <h3>As a member of Labs, you’ll learn to contribute to open source projects and to take your programming beyond problem sets. Paired with one of our student mentors, you’ll learn software engineering techniques used in industry.  Interested? Applications are now open.</h3>
-        <div class="button-group centered">
-            <a target="_blank" href="https://docs.google.com/forms/d/1_4ac1sG7mGRz7aSNaXaFH_JMGxdwsfPkB8Iz-xkCgYw/viewform">
-                <div class="button green">Apply Now</div>
-            </a>
-        </div>
+        <h3>As a member of Labs, you’ll learn to contribute to open source projects and to take your programming beyond problem sets. Paired with one of our student mentors, you’ll learn software engineering techniques used in industry.</h3>
    </div>
+</section>
+<section>
+    <div class="content projects">
+        <div class="section-header">
+            <h4>Projects</h4>
+            <span class="bar green"></span>
+        </div>
+        <h3>Open source projects built by Columbia students for Columbia Students.</h3>
+        <ul>
+            {% for project in data.projects %}
+            <div class="event large">
+                <div class="image">
+                    <a href="{{ project.url }}">
+                        <img src="{{ url_for('static', filename=project.image) }}"></i>
+                    </a>
+                </div>
+                <div class="text">
+                    <a href="{{ project.url }}">
+                        <h2>{{ project.title }}</h2>
+                    </a>
+                    <p class="description">{{ project.description | safe }}</p>
+                    <div class="button-group">
+                    {% for button in project.buttons %}
+                        <a href="{{ button.url }}">
+                            <div class="button green">{{ button.title }}</div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
 </section>
 <section class="full blue callout">
     <div class="content">
         <div class="callout-left">
             <div class="section-header">
-                <h4>Projects</h4>
+                <h4>Apply</h4>
                 <span class="bar gray"></span>
             </div>
-            <h3>Open source projects built by Columbia students for Columbia Students.</h3>
+            <h3>Interested in taking your programming beyond problem sets?</h3>
             <div class="button-group">
-                <div class="button gray"><a href="http://courses.adicu.com">Courses by ADI</a></div>
-                <div class="button gray"><a href="http://data.adicu.com">data.adicu.com</a></div>
+                <div class="button gray"><a target="_blank" href="https://docs.google.com/forms/d/1_4ac1sG7mGRz7aSNaXaFH_JMGxdwsfPkB8Iz-xkCgYw/viewform">Apply Now</a></div>
             </div>
             <p>Just getting started? <a href="/resources">Learn to Code</a></p>
         </div>
         <div class="callout-right">
             <div class="card">
                 <a href="http://courses.adicu.com">
-                    <i style="background-image:url({{ url_for('static', filename='img/courses_by_adi.png') }})"></i>
+                    <i style="background-image:url({{ url_for('static', filename='img/apply.jpg') }})"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
-<section class="card top-card">
+<section>
    <div class="content">
        <div class="section-header">
            <h4>FAQ</h4>
@@ -57,7 +84,7 @@
    </div>
    <div class="content">
         <ul class="faqs">
-            {% for faq in faqs %}
+            {% for faq in data.faqs %}
             {% if loop.index0 % 2 == 0 %}
             <div class="pair">
             {% endif %}
@@ -65,7 +92,7 @@
                     <strong>{{ faq.question }}</strong>
                     <p>{{ faq.answer | safe }}</p>
                 </li>
-            {% if loop.index0 % 2 == 1 or loop.index0 == faqs | length %}
+            {% if loop.index0 % 2 == 1 or loop.index0 == data.faqs | length %}
             </div>
             {% endif %}
             {% endfor %}
