@@ -52,6 +52,16 @@ def contact():
     """
     return render_template('contact.html')
 
+@client.route('/feedback', methods=['GET'])
+def feedback():
+    """Submit feedback on past ADI events.
+
+    **Route:** ``/feedback``
+
+    **Methods:** ``GET``
+    """
+    return render_template('feedback.html')
+
 @client.route('/jobfair', methods=['GET'])
 def jobfair():
     """View the ADI Startup Career Fair page.
