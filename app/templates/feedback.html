@@ -358,7 +358,7 @@ input[type='text'], input:not([type]), textarea {
 
 
 <div class="ss-form-container"><div class="ss-header-image-container"><div class="ss-header-image-image"><div class="ss-header-image-sizer"></div></div></div>
-<div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">{eventName} Feedback</h1>
+<div class="ss-top-of-page"><div class="ss-form-heading"><h1 class="ss-form-title" dir="ltr">{{ request.args.get('event') }} Feedback</h1>
 <div class="ss-form-desc ss-no-ignore-whitespace" dir="ltr">Please provide feedback for the ADI Event you just attended. We appreciate all of your feedback!</div>
 
 <div class="ss-required-asterisk" aria-hidden="true">* Required</div></div></div>
@@ -369,7 +369,7 @@ input[type='text'], input:not([type]), textarea {
 <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
 <span class="ss-required-asterisk" aria-hidden="true">*</span></div>
 <div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.1796697257" value="{eventName}" class="ss-q-short" id="entry_1796697257" dir="auto" aria-label="What event did you just attend?  " aria-required="true" required="" title="">
+<input type="text" name="entry.1796697257" value="{{ request.args.get('event') }}" class="ss-q-short" id="entry_1796697257" dir="auto" aria-label="What event did you just attend?  " aria-required="true" required="" title="">
 <div class="error-message" id="607652747_errorMessage"></div>
 <div class="required-message">This is a required question</div>
 </div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
