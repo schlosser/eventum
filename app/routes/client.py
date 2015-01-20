@@ -42,6 +42,17 @@ def index():
                            events=events,
                            blog_post=blog_post)
 
+@client.route('/events/devfest', methods=['GET'])
+@client.route('/devfest', methods=['GET'])
+def devfest():
+    """View the DevFest landing page.
+
+    **Route:** ``/devfest``, ``/events/devfest``
+
+    **Methods:** ``GET``
+    """
+    return redirect("http://devfe.st")
+
 @client.route('/contact', methods=['GET'])
 def contact():
     """View contact information.
@@ -143,11 +154,10 @@ def events():
                                    datetime.min.time())
     next_sunday = datetime.combine(today + timedelta(days=7-today.isoweekday()),
                                    datetime.min.time())
-    recent_and_upcoming = Event.objects(published=True,
-                                        start_date__gt=last_sunday).order_by('start_date',
-                                                                             'start_time')
+    recent_and_upcoming = Event.objects(published=True).order_by('start_date',
+                                                                 'start_time')
 
-    recent_events = recent_and_upcoming.filter(end_date__lt=today)
+    recent_events = recent_and_upcoming.filter(end_date__lt=today)[:6]
 
     events_this_week = recent_and_upcoming.filter(end_date__gte=today,
                                                   start_date__lt=next_sunday)
@@ -182,7 +192,7 @@ def event_archive(index):
                                    datetime.min.time())
 
     past_events=Event.objects(published=True,
-                              start_date__lt=last_sunday).order_by('start_date')
+                              end_date__lt=today).order_by('start_date')
 
     if not past_events:
         return redirect(url_for('.events'))
