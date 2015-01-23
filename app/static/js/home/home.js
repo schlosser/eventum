@@ -14,12 +14,10 @@ $(function() {
     });
 
 
-
+    $image = $('.hero i');
     $(window).scroll(function(e){
-      parallax();
-    });
-    function parallax(){
       var scrolled = $(window).scrollTop();
-      $('.hero i').css('margin-top',(scrolled/2)+'px');
-    }
+      console.log(scrolled);
+      $image.css('transform','translateY(' + (scrolled/2) + 'px)');
+    });
 });

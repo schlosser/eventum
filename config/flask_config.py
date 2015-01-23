@@ -82,3 +82,5 @@ ALLOWED_UPLOAD_EXTENSIONS = set(['.txt',
     '.jpeg',
     '.gif'
 ])
+
+DEVFEST_BANNER = True

@@ -131,9 +131,11 @@ $hero-height: 38rem;
         width: 100%;
         position: absolute;
         top: 0;
+        z-index: 3;
     }
 
     i {
+        z-index: 2;
         display: block;
         height: ($hero-height + $navbar-height);
         width: 100%;
@@ -174,6 +176,8 @@ $section-bottom: 1.25rem;
         color: $white;
         margin: 1.5rem auto;
         width: 95%;
+        z-index: 5;
+        position: relative;
         max-width: $content-width;
         text-align: center;
     }
@@ -181,6 +185,7 @@ $section-bottom: 1.25rem;
     section {
         background-color: $white;
         position: relative;
+        z-index: 5;
 
         &:after {
             @include clearfix;
@@ -397,5 +402,53 @@ $section-bottom: 1.25rem;
         li {
             width: 100%;
         }
+    }
+}
+
+$banner-height: 8rem;
+.devfest-banner {
+    height: $banner-height;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: $offgray;
+
+    & + .ribbon {
+        top: $banner-height;
+
+        & + .navbar {
+            top: ($banner-height + $ribbon-height);
+
+            & + .hero {
+                padding-top: ($banner-height + $navbar-height);
+            }
+        }
+    }
+    .devfest-button {
+        border: 2px solid $white;
+        padding: 0.5rem 1rem;
+        @extend .h5;
+        float: right;
+        height: 2rem;
+        line-height: 2rem;
+        margin-top: ($banner-height/2 - 1.5rem);
+        color: $white;
+
+    }
+    img {
+        height: ($banner-height - 1rem);
+        padding: 0.5rem 0;
+        @include border-box;
+        display: inline-block;
+    }
+    .message {
+        text-align: center;
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 25%;
+        right: 25%;
+        color: $white;
     }
 }

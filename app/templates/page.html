@@ -28,6 +28,20 @@
 
 {%- block body -%}
 <div class="all-wrapper">
+    {% if config['DEVFEST_BANNER'] %}
+    <div class="devfest-banner">
+        <a href="http://devfe.st">
+            <div class="content">
+                <img src="{{ url_for('static', filename='img/devfest-small.png') }}">
+                <h5 class="message">
+                    If you've ever wanted to build an app, <br><strong>now's the time to learn.</strong>
+                </h5>
+                <div class="devfest-button">Register Today</div>
+
+            </div>
+        </a>
+    </div>
+    {% endif %}
     <div class="ribbon">
         <div class="ribbon-inner">
             {% for i in range(8) %}
