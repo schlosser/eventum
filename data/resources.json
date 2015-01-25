@@ -291,7 +291,7 @@
         },
         {
           "name": "An Introduction to Python Programming",
-          "url": "http://adicu.github.com/intro-webdev/python/",
+          "url": "http://learn.adicu.com/python/",
           "description": "Written and developed by ADI, this tutorial covers basics of programming in Python.",
           "adi": true
         }
@@ -314,7 +314,7 @@
         },
         {
           "name": "An Accelerated Introduction to Web Development",
-          "url": "http://adicu.github.com/intro-webdev",
+          "url": "http://learn.adicu.com/webdev",
           "description": "Written and developed by ADI, this 5-part tutorial covers basic Python, Flask, HTML, CSS, and API programming.",
           "adi": true
         },
