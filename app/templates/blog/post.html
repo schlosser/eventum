@@ -6,6 +6,10 @@
 
 {% block author %}{{post.author.name}}{% endblock %}
 
+{% block metaDescription %}
+{{post.snippet(length=40, newlines=False, tags=False) | safe}}
+{% endblock %}
+
 {% block css %}
 {{ super() }}
 {% assets "scss_blog" %}

@@ -426,6 +426,9 @@ $banner-height: 8rem;
             & + .hero {
                 padding-top: ($banner-height + $navbar-height);
                 @include transition(0.3s);
+                & + .no-hero {
+                    padding-top: ($banner-height + $navbar-height + 3rem);
+                }
             }
         }
     }
@@ -441,6 +444,9 @@ $banner-height: 8rem;
 
                 & + .hero {
                     padding-top: ($navbar-height);
+                    & + .no-hero {
+                        padding-top: ($navbar-height + 3rem);
+                    }
                 }
             }
         }
