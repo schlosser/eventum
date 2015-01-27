@@ -8,31 +8,34 @@ $(function() {
         }, 200  );
     });
 
-    $(window).scroll( function(e) {
-        if ($(window).scrollTop() > $('.sidebar-wrapper').offset().top - 80) {
-            $('.navbar').addClass('up');
-        } else {
+    var md = new MobileDetect(window.navigator.userAgent);
+    if (md.mobile() == null) {
+        $(window).scroll( function(e) {
+            if ($(window).scrollTop() > $('.sidebar-wrapper').offset().top - 80) {
+                $('.navbar').addClass('up');
+            } else {
                 $('.navbar').removeClass('up');
-        }
-        if ($(window).scrollTop() > $('.sidebar-wrapper').offset().top ) {
-            $('.sidebar').addClass('fixed');
-        } else {
-            $('.sidebar').removeClass('fixed');
-        }
+            }
+            if ($(window).scrollTop() > $('.sidebar-wrapper').offset().top ) {
+                $('.sidebar').addClass('fixed');
+            } else {
+                $('.sidebar').removeClass('fixed');
+            }
 
-        var bottomOfSidebar = $('.sidebar .inner').offset().top + $('.sidebar .inner').height();
-        var bottomOfSidebarWrapper = $('.sidebar-wrapper').offset().top + $('.sidebar-wrapper').height();
-        var topOfSidebar = $('.sidebar .inner').offset().top;
-        var topOfVisibleWindow = $(window).scrollTop();
+            var bottomOfSidebar = $('.sidebar .inner').offset().top + $('.sidebar .inner').height();
+            var bottomOfSidebarWrapper = $('.sidebar-wrapper').offset().top + $('.sidebar-wrapper').height();
+            var topOfSidebar = $('.sidebar .inner').offset().top;
+            var topOfVisibleWindow = $(window).scrollTop();
 
-        if (!$('.sidebar').hasClass('bottom') && bottomOfSidebar > bottomOfSidebarWrapper){
-            $('.sidebar').addClass('bottom');
-        } else if (topOfSidebar > topOfVisibleWindow) {
-            $('.sidebar').removeClass('bottom');
-        }
+            if (!$('.sidebar').hasClass('bottom') && bottomOfSidebar > bottomOfSidebarWrapper){
+                $('.sidebar').addClass('bottom');
+            } else if (topOfSidebar > topOfVisibleWindow) {
+                $('.sidebar').removeClass('bottom');
+            }
 
 
-    });
+        });
+    }
 
     $('a[href="#set-track"]').click(function(e) {
         e.preventDefault();

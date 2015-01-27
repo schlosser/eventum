@@ -11,6 +11,7 @@
 
 {% block js %}
 {{ super() }}
+<script src="//cdn.jsdelivr.net/mobile-detect.js/0.4.3/mobile-detect.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/home/home.js') }}"></script>
 {% endblock %}
 

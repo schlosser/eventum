@@ -59,7 +59,7 @@ $speed: 0.3s;
     }
 
     &.up {
-        top: -$navbar-height;
+        top: -$navbar-height !important;
     }
 }
 

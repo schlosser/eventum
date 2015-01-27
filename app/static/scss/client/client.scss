@@ -413,18 +413,39 @@ $banner-height: 8rem;
     width: 100%;
     z-index: 1000;
     background-color: $offgray;
+    @include transition(0.3s);
 
     & + .ribbon {
         top: $banner-height;
+        @include transition(0.3s);
 
         & + .navbar {
             top: ($banner-height + $ribbon-height);
+            @include transition(0.3s);
 
             & + .hero {
                 padding-top: ($banner-height + $navbar-height);
+                @include transition(0.3s);
             }
         }
     }
+
+    &.up {
+        top: -$banner-height;
+
+        & + .ribbon {
+            top: 0;
+
+            & + .navbar {
+                top: $ribbon-height;
+
+                & + .hero {
+                    padding-top: ($navbar-height);
+                }
+            }
+        }
+    }
+
     .devfest-button {
         border: 2px solid $white;
         padding: 0.5rem 1rem;
@@ -450,5 +471,12 @@ $banner-height: 8rem;
         left: 25%;
         right: 25%;
         color: $white;
+    }
+}
+
+
+@media screen and (max-width: $phone-max) {
+    .devfest-banner .message {
+        display: none;
     }
 }
