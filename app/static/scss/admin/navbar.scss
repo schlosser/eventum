@@ -1,5 +1,8 @@
+
+
 @import 'colors';
 @import '../common/media_queries';
+@import '../common/utils';
 
 $nav-item-width: 4rem;
 $nav-item-height: 3.5rem;
@@ -113,8 +116,30 @@ $w-9: 9rem;
     font-size: 2.5em;
 }
 
+@media screen and (max-width: $phone-max) {
+    nav {
+        @include transition(0.2s);
+        left: (-1 * $nav-wide) !important;
+    }
+
+    .main {
+        margin-left: 0 !important;
+    }
+
+    .topbar {
+        //left: 0 !important;
+    }
+
+    .content {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
 @media screen and (min-width: $xl-desktop-min) {
-    nav { width: $nav-wide; }
+    nav { 
+        width: $nav-wide; 
+    } 
 
     .main > .inner {
         width: 100%;
