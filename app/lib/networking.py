@@ -18,3 +18,33 @@ def json_response(data, code):
     response = make_response(text, code)
     response.headers['Content-Type'] = 'application/json'
     return response
+
+def json_response_string(data, code):
+    """Return a :class:`flask.Response` object ``data`` in the body, JSON
+    encoding it if necessary.
+
+    :param data: The data to be put in the response body.
+    :param int code: The HTTP status code for the response.
+
+    :returns: the response object
+    :rtype: :class:`flask.Response`
+    """
+    text = data
+    response = make_response(text, code)
+    response.headers['Content-Type'] = 'application/json'
+    return response
+
+def json_response_dict(data, code):
+    """Return a :class:`flask.Response` object ``data`` in the body, JSON
+    encoding it if necessary.
+
+    :param data: The data to be put in the response body.
+    :param int code: The HTTP status code for the response.
+
+    :returns: the response object
+    :rtype: :class:`flask.Response`
+    """
+    text = json.dumps(data)
+    response = make_response(text, code)
+    response.headers['Content-Type'] = 'application/json'
+    return response
