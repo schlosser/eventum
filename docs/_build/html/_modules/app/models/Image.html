@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.models.Image &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.models.Image</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.models.Image</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: Image</span>
+<span class="sd">    :synopsis: A image database model.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">signals</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">config.flask_config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">app.lib.regex</span> <span class="kn">import</span> <span class="n">FULL_FILENAME_REGEX</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">PIL</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+
+
+<div class="viewcode-block" id="Image"><a class="viewcode-back" href="../../../app.models.html#app.models.Image.Image">[docs]</a><span class="k">class</span> <span class="nc">Image</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Document</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        when the document was created, localized to the server.</span>
+<span class="sd">    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        when the document was last modified, localized to the server.</span>
+<span class="sd">    :ivar filename: :class:`mongoengine.fields.StringField` - The filename with</span>
+<span class="sd">        extension of the image.</span>
+<span class="sd">    :ivar creator: :class:`mongoengine.fields.ReferenceField` - Reference to</span>
+<span class="sd">        the User that uploaded the photo.</span>
+<span class="sd">    :ivar caption: :class:`mongoengine.fields.StringField` - A caption for the</span>
+<span class="sd">        photo.</span>
+<span class="sd">    :ivar source: :class:`mongoengine.fields.StringField` - A source credit for</span>
+<span class="sd">        the picture, if one is needed.</span>
+<span class="sd">    :ivar default_path: :class:`mongoengine.fields.StringField` - The path the</span>
+<span class="sd">        the version of the image that should be used by default.</span>
+<span class="sd">    :ivar versions: :class:`mongoengine.fields.DictField` - A dictionary of</span>
+<span class="sd">        sizes to file paths.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c"># MongoEngine ORM metadata</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;allow_inheritance&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;creator&#39;</span><span class="p">],</span>
+        <span class="s">&#39;ordering&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;-date_created&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">date_modified</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                              <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                              <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                              <span class="n">regex</span><span class="o">=</span><span class="n">FULL_FILENAME_REGEX</span><span class="p">)</span>
+    <span class="n">creator</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ReferenceField</span><span class="p">(</span><span class="s">&#39;User&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">caption</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">default_path</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">versions</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DictField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Image.url"><a class="viewcode-back" href="../../../app.models.html#app.models.Image.Image.url">[docs]</a>    <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the URL path that points to the image.</span>
+
+<span class="sd">        :returns: The URL path like ``&quot;/static/img/cat.jpg&quot;``.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;media.file&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Image.clean"><a class="viewcode-back" href="../../../app.models.html#app.models.Image.Image.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called by Mongoengine on every ``.save()`` to the object.</span>
+
+<span class="sd">        Update date_modified and populate the versions dict.</span>
+
+<span class="sd">        :raises: :class:`wtforms.validators.ValidationError`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">VALID_PATHS</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">&quot;^(&quot;</span> <span class="o">+</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;BASEDIR&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s">&quot;|http://|https://).*$&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_modified</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">VALID_PATHS</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default_path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;BASEDIR&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">versions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default_path</span><span class="p">)</span><span class="o">.</span><span class="n">size</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">versions</span><span class="p">[</span><span class="s">&#39;{width}x{height}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span>
+            <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;File {} does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default_path</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="Image.pre_validate"><a class="viewcode-back" href="../../../app.models.html#app.models.Image.Image.pre_validate">[docs]</a>    <span class="k">def</span> <span class="nf">pre_validate</span><span class="p">(</span><span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called by Mongoengine before the validation occurs.</span>
+
+<span class="sd">        Ensure that the versions dictionary contains keys of the form</span>
+<span class="sd">        ``&quot;&lt;width&gt;x&lt;height&gt;&quot;``, where ``width`` and ``height`` are the size of</span>
+<span class="sd">        the image at the path.</span>
+
+<span class="sd">        :raises: :class:`wtforms.validators.ValidationError`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">size</span><span class="p">,</span><span class="n">path</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">versions</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">size</span>
+                <span class="k">if</span> <span class="n">size</span> <span class="o">!=</span> <span class="s">&#39;{width}x{height}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">):</span>
+                    <span class="n">error</span> <span class="o">=</span> <span class="s">&#39;Key {size} improperly describes image {path}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="s">&#39;File {} does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">default_path</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Image.post_delete"><a class="viewcode-back" href="../../../app.models.html#app.models.Image.Image.post_delete">[docs]</a>    <span class="k">def</span> <span class="nf">post_delete</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called by Mongoengine after the object has been delted.</span>
+
+<span class="sd">        Moves the deleted image&#39;s assocaited files to the DELETED_FOLDER.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">size</span><span class="p">,</span> <span class="n">old_path</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">versions</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">old_path</span><span class="p">)</span>
+            <span class="n">delete_folder</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;RELATIVE_DELETE_FOLDER&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">delete_folder</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">delete_folder</span><span class="p">)</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">delete_folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">old_path</span><span class="p">,</span> <span class="n">new_path</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+                <span class="k">pass</span>
+</div>
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This image, as a unicode string.</span>
+
+<span class="sd">        :returns: The filename of the image.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The representation of this image.</span>
+
+<span class="sd">        :returns: The image&#39;s details.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rep</span> <span class="o">=</span> <span class="s">&#39;Photo(filename=</span><span class="si">%r</span><span class="s">, default_path=</span><span class="si">%r</span><span class="s">, caption=</span><span class="si">%r</span><span class="s">)&#39;</span> <span class="o">%</span> \
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">caption</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rep</span>
+
+<span class="c"># Connects the ``post_delte`` method using the signals library.</span></div>
+<span class="n">signals</span><span class="o">.</span><span class="n">post_delete</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">post_delete</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Image</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

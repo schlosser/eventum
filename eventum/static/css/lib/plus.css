@@ -1,0 +1,40 @@
+#plus-button {
+  display: block;
+  margin: 8rem auto 0;
+  background: #dd4b39;
+  color: white;
+  height: 48px;
+  width: 180px;
+  white-space: nowrap;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.10);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.10);
+}
+#plus-button:hover {
+  background: #e74b37;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -3px 0 rgba(0,0,0,.20);
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,.20);
+}
+.plus-icon {
+  background: url('../../img/auth/btn_red.png') no-repeat -66px 0;
+  background-size: 126px 132px;
+  border-color: #bb3f30;
+  width: 48px;
+  height: 48px;
+  border-width: 0;
+  border-right-width: 2px;
+  border-style: solid;
+  display: inline-block;
+  vertical-align: top;
+}
+.plus-text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 28px;
+  font-size: 18px;
+  height: 48px;
+  line-height: 48px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto',arial,sans-serif;
+}

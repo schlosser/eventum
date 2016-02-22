@@ -1,0 +1,86 @@
+$rem: 16px;
+$h1: 2rem;
+$h2: 1.7rem;
+$h3: 1.3rem;
+$h4: 1rem;
+$h5: .83rem;
+$h6: 0.75rem;
+$small: 0.8rem;
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: $rem;
+}
+input, textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-size: $rem;
+}
+textarea {
+    resize: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+
+    tt, code { font-size: inherit; }
+}
+h1 { font-size: $h1;
+     line-height: ($h1 + 0.4rem); }
+h2 { font-size: $h2;
+     line-height: ($h2 + 0.4rem); }
+h3 { font-size: $h3;
+     line-height: ($h3 + 0.4rem); }
+h5 { font-size: $h5; }
+h6 { font-size: $h6; }
+
+pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent; }
+
+code, tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    font-family: Monospace;
+}
+
+pre {
+    font-family: Monospace;
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+
+    code, tt {
+        background-color: transparent;
+        border: none;
+    }
+}
+small { font-size: $small; }
+strong { font-weight: 700; }
+em {
+    font-style: italic;
+}
+p {
+   line-height: 1.3rem;
+}
+hr {
+    border: 0;
+    height: 1px;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
+}

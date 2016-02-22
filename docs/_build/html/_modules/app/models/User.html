@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.models.User &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.models.User</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.models.User</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: User</span>
+<span class="sd">    :synopsis: A user database model.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">app.lib.regex</span> <span class="kn">import</span> <span class="n">SLUG_REGEX</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+
+<span class="c"># Maps valid values for the ``user_type`` field on the User object to</span>
+<span class="c"># dictionaries of privileges that are assocaited with that user type.</span>
+<span class="n">USER_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;fake_user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;edit&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="s">&quot;publish&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="bp">False</span>
+    <span class="p">},</span>
+    <span class="s">&quot;editor&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;edit&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&quot;publish&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="bp">False</span>
+    <span class="p">},</span>
+    <span class="s">&quot;publisher&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;edit&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&quot;publish&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="bp">False</span>
+    <span class="p">},</span>
+    <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;edit&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&quot;publish&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="bp">True</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">USER_TYPE_REGEX</span> <span class="o">=</span> <span class="s">&quot;({})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">USER_TYPES</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<div class="viewcode-block" id="User"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User">[docs]</a><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Document</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A user model.</span>
+
+<span class="sd">    The :class:`User` object is only created once the user logs in for the</span>
+<span class="sd">    first time and confirms the details of their account.</span>
+
+<span class="sd">    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        that this user was created.</span>
+<span class="sd">    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        the this user was last modified.</span>
+<span class="sd">    :ivar gplus_id: :class:`mongoengine.fields.StringField` - The Google+ ID</span>
+<span class="sd">        for this user.  It&#39;s what we use in the Google+ authentication.</span>
+<span class="sd">    :ivar name: :class:`mongoengine.fields.StringField` - The user&#39;s name.</span>
+<span class="sd">    :ivar slug: :class:`mongoengine.fields.StringField` - A URL slug  their</span>
+<span class="sd">        internal profile page.</span>
+<span class="sd">    :ivar email: :class:`mongoengine.fields.EmailField` - The user&#39;s email</span>
+<span class="sd">        address.</span>
+<span class="sd">    :ivar roles: :class:`mongoengine.fields.ListField` of</span>
+<span class="sd">        :class:`mongoengine.fields.StringField` - A list of roles that the user</span>
+<span class="sd">        has.</span>
+<span class="sd">    :ivar privileges: :class:`mongoengine.fields.DictField` - A dictionary of</span>
+<span class="sd">        privileges that the user has.  Often determined soley by their</span>
+<span class="sd">        ``user_type``.</span>
+<span class="sd">    :ivar image_url: :class:`mongoengine.fields.URLField` - The URL of the</span>
+<span class="sd">        profile picture for the user&#39;s profile picture.</span>
+<span class="sd">    :ivar image: :class:`mongoengine.fields.ReferenceField` - The local image</span>
+<span class="sd">        for the user&#39;s profile picture.</span>
+<span class="sd">    :ivar user_type: :class:`mongoengine.fields.StringField` - The type of the</span>
+<span class="sd">        user. Can either be ``&quot;fake_user&quot;``, ``&quot;editor&quot;``, ``&quot;publisher&quot;``, or</span>
+<span class="sd">        ``&quot;admin&quot;``.  The selection of user type determines their</span>
+<span class="sd">        ``privileges``.</span>
+<span class="sd">    :ivar last_logon: :class:`mongoengine.fields.DateTimeField` - The date of</span>
+<span class="sd">        this user&#39;s last logon.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">date_modified</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">gplus_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">510</span><span class="p">)</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">max_length</span><span class="o">=</span><span class="mi">510</span><span class="p">,</span>
+                          <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">regex</span><span class="o">=</span><span class="n">SLUG_REGEX</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">roles</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ListField</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">db_field</span><span class="o">=</span><span class="s">&quot;role&quot;</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">privileges</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DictField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">{})</span>
+    <span class="n">image_url</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">URLField</span><span class="p">()</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ReferenceField</span><span class="p">(</span><span class="s">&#39;Image&#39;</span><span class="p">)</span>
+    <span class="n">user_type</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;editor&#39;</span><span class="p">,</span>
+                               <span class="n">regex</span><span class="o">=</span><span class="n">USER_TYPE_REGEX</span><span class="p">)</span>
+    <span class="n">last_logon</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+
+    <span class="c"># MongoEngine ORM metadata</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;allow_inheritance&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;gplus_id&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="User.can"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.can">[docs]</a>    <span class="k">def</span> <span class="nf">can</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">privilege</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if the user has ``privilege``.</span>
+
+<span class="sd">        :returns: True if the user has ``privilege``</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">privileges</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">privilege</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="User.get_profile_picture"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.get_profile_picture">[docs]</a>    <span class="k">def</span> <span class="nf">get_profile_picture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the url to the profile picture for the user.</span>
+
+<span class="sd">        TODO: This method needs major fixing.  What&#39;s going on with that URL?</span>
+
+<span class="sd">        :param int size: The size of the image to pass, if the size can be</span>
+<span class="sd">            changed.</span>
+
+<span class="sd">        :returns: The URL of the image.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">url</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;https://lh6.googleusercontent.com/-K9HZ5Z5vOU8/AAAAAAAAAAI/AAAAAAAAAAA/yRoMtBSXoxQ/s48-c/photo.jpg&#39;</span>
+        <span class="k">if</span> <span class="s">&quot;googleusercontent.com&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span>
+</div>
+<div class="viewcode-block" id="User.register_login"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.register_login">[docs]</a>    <span class="k">def</span> <span class="nf">register_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the model as having logged in.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_logon</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="User.clean"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called by Mongoengine on every ``.save()`` to the object.</span>
+
+<span class="sd">        Update date_modified and apply privileges shorthand notation.</span>
+
+<span class="sd">        :raises: :class:`wtforms.validators.ValidationError`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_modified</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+
+        <span class="c"># Update self.privileges with one of the USER_TYPES dictionaries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">privileges</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">USER_TYPES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">user_type</span><span class="p">])</span>
+
+        <span class="c"># Update the slug for the user (used in URLs)</span>
+        <span class="n">new_slug</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">)</span>
+        <span class="n">new_slug</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&quot;\&#39;|\.|\_|&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">new_slug</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">new_slug</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">new_slug</span> <span class="o">=</span> <span class="n">new_slug</span> <span class="o">+</span> <span class="s">&quot;-{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">new_slug</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">new_slug</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&quot;-([0-9])*$&quot;</span><span class="p">,</span> <span class="s">&quot;-{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">new_slug</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">new_slug</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span> <span class="ow">and</span> <span class="s">&quot;googleusercontent.com&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&quot;sz=([0-9]*)$&quot;</span><span class="p">,</span> <span class="s">&quot;sz=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="User.id_str"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.id_str">[docs]</a>    <span class="k">def</span> <span class="nf">id_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The id of this object, as a string.</span>
+
+<span class="sd">        :returns: The id</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="User.role"><a class="viewcode-back" href="../../../app.models.html#app.models.User.User.role">[docs]</a>    <span class="k">def</span> <span class="nf">role</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the role of the user, in plain English.  It is either</span>
+<span class="sd">        ``&quot;Admin&quot;``, ``&quot;Publisher&quot;``, ``&quot;Editor&quot;``, or ``&quot;Fake User&quot;``.</span>
+
+<span class="sd">        :returns: The role.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;admin&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&quot;Admin&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;publish&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&quot;Publisher&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;edit&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&quot;Editor&quot;</span>
+        <span class="k">return</span> <span class="s">&quot;Fake User&quot;</span>
+</div>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The representation of this user.</span>
+
+<span class="sd">        :returns: The user&#39;s details.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&#39;User(id=</span><span class="si">%r</span><span class="s">, name=</span><span class="si">%r</span><span class="s">, email=</span><span class="si">%r</span><span class="s">, roles=</span><span class="si">%r</span><span class="s">, privileges=</span><span class="si">%r</span><span class="s">, &#39;</span>
+                <span class="s">&#39;gplus_id=</span><span class="si">%r</span><span class="s">, date_created=</span><span class="si">%r</span><span class="s">)&#39;</span> <span class="o">%</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">roles</span><span class="p">,</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">privileges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gplus_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_created</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This user, as a unicode string.</span>
+
+<span class="sd">        :returns: The user encoded as a string.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;admin&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%r</span><span class="s"> &lt;</span><span class="si">%r</span><span class="s">&gt; (Admin)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;publish&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%r</span><span class="s"> &lt;</span><span class="si">%r</span><span class="s">&gt; (Publisher)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="s">&#39;edit&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%r</span><span class="s"> &lt;</span><span class="si">%r</span><span class="s">&gt; (Editor)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%r</span><span class="s"> &lt;</span><span class="si">%r</span><span class="s">&gt; (Fake User)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

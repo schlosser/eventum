@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.lib.events &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.lib.events</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.lib.events</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: events</span>
+<span class="sd">    :synopsis: This module contains classes that aid in the translation from</span>
+<span class="sd">        Mongoengine events to Google Calendar events and WTForms.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+
+<span class="sd">This file passes around data in several forms, which can be confusing.</span>
+<span class="sd">If we are not dealing with an instance of :class:`CreateEventForm` or a</span>
+<span class="sd">subclass, a Mongoengine object like :class:`Event` or</span>
+<span class="sd">:class:`EventSeries`, then we are probably dealing with a dictionary</span>
+<span class="sd">representing an intermediate form. For details on what these fields represent,</span>
+<span class="sd">see :class:`Event`, :class:`EventSeries`, or :class:`CreateEventForm`.</span>
+<span class="sd">These data structures include:</span>
+
+<span class="sd">``event_data``::</span>
+
+
+<span class="sd">    {</span>
+<span class="sd">        &#39;title&#39;: &#39;My Event&#39;,</span>
+<span class="sd">        &#39;slug&#39;: &#39;my-event&#39;,</span>
+<span class="sd">        &#39;location&#39;: &#39;742 Evergreen Terrace&#39;,</span>
+<span class="sd">        &#39;start_time&#39;: datetime.time(13, 0, 0, 0),</span>
+<span class="sd">        &#39;end_time&#39;: datetime.time(14, 30, 0, 0),</span>
+<span class="sd">        &#39;published&#39;: True,</span>
+<span class="sd">        &#39;short_description_markdown&#39;: &#39;Come to my event&#39;,</span>
+<span class="sd">        &#39;long_description_markdown&#39;: &#39;I swear, it\&#39;ll be *great*!`,</span>
+<span class="sd">        &#39;is_recurring&#39;: False,</span>
+<span class="sd">        &#39;facebook_url&#39;: &#39;http://facebook.com/events/123456789012345&#39;,</span>
+<span class="sd">        &#39;image&#39;: &#39;simpsons.png&#39;</span>
+<span class="sd">    }</span>
+
+<span class="sd">``date_data``::</span>
+
+
+<span class="sd">    {</span>
+<span class="sd">        &#39;start_date&#39;: datetime.date(2014, 10, 4),</span>
+<span class="sd">        &#39;end_date&#39;: datetime.date(2014, 10, 4),</span>
+<span class="sd">    }</span>
+
+<span class="sd">``series_data``::</span>
+
+
+<span class="sd">    {</span>
+<span class="sd">        &#39;frequency&#39;: &#39;weekly&#39;,</span>
+<span class="sd">        &#39;every&#39;: 1,</span>
+<span class="sd">        &#39;slug&#39;: &#39;my-event&#39;,</span>
+<span class="sd">        &#39;ends_on&#39;: True,</span>
+<span class="sd">        &#39;ends_after&#39;: False,</span>
+<span class="sd">        &#39;num_occurrences&#39;: 5,</span>
+<span class="sd">        &#39;recurrence_summary&#39;: &#39;Every 1 week for 5 occurrences.&#39;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    # OR:</span>
+
+<span class="sd">    {</span>
+<span class="sd">        &#39;frequency&#39;: &#39;weekly&#39;,</span>
+<span class="sd">        &#39;every&#39;: 1,</span>
+<span class="sd">        &#39;slug&#39;: &#39;my-event,</span>
+<span class="sd">        &#39;ends_on&#39;: False,</span>
+<span class="sd">        &#39;ends_after&#39;: True,</span>
+<span class="sd">        &#39;recurrence_end_date&#39;: datetime.date(2014, 10, 4),</span>
+<span class="sd">        &#39;recurrence_summary&#39;: &#39;Every 1 week, ending on October 4th.&#39;</span>
+<span class="sd">    }</span>
+
+<span class="sd">``form_data``::</span>
+
+
+<span class="sd">    {</span>
+<span class="sd">        &#39;title&#39;: &#39;My Event&#39;,</span>
+<span class="sd">        &#39;slug&#39;: &#39;my-event&#39;,</span>
+<span class="sd">        &#39;location&#39;: &#39;742 Evergreen Terrace&#39;,</span>
+<span class="sd">        &#39;start_date&#39;: datetime.date(2014, 10, 4),</span>
+<span class="sd">        &#39;start_time&#39;: datetime.time(13, 0, 0, 0),</span>
+<span class="sd">        &#39;end_date&#39;: datetime.date(2014, 10, 4),</span>
+<span class="sd">        &#39;end_time&#39;: datetime.time(14, 30, 0, 0),</span>
+<span class="sd">        &#39;published&#39;: True,</span>
+<span class="sd">        &#39;short_description_markdown&#39;: &#39;Come to my event&#39;,</span>
+<span class="sd">        &#39;long_description_markdown&#39;: &#39;I swear, it\&#39;ll be *great*!`,</span>
+<span class="sd">        &#39;is_recurring&#39;: False,</span>
+<span class="sd">        &#39;facebook_url&#39;: &#39;http://facebook.com/events/123456789012345&#39;,</span>
+<span class="sd">        &#39;event_image&#39;: &#39;simpsons.png&#39;</span>
+<span class="sd">    }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Event</span><span class="p">,</span> <span class="n">EventSeries</span><span class="p">,</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">app.forms</span> <span class="kn">import</span> <span class="n">EditEventForm</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">gcal_client</span>
+
+<div class="viewcode-block" id="EventsHelper"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper">[docs]</a><span class="k">class</span> <span class="nc">EventsHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A class with helper functions that translate WTForms to Mongoengine</span>
+<span class="sd">    models and Google Calendar models.</span>
+
+<span class="sd">    In general, :class:`EventsHelper` should only be used to call:</span>
+
+<span class="sd">    - :func:`create_form`</span>
+<span class="sd">    - :func:`create_event`</span>
+<span class="sd">    - :func:`update_event`</span>
+<span class="sd">    - :func:`delete_event`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s">&#39;public&#39;</span>
+    <span class="n">PRIVATE</span> <span class="o">=</span> <span class="s">&#39;private&#39;</span>
+
+
+    <span class="c">###########################################################################</span>
+    <span class="c"># Public API:</span>
+    <span class="c"># - create_form</span>
+    <span class="c"># - create_event</span>
+    <span class="c"># - update_event</span>
+    <span class="c"># - delete_event</span>
+    <span class="c">###########################################################################</span>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.create_form"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.create_form">[docs]</a>    <span class="k">def</span> <span class="nf">create_form</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance of :class:`CreateEventForm` from an event from the</span>
+<span class="sd">        database and the request object.</span>
+
+<span class="sd">        :param event: The event from Mongoengine.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param request: The flask request object, from which we&#39;ll make the</span>
+<span class="sd">            form.  On most requests, this will not contribute to any change in</span>
+<span class="sd">            how the form is created, but it is a required parameter for</span>
+<span class="sd">            creating a subclass of :class:`flask.ext.wtforms.Form`.</span>
+<span class="sd">        :type request: :class:`flask.Request`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: The created form.</span>
+<span class="sd">        :rtype: :class:`CreateEventForm`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">form_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">form_data_from_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="p">:</span>
+            <span class="n">updates</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">form_data_from_series</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="p">)</span>
+            <span class="n">form_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">updates</span><span class="p">)</span>
+        <span class="n">form_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">form_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EditEventForm</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">,</span> <span class="o">**</span><span class="n">form_data</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.create_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.create_event">[docs]</a>    <span class="k">def</span> <span class="nf">create_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a Mongoengine and Google Calendar event from form data.</span>
+
+<span class="sd">        Calls either :func:`create_series` or :func:`create_single_event`</span>
+<span class="sd">        depending on whether or not the event should be recurring.</span>
+
+<span class="sd">        :param form: The WTForms form.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param creator: The user that is currently logged in.</span>
+<span class="sd">        :type creator: :class:`~app.models.User`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_recurring</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="c"># Series</span>
+            <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">create_series</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="p">)</span>
+        <span class="c"># Single event</span>
+        <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">create_single_event</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.update_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.update_event">[docs]</a>    <span class="k">def</span> <span class="nf">update_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates ``event``, syncing changes to Google Calendar.</span>
+
+<span class="sd">        Calls either :func:`update_series`, :func:`update_single_event`, or</span>
+<span class="sd">        :func:`update_single_event_from_series` depending on whether the</span>
+<span class="sd">        event is recurring and whether all updates in a series should be</span>
+<span class="sd">        updated.</span>
+
+<span class="sd">        If the event is being made recurring, or a recurrence is being removed,</span>
+<span class="sd">        :func:`convert_to_series` or :func:`convert_to_single_event` will</span>
+<span class="sd">        be called instead.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Determine if the event should be moved between calendars</span>
+        <span class="n">move_to</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">published</span> <span class="o">!=</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="n">move_to</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">PUBLIC</span> <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span> <span class="k">else</span> <span class="n">klass</span><span class="o">.</span><span class="n">PRIVATE</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span> <span class="o">!=</span> <span class="n">form</span><span class="o">.</span><span class="n">is_recurring</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+                <span class="c"># Series -&gt; single event</span>
+                <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">convert_to_single_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span>
+                                                     <span class="n">form</span><span class="p">,</span>
+                                                     <span class="n">move_to</span><span class="o">=</span><span class="n">move_to</span><span class="p">)</span>
+            <span class="c"># Single event -&gt; series</span>
+            <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">convert_to_series</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="n">move_to</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">update_all</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                <span class="c"># Entire series</span>
+                <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">update_series</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="n">move_to</span><span class="p">)</span>
+            <span class="c"># Single event from series</span>
+            <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">update_single_event_from_series</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">)</span>
+        <span class="c"># Single event</span>
+        <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">update_single_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="n">move_to</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.delete_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.delete_event">[docs]</a>    <span class="k">def</span> <span class="nf">delete_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes ``event``, syncing changes to Google Calendar.</span>
+
+<span class="sd">        Calls either :func:`delete_series`, :func:`delete_single_event`, or</span>
+<span class="sd">        :func:`delete_single_event_from_series` depending on whether the</span>
+<span class="sd">        event is recurring and whether all updates in a series should be</span>
+<span class="sd">        deleted.</span>
+
+<span class="sd">        :param event: The event to delete.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form that specifies whether or not all events</span>
+<span class="sd">            in a series should be deleted, or just a single event.</span>
+<span class="sd">        :type form: :class:`DeleteEventForm`.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">delete_all</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                <span class="c"># Series</span>
+                <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">delete_series</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="c"># Single event from series</span>
+            <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">delete_single_event_from_series</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="c"># Single event</span>
+        <span class="k">return</span> <span class="n">klass</span><span class="o">.</span><span class="n">delete_single_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+
+    <span class="c">###########################################################################</span>
+    <span class="c"># Worker Methods.</span>
+    <span class="c">#</span>
+    <span class="c"># These should be called only from their public API method (above).</span>
+    <span class="c">###########################################################################</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.create_single_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.create_single_event">[docs]</a>    <span class="k">def</span> <span class="nf">create_single_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a non-recurring Mongoengine and Google Calendar event from</span>
+<span class="sd">        form data.</span>
+
+<span class="sd">        :param form: The WTForms form.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param creator: The user that is currently logged in.</span>
+<span class="sd">        :type creator: :class:`~app.models.User`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Generate the event and date data</span>
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_and_date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">,</span>
+                                                                        <span class="n">creator</span><span class="o">=</span><span class="n">creator</span><span class="p">)</span>
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">event_and_date_data</span><span class="p">)</span>
+
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="o">**</span><span class="n">event_and_date_data</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">create_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.create_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.create_series">[docs]</a>    <span class="k">def</span> <span class="nf">create_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a recurring Mongoengine and Google Calendar event from</span>
+<span class="sd">        form data.</span>
+
+<span class="sd">        Creates both a :class:`EventSeries` and its associated :class:`Event` s.</span>
+
+<span class="sd">        :param form: The WTForms form.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param creator: The user that is currently logged in.</span>
+<span class="sd">        :type creator: :class:`~app.models.User`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="o">=</span><span class="n">creator</span><span class="p">)</span>
+        <span class="n">date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+        <span class="c"># Make the parent series</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_series</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+        <span class="c"># Update event_data with the parent series</span>
+        <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;parent_series&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span>
+
+        <span class="c"># Make the individual Event objects in the series</span>
+        <span class="k">while</span> <span class="n">klass</span><span class="o">.</span><span class="n">_more_events</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+            <span class="n">ev</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_event</span><span class="p">(</span><span class="n">event_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+            <span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+            <span class="n">klass</span><span class="o">.</span><span class="n">_increment_date_data</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+
+        <span class="n">series</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">create_event</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.update_single_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.update_single_event">[docs]</a>    <span class="k">def</span> <span class="nf">update_single_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the non-recurring ``event``, syncing changes to Google</span>
+<span class="sd">        Calendar.</span>
+
+<span class="sd">        If ``move_to`` is set to ``&quot;public&quot;`` or ``&quot;private&quot;`` the event</span>
+<span class="sd">        will also be moved to that calendar.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param str move_to: The calendar to move the event to, if any.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_and_date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">event_and_date_data</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_update_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">event_and_date_data</span><span class="p">)</span>
+
+        <span class="c"># Update the event in Google Calendar and publish it as necessary</span>
+        <span class="k">if</span> <span class="n">move_to</span> <span class="o">==</span> <span class="n">klass</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">publish_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">move_to</span> <span class="o">==</span> <span class="n">klass</span><span class="o">.</span><span class="n">PRIVATE</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">unpublish_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">update_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">response</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.update_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.update_series">[docs]</a>    <span class="k">def</span> <span class="nf">update_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the recurring ``event``, syncing changes to Google Calendar.</span>
+
+<span class="sd">        If ``move_to`` is set to ``&quot;public&quot;`` or ``&quot;private&quot;`` the event</span>
+<span class="sd">        will also be moved to that calendar.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param str move_to: The calendar to move the event to, if any.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Build the event, date, and series data, validating the series data.</span>
+        <span class="n">event_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">series_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">series_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_validate_series_data</span><span class="p">(</span><span class="n">series_data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">klass</span><span class="o">.</span><span class="n">_changes_are_easy</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">series_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+            <span class="c"># If changes are easy, then we can make them on the Event objects</span>
+            <span class="c"># that already exist.</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+                <span class="c"># the date data isn&#39;t changing, so pass in {}</span>
+                <span class="n">klass</span><span class="o">.</span><span class="n">_update_event</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">event_data</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="n">series</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Otherwise, they changes are hard, and we have to create fresh</span>
+            <span class="c"># Events.</span>
+            <span class="n">shared_gcal_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span>
+            <span class="n">shared_gcal_sequence</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_sequence</span>
+            <span class="n">shared_creator</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">creator</span>
+
+            <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">delete_all</span><span class="p">()</span>
+            <span class="n">series</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_series</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span>
+                                        <span class="n">gcal_id</span><span class="o">=</span><span class="n">shared_gcal_id</span><span class="p">,</span>
+                                        <span class="o">**</span><span class="n">series_data</span><span class="p">)</span>
+
+            <span class="c"># Update event_data with the parent series</span>
+            <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;parent_series&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span>
+            <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;gcal_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shared_gcal_id</span>
+            <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;gcal_sequence&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shared_gcal_sequence</span>
+            <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;creator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shared_creator</span>
+
+            <span class="c"># Make the individual Event objects in the series</span>
+            <span class="k">while</span> <span class="n">klass</span><span class="o">.</span><span class="n">_more_events</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+                <span class="n">ev</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_event</span><span class="p">(</span><span class="n">event_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+                <span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+                <span class="n">klass</span><span class="o">.</span><span class="n">_increment_date_data</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+
+            <span class="n">series</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c"># Update the event in Google Calendar and publish it as necessary</span>
+        <span class="k">if</span> <span class="n">move_to</span> <span class="o">==</span> <span class="n">klass</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">publish_event</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">move_to</span> <span class="o">==</span> <span class="n">klass</span><span class="o">.</span><span class="n">PRIVATE</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">unpublish_event</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">update_event</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c"># Return Google Calendar response</span>
+        <span class="k">return</span> <span class="n">response</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.update_single_event_from_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.update_single_event_from_series">[docs]</a>    <span class="k">def</span> <span class="nf">update_single_event_from_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the ``event`` as an exception to a series, syncing changes</span>
+<span class="sd">        to Google Calendar.</span>
+
+<span class="sd">        The parameter ``move_to`` is not implemented in this method because</span>
+<span class="sd">        having multiple events in a series on different calendars is not</span>
+<span class="sd">        possible.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_and_date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">event_and_date_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">event_and_date_data</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_update_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">event_and_date_data</span><span class="p">)</span>
+
+        <span class="c"># Return Google Calendar response</span>
+        <span class="k">return</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">update_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">as_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.convert_to_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.convert_to_series">[docs]</a>    <span class="k">def</span> <span class="nf">convert_to_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts ``event`` to be a series and updates other fields, syncing</span>
+<span class="sd">        changes to Google Calendar.</span>
+
+<span class="sd">        If ``move_to`` is set to ``&quot;public&quot;`` or ``&quot;private&quot;`` the event</span>
+<span class="sd">        will also be moved to that calendar.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param str move_to: The calendar to move the event to, if any.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+        <span class="c"># Make the parent series</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_series</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">gcal_id</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">)</span>
+
+        <span class="c"># Update event_data with the parent series</span>
+        <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;parent_series&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span>
+        <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;creator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">creator</span>
+        <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;gcal_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span>
+
+        <span class="n">klass</span><span class="o">.</span><span class="n">_update_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">event_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+        <span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_increment_date_data</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+
+        <span class="c"># Make the individual Event objects in the series</span>
+        <span class="k">while</span> <span class="n">klass</span><span class="o">.</span><span class="n">_more_events</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+            <span class="n">ev</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_make_event</span><span class="p">(</span><span class="n">event_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+            <span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+            <span class="n">klass</span><span class="o">.</span><span class="n">_increment_date_data</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">)</span>
+
+        <span class="n">series</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">update_event</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.convert_to_single_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.convert_to_single_event">[docs]</a>    <span class="k">def</span> <span class="nf">convert_to_single_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">move_to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts ``event`` from a series to a single event, updating other</span>
+<span class="sd">        fields and syncing changes to Google Calendar.</span>
+
+<span class="sd">        If ``move_to`` is set to ``&quot;public&quot;`` or ``&quot;private&quot;`` the event</span>
+<span class="sd">        will also be moved to that calendar.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param form: The WTForms form from which the updates come.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param str move_to: The calendar to move the event to, if any.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">event_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">date_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+
+        <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">delete_all_except</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_update_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">date_data</span><span class="p">,</span> <span class="n">event_data</span><span class="p">)</span>
+
+        <span class="c"># Delete the series and create a single event</span>
+        <span class="k">return</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">update_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.delete_single_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.delete_single_event">[docs]</a>    <span class="k">def</span> <span class="nf">delete_single_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes the non-recurring ``event``, syncing changes to Google</span>
+<span class="sd">        Calendar.</span>
+
+<span class="sd">        :param event: The event to delete.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># We have to delete on Google Calendar first, but we should delete the</span>
+        <span class="c"># event from MongoEngine even if Google Calendar throws an error.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">delete_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">response</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.delete_single_event_from_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.delete_single_event_from_series">[docs]</a>    <span class="k">def</span> <span class="nf">delete_single_event_from_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes ``event`` from it&#39;s parent series, syncing changes to Google</span>
+<span class="sd">        Calendar.</span>
+
+<span class="sd">        :param event: The event to delete.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># We have to delete on Google Calendar first, but we should delete the</span>
+        <span class="c"># event from MongoEngine even if Google Calendar throws an error.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c"># Cancel the series on Google Calendar</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">delete_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">as_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">delete_one</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">response</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="EventsHelper.delete_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.EventsHelper.delete_series">[docs]</a>    <span class="k">def</span> <span class="nf">delete_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes the recurring `event`, syncing changes to Google Calendar.</span>
+
+<span class="sd">        :param event: The event to delete.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIError` and it&#39;s subclasses</span>
+
+<span class="sd">        :returns: Response from the Google Calendar API.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># We have to delete on Google Calendar first, but we should delete the</span>
+        <span class="c"># event from MongoEngine even if Google Calendar throws an error.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">gcal_client</span><span class="o">.</span><span class="n">delete_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">delete_all</span><span class="p">()</span>
+
+        <span class="c"># Return the Google Calendar response</span>
+        <span class="k">return</span> <span class="n">response</span>
+
+
+    <span class="c">###########################################################################</span>
+    <span class="c"># Private Helpers</span>
+    <span class="c">###########################################################################</span>
+</div>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_remove_none_fields</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;removes any fields in ``d`` that are ``None`` and returns ``d``.</span>
+
+<span class="sd">        :param dict d: The dictionary to strip ``None`` fields from.</span>
+
+<span class="sd">        :returns: ``d`` with all non-``None`` fields.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_increment_date_data</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Increment the start and end date in ``date_data`` for a recurring</span>
+<span class="sd">        event by the appropriate amount depending on how frequently the event</span>
+<span class="sd">        occurs.</span>
+
+<span class="sd">        If the event is bi-weekly, 14 days will be added to the start and end</span>
+<span class="sd">        date in ``date_data``</span>
+
+<span class="sd">        :param series: The event series which holds how frequently the event</span>
+<span class="sd">            repeats.</span>
+<span class="sd">        :type series: :class:`EventSeries`.</span>
+<span class="sd">        :param dict date_data: The dictionary to increment values in.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># delta is the timedelta in between events</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span> <span class="o">*</span> <span class="n">series</span><span class="o">.</span><span class="n">every</span><span class="p">)</span>
+        <span class="n">date_data</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_data</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta</span>
+        <span class="n">date_data</span><span class="p">[</span><span class="s">&#39;end_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_data</span><span class="p">[</span><span class="s">&#39;end_date&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_validate_series_data</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">s_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ensures that the all necessary fields in ``s_data` are populated.</span>
+
+<span class="sd">        ``s_data`` must include a valid ``frequency`` (which should always be</span>
+<span class="sd">        ``weekly``), ``every`` (how many weeks between events in the series),</span>
+<span class="sd">        and if the recurrence ends on a specific date, it should be defined,</span>
+<span class="sd">        and if the recurrence ends after a specific number of occurrences, that</span>
+<span class="sd">        number should be defined.</span>
+
+<span class="sd">        :param dict s_data: The series data to validate.</span>
+<span class="sd">        :raises: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">s_data</span><span class="p">[</span><span class="s">&#39;frequency&#39;</span><span class="p">]</span> <span class="ow">and</span>
+                <span class="n">s_data</span><span class="p">[</span><span class="s">&#39;every&#39;</span><span class="p">]</span> <span class="ow">and</span>
+                <span class="p">(</span><span class="n">s_data</span><span class="p">[</span><span class="s">&#39;ends_on&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">s_data</span><span class="p">[</span><span class="s">&#39;recurrence_end_date&#39;</span><span class="p">]</span> <span class="ow">or</span>
+                 <span class="n">s_data</span><span class="p">[</span><span class="s">&#39;ends_after&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">s_data</span><span class="p">[</span><span class="s">&#39;num_occurrences&#39;</span><span class="p">])):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Cannont create recurrence from series data.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">s_data</span><span class="p">[</span><span class="s">&#39;frequency&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&#39;weekly&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Unknown frequency value &quot;{}&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s_data</span><span class="o">.</span><span class="n">frequency</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_more_events</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if more events exist in this series after ``date_data``.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">        If the series included a recurrence for an event five times, and</span>
+<span class="sd">        ``series.events`` contained only three events, this would return True.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">        If the series started on Jan 1 and recurred weekly until Feb 1, and</span>
+<span class="sd">        date_data represented Jan 29, this would return False, because the next</span>
+<span class="sd">        event in the series would be after the end of the recurrence.</span>
+
+<span class="sd">        :param series: The event series in question</span>
+<span class="sd">        :type series: :class:`EventSeries`</span>
+<span class="sd">        :param dict date_data: The reference date.</span>
+
+<span class="sd">        :returns: True if there are more events in the series.</span>
+<span class="sd">        :rtype: bool.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">ends_after</span>
+                <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">series</span><span class="o">.</span><span class="n">num_occurrences</span>
+                <span class="ow">or</span> <span class="n">series</span><span class="o">.</span><span class="n">ends_on</span>
+                <span class="ow">and</span> <span class="n">date_data</span><span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="o">.</span><span class="n">recurrence_end_date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_make_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">e_data</span><span class="p">,</span> <span class="n">d_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new :class:`Event` object and save it to Mongoengine.</span>
+
+<span class="sd">        The event is created by unpacking non-None fields of ``e_data`` and</span>
+<span class="sd">        ``d_data`` in the constructor for :class:`Event`.</span>
+
+<span class="sd">        :param dict e_data: The event data for this event.</span>
+<span class="sd">        :param dict d_data: The date data for this event.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">e_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">+</span> <span class="n">d_data</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">event</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_make_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new :class:`EventSeries` object and save it to Mongoengine.</span>
+
+<span class="sd">        The event is made by creating ``series_data`` and then unpacking it</span>
+<span class="sd">        into the constructor for :class:`EventSeries`.</span>
+
+<span class="sd">        :param form: The WTForm form to fetch series data from.</span>
+<span class="sd">        :type form: :class:`CreateEventForm` or a subclass.</span>
+<span class="sd">        :param dict kwargs: Any other arguments that should be applied on top</span>
+<span class="sd">            of the form data.</span>
+
+<span class="sd">        :returns: The newly created series.</span>
+<span class="sd">        :rtype: :class:`EventSeries`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">series_data</span> <span class="o">=</span> <span class="n">DataBuilder</span><span class="o">.</span><span class="n">series_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">series_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">klass</span><span class="o">.</span><span class="n">_validate_series_data</span><span class="p">(</span><span class="n">series_data</span><span class="p">)</span>
+        <span class="n">series_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">series_data</span><span class="p">)</span>
+
+        <span class="n">series</span> <span class="o">=</span> <span class="n">EventSeries</span><span class="p">(</span><span class="o">**</span><span class="n">series_data</span><span class="p">)</span>
+        <span class="n">series</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">series</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_update_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="o">*</span><span class="n">data_dicts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates ``event`` in Mongoengine using the dictionaries in</span>
+<span class="sd">        ``data_dicts``.</span>
+
+<span class="sd">        To update and overwrite using ``event.update(**d)``, ``d`` must have</span>
+<span class="sd">        keys that begin with ``set__``.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">        To change the title of an event, ``d`` must be</span>
+<span class="sd">        ``{&#39;set__title&#39;: &#39;New Title&#39;}``.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`.</span>
+<span class="sd">        :param data_dicts: The updates to apply to ``event``.</span>
+<span class="sd">        :type data_dicts: list of dicts.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Create d</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">data_dict</span> <span class="ow">in</span> <span class="n">data_dicts</span><span class="p">:</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">_remove_none_fields</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="s">&quot;set__&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iteritems</span><span class="p">())</span>
+
+        <span class="c"># Update and save.</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_changes_are_easy</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">series_data</span><span class="p">,</span> <span class="n">date_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if the changes we want to make to event are easy to</span>
+<span class="sd">        perform.</span>
+
+<span class="sd">        Hard changes include changes to how the recurrence behaves and in start</span>
+<span class="sd">        and end dates.</span>
+
+<span class="sd">        :param event: The event we want to update.</span>
+<span class="sd">        :type event: :class:`Event`.</span>
+<span class="sd">        :param dict series_data: The desired recurrence behavior.</span>
+<span class="sd">        :param dict date_data: The desired date for the event.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Changes in how the recurrence behaves are hard.</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">series_data</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># Changes in start and end dates are hard.</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">date_data</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># Changes are easy</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+
+</div>
+<div class="viewcode-block" id="DataBuilder"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder">[docs]</a><span class="k">class</span> <span class="nc">DataBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A class with helper functions that translate WTForms forms and</span>
+<span class="sd">    Mongoengine objects to and from different dictionary shapes.</span>
+
+<span class="sd">    These methods are used to create ``form_data``, ``event_data``,</span>
+<span class="sd">    ``series_data``, and ``date_data``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.form_data_from_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.form_data_from_event">[docs]</a>    <span class="k">def</span> <span class="nf">form_data_from_event</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate an single :class:`Event` into a dictionary of form data.</span>
+
+<span class="sd">        :param event: The event to translate.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :returns: Form data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="s">&#39;slug&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">slug</span><span class="p">,</span>
+            <span class="s">&#39;location&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+            <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span>
+            <span class="s">&#39;start_time&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="s">&#39;end_date&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span>
+            <span class="s">&#39;end_time&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">end_time</span><span class="p">,</span>
+            <span class="s">&#39;published&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">published</span><span class="p">,</span>
+            <span class="s">&#39;short_description&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">short_description_markdown</span><span class="p">,</span>
+            <span class="s">&#39;long_description&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">long_description_markdown</span><span class="p">,</span>
+            <span class="s">&#39;is_recurring&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">,</span>
+            <span class="s">&#39;facebook_url&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">facebook_url</span><span class="p">,</span>
+            <span class="s">&#39;event_image&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">filename</span> <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">image</span> <span class="k">else</span> <span class="bp">None</span>
+        <span class="p">}</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.form_data_from_series"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.form_data_from_series">[docs]</a>    <span class="k">def</span> <span class="nf">form_data_from_series</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">series</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate an :class:`EventSeries` into a dictionary of recurrence</span>
+<span class="sd">        form data.</span>
+
+<span class="sd">        :param series: The series to translate.</span>
+<span class="sd">        :type series: :class:`EventSeries`</span>
+
+<span class="sd">        :returns: Form data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&#39;frequency&#39;</span><span class="p">:</span> <span class="n">series</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span>
+            <span class="s">&#39;every&#39;</span><span class="p">:</span> <span class="n">series</span><span class="o">.</span><span class="n">every</span><span class="p">,</span>
+            <span class="s">&#39;ends&#39;</span><span class="p">:</span> <span class="s">&#39;on&#39;</span> <span class="k">if</span> <span class="n">series</span><span class="o">.</span><span class="n">ends_on</span> <span class="k">else</span> <span class="s">&#39;after&#39;</span><span class="p">,</span>
+            <span class="s">&#39;num_occurrences&#39;</span><span class="p">:</span> <span class="n">series</span><span class="o">.</span><span class="n">num_occurrences</span><span class="p">,</span>
+            <span class="s">&#39;recurrence_end_date&#39;</span><span class="p">:</span> <span class="n">series</span><span class="o">.</span><span class="n">recurrence_end_date</span><span class="p">,</span>
+            <span class="s">&#39;recurrence_summary&#39;</span><span class="p">:</span> <span class="n">series</span><span class="o">.</span><span class="n">recurrence_summary</span>
+        <span class="p">}</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.event_data_from_form"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.event_data_from_form">[docs]</a>    <span class="k">def</span> <span class="nf">event_data_from_form</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate a :class:`~app.forms.CreateEventForm` or a subclass into a</span>
+<span class="sd">        dictionary of event data.</span>
+
+<span class="sd">        :param form: The form to translate.</span>
+<span class="sd">        :type form: :class:`~app.forms.CreateEventForm` or a subclasss</span>
+<span class="sd">        :param creator: The creator of the event.</span>
+<span class="sd">        :type creator: :class:`~app.models.User`</span>
+
+<span class="sd">        :returns: Event data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="n">event_image</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">event_image</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">event_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="n">event_data</span> <span class="o">=</span>  <span class="p">{</span>
+            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;slug&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">slug</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;location&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;start_time&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;end_time&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;published&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;short_description_markdown&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">short_description</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;long_description_markdown&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">long_description</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;is_recurring&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">is_recurring</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;facebook_url&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">facebook_url</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;image&#39;</span><span class="p">:</span> <span class="n">event_image</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">creator</span><span class="p">:</span>
+            <span class="n">event_data</span><span class="p">[</span><span class="s">&#39;creator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">creator</span>
+        <span class="k">return</span> <span class="n">event_data</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.date_data_from_form"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.date_data_from_form">[docs]</a>    <span class="k">def</span> <span class="nf">date_data_from_form</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate a :class:`~app.forms.CreateEventForm` or a subclass into a</span>
+<span class="sd">        dictionary of date data.</span>
+
+<span class="sd">        :param form: The form to translate.</span>
+<span class="sd">        :type form: :class:`~app.forms.CreateEventForm` or a subclasss</span>
+
+<span class="sd">        :returns: Date data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;end_date&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="p">}</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.series_data_from_form"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.series_data_from_form">[docs]</a>    <span class="k">def</span> <span class="nf">series_data_from_form</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate a :class:`~app.forms.CreateEventForm` or a subclass into a</span>
+<span class="sd">        dictionary of series data.</span>
+
+<span class="sd">        :param form: The form to translate.</span>
+<span class="sd">        :type form: :class:`~app.forms.CreateEventForm` or a subclasss</span>
+
+<span class="sd">        :returns: Series data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&#39;frequency&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;every&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">every</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;slug&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">slug</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;ends_on&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">ends</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="s">&#39;on&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ends_after&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">ends</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="s">&#39;after&#39;</span><span class="p">,</span>
+            <span class="s">&#39;num_occurrences&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">num_occurrences</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;recurrence_end_date&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">recurrence_end_date</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s">&#39;recurrence_summary&#39;</span><span class="p">:</span> <span class="n">form</span><span class="o">.</span><span class="n">recurrence_summary</span><span class="o">.</span><span class="n">data</span>
+        <span class="p">}</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DataBuilder.event_and_date_data_from_form"><a class="viewcode-back" href="../../../app.lib.html#app.lib.events.DataBuilder.event_and_date_data_from_form">[docs]</a>    <span class="k">def</span> <span class="nf">event_and_date_data_from_form</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translate a :class:`~app.forms.CreateEventForm` or a subclass into a</span>
+<span class="sd">        dictionary of both event and date data.</span>
+
+<span class="sd">        :param form: The form to translate.</span>
+<span class="sd">        :type form: :class:`~app.forms.CreateEventForm` or a subclasss</span>
+<span class="sd">        :param creator: The creator of the event.</span>
+<span class="sd">        :type creator: :class:`~app.models.User`</span>
+
+<span class="sd">        :returns: Event and date data.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">form</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="n">event_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">event_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">creator</span><span class="o">=</span><span class="n">creator</span><span class="p">)</span>
+        <span class="n">date_data</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">date_data_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">event_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">+</span> <span class="n">date_data</span><span class="o">.</span><span class="n">items</span><span class="p">())</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

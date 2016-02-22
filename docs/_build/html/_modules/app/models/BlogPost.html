@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.models.BlogPost &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.models.BlogPost</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.models.BlogPost</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: BlogPost</span>
+<span class="sd">    :synopsis: A blog post database model.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">url_for</span>
+
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Post</span>
+<span class="kn">from</span> <span class="nn">app.lib.text</span> <span class="kn">import</span> <span class="n">truncate_html</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+
+<div class="viewcode-block" id="BlogPost"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost">[docs]</a><span class="k">class</span> <span class="nc">BlogPost</span><span class="p">(</span><span class="n">Post</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An subclass of :class:`Post` that provides methods specific to blog</span>
+<span class="sd">    posts.</span>
+
+<span class="sd">    Note: all of the fields on :class:`BlogPost` are defined in :class:`Post`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BlogPost.snippet"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost.snippet">[docs]</a>    <span class="k">def</span> <span class="nf">snippet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">truncate_text</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">,</span> <span class="n">newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">tags</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">images</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Trim the blog post&#39;s HTML contnet into a snippet.</span>
+
+<span class="sd">        :param int length: The number of words to truncate to.</span>
+<span class="sd">        :param str truncate_text: The text to append to truncated text.</span>
+<span class="sd">        :param bool newlines: Whether or not to preserve newlines.</span>
+<span class="sd">        :param bool tags: Whether or not to trim HTML tags or not.</span>
+<span class="sd">        :param bool images: Whether or not to trim images as well.</span>
+
+<span class="sd">        :returns: The truncated text.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">truncate_html</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">html_content</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">truncate_text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">newlines</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">images</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;&lt;img.*?/&gt;&#39;</span><span class="p">)</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">html</span>
+</div>
+<div class="viewcode-block" id="BlogPost.get_absolute_url"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost.get_absolute_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the absolute URL of this blog post.</span>
+
+<span class="sd">        :returns: The url.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;blog.post&#39;</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BlogPost.human_readable_date"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost.human_readable_date">[docs]</a>    <span class="k">def</span> <span class="nf">human_readable_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retuns the date this post was published, formatted like Oct 08, 2014.</span>
+
+<span class="sd">        :returns: The formatted date</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_published</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%b </span><span class="si">%d</span><span class="s">, %Y&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BlogPost.pretty_date"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost.pretty_date">[docs]</a>    <span class="k">def</span> <span class="nf">pretty_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the date publsihed or modified, to be used in the admin</span>
+<span class="sd">        interface.</span>
+
+<span class="sd">        :returns: The formatted date</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">published</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_published</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;Published </span><span class="si">%d</span><span class="s">/%b/%y&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_modified</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;Modified </span><span class="si">%d</span><span class="s">/%b/%y&quot;</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_published</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">unpublish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_published</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BlogPost.status"><a class="viewcode-back" href="../../../app.models.html#app.models.BlogPost.BlogPost.status">[docs]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the status of this post. Either ``&#39;published&#39;``,</span>
+<span class="sd">        ``&#39;complete&#39;``, or ``&#39;incomplete&#39;``.</span>
+
+<span class="sd">        :returns: The status</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">published</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;published&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">html_content</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">author</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;complete&#39;</span>
+        <span class="k">return</span> <span class="s">&#39;incomplete&#39;</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

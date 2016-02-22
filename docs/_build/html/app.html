@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Eventum App &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Forms" href="app.forms.html"/>
+        <link rel="prev" title="Quickstart" href="quickstart.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app.forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.lib.html">Library Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>The Eventum App</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/app.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-eventum-app">
+<h1>The Eventum App<a class="headerlink" href="#the-eventum-app" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.fields.html">Form Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.forms.fields.html#app-forms-fields-timefield">app.forms.fields.TimeField</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-addtowhitelistform">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-createblogpostform">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-createeventform">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-createprofileform">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-deleteeventform">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-editeventform">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-edituserform">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-uploadimageform">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html#app-forms-validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#app-lib-events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#app-lib-google-calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#app-lib-networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.models.fields.html">Model Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.fields.html#app-models-fields-datefield">app.models.fields.DateField</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.fields.html#app-models-fields-timefield">app.models.fields.TimeField</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-blogpost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-eventseries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-user">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.admin.html">Admin Routes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-admin">app.routes.admin.admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-auth">app.routes.admin.auth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-events">app.routes.admin.events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-media">app.routes.admin.media</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-posts">app.routes.admin.posts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-users">app.routes.admin.users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.routes.admin.html#app-routes-admin-whitelist">app.routes.admin.whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html#app-routes-base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html#app-routes-blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html#app-routes-client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="module-app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-__init__"></span><dl class="function">
+<dt id="app.create_app">
+<code class="descclassname">app.</code><code class="descname">create_app</code><span class="sig-paren">(</span><em>**config_overrides</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#create_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.create_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is normal setup code for a Flask app, but we give the option
+to provide override configurations so that in testing, a different
+database can be used.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.register_blueprints">
+<code class="descclassname">app.</code><code class="descname">register_blueprints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#register_blueprints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.register_blueprints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers all the Blueprints (modules) in a function, to avoid
+circular dependancies.</p>
+<p>Be careful rearranging the order of the app.register_blueprint()
+calls, as it can also result in circular dependancies.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.register_delete_rules">
+<code class="descclassname">app.</code><code class="descname">register_delete_rules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#register_delete_rules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.register_delete_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers rules for how Mongoengine handles the deletion of objects
+that are being referenced by other objects.</p>
+<p>See the documentation for <code class="xref py py-func docutils literal"><span class="pre">mongoengine.model.register_delete_rule()</span></code>
+for more information.</p>
+<p>All delete rules for User fields must by DENY, because User objects should
+never be deleted.  Lists of reference fields should PULL, to remove deleted
+objects from the list, and all others should NULLIFY</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.register_logger">
+<code class="descclassname">app.</code><code class="descname">register_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#register_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.register_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an error logger and attach it to <code class="docutils literal"><span class="pre">app</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.register_scss">
+<code class="descclassname">app.</code><code class="descname">register_scss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#register_scss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.register_scss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers the Flask-Assets rules for scss compilation.  This reads from
+<code class="docutils literal"><span class="pre">config/scss.json</span></code> to make these rules.</p>
+<p>We expire files using filenames:
+<a class="reference external" href="http://webassets.readthedocs.org/en/latest/expiring.html#expire-using-the-filename">http://webassets.readthedocs.org/en/latest/expiring.html#expire-using-the-filename</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.run">
+<code class="descclassname">app.</code><code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the app.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="app.forms.html" class="btn btn-neutral float-right" title="Forms" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral" title="Quickstart" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

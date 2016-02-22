@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.forms.EditUserForm &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.forms.EditUserForm</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.forms.EditUserForm</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: EditUserForm</span>
+<span class="sd">    :synopsis: A form for editing a :class:`~app.models.User`.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">flask.ext.wtf</span> <span class="kn">import</span> <span class="n">Form</span>
+<span class="kn">from</span> <span class="nn">wtforms</span> <span class="kn">import</span> <span class="n">StringField</span><span class="p">,</span> <span class="n">RadioField</span>
+<span class="kn">from</span> <span class="nn">wtforms.validators</span> <span class="kn">import</span> <span class="n">Required</span><span class="p">,</span> <span class="n">Email</span>
+
+<span class="n">EMAIL_ERROR</span> <span class="o">=</span> <span class="s">&#39;Please provide a valid email address.&#39;</span>
+
+<div class="viewcode-block" id="EditUserForm"><a class="viewcode-back" href="../../../app.forms.html#app.forms.EditUserForm.EditUserForm">[docs]</a><span class="k">class</span> <span class="nc">EditUserForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A form for editing a :class:`~app.models.User`.</span>
+
+<span class="sd">    :ivar name: :class:`wtforms.fields.StringField` - The user&#39;s name</span>
+<span class="sd">    :ivar email: :class:`wtforms.fields.StringField` - The user&#39;s email address</span>
+<span class="sd">    :ivar image_url: :class:`wtforms.fields.StringField` - A URL to a profile</span>
+<span class="sd">        picture</span>
+<span class="sd">    :ivar user_type: :class:`wtforms.fields.RadioField` - The permission level</span>
+<span class="sd">        for the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="s">&#39;Full Name&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">Required</span><span class="p">(</span><span class="s">&quot;Please type a name&quot;</span><span class="p">)])</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="s">&#39;Email Address&#39;</span><span class="p">,</span>
+                      <span class="p">[</span><span class="n">Email</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">EMAIL_ERROR</span><span class="p">),</span>
+                       <span class="n">Required</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">EMAIL_ERROR</span><span class="p">)])</span>
+    <span class="n">image_url</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="s">&#39;Image URL&#39;</span><span class="p">)</span>
+    <span class="n">user_type</span> <span class="o">=</span> <span class="n">RadioField</span><span class="p">(</span><span class="s">&#39;User Type&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">Required</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Please select a user type.&quot;</span><span class="p">)],</span>
+                           <span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;editor&#39;</span><span class="p">,</span> <span class="s">&quot;Editor&quot;</span><span class="p">),</span>
+                                    <span class="p">(</span><span class="s">&#39;publisher&#39;</span><span class="p">,</span> <span class="s">&quot;Publisher&quot;</span><span class="p">),</span>
+                                    <span class="p">(</span><span class="s">&#39;admin&#39;</span><span class="p">,</span> <span class="s">&quot;Admin&quot;</span><span class="p">),</span>
+                                    <span class="p">(</span><span class="s">&quot;fake_user&quot;</span><span class="p">,</span> <span class="s">&quot;Fake User&quot;</span><span class="p">)])</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

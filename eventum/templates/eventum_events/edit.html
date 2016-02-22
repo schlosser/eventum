@@ -1,0 +1,86 @@
+{% extends "eventum_events/create.html" %}
+
+{% import "eventum_macros.html" as macros %}
+{% block title %}Edit {{ event.title }}{% endblock %}
+{% block pagetitle %}<span class="no-mobile">Edit Post</span>{% endblock %}
+{% block pagelink %}{{ url_for('events.index') }}{% endblock %}
+
+{% block action %}
+action="{{ url_for('events.edit', event_id=event.id) }}"
+{% endblock %}
+
+{% block barright %}
+<div class="create-barright">
+    {% if event.is_recurring %}
+        <a class="text-button save-button" href="#show-modal" data-modal="save-options">
+            {% if event.published %}
+                Save
+            {% else %}
+                Save Draft
+            {% endif %}
+        </a>
+    {% else %}
+        <a class="text-button save-button" href="#save">
+            {% if event.published %}
+                Save
+            {% else %}
+                Save Draft
+            {% endif %}
+        </a>
+    {% endif %}
+    {% if current_user.can("publish") %}
+        {% if event.published %}
+            {{ macros.toggle("Publish", "Unpublish")}}
+        {% else %}
+            {{ macros.toggle("Publish", "Unpublish", start_on=False)}}
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block toolbar %}
+{{ super() }}
+<div class="right">
+    {% call macros.confirm("Delete Event", url_for('events.delete', event_id=event.id)) %}
+    <div class="hidden">
+        {{ macros.render_field(delete_form.csrf_token) }}
+        {{ macros.render_field(delete_form.delete_all) }}
+        <input type="submit" value="submit"/>
+    </div>
+    <a class="delete-event"
+       {% if event.is_recurring %}
+       href="#show-modal"
+       {% else %}
+       href="#delete"
+       {% endif %}
+       data-modal="delete">Confirm</a>
+    {% endcall %}
+</div>
+{% endblock %}
+
+{% block main %}
+{% call macros.modal(modal="delete") %}
+<h3>Delete Reoccuring Event</h3>
+<p>You may edit the current, upcoming, or all events in this series</p>
+
+<div class="btn-group">
+    <a href="#delete" class="btn">Delete only this event</a>
+    <a href="#delete-all" class="btn">Delete all events in this series</a>
+</div>
+{% endcall %}
+
+{% call macros.modal(modal="save-options") %}
+<h3>Edit Reoccuring Event</h3>
+<p>You may edit the current, upcoming, or all events in this series</p>
+
+<div class="btn-group">
+    <div class="btn">
+        <a href="#save">Change only this event</a>
+    </div>
+    <div class="btn">
+        <a href="#save-all">Change all events in this series</a>
+    </div>
+</div>
+{% endcall %}
+{{ super() }}
+{% endblock %}

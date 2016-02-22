@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.lib.google_calendar &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.lib.google_calendar</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.lib.google_calendar</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">httplib2</span>
+<span class="kn">import</span> <span class="nn">httplib</span>
+
+<span class="kn">from</span> <span class="nn">apiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">apiclient.errors</span> <span class="kn">import</span> <span class="n">HttpError</span>
+<span class="kn">from</span> <span class="nn">oauth2client.file</span> <span class="kn">import</span> <span class="n">Storage</span>
+
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span> <span class="nn">app.lib.google_calendar_resource_builder</span> <span class="kn">import</span> <span class="n">GoogleCalendarResourceBuilder</span>
+<span class="kn">from</span> <span class="nn">app.lib.decorators</span> <span class="kn">import</span> <span class="n">skip_and_return_if</span>
+<span class="kn">from</span> <span class="nn">app.lib.error</span> <span class="kn">import</span> <span class="p">(</span><span class="n">GoogleCalendarAPIError</span><span class="p">,</span>
+                           <span class="n">GoogleCalendarAPIMissingID</span><span class="p">,</span>
+                           <span class="n">GoogleCalendarAPIBadStatusLine</span><span class="p">,</span>
+                           <span class="n">GoogleCalendarAPIEventAlreadyDeleted</span><span class="p">,</span>
+                           <span class="n">GoogleCalendarAPIErrorNotFound</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">config.flask_config</span> <span class="kn">import</span> <span class="n">config</span>
+
+
+<div class="viewcode-block" id="GoogleCalendarAPIClient"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient">[docs]</a><span class="k">class</span> <span class="nc">GoogleCalendarAPIClient</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;A client to interact with the Google Calendar API.  Once initialized, it</span>
+<span class="sd">    can be used to create, update, delete, and move events.</span>
+
+<span class="sd">    :ivar service: The Google Calendar service to make requests with.</span>
+<span class="sd">    :ivar private_calendar_id: str - ID of the private calendar.</span>
+<span class="sd">    :ivar public_calendar_id: str - ID of the public calendar.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the Google Calendar API Client, with a private and public</span>
+<span class="sd">        calendar to publish to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_service</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">private_calendar_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;PRIVATE_CALENDAR_ID&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">public_calendar_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;PUBLIC_CALENDAR_ID&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_calendar_id_for_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the ID for the public or private calendar, depending on</span>
+<span class="sd">        whether or not the event is published.</span>
+
+<span class="sd">        :param event: The event in question.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :returns: The ID of ``event``&#39;s calendar.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">published</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_calendar_id</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">private_calendar_id</span>
+
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">_get_service</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create and return the Google Calendar service object, using the</span>
+<span class="sd">        credentials file generated through the command::</span>
+
+<span class="sd">            python manage.py --authorize</span>
+
+<span class="sd">        The service object is used to make API requests to Google Calendar, but</span>
+<span class="sd">        will raise IOError if the credentials file is not generated</span>
+
+<span class="sd">        :raises: IOError, NotImplementedError</span>
+
+<span class="sd">        :returns: The Google Calendar service.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">storage</span> <span class="o">=</span> <span class="n">Storage</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;INSTALLED_APP_CREDENTIALS_PATH&#39;</span><span class="p">])</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span>
+
+        <span class="k">if</span> <span class="n">credentials</span><span class="o">.</span><span class="n">invalid</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+        <span class="n">http</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">()</span>
+        <span class="n">http</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">http</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">build</span><span class="p">(</span><span class="s">&#39;calendar&#39;</span><span class="p">,</span> <span class="s">&#39;v3&#39;</span><span class="p">,</span> <span class="n">http</span><span class="o">=</span><span class="n">http</span><span class="p">)</span>
+
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.create_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.create_event">[docs]</a>    <span class="k">def</span> <span class="nf">create_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates the event in Google Calendar.</span>
+
+<span class="sd">        :param event: The event to create.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">resource</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">resource</span> <span class="o">=</span> <span class="n">GoogleCalendarResourceBuilder</span><span class="o">.</span><span class="n">event_resource</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="n">calendar_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calendar_id_for_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Create Event&#39;</span><span class="p">)</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">,</span>
+                                               <span class="n">body</span><span class="o">=</span><span class="n">resource</span><span class="p">)</span>
+
+        <span class="c"># Execute the request</span>
+        <span class="n">created_event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c"># Update the Event with the latest info from the response.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_event_from_response</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">created_event</span><span class="p">)</span>
+
+        <span class="c"># Return the Google Calendar response dict</span>
+        <span class="k">return</span> <span class="n">created_event</span>
+</div>
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.update_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.update_event">[docs]</a>    <span class="k">def</span> <span class="nf">update_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stale_event</span><span class="p">,</span> <span class="n">as_exception</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the event in Google Calendar.</span>
+
+<span class="sd">        The first argument is called ``stale_event`` because it might have</span>
+<span class="sd">        outdated fields.  The first thing we do is find a fresh event with it&#39;s</span>
+<span class="sd">        id in mongo.</span>
+
+<span class="sd">        This method will fall back to creating a new event if we don&#39;t have</span>
+<span class="sd">        reference to a ``gcal_id`` for the event, or if the update otherwise</span>
+<span class="sd">        fails.</span>
+
+<span class="sd">        :param stale_event: The event to update.</span>
+<span class="sd">        :type stale_event: :class:`Event`</span>
+<span class="sd">        :param bool as_exception: Whether or not this update should happen as</span>
+<span class="sd">            an exception in a series.  Otherwise, series&#39; will be updated in</span>
+<span class="sd">            their entirety.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIMissingID`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Freshen up stale_event</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">stale_event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">:</span>
+            <span class="c"># If we don&#39;t have a reference if it&#39;s associate Google Calendar</span>
+            <span class="c"># ID, then create it fresh.  This raises still because it</span>
+            <span class="c"># *shouldn&#39;t* ever happen, but it does.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_event</span><span class="p">(</span><span class="n">stale_event</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIMissingID</span><span class="p">(</span><span class="s">&#39;Missing gplus_id. Successfully &#39;</span>
+                                             <span class="s">&#39;fell back to create.&#39;</span><span class="p">)</span>
+
+        <span class="n">resource</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">resource</span> <span class="o">=</span> <span class="n">GoogleCalendarResourceBuilder</span><span class="o">.</span><span class="n">event_resource</span><span class="p">(</span><span class="n">event</span><span class="p">,</span>
+                                                                <span class="n">for_update</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="n">calendar_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calendar_id_for_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="c"># If this update should be an exception to a series of events, then</span>
+        <span class="c"># we only want to update the instance id.  Otherwise, using the</span>
+        <span class="c"># ``event.gcal_id`` will update the entire series.</span>
+        <span class="n">event_id_for_update</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span>
+        <span class="k">if</span> <span class="n">as_exception</span><span class="p">:</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instance_resource_for_event_in_series</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+            <span class="n">resource</span> <span class="o">=</span> <span class="n">instance</span>
+            <span class="n">event_id_for_update</span> <span class="o">=</span> <span class="n">instance</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span>
+
+        <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Update Event&#39;</span><span class="p">)</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">,</span>
+                                               <span class="n">eventId</span><span class="o">=</span><span class="n">event_id_for_update</span><span class="p">,</span>
+                                               <span class="n">body</span><span class="o">=</span><span class="n">resource</span><span class="p">)</span>
+
+        <span class="c"># Send the request, falling back to update if it fails.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">updated_event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GoogleCalendarAPIErrorNotFound</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;Couldn</span><span class="se">\&#39;</span><span class="s">t find event to update. &#39;</span>
+                       <span class="s">&#39;Successfully fell back to create.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIErrorNotFound</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="c"># Update the Event with the latest info from the response.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_event_from_response</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">updated_event</span><span class="p">)</span>
+
+        <span class="c"># Return the Google Calendar response dict</span>
+        <span class="k">return</span> <span class="n">updated_event</span>
+</div>
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.publish_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.publish_event">[docs]</a>    <span class="k">def</span> <span class="nf">publish_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stale_event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publish an event, moving it to the public calendar.</span>
+
+<span class="sd">        The first argument is called ``stale_event`` because it might have</span>
+<span class="sd">        outdated fields.  The first thing we do is find a fresh event with it&#39;s</span>
+<span class="sd">        id in mongo.</span>
+
+<span class="sd">        :param stale_event: The event to publish</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIError`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIMissingID`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Freshen up stale_event</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">stale_event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">published</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIError</span><span class="p">(</span><span class="s">&#39;Event must have published as `True` before publishing&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">move_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">from_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">private_calendar_id</span><span class="p">,</span>
+                               <span class="n">to_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">public_calendar_id</span><span class="p">)</span>
+</div>
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.unpublish_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.unpublish_event">[docs]</a>    <span class="k">def</span> <span class="nf">unpublish_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stale_event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Unpublish an event, moving it to the private calendar.</span>
+
+<span class="sd">        The first argument is called ``stale_event`` because it might have</span>
+<span class="sd">        outdated fields.  The first thing we do is find a fresh event with it&#39;s</span>
+<span class="sd">        id in mongo.</span>
+
+<span class="sd">        :param stale_event: The event to publish</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIError`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIMissingID`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Freshen up stale_event</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">stale_event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">published</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIError</span><span class="p">(</span><span class="s">&#39;Event must have published as `False` before unpublishing&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">move_event</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">from_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">public_calendar_id</span><span class="p">,</span>
+                               <span class="n">to_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">private_calendar_id</span><span class="p">)</span>
+</div>
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.move_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.move_event">[docs]</a>    <span class="k">def</span> <span class="nf">move_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">from_id</span><span class="p">,</span> <span class="n">to_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move an event between calendars.</span>
+
+<span class="sd">        :param event: Event to move between calendars</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param str from_id: Calendar Id to move the event from</span>
+<span class="sd">        :param str to_id: Calendar ID to move the event to</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIMissingID`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIMissingID</span><span class="p">()</span>
+
+        <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Move Event&#39;</span><span class="p">)</span>
+        <span class="n">request</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">from_id</span><span class="p">,</span>
+                                              <span class="n">eventId</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">,</span>
+                                              <span class="n">destination</span><span class="o">=</span><span class="n">to_id</span><span class="p">)</span>
+
+        <span class="c"># Execute the request</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GoogleCalendarAPIErrorNotFound</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&#39;Move failed.  Successfully fell back to create.&#39;</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: &#39;</span> <span class="o">+</span> <span class="n">message</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIErrorNotFound</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+</div>
+    <span class="nd">@skip_and_return_if</span><span class="p">(</span><span class="ow">not</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="GoogleCalendarAPIClient.delete_event"><a class="viewcode-back" href="../../../app.lib.html#app.lib.google_calendar.GoogleCalendarAPIClient.delete_event">[docs]</a>    <span class="k">def</span> <span class="nf">delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">as_exception</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete an event or series from Google Calendar, or cancel a single</span>
+<span class="sd">        event from a series.</span>
+
+<span class="sd">        :param event: The event to delete.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param bool as_exception: Whether or not to cancel this event as an</span>
+<span class="sd">            exception in a series.  Otherwise, series&#39; will be deleted in their</span>
+<span class="sd">            entirety.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIMissingID`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIMissingID</span><span class="p">()</span>
+
+        <span class="n">calendar_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calendar_id_for_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="c"># Create the request</span>
+        <span class="k">if</span> <span class="n">as_exception</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Delete Event (as exception)&#39;</span><span class="p">)</span>
+            <span class="n">resource</span> <span class="o">=</span> <span class="n">GoogleCalendarResourceBuilder</span><span class="o">.</span><span class="n">event_resource</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instance_resource_for_event_in_series</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+            <span class="n">instance</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;cancelled&#39;</span>
+
+            <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">,</span>
+                                                   <span class="n">eventId</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">],</span>
+                                                   <span class="n">body</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Delete Event&#39;</span><span class="p">)</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">,</span>
+                                                   <span class="n">eventId</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">)</span>
+
+        <span class="c"># Execute the request, failing silently if the event has already been</span>
+        <span class="c"># deleted from Google Calendar.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">GoogleCalendarAPIErrorNotFound</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c"># If the resource has already been deleted, fail quietly.</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIEventAlreadyDeleted</span>
+</div>
+    <span class="k">def</span> <span class="nf">_instance_resource_for_event_in_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Searches through the instances of ``event``&#39;s parent series,</span>
+<span class="sd">        returning the Google Calendar instance resource for with ``start_time``</span>
+<span class="sd">        that matches ``event``&#39;s.</span>
+
+<span class="sd">        :param event: The event to find the instance resource for.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+
+<span class="sd">        :returns: The instance resource that represents ``event``.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">calendar_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calendar_id_for_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="n">event_start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">GoogleCalendarResourceBuilder</span>
+                            <span class="o">.</span><span class="n">rfc3339</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">start_datetime</span><span class="p">()))</span>
+        <span class="n">page_token</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c"># Find more instances</span>
+            <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">events</span><span class="p">()</span><span class="o">.</span><span class="n">instances</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">,</span>
+                                                      <span class="n">eventId</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span><span class="p">,</span>
+                                                      <span class="n">pageToken</span><span class="o">=</span><span class="n">page_token</span><span class="p">)</span>
+            <span class="n">instances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+            <span class="c"># Look for instances with matching start date</span>
+            <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">[</span><span class="s">&#39;items&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">instance</span><span class="p">[</span><span class="s">&#39;start&#39;</span><span class="p">][</span><span class="s">&#39;dateTime&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">event_start_date</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">instance</span>
+
+            <span class="c"># Get the next page of events</span>
+            <span class="n">page_token</span> <span class="o">=</span> <span class="n">instances</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;nextPageToken&#39;</span><span class="p">)</span>
+
+            <span class="c"># Quit if there are no more pages</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">page_token</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">_update_event_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates ``event`` using new fields from ``response``.</span>
+
+<span class="sd">        :param event: The event to update.</span>
+<span class="sd">        :type event: :class:`Event`</span>
+<span class="sd">        :param dict response: The Google Calendar API response to search for</span>
+<span class="sd">            updates in.</span>
+
+<span class="sd">        :raises: GoogleCalendarAPIError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gcal_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span>
+        <span class="n">gcal_sequence</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;sequence&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">gcal_id</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">gcal_sequence</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Request failed. {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIError</span><span class="p">(</span><span class="s">&#39;Request Failed.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">gcal_id</span> <span class="o">=</span> <span class="n">gcal_id</span>
+            <span class="k">for</span> <span class="n">ev</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+                <span class="n">ev</span><span class="o">.</span><span class="n">gcal_id</span> <span class="o">=</span> <span class="n">gcal_id</span>
+                <span class="n">ev</span><span class="o">.</span><span class="n">gcal_sequence</span> <span class="o">=</span> <span class="n">gcal_sequence</span>
+                <span class="n">ev</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">gcal_id</span> <span class="o">=</span> <span class="n">gcal_id</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">gcal_sequence</span> <span class="o">=</span> <span class="n">gcal_sequence</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_execute_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Execute the Google Calendar API request passed in.</span>
+
+<span class="sd">        :param request:  The Google Calendar API request object to execute.</span>
+
+<span class="sd">        :raises: :class:`GoogleCalendarAPIBadStatusLine`,</span>
+<span class="sd">            :class:`GoogleCalendarAPIErrorNotFound`</span>
+
+<span class="sd">        :returns: The Google Calendar API response.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">httplib</span><span class="o">.</span><span class="n">BadStatusLine</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Got BadStatusLine.  Retrying...&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">httplib</span><span class="o">.</span><span class="n">BadStatusLine</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;[GOOGLE_CALENDAR]: Got BadStatusLine again! Raising.&#39;</span><span class="p">)</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;Line: {eline}, Message: {emessage}&#39;</span>
+                           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eline</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">emessage</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">GoogleCalendarAPIBadStatusLine</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">HttpError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">GoogleCalendarAPIErrorNotFound</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="index.html"/>
+        <link rel="next" title="The Eventum App" href="app.html"/>
+        <link rel="prev" title="Welcome to Eventum’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developing">Developing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#developing-without-authentication">Developing without Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.html">The Eventum App</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app.forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.lib.html">Library Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Quickstart</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quickstart.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>Eventum is a content management system for an event-driven blog that
+syncs with Google Calendar.</p>
+<div class="section" id="stack">
+<h2>Stack<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Built in <a class="reference external" href="http://flask.pocoo.org/">Flask</a></li>
+<li><a class="reference external" href="http://flask-mongoengine.readthedocs.org/en/latest/">Flask-Mongoengine</a>
+and <a class="reference external" href="http://docs.mongoengine.org/">Mongoengine</a> are used to
+interface with <a class="reference external" href="https://www.mongodb.org/">MongoDB</a></li>
+<li>Authentication is done with <a class="reference external" href="https://developers.google.com/+/web/signin/server-side-flow">Google+ server-side
+flow</a></li>
+<li>Forms and validation are done through
+<a class="reference external" href="https://flask-wtf.readthedocs.org/en/latest/">Flask-WTForms</a> and
+<a class="reference external" href="http://wtforms.readthedocs.org/en/latest/">WTForms</a></li>
+<li>CSS is generated from <a class="reference external" href="http://sass-lang.com/">SCSS</a> and managed
+with
+<a class="reference external" href="http://flask-assets.readthedocs.org/en/latest/">Flask-Assets</a></li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Eventum runs on Linux and OSX. To get it up an running, follow these
+steps:</p>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference external" href="https://www.mongodb.org/">MongoDB</a> (<a class="reference external" href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/">Ubuntu
+Linux</a>,
+<a class="reference external" href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-with-homebrew">OSX</a>).</p>
+<p>On OSX, you may have to run:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ mkdir /data /data/db
+</pre></div>
+</div>
+<p>before you can run <code class="docutils literal"><span class="pre">mongod</span></code> without errors.</p>
+</li>
+<li><p class="first">Install
+<a class="reference external" href="http://virtualenv.readthedocs.org/en/latest/">VirtualEnv</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ sudo pip install virtualenv
+</pre></div>
+</div>
+</li>
+<li><p class="first">Download a copy of <code class="docutils literal"><span class="pre">client_secrets.json</span></code> from the <a class="reference external" href="https://console.developers.google.com/project/apps~adicu-com/apiui/credential">Google Developer
+Console</a>
+or from a friend, and place it in the <code class="docutils literal"><span class="pre">config</span></code> folder.</p>
+</li>
+<li><p class="first">Authorize the Google Calendar API:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ python manage.py --authorize
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Then you should be all set to run!</p>
+</div>
+<div class="section" id="developing">
+<h2>Developing<a class="headerlink" href="#developing" title="Permalink to this headline">¶</a></h2>
+<p>Here&#8217;s how to run Eventum in a development environment:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>mongod &amp;
+virtualenv --no-site-packages .
+source bin/activate
+source config/settings.sh
+pip install -r config/requirements.txt
+
+python run.py
+</pre></div>
+</div>
+<p>Or alternately:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>./develop.sh
+source bin/activate
+source config/settings.sh
+python run.py
+</pre></div>
+</div>
+<div class="section" id="developing-without-authentication">
+<h3>Developing without Authentication<a class="headerlink" href="#developing-without-authentication" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to run Eventum without logging in using Google+ or
+authenticating with Google Calendar. To do so, edit
+<code class="docutils literal"><span class="pre">config/settings.sh</span></code> and set <code class="docutils literal"><span class="pre">GOOGLE_AUTH_ENABLED</span></code> to <code class="docutils literal"><span class="pre">FALSE</span></code>:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span># Whether or not to enable Google Auth or not.
+echo $GOOGLE_AUTH_ENABLED
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Eventum uses <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> to compile
+documentation to an HTML website. This documentation is generated from
+the source code.</p>
+<p>Here&#8217;s how to compile the docs:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span># The documentation requires that the app is runnable, so you must be in a
+# development environment
+./develop.sh
+source bin/activate
+source config/settings.sh
+
+cd docs
+# This will generate the documentation website in /docs/_build/html
+make html
+
+# Then either host the docs on localhost:8000
+cd _build/html
+python -m SimpleHTTPServer .
+
+# Or open them directly
+open _build/html/index.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>Tests live in the <code class="docutils literal"><span class="pre">test</span></code> directory, and can be run via nosetests:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>source bin/activate # If you are not already in your virtualenv
+nosetests
+</pre></div>
+</div>
+</div>
+<div class="section" id="organization-structure">
+<h2>Organization / Structure<a class="headerlink" href="#organization-structure" title="Permalink to this headline">¶</a></h2>
+<div class="code bash highlight-python"><div class="highlight"><pre><span></span>.
+├── app              # All code related to the running of the app
+│   ├── forms        # Flask-WTForms models, used for generating forms in HTML
+│   │                #     and validating input
+│   ├── lib          # Misc helpers, tasks, and modular libraries
+│   ├── models       # Mongoengine Models
+│   ├── routes       # All Flask routes, using Blueprints
+│   ├── static
+│   │   ├── css      # CSS
+│   │   │   ├── lib  # CSS libraries
+│   │   │   └── gen  # CSS generated from SCSS
+│   │   ├── img      # Images
+│   │   ├── js       # Javascript files
+│   │   └── scss     # Stylesheets
+│   ├── templates    # HTML templates
+│   └── __init__.py  # All app-wide setup.  Called by `run.py`
+├── config           # Configuration files
+├── data             # Backup data
+├── manage.py        # Various scripts.  Run `python manage.py` to view usage.
+├── run.py           # Runs the app!
+├── script           # Scripts run by `manage.py` outside of the app
+└── test             # Unit tests
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="app.html" class="btn btn-neutral float-right" title="The Eventum App" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Eventum’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+@import '../admin';
+@import '../colors';
+
+.posts {
+    margin-top: -1rem;
+    .post-title {
+        width: 20%;
+        p {
+            padding-left: 0.5rem;
+        }
+    }
+    .post-author {
+        width: 27%;
+    }
+    .post-date {
+        text-align: center;
+        width: 18%;
+    }
+
+    .post-status {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0.25rem;
+
+        &.published { background-color:$green; }
+        &.complete { background-color:$yellow; }
+        &.incomplete { background-color:$red; }
+    }
+}

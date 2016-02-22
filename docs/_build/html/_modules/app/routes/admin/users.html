@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.routes.admin.users &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../../index.html"/>
+        <link rel="up" title="app" href="../../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../../app.html">app</a> &raquo;</li>
+      
+    <li>app.routes.admin.users</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.routes.admin.users</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: users</span>
+<span class="sd">    :synopsis: All routes on the ``users`` Blueprint.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Whitelist</span><span class="p">,</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">app.forms</span> <span class="kn">import</span> <span class="n">AddToWhitelistForm</span><span class="p">,</span> <span class="n">EditUserForm</span><span class="p">,</span> <span class="n">UploadImageForm</span>
+<span class="kn">from</span> <span class="nn">app.lib.decorators</span> <span class="kn">import</span> <span class="n">login_required</span><span class="p">,</span> <span class="n">development_only</span>
+<span class="kn">from</span> <span class="nn">apiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">DoesNotExist</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> \
+    <span class="n">flash</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">abort</span>
+<span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+
+<span class="n">users</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;users&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="n">gplus_service</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s">&#39;plus&#39;</span><span class="p">,</span> <span class="s">&#39;v1&#39;</span><span class="p">)</span>
+
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="index"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.index">[docs]</a><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View and manage users.</span>
+
+<span class="sd">    Whitelisted users are the only ones allowed to make user accounts.</span>
+
+<span class="sd">    **Route:** ``/admin/users``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">upload_form</span> <span class="o">=</span> <span class="n">UploadImageForm</span><span class="p">()</span>
+    <span class="n">whitelist_form</span> <span class="o">=</span> <span class="n">AddToWhitelistForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/users/users.html&#39;</span><span class="p">,</span>
+                           <span class="n">whitelist_form</span><span class="o">=</span><span class="n">whitelist_form</span><span class="p">,</span>
+                           <span class="n">upload_form</span><span class="o">=</span><span class="n">upload_form</span><span class="p">,</span>
+                           <span class="n">whitelist</span><span class="o">=</span><span class="n">Whitelist</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">redeemed</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+                           <span class="n">users</span><span class="o">=</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(),</span>
+                           <span class="n">images</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">(),</span>
+                           <span class="n">current_user</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+</div>
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/users/me&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="me"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.me">[docs]</a><span class="k">def</span> <span class="nf">me</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View the current user&#39;s profile.</span>
+
+<span class="sd">    **Route:** ``/admin/users/me``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&quot;.user&quot;</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">slug</span><span class="p">))</span>
+</div>
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/users/delete/&lt;user_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="delete"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.delete">[docs]</a><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Delete the user with id ``user_id``</span>
+
+<span class="sd">    If the ``revoke`` property is set to true,</span>
+<span class="sd">    then the user will be removed from the whitelist, and not be</span>
+<span class="sd">    allowed to make an account again.</span>
+
+<span class="sd">    **Route:** ``/admin/users/delete/&lt;user_id&gt;``</span>
+
+<span class="sd">    **Methods:** ``POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">object_id</span> <span class="o">=</span> <span class="n">ObjectId</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">object_id</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">object_id</span><span class="p">)</span>
+
+    <span class="c"># Update whitelist</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wl</span> <span class="o">=</span> <span class="n">Whitelist</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="n">wl</span><span class="o">.</span><span class="n">redeemed</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">wl</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+    <span class="c"># Log out if a user is attempting to delete themselves</span>
+    <span class="k">if</span> <span class="s">&#39;gplus_id&#39;</span> <span class="ow">in</span> <span class="n">session</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">gplus_id</span> <span class="o">==</span> <span class="n">session</span><span class="p">[</span><span class="s">&#39;gplus_id&#39;</span><span class="p">]:</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s">&#39;You deleted yourself successfully. Logging out.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.logout&#39;</span><span class="p">),</span> <span class="mi">303</span><span class="p">)</span>
+    <span class="n">flash</span><span class="p">(</span><span class="s">&#39;User deleted successfully.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+</div>
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/user/&lt;slug&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="user"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.user">[docs]</a><span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="n">slug</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;View and edit the profile of a user.</span>
+
+<span class="sd">    **Route:** ``/admin/user/&lt;slug&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET, POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s">&quot;Invalid user slug &#39;{}&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slug</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">EditUserForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">email</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+                        <span class="c"># image_url=user.get_profile_picture(),</span>
+                        <span class="n">user_type</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">user_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">validate_on_submit</span><span class="p">():</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">user_type</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">user_type</span><span class="o">.</span><span class="n">data</span>
+            <span class="c"># user.image_url = form.image_url.data</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">flash</span><span class="p">(</span><span class="s">&quot;Your Form had errors: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/users/user.html&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+                           <span class="n">current_user</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+
+<span class="c">#============================================================</span>
+<span class="c"># Development Only (quick and dirty ways to play with Users)</span>
+<span class="c">#============================================================</span></div>
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/become/&lt;level&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@development_only</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="become"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.become">[docs]</a><span class="k">def</span> <span class="nf">become</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Change the privileges of the logged in user.</span>
+
+<span class="sd">    **Route:** ``/admin/become``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+
+<span class="sd">    :param int level: 1: Editor, 2: Publisher, 3: Admin</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">admin_privileges</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;edit&quot;</span><span class="p">:</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;publish&quot;</span><span class="p">:</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;admin&quot;</span><span class="p">:</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="p">}</span>
+    <span class="n">db_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(((</span><span class="s">&quot;set__privileges__{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">admin_privileges</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()))</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">gplus_id</span><span class="o">=</span><span class="n">session</span><span class="p">[</span><span class="s">&#39;gplus_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">db_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+</div>
+<span class="nd">@users.route</span><span class="p">(</span><span class="s">&#39;/super&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@development_only</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="super"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.users.super">[docs]</a><span class="k">def</span> <span class="nf">super</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Special case of :func:``become()`` for becoming an admin.</span>
+
+<span class="sd">    **Route:** ``/admin/super``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.become&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

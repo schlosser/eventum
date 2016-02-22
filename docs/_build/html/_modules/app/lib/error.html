@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.lib.error &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.lib.error</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for app.lib.error</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: error</span>
+<span class="sd">    :synopsis: Home to the :class:`EventumError` class, which contains</span>
+<span class="sd">        namespaced subclasses that should be used when raising and handling</span>
+<span class="sd">        exceptions in eventum.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+
+<span class="sd">This module is slightly complicated.  It contains three main components: the</span>
+<span class="sd">nested dictionary ``_ERROR_DATA``, the class :class:`EventumError`, and the</span>
+<span class="sd">function :func:`_make_subclasses`.  The dictionary ``_ERROR_DATA`` contains a</span>
+<span class="sd">family tree of subclasses for :class:`EventumError`. Each key is an error name,</span>
+<span class="sd">and the value is a four-tuple of::</span>
+
+<span class="sd">    (message, error_code, http_status_code, subclasses)</span>
+
+<span class="sd">The ``message`` is a string that may be shown to users, in the app, and logged</span>
+<span class="sd">to the application logs.</span>
+
+<span class="sd">The ``error_code`` is a namespaced, unique number that can be easily used to</span>
+<span class="sd">identify error messages in other parts of the app, or in JavaScript. They are</span>
+<span class="sd">namespaced.  For example, Google Calendar API errors have error code ``6XX``,</span>
+<span class="sd">and Google Calendar Not Found errors are ``64X``.</span>
+
+<span class="sd">The ``http_status_code`` is the HTTP status code that should be associated with</span>
+<span class="sd">this error should it reach the user.</span>
+
+<span class="sd">The ``subclasses`` entry is a dictionary of similar structure, containing</span>
+<span class="sd">recurisve error subclasses of this error.</span>
+
+<span class="sd">In order to add a new error, simply add a new entry to the _ERROR_DATA</span>
+<span class="sd">dictionary at the proper level of indentation.  Related errors should share</span>
+<span class="sd">common baseclasses, and have similar ``error_code`` values.</span>
+
+<span class="sd">Example usage::</span>
+
+
+<span class="sd">    from app.lib.error import EventumError</span>
+<span class="sd">    # ...</span>
+<span class="sd">    try:</span>
+<span class="sd">        raise EventumError.GCalAPI.NotFound.UpdateFellBackToCreate()</span>
+<span class="sd">    except EventumError.GCalAPI.NotFound.UpdateFellBackToCreate:</span>
+<span class="sd">        # handle error...</span>
+
+<span class="sd">However, we can also except multiple errors by excepting their common</span>
+<span class="sd">baseclass::</span>
+
+
+<span class="sd">    from app.lib.error import EventumError</span>
+<span class="sd">    # ...</span>
+<span class="sd">    try:</span>
+<span class="sd">        if something():</span>
+<span class="sd">            raise EventumError.GCalAPI.NotFound.UpdateFellBackToCreate()</span>
+<span class="sd">        elif something_else():</span>
+<span class="sd">            raise EventumError.GCalAPI.BadStatusLine()</span>
+<span class="sd">        else:</span>
+<span class="sd">            raise EventumError.GCAlAPI():</span>
+<span class="sd">    except EventumError.GCalAPI:</span>
+<span class="sd">        # handles all above errors.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">HTTP_OK</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">HTTP_BAD_REQUEST</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">HTTP_INTERNAL_SERVER_ERROR</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># Dictionary of:</span>
+<span class="c1"># {ErrorName: (message, error_code, http_status_code, error_subclasses)}</span>
+<span class="n">_ERROR_DATA</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="c1">###################################</span>
+    <span class="c1"># 6XX: Google Calendar API Errors #</span>
+    <span class="c1">###################################</span>
+    <span class="s1">&#39;GCalAPI&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;Something went wrong with Google Calendar.&#39;</span><span class="p">,</span>
+        <span class="mi">600</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{</span>
+
+            <span class="s1">&#39;MissingID&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;This event was not assigned a gcal_id.&#39;</span><span class="p">,</span>
+                <span class="mi">610</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{</span>
+
+                    <span class="s1">&#39;FellBackToCreate&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="s1">&#39;Missing gplus_id. Successfully fell back to create.&#39;</span><span class="p">,</span>
+                        <span class="mi">611</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">,</span> <span class="p">{}),</span>
+                <span class="p">}),</span>
+
+            <span class="s1">&#39;BadStatusLine&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;Encountered a BadStatusLine error with the Google Calendar &#39;</span>
+                <span class="s1">&#39;API.&#39;</span><span class="p">,</span>
+                <span class="mi">620</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{}),</span>
+
+            <span class="s1">&#39;EventAlreadyDeleted&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;Encountered a Bad Status Line error with the API&#39;</span><span class="p">,</span>
+                <span class="mi">630</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{}),</span>
+
+            <span class="s1">&#39;NotFound&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;Got &quot;Not Found&quot; from Google Calendar.&#39;</span><span class="p">,</span>
+                <span class="mi">640</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{</span>
+
+                    <span class="s1">&#39;UpdateFellBackToCreate&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="s1">&#39;Couldn</span><span class="se">\&#39;</span><span class="s1">t find an event to update. Successfully fell &#39;</span>
+                        <span class="s1">&#39;back to create.&#39;</span><span class="p">,</span>
+                        <span class="mi">641</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">,</span> <span class="p">{}),</span>
+
+                    <span class="s1">&#39;MoveFellBackToCreate&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="s1">&#39;Couldn</span><span class="se">\&#39;</span><span class="s1">t find an event to move. Successfully fell &#39;</span>
+                        <span class="s1">&#39;back to create.&#39;</span><span class="p">,</span>
+                        <span class="mi">642</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">,</span> <span class="p">{}),</span>
+                <span class="p">}),</span>
+
+            <span class="s1">&#39;PublishFailed&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;Failed to Publish Event&#39;</span><span class="p">,</span>
+                <span class="mi">650</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{</span>
+
+                    <span class="s1">&#39;PublishedFalse&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="s1">&#39;Event must have the `published` set to `True` &#39;</span>
+                        <span class="s1">&#39; before publishing.&#39;</span><span class="p">,</span>
+                        <span class="mi">651</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{}),</span>
+
+                    <span class="s1">&#39;PublishedTrue&#39;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="s1">&#39;Event must have the `published` set to `True` &#39;</span>
+                        <span class="s1">&#39; before unpublishing.&#39;</span><span class="p">,</span>
+                        <span class="mi">652</span><span class="p">,</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span><span class="p">,</span> <span class="p">{}),</span>
+                <span class="p">}),</span>
+
+            <span class="s1">&#39;EventMustEndOnOrAfter&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;A series should either end on a specific date, or after a &#39;</span>
+                <span class="s1">&#39;specific number of occurences.  Series.ends_on and ends_after&#39;</span>
+                <span class="s1">&#39; are both false.&#39;</span><span class="p">,</span>
+                <span class="mi">660</span><span class="p">,</span> <span class="n">HTTP_BAD_REQUEST</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="p">}),</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="EventumError"><a class="viewcode-back" href="../../../app.lib.html#app.lib.error.EventumError">[docs]</a><span class="k">class</span> <span class="nc">EventumError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The base error class for Eventum.  All errors are subclasses of</span>
+<span class="sd">    :class:`EventumError`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;An error occurred.&#39;</span>
+    <span class="n">error_code</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">http_status_code</span> <span class="o">=</span> <span class="n">HTTP_INTERNAL_SERVER_ERROR</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">subs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called to create an instance of :class:`EventumError`.  Subclasses</span>
+<span class="sd">        of :class:`EventumError` inherit this method.  It uses ``subs`` to</span>
+<span class="sd">        populate any format strings in the class&#39;s error message, and saves</span>
+<span class="sd">        any kwargs as data attributes to be associate with the request.</span>
+
+<span class="sd">        Initializing a subclass of EventumError will also log to the app log.</span>
+
+<span class="sd">        :param subs: Strings to subsitute into the format string for the error</span>
+<span class="sd">            message associated with class.</span>
+<span class="sd">        :type subs: list(str)</span>
+<span class="sd">        :param dict kwargs: any arbitrary data that should be logged along with</span>
+<span class="sd">            this error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_form_message</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">subs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_error</span><span class="p">()</span>
+
+<div class="viewcode-block" id="EventumError.log_error"><a class="viewcode-back" href="../../../app.lib.html#app.lib.error.EventumError.log_error">[docs]</a>    <span class="k">def</span> <span class="nf">log_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print the error type and plaintext message to the warning logs,</span>
+<span class="sd">        as well as any other data associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Import app in the function body to avoid importing `None` when</span>
+        <span class="c1"># the module is first loaded.</span>
+        <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;[{}]: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;[{}][DATA]: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_type</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_form_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">subs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply subsitutions to the error message if any exist.  If there are</span>
+<span class="sd">        spots for subsitutions variables in the error message (if the strings</span>
+<span class="sd">        ``&#39;%s&#39;`` appears anywhere in the string) and there are not enough</span>
+<span class="sd">        strings in ``subs`` to fill them, instances of ``&#39;%s&#39;`` will be removed</span>
+<span class="sd">        from the error message.  If there are two many strings in ``subs``,</span>
+<span class="sd">        later strings will be ignored.</span>
+
+<span class="sd">        Here are some examples::</span>
+
+<span class="sd">            &gt;&gt;&gt; _form_message(&#39;Error at url `%s`: %s&#39;, [&#39;/home&#39;, &#39;Not Found&#39;])</span>
+<span class="sd">            &#39;Error at url `/home`: Not Found&#39;</span>
+<span class="sd">            &gt;&gt;&gt; _form_message(&#39;Error at url `%s`: %s&#39;, [&#39;/home&#39;])</span>
+<span class="sd">            &#39;Error at url `/home`: &#39;</span>
+<span class="sd">            &gt;&gt;&gt; _form_message(&#39;Error at url.&#39;, [&#39;/home&#39;])</span>
+<span class="sd">            &#39;Error at url.&#39;</span>
+
+<span class="sd">        :param str message: The format string to format.</span>
+<span class="sd">        :param subs: The strings to subsitute into the format string.</span>
+<span class="sd">        :type subs: list(str)</span>
+
+<span class="sd">        :returns: The formatted string.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Import app in the function body to avoid importing `None` when</span>
+        <span class="c1"># the module is first loaded.</span>
+        <span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+        <span class="n">n_subs</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Extend subs if there aren&#39;t enough</span>
+        <span class="k">if</span> <span class="n">n_subs</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">subs</span><span class="p">):</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;[{}._form_message]: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_type</span><span class="p">,</span>
+                                                <span class="s1">&#39;Not enough subs provided&#39;</span><span class="p">))</span>
+            <span class="c1"># extend tuple by appending a tuple of length (n_subs - len(subs))</span>
+            <span class="n">subs</span> <span class="o">=</span> <span class="n">subs</span> <span class="o">+</span> <span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_subs</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">subs</span><span class="p">)))</span>
+
+        <span class="c1"># Shorten subs if there are too many</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n_subs</span><span class="p">:</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s1">&#39;[{}._form_message]: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_type</span><span class="p">,</span>
+                                                <span class="s1">&#39;Too many subs provided&#39;</span><span class="p">))</span>
+            <span class="n">subs</span> <span class="o">=</span> <span class="n">subs</span><span class="p">[:</span><span class="n">n_subs</span><span class="p">]</span>
+
+        <span class="c1"># Perform substitutions</span>
+        <span class="k">if</span> <span class="n">subs</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">message</span> <span class="o">%</span> <span class="n">subs</span>
+
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;\</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_make_subclasses</span><span class="p">(</span><span class="n">error_data</span><span class="p">,</span> <span class="n">baseclass</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Recursively add subclass errors to ``baseclass``.</span>
+
+<span class="sd">    :param dict error_data: A dictionary of error name strings to a four-tuple</span>
+<span class="sd">        of ``(message, error_code, http_status_code, subclasses)``. The</span>
+<span class="sd">        ``message`` is the user-facing message to display, the ``error_code``</span>
+<span class="sd">        is a unique number representing the error, the ``http_status_code`` is</span>
+<span class="sd">        the HTTP status code that should be associated with this error should</span>
+<span class="sd">        it surface to the user, and subcalsses is a dictionary of this same</span>
+<span class="sd">        type, containing data for subclasses of this error.</span>
+<span class="sd">    :param baseclass: The error class to attach these errors onto.</span>
+<span class="sd">    :type baseclass: :class:`EventumError` or one of its subclasses.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">error_data</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">e_type</span><span class="p">,</span> <span class="n">e_attrs</span> <span class="ow">in</span> <span class="n">error_data</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="c1"># Make the new class object</span>
+        <span class="c1"># `name` will be EventumError.&lt;BaseClassName&gt;.ClassName</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;{}.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">baseclass</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">e_type</span><span class="p">)</span>
+        <span class="c1"># We then create a class dynamically, using `type()`.</span>
+        <span class="c1"># Arguments are:</span>
+        <span class="c1">#    name: the name of the class</span>
+        <span class="c1">#    (baseclass,): a tuple of baseclasses</span>
+        <span class="c1">#    {}: a namespace of function definitions (we don&#39;t need any)</span>
+        <span class="n">subclass</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">baseclass</span><span class="p">,),</span> <span class="p">{})</span>
+
+        <span class="n">message</span><span class="p">,</span> <span class="n">error_code</span><span class="p">,</span> <span class="n">http_status_code</span><span class="p">,</span> <span class="n">subclasses</span> <span class="o">=</span> <span class="n">e_attrs</span>
+
+        <span class="c1"># Configure its message, error_code, and http_status_code</span>
+        <span class="n">subclass</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+        <span class="n">subclass</span><span class="o">.</span><span class="n">error_code</span> <span class="o">=</span> <span class="n">error_code</span>
+        <span class="n">subclass</span><span class="o">.</span><span class="n">http_status_code</span> <span class="o">=</span> <span class="n">http_status_code</span>
+
+        <span class="c1"># Recursively generate subclasses</span>
+        <span class="n">_make_subclasses</span><span class="p">(</span><span class="n">subclasses</span><span class="p">,</span> <span class="n">subclass</span><span class="p">)</span>
+
+        <span class="c1"># Add this subclass as an attribute of the baseclass</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">EventumError</span><span class="p">,</span> <span class="n">e_type</span><span class="p">,</span> <span class="n">subclass</span><span class="p">)</span>
+
+<span class="c1"># Start the recursive generation of EventumError subclasses.  This code gets</span>
+<span class="c1"># run whenever the module is imported.</span>
+<span class="n">_make_subclasses</span><span class="p">(</span><span class="n">_ERROR_DATA</span><span class="p">,</span> <span class="n">EventumError</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

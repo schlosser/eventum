@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.routes.admin.posts &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../../index.html"/>
+        <link rel="up" title="app" href="../../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../../app.html">app</a> &raquo;</li>
+      
+    <li>app.routes.admin.posts</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.routes.admin.posts</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: posts</span>
+<span class="sd">    :synopsis: All routes on the ``posts`` Blueprint.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">send_from_directory</span><span class="p">,</span> \
+    <span class="n">abort</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">flash</span>
+
+<span class="kn">from</span> <span class="nn">bson.objectid</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+<span class="kn">from</span> <span class="nn">bson.objectid</span> <span class="kn">import</span> <span class="n">InvalidId</span>
+
+<span class="kn">from</span> <span class="nn">mongoengine.errors</span> <span class="kn">import</span> <span class="n">DoesNotExist</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">BlogPost</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">app.forms</span> <span class="kn">import</span> <span class="n">CreateBlogPostForm</span><span class="p">,</span> <span class="n">UploadImageForm</span>
+<span class="kn">from</span> <span class="nn">app.lib.decorators</span> <span class="kn">import</span> <span class="n">login_required</span><span class="p">,</span> <span class="n">requires_privilege</span>
+
+<span class="n">posts</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;posts&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="index"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.posts.index">[docs]</a><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View all of the blog posts.</span>
+
+<span class="sd">    **Route:** ``/admin/posts``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_posts</span> <span class="o">=</span> <span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;published&#39;</span><span class="p">,</span> <span class="s">&#39;-date_published&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/posts/posts.html&#39;</span><span class="p">,</span> <span class="n">posts</span><span class="o">=</span><span class="n">all_posts</span><span class="p">)</span>
+</div>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts/new&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@requires_privilege</span><span class="p">(</span><span class="s">&#39;edit&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="new"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.posts.new">[docs]</a><span class="k">def</span> <span class="nf">new</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a new blog post.</span>
+
+<span class="sd">    **Route:** ``/admin/posts/new``</span>
+
+<span class="sd">    **Methods:** ``POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">CreateBlogPostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; (You)&quot;</span> <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="k">else</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()]</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">upload_form</span> <span class="o">=</span> <span class="n">UploadImageForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">validate_on_submit</span><span class="p">():</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">ObjectId</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">BlogPost</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">slug</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">slug</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">data</span><span class="p">],</span>
+                        <span class="n">markdown_content</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">author</span><span class="o">=</span><span class="n">author</span><span class="p">,</span>
+                        <span class="n">posted_by</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">publish</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">unpublish</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/posts/edit.html&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+                           <span class="n">images</span><span class="o">=</span><span class="n">images</span><span class="p">,</span> <span class="n">upload_form</span><span class="o">=</span><span class="n">upload_form</span><span class="p">)</span>
+</div>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts/edit/&lt;post_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@requires_privilege</span><span class="p">(</span><span class="s">&#39;edit&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="edit"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.posts.edit">[docs]</a><span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Edit an existing blog post.</span>
+
+<span class="sd">    **Route:** ``/admin/posts/edit/&lt;post_id&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET, POST``</span>
+
+<span class="sd">    :param str post_id: The ID of the post to edit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">object_id</span> <span class="o">=</span> <span class="n">ObjectId</span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">InvalidId</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">with_id</span><span class="p">(</span><span class="n">object_id</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">DoesNotExist</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">):</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Cannot find blog post with id {}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">post_id</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">CreateBlogPostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; (You)&quot;</span> <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="k">else</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()]</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">validate_on_submit</span><span class="p">():</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">ObjectId</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">slug</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">markdown_content</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">featured_image</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                <span class="n">post</span><span class="o">.</span><span class="n">featured_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">featured_image</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">post</span><span class="o">.</span><span class="n">featured_image</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">post</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">published</span> <span class="o">!=</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                    <span class="n">post</span><span class="o">.</span><span class="n">publish</span><span class="p">()</span>
+                    <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Blogpost published&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">post</span><span class="o">.</span><span class="n">unpublish</span><span class="p">()</span>
+                    <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Blogpost unpublished&#39;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+
+    <span class="n">upload_form</span> <span class="o">=</span> <span class="n">UploadImageForm</span><span class="p">()</span>
+    <span class="n">featured_image</span> <span class="o">=</span> <span class="n">post</span><span class="o">.</span><span class="n">featured_image</span><span class="o">.</span><span class="n">filename</span> <span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">featured_image</span> <span class="k">else</span> <span class="bp">None</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">CreateBlogPostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">,</span>
+                              <span class="n">title</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                              <span class="n">slug</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">slug</span><span class="p">,</span>
+                              <span class="n">published</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">published</span><span class="p">,</span>
+                              <span class="n">body</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">markdown_content</span><span class="p">,</span>
+                              <span class="n">images</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">filename</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">post</span><span class="o">.</span><span class="n">images</span><span class="p">],</span>
+                              <span class="n">author</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                              <span class="n">featured_image</span><span class="o">=</span><span class="n">featured_image</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; (You)&quot;</span> <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="k">else</span> <span class="n">u</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()]</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span> <span class="k">if</span> <span class="n">image</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">post</span><span class="o">.</span><span class="n">images</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/posts/edit.html&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+                           <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">,</span> <span class="n">images</span><span class="o">=</span><span class="n">images</span><span class="p">,</span> <span class="n">upload_form</span><span class="o">=</span><span class="n">upload_form</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+</div>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts/delete/&lt;post_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="delete"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.posts.delete">[docs]</a><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Delete an existing blog post.</span>
+
+<span class="sd">    **Route:** ``/admin/posts/delete/&lt;post_id&gt;``</span>
+
+<span class="sd">    **Methods:** ``POST``</span>
+
+<span class="sd">    :param str post_id: The ID of the post to edit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">object_id</span> <span class="o">=</span> <span class="n">ObjectId</span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">object_id</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">with_id</span><span class="p">(</span><span class="n">object_id</span><span class="p">)</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Invalid event id&#39;</span><span class="p">)</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.index&#39;</span><span class="p">))</span>
+</div>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts/edit/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/posts/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/events/edit/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@posts.route</span><span class="p">(</span><span class="s">&#39;/events/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="fetch_epiceditor_themes"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.posts.fetch_epiceditor_themes">[docs]</a><span class="k">def</span> <span class="nf">fetch_epiceditor_themes</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Static path for the css files for Epiceditor. Because there doesn&#39;t</span>
+<span class="sd">    appear to be a way to customize the URL at which EpicEditor requests it&#39;s</span>
+<span class="sd">    static files, there isn&#39;t any way to serve them except by putting them at&#39;</span>
+<span class="sd">    all of the different places where EpicEditor might look (depending on what</span>
+<span class="sd">    page it is on when it requests static files).</span>
+
+<span class="sd">    **Route:** ``/posts/edit/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;``</span>
+
+<span class="sd">    **Route:** ``/posts/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;``</span>
+
+<span class="sd">    **Route:** ``/events/edit/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;``</span>
+
+<span class="sd">    **Route:** ``/events/epiceditor/themes/&lt;folder&gt;/&lt;path&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+
+<span class="sd">    :param str folder: The folder that EpicEditor wants.</span>
+<span class="sd">    :param str path: The path of the file that EpicEditor wants.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">static_folder</span><span class="p">,</span> <span class="s">&quot;css/lib/epiceditor/{folder}/{path}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="n">folder</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+@import '../admin';
+
+.profile-picture {
+    display: inline-block;
+    width: 33%;
+    max-width: 300px;
+    i {
+        background-size: cover;
+        background-position: center center;
+        display: block;
+        width: 100%;
+        padding-bottom: 100%;
+    }
+}
+
+.info {
+    display: inline-block;
+    width: 66%;
+    vertical-align: top;
+    & > .inner {
+        padding-left: 0.75rem;
+    }
+
+    p, h2 {
+        margin: 0 0.5rem 0.5rem
+    }
+
+    input[type="text"] {
+        margin: 0 0 0.5rem;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .title-wrapper input {
+        width: 100%;
+    }
+    #email {
+        width: 75%;
+        height: 2rem;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .info, .profile-picture {
+        display: block;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+
+        & > .inner {
+            padding-left: 0;
+        }
+    }
+    .profile-picture {
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 0.5rem;
+
+        i {
+            margin-bottom: 1rem;
+        }
+    }
+}

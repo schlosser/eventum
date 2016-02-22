@@ -1,0 +1,51 @@
+@import '../colors';
+
+$form-width: 15rem;
+
+.signup-flow {
+    margin: 0 auto;
+    padding-top: 5rem;
+    width: $form-width;
+
+    .profile-picture {
+        width: 5rem;
+        height: 5rem;
+        margin-left: 5rem;
+        margin-bottom: 1rem;
+    }
+
+    form {
+        input {
+            width: $form-width;
+
+            &[type="text"] {
+                margin-bottom: 0.5rem;
+            }
+        }
+        margin-bottom: 1rem;
+
+    }
+    p {
+        text-align: center;
+        a {
+            color: $blue;
+        }
+    }
+}
+
+.nav {
+    display: none;
+}
+.topbar {
+    left: 0;
+}
+.main, .main > .inner {
+    width: 100% !important;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+#gSignInWrapper {
+    height: 20rem;
+}

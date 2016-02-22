@@ -1,0 +1,84 @@
+{% macro render_field(field, label=False, placeholder=None, hidden=None) %}
+{% if field.errors %}
+<div class="form-component {{ wrapper_class }} error">
+{% elif field.flags.error %}
+<div class="form-component {{ wrapper_class }} flag">
+{% elif hidden %}
+<div class="form-component {{ wrapper_class }} hidden">
+{% else%}
+<div class="form-component {{ wrapper_class }}">
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {% if label %}{{ field.label }}{% endif %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+
+{% macro modal(modal="modal") %}
+<div class="opaque hidden" data-modal="{{ modal }}">
+    <div class="modal-wrapper">
+        <span class="close-modal">
+            <a href="#close-modal" data-modal="{{ modal }}">
+                <i class="fa fa-times fa-2x"></i>
+            </a>
+        </span>
+        <div class="modal">
+            {{ caller() }}
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro toggle(on, off, start_on=True) %}
+<div class="toggle-wrapper {% if start_on %}active{% endif %}">
+    <a href="#toggle">
+        <span class="on">
+            <span class="inner">{{ off }}</span>
+        </span>
+        <span class="off">
+            <span class="inner">{{ on }}</span>
+        </span>
+        <span class="label">
+            <i class="fa fa-arrow-right"></i>
+        </span>
+    </a>
+</div>
+{% endmacro %}
+
+{% macro confirm(text, action) %}
+<div class="confirm-wrapper">
+    <div class="confirm confirm-hidden">
+        <form class="confirm-form" method="POST" action="{{ action }}">
+            <input class="confirm-cancel" value="Cancel" type="button" />
+            {% if caller %}
+            <div class="confirm-confirm">
+                {{ caller() }}
+            </div>
+            {% else %}
+            <input class="confirm-confirm" value="Confirm" type="submit" />
+            {% endif %}
+        </form>
+    </div>
+    <a href="#open-confirm" class="confirm-prompt btn">{{ text }}</a>
+</div>
+{% endmacro %}
+
+
+{% macro upload_form(form, uploaded_from="") %}
+<form class="upload-form" action="{{ url_for('media.upload') }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="hidden-but-not-forgotten">
+        {{ render_field(form.image) }}
+        {{ render_field(form.extension) }}
+        {{ render_field(form.uploaded_from, value=uploaded_from)}}
+        <input type="submit" value="Upload">
+    </div>
+    <div class="btn btn-choose">Choose File</div>
+    <div class="filename-wrapper">
+        {{ render_field(form.filename, label=False, placeholder="No File Chosen", required="")}}
+        <span class="extension"></span>
+    </div>
+    <div class="btn btn-upload">Upload</div>
+    <div class="error-message"></div>
+</form>
+{% endmacro %}

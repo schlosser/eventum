@@ -1,0 +1,69 @@
+@import 'media_queries';
+
+.text-width-calculation {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@mixin clearfix() {
+    content: " "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.clearfix:after {
+    @include clearfix();
+}
+
+.hidden {
+    display: none !important;
+}
+
+.small {
+    font-size: 0.8rem !important;
+}
+
+@mixin transform($rule) {
+    -webkit-transform: $rule;
+       -moz-transform: $rule;
+         -o-transform: $rule;
+            transform: $rule;
+}
+
+@mixin transition-with-delay($speed, $delay) {
+    -webkit-transition: $speed $delay ease all;
+       -moz-transition: $speed $delay ease all;
+         -o-transition: $speed $delay ease all;
+            transition: $speed $delay ease all;
+}
+
+@mixin transition($speed) {
+    @include transition-with-delay($speed, 0s);
+}
+
+.fa-6x {
+    font-size: 6rem;
+}
+.fa-2x {
+    font-size: 1.5em !important;
+}
+
+.only-mobile {
+	display: none;
+}
+
+@media only screen and (max-width: $phone-max) {
+	.only-mobile {
+		display: inline-block;
+	}
+
+	.no-mobile {
+		display: none;
+	}
+}

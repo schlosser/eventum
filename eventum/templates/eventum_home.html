@@ -1,0 +1,31 @@
+{% extends "eventum_admin.html" %}
+{% import "eventum_macros.html" as macros %}
+
+{% set active_page='Home' %}
+
+{% block title %}Home{% endblock %}
+{% block pagetitle %}Home{% endblock %}
+{% block pagelink %}{{ url_for('admin.index') }}{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_events" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% assets "scss_posts" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% import "eventum_events/events.html" as events %}
+{% import "eventum_posts/posts.html" as posts %}
+
+{% block content %}
+
+<h2>Events this week</h2>
+{{ events.render_week(None, this_week) }}
+
+<h2 class="section-title">Recent posts</h2>
+{{ posts.render_posts(recent_posts) }}
+
+{% endblock %}

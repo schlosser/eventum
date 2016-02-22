@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.routes.admin.auth &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../../index.html"/>
+        <link rel="up" title="app" href="../../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../../app.html">app</a> &raquo;</li>
+      
+    <li>app.routes.admin.auth</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.routes.admin.auth</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: auth</span>
+<span class="sd">    :synopsis: All routes on the ``auth`` Blueprint.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">httplib2</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">app.lib.networking</span> <span class="kn">import</span> <span class="n">json_response</span>
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Whitelist</span>
+<span class="kn">from</span> <span class="nn">app.forms</span> <span class="kn">import</span> <span class="n">CreateProfileForm</span>
+<span class="kn">from</span> <span class="nn">apiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> \
+    <span class="n">flash</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">oauth2client.client</span> <span class="kn">import</span> <span class="p">(</span><span class="n">FlowExchangeError</span><span class="p">,</span>
+                                 <span class="n">flow_from_clientsecrets</span><span class="p">,</span>
+                                 <span class="n">AccessTokenCredentials</span><span class="p">)</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;auth&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="n">gplus_service</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s">&#39;plus&#39;</span><span class="p">,</span> <span class="s">&#39;v1&#39;</span><span class="p">)</span>
+
+<span class="nd">@auth.route</span><span class="p">(</span><span class="s">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="login"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.login">[docs]</a><span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;If the user is not logged in, display an option to log in.  On click,</span>
+<span class="sd">    make a request to Google to authenticate.</span>
+
+<span class="sd">    If they are logged in, redirect.</span>
+
+<span class="sd">    **Route:** ``/admin/login``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="s">&#39;gplus_id&#39;</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+        <span class="c"># use code=303 to avoid POSTing to the next page.</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;admin.index&#39;</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+    <span class="n">load_csrf_token_into_session</span><span class="p">()</span>
+    <span class="n">args_next</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;next&#39;</span><span class="p">)</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">args_next</span> <span class="k">if</span> <span class="n">args_next</span> <span class="k">else</span> <span class="n">request</span><span class="o">.</span><span class="n">url_root</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/auth/login.html&#39;</span><span class="p">,</span>
+                           <span class="n">client_id</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&quot;GOOGLE_CLIENT_ID&quot;</span><span class="p">],</span>
+                           <span class="n">state</span><span class="o">=</span><span class="n">session</span><span class="p">[</span><span class="s">&#39;state&#39;</span><span class="p">],</span>
+                           <span class="c"># reauthorize=True,</span>
+                           <span class="nb">next</span><span class="o">=</span><span class="nb">next</span><span class="p">)</span>
+</div>
+<span class="n">WHITELIST_CODE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@auth.route</span><span class="p">(</span><span class="s">&#39;/store-token&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="store_token"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.store_token">[docs]</a><span class="k">def</span> <span class="nf">store_token</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Do the oauth flow for Google plus sign in, storing the access token</span>
+<span class="sd">    in the session, and redircting to create an account if appropriate.</span>
+
+<span class="sd">    Because this method will be called from a ``$.ajax()`` request in</span>
+<span class="sd">    JavaScript, we can&#39;t return ``redirect()``, so instead this method returns</span>
+<span class="sd">    the URL that the user should be redirected to, and the redirect happens in</span>
+<span class="sd">    html:</span>
+
+<span class="sd">    .. code:: javascript</span>
+
+<span class="sd">        success: function(response) {</span>
+<span class="sd">            window.location.href = response;</span>
+<span class="sd">        }</span>
+
+<span class="sd">    **Route:** ``/admin/store-token``</span>
+
+<span class="sd">    **Methods:** ``POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;state&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;state&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="s">&#39;Invalid state parameter.&#39;</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">session</span><span class="p">[</span><span class="s">&#39;state&#39;</span><span class="p">]</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c"># Upgrade the authorization code into a credentials object</span>
+        <span class="n">oauth_flow</span> <span class="o">=</span> <span class="n">flow_from_clientsecrets</span><span class="p">(</span>
+            <span class="s">&#39;config/client_secrets.json&#39;</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">oauth_flow</span><span class="o">.</span><span class="n">redirect_uri</span> <span class="o">=</span> <span class="s">&#39;postmessage&#39;</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">oauth_flow</span><span class="o">.</span><span class="n">step2_exchange</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">FlowExchangeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="s">&#39;Failed to upgrade the authorization code.&#39;</span><span class="p">,</span>
+                                  <span class="mi">401</span><span class="p">)</span>
+
+    <span class="n">gplus_id</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">id_token</span><span class="p">[</span><span class="s">&#39;sub&#39;</span><span class="p">]</span>
+
+    <span class="c"># Store the access token in the session for later use.</span>
+    <span class="n">session</span><span class="p">[</span><span class="s">&#39;credentials&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">access_token</span>
+    <span class="n">session</span><span class="p">[</span><span class="s">&#39;gplus_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gplus_id</span>
+
+    <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">gplus_id</span><span class="o">=</span><span class="n">gplus_id</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c"># A new user model must be made</span>
+
+        <span class="c"># Get the user&#39;s name and email to populate the form</span>
+        <span class="n">http</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">()</span>
+        <span class="n">http</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">http</span><span class="p">)</span>
+        <span class="n">people_document</span> <span class="o">=</span> <span class="n">gplus_service</span><span class="o">.</span><span class="n">people</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">userId</span><span class="o">=</span><span class="s">&#39;me&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">http</span><span class="o">=</span><span class="n">http</span><span class="p">)</span>
+
+        <span class="c"># The user must be whitelisted in order to create an account.</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">people_document</span><span class="p">[</span><span class="s">&#39;emails&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;value&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">Whitelist</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">json_response</span><span class="p">({</span>
+                <span class="s">&#39;code&#39;</span><span class="p">:</span> <span class="n">WHITELIST_CODE</span><span class="p">,</span>
+                <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;User has not been whitelisted.&#39;</span><span class="p">,</span>
+                <span class="s">&#39;email&#39;</span><span class="p">:</span> <span class="n">email</span>
+                <span class="p">},</span> <span class="mi">401</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span>
+            <span class="s">&#39;.create_profile&#39;</span><span class="p">,</span>
+            <span class="nb">next</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;next&#39;</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">people_document</span><span class="p">[</span><span class="s">&#39;displayName&#39;</span><span class="p">],</span>
+            <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+            <span class="n">image_url</span><span class="o">=</span><span class="n">people_document</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">][</span><span class="s">&#39;url&#39;</span><span class="p">]),</span> <span class="mi">200</span><span class="p">)</span>
+
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">gplus_id</span><span class="o">=</span><span class="n">gplus_id</span><span class="p">)</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">register_login</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="c"># The user already exists.  Redirect to the next url or</span>
+    <span class="c"># the root of the application (&#39;/&#39;)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;next&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;next&#39;</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url_root</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+</div>
+<span class="nd">@auth.route</span><span class="p">(</span><span class="s">&#39;/create-profile&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="create_profile"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.create_profile">[docs]</a><span class="k">def</span> <span class="nf">create_profile</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a profile (filling in the form with openid data), and</span>
+<span class="sd">    register it in the database.</span>
+
+<span class="sd">    **Route:** ``/admin/create-profile``</span>
+
+<span class="sd">    **Methods:** ``GET, POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="s">&#39;gplus_id&#39;</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+        <span class="c"># use code=303 to avoid POSTing to the next page.</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;admin.index&#39;</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">CreateProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span>
+                             <span class="n">email</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">],</span>
+                             <span class="nb">next</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;next&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">validate_on_submit</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c"># A user with this email already exists.  Override it.</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">openid</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s">&#39;openid&#39;</span><span class="p">]</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Account with this email already exists.  Overridden.&#39;</span><span class="p">)</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">register_login</span><span class="p">()</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Retreive their user type from the whitelist then remove them.</span>
+            <span class="n">wl</span> <span class="o">=</span> <span class="n">Whitelist</span><span class="o">.</span><span class="n">objects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">user_type</span> <span class="o">=</span> <span class="n">wl</span><span class="o">.</span><span class="n">user_type</span>
+            <span class="n">wl</span><span class="o">.</span><span class="n">redeemed</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">wl</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="c"># Create a brand new user</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">form</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">gplus_id</span><span class="o">=</span><span class="n">session</span><span class="p">[</span><span class="s">&#39;gplus_id&#39;</span><span class="p">],</span>
+                        <span class="n">user_type</span><span class="o">=</span><span class="n">user_type</span><span class="p">,</span>
+                        <span class="n">image_url</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;image_url&#39;</span><span class="p">))</span>
+            <span class="n">flash</span><span class="p">(</span><span class="s">&#39;Account created successfully.&#39;</span><span class="p">)</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">register_login</span><span class="p">()</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c"># redirect to the next url or the root of the application (&#39;/&#39;)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="c"># use code=303 to avoid POSTing to the next page.</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+        <span class="c"># use code=303 to avoid POSTing to the next page.</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;admin/auth/create_profile.html&#39;</span><span class="p">,</span>
+                           <span class="n">image_url</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;image_url&#39;</span><span class="p">),</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
+
+
+</div>
+<span class="nd">@auth.route</span><span class="p">(</span><span class="s">&#39;/logout&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="logout"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.logout">[docs]</a><span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Logs out the current user.</span>
+
+<span class="sd">    **Route:** ``/admin/logout``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;gplus_id&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;client.index&#39;</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="load_csrf_token_into_session"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.load_csrf_token_into_session">[docs]</a><span class="k">def</span> <span class="nf">load_csrf_token_into_session</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a unique session cross-site request forgery (CSRF) token and</span>
+<span class="sd">    load it into the session for later verification.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+    <span class="n">session</span><span class="p">[</span><span class="s">&#39;state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+
+</div>
+<span class="nd">@auth.route</span><span class="p">(</span><span class="s">&#39;/disconnect&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="disconnect"><a class="viewcode-back" href="../../../../app.routes.admin.html#app.routes.admin.auth.disconnect">[docs]</a><span class="k">def</span> <span class="nf">disconnect</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Revoke current user&#39;s token and reset their session.</span>
+
+<span class="sd">    **Route:** ``/admin/disconnect``</span>
+
+<span class="sd">    **Methods:** ``GET, POST``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Only disconnect a connected user.</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">AccessTokenCredentials</span><span class="p">(</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;credentials&#39;</span><span class="p">),</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;User-Agent&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="s">&#39;Current user not connected.&#39;</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span>
+
+    <span class="c"># Execute HTTP GET request to revoke current token.</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">access_token</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;https://accounts.google.com/o/oauth2/revoke?token={}&#39;</span>
+           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">access_token</span><span class="p">)))</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;gplus_id&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;200&#39;</span><span class="p">:</span>
+        <span class="c"># Reset the user&#39;s session.</span>
+        <span class="k">del</span> <span class="n">session</span><span class="p">[</span><span class="s">&#39;credentials&#39;</span><span class="p">]</span>
+
+        <span class="c"># use code=303 to avoid POSTing to the next page.</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.login&#39;</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># For whatever reason, the given token was invalid.</span>
+        <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span><span class="s">&#39;Failed to revoke token for given user.&#39;</span><span class="p">,</span>
+                                  <span class="mi">400</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

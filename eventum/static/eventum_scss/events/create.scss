@@ -1,0 +1,151 @@
+@import '../admin';
+@import '../media/image_grid';
+
+form {
+    width: 100%;
+    & > div {
+        margin-bottom: .5rem;
+    }
+}
+
+.location {
+    width: 100%;
+    max-width: 29rem;
+}
+
+.datetime {
+    input[type="text"] {
+        text-align: left;
+
+        &.time { width: 5.5rem; }
+        &.date { width: 8rem; }
+    }
+    .to { width: 1.5rem; }
+    div { display: inline-block; }
+}
+
+.event-image-and-descriptions {
+    margin-top: 1rem;
+    position: relative;
+
+    $event-image-width: 25%;
+    .event-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: $event-image-width;
+        padding-bottom: $event-image-width;
+    }
+
+    .descriptions {
+        margin-left: $event-image-width;
+        padding-left: 1rem;
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 75%;
+
+        div {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 0.5rem;
+
+            &.short { min-height: 3rem; }
+            &.long { min-height: 5rem; }
+        }
+    }
+}
+
+
+#m-num_occurrences {
+    width: 2.5rem;
+}
+
+.ui-timepicker-wrapper {
+    width: 5.5rem;
+}
+
+.repeat {
+    line-height: 2rem;
+    a {
+        text-decoration: underline;
+        color: $blue;
+    }
+    .summary {
+        font-weight: bold;
+    }
+    .form-component {
+        display: inline-block;
+    }
+}
+
+.modal[data-modal="repeat"] {
+    h3 {
+        margin-bottom: 1rem;
+    }
+    label:first-child {
+        min-width: 9rem;
+        display: inline-block;
+        text-align: right;
+        font-weight: bold;
+    }
+    input[name="m-num-occurrences"] {
+        width: 3rem;
+    }
+    input[type="text"] {
+        padding: 1px;
+    }
+    .radio-options {
+        display: inline-block;
+    }
+    .btn {
+        margin-top: 0.25rem;
+    }
+}
+
+@media screen and (max-width: $phone-max) {
+    .modal {
+        label:first-child {
+            display: block;
+            text-align: left;
+        }
+    }
+
+    .datetime {
+        position: relative;
+        .to {
+            position: absolute;
+            left: -2rem;
+            bottom: 0.75rem;
+        }
+    }
+    .event-image-and-descriptions {
+        .descriptions {
+            margin-left: 0;
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .event-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+        }
+    }
+    .create-barright {
+        & > a {
+            float: right;
+        }
+        & > div {
+            float: right;
+            margin: 0 1rem 0 0;
+        }
+        float: right;
+        margin-right: -1rem;
+        & > a {
+            display: inline-block;
+        }
+    }
+}
+

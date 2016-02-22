@@ -1,0 +1,252 @@
+@import 'base';
+@import 'colors';
+@import 'media_queries';
+
+/* Remove inline-block spacing */
+form { font-size: 0; }
+form * { font-size: 1rem; }
+form h1 { font-size: $h1; }
+form h2 { font-size: $h2; }
+form h3 { font-size: $h3; }
+form h5 { font-size: $h5; }
+form h6 { font-size: $h6; }
+form li { display: inline-block; }
+
+input[type="text"] {
+    margin: 0;
+    padding: 0;
+    line-height: 2.3rem;
+    min-width: 5rem;
+    padding: 0 0.75rem;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+.title-wrapper {
+    margin-bottom: 0.5rem;
+    input[type="text"] {
+        max-width: 50rem;
+        width: 95%;
+        font-size: $h2;
+        height: 3rem;
+        line-height: 2.5rem;
+        padding: 0.15rem 0.5rem;
+        vertical-align: middle;
+
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &:-ms-input-placeholder {
+            line-height: 1.7rem;
+        }
+    }
+}
+
+.permalink-wrapper {
+    margin-bottom: 0.5rem;
+
+    .permalink-title {
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+    p, div {
+        font-size: 0.8rem;
+        display: inline-block;
+    }
+
+    input[type="text"] {
+        padding: 0.15rem 0;
+        line-height: 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+.with-icon {
+    & > i {
+        position: absolute;
+        width: 2rem;
+        height: 2.5rem;
+        text-align: center;
+        line-height: 2.5rem;
+
+    }
+
+    & > div {
+        margin-left: 2.5rem;
+    }
+}
+
+$toggle-speed: 0.3s;
+$toggle-height: 3.5rem;
+$toggle-total-width: 11.5rem;
+$toggle-text-width: 8rem;
+.toggle-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    height: $toggle-height;
+    width: 11.5rem;
+    overflow: hidden;
+    position: relative;
+    margin-right: -1rem;
+    margin-left: 1rem;
+    .label {
+        width: $toggle-height;
+        position: absolute;
+        text-align: center;
+        height: $toggle-height;
+        line-height: 2.2rem;
+        font-size: 2rem;
+        top: 0;
+        left: 0;
+        background-color: $darkgray;
+        color: $white;
+
+        &, i {
+            transition: $toggle-speed ease all;
+            -webkit-transition: $toggle-speed ease all;
+
+        }
+    }
+    .on {
+        background-color: $red;
+        left: 0;
+        right: 8rem;
+        .inner {
+            position: absolute;
+            width: 8rem;
+            left: 0;
+            font-size: 1.2rem;
+        }
+    }
+    .off {
+        background-color: $green;
+        left: 3.5rem;
+        right: 0;
+
+        .inner {
+            position: absolute;
+            width: 8rem;
+            right: 0;
+            font-size: 1.2rem;
+        }
+    }
+    .on, .off {
+        transition: $toggle-speed ease all;
+        -webkit-transition: $toggle-speed ease all;
+        overflow: hidden;
+        position: absolute;
+        height: $toggle-height;
+        line-height: $toggle-height;
+        color: white;
+        text-align: center;
+        display: inline-block;
+    }
+    &.active {
+        .label {
+            top: 0;
+            left: 8rem;
+            i {
+                -webkit-transform: scaleX(-1);
+                -moz-transform: scaleX(-1);
+                -ms-transform: scaleX(-1);
+                -o-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+        }
+        .on {
+            right: 3.5rem;
+        }
+        .off {
+            left: 8rem;
+        }
+    }
+}
+
+
+.confirm-wrapper {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    vertical-align: middle;
+}
+.confirm {
+    overflow: hidden;
+    width: 8rem;
+    float:right;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    display: inline-block;
+    -webkit-transition: $toggle-speed ease all;
+    transition: $toggle-speed ease all;
+}
+.confirm-hidden {
+    width: 0 !important;
+}
+.confirm-prompt {
+    line-height: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.5rem;
+}
+.confirm-form {
+    line-height: 2.5rem;
+    height: 2.5rem;
+    float:right;
+    width: 8rem;
+    display: inline-block;
+    font-size:0;
+    input {
+        padding: 0.25rem;
+
+    }
+    input, div, a {
+        vertical-align: top;
+        display: inline-block;
+        cursor: pointer;
+        border: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 0.8rem;
+        height: 2.5rem;
+        width: 4rem;
+
+        &.confirm-confirm {
+            background-color: $red;
+        }
+    }
+}
+
+
+@media screen and (max-width: $phone-max) {
+    .title-wrapper input[type="text"] {
+        width: 100%;
+    }
+
+    .permalink-base + div {
+        margin-bottom: 0.5rem;
+        width: 100%;
+        input {
+            width: 100%;
+            padding-left: 0.5rem !important;
+        }
+    }
+
+    .toggle-wrapper {
+        width: 7rem;
+        .label {
+            display: none;
+        }
+        .on, .off {
+            left: 0 !important;
+            right: 0 !important;
+            .inner {
+                width: 7rem;
+            }
+        }
+        .on { display: none; }
+        .off { display: block; }
+        &.active {
+            .off { display: none; }
+            .on { display: block; }
+        }
+    }
+}

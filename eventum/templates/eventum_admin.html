@@ -1,0 +1,134 @@
+{% extends "eventum_base.html" %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_eventum" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript"
+        src="{{ url_for('eventum.static', filename='js/lib/epiceditor.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('eventum.static', filename='js/lib/marked.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('eventum.static', filename='js/admin.js') }}"></script>
+<script type="text/javascript">
+(function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = '//apis.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+})();
+</script>
+{% endblock %}
+
+{% block fonts %}
+{{ super() }}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block body %}
+{% set active_page = active_page|default('Home') -%}
+<nav class="nav">
+    <div class="toggle">
+        <div class="ham">
+            <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+        </div>
+        <div class="close">
+            <a href="#"><i class="fa fa-times fa-2x"></i></a>
+        </div>
+    </div>
+    </a>
+    <ul>
+        {% for href, label, icon, width in [
+            ('/admin/home',       'Home',      'home',        'home'),
+            ('/admin/events',     'Events',    'calendar',    'w-6-5'),
+            ('/admin/posts',      'Blog',      'quote-right', 'w-5'),
+            ('/admin/users',      'Users',     'users',       'w-6'),
+            ('/admin/media',      'Media',     'picture-o',   'w-6-5')] %}
+        <li class="nav-item {{ width }}
+            {% if label == active_page %}
+            selected
+            {% endif %}">
+            <a class="nav-link" href="{{ href }}">
+                <i class="nav-icon fa fa-{{ icon }} fa-2x"></i>
+                <span class="nav-label">{{ label }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if current_user %}
+    <div class="bottom">
+        <div class="me nav-item w-8">
+            <a class="nav-link" href="{{ url_for('users.me') }}">
+                <i class="nav-icon"
+                   style="background-image: url({{ current_user.get_profile_picture() }})"></i>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+        <div class="logout nav-item w-7">
+            <a class="nav-link" href="#logout">
+                <i class="nav-icon fa fa-sign-out fa-2x"></i>
+                <span class="nav-label">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    {% endif %}
+</nav>
+<div class="main">
+    {% block main %}
+    <div class="inner">
+        {% block topbar %}
+        <div class="topbar {% block topbarclass %}{% endblock %}">
+            <div class="content">
+                <span class="left">
+                    <a href="{% block pagelink %}{% endblock %}">
+                        {% block barleft %}
+                        <h1 class="page-title">
+                        {% block pagetitle %}Title{% endblock %}
+                        </h1>
+                        {% endblock %}
+                    </a>
+                </span>
+                <span class="right">
+                    {% block barright %}{% endblock %}
+                </span>
+            </div>
+        </div>
+        <div class="topbar-spacer"></div>
+        {% endblock %}
+
+        {% block flashes %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flashes">
+            {% for category, message in messages %}
+                <div class="flash-wrapper">
+                    <div class="flash cat-{{ category }}">
+                        <p>{{ message }}</p>
+                        <a href="#dismiss-flash">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        {% endblock %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="toolbar clearfix">
+            {% block toolbar %}{% endblock %}
+        </div>
+        {% endblock main %}
+    </div>
+</div>
+{% endblock %}

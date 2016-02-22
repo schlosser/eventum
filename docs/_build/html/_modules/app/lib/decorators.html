@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.lib.decorators &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.lib.decorators</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for app.lib.decorators</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: decorators</span>
+<span class="sd">    :synopsis: Decorators to be used on routes.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">abort</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+
+<div class="viewcode-block" id="login_required"><a class="viewcode-back" href="../../../app.lib.html#app.lib.decorators.login_required">[docs]</a><span class="k">def</span> <span class="nf">login_required</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A decorator requiring a user to be logged in.  Use this to decorate</span>
+<span class="sd">    routes that require a user logged into Eventum to access.</span>
+
+<span class="sd">    If there is no Google Plus ID in the session or user in the database,</span>
+<span class="sd">    then redirect to login.  Else, run the decorated function.</span>
+
+<span class="sd">    :param func f: The decorated function.</span>
+<span class="sd">    :returns: The parameter function ``f``, but with checks for login.</span>
+<span class="sd">    :rtype: func</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">app.routes.base</span> <span class="kn">import</span> <span class="n">lookup_current_user</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The decorated version of ``f`` (see :method:``login_required``).</span>
+
+<span class="sd">        :param args: Arguments for ``f``.</span>
+<span class="sd">        :params kwargs: Keyword arguments for ``f``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">lookup_current_user</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="s1">&#39;gplus_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;auth.login&#39;</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;auth.login&#39;</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated_function</span></div>
+
+
+<div class="viewcode-block" id="requires_privilege"><a class="viewcode-back" href="../../../app.lib.html#app.lib.decorators.requires_privilege">[docs]</a><span class="k">class</span> <span class="nc">requires_privilege</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A decorator requiring a user to be logged in.  Use this to decorate</span>
+<span class="sd">    routes that require a user logged into Eventum with a certain level of</span>
+<span class="sd">    privilege to access.</span>
+
+<span class="sd">    If there is no Google Plus ID in the session or user in the database,</span>
+<span class="sd">    then redirect to login.  Else, run the decorated function.</span>
+
+<span class="sd">    Decorators like this that take parameters themselves must be</span>
+<span class="sd">    implemented either as a three nested functions (ugly), or as a class</span>
+<span class="sd">    (this implementation).  The ``__init__`` method creates the decorator,</span>
+<span class="sd">    and is passed any arguments for how the decorator should behaive, and</span>
+<span class="sd">    then the ``__call__`` method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">privilege</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a decorator to limit access to a decorated function to the</span>
+<span class="sd">        secified privileges.</span>
+
+<span class="sd">        :param str privilege: The privilege that the logged in user should</span>
+<span class="sd">        have. It can be either ``&quot;edit&quot;``, ``&quot;publish&quot;``, or ``&quot;admin&quot;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">privilege</span> <span class="o">=</span> <span class="n">privilege</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the decorator, on the decorated function, ``f``.</span>
+
+<span class="sd">        :param func f: The decorated function.</span>
+<span class="sd">        :returns: The parameter function ``f``, but with checks for login.</span>
+<span class="sd">        :rtype: func</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">app.routes.base</span> <span class="kn">import</span> <span class="n">lookup_current_user</span>
+
+        <span class="nd">@login_required</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;The decorated version of ``f`` (see :method:``__call__``).</span>
+
+<span class="sd">            :param args: Arguments for ``f``.</span>
+<span class="sd">            :params kwargs: Keyword arguments for ``f``.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">lookup_current_user</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">g</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">can</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">privilege</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">abort</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">abort</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">decorated_function</span></div>
+
+
+<div class="viewcode-block" id="development_only"><a class="viewcode-back" href="../../../app.lib.html#app.lib.decorators.development_only">[docs]</a><span class="k">def</span> <span class="nf">development_only</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A decorator requiring a user to be logged in.</span>
+
+<span class="sd">    If there is no Google Plus ID in the session or user in the database,</span>
+<span class="sd">    then redirect to login.  Else, run the decorated function.</span>
+
+<span class="sd">    :param func f: The decorated function.</span>
+<span class="sd">    :returns: The parameter function ``f``, but with checks for login.</span>
+<span class="sd">    :rtype: func</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The decorated version of ``f`` (see :method:``development_only``).</span>
+
+<span class="sd">        :param args: Arguments for ``f``.</span>
+<span class="sd">        :params kwargs: Keyword arguments for ``f``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+            <span class="n">abort</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">decorated_function</span></div>
+
+
+<div class="viewcode-block" id="skip_and_return_if"><a class="viewcode-back" href="../../../app.lib.html#app.lib.decorators.skip_and_return_if">[docs]</a><span class="k">class</span> <span class="nc">skip_and_return_if</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A decorator that will skip the wrapped function and automatically return</span>
+<span class="sd">    ``None`` if the passed ``flag`` is ``True``.</span>
+
+<span class="sd">    Decorators like this that take parameters themselves must be</span>
+<span class="sd">    implemented either as a three nested functions (ugly), or as a class</span>
+<span class="sd">    (this implementation).  The ``__init__`` method creates the decorator,</span>
+<span class="sd">    and is passed any arguments for how the decorator should behaive, and</span>
+<span class="sd">    then the ``__call__`` method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a decorator to skip the decorated function and return</span>
+<span class="sd">        ``None`` if ``flag`` is ``True``.</span>
+
+<span class="sd">        :param bool flag: Skip the decorated function if this is ``True``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="n">flag</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the decorator, on the decorated function, ``f``.</span>
+
+<span class="sd">        :param func f: The decorated function.</span>
+<span class="sd">        :returns: The parameter function ``f``, modified to short curcuit to</span>
+<span class="sd">        ``None`` if self.flag is true.</span>
+<span class="sd">        :rtype: func</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;The decorated version of ``f`` (see :method:``__call__``).</span>
+
+<span class="sd">            :param args: Arguments for ``f``.</span>
+<span class="sd">            :params kwargs: Keyword arguments for ``f``.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flag</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">decorated_function</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+@import '../colors';
+@import '../utils';
+
+$pagination-height: 3rem;
+
+.pagination {
+    @extends .clearfix;
+    height: ($pagination-height + 1rem);
+
+    a, a:hover {
+        color: $gray;
+    }
+
+    .past, .future{
+        height: $pagination-height;
+        text-align: center;
+        color: $gray;
+
+        p {
+            font-size: 1rem;
+            height: $pagination-height;
+            line-height: $pagination-height;
+            &:hover {
+                background-color: $offwhite;
+
+            }
+        }
+    }
+}

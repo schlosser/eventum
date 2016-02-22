@@ -1,0 +1,55 @@
+{% extends "eventum_admin.html" %}
+{% import "eventum_macros.html" as macros %}
+
+{% set active_page='Media' %}
+{% block title %}Manage Photos and other Media{% endblock %}
+{% block pagetitle %}Media{% endblock %}
+
+{% block css %}
+{{ super() }}
+{% assets "scss_media" %}
+<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('eventum.static', filename='js/media/media.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('eventum.static', filename='js/media/image_grid.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('eventum.static', filename='js/media/upload.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+{{ macros.upload_form(form, uploaded_from=url_for('media.index')) }}
+
+{% if images %}
+<div class="image-grid-wrapper">
+<div class="image-grid-wrapper-inner">
+<ul class="image-grid clearfix">
+{% for image in images %}
+<li class="image">
+    <i style="background-image:url({{ image.url() }});"></i>
+    <ul class="actions">
+        <li class="action">
+            <a class="delete-image" href="#" data-filename="">
+                <i class="fa fa-trash-o fa-2x"></i>
+                <form class="hidden" action="{{ url_for('media.delete', filename=image.filename) }}" method="post">
+                    <input type="submit" value="Submit"/>
+                </form>
+            </a>
+        </li>
+        <li class="action">
+            <a href="{{ url_for('media.file', filename=image.filename) }}">
+                <i class="fa fa-link fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% else %}
+<p class="no-elements">There are no images.</p>
+{% endif %}
+{% endblock %}

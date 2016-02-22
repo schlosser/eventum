@@ -1,0 +1,99 @@
+@import '../admin';
+
+.whitelist-add-form {
+    ul {
+        display: inline-block;
+        margin-right: 0.5rem;
+        li { display: inline-block; }
+    }
+    div {
+        margin-top: 1rem;
+        display: block;
+    }
+    input[type="submit"] {
+        margin-top: 1rem;
+        display: block;
+    }
+    .display-feature-table {
+        table, td, th {
+            overflow: hidden;
+            border: 0.1rem solid #e0e0e0;
+        }
+        th, td {
+            padding: 0.5rem;
+            text-align: center;
+        }
+        td {
+            .fa-times {
+                color: red;
+            }
+            .fa-check {
+                color: green;
+            }
+            small {
+                label {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+        .highlighted {
+            background-color: #f5f5f5;
+        }
+        .clicked {
+            background-color: #efefef;
+        }
+    }
+    @media screen and (max-width: $phone-max) {
+        .display-feature-table {
+            overflow-x: scroll;
+            width: 100%;
+            table {
+                min-width: 642px;
+            }
+        }
+    }
+}
+
+.for-fake-user {
+    $fake-user-image-width: 25%;
+    .fake-user-image {
+        display: block;
+        position: relative;
+        width: $fake-user-image-width;
+        padding-bottom: $fake-user-image-width;
+    }
+}
+
+.form-component {
+    display: inline;
+}
+
+.whitelist, .no-elements {
+    margin-bottom: 2rem;
+}
+
+.role, .name {
+    width: 35%;
+    text-transform: capitalize;
+}
+.email {
+    width: 40%;
+}
+.user-type, .actions {
+    width: 25%;
+}
+
+td:first-child {
+    padding-left: 0 !important;
+}
+th {
+    text-align: left;
+}
+.with-image {
+    padding-left: ($table-padding + $row-height);
+}
+
+small {
+    display: block;
+    margin-bottom: 0.5rem;
+}

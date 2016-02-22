@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Library Functions &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="index.html"/>
+        <link rel="up" title="The Eventum App" href="app.html"/>
+        <link rel="next" title="Models" href="app.models.html"/>
+        <link rel="prev" title="Form Fields" href="app.forms.fields.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="app.html">The Eventum App</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.forms.html">Forms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Library Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-lib-events">app.lib.events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-lib-google-calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-lib-networking">app.lib.networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.forms.html">Forms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-lib-events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-lib-google-calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-lib-networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="app.html">The Eventum App</a> &raquo;</li>
+      
+    <li>Library Functions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/app.lib.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="library-functions">
+<h1>Library Functions<a class="headerlink" href="#library-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-app.lib.decorators">
+<span id="app-lib-decorators"></span><h2>app.lib.decorators<a class="headerlink" href="#module-app.lib.decorators" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-decorators"></span><dl class="function">
+<dt id="app.lib.decorators.development_only">
+<code class="descclassname">app.lib.decorators.</code><code class="descname">development_only</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/decorators.html#development_only"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.decorators.development_only" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator requiring a user to be logged in.</p>
+<p>If there is no Google Plus ID in the session or user in the database,
+then redirect to login.  Else, run the decorated function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> (<em>func</em>) &#8211; The decorated function.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The parameter function <code class="docutils literal"><span class="pre">f</span></code>, but with checks for login.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">func</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.lib.decorators.login_required">
+<code class="descclassname">app.lib.decorators.</code><code class="descname">login_required</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/decorators.html#login_required"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.decorators.login_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator requiring a user to be logged in.  Use this to decorate
+routes that require a user logged into Eventum to access.</p>
+<p>If there is no Google Plus ID in the session or user in the database,
+then redirect to login.  Else, run the decorated function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> (<em>func</em>) &#8211; The decorated function.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The parameter function <code class="docutils literal"><span class="pre">f</span></code>, but with checks for login.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">func</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.lib.decorators.requires_privilege">
+<em class="property">class </em><code class="descclassname">app.lib.decorators.</code><code class="descname">requires_privilege</code><span class="sig-paren">(</span><em>privilege</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/decorators.html#requires_privilege"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.decorators.requires_privilege" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>A decorator requiring a user to be logged in.  Use this to decorate
+routes that require a user logged into Eventum with a certain level of
+privilege to access.</p>
+<p>If there is no Google Plus ID in the session or user in the database,
+then redirect to login.  Else, run the decorated function.</p>
+<p>Decorators like this that take parameters themselves must be
+implemented either as a three nested functions (ugly), or as a class
+(this implementation).  The <code class="docutils literal"><span class="pre">__init__</span></code> method creates the decorator,
+and is passed any arguments for how the decorator should behaive, and
+then the <code class="docutils literal"><span class="pre">__call__</span></code> method</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.lib.decorators.skip_and_return_if">
+<em class="property">class </em><code class="descclassname">app.lib.decorators.</code><code class="descname">skip_and_return_if</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/decorators.html#skip_and_return_if"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.decorators.skip_and_return_if" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>A decorator that will skip the wrapped function and automatically return
+<code class="docutils literal"><span class="pre">None</span></code> if the passed <code class="docutils literal"><span class="pre">flag</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<p>Decorators like this that take parameters themselves must be
+implemented either as a three nested functions (ugly), or as a class
+(this implementation).  The <code class="docutils literal"><span class="pre">__init__</span></code> method creates the decorator,
+and is passed any arguments for how the decorator should behaive, and
+then the <code class="docutils literal"><span class="pre">__call__</span></code> method</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.lib.error">
+<span id="app-lib-error"></span><h2>app.lib.error<a class="headerlink" href="#module-app.lib.error" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-error"></span><p>This module is slightly complicated.  It contains three main components: the
+nested dictionary <code class="docutils literal"><span class="pre">_ERROR_DATA</span></code>, the class <code class="xref py py-class docutils literal"><span class="pre">EventumError</span></code>, and the
+function <code class="xref py py-func docutils literal"><span class="pre">_make_subclasses()</span></code>.  The dictionary <code class="docutils literal"><span class="pre">_ERROR_DATA</span></code> contains a
+family tree of subclasses for <code class="xref py py-class docutils literal"><span class="pre">EventumError</span></code>. Each key is an error name,
+and the value is a four-tuple of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">error_code</span><span class="p">,</span> <span class="n">http_status_code</span><span class="p">,</span> <span class="n">subclasses</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">message</span></code> is a string that may be shown to users, in the app, and logged
+to the application logs.</p>
+<p>The <code class="docutils literal"><span class="pre">error_code</span></code> is a namespaced, unique number that can be easily used to
+identify error messages in other parts of the app, or in JavaScript. They are
+namespaced.  For example, Google Calendar API errors have error code <code class="docutils literal"><span class="pre">6XX</span></code>,
+and Google Calendar Not Found errors are <code class="docutils literal"><span class="pre">64X</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">http_status_code</span></code> is the HTTP status code that should be associated with
+this error should it reach the user.</p>
+<p>The <code class="docutils literal"><span class="pre">subclasses</span></code> entry is a dictionary of similar structure, containing
+recurisve error subclasses of this error.</p>
+<p>In order to add a new error, simply add a new entry to the _ERROR_DATA
+dictionary at the proper level of indentation.  Related errors should share
+common baseclasses, and have similar <code class="docutils literal"><span class="pre">error_code</span></code> values.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>from app.lib.error import EventumError
+# ...
+try:
+    raise EventumError.GCalAPI.NotFound.UpdateFellBackToCreate()
+except EventumError.GCalAPI.NotFound.UpdateFellBackToCreate:
+    # handle error...
+</pre></div>
+</div>
+<p>However, we can also except multiple errors by excepting their common
+baseclass:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>from app.lib.error import EventumError
+# ...
+try:
+    if something():
+        raise EventumError.GCalAPI.NotFound.UpdateFellBackToCreate()
+    elif something_else():
+        raise EventumError.GCalAPI.BadStatusLine()
+    else:
+        raise EventumError.GCAlAPI():
+except EventumError.GCalAPI:
+    # handles all above errors.
+</pre></div>
+</div>
+<dl class="exception">
+<dt id="app.lib.error.EventumError">
+<em class="property">exception </em><code class="descclassname">app.lib.error.</code><code class="descname">EventumError</code><span class="sig-paren">(</span><em>*subs</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/error.html#EventumError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.error.EventumError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
+<p>The base error class for Eventum.  All errors are subclasses of
+<code class="xref py py-class docutils literal"><span class="pre">EventumError</span></code>.</p>
+<dl class="method">
+<dt id="app.lib.error.EventumError.log_error">
+<code class="descname">log_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/error.html#EventumError.log_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.error.EventumError.log_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the error type and plaintext message to the warning logs,
+as well as any other data associated with it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="app-lib-events">
+<h2>app.lib.events<a class="headerlink" href="#app-lib-events" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="app-lib-google-calendar">
+<h2>app.lib.google_calendar<a class="headerlink" href="#app-lib-google-calendar" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.lib.google_calendar_resource_builder">
+<span id="app-lib-google-calendar-resource-builder"></span><h2>app.lib.google_calendar_resource_builder<a class="headerlink" href="#module-app.lib.google_calendar_resource_builder" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="app-lib-networking">
+<h2>app.lib.networking<a class="headerlink" href="#app-lib-networking" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.lib.text">
+<span id="app-lib-text"></span><h2>app.lib.text<a class="headerlink" href="#module-app.lib.text" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.lib.text.clean_markdown">
+<code class="descclassname">app.lib.text.</code><code class="descname">clean_markdown</code><span class="sig-paren">(</span><em>markdown</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/text.html#clean_markdown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.text.clean_markdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formats markdown text for easier plaintext viewing.  Performs the
+following substitutions:</p>
+<ul class="simple">
+<li>Removes bad or empty links</li>
+<li>Removes images</li>
+<li>Formats hyperlinks from <code class="docutils literal"><span class="pre">[link](http://adicu.com)</span></code> to</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">link</span> <span class="pre">(http://adicu.com)</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>markdown</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The markdown text to format.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the formatted text:</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.lib.text.truncate_html">
+<code class="descclassname">app.lib.text.</code><code class="descname">truncate_html</code><span class="sig-paren">(</span><em>text</em>, <em>truncate_len</em>, <em>truncate_text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app/lib/text.html#truncate_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app.lib.text.truncate_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Truncates HTML to a certain number of words (not counting tags and
+comments). Closes opened tags if they were correctly closed in the given
+HTML. If text is truncated, truncate_text will be appended to the result.</p>
+<p>Newlines in the HTML are preserved.</p>
+<p>Modified from django.utils.text
+<a class="reference external" href="https://github.com/django/django/blob/master/django/utils/text.py">https://github.com/django/django/blob/master/django/utils/text.py</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The text to truncate.</li>
+<li><strong>truncate_len</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of words to shorten the HTML to</li>
+<li><strong>truncate_len</strong> &#8211; Text like &#8216;...&#8217; to append to the end of tuncated
+text.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The truncated HTML</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="app.models.html" class="btn btn-neutral float-right" title="Models" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="app.forms.fields.html" class="btn btn-neutral" title="Form Fields" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

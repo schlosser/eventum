@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Eventum
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app.html">The Eventum App</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../app.forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app.lib.html">Library Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app.models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app.routes.html">Routes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>app</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for app</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: __init__</span>
+<span class="sd">    :synopsis: This is where all our global variables and instantiation</span>
+<span class="sd">        happens. If there is simple app setup to do, it can be done here, but</span>
+<span class="sd">        more complex work should be farmed off elsewhere, in order to keep</span>
+<span class="sd">        this file readable.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">flask.ext.mongoengine</span> <span class="kn">import</span> <span class="n">MongoEngine</span>
+<span class="kn">from</span> <span class="nn">flask.ext.assets</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Bundle</span>
+<span class="kn">from</span> <span class="nn">webassets.filter</span> <span class="kn">import</span> <span class="n">get_filter</span>
+
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">adi_config</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">MongoEngine</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">adi</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">assets</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">gcal_client</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<div class="viewcode-block" id="create_app"><a class="viewcode-back" href="../app.html#app.create_app">[docs]</a><span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="o">**</span><span class="n">config_overrides</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is normal setup code for a Flask app, but we give the option</span>
+<span class="sd">    to provide override configurations so that in testing, a different</span>
+<span class="sd">    database can be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># we want to modify the global app, not a local copy</span>
+    <span class="k">global</span> <span class="n">app</span>
+    <span class="k">global</span> <span class="n">adi</span>
+    <span class="k">global</span> <span class="n">assets</span>
+    <span class="k">global</span> <span class="n">gcal_client</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="c1"># Load config then apply overrides</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config_overrides</span><span class="p">)</span>
+
+    <span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">flask_config</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">flask_config</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config_overrides</span><span class="p">)</span>
+
+    <span class="c1"># load ADI specific configurations (ignore built-in methods)</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">adi_config</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;__&quot;</span><span class="p">):</span>
+        <span class="n">adi</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">adi_config</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+    <span class="c1"># Initialize assets</span>
+    <span class="n">assets</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">register_scss</span><span class="p">()</span>
+
+    <span class="c1"># Setup the database.</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="c1"># Initialize the Google Calendar API Client, but only if the api</span>
+    <span class="c1"># credentials have been generated first.</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">app.lib.google_calendar</span> <span class="kn">import</span> <span class="n">GoogleCalendarAPIClient</span>
+        <span class="n">gcal_client</span> <span class="o">=</span> <span class="n">GoogleCalendarAPIClient</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="n">gae_environ</span> <span class="o">=</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;GOOGLE_AUTH_ENABLED&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;FALSE&#39;</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Failed to find the Google Calendar credentials file &#39;</span>
+                        <span class="s1">&#39;at `{}`, please create it by running:</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;    $ python manage.py --authorize</span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;The environment variable GOOGLE_AUTH_ENABLED is &#39;</span>
+                        <span class="s1">&#39;currently set to `{}`.  If set to FALSE, Google &#39;</span>
+                        <span class="s1">&#39;Calendar calls will fail silently.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;INSTALLED_APP_CREDENTIALS_PATH&#39;</span><span class="p">],</span>
+                            <span class="n">gae_environ</span><span class="p">))</span>
+        <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">register_delete_rules</span><span class="p">()</span>
+    <span class="n">register_blueprints</span><span class="p">()</span>
+
+    <span class="kn">from</span> <span class="nn">app.routes.base</span> <span class="kn">import</span> <span class="n">register_error_handlers</span>
+    <span class="n">register_error_handlers</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">register_logger</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">app</span></div>
+
+
+<div class="viewcode-block" id="register_logger"><a class="viewcode-back" href="../app.html#app.register_logger">[docs]</a><span class="k">def</span> <span class="nf">register_logger</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create an error logger and attach it to ``app``.&quot;&quot;&quot;</span>
+
+    <span class="n">max_bytes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;LOG_FILE_MAX_SIZE&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>   <span class="c1"># MB to B</span>
+    <span class="c1"># Use &quot;# noqa&quot; to silence flake8 warnings for creating a variable that is</span>
+    <span class="c1"># uppercase.  (Here, we make a class, so uppercase is correct.)</span>
+    <span class="n">Handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">RotatingFileHandler</span>  <span class="c1"># noqa</span>
+    <span class="n">f_str</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1"> @ </span><span class="si">%(asctime)s</span><span class="s1"> @ </span><span class="si">%(filename)s</span><span class="s1"> &#39;</span>
+             <span class="s1">&#39;</span><span class="si">%(funcName)s</span><span class="s1"> </span><span class="si">%(lineno)d</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">access_handler</span> <span class="o">=</span> <span class="n">Handler</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;WERKZEUG_LOG_NAME&quot;</span><span class="p">],</span>
+                             <span class="n">maxBytes</span><span class="o">=</span><span class="n">max_bytes</span><span class="p">)</span>
+    <span class="n">access_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;werkzeug&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">access_handler</span><span class="p">)</span>
+
+    <span class="n">app_handler</span> <span class="o">=</span> <span class="n">Handler</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;APP_LOG_NAME&quot;</span><span class="p">],</span> <span class="n">maxBytes</span><span class="o">=</span><span class="n">max_bytes</span><span class="p">)</span>
+    <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">f_str</span><span class="p">)</span>
+    <span class="n">app_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">app_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">app_handler</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="register_blueprints"><a class="viewcode-back" href="../app.html#app.register_blueprints">[docs]</a><span class="k">def</span> <span class="nf">register_blueprints</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Registers all the Blueprints (modules) in a function, to avoid</span>
+<span class="sd">    circular dependancies.</span>
+
+<span class="sd">    Be careful rearranging the order of the app.register_blueprint()</span>
+<span class="sd">    calls, as it can also result in circular dependancies.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">app.routes.admin</span> <span class="kn">import</span> <span class="p">(</span><span class="n">admin</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">posts</span><span class="p">,</span>
+                                  <span class="n">users</span><span class="p">,</span> <span class="n">whitelist</span><span class="p">,</span> <span class="n">api</span><span class="p">)</span>
+    <span class="n">admin_blueprints</span> <span class="o">=</span> <span class="p">[</span><span class="n">admin</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">posts</span><span class="p">,</span> <span class="n">users</span><span class="p">,</span>
+                        <span class="n">whitelist</span><span class="p">,</span> <span class="n">api</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="n">admin_blueprints</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">bp</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/admin&quot;</span><span class="p">)</span>
+
+    <span class="kn">from</span> <span class="nn">app.routes</span> <span class="kn">import</span> <span class="n">blog</span><span class="p">,</span> <span class="n">client</span>
+    <span class="n">blueprints</span> <span class="o">=</span> <span class="p">[</span><span class="n">blog</span><span class="p">,</span> <span class="n">client</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="n">blueprints</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">bp</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="register_delete_rules"><a class="viewcode-back" href="../app.html#app.register_delete_rules">[docs]</a><span class="k">def</span> <span class="nf">register_delete_rules</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Registers rules for how Mongoengine handles the deletion of objects</span>
+<span class="sd">    that are being referenced by other objects.</span>
+
+<span class="sd">    See the documentation for :func:`mongoengine.model.register_delete_rule`</span>
+<span class="sd">    for more information.</span>
+
+<span class="sd">    All delete rules for User fields must by DENY, because User objects should</span>
+<span class="sd">    never be deleted.  Lists of reference fields should PULL, to remove deleted</span>
+<span class="sd">    objects from the list, and all others should NULLIFY</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Event</span><span class="p">,</span> <span class="n">EventSeries</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Post</span><span class="p">,</span> <span class="n">BlogPost</span><span class="p">,</span> <span class="n">Image</span>
+    <span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">NULLIFY</span><span class="p">,</span> <span class="n">PULL</span><span class="p">,</span> <span class="n">DENY</span>
+
+    <span class="n">Event</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">EventSeries</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="n">PULL</span><span class="p">)</span>
+    <span class="n">Image</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">BlogPost</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="n">PULL</span><span class="p">)</span>
+    <span class="n">Image</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">NULLIFY</span><span class="p">)</span>
+    <span class="n">Image</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">BlogPost</span><span class="p">,</span> <span class="s1">&#39;featured_image&#39;</span><span class="p">,</span> <span class="n">NULLIFY</span><span class="p">)</span>
+    <span class="n">Image</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">NULLIFY</span><span class="p">)</span>
+    <span class="n">EventSeries</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="s1">&#39;parent_series&#39;</span><span class="p">,</span> <span class="n">NULLIFY</span><span class="p">)</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="s1">&#39;creator&#39;</span><span class="p">,</span> <span class="n">DENY</span><span class="p">)</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span> <span class="s1">&#39;creator&#39;</span><span class="p">,</span> <span class="n">DENY</span><span class="p">)</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Post</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="n">DENY</span><span class="p">)</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">register_delete_rule</span><span class="p">(</span><span class="n">Post</span><span class="p">,</span> <span class="s1">&#39;posted_by&#39;</span><span class="p">,</span> <span class="n">DENY</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="register_scss"><a class="viewcode-back" href="../app.html#app.register_scss">[docs]</a><span class="k">def</span> <span class="nf">register_scss</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Registers the Flask-Assets rules for scss compilation.  This reads from</span>
+<span class="sd">    ``config/scss.json`` to make these rules.</span>
+
+<span class="sd">    We expire files using filenames:</span>
+<span class="sd">    http://webassets.readthedocs.org/en/latest/expiring.html#expire-using-the-filename</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">assets</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">static_url_path</span>
+    <span class="n">assets</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SASS_PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SCSS_FOLDER&#39;</span><span class="p">]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config/scss.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">bundle_instructions</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">bundle_set</span> <span class="ow">in</span> <span class="n">bundle_instructions</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">output_folder</span> <span class="o">=</span> <span class="n">bundle_set</span><span class="p">[</span><span class="s1">&#39;output_folder&#39;</span><span class="p">]</span>
+            <span class="n">depends</span> <span class="o">=</span> <span class="n">bundle_set</span><span class="p">[</span><span class="s1">&#39;depends&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">bundle_name</span><span class="p">,</span> <span class="n">instructions</span> <span class="ow">in</span> <span class="n">bundle_set</span><span class="p">[</span><span class="s1">&#39;rules&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                <span class="c1"># Use filename expiration</span>
+
+                <span class="n">output_filename</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span>
+                                   <span class="n">instructions</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.css&#39;</span><span class="p">)</span> <span class="o">+</span>
+                                   <span class="s1">&#39;.</span><span class="si">%(version)s</span><span class="s1">.css&#39;</span><span class="p">)</span>
+                <span class="n">bundle</span> <span class="o">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="o">*</span><span class="n">instructions</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">],</span>
+                                <span class="n">output</span><span class="o">=</span><span class="n">output_filename</span><span class="p">,</span>
+                                <span class="n">depends</span><span class="o">=</span><span class="n">depends</span><span class="p">,</span>
+                                <span class="n">filters</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;scss&#39;</span><span class="p">,</span> <span class="s1">&#39;cssmin&#39;</span><span class="p">))</span>
+                <span class="n">assets</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">bundle_name</span><span class="p">,</span> <span class="n">bundle</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="run"><a class="viewcode-back" href="../app.html#app.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Runs the app.&quot;&quot;&quot;</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOST&#39;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PORT&#39;</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

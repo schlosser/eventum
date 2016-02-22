@@ -1,0 +1,56 @@
+@import '../colors';
+@import '../media/image_grid';
+@import '../media/select';
+@import '../admin';
+
+#epiceditor {
+    margin-bottom: 3rem;
+}
+
+.content {
+    padding-bottom: ($content-padding - $image-padding) !important;
+}
+
+.edit-post-form input[type="submit"] {
+    float: right;
+    margin: 0 0.5rem;
+}
+.confirm-wrapper {
+    display: inline-block;
+}
+
+.tag-list li{
+	border: 2px solid #EBFAFF;
+	background-color: #EBFAFF;
+	font-size: 10px;
+	padding: 5px;
+	margin: 5px;
+	border-radius: 10px;
+
+}
+
+.tag-list li a{
+	font-size: 10px;
+	color: red;
+}
+
+.preview-button{
+    float: right;
+}
+
+@media only screen and (max-width: $phone-max) {
+	.edit-post-barright {
+        & > a {
+            float: right;
+        }
+        & > div {
+            float: right;
+            margin: 0 1rem 0 0;
+        }
+        float: right;
+        margin-right: -1rem;
+        & > a {
+            display: inline-block;
+        }
+    }
+}

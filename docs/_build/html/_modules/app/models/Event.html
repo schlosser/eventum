@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.models.Event &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.models.Event</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.models.Event</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: Event</span>
+<span class="sd">    :synopsis: An event database model.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">adi</span><span class="p">,</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">app.models.fields</span> <span class="kn">import</span> <span class="n">DateField</span><span class="p">,</span> <span class="n">TimeField</span>
+<span class="kn">import</span> <span class="nn">markdown</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+
+<div class="viewcode-block" id="Event"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event">[docs]</a><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Document</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The object that represents an individual event in Mongoengine.</span>
+
+<span class="sd">    Recurring events also have a :class:`~app.models.EventSeries` instance that</span>
+<span class="sd">    connects them to the other events in the series.</span>
+
+<span class="sd">    :ivar date_created: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        that the event object was created.</span>
+<span class="sd">    :ivar date_modified: :class:`mongoengine.fields.DateTimeField` - The last</span>
+<span class="sd">        date the event was modified.</span>
+<span class="sd">    :ivar title: :class:`mongoengine.fields.StringField` - The title of the</span>
+<span class="sd">        event.</span>
+<span class="sd">    :ivar creator: :class:`mongoengine.fields.ReferenceField` - The User that</span>
+<span class="sd">        created the event.</span>
+<span class="sd">    :ivar location: :class:`mongoengine.fields.StringField` - The event&#39;s</span>
+<span class="sd">        location.</span>
+<span class="sd">    :ivar slug: :class:`mongoengine.fields.StringField` - The URL slug</span>
+<span class="sd">        associated with the event. **Note:** appending the slug to the base</span>
+<span class="sd">        path for events will not always yield the functioning URL for the</span>
+<span class="sd">        event, because recurring events have indexes appended to the url. User</span>
+<span class="sd">        :func:`get_absolute_url` always.</span>
+<span class="sd">    :ivar start_date: :class:`DateField` - The date the event starts.</span>
+<span class="sd">    :ivar end_date: :class:`DateField` - The date the event ends</span>
+<span class="sd">    :ivar start_time: :class:`TimeField` - The time the event starts</span>
+<span class="sd">    :ivar end_time: :class:`TimeField` - The time the event ends</span>
+<span class="sd">    :ivar short_description: :class:`mongoengine.fields.StringField` - The HTML</span>
+<span class="sd">        short description of the event.</span>
+<span class="sd">    :ivar long_description: :class:`mongoengine.fields.StringField` - The HTML</span>
+<span class="sd">        long description of the event.</span>
+<span class="sd">    :ivar short_description_markdown: :class:`mongoengine.fields.StringField` -</span>
+<span class="sd">        The markdown short description of the event.</span>
+<span class="sd">    :ivar long_description_markdown: :class:`mongoengine.fields.StringField` -</span>
+<span class="sd">        The markdown long description of the event.</span>
+<span class="sd">    :ivar published: :class:`mongoengine.fields.BooleanField` - True if the</span>
+<span class="sd">        event is published.</span>
+<span class="sd">    :ivar date_published: :class:`mongoengine.fields.DateTimeField` - The date</span>
+<span class="sd">        that the event was published.</span>
+<span class="sd">    :ivar is_recurring: :class:`mongoengine.fields.BooleanField` - True if the</span>
+<span class="sd">        event is recurring.</span>
+<span class="sd">    :ivar parent_series: :class:`mongoengine.fields.ReferenceField` - The</span>
+<span class="sd">        :class:`~app.models.EventSeries` object that holds the recurrence info</span>
+<span class="sd">        for an event, if it is recurring.</span>
+<span class="sd">    :ivar image: :class:`mongoengine.fields.ReferenceField` - The headline</span>
+<span class="sd">        image for the event.</span>
+<span class="sd">    :ivar facebook_url: :class:`mongoengine.fields.StringField` - The URL to</span>
+<span class="sd">        the Facebook event associated with this event.</span>
+<span class="sd">    :ivar gcal_id: :class:`mongoengine.fields.StringField` - The ID for this</span>
+<span class="sd">        event on Google Calendar. In Google Calendar API responses, this is</span>
+<span class="sd">        stored asthe ``id`` field for events. If this field is None, then we</span>
+<span class="sd">        never got a proper response from Google Calendar when (if) we made a</span>
+<span class="sd">        request to create it there. It most likely does not exist on Google</span>
+<span class="sd">        Calendar.</span>
+<span class="sd">    :ivar gcal_sequence: :class:`mongoengine.fields.IntField` - The sequence</span>
+<span class="sd">        number for the event, used by Google Calendar for versioning.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c"># MongoEngine ORM metadata</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;allow_inheritance&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;start_date&#39;</span><span class="p">,</span> <span class="s">&#39;creator&#39;</span><span class="p">],</span>
+        <span class="s">&#39;ordering&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;-start_date&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">date_created</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">date_modified</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">creator</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ReferenceField</span><span class="p">(</span><span class="s">&quot;User&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">DateField</span><span class="p">()</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">DateField</span><span class="p">()</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">TimeField</span><span class="p">()</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">TimeField</span><span class="p">()</span>
+    <span class="n">short_description</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">long_description</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">short_description_markdown</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">long_description_markdown</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">date_published</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">is_recurring</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">parent_series</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ReferenceField</span><span class="p">(</span><span class="s">&quot;EventSeries&quot;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ReferenceField</span><span class="p">(</span><span class="s">&quot;Image&quot;</span><span class="p">)</span>
+    <span class="n">facebook_url</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">gcal_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">gcal_sequence</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">IntField</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Event.get_absolute_url"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.get_absolute_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the URL path that points to the client-facing version of</span>
+<span class="sd">        this event.</span>
+
+<span class="sd">        :returns: A URL path like ``&quot;/events/cookies-and-code&quot;``.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;client.recurring_event&#39;</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;client.event&#39;</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.image_url"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.image_url">[docs]</a>    <span class="k">def</span> <span class="nf">image_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the URL path that points to the image for the event.</span>
+
+<span class="sd">        :returns: The URL path like ``&quot;/static/img/cat.jpg&quot;``.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">url</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">url_for</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">adi</span><span class="p">[</span><span class="s">&#39;DEFAULT_EVENT_IMAGE&#39;</span><span class="p">])</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Event.index"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Represents the index of this event in it&#39;s parent</span>
+<span class="sd">        :class:`~app.models.EventSeries`. Returns ``None`` if the event is not</span>
+<span class="sd">        recurring.</span>
+
+<span class="sd">        :returns: The index of the event in it&#39;s series.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.clean"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called by Mongoengine on every ``.save()`` to the object.</span>
+
+<span class="sd">        Updates date_modified, renders the markdown into the HTML fields, and</span>
+<span class="sd">        validates datetimes to ensure the event ends after it starts.</span>
+
+<span class="sd">        :raises: :class:`wtforms.validators.ValidationError`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_modified</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">short_description_markdown</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">short_description_markdown</span><span class="p">,</span>
+                                                       <span class="p">[</span><span class="s">&#39;extra&#39;</span><span class="p">,</span> <span class="s">&#39;smarty&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">long_description_markdown</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">long_description</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">long_description_markdown</span><span class="p">,</span>
+                                                      <span class="p">[</span><span class="s">&#39;extra&#39;</span><span class="p">,</span> <span class="s">&#39;smarty&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Start date should always come before end &quot;</span>
+                                  <span class="s">&quot;date. Got (</span><span class="si">%r</span><span class="s">,</span><span class="si">%r</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span>
+                                                         <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">))</span>
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Start time should always come before end &quot;</span>
+                                  <span class="s">&quot;time. Got (</span><span class="si">%r</span><span class="s">,</span><span class="si">%r</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+                                                         <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="Event.start_datetime"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.start_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">start_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A convenience method to combine ``start_date`` and ``start_time``</span>
+<span class="sd">        into one :class:`datetime`.</span>
+
+<span class="sd">        :returns: The combined datetime, or ``None` if ``start_date`` or</span>
+<span class="sd">            ``start_time`` are ``None``.</span>
+<span class="sd">        :rtype: :class:`datetime`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.end_datetime"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.end_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">end_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A convenience method to combine ``end_date`` and ``end_time``</span>
+<span class="sd">        into one :class:`datetime`.</span>
+
+<span class="sd">        :returns: The combined datetime, or ``None` if ``end_date`` or</span>
+<span class="sd">            ``end_time`` are ``None``.</span>
+<span class="sd">        :rtype: :class:`datetime`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.id_str"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.id_str">[docs]</a>    <span class="k">def</span> <span class="nf">id_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The id of this object, as a string.</span>
+
+<span class="sd">        :returns: The id</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.ready_for_publishing"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.ready_for_publishing">[docs]</a>    <span class="k">def</span> <span class="nf">ready_for_publishing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if the event has all necessary fields filled out.</span>
+
+<span class="sd">        Necessary fields are:</span>
+
+<span class="sd">        - ``title``</span>
+<span class="sd">        - ``creator``</span>
+<span class="sd">        - ``location``</span>
+<span class="sd">        - ``start_datetime``</span>
+<span class="sd">        - ``end_datetime``</span>
+<span class="sd">        - ``short_description``</span>
+<span class="sd">        - ``long_description``</span>
+<span class="sd">        - ``image``</span>
+
+<span class="sd">        :Returns: True if we are ready for publishing.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">creator</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_datetime</span><span class="p">(),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_datetime</span><span class="p">(),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">short_description</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">long_description</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image</span>
+            <span class="p">])</span>
+</div>
+<div class="viewcode-block" id="Event.is_multiday"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.is_multiday">[docs]</a>    <span class="k">def</span> <span class="nf">is_multiday</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if the event spans muliple days.</span>
+
+<span class="sd">        :returns: True if the event spans multiple days.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Event.human_readable_date"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.human_readable_date">[docs]</a>    <span class="k">def</span> <span class="nf">human_readable_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the date of the event (presumed not multiday) formatted like:</span>
+<span class="sd">        ``&quot;Sunday, Mar 31&quot;``.</span>
+
+<span class="sd">        :returns: The formatted date.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%A, %b </span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Event.human_readable_time"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.human_readable_time">[docs]</a>    <span class="k">def</span> <span class="nf">human_readable_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the time range of the event (presumed not multiday) formatted</span>
+<span class="sd">        like ``&quot;11am - 2:15pm&quot;`` or ``&quot;3 - 7:30pm&quot;``.</span>
+
+<span class="sd">        :returns: The formatted date.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%p&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%p&quot;</span><span class="p">):</span>
+            <span class="n">format</span> <span class="o">=</span> <span class="s">&quot;%I:%M-&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">format</span> <span class="o">=</span> <span class="s">&quot;%I:%M%p-&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%I:%M%p&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+</div>
+<div class="viewcode-block" id="Event.human_readable_datetime"><a class="viewcode-back" href="../../../app.models.html#app.models.Event.Event.human_readable_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">human_readable_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format the start and end date date in one of the following three</span>
+<span class="sd">        formats:</span>
+
+<span class="sd">        1. ``&quot;Sunday, March 31 11pm - Monday, April 1 3am&quot;``</span>
+<span class="sd">        2. ``&quot;Sunday, March 31 11am - 2:15pm&quot;``</span>
+<span class="sd">        3. ``&quot;Sunday, March 31 3 - 7:30pm&quot;``</span>
+
+<span class="sd">        Depending on whether or not the start / end times / dates are the same.</span>
+<span class="sd">        All unkown values will be replaced by question marks.</span>
+
+<span class="sd">        :returns: The formatted date.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%A, %B </span><span class="si">%d</span><span class="s"> &quot;</span><span class="p">)</span> \
+                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; 0&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;/0&quot;</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot;???, ??/?? &quot;</span>
+
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_and_end_time_share_am_or_pm</span><span class="p">():</span>
+                <span class="n">start_format</span> <span class="o">=</span> <span class="s">&quot;%I:%M-&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">start_format</span> <span class="o">=</span> <span class="s">&quot;%I:%M%p-&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">start_format</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot;??:?? - &quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%A, %B </span><span class="si">%d</span><span class="s"> &quot;</span><span class="p">)</span> \
+                    <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; 0&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;/0&quot;</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot;???, ??/?? &quot;</span>
+
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%I:%M%p&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot;??:??&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+</div>
+    <span class="k">def</span> <span class="nf">_start_and_end_time_share_am_or_pm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if the start and end times for an event are both pm or</span>
+<span class="sd">        am.</span>
+
+<span class="sd">        :returns: True if the start and end times for an event are both pm or</span>
+<span class="sd">            am.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Check times against None, because midnight is represented by 0.</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%p&quot;</span><span class="p">)</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%p&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This event, as a unicode string.</span>
+
+<span class="sd">        :returns: The title of the event</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The representation of this event.</span>
+
+<span class="sd">        :returns: The event&#39;s details.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s">&#39;Event(title=</span><span class="si">%r</span><span class="s">, location=</span><span class="si">%r</span><span class="s">, creator=</span><span class="si">%r</span><span class="s">, start=</span><span class="si">%r</span><span class="s">, end=</span><span class="si">%r</span><span class="s">, &#39;</span> \
+            <span class="s">&#39;published=</span><span class="si">%r</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">creator</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">start_datetime</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_datetime</span><span class="p">(),</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">published</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

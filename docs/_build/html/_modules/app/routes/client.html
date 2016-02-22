@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>app.routes.client &mdash; Eventum 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eventum 0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="app" href="../../app.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> Eventum</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#stack">Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#developing">Developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#organization-structure">Organization / Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.html">The Eventum App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html">Library Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html">Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.html#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.fields.html">Form Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.AddToWhitelistForm">app.forms.AddToWhitelistForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateBlogPostForm">app.forms.CreateBlogPostForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateEventForm">app.forms.CreateEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.CreateProfileForm">app.forms.CreateProfileForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.DeleteEventForm">app.forms.DeleteEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditEventForm">app.forms.EditEventForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.EditUserForm">app.forms.EditUserForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.UploadImageForm">app.forms.UploadImageForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.forms.html#module-app.forms.validators">app.forms.validators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.lib.html">Library Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.decorators">app.lib.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.error">app.lib.error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.events">app.lib.events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar">app.lib.google_calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.google_calendar_resource_builder">app.lib.google_calendar_resource_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.networking">app.lib.networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.lib.html#module-app.lib.text">app.lib.text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.fields.html">Model Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.BlogPost">app.models.BlogPost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Event">app.models.Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.EventSeries">app.models.EventSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Image">app.models.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Post">app.models.Post</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.User">app.models.User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.models.html#module-app.models.Whitelist">app.models.Whitelist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app.routes.html">Routes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.admin.html">Admin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.base">app.routes.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.blog">app.routes.blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app.routes.html#module-app.routes.client">app.routes.client</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Eventum</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+          <li><a href="../../app.html">app</a> &raquo;</li>
+      
+    <li>app.routes.client</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for app.routes.client</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: client</span>
+<span class="sd">    :synopsis: All routes on the ``client`` Blueprint.</span>
+
+<span class="sd">.. moduleauthor:: Dan Schlosser &lt;dan@danrs.ch&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">adi</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">abort</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Event</span><span class="p">,</span> <span class="n">BlogPost</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">Q</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;client&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="n">_resources</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_labs_data</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_companies</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">ONE_TRIPLE</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c"># One set of three small events</span>
+<span class="n">ONE_LARGE_AND_TRIPLE</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c"># One large event and one set of three small events</span>
+<span class="n">NUM_PAST_EVENTS_FOR_FRONTPAGE</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c"># Two triples</span>
+<span class="n">NUM_EVENTS_PER_PAGE</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="index"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.index">[docs]</a><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View the ADI homepage.</span>
+
+<span class="sd">    **Route:** ``/``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">this_moment</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="c"># Ending on a future date, or today at a future time. The events should be</span>
+    <span class="c"># published, and should be chronological.</span>
+    <span class="c"># We limit to four events, one large event and one set of three events.</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">end_date__gt</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+                            <span class="o">|</span>
+                            <span class="n">Q</span><span class="p">(</span><span class="n">end_date</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span> <span class="n">end_time__gt</span><span class="o">=</span><span class="n">this_moment</span><span class="p">))</span>
+                   <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;start_date&#39;</span><span class="p">,</span> <span class="s">&#39;start_time&#39;</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">ONE_LARGE_AND_TRIPLE</span><span class="p">))</span>
+
+    <span class="c"># sort published posts chronologically back in time</span>
+    <span class="n">all_blog_posts</span> <span class="o">=</span> <span class="p">(</span><span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                              <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;-date_published&#39;</span><span class="p">))</span>
+    <span class="n">latest_blog_post</span> <span class="o">=</span> <span class="n">all_blog_posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">all_blog_posts</span> <span class="k">else</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;index.html&#39;</span><span class="p">,</span>
+                           <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span>
+                           <span class="n">blog_post</span><span class="o">=</span><span class="n">latest_blog_post</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/events/devfest&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/devfest&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="devfest"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.devfest">[docs]</a><span class="k">def</span> <span class="nf">devfest</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View the DevFest landing page.</span>
+
+<span class="sd">    **Route:** ``/devfest``, ``/events/devfest``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&quot;http://devfe.st&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/contact&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="contact"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.contact">[docs]</a><span class="k">def</span> <span class="nf">contact</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View contact information.</span>
+
+<span class="sd">    **Route:** ``/contact``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;contact.html&#39;</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/feedback&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="feedback"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.feedback">[docs]</a><span class="k">def</span> <span class="nf">feedback</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Submit feedback on past ADI events.</span>
+
+<span class="sd">    **Route:** ``/feedback``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;feedback.html&#39;</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/jobfair&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="jobfair"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.jobfair">[docs]</a><span class="k">def</span> <span class="nf">jobfair</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View the ADI Startup Career Fair page.</span>
+
+<span class="sd">    **Route:** ``/jobfair``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;force&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+    <span class="n">companies</span> <span class="o">=</span> <span class="n">_get_companies</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;jobfair.html&#39;</span><span class="p">,</span> <span class="n">companies</span><span class="o">=</span><span class="n">companies</span><span class="p">)</span>
+</div>
+<span class="k">def</span> <span class="nf">_get_companies</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_companies</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_companies</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">adi</span><span class="p">[</span><span class="s">&#39;COMPANIES_PATH&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">_companies</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;companies&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_companies</span>
+
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/labs&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="labs"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.labs">[docs]</a><span class="k">def</span> <span class="nf">labs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View information about ADI Labs</span>
+
+<span class="sd">    **Route:** ``/labs``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;force&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+    <span class="n">labs_data</span> <span class="o">=</span> <span class="n">_get_labs_data</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;labs.html&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">labs_data</span><span class="p">)</span>
+</div>
+<span class="k">def</span> <span class="nf">_get_labs_data</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_labs_data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_labs_data</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">adi</span><span class="p">[</span><span class="s">&#39;LABS_DATA_PATH&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">_labs_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">_labs_data</span>
+
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/learn&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="learn"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.learn">[docs]</a><span class="k">def</span> <span class="nf">learn</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Alias for :func:`resources`.</span>
+
+<span class="sd">    **Route:** ``/learn``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.resources&#39;</span><span class="p">))</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/resources&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="resources"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.resources">[docs]</a><span class="k">def</span> <span class="nf">resources</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Learn to code! View resources for learning how to program different</span>
+<span class="sd">    websites.</span>
+
+<span class="sd">    **Route:** ``/resources``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;force&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+    <span class="n">resources_data</span> <span class="o">=</span> <span class="n">_get_resources</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;resources.html&#39;</span><span class="p">,</span> <span class="n">resources</span><span class="o">=</span><span class="n">resources_data</span><span class="p">)</span>
+</div>
+<span class="k">def</span> <span class="nf">_get_resources</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_resources</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_resources</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">adi</span><span class="p">[</span><span class="s">&#39;RESOURCES_PATH&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">_resources</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">_resources</span>
+
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/events&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="events"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.events">[docs]</a><span class="k">def</span> <span class="nf">events</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;View the latest events.</span>
+
+<span class="sd">    **Route:** ``/events``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="n">weekday</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">isoweekday</span><span class="p">()</span>
+    <span class="n">last_sunday</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">today</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">weekday</span> <span class="o">+</span> <span class="mi">7</span><span class="p">),</span>
+                                   <span class="n">datetime</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+    <span class="n">next_sunday</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">today</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span> <span class="o">-</span> <span class="n">weekday</span><span class="p">),</span>
+                                   <span class="n">datetime</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+    <span class="n">recent_and_upcoming</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;start_date&#39;</span><span class="p">,</span>
+                                                                 <span class="s">&#39;start_time&#39;</span><span class="p">)</span>
+
+    <span class="c"># Sort recent events chronologically backwards in time</span>
+    <span class="n">recent_events</span> <span class="o">=</span> <span class="p">(</span><span class="n">recent_and_upcoming</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">end_date__lt</span><span class="o">=</span><span class="n">today</span><span class="p">)</span>
+                                        <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;-start_date&#39;</span><span class="p">)</span>
+                                        <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">NUM_PAST_EVENTS_FOR_FRONTPAGE</span><span class="p">))</span>
+
+    <span class="n">events_this_week</span> <span class="o">=</span> <span class="n">recent_and_upcoming</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">end_date__gte</span><span class="o">=</span><span class="n">today</span><span class="p">,</span>
+                                                  <span class="n">start_date__lt</span><span class="o">=</span><span class="n">next_sunday</span><span class="p">)</span>
+
+    <span class="c"># One large event, and one set of three small events</span>
+    <span class="n">upcoming_events</span> <span class="o">=</span> <span class="p">(</span><span class="n">recent_and_upcoming</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">start_date__gt</span><span class="o">=</span><span class="n">next_sunday</span><span class="p">)</span>
+                                          <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">ONE_LARGE_AND_TRIPLE</span><span class="p">))</span>
+
+    <span class="n">more_past_events</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                          <span class="n">start_date__lte</span><span class="o">=</span><span class="n">last_sunday</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;events/events.html&#39;</span><span class="p">,</span>
+                           <span class="n">recent_events</span><span class="o">=</span><span class="n">recent_events</span><span class="p">,</span>
+                           <span class="n">events_this_week</span><span class="o">=</span><span class="n">events_this_week</span><span class="p">,</span>
+                           <span class="n">upcoming_events</span><span class="o">=</span><span class="n">upcoming_events</span><span class="p">,</span>
+                           <span class="n">more_past_events</span><span class="o">=</span><span class="n">more_past_events</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/events/&lt;int:index&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="event_archive"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.event_archive">[docs]</a><span class="k">def</span> <span class="nf">event_archive</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;View old events.</span>
+
+<span class="sd">    **Route:** ``/events/&lt;index&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+
+<span class="sd">    :param int index: The page to fetch</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.events&#39;</span><span class="p">))</span>
+
+    <span class="c"># Get all events that occur on this page or on subsequent pages, and order</span>
+    <span class="c"># them chronologically back in time</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">end_date__lt</span><span class="o">=</span><span class="n">today</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;-start_date&#39;</span><span class="p">)</span>
+                   <span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">NUM_PAST_EVENTS_FOR_FRONTPAGE</span> <span class="o">+</span>
+                         <span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">NUM_EVENTS_PER_PAGE</span><span class="p">))</span>
+
+    <span class="c"># If there are no such events, redirect to the pevious page</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">events</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.event_archive&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c"># There is always a previous page, but there is only a next page if there</span>
+    <span class="c"># are more events after this page</span>
+    <span class="n">previous_index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">next_index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">events</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">NUM_EVENTS_PER_PAGE</span> <span class="k">else</span> <span class="bp">None</span>
+
+    <span class="c"># Use .limit() to only show NUM_EVENTS_PER_PAGE events per page</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;events/archive.html&#39;</span><span class="p">,</span>
+                           <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">NUM_EVENTS_PER_PAGE</span><span class="p">),</span>
+                           <span class="n">previous_index</span><span class="o">=</span><span class="n">previous_index</span><span class="p">,</span>
+                           <span class="n">next_index</span><span class="o">=</span><span class="n">next_index</span><span class="p">)</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/events/&lt;slug&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="event"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.event">[docs]</a><span class="k">def</span> <span class="nf">event</span><span class="p">(</span><span class="n">slug</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;View a specific non-recurring event, or the next upcoming instance of</span>
+<span class="sd">    a recurring event.</span>
+
+<span class="sd">    **Route:** ``/events/&lt;slug&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+
+<span class="sd">    :param str slug: The unique slug ID for the post.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>  <span class="c"># Either invalid event ID or duplicate IDs.</span>
+
+    <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span><span class="p">:</span>
+        <span class="n">upcoming_event_instances</span> <span class="o">=</span> <span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                  <span class="n">start_date__gte</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span>
+                                                  <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)</span>
+                                         <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;start_date&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">upcoming_event_instances</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">upcoming_event_instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;events/event.html&#39;</span><span class="p">,</span>
+                           <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span>
+                           <span class="n">now</span><span class="o">=</span><span class="n">now</span><span class="p">,</span>
+                           <span class="n">upcoming_events</span><span class="o">=</span><span class="n">_upcoming_events_triple</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+</div>
+<span class="nd">@client.route</span><span class="p">(</span><span class="s">&#39;/events/&lt;slug&gt;/&lt;int:index&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="recurring_event"><a class="viewcode-back" href="../../../app.routes.html#app.routes.client.recurring_event">[docs]</a><span class="k">def</span> <span class="nf">recurring_event</span><span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;View a specific instance of a recurring event.</span>
+
+<span class="sd">    **Route:** ``/events/&lt;slug&gt;/&lt;index&gt;``</span>
+
+<span class="sd">    **Methods:** ``GET``</span>
+
+<span class="sd">    :param str slug: The unique slug ID for the post.</span>
+<span class="sd">    :param int index: The instance of the event to fetch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>  <span class="c"># Either invalid event ID or duplicate IDs.</span>
+
+    <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">is_recurring</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;.event&#39;</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">index</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+
+    <span class="n">event</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parent_series</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;events/event.html&#39;</span><span class="p">,</span>
+                           <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span>
+                           <span class="n">now</span><span class="o">=</span><span class="n">now</span><span class="p">,</span>
+                           <span class="n">upcoming_events</span><span class="o">=</span><span class="n">_upcoming_events_triple</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+</div>
+<span class="k">def</span> <span class="nf">_upcoming_events_triple</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a set of three upcoming events, excluding ``event``.</span>
+
+<span class="sd">    :param event: The event to exclude</span>
+<span class="sd">    :type event: :class:`~app.models.Event`</span>
+<span class="sd">    :returns: The set of three events</span>
+<span class="sd">    :rtype: Mongoengine.queryset</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">start_date__gte</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span>
+                          <span class="n">id__ne</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;start_date&#39;</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">ONE_TRIPLE</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Dan Schlosser.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

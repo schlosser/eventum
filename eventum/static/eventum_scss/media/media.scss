@@ -1,0 +1,32 @@
+@import 'image_grid';
+
+.image-grid {
+    .image .actions {
+        position: absolute;
+        bottom: $image-padding;
+        right: $image-padding;
+        left: $image-padding;
+        background-color: rgba(0,0,0,0.7);
+        text-align: center;
+        height: 0;
+        transition: 0.3s ease all;
+        -webkit-transition: 0.3s ease all;
+
+        .action {
+            height: 2.5rem;
+            width: 2.5rem;
+            line-height: 2.5rem;
+            display: inline-block;
+            position: relative;
+
+            a, a:hover {
+                color: white;
+            }
+        }
+    }
+
+}
+
+.image-grid .image:hover .actions {
+    height: 2.5rem;
+}
