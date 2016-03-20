@@ -35,7 +35,7 @@ $(function() {
             success: function(data, textStatus, jqXHR) {
                 var response = jQuery.parseJSON(jqXHR.responseText);
                 if (response.extension == null && response.filename == null){
-                    $('#images-ajax-loadpoint').load("/admin/media/view", function(response, status){
+                    $('#images-ajax-loadpoint').load("/admin/media/image-selector", function(response, status){
                         if (status == "error"){
                             $('error-message').text("Sorry, there was an error loading the images.");
                         }
