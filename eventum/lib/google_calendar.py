@@ -7,7 +7,6 @@ from apiclient.errors import HttpError
 from oauth2client.file import Storage
 from flask import current_app
 
-from eventum import e
 from eventum.models import Event
 from eventum.lib.google_calendar_resource_builder import (
     GoogleCalendarResourceBuilder)
@@ -43,14 +42,14 @@ class GoogleCalendarAPIClient():
         except IOError:
 
             # Find the valueof the EVENTUM_GOOGLE_AUTH_ENABLED environment var
-            if e.eventum.app.config['EVENTUM_GOOGLE_AUTH_ENABLED']:
+            if self.app.config['EVENTUM_GOOGLE_AUTH_ENABLED']:
                 gae_environ = 'TRUE'
             else:
                 gae_environ = 'FALSE'
 
             # Print error message
             print >> stderr, NO_CREDENTIALS.format(
-                e.eventum.app.config['EVENTUM_INSTALLED_APP_CREDENTIALS_PATH'],
+                self.app.config['EVENTUM_INSTALLED_APP_CREDENTIALS_PATH'],
                 gae_environ)
 
             # Quit
@@ -63,9 +62,9 @@ class GoogleCalendarAPIClient():
         """
         self.service = self._get_service()
         self.private_calendar_id = (
-            e.eventum.app.config['EVENTUM_PRIVATE_CALENDAR_ID'])
+            self.app.config['EVENTUM_PRIVATE_CALENDAR_ID'])
         self.public_calendar_id = (
-            e.eventum.app.config['EVENTUM_PUBLIC_CALENDAR_ID'])
+            self.app.config['EVENTUM_PUBLIC_CALENDAR_ID'])
 
     def _calendar_id_for_event(self, event):
         """Returns the ID for the public or private calendar, depending on
@@ -96,7 +95,7 @@ class GoogleCalendarAPIClient():
         :returns: The Google Calendar service.
         """
         storage = Storage(
-            e.eventum.app.config['EVENTUM_INSTALLED_APP_CREDENTIALS_PATH'])
+            self.app.config['EVENTUM_INSTALLED_APP_CREDENTIALS_PATH'])
         credentials = storage.get()
 
         if credentials is None:
