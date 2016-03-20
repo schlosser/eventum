@@ -121,13 +121,24 @@ def delete(filename):
     return redirect(url_for('.index'))
 
 
-@media.route('/media/view', methods=['GET'])
-def view():
-    """Displays all uploaded images.
+@media.route('/media/image-selector', methods=['GET'])
+def select():
+    """Displays all uploaded images that are selectable.
 
-    **Route:** ``/admin/media/view``
+    **Route:** ``/admin/media/image_selector``
 
     **Methods:** ``GET``
     """
     images = Image.objects()
-    return render_template('eventum_media/view.html', images=images)
+    return render_template('eventum_media/image_selector.html', images=images)
+
+@media.route('/media/image-editor', methods=['GET'])
+def edit():
+    """Displays all uploaded images that are editable in editor panel.
+
+    **Route:** ``/admin/media/image_editor``
+
+    **Methods:** ``GET``
+    """
+    images = Image.objects()
+    return render_template('eventum_media/image_editor.html', images=images)
