@@ -88,11 +88,6 @@ class Image(Document, BaseEventumDocument):
             os.mkdir(delete_folder)
         new_path = os.path.join(delete_folder, filename)
 
-        print os.path.split(document.default_path)
-        print delete_folder
-        print new_path
-        print filename
-
         try:
             os.rename(old_path, new_path)
         except IOError:
