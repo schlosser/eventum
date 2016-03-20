@@ -7,31 +7,6 @@ from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
 from eventum.config import eventum_config
 
-
-class InternalEventum(object):
-    @property
-    def app(self):
-        return current_app
-
-    # @property
-    # def eventum(self):
-    #     return current_app.extensions[Eventum.EXTENSION_NAME]
-
-    @property
-    def gcal_client(self):
-        return self.eventum.gcal_client
-
-    @property
-    def db(self):
-        return self.eventum.db
-
-    @property
-    def config(self):
-        return self.app.config
-
-e = InternalEventum()
-
-
 class Eventum(object):
     EXTENSION_NAME = 'eventum'
     ABSOLUTE_PATH_KEYS = ['EVENTUM_UPLOAD_FOLDER', 'EVENTUM_DELETE_FOLDER']
@@ -39,7 +14,7 @@ class Eventum(object):
     def __init__(self, app=None):
         self._assets = None
         self.db = None
-        self.gcal_client = None
+        self._gcal_client = None
         if app is not None:
             self.init_app(app)
 
@@ -51,12 +26,10 @@ class Eventum(object):
         # Register ourselves as a Flask extension.
         app.extensions = getattr(app, 'extensions', {})
         if self.EXTENSION_NAME not in app.extensions:
-            # This allows us to access the Eventum() instance from current_app.
+            # This allows us to access the self() instance from current_app.
             app.extensions[self.EXTENSION_NAME] = self
 
         self.app = app
-
-        e.eventum = self
 
         # Eventum Settings
         self._normalize_client_settings()
@@ -78,13 +51,17 @@ class Eventum(object):
         self.register_scss()
 
         # Google Calendar API Client
-        self.gcal_client = GoogleCalendarAPIClient(app)
+        self._gcal_client = GoogleCalendarAPIClient(app)
 
         # Google Web Server Application Setup
         set_web_server_client_id(app)
 
         # Logging
         self.register_logger()
+
+    @classmethod
+    def gcal_client(cls):
+        return current_app.extensions[cls.EXTENSION_NAME]._gcal_client
 
     def _normalize_client_settings(self):
         if 'EVENTUM_SETTINGS' in self.app.config:

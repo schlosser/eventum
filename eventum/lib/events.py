@@ -86,7 +86,7 @@ These data structures include:
 from eventum.models import Event, EventSeries, Image
 from eventum.forms import EditEventForm
 from datetime import timedelta
-from eventum import e
+from eventum import Eventum as e
 
 
 class EventsHelper(object):
@@ -272,7 +272,7 @@ class EventsHelper(object):
         event.save()
 
         # Return the Google Calendar response
-        return e.gcal_client.create_event(event)
+        return e.gcal_client().create_event(event)
 
     @classmethod
     def create_series(cls, form, creator):
@@ -311,7 +311,7 @@ class EventsHelper(object):
         series.save()
 
         # Return the Google Calendar response
-        return e.gcal_client.create_event(series.events[0])
+        return e.gcal_client().create_event(series.events[0])
 
     @classmethod
     def update_single_event(cls, event, form, move_to=None):
@@ -339,10 +339,10 @@ class EventsHelper(object):
 
         # Update the event in Google Calendar and publish it as necessary
         if move_to == cls.PUBLIC:
-            response = e.gcal_client.publish_event(event)
+            response = e.gcal_client().publish_event(event)
         elif move_to == cls.PRIVATE:
-            response = e.gcal_client.unpublish_event(event)
-        response = e.gcal_client.update_event(event)
+            response = e.gcal_client().unpublish_event(event)
+        response = e.gcal_client().update_event(event)
 
         # Return the Google Calendar response
         return response
@@ -407,10 +407,10 @@ class EventsHelper(object):
 
         # Update the event in Google Calendar and publish it as necessary
         if move_to == cls.PUBLIC:
-            response = e.gcal_client.publish_event(series.events[0])
+            response = e.gcal_client().publish_event(series.events[0])
         elif move_to == cls.PRIVATE:
-            response = e.gcal_client.unpublish_event(series.events[0])
-        response = e.gcal_client.update_event(series.events[0])
+            response = e.gcal_client().unpublish_event(series.events[0])
+        response = e.gcal_client().update_event(series.events[0])
 
         # Return Google Calendar response
         return response
@@ -440,7 +440,7 @@ class EventsHelper(object):
         cls._update_event(event, event_and_date_data)
 
         # Return Google Calendar response
-        return e.gcal_client.update_event(event, as_exception=True)
+        return e.gcal_client().update_event(event, as_exception=True)
 
     @classmethod
     def convert_to_series(cls, event, form, move_to=None):
@@ -486,7 +486,7 @@ class EventsHelper(object):
         series.save()
 
         # Return the Google Calendar response
-        return e.gcal_client.update_event(series.events[0])
+        return e.gcal_client().update_event(series.events[0])
 
     @classmethod
     def convert_to_single_event(cls, event, form, move_to=None):
@@ -515,7 +515,7 @@ class EventsHelper(object):
         cls._update_event(event, date_data, event_data)
 
         # Delete the series and create a single event
-        return e.gcal_client.update_event(event)
+        return e.gcal_client().update_event(event)
 
     @classmethod
     def delete_single_event(cls, event):
@@ -534,7 +534,7 @@ class EventsHelper(object):
         # We have to delete on Google Calendar first, but we should delete the
         # event from MongoEngine even if Google Calendar throws an error.
         try:
-            response = e.gcal_client.delete_event(event)
+            response = e.gcal_client().delete_event(event)
         finally:
             event.delete()
 
@@ -559,7 +559,7 @@ class EventsHelper(object):
         # event from MongoEngine even if Google Calendar throws an error.
         try:
             # Cancel the series on Google Calendar
-            response = e.gcal_client.delete_event(event, as_exception=True)
+            response = e.gcal_client().delete_event(event, as_exception=True)
         finally:
             event.parent_series.delete_one(event)
 
@@ -582,7 +582,7 @@ class EventsHelper(object):
         # We have to delete on Google Calendar first, but we should delete the
         # event from MongoEngine even if Google Calendar throws an error.
         try:
-            response = e.gcal_client.delete_event(event)
+            response = e.gcal_client().delete_event(event)
         finally:
             event.parent_series.delete_all()
 
