@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from jinja2 import ChoiceLoader, FileSystemLoader
 from flask import current_app
 from flask.ext.mongoengine import MongoEngine
@@ -33,6 +34,7 @@ e = InternalEventum()
 
 class Eventum(object):
     EXTENSION_NAME = 'eventum'
+    ABSOLUTE_PATH_KEYS = ['EVENTUM_UPLOAD_FOLDER', 'EVENTUM_DELETE_FOLDER']
 
     def __init__(self, app=None):
         self._assets = None
@@ -89,6 +91,11 @@ class Eventum(object):
             # Eventum settings provided as a dictionary.
             for key, value in self.app.config['EVENTUM_SETTINGS'].iteritems():
                 self.app.config['EVENTUM_' + key] = value
+        # Set required keys to be absolute paths
+        # that need to be referenced from the app itself.
+        # e.g. Delete folder & Upload foler
+        for key in self.ABSOLUTE_PATH_KEYS:
+            self.app.config[key] = os.path.abspath(self.app.config[key])
 
     def _default_configurations_generator(self):
         for a in dir(eventum_config):

@@ -20,13 +20,6 @@ EVENTUM_BASEDIR = eventum.__path__[0]
 # Static folder
 EVENTUM_STATIC_FOLDER = path.join(EVENTUM_BASEDIR,
                                   'static/')
-# Upload folder
-EVENTUM_UPLOAD_FOLDER = path.join(EVENTUM_STATIC_FOLDER,
-                                  'img/uploaded/')
-# Delete Folder
-EVENTUM_DELETE_FOLDER = path.join(EVENTUM_UPLOAD_FOLDER,
-                                  'deleted/')
-
 # SCSS folder
 EVENTUM_SCSS_FOLDER = path.join(EVENTUM_STATIC_FOLDER,
                                 'eventum_scss/')
@@ -43,6 +36,8 @@ EVENTUM_INSTALLED_APP_CREDENTIALS_PATH = None
 EVENTUM_CLIENT_SECRETS_PATH = None
 EVENTUM_PRIVATE_CALENDAR_ID = None
 EVENTUM_PUBLIC_CALENDAR_ID = None
+EVENTUM_UPLOAD_FOLDER = None
+EVENTUM_DELETE_FOLDER = None
 
 # Will be set elsewhere, do not set directly
 EVENTUM_GOOGLE_CLIENT_ID = None

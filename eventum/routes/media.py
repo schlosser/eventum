@@ -18,7 +18,6 @@ from eventum.routes.base import ERROR_FLASH
 
 media = Blueprint('media', __name__)
 
-
 @media.route('/media', methods=['GET'])
 @login_required
 def index():
@@ -75,11 +74,12 @@ def upload():
         f = request.files['image']
         if f:
             filename = create_filename(f, request.form['filename'])
-            f.save(os.path.join(current_app.config['EVENTUM_UPLOAD_FOLDER'],
-                                filename))
+            upload_folder = current_app.config['EVENTUM_UPLOAD_FOLDER']
+            if not os.path.isdir(upload_folder):
+                os.mkdir(upload_folder)
+            f.save(os.path.join(upload_folder, filename))
             default_path = (
-                current_app.config['EVENTUM_UPLOAD_FOLDER'] +
-                filename)
+                os.path.join(current_app.config['EVENTUM_UPLOAD_FOLDER'], filename))
             image = Image(filename=filename,
                           default_path=default_path,
                           creator=g.user)
