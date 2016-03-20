@@ -80,11 +80,19 @@ class Image(Document, BaseEventumDocument):
 
         Moves the deleted image's assocaited files to the DELETED_FOLDER.
         """
+        old_path = document.default_path
         _, filename = os.path.split(document.default_path)
         delete_folder = current_app.config['EVENTUM_DELETE_FOLDER']
+
         if not os.path.isdir(delete_folder):
             os.mkdir(delete_folder)
         new_path = os.path.join(delete_folder, filename)
+
+        print os.path.split(document.default_path)
+        print delete_folder
+        print new_path
+        print filename
+
         try:
             os.rename(old_path, new_path)
         except IOError:
