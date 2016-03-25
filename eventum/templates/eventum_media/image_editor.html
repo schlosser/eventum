@@ -1,0 +1,22 @@
+<ul class="image-grid clearfix editor">
+{% for image in images %}
+<li class="image">
+    <i style="background-image:url({{ image.url() }});"></i>
+    <ul class="actions">
+        <li class="action">
+            <a class="delete-image" href="#" data-filename="">
+                <i class="fa fa-trash-o fa-2x"></i>
+                <form class="hidden" action="{{ url_for('media.delete', filename=image.filename) }}" method="post">
+                    <input type="submit" value="Submit"/>
+                </form>
+            </a>
+        </li>
+        <li class="action">
+            <a href="{{ url_for('media.file', filename=image.filename) }}">
+                <i class="fa fa-link fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+{% endfor %}
+</ul>

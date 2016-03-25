@@ -1,7 +1,7 @@
-<ul class="image-grid clearfix">
+<ul class="image-grid clearfix selector">
 {% for image in images %}
 <li class="image" data-filename="{{ image.filename }}">
-    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#set-image">
+    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#select-image">
         <i style="background-image:url({{ image.url() }});"></i>
         <div class="select"><i class="fa fa-plus fa-3x"></i></div>
     </a>

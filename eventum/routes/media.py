@@ -121,13 +121,15 @@ def delete(filename):
     return redirect(url_for('.index'))
 
 
-@media.route('/media/view', methods=['GET'])
-def view():
-    """Displays all uploaded images.
+@media.route('/media/image-view', methods=['GET'])
+def select():
+    """Displays all uploaded images, with mode depending on parameter passed in
 
-    **Route:** ``/admin/media/view``
+    **Route:** ``/admin/media/image``
 
     **Methods:** ``GET``
     """
     images = Image.objects()
-    return render_template('eventum_media/view.html', images=images)
+    image_mode = request.args.get('mode')
+    template_name = "eventum_media/image_{image_mode!s}.html".format(image_mode = image_mode)
+    return render_template(template_name, images=images)

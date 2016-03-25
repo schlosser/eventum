@@ -23,7 +23,7 @@ $(function() {
     }
     function modalImage(filename, url) {
         return  '<li class="image" data-filename="' + filename + '">' +
-                '    <a data-filename="' + filename + '" data-url="' + url + '" href="#add-image">' +
+                '    <a data-filename="' + filename + '" data-url="' + url + '" href="#select-image">' +
                 '        <i style="background-image:url(' + url + ');"></i>' +
                 '        <div class="select"><i class="fa fa-plus fa-6x"></i></div>' +
                 '      </a>' +
@@ -87,7 +87,7 @@ $(function() {
 
     });
 
-    $(document).on('click', 'a[href="#add-image"]', function(e) {
+    $(document).on('click', 'a[href="#select-image"]', function(e) {
         e.preventDefault();
         var filename = $(this).data('filename'),
             url = $(this).data('url');
@@ -153,7 +153,6 @@ $(function() {
         $('#featured_image').val('');
     });
 
-
     /* Tie the published toggle to the form element */
     $(document).on('click', '.active a[href="#toggle"]', function(e) {
         $('#published').prop('checked', false);
@@ -161,6 +160,7 @@ $(function() {
             $('#save-post').click();
         }, 500);
     });
+
     $(document).on('click', '.toggle-wrapper:not(.active) a[href="#toggle"]', function(e) {
         $('#published').prop('checked', true);
         setTimeout(function() {

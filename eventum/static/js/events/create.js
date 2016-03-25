@@ -190,7 +190,7 @@ $(function() {
      * Event Image
      * ==================================================================== */
 
-    $(document).on('click', 'a[href="#set-image"]', function(e) {
+    $(document).on('click', 'a[href="#select-image"]', function(e) {
         e.preventDefault();
         var filename = $(this).data('filename'),
             url = $(this).data('url');
@@ -205,7 +205,7 @@ $(function() {
             'background-image': 'url(' + url + ')'
         });
 
-        $('.set-image').addClass('hidden');
+        $('.select-image').addClass('hidden');
         $('.display-image').removeClass('hidden');
     });
 
@@ -216,14 +216,14 @@ $(function() {
         $('.display-image i').css({
             'background-image': ''
         });
-        $('.set-image').removeClass('hidden');
+        $('.select-image').removeClass('hidden');
         $('.display-image').addClass('hidden');
     });
 
     /*When image modal opens, request images*/
     $(document).on('click', 'a[href="#show-modal"][data-modal="image"]', function(e) {
         e.preventDefault();
-        $('#images-ajax-loadpoint').load("/admin/media/view", function(response, status){
+        $('#images-ajax-loadpoint').load("/admin/media/image-view?mode=selector", function(response, status){
             if (status == "error"){
                 $('error-message').text("Sorry, there was an error loading the images.");
             }
