@@ -1,7 +1,9 @@
 $(function() {
     function setInputToWidthOfText(text) {
         width = calculateWordWidth(text);
-        $('input[name="filename"]').animate({"width":width + 30}, 10);
+        $('input[name="filename"]').animate({
+            "width": width + 30
+        }, 10);
     }
 
     function setInitialPositions() {
@@ -16,33 +18,36 @@ $(function() {
     setInitialPositions();
 
     /* let the `btn-choose` div act as the file input */
-    $(".btn-choose").click(function () {
+    $(".btn-choose").click(function() {
         $('input[name="image"]').trigger('click');
         return false;
     });
 
     /* let the `btn-upload` div act as the submit button */
-    $(".btn-upload").click(function () {
+    $(".btn-upload").click(function() {
         var formData = new FormData($('.upload-form')[0]);
         $.ajax({
             url: '/admin/media/upload',
             type: 'POST',
-            xhr: function() {   //don't know what this does, but it works!
+            xhr: function() { //don't know what this does, but it works!
                 myXhr = $.ajaxSettings.xhr();
                 return myXhr;
             },
             //Ajax events
             success: function(data, textStatus, jqXHR) {
                 var response = jQuery.parseJSON(jqXHR.responseText);
-                if (response.extension == null && response.filename == null){
-                    $('#images-ajax-loadpoint').load("/admin/media/image-selector", function(response, status){
-                        if (status == "error"){
+                if (response.extension == null && response.filename == null) {
+                    var ajaxPath = "/admin/media/image?mode="
+                    var currMode = document.getElementsByClassName("image-grid")[0].className
+                    ajaxPath += currMode.indexOf("editor") !== -1 ? "editor" : "selector"
+
+                    $('#images-ajax-loadpoint').load(ajaxPath, function(response, status) {
+                        if (status == "error") {
                             $('error-message').text("Sorry, there was an error loading the images.");
                         }
                     });
                     $('.error-message').hide();
-                }
-                else {
+                } else {
                     if (response.extension == null)
                         $('.error-message').text(response.filename);
                     else if (response.filename == null)
@@ -67,7 +72,7 @@ $(function() {
     });
 
     /* Automatically populate the filename field when a file is chosen */
-    $('input[name="image"]').change(function(){
+    $('input[name="image"]').change(function() {
         var filename = $(this).val().split('/').pop().split('\\').pop();
         var pieces = filename.split(".");
         if (pieces[1]) {
@@ -75,7 +80,7 @@ $(function() {
             $('input[name="extension"]').val("." + pieces[1].toLowerCase());
         }
         setInputToWidthOfText(pieces[0] + "." + pieces[1]);
-        $('input[name="filename"]').attr("placeholder",pieces[0]);
+        $('input[name="filename"]').attr("placeholder", pieces[0]);
         $('input[name="filename"]').val(pieces[0]);
     });
 

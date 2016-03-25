@@ -47,19 +47,21 @@
 {% call macros.modal() %}
 <h3>Add an Image</h3>
 {{ macros.upload_form(upload_form, uploaded_from=url_for('posts.new')) }}
-<div class="image-grid-wrapper">
-<div class="image-grid-wrapper-inner">
-<ul class="image-grid clearfix">
-{% for image in images %}
-<li class="image" data-filename="{{ image.filename }}">
-    <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#add-image">
-        <i style="background-image:url({{ image.url() }});"></i>
-        <div class="select"><i class="fa fa-plus fa-6x"></i></div>
-    </a>
-</li>
-{% endfor %}
-</ul>
+<div id='images-ajax-loadpoint'>
 </div>
+<div class="image-grid-wrapper">
+    <div class="image-grid-wrapper-inner">
+        <ul class="image-grid clearfix">
+            {% for image in images %}
+            <li class="image" data-filename="{{ image.filename }}">
+                <a data-filename="{{ image.filename }}" data-url="{{ image.url() }}" href="#set-image">
+                    <i style="background-image:url({{ image.url() }});"></i>
+                    <div class="select"><i class="fa fa-plus fa-3x"></i></div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endcall %}
 {{ super() }}

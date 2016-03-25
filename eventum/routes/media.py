@@ -17,7 +17,7 @@ from eventum.models import Image
 from eventum.routes.base import ERROR_FLASH
 
 media = Blueprint('media', __name__)
-
+print "fuck you"
 @media.route('/media', methods=['GET'])
 @login_required
 def index():
@@ -69,6 +69,7 @@ def upload():
               messages, if any.
     :rtype: json
     """
+    print "shit"
     form = UploadImageForm(request.form)
     if form.validate_on_submit():
         f = request.files['image']
@@ -121,24 +122,15 @@ def delete(filename):
     return redirect(url_for('.index'))
 
 
-@media.route('/media/image-selector', methods=['GET'])
+@media.route('/media/image', methods=['GET'])
 def select():
-    """Displays all uploaded images that are selectable.
+    """Displays all uploaded images, with mode depending on parameter passed in
 
-    **Route:** ``/admin/media/image_selector``
-
-    **Methods:** ``GET``
-    """
-    images = Image.objects()
-    return render_template('eventum_media/image_selector.html', images=images)
-
-@media.route('/media/image-editor', methods=['GET'])
-def edit():
-    """Displays all uploaded images that are editable in editor panel.
-
-    **Route:** ``/admin/media/image_editor``
+    **Route:** ``/admin/media/image``
 
     **Methods:** ``GET``
     """
     images = Image.objects()
-    return render_template('eventum_media/image_editor.html', images=images)
+    mode = request.args.get('mode')
+    template_name = "eventum_media/image_{mode!s}.html".format(**locals())
+    return render_template(template_name, images=images)
