@@ -1,7 +1,7 @@
 $(function() {
   $('.image-grid-wrapper').height($('.image-grid'));
 
-  $('#images-ajax-loadpoint').load("/admin/media/image?mode=editor", function(response, status) {
+  $('#images-ajax-loadpoint').load("/admin/media/image-view?mode=editor", function(response, status) {
     if (status == "error") {
       $('error-message').text("Sorry, there was an error loading the images.");
     }

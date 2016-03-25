@@ -37,9 +37,9 @@ $(function() {
             success: function(data, textStatus, jqXHR) {
                 var response = jQuery.parseJSON(jqXHR.responseText);
                 if (response.extension == null && response.filename == null) {
-                    var ajaxPath = "/admin/media/image?mode="
-                    var currMode = document.getElementsByClassName("image-grid")[0].className
-                    ajaxPath += currMode.indexOf("editor") !== -1 ? "editor" : "selector"
+                    var ajaxPath = "/admin/media/image-view?mode="
+                    var imageGetMode = document.getElementsByClassName("image-grid")[0].className
+                    ajaxPath += imageGetMode.indexOf("editor") !== -1 ? "editor" : "selector"
 
                     $('#images-ajax-loadpoint').load(ajaxPath, function(response, status) {
                         if (status == "error") {

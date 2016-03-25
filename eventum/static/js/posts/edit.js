@@ -23,7 +23,7 @@ $(function() {
     }
     function modalImage(filename, url) {
         return  '<li class="image" data-filename="' + filename + '">' +
-                '    <a data-filename="' + filename + '" data-url="' + url + '" href="#set-image">' +
+                '    <a data-filename="' + filename + '" data-url="' + url + '" href="#select-image">' +
                 '        <i style="background-image:url(' + url + ');"></i>' +
                 '        <div class="select"><i class="fa fa-plus fa-6x"></i></div>' +
                 '      </a>' +
@@ -87,7 +87,7 @@ $(function() {
 
     });
 
-    $(document).on('click', 'a[href="#set-image"]', function(e) {
+    $(document).on('click', 'a[href="#select-image"]', function(e) {
         e.preventDefault();
         var filename = $(this).data('filename'),
             url = $(this).data('url');
