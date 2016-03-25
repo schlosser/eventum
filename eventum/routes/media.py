@@ -17,7 +17,7 @@ from eventum.models import Image
 from eventum.routes.base import ERROR_FLASH
 
 media = Blueprint('media', __name__)
-print "fuck you"
+
 @media.route('/media', methods=['GET'])
 @login_required
 def index():
