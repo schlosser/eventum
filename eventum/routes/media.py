@@ -69,7 +69,6 @@ def upload():
               messages, if any.
     :rtype: json
     """
-    print "shit"
     form = UploadImageForm(request.form)
     if form.validate_on_submit():
         f = request.files['image']
