@@ -6,19 +6,6 @@
 {% block pagelink %}{{ url_for('events.index') }}{% endblock %}
 {% set active_page = "Events" %}
 
-{% block css %}
-{{ super() }}
-{% assets "scss_datetime" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% assets "scss_events" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% assets "scss_media" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
-
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('eventum.static', filename='js/events/create.js') }}"></script>

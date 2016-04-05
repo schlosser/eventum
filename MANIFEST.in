@@ -1,1 +1,1 @@
-include eventum/static/**/*
+recursive-include eventum/static *.scss

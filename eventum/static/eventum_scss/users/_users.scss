@@ -25,10 +25,10 @@
         }
         td {
             .fa-times {
-                color: red;
+                color: $red;
             }
             .fa-check {
-                color: green;
+                color: $green;
             }
             small {
                 label {
@@ -64,23 +64,28 @@
     }
 }
 
-.form-component {
-    display: inline;
-}
 
 .whitelist, .no-elements {
     margin-bottom: 2rem;
 }
 
-.role, .name {
-    width: 35%;
-    text-transform: capitalize;
-}
-.email {
-    width: 40%;
-}
-.user-type, .actions {
-    width: 25%;
+.table {
+    .form-component {
+        display: inline;
+    }
+
+    .role, .name {
+        width: 35%;
+        text-transform: capitalize;
+    }
+
+    .email {
+        width: 40%;
+    }
+
+    .user-type, .actions {
+        width: 25%;
+    }
 }
 
 td:first-child {

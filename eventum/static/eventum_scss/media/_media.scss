@@ -1,6 +1,4 @@
-@import 'image_grid';
-
-.image-grid {
+.media .image-grid {
     .image .actions {
         position: absolute;
         bottom: $image-padding;
@@ -27,6 +25,6 @@
 
 }
 
-.image-grid .image:hover .actions {
+.media .image-grid .image:hover .actions {
     height: 2.5rem;
 }

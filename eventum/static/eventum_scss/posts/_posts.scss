@@ -1,20 +1,24 @@
-@import '../admin';
-@import '../colors';
-
 .posts {
     margin-top: -1rem;
+
     .post-title {
         width: 20%;
         p {
             padding-left: 0.5rem;
         }
     }
+
     .post-author {
         width: 27%;
     }
+
     .post-date {
         text-align: center;
         width: 18%;
+    }
+
+    .post-author-name {
+        margin-left: 0 !important;
     }
 
     .post-status {

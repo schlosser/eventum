@@ -1,5 +1,3 @@
-@import '../admin';
-
 $wide-2: 50%;
 $wide-3: 33.333%;
 $wide-4: 25%;
@@ -18,34 +16,63 @@ $image-padding: 0.25rem;
     }
 }
 
+.image {
+    width: $wide-6;
+    padding-bottom: $wide-6;
+    display: inline-block;
+    float:left;
+    position: relative;
+
+    &:hover .actions {
+        height: 2.5rem;
+    }
+
+    .actions {
+        position: absolute;
+        bottom: $image-padding;
+        right: $image-padding;
+        left: $image-padding;
+        background-color: rgba(0,0,0,0.7);
+        text-align: center;
+        height: 0;
+        transition: 0.3s ease all;
+        -webkit-transition: 0.3s ease all;
+
+        .action {
+            height: 2.5rem;
+            width: 2.5rem;
+            line-height: 2.5rem;
+            display: inline-block;
+            position: relative;
+
+            a, a:hover {
+                color: white;
+            }
+        }
+    }
+
+    i:not(.fa) {
+        position: absolute;
+        top: $image-padding;
+        bottom: $image-padding;
+        left: $image-padding;
+        right: $image-padding;
+        display: block;
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
 .image-grid {
     width: 100%;
     overflow: hidden;
 
-    .image {
-        width: $wide-6;
-        padding-bottom: $wide-6;
-        display: inline-block;
-        float:left;
-        position: relative;
-
+    &.small-grid .image {
+        width: 4rem;
+        border-bottom: 4rem;
     }
 }
-.image i:not(.fa) {
-    position: absolute;
-    top: $image-padding;
-    bottom: $image-padding;
-    left: $image-padding;
-    right: $image-padding;
-    display: block;
-    background-position: center center;
-    background-size: cover;
-}
 
-.image-grid.small-grid .image {
-    width: 4rem;
-    border-bottom: 4rem;
-}
 
 @media only screen and (max-width: $xl-desktop-max) {
     .image-grid .image {

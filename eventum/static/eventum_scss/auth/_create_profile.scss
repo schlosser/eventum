@@ -1,5 +1,3 @@
-@import '../colors';
-
 $form-width: 15rem;
 
 .signup-flow {
@@ -33,17 +31,19 @@ $form-width: 15rem;
     }
 }
 
-.nav {
-    display: none;
-}
-.topbar {
-    left: 0;
-}
-.main, .main > .inner {
-    width: 100% !important;
-    max-width: none;
-    margin: 0;
-    padding: 0;
+.create-profile {
+    .nav {
+        display: none;
+    }
+    .topbar {
+        left: 0;
+    }
+    .main, .main > .inner {
+        width: 100% !important;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 #gSignInWrapper {

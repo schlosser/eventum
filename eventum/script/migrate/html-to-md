@@ -1,9 +1,0 @@
-#!/usr/bin/env node
-
-var toMarkdown = require('to-markdown').toMarkdown;
-
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
-process.stdin.on('data', function(data) {
-  process.stdout.write(toMarkdown(data) + '\n');
-});

@@ -1,5 +1,3 @@
-@import '../admin';
-
 $event-width: 15rem;
 $creator-size: 3rem;
 $event-padding: 0.75rem;
@@ -144,7 +142,7 @@ $event-padding: 0.75rem;
                 right: 0;
                 font-size: 1rem;
 
-                .image {
+                .profile-image {
                     width: $creator-size;
                     height: $creator-size;
                     float: left;
@@ -164,7 +162,6 @@ $event-padding: 0.75rem;
     }
 }
 
-
 .reset {
     line-height: 3.5rem;
     margin-left: 1rem;
@@ -176,7 +173,8 @@ $event-padding: 0.75rem;
     border-left: 0.5rem solid $blue;
 }
 
-form {
-    display: inline-block;
+.events {
+    form {
+        display: inline-block;
+    }
 }
-

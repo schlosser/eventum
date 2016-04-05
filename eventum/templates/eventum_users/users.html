@@ -1,16 +1,6 @@
 {% extends "eventum_admin.html" %}
 {% import "eventum_macros.html" as macros %}
 
-{% block css %}
-{{ super() }}
-{% assets "scss_users" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% assets "scss_media" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
-
 {% block js %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('eventum.static', filename='js/users/users.js') }}"></script>
