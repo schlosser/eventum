@@ -3,13 +3,6 @@
 
 {% set active_page = "Users" %}
 
-{% block css %}
-{{ super() }}
-{% assets "scss_users" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
-
 {% block title %}{{user.name}} | View User Data{% endblock %}
 {% block pagetitle %}{{user.name}}{% endblock %}
 

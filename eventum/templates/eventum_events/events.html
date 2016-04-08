@@ -3,16 +3,10 @@
 
 {% set active_page='Events' %}
 
-{% block css %}
-{{ super() }}
-{% assets "scss_events" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
-
 {% block title %}View Events{% endblock %}
 {% block pagetitle %}Events{% endblock %}
 {% block pagelink %}{{ url_for('events.index') }}{% endblock %}
+{% block bodyClass %}{{ super() }} events{% endblock %}
 
 {% if request.args.get('past') %}
 {% set past = request.args.get('past')|int %}
@@ -102,7 +96,7 @@
     </div>
     <div class="creator">
         <a href="{{ url_for('users.user', slug=event.creator.slug) }}">
-            <span class="image">
+            <span class="profile-image">
                 <img src="{{ event.creator.get_profile_picture() }}">
             </span>
             <p class="name">{{ event.creator.name }}</p>

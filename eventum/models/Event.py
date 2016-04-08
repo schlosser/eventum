@@ -209,7 +209,7 @@ class Event(Document, BaseEventumDocument):
         if self.image:
             return self.image.url()
         return url_for(
-            'static',
+            'eventum.static',
             filename=current_app.config['EVENTUM_DEFAULT_EVENT_IMAGE'])
 
     def ready_for_publishing(self):

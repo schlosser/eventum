@@ -6,8 +6,8 @@ CSRF_ENABLED = True
 MONGODB_SETTINGS = {
     'DB': 'eventum'
 }
-EVENTUM_DEFAULT_PROFILE_PICTURE = 'http://www.foggybottommilkrun.com/assets/records/4-mile%20record%20men-ad7803638fa6b3b80c7a755ce575ff98.jpg'
-EVENTUM_DEFAULT_EVENT_IMAGE = 'http://www.foggybottommilkrun.com/assets/records/4-mile%20record%20men-ad7803638fa6b3b80c7a755ce575ff98.jpg'
+EVENTUM_DEFAULT_PROFILE_PICTURE = 'img/default_profile_picture.png'
+EVENTUM_DEFAULT_EVENT_IMAGE = 'img/default_event_image.jpg'
 EVENTUM_GOOGLE_AUTH_ENABLED = True
 EVENTUM_APP_LOG_NAME = 'app.log'
 EVENTUM_WERKZEUG_LOG_NAME = 'werkzeug.log'

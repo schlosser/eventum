@@ -3,19 +3,13 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_posts" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% assets "scss_media" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-
 <link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/github.min.css">
 {% endblock %}
 
 {% block title %}Write a Blog Post{% endblock %}
 {% block pagetitle %}<span class="no-mobile">Edit Post</span>{% endblock %}
 {% block pagelink %}{{ url_for('posts.index') }}{% endblock %}
+{% block bodyClass %}{{ super() }} edit-post{% endblock %}
 {% set active_page="Blog" %}
 
 {% block js %}

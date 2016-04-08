@@ -1,14 +1,11 @@
-@import '../colors';
-@import '../media/image_grid';
-@import '../media/select';
-@import '../admin';
+.edit-post {
+    .content {
+        padding-bottom: ($content-padding - $image-padding) !important;
+    }
+}
 
 #epiceditor {
     margin-bottom: 3rem;
-}
-
-.content {
-    padding-bottom: ($content-padding - $image-padding) !important;
 }
 
 .edit-post-form input[type="submit"] {
@@ -19,7 +16,7 @@
     display: inline-block;
 }
 
-.tag-list li{
+.tag-list li {
 	border: 2px solid #EBFAFF;
 	background-color: #EBFAFF;
 	font-size: 10px;
@@ -29,12 +26,12 @@
 
 }
 
-.tag-list li a{
+.tag-list li a {
 	font-size: 10px;
 	color: red;
 }
 
-.preview-button{
+.preview-button {
     float: right;
 }
 

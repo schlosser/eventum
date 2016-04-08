@@ -1,15 +1,9 @@
 {% extends "eventum_admin.html" %}
 {% block title %}Create Profile{% endblock %}
 {% block pagetitle %}Create Profile{% endblock %}
+{% block bodyClass %}{{ super() }} create-profile{% endblock%}
 
 {% import 'eventum_macros.html' as macros %}
-
-{% block css %}
-{{ super() }}
-{% assets "scss_auth" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
 
 {% block content %}
 <div class="signup-flow">

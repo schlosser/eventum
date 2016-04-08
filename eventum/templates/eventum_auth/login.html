@@ -7,9 +7,6 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_auth" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('eventum.static', filename='css/lib/plus.css') }}">
 {% endblock %}
 

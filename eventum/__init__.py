@@ -165,19 +165,13 @@ class Eventum(object):
             self.app.config['EVENTUM_STATIC_FOLDER'],
             '/static')
 
-        with open(__path__[0] + '/config/scss.json') as f:
-            bundle_instructions = json.loads(f.read())
-            for _, bundle_set in bundle_instructions.iteritems():
-                output_folder = bundle_set['output_folder']
-                depends = bundle_set['depends']
-                for bundle_name, rules in bundle_set['rules'].iteritems():
-                    bundle = Bundle(*rules['inputs'],
-                                    output=output_folder + rules['output'],
-                                    depends=depends,
-                                    filters='scss')
-                    self.assets.register(bundle_name, bundle)
+        bundle = Bundle('eventum_scss/eventum.scss',
+                        output='css/gen/eventum/eventum.css',
+                        depends=('**/*.scss'),
+                        filters='scss')
+        self.assets.register('scss_eventum', bundle)
 
-    @property
+   @property
     def assets(self):
         if self._assets is not None:
             return self._assets

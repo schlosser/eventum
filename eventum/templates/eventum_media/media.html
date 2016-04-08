@@ -4,13 +4,7 @@
 {% set active_page='Media' %}
 {% block title %}Manage Photos and other Media{% endblock %}
 {% block pagetitle %}Media{% endblock %}
-
-{% block css %}
-{{ super() }}
-{% assets "scss_media" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
-{% endblock %}
+{% block bodyClass %}{{ super() }} media{% endblock %}
 
 {% block js %}
 {{ super() }}

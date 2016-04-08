@@ -3,9 +3,6 @@
 
 {% block css %}
 {{ super() }}
-{% assets "scss_posts" %}
-<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-{% endassets %}
 <link rel="stylesheet" href="{{url_for('eventum.static', filename='css/lib/epiceditor/preview/github-highlighted.css')}}">
 {% endblock %}
 
