@@ -7,8 +7,7 @@ from oauth2client.client import flow_from_clientsecrets
 from oauth2client.tools import run_flow
 from oauth2client import tools
 
-# from config import flask_config
-if(len(argv)) != 3:
+if len(argv) < 3:
     print "eventum/authorize.py <CLIENT-SECRET-PATH> <CLIENT-CREDENTIALS-PATH>"
 else:
     client_secret_path = argv[1]
