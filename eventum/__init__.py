@@ -171,7 +171,7 @@ class Eventum(object):
                         filters='scss')
         self.assets.register('scss_eventum', bundle)
 
-   @property
+    @property
     def assets(self):
         if self._assets is not None:
             return self._assets

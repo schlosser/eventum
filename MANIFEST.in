@@ -1,1 +1,1 @@
-recursive-include eventum/static *
+recursive-include eventum *
