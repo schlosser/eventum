@@ -5,6 +5,7 @@ from jinja2 import ChoiceLoader, FileSystemLoader
 from flask import current_app
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
+from webassets.filter import get_filter
 from eventum.config import eventum_config
 
 class Eventum(object):
@@ -166,9 +167,9 @@ class Eventum(object):
             '/static')
 
         bundle = Bundle('eventum_scss/eventum.scss',
-                        output='css/gen/eventum/eventum.css',
+                        output='css/gen/eventum/eventum.%(version)s.css',
                         depends=('**/*.scss'),
-                        filters='scss')
+                        filters=('scss', 'cssmin'))
         self.assets.register('scss_eventum', bundle)
 
     @property
