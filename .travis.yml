@@ -1,0 +1,31 @@
+sudo: false
+dist: trusty
+
+language: python
+python:
+  - "2.7"
+
+notifications:
+  email: false
+
+cache: pip
+services:
+  - mongodb
+
+before_install:
+  # Install SCSS
+  - gem install sass
+  - pip install -U pytest flake8 pytest-cov
+install:
+  - pip install -e .
+
+before_script:
+  - mongod --version
+  - pip freeze
+  - sass --version
+script:
+  - flake8
+  - py.test --verbose --cov=eventum tests/
+
+after_success:
+  - pip install python-coveralls && coveralls
