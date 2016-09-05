@@ -12,6 +12,7 @@ def eventum(tmpdir_factory):
         "DELETE_FOLDER": str(tmpdir_factory.mktemp("delete")),
         "GOOGLE_AUTH_ENABLED": False,
     }
+    app.config["SECRET_KEY"] = "HELLO"
     eventum = Eventum(app)
 
     with eventum.app.app_context():
