@@ -2,8 +2,16 @@ sudo: false
 dist: trusty
 
 language: python
-python:
-  - "2.7"
+matrix:
+  include:
+    - python: "2.7"
+      env: COVERAGE=TRUE
+    - python: "pypy"
+    - python: "3.5"
+  allow_failures:
+    - python: "pypy"
+    - python: "3.5"
+
 
 notifications:
   email: false
@@ -28,4 +36,4 @@ script:
   - py.test --verbose --cov=eventum tests/
 
 after_success:
-  - pip install python-coveralls && coveralls
+  - if [[ $COVERAGE == "TRUE" ]]; then pip install python-coveralls && coveralls; fi
