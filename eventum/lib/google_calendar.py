@@ -12,8 +12,6 @@ from eventum.lib.google_calendar_resource_builder import (
     GoogleCalendarResourceBuilder)
 from eventum.lib.decorators import skip_and_return_if_auth_disabled
 from eventum.lib.error import EventumError
-from eventum.config import eventum_config
-
 
 NO_CREDENTIALS = (
     'Failed to find the Google Calendar credentials file at '

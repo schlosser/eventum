@@ -1,4 +1,4 @@
-from os import path, pardir
+from os import path
 import eventum
 
 ##############################################################################

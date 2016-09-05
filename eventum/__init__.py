@@ -1,12 +1,13 @@
-import json
 import logging
 import os
+
 from jinja2 import ChoiceLoader, FileSystemLoader
 from flask import current_app
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.assets import Environment, Bundle
-from webassets.filter import get_filter
-from eventum.config import eventum_config
+
+from .config import eventum_config
+
 
 class Eventum(object):
     EXTENSION_NAME = 'eventum'

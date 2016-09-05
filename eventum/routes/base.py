@@ -80,23 +80,25 @@ def register_error_handlers(blueprint):
     @blueprint.errorhandler(405)
     def method_not_allowed(error):
         """Handle 405 errors."""
-        return render_template('eventum_error/405.html', method=request.method), 405
+        response = render_template("eventum_error/405.html",
+                                   method=request.method)
+        return response, 405
 
 
 def configure_routing(app):
 
     @app.before_request
     def _lookup_current_user():
-        """We need to be able to import :func:`lookup_current_user`, so it
-        can't be defined within :func:`register_error_handlers`, so this method
-        serves as an way to do both.
+        """We need to be able to import :func:`lookup_current_user`, so
+        it can't be defined within :func:`register_error_handlers`, so
+        this method serves as an way to do both.
         """
         lookup_current_user()
 
     @app.context_processor
     def inject_helpers():
-        """Injects a dictionary of helper variables and functions into Jinja
-        templates.
+        """Injects a dictionary of helper variables and functions into
+        Jinja templates.
         """
         helpers = {
             'current_user': None

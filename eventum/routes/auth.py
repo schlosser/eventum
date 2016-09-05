@@ -5,19 +5,21 @@
 .. moduleauthor:: Dan Schlosser <dan@schlosser.io>
 """
 
-import string
-import random
 import httplib2
+import random
+import string
+
+from apiclient.discovery import build
+from flask import (Blueprint, render_template, request, flash, session, g,
+                   redirect, url_for, current_app)
+from oauth2client.client import (FlowExchangeError,
+                                 flow_from_clientsecrets,
+                                 AccessTokenCredentials)
+
 from eventum.lib.json_response import json_success, json_error_message
 from eventum.models import User, Whitelist
 from eventum.forms import CreateProfileForm
 from eventum.routes.base import MESSAGE_FLASH
-from apiclient.discovery import build
-from flask import Blueprint, render_template, request, \
-    flash, session, g, redirect, url_for, current_app
-from oauth2client.client import (FlowExchangeError,
-                                 flow_from_clientsecrets,
-                                 AccessTokenCredentials)
 
 auth = Blueprint('auth', __name__)
 

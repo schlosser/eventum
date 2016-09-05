@@ -8,15 +8,15 @@
 
 from datetime import datetime, timedelta, date
 
-from flask import Blueprint, request, render_template, g, redirect, \
-    url_for, flash
+from flask import (Blueprint, request, render_template, g, redirect,
+                   url_for, flash)
 
 from bson.objectid import ObjectId
 from mongoengine.errors import DoesNotExist, ValidationError
 
 from eventum.models import Event, Image
 from eventum.forms import (CreateEventForm, EditEventForm, DeleteEventForm,
-                       UploadImageForm)
+                           UploadImageForm)
 from eventum.lib.decorators import login_required, requires_privilege
 from eventum.routes.base import ERROR_FLASH, MESSAGE_FLASH
 
@@ -169,8 +169,10 @@ def edit(event_id):
         flash('Cannot find event with id "{}"'.format(event_id), ERROR_FLASH)
         return redirect(url_for('.index'))
 
-    form = EditEventForm(event, request.form) if request.method == 'POST' else \
-        EventsHelper.create_form(event, request)
+    if request.method == "POST":
+        form = EditEventForm(event, request.form)
+    else:
+        form = EventsHelper.create_form(event, request)
 
     if form.validate_on_submit():
         try:
