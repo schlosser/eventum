@@ -7,10 +7,12 @@
 
 import re
 import os
-from flask import url_for, current_app
 from datetime import datetime
+
+from flask import url_for, current_app
 from mongoengine import (Document, DateTimeField, StringField, ReferenceField,
-                         DictField, ValidationError, signals)
+                         signals)
+
 from eventum.models import BaseEventumDocument
 from eventum.lib.regex import Regex
 now = datetime.now
@@ -91,7 +93,7 @@ class Image(Document, BaseEventumDocument):
         try:
             os.rename(old_path, new_path)
         except IOError:
-            pass # TODO: Do something real if this fails. Logging?
+            pass  # TODO: Do something real if this fails. Logging?
 
     def __unicode__(self):
         """This image, as a unicode string.

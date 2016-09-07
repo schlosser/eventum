@@ -5,19 +5,21 @@
 .. moduleauthor:: Dan Schlosser <dan@schlosser.io>
 """
 
-import string
-import random
+import base64
 import httplib2
+import os
+
+from apiclient.discovery import build
+from flask import (Blueprint, render_template, request, flash, session, g,
+                   redirect, url_for, current_app)
+from oauth2client.client import (FlowExchangeError,
+                                 flow_from_clientsecrets,
+                                 AccessTokenCredentials)
+
 from eventum.lib.json_response import json_success, json_error_message
 from eventum.models import User, Whitelist
 from eventum.forms import CreateProfileForm
 from eventum.routes.base import MESSAGE_FLASH
-from apiclient.discovery import build
-from flask import Blueprint, render_template, request, \
-    flash, session, g, redirect, url_for, current_app
-from oauth2client.client import (FlowExchangeError,
-                                 flow_from_clientsecrets,
-                                 AccessTokenCredentials)
 
 auth = Blueprint('auth', __name__)
 
@@ -197,9 +199,8 @@ def load_csrf_token_into_session():
     """Create a unique session cross-site request forgery (CSRF) token and
     load it into the session for later verification.
     """
-    state = ''.join(random.choice(string.ascii_uppercase + string.digits)
-                    for x in xrange(32))
-    session['state'] = state
+    # 24 bytes in b64 == 32 characters
+    session['state'] = base64.urlsafe_b64encode(os.urandom(24))
 
 
 @auth.route('/disconnect', methods=['GET', 'POST'])
