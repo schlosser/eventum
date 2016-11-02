@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='eventum',
-      version='0.2.6',
+      version='0.2.7',
       description='A content management system for event-driven Flask apps',
       url='http://github.com/danrschlosser/eventum',
       author='Dan Schlosser',
